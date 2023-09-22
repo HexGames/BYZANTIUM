@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://di030yy5pk68o"]
+
+[ext_resource type="Script" path="res://Scripts/DefGenerator.cs" id="1_g4h84"]
+[ext_resource type="Script" path="res://Scripts/_Autorun.cs" id="1_oldh3"]
+[ext_resource type="Resource" uid="uid://b2b827g56svqt" path="res://Libraries/DefLibrary.tres" id="3_6esea"]
+[ext_resource type="Script" path="res://Scripts/MapGenerator.cs" id="3_yqggf"]
+[ext_resource type="Script" path="res://Scripts/_Debug_Test.cs" id="4_u8rhe"]
+[ext_resource type="Script" path="res://Scripts/CityNode.cs" id="6_yalis"]
+[ext_resource type="Script" path="res://Scripts/CityDef.cs" id="7_lxu6b"]
+[ext_resource type="Script" path="res://Scripts/CityData.cs" id="8_4o6ri"]
+
+[sub_resource type="Resource" id="Resource_6tm0x"]
+script = ExtResource("7_lxu6b")
+CityName = "Atlantis"
+Province = "Pegasus"
+Positon = Vector2(10, 10)
+Population = 1000
+FilePath = "res://Def/Atlantis.tres"
+
+[sub_resource type="Resource" id="Resource_r3t0i"]
+script = ExtResource("7_lxu6b")
+CityName = "Avalon"
+Province = "Nova"
+Positon = Vector2(-10, -10)
+Population = 100
+FilePath = "res://Def/Avalon.tres"
+
+[node name="Game" type="Node"]
+script = ExtResource("1_oldh3")
+
+[node name="Origin3D" type="Node3D" parent="."]
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="Generators" type="Node" parent="."]
+
+[node name="DefGenerator" type="Node" parent="Generators"]
+script = ExtResource("1_g4h84")
+DefLibraryRes = ExtResource("3_6esea")
+
+[node name="MapGenerator" type="Node" parent="Generators" node_paths=PackedStringArray("CitiesNode")]
+script = ExtResource("3_yqggf")
+DataLibraryRes = ExtResource("3_6esea")
+CitiesNode = NodePath("../../Game/Cities")
+
+[node name="_Debug_Test" type="Node" parent="Generators"]
+script = ExtResource("4_u8rhe")
+
+[node name="Game" type="Node" parent="."]
+
+[node name="Cities" type="Node" parent="Game"]
+
+[node name="Atlantis" type="Node" parent="Game/Cities" node_paths=PackedStringArray("Data")]
+script = ExtResource("6_yalis")
+Def = SubResource("Resource_6tm0x")
+Data = NodePath("Data")
+
+[node name="Data" type="Node" parent="Game/Cities/Atlantis"]
+script = ExtResource("8_4o6ri")
+Population = 1000
+Prosperity = 15
+
+[node name="Avalon" type="Node" parent="Game/Cities" node_paths=PackedStringArray("Data")]
+script = ExtResource("6_yalis")
+Def = SubResource("Resource_r3t0i")
+Data = NodePath("Data")
+
+[node name="Data" type="Node" parent="Game/Cities/Avalon"]
+script = ExtResource("8_4o6ri")
+Population = 100
+Prosperity = 15

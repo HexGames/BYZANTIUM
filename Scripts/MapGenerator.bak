@@ -1,0 +1,43 @@
+using Godot;
+using System;
+
+[Tool]
+public partial class MapGenerator : Node
+{
+    [Export]
+    public bool GenerateCityData
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                GenerateCityDataFunc();
+            }
+        }
+    }
+
+    public void GenerateCityDataFunc()
+    {
+        DataCity cityInfo = new DataCity();
+        cityInfo.CityName = "Atlantis";
+        cityInfo.Province = "Pegasus";
+        cityInfo.Population = 1000;
+
+        Resource newCityRes = new Resource();
+        newCityRes.SetScript(cityInfo);
+
+        string path = "res://Data/" + cityInfo.CityName + ".tres";
+        ResourceSaver.Save(cityInfo, path);
+    }
+
+    // Called when the node enters the scene tree for the first time.
+    //public override void _Ready()
+    //{
+    //}
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    //public override void _Process(double delta)
+    //{
+    //}
+}
