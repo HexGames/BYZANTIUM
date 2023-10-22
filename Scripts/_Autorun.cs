@@ -15,7 +15,8 @@ public partial class _Autorun : Node
     //    OnEditorClose();
     //}
 
-    [Export]
+
+    /*[Export]
     public bool GenerateAll
     {
         get => false;
@@ -65,5 +66,5 @@ public partial class _Autorun : Node
 
         DefGenerator defGen = tree.EditedSceneRoot.GetNode<DefGenerator>("Generators/DefGenerator");
         defGen.ClearCityDef();
-    }
+    }*/
 }

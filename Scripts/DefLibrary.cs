@@ -4,31 +4,23 @@ using System.Linq;
 
 // Editor
 [Tool]
-public partial class DefLibrary : Resource
+public partial class DefLibrary : Node
 {
+    public string CitiesDir = "res:///Def/Cities/";
     [Export]
-    public Array<CityDef> Cities = new Array<CityDef>(); 
+    public Array<CityDef> Cities = new Array<CityDef>();
 
-    //public int CitiesCount
-    //{
-    //    get
-    //    {
-    //        return CitiesRes.Count;
-    //    }
-    //}
-    //
-    //public void CitiesClear()
-    //{
-    //    CitiesRes.Clear();
-    //}
-    //
-    //public void CitiesAdd(CityDef def)
-    //{
-    //    CitiesRes.Add(def);
-    //}
-    //
-    //public CityDef Cities(int idx)
-    //{
-    //    return (CityDef)CitiesRes[idx];
-    //}
+    public override void _Ready()
+    {
+        Cities.Clear();
+
+        DirAccess folder = DirAccess.Open(CitiesDir);
+        string[] files = folder.GetFiles();
+
+        for ( int idx = 0; idx < files.Length; idx++ )
+        {
+            Resource res = GD.Load<Resource>(CitiesDir + files[idx]);
+            Cities.Add(res as CityDef);
+        }
+    }
 }

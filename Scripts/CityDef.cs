@@ -2,6 +2,8 @@ using Godot;
 using System;
 
 // Generated
+[GlobalClass]
+[Tool]
 public partial class CityDef : Resource
 {
     [Export]
@@ -16,4 +18,6 @@ public partial class CityDef : Resource
     // workaround
     [Export]
     public string FilePath = ""; // ?HEX? 
+
+    public CityDef() {}
 }

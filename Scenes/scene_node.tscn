@@ -1,46 +1,77 @@
-[gd_scene load_steps=11 format=3 uid="uid://di030yy5pk68o"]
+[gd_scene load_steps=23 format=3 uid="uid://di030yy5pk68o"]
 
 [ext_resource type="Script" path="res://Scripts/DefGenerator.cs" id="1_g4h84"]
 [ext_resource type="Script" path="res://Scripts/_Autorun.cs" id="1_oldh3"]
-[ext_resource type="Resource" uid="uid://b2b827g56svqt" path="res://Libraries/DefLibrary.tres" id="3_6esea"]
+[ext_resource type="Script" path="res://Scripts/DefLibrary.cs" id="2_3thtr"]
+[ext_resource type="Resource" uid="uid://bpqipagqlkrqi" path="res://Def/Cities/Atlantis.tres" id="3_w78h8"]
 [ext_resource type="Script" path="res://Scripts/MapGenerator.cs" id="3_yqggf"]
+[ext_resource type="Resource" uid="uid://7ms5toa2ayno" path="res://Def/Cities/Avalon.tres" id="4_kh554"]
 [ext_resource type="Script" path="res://Scripts/_Debug_Test.cs" id="4_u8rhe"]
-[ext_resource type="Script" path="res://Scripts/CityNode.cs" id="6_yalis"]
-[ext_resource type="Script" path="res://Scripts/CityDef.cs" id="7_lxu6b"]
-[ext_resource type="Script" path="res://Scripts/CityData.cs" id="8_4o6ri"]
+[ext_resource type="Resource" uid="uid://cc66tgj7l7e2y" path="res://Def/Cities/Camelot.tres" id="5_cacrp"]
+[ext_resource type="Resource" uid="uid://bk6oqtyo8ixmd" path="res://Def/Cities/Carcassonne.tres" id="6_ohilu"]
+[ext_resource type="Script" path="res://Scripts/CityNode.cs" id="7_r63ue"]
+[ext_resource type="Resource" uid="uid://cgsv46e51cq84" path="res://Def/Cities/Constantinopolis.tres" id="7_sroee"]
+[ext_resource type="Script" path="res://Scripts/CityData.cs" id="8_sg4o1"]
+[ext_resource type="PackedScene" uid="uid://dum24aa0bltf5" path="res://3DPrefabs/City.tscn" id="9_ugmqt"]
+[ext_resource type="Script" path="res://Scripts/CityGFX.cs" id="10_3grdg"]
+[ext_resource type="Script" path="res://Scripts/MapCamera.cs" id="11_blimg"]
 
-[sub_resource type="Resource" id="Resource_6tm0x"]
-script = ExtResource("7_lxu6b")
-CityName = "Atlantis"
-Province = "Pegasus"
-Positon = Vector2(10, 10)
-Population = 1000
-FilePath = "res://Def/Atlantis.tres"
+[sub_resource type="PlaneMesh" id="PlaneMesh_jvuui"]
+size = Vector2(80, 80)
+subdivide_width = 10
+subdivide_depth = 10
 
-[sub_resource type="Resource" id="Resource_r3t0i"]
-script = ExtResource("7_lxu6b")
-CityName = "Avalon"
-Province = "Nova"
-Positon = Vector2(-10, -10)
-Population = 100
-FilePath = "res://Def/Avalon.tres"
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4emsu"]
+albedo_color = Color(0, 0.262745, 0.12549, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_881ui"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyqpj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_orq5f"]
+radius = 2.0
+
+[sub_resource type="Gradient" id="Gradient_l7b6o"]
+colors = PackedColorArray(0.381703, 0.381703, 0.381703, 1, 0.340339, 0.340339, 0.340339, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ofity"]
+gradient = SubResource("Gradient_l7b6o")
+width = 128
+height = 26
+fill_to = Vector2(0, 1)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_oldh3")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999962, -0.00617059, 0.00617059, 0, 0.707107, 0.707107, -0.00872654, -0.70708, 0.70708, 0, 23.315, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 350.0
+
 [node name="Origin3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Origin3D"]
+mesh = SubResource("PlaneMesh_jvuui")
+surface_material_override/0 = SubResource("StandardMaterial3D_4emsu")
 
 [node name="Managers" type="Node" parent="."]
 
+[node name="DefLibrary" type="Node" parent="."]
+script = ExtResource("2_3thtr")
+Cities = [ExtResource("3_w78h8"), ExtResource("4_kh554"), ExtResource("5_cacrp"), ExtResource("6_ohilu"), ExtResource("7_sroee")]
+
 [node name="Generators" type="Node" parent="."]
 
-[node name="DefGenerator" type="Node" parent="Generators"]
+[node name="DefGenerator" type="Node" parent="Generators" node_paths=PackedStringArray("DefLibrary")]
 script = ExtResource("1_g4h84")
-DefLibraryRes = ExtResource("3_6esea")
+DefLibrary = NodePath("../../DefLibrary")
 
-[node name="MapGenerator" type="Node" parent="Generators" node_paths=PackedStringArray("CitiesNode")]
+[node name="MapGenerator" type="Node" parent="Generators" node_paths=PackedStringArray("DefLibrary", "CitiesNode")]
 script = ExtResource("3_yqggf")
-DataLibraryRes = ExtResource("3_6esea")
+DefLibrary = NodePath("../../DefLibrary")
 CitiesNode = NodePath("../../Game/Cities")
 
 [node name="_Debug_Test" type="Node" parent="Generators"]
@@ -50,22 +81,222 @@ script = ExtResource("4_u8rhe")
 
 [node name="Cities" type="Node" parent="Game"]
 
-[node name="Atlantis" type="Node" parent="Game/Cities" node_paths=PackedStringArray("Data")]
-script = ExtResource("6_yalis")
-Def = SubResource("Resource_6tm0x")
-Data = NodePath("Data")
+[node name="Atlantis" type="Node" parent="Game/Cities" node_paths=PackedStringArray("Data", "GFX")]
+script = ExtResource("7_r63ue")
+Def = ExtResource("3_w78h8")
+Data = NodePath("AtlantisData")
+GFX = NodePath("AtlantisGFX")
 
-[node name="Data" type="Node" parent="Game/Cities/Atlantis"]
-script = ExtResource("8_4o6ri")
+[node name="AtlantisData" type="Node" parent="Game/Cities/Atlantis"]
+script = ExtResource("8_sg4o1")
 Population = 1000
 Prosperity = 15
 
-[node name="Avalon" type="Node" parent="Game/Cities" node_paths=PackedStringArray("Data")]
-script = ExtResource("6_yalis")
-Def = SubResource("Resource_r3t0i")
-Data = NodePath("Data")
+[node name="AtlantisGFX" parent="Game/Cities/Atlantis" node_paths=PackedStringArray("Label") instance=ExtResource("9_ugmqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
+script = ExtResource("10_3grdg")
+Label = NodePath("Label3D")
 
-[node name="Data" type="Node" parent="Game/Cities/Avalon"]
-script = ExtResource("8_4o6ri")
+[node name="MeshInstance3D" parent="Game/Cities/Atlantis/AtlantisGFX" index="0"]
+mesh = SubResource("CylinderMesh_881ui")
+surface_material_override/0 = SubResource("StandardMaterial3D_pyqpj")
+
+[node name="CollisionShape3D" parent="Game/Cities/Atlantis/AtlantisGFX/MeshInstance3D/Area3D" index="0"]
+shape = SubResource("SphereShape3D_orq5f")
+
+[node name="Sprite3D" parent="Game/Cities/Atlantis/AtlantisGFX" index="1"]
+offset = Vector2(0, 48)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = SubResource("GradientTexture2D_ofity")
+
+[node name="Label3D" parent="Game/Cities/Atlantis/AtlantisGFX" index="2"]
+pixel_size = 0.001
+offset = Vector2(0, 48)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+render_priority = 1
+text = "Atlantis"
+font_size = 14
+
+[node name="Avalon" type="Node" parent="Game/Cities" node_paths=PackedStringArray("Data", "GFX")]
+script = ExtResource("7_r63ue")
+Def = ExtResource("4_kh554")
+Data = NodePath("AvalonData")
+GFX = NodePath("AvalonGFX")
+
+[node name="AvalonData" type="Node" parent="Game/Cities/Avalon"]
+script = ExtResource("8_sg4o1")
 Population = 100
 Prosperity = 15
+
+[node name="AvalonGFX" parent="Game/Cities/Avalon" node_paths=PackedStringArray("Label") instance=ExtResource("9_ugmqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+script = ExtResource("10_3grdg")
+Label = NodePath("Label3D")
+
+[node name="MeshInstance3D" parent="Game/Cities/Avalon/AvalonGFX" index="0"]
+mesh = SubResource("CylinderMesh_881ui")
+surface_material_override/0 = SubResource("StandardMaterial3D_pyqpj")
+
+[node name="CollisionShape3D" parent="Game/Cities/Avalon/AvalonGFX/MeshInstance3D/Area3D" index="0"]
+shape = SubResource("SphereShape3D_orq5f")
+
+[node name="Sprite3D" parent="Game/Cities/Avalon/AvalonGFX" index="1"]
+offset = Vector2(0, 48)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = SubResource("GradientTexture2D_ofity")
+
+[node name="Label3D" parent="Game/Cities/Avalon/AvalonGFX" index="2"]
+pixel_size = 0.001
+offset = Vector2(0, 48)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+render_priority = 1
+text = "Avalon"
+font_size = 14
+
+[node name="Camelot" type="Node" parent="Game/Cities" node_paths=PackedStringArray("Data", "GFX")]
+script = ExtResource("7_r63ue")
+Def = ExtResource("5_cacrp")
+Data = NodePath("CamelotData")
+GFX = NodePath("CamelotGFX")
+
+[node name="CamelotData" type="Node" parent="Game/Cities/Camelot"]
+script = ExtResource("8_sg4o1")
+Population = 100
+Prosperity = 15
+
+[node name="CamelotGFX" parent="Game/Cities/Camelot" node_paths=PackedStringArray("Label") instance=ExtResource("9_ugmqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+script = ExtResource("10_3grdg")
+Label = NodePath("Label3D")
+
+[node name="MeshInstance3D" parent="Game/Cities/Camelot/CamelotGFX" index="0"]
+mesh = SubResource("CylinderMesh_881ui")
+surface_material_override/0 = SubResource("StandardMaterial3D_pyqpj")
+
+[node name="CollisionShape3D" parent="Game/Cities/Camelot/CamelotGFX/MeshInstance3D/Area3D" index="0"]
+shape = SubResource("SphereShape3D_orq5f")
+
+[node name="Sprite3D" parent="Game/Cities/Camelot/CamelotGFX" index="1"]
+offset = Vector2(0, 48)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = SubResource("GradientTexture2D_ofity")
+
+[node name="Label3D" parent="Game/Cities/Camelot/CamelotGFX" index="2"]
+pixel_size = 0.001
+offset = Vector2(0, 48)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+render_priority = 1
+text = "Camelot"
+font_size = 14
+
+[node name="Carcassonne" type="Node" parent="Game/Cities" node_paths=PackedStringArray("Data", "GFX")]
+script = ExtResource("7_r63ue")
+Def = ExtResource("6_ohilu")
+Data = NodePath("CarcassonneData")
+GFX = NodePath("CarcassonneGFX")
+
+[node name="CarcassonneData" type="Node" parent="Game/Cities/Carcassonne"]
+script = ExtResource("8_sg4o1")
+Population = 100
+Prosperity = 15
+
+[node name="CarcassonneGFX" parent="Game/Cities/Carcassonne" node_paths=PackedStringArray("Label") instance=ExtResource("9_ugmqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+script = ExtResource("10_3grdg")
+Label = NodePath("Label3D")
+
+[node name="MeshInstance3D" parent="Game/Cities/Carcassonne/CarcassonneGFX" index="0"]
+mesh = SubResource("CylinderMesh_881ui")
+surface_material_override/0 = SubResource("StandardMaterial3D_pyqpj")
+
+[node name="CollisionShape3D" parent="Game/Cities/Carcassonne/CarcassonneGFX/MeshInstance3D/Area3D" index="0"]
+shape = SubResource("SphereShape3D_orq5f")
+
+[node name="Sprite3D" parent="Game/Cities/Carcassonne/CarcassonneGFX" index="1"]
+offset = Vector2(0, 48)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = SubResource("GradientTexture2D_ofity")
+
+[node name="Label3D" parent="Game/Cities/Carcassonne/CarcassonneGFX" index="2"]
+pixel_size = 0.001
+offset = Vector2(0, 48)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+render_priority = 1
+text = "Carcassonne"
+font_size = 14
+
+[node name="Constantinopolis" type="Node" parent="Game/Cities" node_paths=PackedStringArray("Data", "GFX")]
+script = ExtResource("7_r63ue")
+Def = ExtResource("7_sroee")
+Data = NodePath("ConstantinopolisData")
+GFX = NodePath("ConstantinopolisGFX")
+
+[node name="ConstantinopolisData" type="Node" parent="Game/Cities/Constantinopolis"]
+script = ExtResource("8_sg4o1")
+Population = 100
+Prosperity = 15
+
+[node name="ConstantinopolisGFX" parent="Game/Cities/Constantinopolis" node_paths=PackedStringArray("Label") instance=ExtResource("9_ugmqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+script = ExtResource("10_3grdg")
+Label = NodePath("Label3D")
+
+[node name="MeshInstance3D" parent="Game/Cities/Constantinopolis/ConstantinopolisGFX" index="0"]
+mesh = SubResource("CylinderMesh_881ui")
+surface_material_override/0 = SubResource("StandardMaterial3D_pyqpj")
+
+[node name="CollisionShape3D" parent="Game/Cities/Constantinopolis/ConstantinopolisGFX/MeshInstance3D/Area3D" index="0"]
+shape = SubResource("SphereShape3D_orq5f")
+
+[node name="Sprite3D" parent="Game/Cities/Constantinopolis/ConstantinopolisGFX" index="1"]
+offset = Vector2(0, 48)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = SubResource("GradientTexture2D_ofity")
+
+[node name="Label3D" parent="Game/Cities/Constantinopolis/ConstantinopolisGFX" index="2"]
+pixel_size = 0.001
+offset = Vector2(0, 48)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+render_priority = 1
+text = "Constantinopolis"
+font_size = 14
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("Camera", "Transform")]
+transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 26.9258, 0)
+fov = 45.0
+script = ExtResource("11_blimg")
+Camera = NodePath(".")
+Transform = NodePath(".")
+
+[editable path="Game/Cities/Atlantis/AtlantisGFX"]
+[editable path="Game/Cities/Avalon/AvalonGFX"]
+[editable path="Game/Cities/Camelot/CamelotGFX"]
+[editable path="Game/Cities/Carcassonne/CarcassonneGFX"]
+[editable path="Game/Cities/Constantinopolis/ConstantinopolisGFX"]

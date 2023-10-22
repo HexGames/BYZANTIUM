@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CityDef" load_steps=2 format=3 uid="uid://cc66tgj7l7e2y"]
+
+[ext_resource type="Script" path="res://Scripts/CityDef.cs" id="1_u0ve6"]
+
+[resource]
+script = ExtResource("1_u0ve6")
+CityName = "Camelot"
+Province = "Britain"
+Positon = Vector2(-10, 10)
+Population = 100
+FilePath = "res:///Def/Cities/Camelot.tres"

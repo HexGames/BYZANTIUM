@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://dum24aa0bltf5"]
+
+[ext_resource type="Script" path="res://Scripts/CityGFX.cs" id="1_pxf0b"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_881ui"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyqpj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_orq5f"]
+radius = 2.0
+
+[sub_resource type="Gradient" id="Gradient_l7b6o"]
+colors = PackedColorArray(0.381703, 0.381703, 0.381703, 1, 0.340339, 0.340339, 0.340339, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ofity"]
+gradient = SubResource("Gradient_l7b6o")
+width = 128
+height = 26
+fill_to = Vector2(0, 1)
+
+[node name="City" type="Node3D" node_paths=PackedStringArray("Label")]
+script = ExtResource("1_pxf0b")
+Label = NodePath("Label3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_881ui")
+surface_material_override/0 = SubResource("StandardMaterial3D_pyqpj")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+shape = SubResource("SphereShape3D_orq5f")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+offset = Vector2(0, 48)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = SubResource("GradientTexture2D_ofity")
+
+[node name="Label3D" type="Label3D" parent="."]
+pixel_size = 0.001
+offset = Vector2(0, 48)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+render_priority = 1
+text = "City Name"
+font_size = 14
+
+[connection signal="input_event" from="MeshInstance3D/Area3D" to="." method="SignalInputEvent"]

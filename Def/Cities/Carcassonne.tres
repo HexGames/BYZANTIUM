@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CityDef" load_steps=2 format=3 uid="uid://bk6oqtyo8ixmd"]
+
+[ext_resource type="Script" path="res://Scripts/CityDef.cs" id="1_icej2"]
+
+[resource]
+script = ExtResource("1_icej2")
+CityName = "Carcassonne"
+Province = "France"
+Positon = Vector2(-10, 0)
+Population = 100
+FilePath = "res:///Def/Cities/Carcassonne.tres"

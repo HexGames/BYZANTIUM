@@ -32,4 +32,6 @@ public partial class CityNode : Node
     //        DataNode = value.GetPath();
     //    }
     //}
+    [Export]
+    public CityGFX GFX = null;
 }

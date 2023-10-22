@@ -6,14 +6,15 @@ using System;
 public partial class MapGenerator : Node
 {
     [Export]
-    private Resource DataLibraryRes = null;
-    private DefLibrary DataLibrary
-    {
-        get
-        {
-            return (DefLibrary)DataLibraryRes;
-        }
-    }
+    public DefLibrary DefLibrary;
+    //private Resource DataLibraryRes = null;
+    //private DefLibrary DataLibrary
+    //{
+    //    get
+    //    {
+    //        return (DefLibrary)DataLibraryRes;
+    //    }
+    //}
     [Export]
     public Node CitiesNode = null;
 
@@ -42,21 +43,34 @@ public partial class MapGenerator : Node
 
     public void GenerateMapFunc()
     {
-        for ( int idx = 0; idx < DataLibrary.Cities.Count; idx++ )
+        ClearMap();
+
+        for ( int idx = 0; idx < DefLibrary.Cities.Count; idx++ )
         {
             CityNode node = new CityNode();
-            node.Def = DataLibrary.Cities[idx];
+            node.Def = DefLibrary.Cities[idx];
             node.Name = node.Def.CityName;
 
             CitiesNode.AddChild(node, true, InternalMode.Back);
             node.Owner = GetTree().EditedSceneRoot;
 
             node.Data = new CityData();
-            node.Data.Name = "Data";
+            node.Data.Name = node.Name + "Data";
             node.Data.Population = node.Def.Population;
             node.Data.Prosperity = 15;
             node.AddChild(node.Data);
             node.Data.Owner = GetTree().EditedSceneRoot;
+
+            PackedScene gfxScene = GD.Load<PackedScene>("res:///3DPrefabs/City.tscn");
+            Node gfxNode = gfxScene.Instantiate();
+            gfxNode.Name = node.Name + "GFX";
+            node.AddChild(gfxNode);
+            gfxNode.Owner = GetTree().EditedSceneRoot;
+            gfxNode.GetParent().SetEditableInstance(gfxNode, true);
+
+            node.GFX = gfxNode as CityGFX;
+            node.GFX.Position = new Vector3( node.Def.Positon.X, 0.0f, node.Def.Positon.Y);
+            node.GFX.SetCityName(node.Name);
         }
     }
 

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CityDef" load_steps=2 format=3 uid="uid://cgsv46e51cq84"]
+
+[ext_resource type="Script" path="res://Scripts/CityDef.cs" id="1_etkva"]
+
+[resource]
+script = ExtResource("1_etkva")
+CityName = "Constantinopolis"
+Province = "Byzantium"
+Positon = Vector2(0, 10)
+Population = 100
+FilePath = "res:///Def/Cities/Constantinopolis.tres"

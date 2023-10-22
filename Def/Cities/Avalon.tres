@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CityDef" load_steps=2 format=3 uid="uid://7ms5toa2ayno"]
+
+[ext_resource type="Script" path="res://Scripts/CityDef.cs" id="1_xa76d"]
+
+[resource]
+script = ExtResource("1_xa76d")
+CityName = "Avalon"
+Province = "Nova"
+Positon = Vector2(-10, -10)
+Population = 100
+FilePath = "res:///Def/Cities/Avalon.tres"
