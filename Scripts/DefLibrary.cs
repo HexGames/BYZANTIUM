@@ -6,21 +6,41 @@ using System.Linq;
 [Tool]
 public partial class DefLibrary : Node
 {
-    public string CitiesDir = "res:///Def/Cities/";
+    public string LocationsDir = "res:///Def/Locations/";
     [Export]
-    public Array<CityDef> Cities = new Array<CityDef>();
+    public Array<LocationDef> Locations = new Array<LocationDef>();
+
+    public string PawnsDir = "res:///Def/Pawns/";
+    [Export]
+    public Array<PawnDef> Pawns = new Array<PawnDef>();
 
     public override void _Ready()
     {
-        Cities.Clear();
+        DirAccess folder = null;
+        string[] files = null;
 
-        DirAccess folder = DirAccess.Open(CitiesDir);
-        string[] files = folder.GetFiles();
+        // Locations
+        Locations.Clear();
+
+        folder = DirAccess.Open(LocationsDir);
+        files = folder.GetFiles();
 
         for ( int idx = 0; idx < files.Length; idx++ )
         {
-            Resource res = GD.Load<Resource>(CitiesDir + files[idx]);
-            Cities.Add(res as CityDef);
+            Resource res = GD.Load<Resource>(LocationsDir + files[idx]);
+            Locations.Add(res as LocationDef);
+        }
+
+        // Pawns
+        Pawns.Clear();
+
+        folder = DirAccess.Open(PawnsDir);
+        files = folder.GetFiles();
+
+        for (int idx = 0; idx < files.Length; idx++)
+        {
+            Resource res = GD.Load<Resource>(PawnsDir + files[idx]);
+            Pawns.Add(res as PawnDef);
         }
     }
 }

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[Tool]
 public partial class MapCamera : Camera3D
 {
     [Export]
@@ -131,8 +132,10 @@ public partial class MapCamera : Camera3D
     private float CurrentHeightDampening;
     private float CurrentRotationDampening;
 
-    private float MoveLimitX = 80f; //x limit of map
-    private float MoveLimitY = 45f; //z limit of map
+    [Export]
+    public float MoveLimitX = 80f; //x limit of map
+    [Export]
+    public float MoveLimitY = 45f; //z limit of map
 
     private float MoveSpeed = 100f; //speed with keyboard movement
     private float MoveSpeedDampening = 7.5f;
@@ -166,13 +169,17 @@ public partial class MapCamera : Camera3D
     // Godot specific
     public override void _Ready()
     {
+        if (Engine.IsEditorHint())
+            return;
         TargetPosition = new Vector3(Transform.Position.X, 0f, Transform.Position.Z);
         TargetDistance = ZoomMaxHeight;
         CurrentRotationX = RotationXDefault;
     }
 
-    public override void _Process(double delta) 
+    public override void _Process(double delta)
     {
+        if (Engine.IsEditorHint())
+            return;
         CameraUpdate((float) delta);
     }
 
@@ -209,7 +216,6 @@ public partial class MapCamera : Camera3D
 
     private void Move(float deltaTime)
     {
-
         // TO DO add panning 
 
         if (Locked == false && !IsPointerOverGUI() && ZoomAndScroll)

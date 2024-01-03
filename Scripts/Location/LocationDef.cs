@@ -4,10 +4,10 @@ using System;
 // Generated
 [GlobalClass]
 [Tool]
-public partial class CityDef : Resource
+public partial class LocationDef : Resource
 {
     [Export]
-    public string CityName = "Bucharest";
+    public string LocationName = "Bucharest";
     [Export]
     public string Province = "Ilfov";
     [Export]
@@ -19,5 +19,5 @@ public partial class CityDef : Resource
     [Export]
     public string FilePath = ""; // ?HEX? 
 
-    public CityDef() {}
+    public LocationDef() {}
 }

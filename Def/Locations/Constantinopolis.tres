@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LocationDef" load_steps=2 format=3 uid="uid://bc5kicqpdnv61"]
+
+[ext_resource type="Script" path="res://Scripts/Location/LocationDef.cs" id="1_drkb7"]
+
+[resource]
+script = ExtResource("1_drkb7")
+LocationName = "Constantinopolis"
+Province = "Byzantium"
+Positon = Vector2(0, 10)
+Population = 100
+FilePath = "res:///Def/Locations/Constantinopolis.tres"

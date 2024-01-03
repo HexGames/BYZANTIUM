@@ -17,19 +17,31 @@ public partial class DefGenerator : Node
     //}
 
     [Export]
-    public bool GenerateCityDef
+    public bool GenerateLocationDef
     {
         get => false;
         set
         {
             if (value)
             {
-                GenerateCityDefFunc();
+                GenerateLocationDefFunc();
+            }
+        }
+    }
+    [Export]
+    public bool GeneratePawnDef
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                GeneratePawnDefFunc();
             }
         }
     }
 
-    public void ClearCityDef()
+    public void ClearLocationDef()
     {
         if (DefLibrary == null)
         {
@@ -37,11 +49,11 @@ public partial class DefGenerator : Node
             return;
         }
 
-        for (int idx = 0; idx < DefLibrary.Cities.Count; idx++)
+        for (int idx = 0; idx < DefLibrary.Locations.Count; idx++)
         {
-            string dirString = DefLibrary.Cities[idx].FilePath.GetBaseDir();
+            string dirString = DefLibrary.Locations[idx].FilePath.GetBaseDir();
             DirAccess dir = DirAccess.Open(dirString);
-            string fileString = DefLibrary.Cities[idx].FilePath.GetFile();
+            string fileString = DefLibrary.Locations[idx].FilePath.GetFile();
             Error err = dir.Remove(fileString);
             if (err != Error.Ok)
             {
@@ -49,77 +61,130 @@ public partial class DefGenerator : Node
             }
         }
 
-        DefLibrary.Cities.Clear();
+        DefLibrary.Locations.Clear();
         //ResourceSaver.Save(DefLibrary, DefLibrary.ResourcePath);
     }
 
-    public void GenerateCityDefFunc()
+    public void GenerateLocationDefFunc()
     {
-        ClearCityDef();
+        ClearLocationDef();
 
         // ?HEX? Godot.EditorInterface.scan 
 
-        CityDef cityInfo = new CityDef();
-        cityInfo.CityName = "Atlantis";
-        cityInfo.Province = "Pegasus";
-        cityInfo.Population = 1000;
-        cityInfo.Positon = new Vector2( 10, 10 );
+        LocationDef LocationInfo = new LocationDef();
+        LocationInfo.LocationName = "Atlantis";
+        LocationInfo.Province = "Pegasus";
+        LocationInfo.Population = 1000;
+        LocationInfo.Positon = new Vector2( 10, 10 );
         
-        string path = DefLibrary.CitiesDir + cityInfo.CityName + ".tres";
-        cityInfo.FilePath = path;
-        ResourceSaver.Save(cityInfo, path);
+        string path = DefLibrary.LocationsDir + LocationInfo.LocationName + ".tres";
+        LocationInfo.FilePath = path;
+        ResourceSaver.Save(LocationInfo, path);
 
-        DefLibrary.Cities.Add(cityInfo);
+        DefLibrary.Locations.Add(LocationInfo);
 
-        CityDef cityInfo_2 = new CityDef();
-        cityInfo_2.CityName = "Avalon";
-        cityInfo_2.Province = "Nova";
-        cityInfo_2.Population = 100;
-        cityInfo_2.Positon = new Vector2(-10, -10);
+        LocationDef LocationInfo_2 = new LocationDef();
+        LocationInfo_2.LocationName = "Avalon";
+        LocationInfo_2.Province = "Nova";
+        LocationInfo_2.Population = 100;
+        LocationInfo_2.Positon = new Vector2(-10, -10);
         
-        path = DefLibrary.CitiesDir + cityInfo_2.CityName + ".tres";
-        cityInfo_2.FilePath = path;
-        ResourceSaver.Save(cityInfo_2, path);
+        path = DefLibrary.LocationsDir + LocationInfo_2.LocationName + ".tres";
+        LocationInfo_2.FilePath = path;
+        ResourceSaver.Save(LocationInfo_2, path);
 
-        DefLibrary.Cities.Add(cityInfo_2);
+        DefLibrary.Locations.Add(LocationInfo_2);
 
-        CityDef cityInfo_3 = new CityDef();
-        cityInfo_3.CityName = "Camelot";
-        cityInfo_3.Province = "Britain";
-        cityInfo_3.Population = 100;
-        cityInfo_3.Positon = new Vector2(-10, 10);
+        LocationDef LocationInfo_3 = new LocationDef();
+        LocationInfo_3.LocationName = "Camelot";
+        LocationInfo_3.Province = "Britain";
+        LocationInfo_3.Population = 100;
+        LocationInfo_3.Positon = new Vector2(-10, 10);
 
-        path = DefLibrary.CitiesDir + cityInfo_3.CityName + ".tres";
-        cityInfo_3.FilePath = path;
-        ResourceSaver.Save(cityInfo_3, path);
+        path = DefLibrary.LocationsDir + LocationInfo_3.LocationName + ".tres";
+        LocationInfo_3.FilePath = path;
+        ResourceSaver.Save(LocationInfo_3, path);
 
-        DefLibrary.Cities.Add(cityInfo_3);
+        DefLibrary.Locations.Add(LocationInfo_3);
 
-        CityDef cityInfo_4 = new CityDef();
-        cityInfo_4.CityName = "Carcassonne";
-        cityInfo_4.Province = "France";
-        cityInfo_4.Population = 100;
-        cityInfo_4.Positon = new Vector2(-10, 0);
+        LocationDef LocationInfo_4 = new LocationDef();
+        LocationInfo_4.LocationName = "Carcassonne";
+        LocationInfo_4.Province = "France";
+        LocationInfo_4.Population = 100;
+        LocationInfo_4.Positon = new Vector2(-10, 0);
 
-        path = DefLibrary.CitiesDir + cityInfo_4.CityName + ".tres";
-        cityInfo_4.FilePath = path;
-        ResourceSaver.Save(cityInfo_4, path);
+        path = DefLibrary.LocationsDir + LocationInfo_4.LocationName + ".tres";
+        LocationInfo_4.FilePath = path;
+        ResourceSaver.Save(LocationInfo_4, path);
 
-        DefLibrary.Cities.Add(cityInfo_4);
+        DefLibrary.Locations.Add(LocationInfo_4);
 
-        CityDef cityInfo_5 = new CityDef();
-        cityInfo_5.CityName = "Constantinopolis";
-        cityInfo_5.Province = "Byzantium";
-        cityInfo_5.Population = 100;
-        cityInfo_5.Positon = new Vector2(0, 10);
+        LocationDef LocationInfo_5 = new LocationDef();
+        LocationInfo_5.LocationName = "Constantinopolis";
+        LocationInfo_5.Province = "Byzantium";
+        LocationInfo_5.Population = 100;
+        LocationInfo_5.Positon = new Vector2(0, 10);
 
-        path = DefLibrary.CitiesDir + cityInfo_5.CityName + ".tres";
-        cityInfo_5.FilePath = path;
-        ResourceSaver.Save(cityInfo_5, path);
+        path = DefLibrary.LocationsDir + LocationInfo_5.LocationName + ".tres";
+        LocationInfo_5.FilePath = path;
+        ResourceSaver.Save(LocationInfo_5, path);
 
-        DefLibrary.Cities.Add(cityInfo_5);
+        DefLibrary.Locations.Add(LocationInfo_5);
 
         //ResourceSaver.Save(DefLibrary, DefLibrary.ResourcePath);
+    }
+
+    public void ClearPawnDef()
+    {
+        if (DefLibrary == null)
+        {
+            GD.PrintErr("HEX - No Def Library linked!");
+            return;
+        }
+
+        for (int idx = 0; idx < DefLibrary.Pawns.Count; idx++)
+        {
+            string dirString = DefLibrary.Pawns[idx].FilePath.GetBaseDir();
+            DirAccess dir = DirAccess.Open(dirString);
+            string fileString = DefLibrary.Pawns[idx].FilePath.GetFile();
+            Error err = dir.Remove(fileString);
+            if (err != Error.Ok)
+            {
+                GD.PrintErr("HEX - Error deleting file: " + err);
+            }
+        }
+
+        DefLibrary.Pawns.Clear();
+        //ResourceSaver.Save(DefLibrary, DefLibrary.ResourcePath);
+    }
+
+    public void GeneratePawnDefFunc()
+    {
+        ClearPawnDef();
+
+        PawnDef pawnInfo = new PawnDef();
+        pawnInfo.PawnName = "Alexios";
+        pawnInfo.Power = 20;
+        pawnInfo.Age = 25;
+        pawnInfo.StartingLocation = "Atlantis";
+
+        string path = DefLibrary.PawnsDir + pawnInfo.PawnName + ".tres";
+        pawnInfo.FilePath = path;
+        ResourceSaver.Save(pawnInfo, path);
+
+        DefLibrary.Pawns.Add(pawnInfo);
+
+        PawnDef pawnInfo_2 = new PawnDef();
+        pawnInfo_2.PawnName = "Bohemond";
+        pawnInfo_2.Power = 18;
+        pawnInfo_2.Age = 22;
+        pawnInfo_2.StartingLocation = "Avalon";
+
+        path = DefLibrary.PawnsDir + pawnInfo_2.PawnName + ".tres";
+        pawnInfo_2.FilePath = path;
+        ResourceSaver.Save(pawnInfo_2, path);
+
+        DefLibrary.Pawns.Add(pawnInfo_2);
     }
 
     // Called when the node enters the scene tree for the first time.

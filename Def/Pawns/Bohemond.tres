@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PawnDef" load_steps=2 format=3 uid="uid://covkwxscadhon"]
+
+[ext_resource type="Script" path="res://Scripts/Pawn/PawnDef.cs" id="1_4hc53"]
+
+[resource]
+script = ExtResource("1_4hc53")
+PawnName = "Bohemond"
+Age = 22
+Power = 18
+StartingLocation = "Avalon"
+FilePath = "res:///Def/Pawns/Bohemond.tres"

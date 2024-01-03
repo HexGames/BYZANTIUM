@@ -49,7 +49,7 @@ public partial class _Autorun : Node
         if (tree == null || tree.EditedSceneRoot == null) return;
 
         DefGenerator defGen = tree.EditedSceneRoot.GetNode<DefGenerator>("Generators/DefGenerator");
-        defGen.GenerateCityDefFunc();
+        defGen.GenerateLocationDefFunc();
 
         MapGenerator mapGen = tree.EditedSceneRoot.GetNode<MapGenerator>("Generators/MapGenerator");
         mapGen.GenerateMapFunc();
@@ -65,6 +65,6 @@ public partial class _Autorun : Node
         mapGen.ClearMap();
 
         DefGenerator defGen = tree.EditedSceneRoot.GetNode<DefGenerator>("Generators/DefGenerator");
-        defGen.ClearCityDef();
+        defGen.ClearLocationDef();
     }*/
 }

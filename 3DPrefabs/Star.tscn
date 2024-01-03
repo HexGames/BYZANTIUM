@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dum24aa0bltf5"]
+[gd_scene load_steps=7 format=3 uid="uid://ceuovcmnc2grc"]
 
-[ext_resource type="Script" path="res://Scripts/CityGFX.cs" id="1_pxf0b"]
+[ext_resource type="Script" path="res://Scripts/Location/LocationGFX.cs" id="1_0o71r"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_881ui"]
 top_radius = 1.0
@@ -21,8 +21,8 @@ width = 128
 height = 26
 fill_to = Vector2(0, 1)
 
-[node name="City" type="Node3D" node_paths=PackedStringArray("Label")]
-script = ExtResource("1_pxf0b")
+[node name="Star" type="Node3D" node_paths=PackedStringArray("Label")]
+script = ExtResource("1_0o71r")
 Label = NodePath("Label3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

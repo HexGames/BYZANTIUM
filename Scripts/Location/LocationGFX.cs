@@ -2,12 +2,12 @@ using Godot;
 
 // Generated
 [Tool]
-public partial class CityGFX : Node3D
+public partial class LocationGFX : Node3D
 {
     [Export]
     public Label3D Label = null;
 
-    public void SetCityName( string name )
+    public void SetLocationName( string name )
     {
         Label.Text = name;
     }
@@ -21,7 +21,9 @@ public partial class CityGFX : Node3D
                 // on mouse button release
                 if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
                 {
-                    GD.Print("You clicked on " + Label.Text);
+                    //GD.Print("You clicked on " + Label.Text);
+                    LocationNode parentLocationNode = GetParent<LocationNode>();
+                    parentLocationNode.Select();
                 }
             }
         }

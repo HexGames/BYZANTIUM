@@ -1,0 +1,14 @@
+// size padding_characer no_star_characher sectors_count groups_count core_0 sector_group_1 ...
+5 , . 11 5 0 abc de fgh ij
+
+, , , , , b b b . . e
+ , , , , a b b c . . e
+  , , , a a . c c . . e
+   , , a . . . c c . e e
+    , a . . i 0 0 . d d .
+     . . i i 0 . 0 d d . .
+      . i i . 0 0 d . . h ,
+       j j . f f . . . h , ,
+        j . . f f . h h , , ,
+         j . . f g g h , , , ,
+          j . . g g g , , , , ,

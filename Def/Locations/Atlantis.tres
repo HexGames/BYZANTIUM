@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LocationDef" load_steps=2 format=3 uid="uid://2drtumdkw7qs"]
+
+[ext_resource type="Script" path="res://Scripts/Location/LocationDef.cs" id="1_mwv84"]
+
+[resource]
+script = ExtResource("1_mwv84")
+LocationName = "Atlantis"
+Province = "Pegasus"
+Positon = Vector2(10, 10)
+Population = 1000
+FilePath = "res:///Def/Locations/Atlantis.tres"
