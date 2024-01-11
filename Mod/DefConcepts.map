@@ -1,0 +1,95 @@
+events?
+ship components
+solar systems
+names
+diplo texts
+pops raits
+buildings
+technology/actions
+planet modifiers
+ships
+goverments
+anomalies
+pop factions (factions + ethics)
+civics (traditions + civics)
+anomalies
+diplo agreements
+
+Scripted events
+component templates (weapons 50%)
+solar system init 
+name lists
+diplo phrases (greetings 50%)
+traits (both pops and leaders)
+golbal ships design
+
+500
+
+resolutions (galacic community)
+buildings
+technology
+section templates (ships, stations, planet layouts?)
+pop jobs
+inline scripts
+static modifiers
+special projects
+ships sizes
+scripetd triggers
+goverments (+civics)
+random names
+deposits
+situations
+
+200
+
+anomalies
+megastructures
+pop factions types
+defines
+federation_laws
+decisions
+on_actions
+war goals
+diplomatic actions
+species rights
+traditions
+archeological sites
+
+100
+
+colony automatisation
+districts
+opinion modifiers
+species names
+tradition categories
+agreement presets
+terraform
+colony types
+ai budget
+script value
+edicts
+message types
+policies
+ethics
+planet class
+ambient objects
+event chains
+game rules
+starbase buildings
+espoinage operations
+concil agendas
+
+50
+
+armies
+economic categories
+scriped variables 
+personalities
+ascension perks
+federaion types
+agreement type
+casus beli
+planet modifiers
+relics
+
+...

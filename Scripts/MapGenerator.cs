@@ -7,19 +7,13 @@ using System;
 public partial class MapGenerator : Node
 {
     [Export]
+    public DefLibrary DefLibrary;
+    [Export]
+    public MapNode MapData;
+    [Export]
     public string MapTypeFile = "";
     [Export]
-    public DefLibrary DefLibrary;
-    //private Resource DataLibraryRes = null;
-    //private DefLibrary DataLibrary
-    //{
-    //    get
-    //    {
-    //        return (DefLibrary)DataLibraryRes;
-    //    }
-    //}
-    [Export]
-    public string SarGFXName = "";
+    public string StarGFXName = "";
     [Export]
     public Node LocationsNode = null;
     [Export]
@@ -48,6 +42,12 @@ public partial class MapGenerator : Node
     private Array<string> FromFile_SectorGroups = new Array<string>();
     private Array<string> FromFile_Stars = new Array<string>();
 
+
+    // Called when the node enters the scene tree for the first time.
+    //public override void _Ready()
+    //{
+    //}
+
     public void ClearMap()
     {
         while (LocationsNode.GetChildCount(true) > 0)
@@ -61,6 +61,7 @@ public partial class MapGenerator : Node
     public void GenerateMapFunc()
     {
         ClearMap();
+        MapData.Systems.Clear();
 
         LoadMapFile();
 
@@ -81,32 +82,21 @@ public partial class MapGenerator : Node
             {
                 int x = idx % (1 + 2 * FromFile_Size);
                 int y = idx / (1 + 2 * FromFile_Size);
-                int randomLocIdx = RNG.RandiRange(0, DefLibrary.Locations.Count-1);
 
-                LocationNode node = new LocationNode();
-                node.Def = DefLibrary.Locations[randomLocIdx];
-                node.Name = node.Def.LocationName;
+                DataBlock system = GenerateSolarSystem();
 
-                LocationsNode.AddChild(node, true, InternalMode.Back);
-                node.Owner = GetTree().EditedSceneRoot;
+                LocationData locationData = new LocationData();
+                locationData.System = system;
+                locationData.Name = system.ValueS + "_Data";
+                locationData.X = x;
+                locationData.Y = y;
 
-                node.Data = new LocationData();
-                node.Data.Name = node.Name + "Data";
-                node.Data.Population = node.Def.Population;
-                node.Data.Prosperity = 15;
-                node.AddChild(node.Data);
-                node.Data.Owner = GetTree().EditedSceneRoot;
+                MapData.Systems.Add(locationData);
 
-                PackedScene gfxScene = GD.Load<PackedScene>("res:///3DPrefabs/" + SarGFXName + ".tscn");
-                Node gfxNode = gfxScene.Instantiate();
-                gfxNode.Name = node.Name + "GFX";
-                node.AddChild(gfxNode);
-                gfxNode.Owner = GetTree().EditedSceneRoot;
-                gfxNode.GetParent().SetEditableInstance(gfxNode, true);
+                //node.AddChild(node.Data);
+                //node.Data.Owner = GetTree().EditedSceneRoot;
 
-                node.GFX = gfxNode as LocationGFX;
-                node.GFX.Position = new Vector3(8.6666f * ( 2.0f * x - y ), 0.0f, -y * 15.0f) - new Vector3(8.6666f * FromFile_Size, 0.0f, -FromFile_Size * 15.0f);
-                node.GFX.SetLocationName(node.Name);
+                CreateLocationNode(x, y, locationData);
             }
         }
 
@@ -171,6 +161,31 @@ public partial class MapGenerator : Node
         //    // set in Location
         //    // node.Def.StartingLocation == somewhere in map
         //}
+    }
+
+    public void CreateLocationNode(int x, int y, LocationData locationData)
+    {
+        LocationNode node = new LocationNode();
+        node.Def = DefLibrary.Locations[0];
+        node.Name = "Loc_" + locationData.System.ValueS;
+        node.Data = locationData;
+
+        LocationsNode.AddChild(node, true, InternalMode.Back);
+        node.Owner = GetTree().EditedSceneRoot;
+
+        node.AddChild(locationData);
+        locationData.Owner = GetTree().EditedSceneRoot;
+
+        PackedScene gfxScene = GD.Load<PackedScene>("res:///3DPrefabs/" + StarGFXName + ".tscn");
+        Node gfxNode = gfxScene.Instantiate();
+        gfxNode.Name = locationData.System.ValueS + "_GFX";
+        node.AddChild(gfxNode);
+        gfxNode.Owner = GetTree().EditedSceneRoot;
+        gfxNode.GetParent().SetEditableInstance(gfxNode, true);
+
+        node.GFX = gfxNode as LocationGFX;
+        node.GFX.Position = new Vector3(8.6666f * (2.0f * x - y), 0.0f, -y * 15.0f) - new Vector3(8.6666f * FromFile_Size, 0.0f, -FromFile_Size * 15.0f);
+        node.GFX.SetLocationName(node.Name);
     }
 
     public void LoadMapFile()
@@ -243,13 +258,25 @@ public partial class MapGenerator : Node
         return words;
     }
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    private DataBlock GenerateSolarSystem()
     {
-    }
+        DataBlock system = new DataBlock();
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
+        system.Type = DefLibrary.GetDBType("System", Data.BaseType.STRING);
+        system.ValueS = "System_" + RNG.RandiRange(1, 99);
+
+        DataBlock star = Data.AddData(system, "Planet", system.ValueS + "_Star", DefLibrary);
+        Data.AddData(star, "StarSize", RNG.RandiRange(3, 7), DefLibrary);
+        Data.AddData(star, "StarType", "M_Class", DefLibrary);
+
+        int noOfPlanes = RNG.RandiRange(1, 9);
+        for (int n = 0; n < noOfPlanes; n++)
+        {
+            DataBlock planet = Data.AddData(system, "Planet", "Planet_" + RNG.RandiRange(1, 99), DefLibrary);
+            Data.AddData(planet, "PlanetSize", RNG.RandiRange(1, 9), DefLibrary);
+            Data.AddData(planet, "PlanetType", "Barren", DefLibrary);
+        }
+
+        return system;
     }
 }

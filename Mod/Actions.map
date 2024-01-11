@@ -1,0 +1,158 @@
+// EXPLORE - explore, anomaly, colonize
+// COMBAT - defend, attack 
+// SHIPYARD - Build ships, improve shipyards
+// COLONIAL - Grow colony, small scale bonuses
+// ECONOMY - improve energy, improve metal, improve credits income, credit bonuses
+// CIVIC - improve Authority, improve Influence, unlock civics
+// TECHNOLOGY - improve random cards, imrpove random cards of type, improve specific card, unlock new cards
+// DIPLOMACY - improve relations, make agreements
+
+Action Expolre_System
+{
+	// Acion Owner PLAYER implicit
+	Target_1 FLEET
+	Target_2 SYSTEM
+
+	Spawn_Condition
+	{
+		MaxDistanceFromPlayerExploredSystem( SYSTEM PLAYER 1 ) // implicit && beween lines
+		MaxDistanceFromPlayerBorder( SYSTEM PLAYER 3 )
+		HasValidPath( FLEET SYSTEM )
+		SYSTEM.PLAYER.EXPLORE < 1
+	}
+
+	Spawn_Weight 1
+
+	Cost 0
+
+	Time 
+	{
+		// MoveDistance( FLEET SYSTEM ) + ExploreTime( FLEET )
+		Distance( FLEET SYSTEM ) /u FLEET.SPEED + FLEET.EXPLORE_TIME // /u means fraction rounded up
+	}
+
+	Ongoing_Effect 0
+
+	Intrerupt_Condition
+	{
+		Inercepted( FLEET )
+	}
+
+	Start_Condition 0
+
+	Results
+	{
+		Step_0
+		{ 
+			Move( FLEET SYSTEM )
+		}
+		Step_1
+		{
+			// Explore( FLEET SYSTEM )
+			Wait( FLEET FLEET.EXPLORE_TIME )
+		}
+		Step_2
+		{
+			SYSTEM.PLAYER.EXPLORE += 1
+			GiveExporeXP( FLEET 1 )
+		}
+	}
+
+	// UI_Locaion --
+
+	// UI_Descripion --
+
+	// UI_Tooltip --
+}
+
+Action Expolre_Planet
+{
+	Target_1 FLEET
+	Target_2 PLANET
+
+	Spawn_Condition
+	{
+		HasValidPath( FLEET PLANET.[System] )
+		PLANET.[System].PLAYER.EXPLORE > 0
+	}
+
+	Spawn_Weight 1
+
+	Cost 0
+
+	Time 
+	{
+		// MoveDistance( FLEET PLANET ) + ExploreTime( FLEET )
+		Distance( FLEET PLANET.[System] ) /u FLEET.SPEED + FLEET.EXPLORE_TIME // /u means fraction rounded up
+	}
+
+	Ongoing_Effect 0
+
+	Intrerupt_Condition
+	{
+		Inercepted( FLEET )
+	}
+
+	Start_Condition 0
+
+	Results
+	{
+		Step_0
+		{ 
+			Move( FLEET PLANET.[System] )
+		}
+		Step_1
+		{
+			// Explore( FLEET SYSTEM )
+			Wait( FLEET FLEET.EXPLORE_TIME )
+		}
+		Step_2
+		{
+			PLANET.PLAYER.EXPLORE += Min( FLEET.EXPLORE_POWER PLANET.PLAYER.EXPLORE_REMAINING )
+			GiveExporeXP( FLEET Min( FLEET.EXPLORE_POWER PLANET.PLAYER.EXPLORE_REMAINING ) )
+		}
+	}
+}
+
+Action Colonize_Planet
+{
+	Target_1 SHIPYARD
+	Target_2 PLANET
+
+	Spawn_Condition
+	{
+		MaxDistanceFromPlayerBorder PLANET 3
+		MinExplorationLevel PLANET 3
+	}
+
+	Spawn_Weight 1
+
+	Cost 0
+
+	Time 
+	{
+		// MoveDistance( FLEET PLANET ) + ExploreTime( FLEET )
+		Distance( FLEET SYSTEM ) /u PLAYER.SHIP_BASE_SPEED // /u means fraction rounded up
+	}
+
+	Ongoing_Effect 0
+
+	Intrerupt_Condition
+	{
+		! HasValidPath( FLEET SYSTEM ) 
+	}
+
+	// Start_Condition 0
+
+	// Results
+	// {
+	//	Step_0
+	//	{ 
+	//		Move( FLEET SYSTEM )
+	//	}
+	//	Step_1
+	//	{
+	//		Explore( FLEET SYSTEM 3 )
+	//	}
+	// }
+}

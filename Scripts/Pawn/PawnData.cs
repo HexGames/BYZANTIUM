@@ -4,11 +4,7 @@ using Godot;
 public partial class PawnData : Node
 {
     [Export]
-    public string PawnName = "";
-    [Export]
-    public int Age = 35;
-    [Export]
-    public int Power = 10;
+    public DataBlock Fleet = null;
 
     [Export]
     public LocationData InLocation = null;

@@ -1,0 +1,164 @@
+
+ENERGY - value
+METAL - value
+CREDITS - stockpile
+AUTHORITY - cap (domestic stuff)
+INFLUENCE - cap (external stuff)
+Sepcial resource - Access to special resource at a level
+
+PPOP - value for each planet
+
+Colonies - new / abandon / improve
+Ships - build / scrap / move / explore / attack
+// - Leaders - recruit / dissmiss / assign
+
+technology points - global income to progress bar || action
+civics point - global icome to progress bar || action
+
+Card trees:
+EXPLORE - explore, anomaly, colonize
+COMBAT - defend, attack 
+SHIPYARD - Build ships, improve shipyards
+COLONIAL - Grow colony, small scale bonuses
+ECONOMY - improve energy, improve metal, improve credits income, credit bonuses
+CIVIC - improve Authority, improve Influence, unlock civics
+TECHNOLOGY - improve random cards, imrpove random cards of type, improve specific card, unlock new cards
+DIPLOMACY - improve relations, make agreements
+// - LEADERS - recruit, reassign, swap, dismiss
+
+Energy
+Minerals
+Food
+Goods
+Alloy
+Trade
+Influence
+Unity
+Techs x3
+Rare x3
+Special x5
+
+Pops
+
+empire size
+empire size from districts
+empire size from pops
+empire size from systems
+empire size from colonies
+
+Leader capacity
+leader type capacity
+leader type starting level
+leader pool size
+leader type XP gain
+leader cost
+leader upkeep
+
+starbase capacity
+starbase upgrade speed
+starbase upgrade cost
+starbase upkeep
+research from starbase buildings
+starbase influence cost
+starbase health
+
+ship build cost
+ship build speed
+ship upkeep
+ship fire rate
+ship fire rate in borders
+science ship disengage chance
+
+-----
+
+anomaly research speed
+unlock edict
+unlock agenda
+unlock doctrine
+survey speed
+science ship disengage chance
+research alternative
+scientist capacity - leader capacity
+scientist starting level - leader starting level
+leader pool size
+leader type XP gain
+leader cost
+leader upkeep
+research station output
+research from starbase buildings
+researcher upkeep
+research speed
+unlock research federation
+
+Clear blocker cost
+habitat alloy upkeep
+influence income
+housing from capital buildings
+empire size from districts
+empire size from pops
+empire size from systems
+empire size from colonies
+Unity per enforcer
+edict fund
+slave / worder / specialist / ruler output
+resources from jobs
+
+colony development speed
+starbase influence cost
+extra starting pop
+pop growth / pop assembly
+max districts
+
+mining sation output
+building / district upkeep
+building / district cost
+plaent build speed
+Upkeep from job
+houseing per housing district
+
+naval capacity
+army damage
+ship build cost
+ship build speed
+ship upkeep
+ship fire rate
+orbital bombardament
+fleet command limit
+damage vs starbases
+
+pop upkeep
+pop housing usage
+habitability
+crime
+pop demotion time
+leader lifetime
+negative leader traits
+stabiliy
+planetary ascension effect
+
+trade protection
+trade collection range
+trade value per clerk
+trade value
+marke tfee
+amenities per clerk
+happiness
+trade jobs per commercial zone
+
+starbase capacity
+starbase upgrade speed
+starbase upgrade cost
+starbase upkeep
+defence army health
+unity per defence army
+starbase health
+sarbase damage
+ship fire rate in borders
+defence platform cap
+
+resettlement cost
+bonuses per rival
+
+agenda duration
+agenda speed
+

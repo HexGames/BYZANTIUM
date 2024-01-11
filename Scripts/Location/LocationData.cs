@@ -5,9 +5,12 @@ using Godot.Collections;
 public partial class LocationData : Node
 {
     [Export]
-    public int Population = 10;
+    public int X;
     [Export]
-    public int Prosperity = 10;
+    public int Y;
+
+    [Export]
+    public DataBlock System = null;
 
     [Export]
     public Array<PawnData> PawnsInLocation = new Array<PawnData>();

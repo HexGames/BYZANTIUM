@@ -17,6 +17,18 @@ public partial class DefGenerator : Node
     //}
 
     [Export]
+    public bool ClearDefDBTypes
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                ClearDefDBTypesFunc();
+            }
+        }
+    }
+    [Export]
     public bool GenerateLocationDef
     {
         get => false;
@@ -39,6 +51,18 @@ public partial class DefGenerator : Node
                 GeneratePawnDefFunc();
             }
         }
+    }
+
+    public void ClearDefDBTypesFunc()
+    {
+        if (DefLibrary == null)
+        {
+            GD.PrintErr("HEX - No Def Library linked!");
+            return;
+        }
+
+        DefLibrary.DB_Types_I.Clear();
+        DefLibrary.DB_Types_S.Clear();
     }
 
     public void ClearLocationDef()

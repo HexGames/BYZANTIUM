@@ -1,0 +1,2101 @@
+Systems
+{
+	Location System_63_Data
+	{
+		X 0
+		Y 0
+		System System_63
+		{
+			Planet System_63_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_74
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_85
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_93
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_95
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_56
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_72_Data
+	{
+		X 3
+		Y 0
+		System System_72
+		{
+			Planet System_72_Star
+			{
+				StarSize 3
+				StarType M_Class
+			}
+			Planet Planet_91
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_89
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_30
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_64
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_73_Data
+	{
+		X 4
+		Y 0
+		System System_73
+		{
+			Planet System_73_Star
+			{
+				StarSize 5
+				StarType M_Class
+			}
+			Planet Planet_21
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_5
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_40_Data
+	{
+		X 5
+		Y 0
+		System System_40
+		{
+			Planet System_40_Star
+			{
+				StarSize 6
+				StarType M_Class
+			}
+			Planet Planet_88
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_6
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_38
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_37
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_69
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_45
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_7_Data
+	{
+		X 0
+		Y 1
+		System System_7
+		{
+			Planet System_7_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_2
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_8
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_94_Data
+	{
+		X 3
+		Y 1
+		System System_94
+		{
+			Planet System_94_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_94
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_92
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_79
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_19_Data
+	{
+		X 4
+		Y 1
+		System System_19
+		{
+			Planet System_19_Star
+			{
+				StarSize 6
+				StarType M_Class
+			}
+			Planet Planet_14
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_7
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_9
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_36
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_56
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_70
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_97
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_67
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_45_Data
+	{
+		X 5
+		Y 1
+		System System_45
+		{
+			Planet System_45_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_83
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_29
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_26
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_25
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_55
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_56_Data
+	{
+		X 6
+		Y 1
+		System System_56
+		{
+			Planet System_56_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_9
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_82
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_97
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_47
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_24
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_73
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_36
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_63
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_75_Data
+	{
+		X 0
+		Y 2
+		System System_75
+		{
+			Planet System_75_Star
+			{
+				StarSize 5
+				StarType M_Class
+			}
+			Planet Planet_38
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_65
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_45
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_15
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_6
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_99
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_38_Data
+	{
+		X 3
+		Y 2
+		System System_38
+		{
+			Planet System_38_Star
+			{
+				StarSize 5
+				StarType M_Class
+			}
+			Planet Planet_83
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_53_Data
+	{
+		X 4
+		Y 2
+		System System_53
+		{
+			Planet System_53_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_83
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_84
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_19
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_41
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_52
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_64
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_65
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_44_Data
+	{
+		X 6
+		Y 2
+		System System_44
+		{
+			Planet System_44_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_66
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_25
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_87
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_55
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_98
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_65_Data
+	{
+		X 7
+		Y 2
+		System System_65
+		{
+			Planet System_65_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_87
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_63
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_25
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_98
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_87
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_92
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_28
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_92
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_5_Data
+	{
+		X 0
+		Y 3
+		System System_5
+		{
+			Planet System_5_Star
+			{
+				StarSize 4
+				StarType M_Class
+			}
+			Planet Planet_24
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_25
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_72
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_78_Data
+	{
+		X 1
+		Y 3
+		System System_78
+		{
+			Planet System_78_Star
+			{
+				StarSize 5
+				StarType M_Class
+			}
+			Planet Planet_24
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_34
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_51
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_17_Data
+	{
+		X 3
+		Y 3
+		System System_17
+		{
+			Planet System_17_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_57
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_98
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_20
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_38
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_95
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_91_Data
+	{
+		X 4
+		Y 3
+		System System_91
+		{
+			Planet System_91_Star
+			{
+				StarSize 3
+				StarType M_Class
+			}
+			Planet Planet_22
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_56
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_74_Data
+	{
+		X 8
+		Y 3
+		System System_74
+		{
+			Planet System_74_Star
+			{
+				StarSize 3
+				StarType M_Class
+			}
+			Planet Planet_11
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_78
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_69
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_23
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_71
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_40
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_66
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_75
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_14_Data
+	{
+		X 1
+		Y 4
+		System System_14
+		{
+			Planet System_14_Star
+			{
+				StarSize 4
+				StarType M_Class
+			}
+			Planet Planet_44
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_78
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_99
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_86
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_64
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_29
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_2
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_4
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_6_Data
+	{
+		X 2
+		Y 4
+		System System_6
+		{
+			Planet System_6_Star
+			{
+				StarSize 4
+				StarType M_Class
+			}
+			Planet Planet_12
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_46
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_31_Data
+	{
+		X 4
+		Y 4
+		System System_31
+		{
+			Planet System_31_Star
+			{
+				StarSize 6
+				StarType M_Class
+			}
+			Planet Planet_74
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_61
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_70
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_69
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_71
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_42
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_89
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_70
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_23_Data
+	{
+		X 5
+		Y 4
+		System System_23
+		{
+			Planet System_23_Star
+			{
+				StarSize 5
+				StarType M_Class
+			}
+			Planet Planet_89
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_80
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_10
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_2
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_64
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_17
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_13
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_64
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_47
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_56_Data
+	{
+		X 6
+		Y 4
+		System System_56
+		{
+			Planet System_56_Star
+			{
+				StarSize 4
+				StarType M_Class
+			}
+			Planet Planet_34
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_21
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_21
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_78_Data
+	{
+		X 9
+		Y 4
+		System System_78
+		{
+			Planet System_78_Star
+			{
+				StarSize 3
+				StarType M_Class
+			}
+			Planet Planet_63
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_39
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_57_Data
+	{
+		X 2
+		Y 5
+		System System_57
+		{
+			Planet System_57_Star
+			{
+				StarSize 4
+				StarType M_Class
+			}
+			Planet Planet_45
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_5
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_19
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_82
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_11
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_83_Data
+	{
+		X 3
+		Y 5
+		System System_83
+		{
+			Planet System_83_Star
+			{
+				StarSize 6
+				StarType M_Class
+			}
+			Planet Planet_20
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_53
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_81
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_15
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_66_Data
+	{
+		X 4
+		Y 5
+		System System_66
+		{
+			Planet System_66_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_8
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_32
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_48
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_22
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_20
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_99
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_83
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_32
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_3
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_90_Data
+	{
+		X 6
+		Y 5
+		System System_90
+		{
+			Planet System_90_Star
+			{
+				StarSize 6
+				StarType M_Class
+			}
+			Planet Planet_68
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_9
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_82_Data
+	{
+		X 7
+		Y 5
+		System System_82
+		{
+			Planet System_82_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_49
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_35
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_4
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_41
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_46
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_46_Data
+	{
+		X 8
+		Y 5
+		System System_46
+		{
+			Planet System_46_Star
+			{
+				StarSize 4
+				StarType M_Class
+			}
+			Planet Planet_10
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_36
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_81_Data
+	{
+		X 1
+		Y 6
+		System System_81
+		{
+			Planet System_81_Star
+			{
+				StarSize 4
+				StarType M_Class
+			}
+			Planet Planet_85
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_41
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_15
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_64
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_56
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_35
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_38
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_76
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_96
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_40_Data
+	{
+		X 4
+		Y 6
+		System System_40
+		{
+			Planet System_40_Star
+			{
+				StarSize 3
+				StarType M_Class
+			}
+			Planet Planet_93
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_83
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_69
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_98_Data
+	{
+		X 5
+		Y 6
+		System System_98
+		{
+			Planet System_98_Star
+			{
+				StarSize 3
+				StarType M_Class
+			}
+			Planet Planet_80
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_36
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_70
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_54
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_16_Data
+	{
+		X 6
+		Y 6
+		System System_16
+		{
+			Planet System_16_Star
+			{
+				StarSize 6
+				StarType M_Class
+			}
+			Planet Planet_17
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_41
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_13
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_79
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_63
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_10_Data
+	{
+		X 8
+		Y 6
+		System System_10
+		{
+			Planet System_10_Star
+			{
+				StarSize 5
+				StarType M_Class
+			}
+			Planet Planet_71
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_23
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_6
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_92_Data
+	{
+		X 9
+		Y 6
+		System System_92
+		{
+			Planet System_92_Star
+			{
+				StarSize 5
+				StarType M_Class
+			}
+			Planet Planet_98
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_68
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_85
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_17
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_56_Data
+	{
+		X 2
+		Y 7
+		System System_56
+		{
+			Planet System_56_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_30
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_16_Data
+	{
+		X 6
+		Y 7
+		System System_16
+		{
+			Planet System_16_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_78
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_65
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_73_Data
+	{
+		X 7
+		Y 7
+		System System_73
+		{
+			Planet System_73_Star
+			{
+				StarSize 5
+				StarType M_Class
+			}
+			Planet Planet_40
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_30
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_38
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_76
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_72
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_98
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_90_Data
+	{
+		X 9
+		Y 7
+		System System_90
+		{
+			Planet System_90_Star
+			{
+				StarSize 3
+				StarType M_Class
+			}
+			Planet Planet_8
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_80
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_54
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_39
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_78
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_84
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_37
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_18
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_39
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_3_Data
+	{
+		X 10
+		Y 7
+		System System_3
+		{
+			Planet System_3_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_13
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_45
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_50
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_84
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_26
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_45
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_32
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_47_Data
+	{
+		X 3
+		Y 8
+		System System_47
+		{
+			Planet System_47_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_74
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_64
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_26_Data
+	{
+		X 4
+		Y 8
+		System System_26
+		{
+			Planet System_26_Star
+			{
+				StarSize 4
+				StarType M_Class
+			}
+			Planet Planet_3
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_92
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_74
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_38
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_91
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_26
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_81
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_98
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_16
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_68_Data
+	{
+		X 6
+		Y 8
+		System System_68
+		{
+			Planet System_68_Star
+			{
+				StarSize 4
+				StarType M_Class
+			}
+			Planet Planet_65
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_39
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_46
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_30
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_19
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_16
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_68
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_64
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_74_Data
+	{
+		X 7
+		Y 8
+		System System_74
+		{
+			Planet System_74_Star
+			{
+				StarSize 6
+				StarType M_Class
+			}
+			Planet Planet_69
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_48
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_71
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_14
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_33_Data
+	{
+		X 10
+		Y 8
+		System System_33
+		{
+			Planet System_33_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_55
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_21_Data
+	{
+		X 4
+		Y 9
+		System System_21
+		{
+			Planet System_21_Star
+			{
+				StarSize 6
+				StarType M_Class
+			}
+			Planet Planet_62
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_84
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_42
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_47
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_96
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_97
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_53
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_36
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_2
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_20_Data
+	{
+		X 5
+		Y 9
+		System System_20
+		{
+			Planet System_20_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_11
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_30
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_98
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_63
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_48
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_18
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_1_Data
+	{
+		X 6
+		Y 9
+		System System_1
+		{
+			Planet System_1_Star
+			{
+				StarSize 6
+				StarType M_Class
+			}
+			Planet Planet_47
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_48
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_16
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_71
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_4
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_68
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+			Planet Planet_33
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_18
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_51_Data
+	{
+		X 7
+		Y 9
+		System System_51
+		{
+			Planet System_51_Star
+			{
+				StarSize 6
+				StarType M_Class
+			}
+			Planet Planet_66
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_76
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_8
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_97
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_86
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_63
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_11
+			{
+				PlanetSize 4
+				PlanetType Barren
+			}
+			Planet Planet_95
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_47
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_7_Data
+	{
+		X 10
+		Y 9
+		System System_7
+		{
+			Planet System_7_Star
+			{
+				StarSize 7
+				StarType M_Class
+			}
+			Planet Planet_70
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_64
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_64
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_6_Data
+	{
+		X 5
+		Y 10
+		System System_6
+		{
+			Planet System_6_Star
+			{
+				StarSize 4
+				StarType M_Class
+			}
+			Planet Planet_12
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_88
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_35_Data
+	{
+		X 6
+		Y 10
+		System System_35
+		{
+			Planet System_35_Star
+			{
+				StarSize 4
+				StarType M_Class
+			}
+			Planet Planet_74
+			{
+				PlanetSize 9
+				PlanetType Barren
+			}
+			Planet Planet_73
+			{
+				PlanetSize 5
+				PlanetType Barren
+			}
+			Planet Planet_83
+			{
+				PlanetSize 8
+				PlanetType Barren
+			}
+			Planet Planet_93
+			{
+				PlanetSize 2
+				PlanetType Barren
+			}
+			Planet Planet_1
+			{
+				PlanetSize 7
+				PlanetType Barren
+			}
+			Planet Planet_19
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+			Planet Planet_77
+			{
+				PlanetSize 1
+				PlanetType Barren
+			}
+			Planet Planet_67
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_50_Data
+	{
+		X 7
+		Y 10
+		System System_50
+		{
+			Planet System_50_Star
+			{
+				StarSize 5
+				StarType M_Class
+			}
+			Planet Planet_16
+			{
+				PlanetSize 6
+				PlanetType Barren
+			}
+		}
+	}
+	Location System_51_Data
+	{
+		X 10
+		Y 10
+		System System_51
+		{
+			Planet System_51_Star
+			{
+				StarSize 6
+				StarType M_Class
+			}
+			Planet Planet_33
+			{
+				PlanetSize 3
+				PlanetType Barren
+			}
+		}
+	}
+}

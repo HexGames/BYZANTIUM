@@ -1,0 +1,85 @@
+Players
+	Player
+		Leaders
+Systems
+	Planet
+		Pops
+Fleets
+	Fleet
+		Ship
+
+
+ships - 1100K
+planets - 800k
+country - player 500K
+fleet - 450k
+ship_design - 380k
+POPS - 300k 
+leaders - 80k
+army - 60k
+first_contacts - 50k
+galactic_object - systems - 40k
+species_db - 30k
+spy_networks  - 30k
+construction - 12k
+deposit - 12k
+starbasess  - 7k
+
+
+species_db - 30k
+spy_networks  - 30k
+espionage_assets
+half_species
+nebulas 
+POPS - 300k !!!
+galactic_object - systems - 40k
+starbasess  - 7k
+planets - 800k !!!!
+country - player 500K !!!
+
+construction - 12k
+federation
+truce
+trade_deal
+leaders - 80k
+system_initializer_counter
+saved_leaders
+ships - 1100K !!!!!!!
+fleet - 450k !!!!
+fleet_template - 8k
+army - 60k
+deposit - 12k
+ground_combat
+war - 1k
+debris
+open_player_event_selection_history
+random_name_database
+name_list
+galaxy - saring game properies
+saved_event_target
+ship_design - 380k !!!!
+pop_factions
+megastructures
+bypasses
+natural_wormholes
+trade_routes
+sectors
+buildings
+resolution
+archaeological_sites
+espionage_operations
+agreements
+
+global_ship_design
+clusters
+rim_galactic_objects
+
+used_species_names
+used_species_portrait
+trade_routes_manager
+slave_market_manager
+galactic_community
+first_contacts - 50k
+
+situations
+council_positions

@@ -6,6 +6,11 @@ using System.Linq;
 [Tool]
 public partial class DefLibrary : Node
 {
+    [Export]
+    public Dictionary<int, string> DB_Types_S = new Dictionary<int, string>();
+    [Export]
+    public Dictionary<string, int> DB_Types_I = new Dictionary<string, int>();
+
     public string LocationsDir = "res:///Def/Locations/";
     [Export]
     public Array<LocationDef> Locations = new Array<LocationDef>();
@@ -42,5 +47,36 @@ public partial class DefLibrary : Node
             Resource res = GD.Load<Resource>(PawnsDir + files[idx]);
             Pawns.Add(res as PawnDef);
         }
+    }
+
+    public int GetDBType(string name, Data.BaseType baseType)
+    {
+
+        int type;
+        if (DB_Types_I.TryGetValue(name, out type) == false)
+        {
+            int newType = 0 + ((int)baseType) * 10000;
+            while (DB_Types_S.ContainsKey(newType)) newType++;
+
+            DB_Types_S.Add(newType, name);
+            DB_Types_I.Add(name, newType);
+            GD.Print("Def new Data Block Type: " + name + " - " + newType);
+
+            return newType;
+        }
+
+        return type;
+    }
+
+    public string GetDBValue(int type)
+    {
+        string name;
+        if (DB_Types_S.TryGetValue(type, out name) == false)
+        {
+            GD.PrintErr("Def Data Block Type  " + type + " not found!");
+            return "";
+        }
+
+        return name;
     }
 }

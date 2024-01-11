@@ -1,0 +1,25 @@
+System_1_1_Player_Spawn_Earth // humans
+System_1_1_Player_Spawn_Avalon // space elves
+System_1_1_Player_Spawn_Forge // space dwarves
+System_1_1_Player_Spawn_Sanctuary // friendly rouge AI
+System_1_1_Player_Spawn_Core // Evil rouge AI
+System_1_1_Player_Spawn_Gaia // friendly tree mind 
+System_1_1_Player_Spawn_Spawn // evil zergs
+System_1_1_Player_Spawn_Dun // industrios lizards
+System_1_1_Player_Spawn_Web // religios spiders
+System_1_1_Player_Spawn_Torus // xenofobic centaurs
+
+Sol
+Alpha_Centauri
+
+// process
+spawn players from species pool with homeworld
+spawn primitives from remaining species pool with homeworld
+spawn empty stars - name + type
+spawn colonizable planets - type
+spawn asteroid belts
+spawn noncolonizable planets - type
+spawn anomalies
+choose and exapand lost-tech warring states
+choose and exapand sagnant beurocracy
+choose and exapand advanced start x2
