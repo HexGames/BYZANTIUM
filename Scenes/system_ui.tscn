@@ -1,0 +1,1494 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgbyfqcxpoj86"]
+
+[ext_resource type="Script" path="res://Scripts/UI/SystemUI.cs" id="1_c7o8r"]
+[ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/UITheme.tres" id="1_iky5h"]
+[ext_resource type="Theme" uid="uid://dwmckven3ym7s" path="res://UITheme/BackgroundLabel.tres" id="2_10bkp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odnkx"]
+
+[node name="SystemUI" type="Control" node_paths=PackedStringArray("Planets", "PlanetLeft", "PlanetRight", "PlaneLeftRows", "PlaneRightRows", "PlaneLeftRowsProperies", "PlaneRightRowsProperies")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c7o8r")
+Planets = [NodePath("VBoxContainer/HBoxContainer/Planet_0"), NodePath("VBoxContainer/HBoxContainer/Planet_1"), NodePath("VBoxContainer/HBoxContainer/Planet_2"), NodePath("VBoxContainer/HBoxContainer/Planet_3"), NodePath("VBoxContainer/HBoxContainer/Planet_4"), NodePath("VBoxContainer/HBoxContainer/Planet_5"), NodePath("VBoxContainer/HBoxContainer/Planet_6"), NodePath("VBoxContainer/HBoxContainer/Planet_7"), NodePath("VBoxContainer/HBoxContainer/Planet_8"), NodePath("VBoxContainer/HBoxContainer/Planet_9"), NodePath("VBoxContainer/HBoxContainer/Planet_10"), NodePath("VBoxContainer/HBoxContainer/Planet_11"), NodePath("VBoxContainer/HBoxContainer/Planet_12")]
+PlanetLeft = NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft")
+PlanetRight = NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight")
+PlaneLeftRows = [NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7")]
+PlaneRightRows = [NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7")]
+PlaneLeftRowsProperies = [NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7/Label9")]
+PlaneRightRowsProperies = [NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6/Label9"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7/Label1"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7/Label2"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7/Label3"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7/Label4"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7/Label5"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7/Label6"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7/Label7"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7/Label8"), NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7/Label9")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Planet_0" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Sol"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Planet_1" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Mercury"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="PanelLeft" type="Panel" parent="VBoxContainer/HBoxContainer/Planet_1"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.656
+anchor_right = -0.031
+anchor_bottom = 0.469
+offset_left = 3.05176e-05
+offset_right = 6.10352e-05
+grow_horizontal = 0
+theme = ExtResource("1_iky5h")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_odnkx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Small "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Barren "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " No Athmosfere "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " No Life "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Somewhat Explored "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Claimed By: Terran Alliance "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Uncolonized "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " No Sapient Life "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelLeft/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelRight" type="Panel" parent="VBoxContainer/HBoxContainer/Planet_1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.031
+anchor_right = 3.656
+anchor_bottom = 0.469
+theme = ExtResource("1_iky5h")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_odnkx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_vertical = 0
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Small "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Barren "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " No Athmosfere "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " No Life "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Somewhat Explored "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Claimed By: Terran Alliance "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Uncolonized "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " No Sapient Life "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label1" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("2_10bkp")
+text = " Property "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Planet_2" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Venus"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Planet_3" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Earth"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Planet_4" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Mars"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Planet_5" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Asteroid Belt"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Planet_6" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Jupiter"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Planet_7" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Saturn"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Planet_8" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Uranus"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Planet_9" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_9"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Neptune"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Planet_10" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_10"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Old Cloud"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Planet_11" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_11"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Sol"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Planet_12" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_12"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_iky5h")
+text = "Sol"
+alignment = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+color = Color(1, 1, 1, 0)

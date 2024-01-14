@@ -18,10 +18,11 @@ public partial class DataBlock : Resource
     [Export]
     public Array<DataBlock> Subs = new Array<DataBlock>();
 
-    [Export]
-    public LocationData Location = null;
-    [Export]
-    public PawnData Pawn = null;
+    // no allowed apparently
+    //[Export]
+    //public LocationData Location = null;
+    //[Export]
+    //public PawnData Pawn = null;
 
     public string ValueToString()
     {
