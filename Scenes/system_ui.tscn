@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgbyfqcxpoj86"]
+[gd_scene load_steps=10 format=3 uid="uid://dgbyfqcxpoj86"]
 
-[ext_resource type="Script" path="res://Scripts/UI/SystemUI.cs" id="1_c7o8r"]
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/UITheme.tres" id="1_iky5h"]
+[ext_resource type="Script" path="res://Scripts/UI/UISystem.cs" id="1_lvvtj"]
 [ext_resource type="Theme" uid="uid://dwmckven3ym7s" path="res://UITheme/BackgroundLabel.tres" id="2_10bkp"]
+[ext_resource type="Texture2D" uid="uid://c6ulfomgv6xo0" path="res://Assets/Planets/Background.png" id="2_bhi0i"]
+[ext_resource type="Script" path="res://Scripts/UI/UISystemPlanet.cs" id="2_psrgw"]
+[ext_resource type="Texture2D" uid="uid://d0dgbe1qxxslt" path="res://Assets/Planets/Sun.png" id="3_aj6yl"]
+[ext_resource type="Texture2D" uid="uid://coqsjpw7qqqb5" path="res://Assets/Planets/Barren.png" id="5_dyekx"]
+[ext_resource type="Texture2D" uid="uid://dtebju6geermh" path="res://Assets/Planets/ToxicYellow.png" id="7_0c12t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odnkx"]
 
@@ -13,7 +18,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c7o8r")
+mouse_filter = 2
+script = ExtResource("1_lvvtj")
 Planets = [NodePath("VBoxContainer/HBoxContainer/Planet_0"), NodePath("VBoxContainer/HBoxContainer/Planet_1"), NodePath("VBoxContainer/HBoxContainer/Planet_2"), NodePath("VBoxContainer/HBoxContainer/Planet_3"), NodePath("VBoxContainer/HBoxContainer/Planet_4"), NodePath("VBoxContainer/HBoxContainer/Planet_5"), NodePath("VBoxContainer/HBoxContainer/Planet_6"), NodePath("VBoxContainer/HBoxContainer/Planet_7"), NodePath("VBoxContainer/HBoxContainer/Planet_8"), NodePath("VBoxContainer/HBoxContainer/Planet_9"), NodePath("VBoxContainer/HBoxContainer/Planet_10"), NodePath("VBoxContainer/HBoxContainer/Planet_11"), NodePath("VBoxContainer/HBoxContainer/Planet_12")]
 PlanetLeft = NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelLeft")
 PlanetRight = NodePath("VBoxContainer/HBoxContainer/Planet_1/PanelRight")
@@ -29,62 +35,102 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Planet_0" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_0" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_0"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_aj6yl")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_0"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 2.28882e-05
+offset_bottom = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
 text = "Sol"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Planet_1" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(256, 256)
+[node name="Planet_1" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_1"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.6
+offset_left = -1.90735e-05
+offset_top = 1.14441e-05
+offset_right = -1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_dyekx")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 2.28882e-05
+offset_bottom = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
 text = "Mercury"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PanelLeft" type="Panel" parent="VBoxContainer/HBoxContainer/Planet_1"]
 visible = false
@@ -93,8 +139,8 @@ anchors_preset = -1
 anchor_left = -2.656
 anchor_right = -0.031
 anchor_bottom = 0.469
-offset_left = 3.05176e-05
-offset_right = 6.10352e-05
+offset_left = 6.10352e-05
+offset_right = 8.67844e-05
 grow_horizontal = 0
 theme = ExtResource("1_iky5h")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_odnkx")
@@ -654,11 +700,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PanelRight" type="Panel" parent="VBoxContainer/HBoxContainer/Planet_1"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.031
 anchor_right = 3.656
 anchor_bottom = 0.469
+offset_right = 6.10352e-05
 theme = ExtResource("1_iky5h")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_odnkx")
 
@@ -1211,13 +1259,38 @@ text = " Property "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_2" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_2" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_2"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = 1.14441e-05
+offset_top = 1.14441e-05
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -1225,24 +1298,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
 text = "Venus"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Planet_3" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_3" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_3"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = 1.14441e-05
+offset_top = 1.14441e-05
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -1250,24 +1343,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
-text = "Earth"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
+text = "Venus"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Planet_4" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_4" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_4"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = 1.14441e-05
+offset_top = 1.14441e-05
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_4"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -1275,24 +1388,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
-text = "Mars"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
+text = "Venus"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Planet_5" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_5" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_5"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = 1.14441e-05
+offset_top = 1.14441e-05
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_5"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -1300,24 +1433,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
-text = "Asteroid Belt"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
+text = "Venus"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Planet_6" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_6" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_6"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = 1.14441e-05
+offset_top = 1.14441e-05
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_6"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -1325,24 +1478,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
-text = "Jupiter"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
+text = "Venus"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Planet_7" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_7" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_7"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = 1.14441e-05
+offset_top = 1.14441e-05
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_7"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -1350,24 +1523,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
-text = "Saturn"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
+text = "Venus"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Planet_8" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_8" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_8"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = 1.14441e-05
+offset_top = 1.14441e-05
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_8"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -1375,24 +1568,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
-text = "Uranus"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
+text = "Venus"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Planet_9" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_9" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_9"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_9"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = 1.14441e-05
+offset_top = 1.14441e-05
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_9"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -1400,24 +1613,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
-text = "Neptune"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
+text = "Venus"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Planet_10" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_10" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_10"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_10"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = 1.14441e-05
+offset_top = 1.14441e-05
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_10"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -1425,25 +1658,45 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
-text = "Old Cloud"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
+text = "Venus"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Planet_11" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_11" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_11"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_11"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = 1.14441e-05
+offset_top = 1.14441e-05
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_11"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -1451,25 +1704,45 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
-text = "Sol"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
+text = "Venus"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Planet_12" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Planet_12" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
 visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
-color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme = ExtResource("1_iky5h")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+icon = ExtResource("2_bhi0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_psrgw")
+PlanetImage = NodePath("Planet")
+PlanetName = NodePath("Label")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/Planet_12"]
+[node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_12"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = 1.14441e-05
+offset_top = 1.14441e-05
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_12"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -1477,18 +1750,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_iky5h")
-text = "Sol"
-alignment = 1
-editable = false
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
+theme = ExtResource("2_10bkp")
+theme_override_font_sizes/font_size = 16
+text = "Venus"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
+
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_0" to="VBoxContainer/HBoxContainer/Planet_0" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_0" to="VBoxContainer/HBoxContainer/Planet_0" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_0" to="VBoxContainer/HBoxContainer/Planet_0" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_1" to="VBoxContainer/HBoxContainer/Planet_1" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_1" to="VBoxContainer/HBoxContainer/Planet_1" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_1" to="VBoxContainer/HBoxContainer/Planet_1" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_2" to="VBoxContainer/HBoxContainer/Planet_2" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_2" to="VBoxContainer/HBoxContainer/Planet_2" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_2" to="VBoxContainer/HBoxContainer/Planet_2" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_3" to="VBoxContainer/HBoxContainer/Planet_3" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_3" to="VBoxContainer/HBoxContainer/Planet_3" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_3" to="VBoxContainer/HBoxContainer/Planet_3" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_4" to="VBoxContainer/HBoxContainer/Planet_4" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_4" to="VBoxContainer/HBoxContainer/Planet_4" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_4" to="VBoxContainer/HBoxContainer/Planet_4" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_5" to="VBoxContainer/HBoxContainer/Planet_5" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_5" to="VBoxContainer/HBoxContainer/Planet_5" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_5" to="VBoxContainer/HBoxContainer/Planet_5" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_6" to="VBoxContainer/HBoxContainer/Planet_6" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_6" to="VBoxContainer/HBoxContainer/Planet_6" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_6" to="VBoxContainer/HBoxContainer/Planet_6" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_7" to="VBoxContainer/HBoxContainer/Planet_7" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_7" to="VBoxContainer/HBoxContainer/Planet_7" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_7" to="VBoxContainer/HBoxContainer/Planet_7" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_8" to="VBoxContainer/HBoxContainer/Planet_8" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_8" to="VBoxContainer/HBoxContainer/Planet_8" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_8" to="VBoxContainer/HBoxContainer/Planet_8" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_9" to="VBoxContainer/HBoxContainer/Planet_9" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_9" to="VBoxContainer/HBoxContainer/Planet_9" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_9" to="VBoxContainer/HBoxContainer/Planet_9" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_10" to="VBoxContainer/HBoxContainer/Planet_10" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_10" to="VBoxContainer/HBoxContainer/Planet_10" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_10" to="VBoxContainer/HBoxContainer/Planet_10" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_11" to="VBoxContainer/HBoxContainer/Planet_11" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_11" to="VBoxContainer/HBoxContainer/Planet_11" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_11" to="VBoxContainer/HBoxContainer/Planet_11" method="OnSelect"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Planet_12" to="VBoxContainer/HBoxContainer/Planet_12" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Planet_12" to="VBoxContainer/HBoxContainer/Planet_12" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Planet_12" to="VBoxContainer/HBoxContainer/Planet_12" method="OnSelect"]

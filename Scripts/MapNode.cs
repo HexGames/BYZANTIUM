@@ -7,6 +7,7 @@ using System.Collections.Generic;
 [Tool]
 public partial class MapNode : Node
 {
+    [ExportCategory("Generated")]
     [Export]
     public DefLibrary DefLibrary;
     [Export]
@@ -15,6 +16,10 @@ public partial class MapNode : Node
     public Array<LocationData> Systems = new Array<LocationData>();
     [Export]
     public Array<PawnData> Fleets = new Array<PawnData>();
+
+    [ExportCategory("Runtime")]
+    [Export]
+    public PlayerInput PlayerInput = null;
 
     [Export]
     public string SaveName = "Save";
@@ -42,6 +47,14 @@ public partial class MapNode : Node
             {
                 SaveMap();
             }
+        }
+    }
+    public override void _Ready()
+    {
+        if (!Engine.IsEditorHint())
+        {
+            PlayerInput = GetNode<PlayerInput>("/root/Main/PlayerInput");
+            //OnSelect += PlayerInput.SelectLocation;
         }
     }
 
@@ -167,5 +180,21 @@ public partial class MapNode : Node
             return GetWordsFromNextValidRow(rows, ref rowIdx);
         }
         return words;
+    }
+
+    public void OnBackgoundInputEvent(Node camera, InputEvent inputEvent, Vector3 position, Vector3 normal, int shapeIdx)
+    {
+        if (inputEvent is InputEventMouseButton mouseButtonEvent)
+        {
+            if (!mouseButtonEvent.IsPressed())
+            {
+                // on mouse button release
+                if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
+                {
+                    //GD.Print("You clicked on " + Label.Text);
+                    PlayerInput.DeselectLocation();
+                }
+            }
+        }
     }
 }

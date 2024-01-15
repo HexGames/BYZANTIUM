@@ -1,4 +1,19 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://h0pqg2crxlit"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://h0pqg2crxlit"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whma6"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyy6d"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqh1g"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jawlx"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uaxgc"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3416"]
 bg_color = Color(0.196078, 0.0901961, 0.00784314, 1)
@@ -7,6 +22,12 @@ bg_color = Color(0.196078, 0.0901961, 0.00784314, 1)
 bg_color = Color(0.101961, 0.0352941, 0.00392157, 1)
 
 [resource]
+Button/constants/h_separation = 0
+Button/styles/disabled = SubResource("StyleBoxFlat_whma6")
+Button/styles/focus = SubResource("StyleBoxFlat_kyy6d")
+Button/styles/hover = SubResource("StyleBoxFlat_rqh1g")
+Button/styles/normal = SubResource("StyleBoxFlat_jawlx")
+Button/styles/pressed = SubResource("StyleBoxFlat_uaxgc")
 LineEdit/colors/font_uneditable_color = Color(1, 1, 1, 1)
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_q3416")
 Panel/styles/panel = SubResource("StyleBoxFlat_65ng8")

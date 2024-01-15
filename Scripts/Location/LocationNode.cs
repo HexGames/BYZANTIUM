@@ -24,7 +24,7 @@ public partial class LocationNode : Node
     {
         if (!Engine.IsEditorHint())
         {
-            PlayerInput = GetNode<PlayerInput>("/root/PlayerInput");
+            PlayerInput = GetNode<PlayerInput>("/root/Main/PlayerInput");
             //OnSelect += PlayerInput.SelectLocation;
         }
     }

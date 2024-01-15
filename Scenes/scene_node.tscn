@@ -1,8 +1,10 @@
-[gd_scene load_steps=1070 format=3 uid="uid://di030yy5pk68o"]
+[gd_scene load_steps=1074 format=3 uid="uid://di030yy5pk68o"]
 
 [ext_resource type="Script" path="res://Scripts/DefGenerator.cs" id="1_g4h84"]
 [ext_resource type="Script" path="res://Scripts/_Autorun.cs" id="1_oldh3"]
 [ext_resource type="Script" path="res://Scripts/DefLibrary.cs" id="2_3thtr"]
+[ext_resource type="Script" path="res://Scripts/Game.cs" id="2_8jcv2"]
+[ext_resource type="Script" path="res://Scripts/PlayerInput.cs" id="3_pyn7o"]
 [ext_resource type="Resource" uid="uid://2drtumdkw7qs" path="res://Def/Locations/Atlantis.tres" id="3_tj3u5"]
 [ext_resource type="Resource" uid="uid://c55ic1v1e0xsp" path="res://Def/Locations/Avalon.tres" id="4_pmuma"]
 [ext_resource type="Script" path="res://Scripts/_Debug_Test.cs" id="4_u8rhe"]
@@ -18,6 +20,10 @@
 [ext_resource type="Script" path="res://Scripts/MapCamera.cs" id="11_blimg"]
 [ext_resource type="Script" path="res://Scripts/MapNode.cs" id="11_vux3d"]
 [ext_resource type="Script" path="res://Scripts/Data/DataBlock.cs" id="15_ca2q7"]
+[ext_resource type="PackedScene" uid="uid://dgbyfqcxpoj86" path="res://Scenes/system_ui.tscn" id="19_1j1qg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jkauf"]
+size = Vector3(1000, 1, 1000)
 
 [sub_resource type="Resource" id="Resource_kfqo0"]
 script = ExtResource("15_ca2q7")
@@ -8409,6 +8415,15 @@ Subs = [SubResource("Resource_xrfsr"), SubResource("Resource_axuhg")]
 [node name="Main" type="Node"]
 script = ExtResource("1_oldh3")
 
+[node name="Game" type="Node" parent="." node_paths=PackedStringArray("Camera", "PlayerInput", "SystemUI")]
+script = ExtResource("2_8jcv2")
+Camera = NodePath("../Camera3D")
+PlayerInput = NodePath("../PlayerInput")
+SystemUI = NodePath("../SystemUI")
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource("3_pyn7o")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999962, -0.00617059, 0.00617059, 0, 0.707107, 0.707107, -0.00872654, -0.70708, 0.70708, 0, 23.315, 0)
 shadow_enabled = true
@@ -8466,6 +8481,12 @@ script = ExtResource("11_vux3d")
 DefLibrary = NodePath("../DefLibrary")
 MapGenerator = NodePath("../Generators/MapGenerator")
 Systems = [NodePath("Stars/Loc_System_63/System_63_Data"), NodePath("Stars/Loc_System_72/System_72_Data"), NodePath("Stars/Loc_System_73/System_73_Data"), NodePath("Stars/Loc_System_40/System_40_Data"), NodePath("Stars/Loc_System_7/System_7_Data"), NodePath("Stars/Loc_System_94/System_94_Data"), NodePath("Stars/Loc_System_19/System_19_Data"), NodePath("Stars/Loc_System_45/System_45_Data"), NodePath("Stars/Loc_System_56/System_56_Data"), NodePath("Stars/Loc_System_75/System_75_Data"), NodePath("Stars/Loc_System_38/System_38_Data"), NodePath("Stars/Loc_System_53/System_53_Data"), NodePath("Stars/Loc_System_44/System_44_Data"), NodePath("Stars/Loc_System_65/System_65_Data"), NodePath("Stars/Loc_System_5/System_5_Data"), NodePath("Stars/Loc_System_78/System_78_Data"), NodePath("Stars/Loc_System_17/System_17_Data"), NodePath("Stars/Loc_System_91/System_91_Data"), NodePath("Stars/Loc_System_74/System_74_Data"), NodePath("Stars/Loc_System_14/System_14_Data"), NodePath("Stars/Loc_System_6/System_6_Data"), NodePath("Stars/Loc_System_31/System_31_Data"), NodePath("Stars/Loc_System_23/System_23_Data"), NodePath("Stars/Loc_System_57/System_56_Data"), NodePath("Stars/Loc_System_79/System_78_Data"), NodePath("Stars/Loc_System_58/System_57_Data"), NodePath("Stars/Loc_System_83/System_83_Data"), NodePath("Stars/Loc_System_66/System_66_Data"), NodePath("Stars/Loc_System_90/System_90_Data"), NodePath("Stars/Loc_System_82/System_82_Data"), NodePath("Stars/Loc_System_46/System_46_Data"), NodePath("Stars/Loc_System_81/System_81_Data"), NodePath("Stars/Loc_System_41/System_40_Data"), NodePath("Stars/Loc_System_98/System_98_Data"), NodePath("Stars/Loc_System_16/System_16_Data"), NodePath("Stars/Loc_System_10/System_10_Data"), NodePath("Stars/Loc_System_92/System_92_Data"), NodePath("Stars/Loc_System_59/System_56_Data"), NodePath("Stars/Loc_System_18/System_16_Data"), NodePath("Stars/Loc_System_76/System_73_Data"), NodePath("Stars/Loc_System_93/System_90_Data"), NodePath("Stars/Loc_System_3/System_3_Data"), NodePath("Stars/Loc_System_47/System_47_Data"), NodePath("Stars/Loc_System_26/System_26_Data"), NodePath("Stars/Loc_System_68/System_68_Data"), NodePath("Stars/Loc_System_77/System_74_Data"), NodePath("Stars/Loc_System_33/System_33_Data"), NodePath("Stars/Loc_System_21/System_21_Data"), NodePath("Stars/Loc_System_20/System_20_Data"), NodePath("Stars/Loc_System_1/System_1_Data"), NodePath("Stars/Loc_System_51/System_51_Data"), NodePath("Stars/Loc_System_8/System_7_Data"), NodePath("Stars/Loc_System_9/System_6_Data"), NodePath("Stars/Loc_System_35/System_35_Data"), NodePath("Stars/Loc_System_50/System_50_Data"), NodePath("Stars/Loc_System_52/System_51_Data")]
+
+[node name="Area3D" type="Area3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Area3D"]
+shape = SubResource("BoxShape3D_jkauf")
 
 [node name="Stars" type="Node" parent="Map"]
 
@@ -10041,6 +10062,10 @@ Camera = NodePath(".")
 Transform = NodePath(".")
 MoveLimitX = 173.332
 MoveLimitY = 150.0
+
+[node name="SystemUI" parent="." instance=ExtResource("19_1j1qg")]
+
+[connection signal="input_event" from="Map/Area3D" to="Map" method="OnBackgoundInputEvent"]
 
 [editable path="Map/Stars/Loc_System_63/System_63_GFX"]
 [editable path="Map/Stars/Loc_System_72/System_72_GFX"]

@@ -19,11 +19,6 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
-[autoload]
-
-PlayerInput="*res://Scripts/AutoLoad/PlayerInput.cs"
-Game="*res://Scripts/AutoLoad/Game.cs"
-
 [display]
 
 window/size/viewport_width=1920

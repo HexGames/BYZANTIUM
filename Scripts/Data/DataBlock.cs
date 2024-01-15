@@ -36,4 +36,19 @@ public partial class DataBlock : Resource
 
         return "";
     }
+
+    public Array<DataBlock> GetSubs( int type )
+    {
+        Array<DataBlock> ret = new Array<DataBlock>();
+
+        for (int idx = 0; idx < Subs.Count; idx++)
+        {
+            if (Subs[idx].Type == type)
+            {
+                ret.Add(Subs[idx]);
+            }
+        }
+
+        return ret;
+    }
 }

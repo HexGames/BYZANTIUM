@@ -96,60 +96,45 @@ public partial class DefGenerator : Node
         // ?HEX? Godot.EditorInterface.scan 
 
         LocationDef LocationInfo = new LocationDef();
-        LocationInfo.LocationName = "Atlantis";
-        LocationInfo.Province = "Pegasus";
-        LocationInfo.Population = 1000;
         LocationInfo.Positon = new Vector2( 10, 10 );
         
-        string path = DefLibrary.LocationsDir + LocationInfo.LocationName + ".tres";
+        string path = DefLibrary.LocationsDir + "System_Type_1" + ".tres";
         LocationInfo.FilePath = path;
         ResourceSaver.Save(LocationInfo, path);
 
         DefLibrary.Locations.Add(LocationInfo);
 
         LocationDef LocationInfo_2 = new LocationDef();
-        LocationInfo_2.LocationName = "Avalon";
-        LocationInfo_2.Province = "Nova";
-        LocationInfo_2.Population = 100;
         LocationInfo_2.Positon = new Vector2(-10, -10);
         
-        path = DefLibrary.LocationsDir + LocationInfo_2.LocationName + ".tres";
+        path = DefLibrary.LocationsDir + "System_Type_2" + ".tres";
         LocationInfo_2.FilePath = path;
         ResourceSaver.Save(LocationInfo_2, path);
 
         DefLibrary.Locations.Add(LocationInfo_2);
 
         LocationDef LocationInfo_3 = new LocationDef();
-        LocationInfo_3.LocationName = "Camelot";
-        LocationInfo_3.Province = "Britain";
-        LocationInfo_3.Population = 100;
         LocationInfo_3.Positon = new Vector2(-10, 10);
 
-        path = DefLibrary.LocationsDir + LocationInfo_3.LocationName + ".tres";
+        path = DefLibrary.LocationsDir + "System_Type_3" + ".tres";
         LocationInfo_3.FilePath = path;
         ResourceSaver.Save(LocationInfo_3, path);
 
         DefLibrary.Locations.Add(LocationInfo_3);
 
         LocationDef LocationInfo_4 = new LocationDef();
-        LocationInfo_4.LocationName = "Carcassonne";
-        LocationInfo_4.Province = "France";
-        LocationInfo_4.Population = 100;
         LocationInfo_4.Positon = new Vector2(-10, 0);
 
-        path = DefLibrary.LocationsDir + LocationInfo_4.LocationName + ".tres";
+        path = DefLibrary.LocationsDir + "System_Type_4" + ".tres";
         LocationInfo_4.FilePath = path;
         ResourceSaver.Save(LocationInfo_4, path);
 
         DefLibrary.Locations.Add(LocationInfo_4);
 
         LocationDef LocationInfo_5 = new LocationDef();
-        LocationInfo_5.LocationName = "Constantinopolis";
-        LocationInfo_5.Province = "Byzantium";
-        LocationInfo_5.Population = 100;
         LocationInfo_5.Positon = new Vector2(0, 10);
 
-        path = DefLibrary.LocationsDir + LocationInfo_5.LocationName + ".tres";
+        path = DefLibrary.LocationsDir + "System_Type_5" + ".tres";
         LocationInfo_5.FilePath = path;
         ResourceSaver.Save(LocationInfo_5, path);
 
