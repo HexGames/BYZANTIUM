@@ -1,0 +1,43 @@
+StarSize
+{
+	row 1
+	Tooltip "The size of the star."
+	value 1 "Very Small"
+	value 2 "Small"
+	value 3 "Below Average"
+	value 4 "Average"
+	value 5 "Above Average"
+	value 6 "Large"
+	value 7 "Extra Large"
+	value 8 "Huge"
+	value 9 "Giant"
+}
+
+StarType
+{
+	row 1
+	Tooltip "The type of the star."
+	if M_Class "A stable main sequence star."
+}
+
+PlanetSize
+{
+	row 1
+	Tooltip "The size of the planet."
+	value 1 "Very Small"
+	value 2 "Small"
+	value 3 "Below Average"
+	value 4 "Average"
+	value 5 "Above Average"
+	value 6 "Large"
+	value 7 "Extra Large"
+	value 8 "Huge"
+	value 9 "Giant"
+}
+
+PlanetType
+{
+	row 1
+	Tooltip "The type of the planet."
+	if Barren "A lifeless, feaureless rock floating in space." 
+}

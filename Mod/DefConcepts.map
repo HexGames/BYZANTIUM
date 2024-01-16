@@ -3,7 +3,7 @@ ship components
 solar systems
 names
 diplo texts
-pops raits
+pops traits
 buildings
 technology/actions
 planet modifiers
@@ -15,27 +15,71 @@ civics (traditions + civics)
 anomalies
 diplo agreements
 
+Actions:
+civic/ethics actions x1 -  50 <<  100 ?? s/3 40 - 7*8 + 16 = 56+16 = 72 || 5*8 + 16 = 56
+building actions x3  ---- 150 >>  100 ?? s/3 50
+research actions x3 ----- 150 <   200 ?? s/3 120 (moo - 180)
+species-mod actions x1 --  50 <<  100 ?? s/3 50
+terraforming actions x1 -  50 =    50 ?? s/3 ?? (30)
+shipyard actions x2 ----- 100 >>   50 ?? s/3 100 (50w 50aux)
+ship actions x3 --------- 150 >>>  50 ?? s/3 ?? (20 combat 100 explore)
+diplomatic actions x2 --- 100 >>   50 ?? s/3 ?? (30)
+
+Pillars: 
+- You head down a path that becomes horiffic, but you are locked on that path, even if people become pissed that you headed down tha path.
+- Slow creeping crisis eating systems
+
+WAR HAPPINESS INDUSTRY AUTHORITY INFLUENCE XENO-ROLE ROBOTS SPECIES TERRAFORMING DIVERGENCE ACTION-CONTROL INTERNAL-MIGRATION EXTERNAL_MIGRATION
+
+Ethics:
+- Pacifist (less war) - Millitarist (more war)
+- Ecologist (more terraforming, more happiness) - Industrialist (more industry, less happiness)
+
+- Religious(more authority, more action control) - Scientist (more science)
+- Bio-engineering(beter species) - Mechanist(better robots)
+
+- Liberty(less authority, more hapiness) - Unity(more authority, less hapiness)
+- Democratic(less action control, more divergence, more internal migration) - Autocratic(more action control, less divergence, less internal migration)
+
+- Xenofile (more exernal migration, more influence, xeno-specialiss) - Xenofob (no exernal migration, less influence, xeno-slaves)
+- Federation(less authority, more influence) - Empire (more authority, less influence)
+
+Evolution Paths:
+- Core Virtual Reality (Scientist, Unity, Mechanist) - perfect hapiness, extra science, only robot workers
+- Cibernetic (Scientist, Mechanist, Liberty) - better species
+- Gated Paradise (Mechanist, Liberty, Ecologist)
+- Tree people (Ecologist, Bio-engineering, Religios)
+- Ant colony hive mind (Bio-engineering, Industrialist, Unity)
+- Holy Emperor (Autocratic, Religios, Bioengineering)
+- First Technocrat (Autocratic, Scientist, Mechanist)
+- Perfect Morality (Pacifist)
+- Star Empire (Militarist, Autocratic, Unity)
+- Citizen Republic (Militarist, Democratic, Unity)
+- Direct Democracy (Democratic, Unity, Mechanist)
+- Total Freedom (Liberty, Bio-engineering)
+
+
 Scripted events
-component templates (weapons 50%)
+component templates (weapons 50%) 
 solar system init 
 name lists
 diplo phrases (greetings 50%)
-traits (both pops and leaders)
+traits (both pops and leaders) - ~160 total ---------- ~160
 golbal ships design
 
 500
 
 resolutions (galacic community)
-buildings
-technology
+buildings - x160 -------------------------------------- x160
+technology - x385 ------------------------------------- x385
 section templates (ships, stations, planet layouts?)
-pop jobs
+pop jobs ~160 ----------------------------------------- ~160
 inline scripts
 static modifiers
 special projects
 ships sizes
 scripetd triggers
-goverments (+civics)
+goverments (+civics) x140 (civics) -------------------- x140
 random names
 deposits
 situations
@@ -44,7 +88,7 @@ situations
 
 anomalies
 megastructures
-pop factions types
+pop factions types x10 ------------------------------- x10
 defines
 federation_laws
 decisions
@@ -52,7 +96,7 @@ on_actions
 war goals
 diplomatic actions
 species rights
-traditions
+traditions - x126 ------------------------------------ x126
 archeological sites
 
 100
@@ -67,7 +111,7 @@ terraform
 colony types
 ai budget
 script value
-edicts
+edicts x75 -------------------------------------------- x75
 message types
 policies
 ethics
@@ -85,7 +129,7 @@ armies
 economic categories
 scriped variables 
 personalities
-ascension perks
+ascension perks - x33 ---------------------------------- x33
 federaion types
 agreement type
 casus beli
@@ -93,3 +137,5 @@ planet modifiers
 relics
 
 ...
+
+resources - x16 ----------------------------------------- x16

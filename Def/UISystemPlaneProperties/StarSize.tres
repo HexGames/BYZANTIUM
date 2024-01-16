@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dmla6pusock46"]
+
+[ext_resource type="Script" path="res://Scripts/UI/UISystemPlanetPropertiesDef.cs" id="1_yf55g"]
+
+[resource]
+script = ExtResource("1_yf55g")
+Row = 1
+Values = {
+1: "Very Small",
+2: "Small",
+3: "Below Average",
+4: "Average",
+5: "Above Average",
+6: "Large"
+}
+TooltipDefault = "The size of the star."
+Tooltips = {}

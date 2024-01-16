@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c5qytg2rirdrr"]
+
+[ext_resource type="Script" path="res://Scripts/UI/UISystemPlanetPropertiesDef.cs" id="1_0swbi"]
+
+[resource]
+script = ExtResource("1_0swbi")
+Row = 1
+TooltipDefault = "The type of the planet."
+Tooltips = {
+"Barren": "A lifeless, feaureless rock floating in space."
+}

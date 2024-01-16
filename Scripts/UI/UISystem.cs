@@ -20,7 +20,10 @@ public partial class UISystem : Control
     public Array<Label> PlaneRightRowsProperies = new Array<Label>();
 
     [Export]
+    public Array<DataBlock> _PlanetsData = null;
+    [Export]
     public UISystemPlanet PlanetSelected = null;
+
 
     [Export]
     public bool AutoLink
@@ -79,17 +82,30 @@ public partial class UISystem : Control
     {
         if (system == null)
         {
+            // deselect other planets
+            for (int idx = 0; idx < Planets.Count; idx++)
+            {
+                if (Planets[idx].Selected)
+                {
+                    Planets[idx].Deselect();
+                }
+            }
+
+            PlanetLeft.Visible = false;
+            PlanetRight.Visible = false;
+
             Visible = false;
+
             return;
         }
 
-        Array<DataBlock> planetsData = system.System.GetSubs(DefLib.GetDBType("Planet"));
+        _PlanetsData = system.System.GetSubs("Planet");
 
         for (int idx = 0; idx < Planets.Count; idx++)
         {
-            if (idx < planetsData.Count)
+            if (idx < _PlanetsData.Count)
             {
-                Planets[idx].Refresh(system, planetsData[idx]);
+                Planets[idx].Refresh(system, _PlanetsData[idx]);
                 Planets[idx].Visible = true;
             }
             else
@@ -126,18 +142,59 @@ public partial class UISystem : Control
             }
         }
 
-        if (selectedIdx < Planets.Count / 2)
+
+        if (selectedIdx < (_PlanetsData.Count + 1) / 2)
         {
+            Array<DataBlock> planetProperties = PlanetSelected._Data.GetSubs();
+            for (int idx = 0; idx < PlaneRightRows.Count; idx++) PlaneRightRows[idx].Visible = false;
+            for (int idx = 0; idx < PlaneRightRowsProperies.Count; idx++)
+            {
+                if (idx < planetProperties.Count)
+                {
+                    PlaneRightRowsProperies[idx].Text = planetProperties[idx].ToUIString();
+                    PlaneRightRowsProperies[idx].Visible = true;
+
+                    if (PlaneRightRows[idx / 9].Visible != true)
+                    {
+                        PlaneRightRows[idx / 9].Visible = true;
+                    }
+                }
+                else
+                {
+                    PlaneRightRowsProperies[idx].Visible = false;
+                }
+            }
+
             PlanetLeft.Visible = false;
             PlanetRight.Visible = true;
         }
         else
         {
+            Array<DataBlock> planetProperties = PlanetSelected._Data.GetSubs();
+            for (int idx = 0; idx < PlaneLeftRows.Count; idx++) PlaneLeftRows[idx].Visible = false;
+            for (int idx = 0; idx < PlaneLeftRowsProperies.Count; idx++)
+            {
+                if (idx < planetProperties.Count)
+                {
+                    PlaneLeftRowsProperies[idx].Text = planetProperties[idx].ToUIString();
+                    PlaneLeftRowsProperies[idx].Visible = true;
+
+                    if (PlaneLeftRows[idx / 9].Visible != true)
+                    {
+                        PlaneLeftRows[idx / 9].Visible = true;
+                    }
+                }
+                else
+                {
+                    PlaneLeftRowsProperies[idx].Visible = false;
+                }
+            }
+
             PlanetLeft.Visible = true;
             PlanetRight.Visible = false;
         }
 
-        // deselectt other planets
+        // deselect other planets
         for (int idx = 0; idx < Planets.Count; idx++)
         {
             if (Planets[idx].Selected && planetUI != Planets[idx])

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://b5385scp6533b"]
+
+[ext_resource type="Resource" uid="uid://dmla6pusock46" path="res://Def/UISystemPlaneProperties/StarSize.tres" id="1_c4d83"]
+[ext_resource type="Resource" uid="uid://coah2pcdkbh42" path="res://Def/UISystemPlaneProperties/StarType.tres" id="2_0e8rk"]
+[ext_resource type="Script" path="res://Scripts/UI/UISystemDef.cs" id="2_0lrq6"]
+[ext_resource type="Resource" uid="uid://coo67p0djti7o" path="res://Def/UISystemPlaneProperties/PlanetSize.tres" id="3_xadty"]
+[ext_resource type="Resource" uid="uid://c5qytg2rirdrr" path="res://Def/UISystemPlaneProperties/PlanetType.tres" id="4_ulcqn"]
+
+[resource]
+script = ExtResource("2_0lrq6")
+DataBlockDefs = [ExtResource("1_c4d83"), ExtResource("2_0e8rk"), ExtResource("3_xadty"), ExtResource("4_ulcqn")]
