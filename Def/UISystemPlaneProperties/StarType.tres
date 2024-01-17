@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_d87xu")
 Row = 1
+Values = {}
 TooltipDefault = "The type of the star."
 Tooltips = {
 "M_Class": "A stable main sequence star."

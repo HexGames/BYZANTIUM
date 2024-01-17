@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_0swbi")
 Row = 1
+Values = {}
 TooltipDefault = "The type of the planet."
 Tooltips = {
 "Barren": "A lifeless, feaureless rock floating in space."

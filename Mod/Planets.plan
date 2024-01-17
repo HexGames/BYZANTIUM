@@ -1,0 +1,50 @@
+Radiated-tomb moo    S	
+Toxic         moo 	 S
+Volcanic      moo 
+Barren        moo es S
+Barren-cold          S
+Desert        moo es S	
+Tundra        moo es S
+Arid          moo es S	
+Swamp         moo	
+Jungle            es
+Ocean         moo es S
+Terran        moo es S
+Artic             es S
+Inferno-Lava  moo es S
+Tropical      moo	 S
+Grassland     moo	
+Cavernous     moo	
+Savanah              S
+Alpine               S
+Gaia          moo    S
+Ecumenopolis 	     S
+Relic                S
+Hive                 S
+Machine              S
+Frozen               S
+Broken				 S
+
+Gas Giant 	  moo es S 1-3
+Asteroid F    moo es S 1-3
+
+Rings
+
+Moon
+
+size
+molten - hot - temperate - cold - ice
+no atmosphere - light atmosphere - normal athmosphere - heavy athmosphere - gas gian
+CO2 rich - N rich - O2 rich
+light gravity - Low gravity - normal gravity - high gravity - crushing gravity
+lifeless - microbial - tundra - diverse - jungle
+rings
+moon - two moons - three moons - four moons
+
+
+Huge Caves
+Urbanized %
+Primitive Ruins
+Advanced Ruins
+Ecumenopolis
+Ruined Ecumenopolis

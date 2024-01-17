@@ -4,9 +4,11 @@ using System;
 public partial class Game : Node
 {
     [Export]
+    public DefLibrary Def;
+    [Export]
     public MapCamera Camera;
     [Export]
-	public PlayerInput PlayerInput;
+	public PlayerInput Input;
     [Export]
     public UISystem SystemUI;
 

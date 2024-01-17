@@ -5,10 +5,22 @@ public class Data
 {
     public enum BaseType
     {
-        NULL,
+        NONE,
         INT,
         FLOAT,
         STRING
+    }
+
+    public static DataBlock AddData(DataBlock parent, string name, DefLibrary df)
+    {
+        DataBlock data = new DataBlock();
+
+        data.Type = df.GetDBType(name, BaseType.NONE);
+        data.Name = name;
+
+        parent.Subs.Add(data);
+
+        return data;
     }
 
     public static DataBlock AddData(DataBlock parent, string name, int value, DefLibrary df)
@@ -23,6 +35,7 @@ public class Data
 
         return data;
     }
+
     public static DataBlock AddData(DataBlock parent, string name, string value, DefLibrary df)
     {
         DataBlock data = new DataBlock();
@@ -41,7 +54,7 @@ public class Data
         DataBlock data = new DataBlock();
 
         BaseType baseType = BaseType.INT;
-        if (words[1] == "{") baseType = BaseType.NULL;
+        if (words[1] == "{") baseType = BaseType.NONE;
         else if (System.Char.IsLetter(words[1][0])) baseType = BaseType.STRING;
         else if (words[1].Contains(".")) baseType = BaseType.FLOAT;
 

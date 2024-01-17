@@ -19,6 +19,9 @@ public partial class DefLibrary : Node
     [Export]
     public Array<PawnDef> Pawns = new Array<PawnDef>();
 
+    [Export]
+    public DefUIPlanets UIPlanets = null;
+
     public override void _Ready()
     {
         DirAccess folder = null;
