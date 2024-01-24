@@ -1,6 +1,7 @@
 using Godot;
 
 // Generated
+[Tool]
 public partial class PawnData : Node
 {
     [Export]

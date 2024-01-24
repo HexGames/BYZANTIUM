@@ -7,12 +7,12 @@ Desert        moo es S
 Tundra        moo es S
 Arid          moo es S	
 Swamp         moo	
-Jungle            es
 Ocean         moo es S
 Terran        moo es S
 Artic             es S
 Inferno-Lava  moo es S
 Tropical      moo	 S
+Jungle            es
 Grassland     moo	
 Cavernous     moo	
 Savanah              S
@@ -32,15 +32,18 @@ Rings
 
 Moon
 
-size
+size (light gravity - Low gravity - normal gravity - high gravity - crushing gravity / no atmosphere - light atmosphere - normal athmosphere - heavy athmosphere - gas giant)
 molten - hot - temperate - cold - ice
-no atmosphere - light atmosphere - normal athmosphere - heavy athmosphere - gas gian
-CO2 rich - N rich - O2 rich
-light gravity - Low gravity - normal gravity - high gravity - crushing gravity
-lifeless - microbial - tundra - diverse - jungle
-rings
-moon - two moons - three moons - four moons
-
+- CO2 rich - N rich - O2 rich
+- ice water - lakes - oceans - water covered
+- toxic
+- magnetic field 
+- iradiated
+- microbial - simple - diverse - complex
+- hostile fauna
+- Alpine - Vulcanic
+- rings
+- moon - two moons - three moons - four moons
 
 Huge Caves
 Urbanized %
@@ -48,3 +51,21 @@ Primitive Ruins
 Advanced Ruins
 Ecumenopolis
 Ruined Ecumenopolis
+
+Lava 	 
+Vulcanic  
+Barren
+Toxic 
+Tomb
+Desert
+Arid
+Temperate
+Swamp
+Jungle
+Ocean
+Artic
+Frozen
+
+Gas Giant
+Broken -> Barren
+Ecumenopolis

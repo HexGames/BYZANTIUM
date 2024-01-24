@@ -2,8 +2,11 @@ using Godot;
 using Godot.Collections;
 
 // Generated
+[Tool]
 public partial class LocationData : Node
 {
+    [Export]
+    public string LocationName;
     [Export]
     public int X;
     [Export]
@@ -14,4 +17,9 @@ public partial class LocationData : Node
 
     [Export]
     public Array<PawnData> PawnsInLocation = new Array<PawnData>();
+
+    public LocationNode GetLocationNode()
+    {
+        return GetParent<LocationNode>();
+    }
 }

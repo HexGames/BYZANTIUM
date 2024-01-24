@@ -12,8 +12,8 @@ public partial class DefLibrary : Node
     public Dictionary<string, int> DB_Types_I = new Dictionary<string, int>();
 
     public string LocationsDir = "res:///Def/Locations/";
-    [Export]
-    public Array<LocationDef> Locations = new Array<LocationDef>();
+    //[Export]
+    //public Array<LocationDef> Locations = new Array<LocationDef>();
 
     public string PawnsDir = "res:///Def/Pawns/";
     [Export]
@@ -28,16 +28,16 @@ public partial class DefLibrary : Node
         string[] files = null;
 
         // Locations
-        Locations.Clear();
+        //Locations.Clear();
 
         folder = DirAccess.Open(LocationsDir);
         files = folder.GetFiles();
 
-        for ( int idx = 0; idx < files.Length; idx++ )
-        {
-            Resource res = GD.Load<Resource>(LocationsDir + files[idx]);
-            Locations.Add(res as LocationDef);
-        }
+        //for ( int idx = 0; idx < files.Length; idx++ )
+        //{
+        //    Resource res = GD.Load<Resource>(LocationsDir + files[idx]);
+        //    Locations.Add(res as LocationDef);
+        //}
 
         // Pawns
         Pawns.Clear();

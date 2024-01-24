@@ -52,5 +52,3 @@ fixed_size = true
 render_priority = 1
 text = "City Name"
 font_size = 14
-
-[connection signal="input_event" from="MeshInstance3D/Area3D" to="." method="SignalInputEvent"]

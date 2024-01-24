@@ -1,0 +1,204 @@
+Cities
+
+Power Plants
+Mines
+Goverment Offices
+Diplomatic Offices
+Special Extractors
+Research Labs
+Cultural Center
+
+Hydroponics Farms
+Nature-Bio-Domes
+
+Bio-Domes
+
+
+private economy - manufacturing / energy / mining / services / research -> grows on it's own, get tax (growth vs hapiness),  can buy output for credits
+1000 - 200 man / 220 egy / 100 min / 200 serv / 90 res  - 190 free to grow
+public economy - manufacturing / energy / mining / diplo|gov services / research / cultural cenetrs -> must build buildings, must pay upkeep
+100
+
+Power Plants - ENERGY - value
+Mines - METAL - value
+CREDITS - stockpile
+Goverment Offices - AUTHORITY - cap (domestic stuff)
+Diplomatic Offices - INFLUENCE - cap (external stuff)
+Special Extractors - Sepcial resource - Access to special resource at a level
+
+Cities - POPS
+
+
+Colonies - new / abandon / improve
+Ships - build / scrap / move / explore / attack
+// - Leaders - recruit / dissmiss / assign
+
+Research Labs - technology points - global income to progress bar || action
+Cultural Center - civics point - global icome to progress bar || action
+
+
+Reassembled Ship Shelter	Planetary Administration	Planetary Capital	System Capital-Complex	Imperial Palace
+Hive Core	Hive Nexus	Imperial Complex		
+Deployment Post	Administrative Array	Planetary Processor	Primary Nexus	Imperial Center
+Habitat Administration	Habitat Central Control	Habitat System Control		
+Resort Administration	Resort Capital-Complex	Governor's Palace	Governor's Estates	
+Research Labs	Research Complexes	Advanced Research Complexes		
+Administrative Offices	Administrative Park	Administrative Complex		
+Uplink Node	Network Junction	System Conflux		
+Synaptic Nodes	Synaptic Clusters	Confluence of Thought		
+Holo-Theatres	Hyper-Entertainment Forums			
+Commercial Zones	Commerce Megaplexes			
+Hydroponics Farms				
+Luxury Residences 	Paradise Dome			
+Communal Housing 	Utopian Communal Housing 			
+Hive Warren	Expanded Warren 			
+Drone Storage	Upgraded Drone Storage			
+Slave Huts				
+Stronghold	Fortress			
+Precinct Houses 	Hall of Judgment			
+Sentinel Posts 				
+Chemical Plants 				
+Exotic Gas Refineries				
+Synthetic Crystal Plants 				
+Temple	Holotemple	Sacred Nexus		
+Sacrificial Temple 	Grim Holotemple	Temple of Grand Sacrifice 		
+Organic Sanctuary 	Organic Paradise 			
+Power Plant				
+Alien Zoo				
+Resource Silos 				
+Bio-Reactor 				
+Nanite Transmuter				
+Overseer Residences 				
+Order's Castle	Order's Keep			
+Numistic Shrine				
+Waste Reprocessing Center 	
+
+Crude Huts				
+Stone Palaces				
+Regional Capitals				
+Junkheap				
+Primitive Dwellings 				
+Urban Dwellings 				
+Primitive Factory 				
+Primitive Mine				
+Primitive Farms				
+Primitive Power Plant 				
+Great Pyramid 				
+Radio Telescope Array 				
+Gaia Seeders 				
+Grand Sapling				
+Hanging Cities 				
+Nature Preserve Lodge				
+Ancient Palace				
+Ancient Control Center				
+Xeno Preserve				
+Aegis Complex				
+Affluence Center				
+Auto-Forge				
+Class-4 Singularity				
+Dimensional Fabricator				
+Nourishment Center				
+Sky Dome				
+Master Archive				
+Empyrean Shrine 				
+Ancient Cryo-Chamber				
+Autochthon Monument	Heritage Site	Hypercomms Forum		
+Sensorium Site	Sensorium Center	Sensorium Complex		
+Simulation Site	Stimulation Center	Stimulation Complex		
+Sanctuary of Repose	Pillar of Quietus	Galactic Memorial		
+Energy Grid	Energy Nexus			
+Mineral Purification Plants	Mineral Purification Hubs			
+Food Processing Facilities	Food Processing Centers			
+Alloy Foundries	Alloy Mega-Forges	Alloy Nano-Plants		
+Civilian Industries	Civilian Fabricators	Civilian Repli-Complexes		
+Ministry of Production				
+Coordinated Fulfillment Center	Universal Productivity Alignment Facility			
+Ancient Refinery 				
+Vultaum Reality Computer				
+Baol Organic Plant				
+Robot Assembly Plants 	Robot Assembly Complex 			
+Machine Assembly Plants	Machine Assembly Complex			
+Spawning Pools	Offspring Nest			
+Posthumous Employment Center 				
+Clone Vats	Ancient Clone Vat			
+Gaia Seeders 				
+Embassy Complex 	Grand Embassy Complex			
+Military Academy	Research Institute			
+Auto-Curating Vault				
+Citadel of Faith				
+Omega Alignment 				
+Faculty of Archaeostudies				
+Sanctum of the Composer 				
+Sanctum of the Eater				
+Sanctum of the Instrument				
+Sanctum of the Whisperers				
+Ministry of Culture				
+First League Filing Offices				
+Vaults of Knowledge				
+Contained Ecosphere				
+Murmuring Monolith 				
+Command Center				
+Administrative Hub 				
+Laboratory Complex				
+Makeshift Farms				
+Power Plant				
+Scrap Refinery				
+Planetary Shield Generator 				
+Dread Encampment				
+Chamber of Elevation	House of Apotheosis			
+Gene Clinic	Cyto-Revitalization Center			
+Galactic Stock Exchange				
+Noble Estates				
+Ranger Lodge				
+Slave Processing Facility				
+Psi Corps				
+Mutagenic Spa				
+Mutagenic Permutation Pool 				
+Hyper Lubrication Basin				
+Astral Siphon	Astral Funnel	Astral Nexus		
+				
+City District				
+Hive District				
+Nexus District				
+Industrial District				
+Trade District				
+Scavenger Site				
+Generator District				
+Mining District				
+Agriculture District				
+Habitation District				
+Order's Demesne				
+Industrial District				
+Zero-G Research District				
+Reactor District				
+Astro-Mining Bay				
+Residential Arcology				
+Foundry Arcology				
+Factory Arcology				
+Leisure Arcology				
+Sanctuary Arcology				
+Administrative Arcology				
+Ecclesiastical Arcology				
+City Segment				
+Hive Segment				
+Nexus Segment				
+Industrial Segment				
+Commercial Segment				
+Generator Segment				
+Research Segment				
+Agricultural Segment				
+				
+Gateways				
+Hyper Relays				
+Habitats				
+Orbital Rings				
+Science Nexus				
+Sentry Array				
+Mega Art Installation				
+Strategic Coordination Center				
+Interstellar Assembly				
+Mega Shipyard				
+Quantum Catapult				
+Ring World				
+Dyson Sphere				
+Matter Decompressor				

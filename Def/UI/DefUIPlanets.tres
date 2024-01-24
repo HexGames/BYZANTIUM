@@ -1,7 +1,9 @@
-[gd_resource type="Resource" load_steps=19 format=3 uid="uid://dbqgujf0k4dfw"]
+[gd_resource type="Resource" load_steps=21 format=3 uid="uid://dbqgujf0k4dfw"]
 
+[ext_resource type="Texture2D" uid="uid://c4rk2p6nqkuwu" path="res://Assets/Planets/BackgroundMoon.png" id="1_22vhd"]
 [ext_resource type="Texture2D" uid="uid://dw1asyhh6eqa2" path="res://Assets/Planets/Star.png" id="1_gbqhk"]
 [ext_resource type="Texture2D" uid="uid://bx2bwuh4o5c8n" path="res://Assets/Planets/Lava.png" id="1_r5msh"]
+[ext_resource type="Texture2D" uid="uid://c6ulfomgv6xo0" path="res://Assets/Planets/Background.png" id="2_2sf53"]
 [ext_resource type="Texture2D" uid="uid://7ab5vx0r4rwf" path="res://Assets/Planets/Vulcanic.png" id="2_60k7k"]
 [ext_resource type="Texture2D" uid="uid://coqsjpw7qqqb5" path="res://Assets/Planets/Barren.png" id="3_p2unt"]
 [ext_resource type="Texture2D" uid="uid://sfeqc2mww86u" path="res://Assets/Planets/Toxic.png" id="4_idcnd"]
@@ -21,6 +23,8 @@
 
 [resource]
 script = ExtResource("14_5sqyr")
+BacgroundTexture = ExtResource("2_2sf53")
+BacgroundMoonTexture = ExtResource("1_22vhd")
 Textures = {
 "Arid": ExtResource("6_adafn"),
 "Artic": ExtResource("11_3jefm"),

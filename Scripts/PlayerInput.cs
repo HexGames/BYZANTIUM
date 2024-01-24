@@ -6,7 +6,7 @@ public partial class PlayerInput : Node
 {
     [ExportCategory("Runtime")]
     [Export]
-    public UISystem SystemUI = null;
+    public Game Game = null;
     [Export]
     public LocationNode SelectedLocation = null;
 
@@ -14,7 +14,7 @@ public partial class PlayerInput : Node
     {
         if (!Engine.IsEditorHint())
         {
-            SystemUI = GetNode<UISystem>("/root/Main/SystemUI");
+            Game = GetNode<Game>("/root/Main/Game");
             //OnSelect += PlayerInput.SelectLocation;
         }
     }
@@ -51,7 +51,7 @@ public partial class PlayerInput : Node
         }
         SelectedLocation = newSelectedLocation;
 
-        SystemUI.Refresh(SelectedLocation.Data);
+        Game.SystemUI.Refresh(SelectedLocation.Data);
 
         // on select
         if (SelectedLocation != null) GD.Print("PlayerInput - selected " + SelectedLocation.Data.System.ValueS);
@@ -64,6 +64,6 @@ public partial class PlayerInput : Node
 
         SelectedLocation = null;
 
-        SystemUI.Refresh(null);
+        Game.SystemUI.Refresh(null);
     }
 }

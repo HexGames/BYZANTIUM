@@ -1,7 +1,7 @@
 ﻿using Godot;
 using System.Collections.Generic;
 
-public class Data
+public partial class Data
 {
     public enum BaseType
     {
@@ -11,7 +11,7 @@ public class Data
         STRING
     }
 
-    public static DataBlock AddData(DataBlock parent, string name, DefLibrary df)
+    static public DataBlock AddData(DataBlock parent, string name, DefLibrary df)
     {
         DataBlock data = new DataBlock();
 
@@ -23,7 +23,7 @@ public class Data
         return data;
     }
 
-    public static DataBlock AddData(DataBlock parent, string name, int value, DefLibrary df)
+    static public DataBlock AddData(DataBlock parent, string name, int value, DefLibrary df)
     {
         DataBlock data = new DataBlock();
 
@@ -36,7 +36,7 @@ public class Data
         return data;
     }
 
-    public static DataBlock AddData(DataBlock parent, string name, string value, DefLibrary df)
+    static public DataBlock AddData(DataBlock parent, string name, string value, DefLibrary df)
     {
         DataBlock data = new DataBlock();
 
@@ -49,7 +49,7 @@ public class Data
         return data;
     }
 
-    public static DataBlock LoadData(List<string> words, DefLibrary df)
+    static public DataBlock LoadData(List<string> words, DefLibrary df)
     {
         DataBlock data = new DataBlock();
 
@@ -91,7 +91,7 @@ public class Data
         return data;
     }
 
-    public static string SaveData(DataBlock dataBlock, int currentTabs, DefLibrary df)
+    static public string SaveData(DataBlock dataBlock, int currentTabs, DefLibrary df)
     {
         string text = "";
 

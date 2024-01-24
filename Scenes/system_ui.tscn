@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgbyfqcxpoj86"]
+[gd_scene load_steps=11 format=3 uid="uid://dgbyfqcxpoj86"]
 
-[ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/UITheme.tres" id="1_iky5h"]
+[ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_iky5h"]
 [ext_resource type="Script" path="res://Scripts/UI/UISystem.cs" id="1_lvvtj"]
 [ext_resource type="Theme" uid="uid://dwmckven3ym7s" path="res://UITheme/BackgroundLabel.tres" id="2_10bkp"]
 [ext_resource type="Texture2D" uid="uid://c6ulfomgv6xo0" path="res://Assets/Planets/Background.png" id="2_bhi0i"]
 [ext_resource type="Script" path="res://Scripts/UI/UISystemPlanet.cs" id="2_psrgw"]
 [ext_resource type="Texture2D" uid="uid://d0dgbe1qxxslt" path="res://Assets/Planets/Sun.png" id="3_aj6yl"]
 [ext_resource type="Texture2D" uid="uid://coqsjpw7qqqb5" path="res://Assets/Planets/Barren.png" id="5_dyekx"]
+[ext_resource type="Texture2D" uid="uid://bpeiu3mhak0kn" path="res://Assets/Planets/MoonOverlay.png" id="6_t46gw"]
 [ext_resource type="Texture2D" uid="uid://dtebju6geermh" path="res://Assets/Planets/ToxicYellow.png" id="7_0c12t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odnkx"]
@@ -45,7 +46,7 @@ mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Planet_0" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_0" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
@@ -58,6 +59,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_0"]
@@ -65,9 +67,24 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_aj6yl")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_0"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_0"]
@@ -76,8 +93,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 2.28882e-05
-offset_bottom = 3.05176e-05
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -86,7 +104,7 @@ text = "Sol"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_1" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_1" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
@@ -99,6 +117,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_1"]
@@ -108,13 +127,24 @@ anchor_left = 0.4
 anchor_top = 0.4
 anchor_right = 0.6
 anchor_bottom = 0.6
-offset_left = -1.90735e-05
-offset_top = 1.14441e-05
-offset_right = -1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_dyekx")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_1"]
@@ -123,8 +153,10 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
 offset_top = 2.28882e-05
-offset_bottom = 3.05176e-05
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -1260,7 +1292,7 @@ text = " Property "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_2" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_2" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
@@ -1273,6 +1305,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_2"]
@@ -1282,13 +1315,24 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.7
-offset_left = 1.14441e-05
-offset_top = 1.14441e-05
-offset_right = 1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_2"]
@@ -1297,6 +1341,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -1305,7 +1352,7 @@ text = "Venus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_3" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_3" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
@@ -1318,6 +1365,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_3"]
@@ -1327,13 +1375,24 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.7
-offset_left = 1.14441e-05
-offset_top = 1.14441e-05
-offset_right = 1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_3"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_3"]
@@ -1342,6 +1401,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -1350,7 +1412,7 @@ text = "Venus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_4" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_4" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
@@ -1363,6 +1425,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_4"]
@@ -1372,13 +1435,24 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.7
-offset_left = 1.14441e-05
-offset_top = 1.14441e-05
-offset_right = 1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_4"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_4"]
@@ -1387,6 +1461,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -1395,7 +1472,7 @@ text = "Venus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_5" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_5" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
@@ -1408,6 +1485,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_5"]
@@ -1417,13 +1495,23 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.7
-offset_left = 1.14441e-05
-offset_top = 1.14441e-05
-offset_right = 1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_5"]
@@ -1432,6 +1520,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -1440,7 +1531,7 @@ text = "Venus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_6" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_6" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
@@ -1453,6 +1544,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_6"]
@@ -1462,13 +1554,24 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.7
-offset_left = 1.14441e-05
-offset_top = 1.14441e-05
-offset_right = 1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_6"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_6"]
@@ -1477,6 +1580,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -1485,7 +1591,7 @@ text = "Venus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_7" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_7" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
@@ -1498,6 +1604,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_7"]
@@ -1507,13 +1614,24 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.7
-offset_left = 1.14441e-05
-offset_top = 1.14441e-05
-offset_right = 1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_7"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_7"]
@@ -1522,6 +1640,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -1530,7 +1651,7 @@ text = "Venus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_8" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_8" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
@@ -1543,6 +1664,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_8"]
@@ -1552,13 +1674,24 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.7
-offset_left = 1.14441e-05
-offset_top = 1.14441e-05
-offset_right = 1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_8"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_8"]
@@ -1567,6 +1700,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -1575,7 +1711,7 @@ text = "Venus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_9" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_9" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
@@ -1588,6 +1724,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_9"]
@@ -1597,13 +1734,24 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.7
-offset_left = 1.14441e-05
-offset_top = 1.14441e-05
-offset_right = 1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_9"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_9"]
@@ -1612,6 +1760,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -1620,7 +1771,7 @@ text = "Venus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_10" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_10" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 8
@@ -1633,6 +1784,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_10"]
@@ -1642,13 +1794,24 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.7
-offset_left = 1.14441e-05
-offset_top = 1.14441e-05
-offset_right = 1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_10"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_10"]
@@ -1657,6 +1820,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -1665,7 +1831,7 @@ text = "Venus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_11" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_11" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -1679,6 +1845,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_11"]
@@ -1688,13 +1855,24 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.7
-offset_left = 1.14441e-05
-offset_top = 1.14441e-05
-offset_right = 1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_11"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_11"]
@@ -1703,6 +1881,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")
@@ -1711,7 +1892,7 @@ text = "Venus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Planet_12" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "PlanetName")]
+[node name="Planet_12" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "MoonOverlayImage", "PlanetName")]
 visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -1725,6 +1906,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_psrgw")
 PlanetImage = NodePath("Planet")
+MoonOverlayImage = NodePath("MoonOverlay")
 PlanetName = NodePath("Label")
 
 [node name="Planet" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_12"]
@@ -1734,13 +1916,24 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.7
-offset_left = 1.14441e-05
-offset_top = 1.14441e-05
-offset_right = 1.52588e-05
-offset_bottom = 1.52588e-05
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0c12t")
+expand_mode = 1
+
+[node name="MoonOverlay" type="TextureRect" parent="VBoxContainer/HBoxContainer/Planet_12"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t46gw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Planet_12"]
@@ -1749,6 +1942,9 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_10bkp")

@@ -6,6 +6,10 @@ using System;
 public partial class DefUIPlanets : Resource
 {
     [Export]
+    public Texture2D BacgroundTexture = null;
+    [Export]
+    public Texture2D BacgroundMoonTexture = null;
+    [Export]
     public Dictionary<string, Texture2D> Textures = new Dictionary<string, Texture2D>();
 
 
@@ -24,6 +28,9 @@ public partial class DefUIPlanets : Resource
 
     private void LoadTexuresFunc()
     {
+        BacgroundTexture = (Texture2D)GD.Load("res://Assets/Planets/Background.png");
+        BacgroundMoonTexture = (Texture2D)GD.Load("res://Assets/Planets/BackgroundMoon.png");
+
         Textures.Clear();
 
         Textures.Add("Star", (Texture2D)GD.Load("res://Assets/Planets/Star.png"));

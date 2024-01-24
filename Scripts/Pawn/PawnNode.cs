@@ -2,6 +2,7 @@ using Godot;
 using System;
 
 // Generated
+[Tool]
 public partial class PawnNode : Node
 {
     //[Signal]

@@ -2,6 +2,7 @@ using Godot;
 using System;
 
 // Generated
+[Tool]
 public partial class LocationNode : Node
 {
     //[Signal]
@@ -12,8 +13,8 @@ public partial class LocationNode : Node
     public PlayerInput PlayerInput = null;
 
     [ExportCategory("Generated")]
-    [Export]
-    public LocationDef Def = null;
+    //[Export]
+    //public LocationDef Def = null;
     [Export]
     public LocationData Data = null;
     [Export]
@@ -22,11 +23,10 @@ public partial class LocationNode : Node
 
     public override void _Ready()
     {
-        if (!Engine.IsEditorHint())
-        {
-            PlayerInput = GetNode<PlayerInput>("/root/Main/PlayerInput");
-            //OnSelect += PlayerInput.SelectLocation;
-        }
+        if (Engine.IsEditorHint()) return;
+
+        PlayerInput = GetNode<PlayerInput>("/root/Main/PlayerInput");
+        //OnSelect += PlayerInput.SelectLocation;
     }
 
     public void Select()

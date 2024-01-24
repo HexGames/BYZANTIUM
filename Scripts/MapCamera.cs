@@ -7,7 +7,7 @@ public partial class MapCamera : Camera3D
     [Export]
     private Camera3D Camera;
     [Export]
-    private Node3D Transform;
+    private Node3D TransformNode;
     //[Export]
     //public float MapClamping = 9.0f;
     //[Export]
@@ -171,7 +171,7 @@ public partial class MapCamera : Camera3D
     {
         if (Engine.IsEditorHint())
             return;
-        TargetPosition = new Vector3(Transform.Position.X, 0f, Transform.Position.Z);
+        TargetPosition = new Vector3(TransformNode.Position.X, 0f, TransformNode.Position.Z);
         TargetDistance = ZoomMaxHeight;
         CurrentRotationX = RotationXDefault;
     }
@@ -208,9 +208,9 @@ public partial class MapCamera : Camera3D
 
         MouseOffset();
 
-        Transform.Rotation = new Vector3(-Mathf.DegToRad(CurrentRotationX), Mathf.DegToRad(CurrentRotationY), 0.0f);
-        Quaternion q = Quaternion.FromEuler(Transform.Rotation);
-        Transform.Position = TargetPosition + Vector3.Right * LockedOffsetFromInputX + q * Vector3.Back * TargetDistance;
+        TransformNode.Rotation = new Vector3(-Mathf.DegToRad(CurrentRotationX), Mathf.DegToRad(CurrentRotationY), 0.0f);
+        Quaternion q = Quaternion.FromEuler(TransformNode.Rotation);
+        TransformNode.Position = TargetPosition + Vector3.Right * LockedOffsetFromInputX + q * Vector3.Back * TargetDistance;
 
     }
 
@@ -240,7 +240,7 @@ public partial class MapCamera : Camera3D
             movement = movement.Normalized();
 
             movement *= (0.5f + ZoomPos) * MoveSpeed * deltaTime;
-            movement = Quaternion.FromEuler(new Vector3(0f, Transform.Rotation.Y, 0f)) * movement;
+            movement = Quaternion.FromEuler(new Vector3(0f, TransformNode.Rotation.Y, 0f)) * movement;
 
             TargetPosition += movement;
         }

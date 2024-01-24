@@ -73,19 +73,19 @@ public partial class DefGenerator : Node
             return;
         }
 
-        for (int idx = 0; idx < DefLibrary.Locations.Count; idx++)
-        {
-            string dirString = DefLibrary.Locations[idx].FilePath.GetBaseDir();
-            DirAccess dir = DirAccess.Open(dirString);
-            string fileString = DefLibrary.Locations[idx].FilePath.GetFile();
-            Error err = dir.Remove(fileString);
-            if (err != Error.Ok)
-            {
-                GD.PrintErr("HEX - Error deleting file: " + err);
-            }
-        }
-
-        DefLibrary.Locations.Clear();
+        //for (int idx = 0; idx < DefLibrary.Locations.Count; idx++)
+        //{
+        //    string dirString = DefLibrary.Locations[idx].FilePath.GetBaseDir();
+        //    DirAccess dir = DirAccess.Open(dirString);
+        //    string fileString = DefLibrary.Locations[idx].FilePath.GetFile();
+        //    Error err = dir.Remove(fileString);
+        //    if (err != Error.Ok)
+        //    {
+        //        GD.PrintErr("HEX - Error deleting file: " + err);
+        //    }
+        //}
+        //
+        //DefLibrary.Locations.Clear();
         //ResourceSaver.Save(DefLibrary, DefLibrary.ResourcePath);
     }
 
@@ -95,50 +95,50 @@ public partial class DefGenerator : Node
 
         // ?HEX? Godot.EditorInterface.scan 
 
-        LocationDef LocationInfo = new LocationDef();
-        LocationInfo.Positon = new Vector2( 10, 10 );
-        
-        string path = DefLibrary.LocationsDir + "System_Type_1" + ".tres";
-        LocationInfo.FilePath = path;
-        ResourceSaver.Save(LocationInfo, path);
-
-        DefLibrary.Locations.Add(LocationInfo);
-
-        LocationDef LocationInfo_2 = new LocationDef();
-        LocationInfo_2.Positon = new Vector2(-10, -10);
-        
-        path = DefLibrary.LocationsDir + "System_Type_2" + ".tres";
-        LocationInfo_2.FilePath = path;
-        ResourceSaver.Save(LocationInfo_2, path);
-
-        DefLibrary.Locations.Add(LocationInfo_2);
-
-        LocationDef LocationInfo_3 = new LocationDef();
-        LocationInfo_3.Positon = new Vector2(-10, 10);
-
-        path = DefLibrary.LocationsDir + "System_Type_3" + ".tres";
-        LocationInfo_3.FilePath = path;
-        ResourceSaver.Save(LocationInfo_3, path);
-
-        DefLibrary.Locations.Add(LocationInfo_3);
-
-        LocationDef LocationInfo_4 = new LocationDef();
-        LocationInfo_4.Positon = new Vector2(-10, 0);
-
-        path = DefLibrary.LocationsDir + "System_Type_4" + ".tres";
-        LocationInfo_4.FilePath = path;
-        ResourceSaver.Save(LocationInfo_4, path);
-
-        DefLibrary.Locations.Add(LocationInfo_4);
-
-        LocationDef LocationInfo_5 = new LocationDef();
-        LocationInfo_5.Positon = new Vector2(0, 10);
-
-        path = DefLibrary.LocationsDir + "System_Type_5" + ".tres";
-        LocationInfo_5.FilePath = path;
-        ResourceSaver.Save(LocationInfo_5, path);
-
-        DefLibrary.Locations.Add(LocationInfo_5);
+        //LocationDef LocationInfo = new LocationDef();
+        //LocationInfo.Positon = new Vector2( 10, 10 );
+        //
+        //string path = DefLibrary.LocationsDir + "System_Type_1" + ".tres";
+        //LocationInfo.FilePath = path;
+        //ResourceSaver.Save(LocationInfo, path);
+        //
+        //DefLibrary.Locations.Add(LocationInfo);
+        //
+        //LocationDef LocationInfo_2 = new LocationDef();
+        //LocationInfo_2.Positon = new Vector2(-10, -10);
+        //
+        //path = DefLibrary.LocationsDir + "System_Type_2" + ".tres";
+        //LocationInfo_2.FilePath = path;
+        //ResourceSaver.Save(LocationInfo_2, path);
+        //
+        //DefLibrary.Locations.Add(LocationInfo_2);
+        //
+        //LocationDef LocationInfo_3 = new LocationDef();
+        //LocationInfo_3.Positon = new Vector2(-10, 10);
+        //
+        //path = DefLibrary.LocationsDir + "System_Type_3" + ".tres";
+        //LocationInfo_3.FilePath = path;
+        //ResourceSaver.Save(LocationInfo_3, path);
+        //
+        //DefLibrary.Locations.Add(LocationInfo_3);
+        //
+        //LocationDef LocationInfo_4 = new LocationDef();
+        //LocationInfo_4.Positon = new Vector2(-10, 0);
+        //
+        //path = DefLibrary.LocationsDir + "System_Type_4" + ".tres";
+        //LocationInfo_4.FilePath = path;
+        //ResourceSaver.Save(LocationInfo_4, path);
+        //
+        //DefLibrary.Locations.Add(LocationInfo_4);
+        //
+        //LocationDef LocationInfo_5 = new LocationDef();
+        //LocationInfo_5.Positon = new Vector2(0, 10);
+        //
+        //path = DefLibrary.LocationsDir + "System_Type_5" + ".tres";
+        //LocationInfo_5.FilePath = path;
+        //ResourceSaver.Save(LocationInfo_5, path);
+        //
+        //DefLibrary.Locations.Add(LocationInfo_5);
 
         //ResourceSaver.Save(DefLibrary, DefLibrary.ResourcePath);
     }

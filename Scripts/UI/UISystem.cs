@@ -1,7 +1,7 @@
 using Godot;
 using Godot.Collections;
 
-[Tool]
+//[Tool]
 public partial class UISystem : Control
 {
     [Export]
@@ -25,20 +25,20 @@ public partial class UISystem : Control
     public UISystemPlanet PlanetSelected = null;
 
 
-    [Export]
-    public bool AutoLink
-    {
-        get => false;
-        set
-        {
-            if (value)
-            {
-                AutoLinkFunc();
-            }
-        }
-    }
+    //[Export]
+    //public bool AutoLink
+    //{
+    //    get => false;
+    //    set
+    //    {
+    //        if (value)
+    //        {
+    //            AutoLinkFunc();
+    //        }
+    //    }
+    //}
 
-    DefLibrary DefLib;
+    Game Game;
 
     public void AutoLinkFunc()
     {
@@ -72,7 +72,7 @@ public partial class UISystem : Control
     {
         if (!Engine.IsEditorHint())
         {
-            DefLib = GetNode<DefLibrary>("/root/Main/DefLibrary");
+            Game = GetNode<Game>("/root/Main/Game");
             //OnSelect += PlayerInput.SelectLocation;
             Visible = false;
         }
@@ -113,6 +113,7 @@ public partial class UISystem : Control
                 Planets[idx].Visible = false;
             }
         }
+        Game.ActionColonyUI.Visible = false;
         Visible = true;
     }
 
@@ -120,15 +121,39 @@ public partial class UISystem : Control
     {
         PlanetSelected = planetUI;
 
-        // change the panels parent
-        if (PlanetSelected != PlanetLeft.GetParent())
+        RefreshInfoPanels(planetUI);
+
+        // deselect other planets
+        for (int idx = 0; idx < Planets.Count; idx++)
         {
-            PlanetLeft.Reparent(PlanetSelected, false);
+            if (Planets[idx].Selected && planetUI != Planets[idx])
+            {
+                Planets[idx].Deselect();
+            }
         }
 
-        if (PlanetSelected != PlanetRight.GetParent())
+        if (Data.GetPlayer(Game.Map.Data, PlanetSelected._Data)?.Human == true)
         {
-            PlanetRight.Reparent(PlanetSelected, false);
+            Game.ActionColonyUI.Refresh(PlanetSelected);
+            Game.ActionColonyUI.Visible = true;
+        }
+        else
+        {
+            Game.ActionColonyUI.Visible = false;
+        }
+    }
+
+    private void RefreshInfoPanels(UISystemPlanet planetUI)
+    {
+        // change the panels parent
+        if (planetUI != PlanetLeft.GetParent())
+        {
+            PlanetLeft.Reparent(planetUI, false);
+        }
+
+        if (planetUI != PlanetRight.GetParent())
+        {
+            PlanetRight.Reparent(planetUI, false);
         }
 
         // make the proper panel visible
@@ -142,26 +167,61 @@ public partial class UISystem : Control
             }
         }
 
+        Array<DataBlock> planetProperties = planetUI._Data.GetSubs();
+        PlayerData playerData = null;
+        DataBlock colony = Data.GetPlayerColony(Game.Map.Data, planetUI._Data, out playerData);
+        if (colony != null)
+        {
+            Array<DataBlock> colonySubs = colony.GetSubs();
+            for (int idx = 0; idx < colonySubs.Count; idx++)
+            {
+                planetProperties.Add(colonySubs[idx]);
+                planetProperties.AddRange(colonySubs[idx].Subs);
+            }
+        }
 
         if (selectedIdx < (_PlanetsData.Count + 1) / 2)
         {
-            Array<DataBlock> planetProperties = PlanetSelected._Data.GetSubs();
             for (int idx = 0; idx < PlaneRightRows.Count; idx++) PlaneRightRows[idx].Visible = false;
-            for (int idx = 0; idx < PlaneRightRowsProperies.Count; idx++)
+            for (int idx = 0; idx < PlaneRightRowsProperies.Count; idx++) PlaneRightRowsProperies[idx].Visible = false;
+            
+            if (playerData != null)
             {
-                if (idx < planetProperties.Count)
-                {
-                    PlaneRightRowsProperies[idx].Text = planetProperties[idx].ToUIString();
-                    PlaneRightRowsProperies[idx].Visible = true;
+                string text = "Owned by " + playerData.PlayerName;
+                Color color = Game.UILib.GetPlayerColor(playerData.PlayerName);
 
-                    if (PlaneRightRows[idx / 9].Visible != true)
-                    {
-                        PlaneRightRows[idx / 9].Visible = true;
-                    }
-                }
-                else
+                StyleBoxFlat styleBox = new StyleBoxFlat();
+                styleBox.BgColor = color;
+
+                PlaneRightRowsProperies[0].Text = text;
+                PlaneRightRowsProperies[0].Visible = true;
+                PlaneRightRowsProperies[0].AddThemeStyleboxOverride("normal", styleBox);
+                PlaneRightRows[0].Visible = true;
+            }
+
+            for (int idx = 0; idx < planetProperties.Count; idx++)
+            {
+                int row = planetProperties[idx].ToUIRow();
+
+                if (row >= 0 && row < 7)
                 {
-                    PlaneRightRowsProperies[idx].Visible = false;
+                    for (int propertyIdx = row * 9; propertyIdx < row * 9 + 9; propertyIdx++)
+                    {
+                        if (PlaneRightRowsProperies[propertyIdx].Visible == false)
+                        {
+                            string text = planetProperties[idx].ToUIString();
+                            Color color = planetProperties[idx].ToUIColor();
+
+                            StyleBoxFlat styleBox = new StyleBoxFlat();
+                            styleBox.BgColor = color;
+
+                            PlaneRightRowsProperies[propertyIdx].Text = text;
+                            PlaneRightRowsProperies[propertyIdx].Visible = true;
+                            PlaneRightRowsProperies[propertyIdx].AddThemeStyleboxOverride("normal", styleBox);
+                            PlaneRightRows[row].Visible = true;
+                            break;
+                        }
+                    }
                 }
             }
 
@@ -170,37 +230,45 @@ public partial class UISystem : Control
         }
         else
         {
-            Array<DataBlock> planetProperties = PlanetSelected._Data.GetSubs();
             for (int idx = 0; idx < PlaneLeftRows.Count; idx++) PlaneLeftRows[idx].Visible = false;
-            for (int idx = 0; idx < PlaneLeftRowsProperies.Count; idx++)
-            {
-                if (idx < planetProperties.Count)
-                {
-                    PlaneLeftRowsProperies[idx].Text = planetProperties[idx].ToUIString();
-                    PlaneLeftRowsProperies[idx].Visible = true;
+            for (int idx = 0; idx < PlaneLeftRowsProperies.Count; idx++) PlaneLeftRowsProperies[idx].Visible = false;
 
-                    if (PlaneLeftRows[idx / 9].Visible != true)
-                    {
-                        PlaneLeftRows[idx / 9].Visible = true;
-                    }
-                }
-                else
+            if (playerData != null)
+            {
+                string text = "Owned by " + playerData.PlayerName;
+                Color color = Game.UILib.GetPlayerColor(playerData.PlayerName);
+
+                StyleBoxFlat styleBox = new StyleBoxFlat();
+                styleBox.BgColor = color;
+
+                PlaneLeftRowsProperies[0].Text = text;
+                PlaneLeftRowsProperies[0].Visible = true;
+                PlaneLeftRowsProperies[0].AddThemeStyleboxOverride("normal", styleBox);
+                PlaneLeftRows[0].Visible = true;
+            }
+
+            for (int idx = 0; idx < planetProperties.Count; idx++)
+            {
+                int row = planetProperties[idx].ToUIRow();
+                string text = planetProperties[idx].ToUIString();
+
+                if (row >= 0 && row < 7)
                 {
-                    PlaneLeftRowsProperies[idx].Visible = false;
+                    for (int propertyIdx = row * 9; propertyIdx < row * 9 + 9; propertyIdx++)
+                    {
+                        if (PlaneLeftRowsProperies[propertyIdx].Visible == false)
+                        {
+                            PlaneLeftRowsProperies[propertyIdx].Text = text;
+                            PlaneLeftRowsProperies[propertyIdx].Visible = true;
+                            PlaneLeftRows[row].Visible = true;
+                            break;
+                        }
+                    }
                 }
             }
 
             PlanetLeft.Visible = true;
             PlanetRight.Visible = false;
-        }
-
-        // deselect other planets
-        for (int idx = 0; idx < Planets.Count; idx++)
-        {
-            if (Planets[idx].Selected && planetUI != Planets[idx])
-            {
-                Planets[idx].Deselect();
-            }
         }
     }
 }

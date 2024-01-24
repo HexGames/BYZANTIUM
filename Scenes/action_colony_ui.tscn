@@ -1,0 +1,166 @@
+[gd_scene load_steps=4 format=3 uid="uid://fisjm1b6c6na"]
+
+[ext_resource type="Script" path="res://Scripts/UI/UIActionColony.cs" id="1_a74g4"]
+[ext_resource type="Theme" uid="uid://ccrra41cmxbe3" path="res://UITheme/UITheme.tres" id="2_asdt5"]
+[ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="2_mi685"]
+
+[node name="ActionColonyUI" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("1_a74g4")
+
+[node name="InProgress" type="Panel" parent="."]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_mi685")
+
+[node name="ProgressBar" type="ProgressBar" parent="InProgress"]
+custom_minimum_size = Vector2(180, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -26.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_mi685")
+value = 36.57
+
+[node name="Label" type="Label" parent="InProgress"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 2.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_mi685")
+text = "Build Power Plant"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseBtn" type="Button" parent="InProgress"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_mi685")
+text = "X"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(192, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_mi685")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_asdt5")
+
+[node name="Action_1" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"
+
+[node name="Action_2" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"
+
+[node name="Action_3" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"
+
+[node name="Action_4" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"
+
+[node name="Action_5" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"
+
+[node name="Action_6" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"
+
+[node name="Action_7" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"
+
+[node name="Action_8" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"
+
+[node name="Action_9" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"
+
+[node name="Action_10" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"
+
+[node name="Action_11" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"
+
+[node name="Action_12" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 2
+theme = ExtResource("2_mi685")
+text = "Build Something"

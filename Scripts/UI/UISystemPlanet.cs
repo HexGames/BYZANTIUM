@@ -3,13 +3,17 @@ using Godot.Collections;
 
 public partial class UISystemPlanet : Button
 {
+    [ExportCategory("Links")]
     [Export]
     public TextureRect PlanetImage = null;
+    [Export]
+    public TextureRect MoonOverlayImage = null;
     [Export]
     public Label PlanetName = null;
     [Export]
     public bool Selected = false;
 
+    [ExportCategory("Runtime")]
     [Export]
     public DataBlock _Data = null;
 
@@ -28,6 +32,11 @@ public partial class UISystemPlanet : Button
 
         PlanetName.Text = _Data.ValueS;
 
+        DataBlock typeData = _Data.GetSub("Type");
+        float sizeIncremnt = 0.035f;
+        if (typeData?.ValueS == "GasGiant") sizeIncremnt = 0.05f;
+
+
         if (_Data.ValueS == "Star" || _Data.ValueS == "Outer_System" || _Data.ValueS == "Asteroid_Belt")
         {
             PlanetImage.Texture = Game.Def.UIPlanets.GetPlanetTexture(_Data.ValueS);
@@ -44,42 +53,52 @@ public partial class UISystemPlanet : Button
             DataBlock sizeData = _Data.GetSub("Size");
             if (sizeData != null)
             {
-                PlanetImage.AnchorLeft = 0.45f - 0.05f * sizeData.ValueI;
-                PlanetImage.AnchorTop = 0.45f - 0.05f * sizeData.ValueI;
-                PlanetImage.AnchorRight = 0.55f + 0.05f * sizeData.ValueI;
-                PlanetImage.AnchorBottom = 0.55f + 0.05f * sizeData.ValueI;
+                PlanetImage.AnchorLeft = 0.45f - sizeIncremnt * sizeData.ValueI;
+                PlanetImage.AnchorTop = 0.45f - sizeIncremnt * sizeData.ValueI;
+                PlanetImage.AnchorRight = 0.55f + sizeIncremnt * sizeData.ValueI;
+                PlanetImage.AnchorBottom = 0.55f + sizeIncremnt * sizeData.ValueI;
             }
         }
         else
         { 
-            DataBlock typeData = _Data.GetSub("Type");
             PlanetImage.Texture = Game.Def.UIPlanets.GetPlanetTexture(typeData?.ValueS);
 
             DataBlock sizeData = _Data.GetSub("Size");
             if (sizeData != null)
             {
-                PlanetImage.AnchorLeft = 0.45f - 0.05f * sizeData.ValueI;
-                PlanetImage.AnchorTop = 0.45f - 0.05f * sizeData.ValueI;
-                PlanetImage.AnchorRight = 0.55f + 0.05f * sizeData.ValueI;
-                PlanetImage.AnchorBottom = 0.55f + 0.05f * sizeData.ValueI;
+                PlanetImage.AnchorLeft = 0.45f - sizeIncremnt * sizeData.ValueI;
+                PlanetImage.AnchorTop = 0.45f - sizeIncremnt * sizeData.ValueI;
+                PlanetImage.AnchorRight = 0.55f + sizeIncremnt * sizeData.ValueI;
+                PlanetImage.AnchorBottom = 0.55f + sizeIncremnt * sizeData.ValueI;
             }
+        }
+
+        if (_Data.GetSub("Moon") != null)
+        {
+            this.Icon = Game.Def.UIPlanets.BacgroundMoonTexture;
+            MoonOverlayImage.Visible = true;
+        }
+        else
+        {
+            this.Icon = Game.Def.UIPlanets.BacgroundTexture;
+            MoonOverlayImage.Visible = false;
         }
     }
 
     public void OnHoverEnter()
     {
-        PlanetName.AnchorTop = 0.6f;
+        if (Parent.PlanetSelected != this) PlanetName.AnchorTop = 0.6f;
 
-        if (Parent.PlanetSelected != null && Parent.PlanetSelected != this)
-            Parent.PlanetSelected.PlanetName.AnchorTop = 0.9f;
+        //if (Parent.PlanetSelected != null && Parent.PlanetSelected != this)
+        //    Parent.PlanetSelected.PlanetName.AnchorTop = 0.9f;
     }
 
     public void OnHoverExit()
     {
         PlanetName.AnchorTop = 0.8f;
 
-        if (Parent.PlanetSelected != null && Parent.PlanetSelected != this)
-            Parent.PlanetSelected.PlanetName.AnchorTop = 0.8f;
+        //if (Parent.PlanetSelected != null && Parent.PlanetSelected != this)
+        //    Parent.PlanetSelected.PlanetName.AnchorTop = 0.8f;
     }
 
     public void OnSelect()
@@ -87,6 +106,7 @@ public partial class UISystemPlanet : Button
         if (Selected) return;
 
         CustomMinimumSize = new Vector2(256, 256);
+        PlanetName.AnchorTop = 0.8f;
 
         Selected = true;
         Parent.Select( this );
