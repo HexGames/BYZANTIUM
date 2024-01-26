@@ -40,7 +40,7 @@ public partial class UISystem : Control
 
     Game Game;
 
-    public void AutoLinkFunc()
+    /*public void AutoLinkFunc()
     {
         Planets.Clear();
         PlanetLeft = null;
@@ -67,7 +67,8 @@ public partial class UISystem : Control
                 PlaneRightRowsProperies.Add(GetTree().EditedSceneRoot.GetNode<Label>("VBoxContainer/HBoxContainer/Planet_1/PanelRight/VBoxContainer/HBoxContainer" + n1.ToString() + "/Label" + n2.ToString()));
             }
         }
-    }
+    }*/
+
     public override void _Ready()
     {
         if (!Engine.IsEditorHint())

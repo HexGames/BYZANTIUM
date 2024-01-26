@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://ccrra41cmxbe3" path="res://UITheme/UITheme.tres" id="2_asdt5"]
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="2_mi685"]
 
-[node name="ActionColonyUI" type="Control"]
+[node name="ActionColonyUI" type="Control" node_paths=PackedStringArray("Actions")]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -12,6 +12,7 @@ anchor_right = 0.5
 grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("1_a74g4")
+Actions = []
 
 [node name="InProgress" type="Panel" parent="."]
 custom_minimum_size = Vector2(200, 60)
@@ -59,7 +60,7 @@ text = "Build Power Plant"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CloseBtn" type="Button" parent="InProgress"]
+[node name="SwitchBtn" type="Button" parent="InProgress"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 1
 anchors_preset = -1
@@ -70,7 +71,7 @@ offset_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("2_mi685")
-text = "X"
+text = "^"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 visible = false
@@ -81,8 +82,8 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -8.0
-offset_bottom = -8.0
+offset_top = -80.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_mi685")

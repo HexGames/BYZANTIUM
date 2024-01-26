@@ -10,6 +10,37 @@ public partial class Data
         FLOAT,
         STRING
     }
+    static public DataBlock CreateData(string name, DefLibrary df)
+    {
+        DataBlock data = new DataBlock();
+
+        data.Type = df.GetDBType(name, BaseType.NONE);
+        data.Name = name;
+
+        return data;
+    }
+
+    static public DataBlock CreateData(string name, int value, DefLibrary df)
+    {
+        DataBlock data = new DataBlock();
+
+        data.Type = df.GetDBType(name, BaseType.NONE);
+        data.Name = name;
+        data.ValueI = value;
+
+        return data;
+    }
+
+    static public DataBlock CreateData(string name, string value, DefLibrary df)
+    {
+        DataBlock data = new DataBlock();
+
+        data.Type = df.GetDBType(name, BaseType.STRING);
+        data.Name = name;
+        data.ValueS = value;
+
+        return data;
+    }
 
     static public DataBlock AddData(DataBlock parent, string name, DefLibrary df)
     {
