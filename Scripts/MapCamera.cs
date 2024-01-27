@@ -149,22 +149,25 @@ public partial class MapCamera : Camera3D
 
     private float RotationXDefault = 65;
 
-    public Vector3 GoToTarget; //target to go to
-    public bool GoToTargetReached = true;
-    public bool Locked = false;
-    public bool ZoomAndScroll = true;
+    private Vector3 GoToTarget; //target to go to
+    private bool GoToTargetReached = true;
+    private bool Locked = false;
+    private bool ZoomAndScroll = true;
 
-    public bool LockedNew = false; //lock height
+    private bool LockedNew = false; //lock height
 
-    public float LockedHeight = 28f; //lock height
-    public float LockedRotationX = 45f; //lock rotation
+    private float LockedHeight = 28f; //lock height
+    private float LockedRotationX = 45f; //lock rotation
 
-    public float LockedHeight_new = 10f; //lock height
-    public float LockedRotationX_new = 10f; //lock rotation
+    private float LockedHeight_new = 10f; //lock height
+    private float LockedRotationX_new = 10f; //lock rotation
 
-    public float LockedOffsetFromInputX = 0f;
+    private float LockedOffsetFromInputX = 0f;
 
+    [Export]
     public float ScreenEdgeBorder = 25f;
+    [Export]
+    public bool UILockSystem = false;
 
     // Godot specific
     public override void _Ready()
@@ -185,7 +188,7 @@ public partial class MapCamera : Camera3D
 
     public bool IsPointerOverGUI()
     {
-        return false;
+        return UILockSystem;
     }
 
     // Camera methods

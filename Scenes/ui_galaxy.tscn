@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://bukr82o6e8rl3"]
+
+[ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_cqepg"]
+[ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
+[ext_resource type="Script" path="res://Scripts/UI/UIGalaxySystem.cs" id="2_mmjn7"]
+
+[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("Systems")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ieb0k")
+Systems = [NodePath("SystemsHUD/System")]
+
+[node name="SystemsHUD" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="System" type="Control" parent="SystemsHUD"]
+anchors_preset = 0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 960.0
+offset_bottom = 540.0
+script = ExtResource("2_mmjn7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SystemsHUD/System"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="PanelContainer_1" type="PanelContainer" parent="SystemsHUD/System/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_cqepg")
+theme_type_variation = &"PanelContainerTight"
+
+[node name="System" type="Label" parent="SystemsHUD/System/VBoxContainer/PanelContainer_1"]
+layout_mode = 2
+theme = ExtResource("1_cqepg")
+text = "Sol System"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer_2" type="PanelContainer" parent="SystemsHUD/System/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_cqepg")
+theme_type_variation = &"PanelContainerTight"
+
+[node name="Colony" type="Label" parent="SystemsHUD/System/VBoxContainer/PanelContainer_2"]
+layout_mode = 2
+theme = ExtResource("1_cqepg")
+text = "Terra"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer_3" type="PanelContainer" parent="SystemsHUD/System/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_cqepg")
+theme_type_variation = &"PanelContainerTight"
+
+[node name="Extra" type="Label" parent="SystemsHUD/System/VBoxContainer/PanelContainer_3"]
+layout_mode = 2
+theme = ExtResource("1_cqepg")
+text = "+4"
+horizontal_alignment = 1
+vertical_alignment = 1

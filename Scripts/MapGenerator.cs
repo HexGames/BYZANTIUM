@@ -151,6 +151,8 @@ public partial class MapGenerator : Node
         node.AddChild(locationData);
         locationData.Owner = GetTree().EditedSceneRoot;
 
+        locationData._Node = node;
+
         PackedScene gfxScene = GD.Load<PackedScene>("res://3DPrefabs/" + StarGFXName + ".tscn");
         Node gfxNode = gfxScene.Instantiate();
         gfxNode.Name = locationData.System.ValueS + "_GFX";
@@ -160,7 +162,6 @@ public partial class MapGenerator : Node
 
         node.GFX = gfxNode as LocationGFX; // because of this LocationGFX has to be a Tool
         node.GFX.Position = new Vector3(8.6666f * (2.0f * x - y), 0.0f, -y * 15.0f) - new Vector3(8.6666f * FromFile_Size, 0.0f, -FromFile_Size * 15.0f);
-        node.GFX.SetLocationName(node.Name);
     }
 
     public void LoadMapFile()

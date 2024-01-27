@@ -6,6 +6,8 @@ using Godot.Collections;
 public partial class LocationData : Node
 {
     [Export]
+    public LocationNode _Node = null;
+    [Export]
     public string LocationName;
     [Export]
     public int X;

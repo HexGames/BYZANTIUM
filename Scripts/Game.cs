@@ -12,9 +12,11 @@ public partial class Game : Node
     [Export]
     public UILibrary UILib;
     [Export]
-    public UISystem SystemUI;
+    public UIGalaxy GalaxyUI;
     [Export]
-    public UIActionColony ActionColonyUI;
+    public UISystem SystemUI;
+    //[Export]
+    //public UIActionColony ActionColonyUI;
     [Export]
     public MapNode Map;
 

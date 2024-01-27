@@ -7,6 +7,8 @@ public partial class UISystemPlanet : Button
     [Export]
     public TextureRect PlanetImage = null;
     [Export]
+    public TextureRect RingsOverlayImage = null;
+    [Export]
     public TextureRect MoonOverlayImage = null;
     [Export]
     public Label PlanetName = null;
@@ -22,7 +24,7 @@ public partial class UISystemPlanet : Button
     public override void _Ready()
     {
         Game = GetNode<Game>("/root/Main/Game");
-        Parent = GetNode<UISystem>("../../../");
+        Parent = GetNode<UISystem>("../../../../");
     }
 
     public void Refresh( LocationData system, DataBlock planetSelected )
@@ -82,6 +84,15 @@ public partial class UISystemPlanet : Button
         {
             this.Icon = Game.Def.UIPlanets.BacgroundTexture;
             MoonOverlayImage.Visible = false;
+        }
+
+        if (_Data.GetSub("Rings") != null)
+        {
+            RingsOverlayImage.Visible = true;
+        }
+        else
+        {
+            RingsOverlayImage.Visible = false;
         }
     }
 

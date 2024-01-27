@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://ccrra41cmxbe3"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://ccrra41cmxbe3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whma6"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 1)
@@ -20,6 +20,9 @@ bg_color = Color(0.196078, 0.0901961, 0.00784314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65ng8"]
 bg_color = Color(0.101961, 0.0352941, 0.00392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r205"]
+bg_color = Color(1, 0.14902, 0, 0.12549)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kr2f"]
 bg_color = Color(0.192157, 0.203922, 0.203922, 1)
@@ -57,5 +60,7 @@ Button/styles/pressed = SubResource("StyleBoxFlat_uaxgc")
 LineEdit/colors/font_uneditable_color = Color(1, 1, 1, 1)
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_q3416")
 Panel/styles/panel = SubResource("StyleBoxFlat_65ng8")
+PanelTransparent/base_type = &"Panel"
+PanelTransparent/styles/panel = SubResource("StyleBoxFlat_7r205")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_0kr2f")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_77rj7")
