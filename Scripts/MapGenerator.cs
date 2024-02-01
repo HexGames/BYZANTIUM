@@ -14,14 +14,6 @@ public partial class MapGenerator : Node
     public MapNode Map;
     [Export]
     public string MapTypeFile = "";
-    [Export]
-    public string StarGFXName = "";
-    [Export]
-    public Node PlayersNode = null;
-    [Export]
-    public Node LocationsNode = null;
-    [Export]
-    public Node PawnsNode = null;
 
     [Export]
     public bool GenerateMap
@@ -52,33 +44,11 @@ public partial class MapGenerator : Node
     //{
     //}
 
-    public void ClearContainers()
-    {
-        while (LocationsNode.GetChildCount(true) > 0)
-        {
-            Node child = LocationsNode.GetChild(0, true);
-            LocationsNode.RemoveChild(child);
-            child.Free();
-        }
-
-        while (PlayersNode.GetChildCount(true) > 0)
-        {
-            Node child = PlayersNode.GetChild(0, true);
-            PlayersNode.RemoveChild(child);
-            child.Free();
-        }
-    }
-
     public void GenerateMapFunc()
     {
-        Map.Data.ClearMap();
-        ClearContainers();
+        Map.Data._Data = GenerateNewMapSave();
 
-        GenerateGameStats();
-
-        GenerateMapLocations();
-
-        GenerateMapPlayers();
+        Map.Data.GenerateGameFromData();
 
         // set camera
         MapCamera Camera = GetTree().EditedSceneRoot.GetNode<MapCamera>("Camera3D");
@@ -87,26 +57,37 @@ public partial class MapGenerator : Node
     }
 
     // --------------------------------------------------------------------------------------------------
-    public void GenerateGameStats()
+    public DataBlock GenerateNewMapSave()
     {
-        Map.Data.GameStats = new DataBlock();
-        
-        Map.Data.GameStats.Type = DefLibrary.GetDBType("GameStats", Data.BaseType.NONE);
-        
-        Data.AddData(Map.Data.GameStats, "Turn", 0, DefLibrary);
-        Data.AddData(Map.Data.GameStats, "Human", 0, DefLibrary);
+        DataBlock mapData = new DataBlock();
+        mapData.Type = DefLibrary.GetDBType("Map", Data.BaseType.NONE);
+
+        GenerateNewMapSave_GameStats(mapData);
+
+        GenerateNewMapSave_Systems(mapData);
+
+        GenerateNewMapSave_Players(mapData);
+
+        return mapData;
     }
 
     // --------------------------------------------------------------------------------------------------
-    public void GenerateMapLocations()
+    public void GenerateNewMapSave_GameStats(DataBlock map)
+    {
+        DataBlock gameStats = Data.AddData(map, "GameStats", DefLibrary);
+
+        Data.AddData(gameStats, "Turn", 0, DefLibrary);
+        Data.AddData(gameStats, "Human", 0, DefLibrary);
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    public void GenerateNewMapSave_Systems(DataBlock map)
     {
         LoadMapFile();
 
-        //if (DefLibrary.Locations.Count == 0)
-        //{
-        //    GD.PrintErr("Map gen error 01");
-        //    return;
-        //}
+        Data.AddData(map, "GalaxySize", FromFile_Size, DefLibrary);
+
+        DataBlock systemList = Data.AddData(map, "System_List", DefLibrary);
 
         for (int idx = 0; idx < FromFile_Stars.Count; idx++)
         {
@@ -120,51 +101,128 @@ public partial class MapGenerator : Node
                 int x = idx % (1 + 2 * FromFile_Size);
                 int y = idx / (1 + 2 * FromFile_Size);
 
-                DataBlock system = null;
-                if (idx == 22) system = GenerateSolarSystemCustom_Sol();
-                else system = GenerateSolarSystem();
+                string name = "System_" + idx.ToString();
+                if (idx == 22) name = "Sol";
 
-                LocationData locationData = new LocationData();
-                locationData.Name = system.ValueS + "_Loc";
-                locationData.System = system;
-                locationData.LocationName = system.ValueS + "_Loc";
-                locationData.X = x;
-                locationData.Y = y;
+                DataBlock systemData = Data.AddData(systemList, "System", name, DefLibrary);
 
-                Map.Data.Systems.Add(locationData);
+                Data.AddData(systemData, "X", x, DefLibrary);
+                Data.AddData(systemData, "Y", y, DefLibrary);
 
-                CreateLocationNode(x, y, locationData);
+                GenerateNewMapSave_Systems_Planets(systemData);
             }
         }
     }
-
-    public void CreateLocationNode(int x, int y, LocationData locationData)
+    // --------------------------------------------------------------------------------------------------
+    public void GenerateNewMapSave_Systems_Planets(DataBlock system)
     {
-        LocationNode node = new LocationNode();
-        //node.Def = DefLibrary.Locations[0];
-        node.Name = "Loc_" + locationData.System.ValueS;
-        node.Data = locationData;
-
-        LocationsNode.AddChild(node);//, true, InternalMode.Back);
-        node.Owner = GetTree().EditedSceneRoot;
-
-        node.AddChild(locationData);
-        locationData.Owner = GetTree().EditedSceneRoot;
-
-        locationData._Node = node;
-
-        PackedScene gfxScene = GD.Load<PackedScene>("res://3DPrefabs/" + StarGFXName + ".tscn");
-        Node gfxNode = gfxScene.Instantiate();
-        gfxNode.Name = locationData.System.ValueS + "_GFX";
-        node.AddChild(gfxNode);//, true, InternalMode.Back);
-        gfxNode.Owner = GetTree().EditedSceneRoot;
-        gfxNode.GetParent().SetEditableInstance(gfxNode, true);
-
-        node.GFX = gfxNode as LocationGFX; // because of this LocationGFX has to be a Tool
-        node.GFX.Position = new Vector3(8.6666f * (2.0f * x - y), 0.0f, -y * 15.0f) - new Vector3(8.6666f * FromFile_Size, 0.0f, -FromFile_Size * 15.0f);
+        DataBlock planetList = Data.AddData(system, "Planet_List", DefLibrary);
+        if (system.ValueS == "Sol")
+        {
+            GenerateNewMapSave_Systems_Planets_Sol(planetList);
+        }
+        else
+        {
+            GenerateNewMapSave_Systems_Planets_Random(planetList);
+        }
     }
 
-    public void LoadMapFile()
+    // --------------------------------------------------------------------------------------------------
+    public void GenerateNewMapSave_Players(DataBlock map)
+    {
+        DataBlock playerList = Data.AddData(map, "Player_List", DefLibrary);
+        for (int n = 0; n < 10; n++)
+        {
+            bool human = false;
+            string startingPlanetCustom = "";
+            string startingPlanetType = "";
+            if (n == 0)
+            {
+                startingPlanetCustom = "Terra";
+                startingPlanetType = "Temperate";
+                human = true;
+            }
+            else
+            {
+                startingPlanetType = "Temperate";
+            }
+
+            DataBlock startingPlanet;
+            DataBlock startingSystem;
+            GenerateNewMapSave_Players_GetStartingPlanet(map, startingPlanetCustom, startingPlanetType, out startingPlanet, out startingSystem);
+            if (startingPlanet == null || startingSystem == null) continue;
+
+            DataBlock playerData = Data.AddData(playerList, "Player", "Player_" + n.ToString(), DefLibrary); 
+            if (human) Data.AddData(playerData, "Human", DefLibrary);
+
+            GenerateNewMapSave_Players_Resources(playerData);
+            GenerateNewMapSave_Players_Status(playerData);
+            GenerateNewMapSave_Players_Civics(playerData);
+            GenerateNewMapSave_Players_Bonuses(playerData);
+
+            GenerateNewMapSave_Players_StartingColony(playerData, startingSystem, startingPlanet);
+        }
+    }
+
+    private void GenerateNewMapSave_Players_GetStartingPlanet(DataBlock mapData, string customName, string type, out DataBlock planet, out DataBlock system)
+    {
+        DataBlock systemList = mapData.GetSub("System_List");
+        Array<DataBlock> systems = systemList.GetSubs("System");
+
+        for (int systemIdx = 0; systemIdx < systems.Count; systemIdx++)
+        {
+            DataBlock planetList = systems[systemIdx].GetSub("Planet_List");
+            Array<DataBlock> planets = planetList.GetSubs("Planet");
+            for (int planetIdx = 0; planetIdx < planets.Count; planetIdx++)
+            {
+                DataBlock player = planets[planetIdx].GetLink("Link:Player");
+                if (planets[planetIdx].ValueS == customName && player == null)
+                {
+                    system = systems[systemIdx];
+                    planet = planets[planetIdx];
+                    return;
+                }
+            }
+        }
+
+        for (int systemIdx = 0; systemIdx < systems.Count; systemIdx++)
+        {
+            DataBlock planetList = systems[systemIdx].GetSub("Planet_List");
+            Array<DataBlock> planets = planetList.GetSubs("Planet");
+            for (int planetIdx = 0; planetIdx < planets.Count; planetIdx++)
+            {
+                DataBlock planetType = planets[planetIdx].GetSub("Type");
+                DataBlock player = planets[planetIdx].GetLink("Link:Player");
+                if (planetType != null && planetType.ValueS == type && player == null)
+                {
+                    system = systems[systemIdx];
+                    planet = planets[planetIdx];
+                    return;
+                }
+            }
+        }
+
+        system = null;
+        planet = null;
+    }
+    // --------------------------------------------------------------------------------------------------
+    private void GenerateNewMapSave_Players_StartingColony(DataBlock playerData, DataBlock startingSystem, DataBlock startingPlanet)
+    {
+        DataBlock colonyList = Data.AddData(playerData, "Colony_List", DefLibrary);
+
+        DataBlock colonyData = Data.AddData(colonyList, "Colony", startingPlanet.ValueS, DefLibrary);
+
+        GenerateNewMapSave_Players_StartingColony_Resources(colonyData);
+        GenerateNewMapSave_Players_StartingColony_Buildings(colonyData);
+        GenerateNewMapSave_Players_StartingColony_Support(colonyData);
+        GenerateNewMapSave_Players_StartingColony_Bonuses(colonyData);
+
+        Data.AddData(colonyData, "Link:System:Planet", startingSystem.ValueS + ":" + startingPlanet.ValueS, DefLibrary);
+        Data.AddData(startingPlanet, "Link:Player:Colony", playerData.ValueS + ":" + colonyData.ValueS, DefLibrary);
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    private void LoadMapFile()
     {
         using var file = FileAccess.Open("res:///Mod/" + MapTypeFile + ".map", FileAccess.ModeFlags.Read);
         string content = file.GetAsText();
@@ -218,7 +276,7 @@ public partial class MapGenerator : Node
         }
     }
 
-    string[] GetWordsFromNextValidRow(string[] rows, ref int rowIdx)
+    private string[] GetWordsFromNextValidRow(string[] rows, ref int rowIdx)
     {
         rowIdx++;
         if (rowIdx >= rows.Length)
@@ -232,112 +290,5 @@ public partial class MapGenerator : Node
             return GetWordsFromNextValidRow(rows, ref rowIdx);
         }
         return words;
-    }
-
-    // --------------------------------------------------------------------------------------------------
-    public void GenerateMapPlayers()
-    {
-        for (int n = 0; n < 10; n++)
-        {
-            bool human = false;
-            string startingPlanetCustom = "";
-            string startingPlanetType = "";
-            if (n == 0)
-            {
-                startingPlanetCustom = "Terra";
-                startingPlanetType = "Temperate";
-                human = true;
-            }
-            else
-            {
-                startingPlanetType = "Temperate";
-            }
-
-            LocationData startingSystem;
-            DataBlock startingPlanet = GetPlayerStartingPlanet(startingPlanetCustom, startingPlanetType, out startingSystem);
-            if (startingPlanet == null) continue;
-
-            DataBlock playerResources = GeneratePlayerResources();
-            DataBlock playerStatus = GeneratePlayerStatus();
-            DataBlock playerCivics = GeneratePlayerCivics();
-            DataBlock playerBonuses = GeneratePlayerBonuses();
-
-            PlayerData playerData = new PlayerData();
-            playerData.PlayerName = "Player_" + n.ToString();
-            playerData.Name = "Player_" + n.ToString() + "_Data";
-            playerData.Resources = playerResources;
-            playerData.Status = playerStatus;
-            playerData.Civics = playerCivics;
-            playerData.Bonuses = playerBonuses;
-            playerData.Human = human;
-
-            DataBlock startingColony = GeneratePlayerColony(startingSystem, startingPlanet);
-            playerData.Colonies.Add(startingColony);
-
-            Data.AddData(startingColony, "Link:Location:Planet", startingSystem.LocationName + ":" + startingPlanet.ValueS, DefLibrary);
-            Data.AddData(startingPlanet, "Link:Player:Colony", playerData.PlayerName + ":" + startingColony.ValueS, DefLibrary);
-
-            Map.Data.Players.Add(playerData);
-
-            CreatePlayerNode(playerData);
-        }
-    }
-
-    public DataBlock GetPlayerStartingPlanet(string customName, string type, out LocationData system)
-    {
-        for (int systemIdx = 0; systemIdx < Map.Data.Systems.Count; systemIdx++)
-        {
-            DataBlock systemData = Map.Data.Systems[systemIdx].System;
-            Array<DataBlock> planets = systemData.GetSubs("Planet");
-            for (int planetIdx = 0; planetIdx < planets.Count; planetIdx++)
-            {
-                DataBlock colony = planets[planetIdx].GetSub("Colony");
-                if (colony == null)
-                {
-                    if (planets[planetIdx].ValueS == customName)
-                    {
-                        system = Map.Data.Systems[systemIdx];
-                        return planets[planetIdx];
-                    }
-                }
-            }
-        }
-        for (int systemIdx = 0; systemIdx < Map.Data.Systems.Count; systemIdx++)
-        {
-            DataBlock systemData = Map.Data.Systems[systemIdx].System;
-            Array<DataBlock> planets = systemData.GetSubs("Planet");
-            for (int planetIdx = 0; planetIdx < planets.Count; planetIdx++)
-            {
-                DataBlock colony = planets[planetIdx].GetSub("Colony");
-                if (colony == null)
-                {
-                    DataBlock planetType = planets[planetIdx].GetSub("Type");
-                    DataBlock player = planets[planetIdx].GetLink("Link:Player");
-                    if (planetType != null && planetType.ValueS == type && player == null)
-                    {
-                        system = Map.Data.Systems[systemIdx];
-                        return planets[planetIdx];
-                    }
-                }
-            }
-        }
-        system = null;
-        return null;
-    }
-
-    public void CreatePlayerNode(PlayerData playerData)
-    {
-        PlayerNode node = new PlayerNode();
-        //node.Def = ...
-        node.Name = playerData.PlayerName;
-        node.Data = playerData;
-
-        PlayersNode.AddChild(node);//, true, InternalMode.Back);
-        node.Owner = GetTree().EditedSceneRoot;
-
-        node.AddChild(playerData);
-        playerData.Owner = GetTree().EditedSceneRoot;
-
-        //node.GFX = ...
     }
 }

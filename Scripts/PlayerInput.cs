@@ -8,7 +8,7 @@ public partial class PlayerInput : Node
     [Export]
     public Game Game = null;
     [Export]
-    public LocationNode SelectedLocation = null;
+    public SystemNode SelectedLocation = null;
 
     public override void _Ready()
     {
@@ -33,14 +33,31 @@ public partial class PlayerInput : Node
                 }
             }
         }
+
+        if (inputEvent is InputEventKey keyButtonEvent)
+        {
+            if (!keyButtonEvent.IsPressed())
+            {
+                // on key button release
+                if (keyButtonEvent.Keycode == Key.S)
+                {
+                    Game.Map.SaveMap();
+                }
+                if (keyButtonEvent.Keycode == Key.D)
+                {
+                    Game.Map.LoadMap();
+                    Game.Map.Data.GenerateGameFromData();
+                }
+            }
+        }
     }
 
-    public void SelectLocation( LocationNode newSelectedLocation )
+    public void SelectLocation( SystemNode newSelectedLocation )
     {
         if (SelectedLocation == newSelectedLocation)
         {
             // on reselect
-            GD.Print("PlayerInput - reselecteed " + SelectedLocation.Data.System.ValueS);
+            GD.Print("PlayerInput - reselecteed " + SelectedLocation.Data.SystemName);
 
             return;
         }
@@ -54,13 +71,13 @@ public partial class PlayerInput : Node
         Game.SystemUI.Refresh(SelectedLocation.Data);
 
         // on select
-        if (SelectedLocation != null) GD.Print("PlayerInput - selected " + SelectedLocation.Data.System.ValueS);
+        if (SelectedLocation != null) GD.Print("PlayerInput - selected " + SelectedLocation.Data.SystemName);
     }
 
     public void DeselectLocation()
     {
         // on deselect
-        if (SelectedLocation != null) GD.Print("PlayerInput - deselected " + SelectedLocation.Data.System.ValueS);
+        if (SelectedLocation != null) GD.Print("PlayerInput - deselected " + SelectedLocation.Data.SystemName);
 
         SelectedLocation = null;
 

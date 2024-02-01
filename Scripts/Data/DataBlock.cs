@@ -20,12 +20,6 @@ public partial class DataBlock : Resource
     [Export]
     public Array<DataBlock> Subs = new Array<DataBlock>();
 
-    // no allowed apparently
-    //[Export]
-    //public LocationData Location = null;
-    //[Export]
-    //public PawnData Pawn = null;
-
     public string ValueToString()
     {
         Data.BaseType baseType = (Data.BaseType)(Type/10000);

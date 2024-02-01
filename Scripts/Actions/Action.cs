@@ -1,11 +1,13 @@
-﻿public class Action
+﻿using System.Collections.Generic;
+
+public class Action
 {
-    public DataBlock ActionData;
+    public DataBlock ActionData = null;
 
-    public DataBlock Target_1;
-    public DataBlock Target_2;
+    public DataBlock Selected = null;
+    public DataBlock TargetChosen = null;
 
-    public DataBlock Cost;
+    public DataBlock Cost = null;
 
     public int SpawnWeight = 1;
     public int TimeToComplete = 1;
@@ -16,7 +18,7 @@
     public int Step = 0;
     public int TurnCurrent = 0;
 
-    DefLibrary DefLib = null;
+    protected DefLibrary DefLib = null;
 
     public void Init(DefLibrary df)
     {
@@ -58,25 +60,15 @@
         return true;
     }
 
-    public void Start()
+    public virtual void Start()
     {
-        Started = true;
-    }
-    public void Update()
-    {
-        if (Started)
-        {
-            Step++;
-        }
-
-        if (Results())
-        {
-            Started = false;
-        }
     }
 
-    public bool Results()
+    public virtual void Update()
     {
-        return true;
+    }
+
+    public virtual void End()
+    {
     }
 }

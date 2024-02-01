@@ -1,26 +1,67 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceuovcmnc2grc"]
+[gd_scene load_steps=7 format=3 uid="uid://ceuovcmnc2grc"]
 
-[ext_resource type="Script" path="res://Scripts/Location/LocationGFX.cs" id="1_0o71r"]
+[ext_resource type="Script" path="res://Scripts/System/SystemGFX.cs" id="1_oyjdi"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_881ui"]
-top_radius = 1.0
-bottom_radius = 1.0
-height = 1.0
+[sub_resource type="SphereMesh" id="SphereMesh_57fiv"]
+radial_segments = 32
+rings = 16
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyqpj"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_orq5f"]
 radius = 2.0
 
-[node name="Star" type="Node3D"]
-script = ExtResource("1_0o71r")
+[sub_resource type="SphereMesh" id="SphereMesh_8p3ak"]
+radius = 0.1
+height = 0.2
+radial_segments = 16
+rings = 8
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("CylinderMesh_881ui")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r13y"]
+disable_ambient_light = true
+albedo_color = Color(0.741176, 0.545098, 0.192157, 1)
+backlight = Color(0.470588, 0.478431, 0.54902, 1)
+disable_receive_shadows = true
+
+[node name="Star" type="Node3D"]
+script = ExtResource("1_oyjdi")
+
+[node name="Light" type="OmniLight3D" parent="."]
+light_energy = 2.0
+light_bake_mode = 1
+distance_fade_begin = 10.0
+distance_fade_length = 40.0
+omni_attenuation = 0.0743263
+
+[node name="Star" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_57fiv")
 surface_material_override/0 = SubResource("StandardMaterial3D_pyqpj")
 
-[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+[node name="Area3D" type="Area3D" parent="Star"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Star/Area3D"]
 shape = SubResource("SphereShape3D_orq5f")
+
+[node name="Planet_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.902106, 0, 0)
+mesh = SubResource("SphereMesh_8p3ak")
+surface_material_override/0 = SubResource("StandardMaterial3D_2r13y")
+
+[node name="Planet_2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94744, 0, 0.703)
+mesh = SubResource("SphereMesh_8p3ak")
+surface_material_override/0 = SubResource("StandardMaterial3D_2r13y")
+
+[node name="Planet_3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40631, 0, -1.12324)
+mesh = SubResource("SphereMesh_8p3ak")
+surface_material_override/0 = SubResource("StandardMaterial3D_2r13y")
+
+[node name="Planet_4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73581, 0, -1.51722)
+mesh = SubResource("SphereMesh_8p3ak")
+skeleton = NodePath("../Planet_3")
+surface_material_override/0 = SubResource("StandardMaterial3D_2r13y")

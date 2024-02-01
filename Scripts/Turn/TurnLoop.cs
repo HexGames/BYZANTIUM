@@ -14,15 +14,15 @@ public partial class TurnLoop : Node
     [Export]
     public PlayerData CurrentPlayerData = null;
 
-    [ExportCategory("Runtime - Colony")]
-    [Export]
-    public int CurrentColonyIdx = -1;
-    [Export]
-    public DataBlock CurrentColonyData = null;
-    [Export]
-    public LocationNode CurrentColonyLocation = null;
-    [Export]
-    public DataBlock CurrentColonyAction = null;
+    //[ExportCategory("Runtime - Colony")]
+    //[Export]
+    //public int CurrentColonyIdx = -1;
+    //[Export]
+    //public DataBlock CurrentColonyData = null;
+    //[Export]
+    //public SystemNode CurrentColonyLocation = null;
+    //[Export]
+    //public DataBlock CurrentColonyAction = null;
 
     [ExportCategory("Runtime - Links")]
     [Export]
@@ -54,21 +54,32 @@ public partial class TurnLoop : Node
             return;
         }
 
-        CurrentColonyData = GetNextColony(CurrentPlayerData, out CurrentColonyIdx, out CurrentColonyLocation, out CurrentColonyAction);
-
-        if (CurrentColonyData != null)
+        if (CurrentPlayerData.Human == true)
         {
-            if (CurrentPlayerData.Human == true)
-            {
-                // HUMAN
-                WaitingForHuman = true;
-            }
-            else
-            {
-                // AI
-                CurrentColonyAction.ValueS = "Infinite_AI";
-            }
+            // HUMAN
+            WaitingForHuman = true;
         }
+        else
+        {
+            // AI
+            CurrentPlayerData.TurnFinished = true;
+        }
+
+        //CurrentColonyData = GetNextColony(CurrentPlayerData, out CurrentColonyIdx, out CurrentColonyLocation, out CurrentColonyAction);
+        //
+        //if (CurrentColonyData != null)
+        //{
+        //    if (CurrentPlayerData.Human == true)
+        //    {
+        //        // HUMAN
+        //        WaitingForHuman = true;
+        //    }
+        //    else
+        //    {
+        //        // AI
+        //        CurrentColonyAction.ValueS = "Infinite_AI";
+        //    }
+        //}
     }
 
     PlayerData GetNextPlayer(out int playeridx)
@@ -90,43 +101,59 @@ public partial class TurnLoop : Node
         Game.Map.Data.Turn = Game.Map.Data.Turn + 1;
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
-            Game.Map.Data.Players[playerIdx].TurnFinished = true;
-        }
-    }
-
-    DataBlock GetNextColony(PlayerData playerData, out int colonyIdx, out LocationNode colonyLocation, out DataBlock colonyAction)
-    {
-        for (int idx = 0; idx < playerData.Colonies.Count; idx++)
-        {
-            DataBlock action = playerData.Colonies[idx].GetSub("Action");
-            if (action.ValueS == "None")
+            PlayerData player = Game.Map.Data.Players[playerIdx];
+            for (int colonyIdx = 0; colonyIdx < player.Colonies.Count; colonyIdx++)
             {
-                colonyIdx = idx;
-                colonyAction = action;
-                colonyLocation = GetLocation(playerData.Colonies[idx].GetSub("System").ValueS);
-                return playerData.Colonies[idx];
+                ColonyData colony = player.Colonies[colonyIdx];
+
+                if (colony.ActionBuild != null)
+                {
+                    ActionColonyBuild.Update(colony, Game.Def);
+                }
             }
         }
 
-        colonyIdx = -1;
-        colonyAction = null;
-        colonyLocation = null;
-        return null;
-    }
+        Game.GalaxyUI.Refresh();
 
-    LocationNode GetLocation( string location )
-    {
-        string system = Helper.Split_0(location);
-
-        for (int idx = 0; idx < Game.Map.Data.Systems.Count; idx++)
+        for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
-            if (Game.Map.Data.Systems[idx].System.ValueS == system)
-            {
-                return Game.Map.Data.Systems[idx].GetLocationNode();
-            }
+            Game.Map.Data.Players[playerIdx].TurnFinished = false;
         }
-
-        GD.PrintErr("Location " + location + " not found!");
-        return null;
     }
+
+    //DataBlock GetNextColony(PlayerData playerData, out int colonyIdx, out SystemNode colonyLocation, out DataBlock colonyAction)
+    //{
+    //    for (int idx = 0; idx < playerData.Colonies.Count; idx++)
+    //    {
+    //        //DataBlock action = playerData.Colonies[idx].GetSub("Action");
+    //        //if (action.ValueS == "None")
+    //        //{
+    //        //    colonyIdx = idx;
+    //        //    colonyAction = action;
+    //        //    colonyLocation = GetLocation(playerData.Colonies[idx].GetSub("System").ValueS);
+    //        //    return playerData.Colonies[idx];
+    //        //}
+    //    }
+    //
+    //    colonyIdx = -1;
+    //    colonyAction = null;
+    //    colonyLocation = null;
+    //    return null;
+    //}
+
+    //SystemNode GetLocation( string location )
+    //{
+    //    string system = Helper.Split_0(location);
+    //
+    //    for (int idx = 0; idx < Game.Map.Data.Systems.Count; idx++)
+    //    {
+    //        //if (Game.Map.Data.Systems[idx].System.ValueS == system)
+    //        //{
+    //        //    return Game.Map.Data.Systems[idx].GetLocationNode();
+    //        //}
+    //    }
+    //
+    //    GD.PrintErr("Location " + location + " not found!");
+    //    return null;
+    //}
 }

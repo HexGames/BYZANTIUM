@@ -7,7 +7,15 @@ using System.Collections.Generic;
 [Tool]
 public partial class MapData : Node
 {
-    [ExportCategory("Generated")]
+    [ExportCategory("MapData-Link")]
+    [Export]
+    public MapNode _Node;
+
+    [ExportCategory("MapData-LoadedSave")]
+    [Export]
+    public DataBlock _Data;
+
+    [ExportCategory("MapData-Generated")]
     [Export]
     public DataBlock GameStats = null;
     [Export]
@@ -15,7 +23,7 @@ public partial class MapData : Node
     [Export]
     public Array<PlayerData> Players = new Array<PlayerData>();
     [Export]
-    public Array<LocationData> Systems = new Array<LocationData>();
+    public Array<SystemData> Systems = new Array<SystemData>();
     [Export]
     public Array<PawnData> Fleets = new Array<PawnData>();
 
@@ -39,9 +47,10 @@ public partial class MapData : Node
             {
                 TurnData = GameStats.GetSub("Turn");
             }
-            GameStats.ValueI = value;
+            TurnData.ValueI = value;
         }
     }
+
     public void GetTurnData()
     {
     }
@@ -55,11 +64,9 @@ public partial class MapData : Node
         Fleets.Clear();
     }
 
-    public void LoadMap( string saveName, MapGenerator mapGen, DefLibrary defLib )
+    // --------------------------------------------------------------------------------------------
+    public void LoadMap( string saveName, DefLibrary defLib )
     {
-        mapGen.ClearContainers();
-        ClearMap();
-
         using var file = FileAccess.Open("res:///Saves/" + saveName + ".sav", FileAccess.ModeFlags.Read);
         string content = file.GetAsText();
 
@@ -68,7 +75,7 @@ public partial class MapData : Node
         int rowIdx = -1;
 
         List<string> words = new List<string>();
-        string[] wordsOnRow = GetWordsFromNextValidRow(rows, ref rowIdx);
+        string[] wordsOnRow = LoadMap_GetWordsFromNextValidRow(rows, ref rowIdx);
         while (wordsOnRow != null)
         {
             if (words.Count > 0 && words[words.Count - 1] != "{" && words[words.Count - 1] != "}" && wordsOnRow[0] != "{")
@@ -77,113 +84,15 @@ public partial class MapData : Node
                 words.Add("}");
             }
             words.AddRange(wordsOnRow);
-            wordsOnRow = GetWordsFromNextValidRow(rows, ref rowIdx);
+            wordsOnRow = LoadMap_GetWordsFromNextValidRow(rows, ref rowIdx);
         }
 
         int wordIdx = 0;
 
-        wordIdx++; // "Systems"
-        wordIdx++; // {
-
-        while (words[wordIdx] != "}")
-        {
-            string firstWord = words[wordIdx];
-            wordIdx++;
-            string secondWord = "";
-            if (words[wordIdx] != "{" && words[wordIdx] != "}")
-            {
-                secondWord = words[wordIdx];
-                wordIdx++;
-            }
-            if (firstWord == "Location" && words[wordIdx] == "{")
-            {
-                wordIdx++; // {
-
-                LocationData locData = new LocationData();
-                locData.Name = secondWord;
-
-                wordIdx++; // X
-                locData.X = words[wordIdx].ToInt();
-                wordIdx++;
-                wordIdx++; // {
-                wordIdx++; // }
-                wordIdx++; // Y
-                locData.Y = words[wordIdx].ToInt();
-                wordIdx++;
-                wordIdx++; // {
-                wordIdx++; // }
-
-                int dataBlockStart = wordIdx;
-                int dataBlockEnd = wordIdx + 1;
-                int depth = 1;
-                while (depth > 0)
-                {
-                    dataBlockEnd++;
-                    if (words[dataBlockEnd] == "{") depth++;
-                    if (words[dataBlockEnd] == "}") depth--;
-                }
-                locData.System = Data.LoadData(words.GetRange(dataBlockStart, dataBlockEnd - dataBlockStart), defLib);
-                wordIdx = dataBlockEnd + 1;
-
-                Systems.Add(locData);
-
-                mapGen.CreateLocationNode(locData.X, locData.Y, locData);
-            }
-        }
+        _Data = Data.LoadData(words, defLib);
     }
 
-    public void SaveMap(string saveName, DefLibrary defLib)
-    {
-        string content = "";
-        int currentTabs = 0;
-
-        // GameStats
-        //content += Data.SaveData(GameStats, 0, defLib);
-
-        // Systems
-        content += "Systems" + "\n";
-        content += "{" + "\n";
-        currentTabs++;
-        for (int systemIdx = 0; systemIdx < Systems.Count; systemIdx++)
-        {
-            content += Helper.Tabs(currentTabs) + "Location " + Systems[systemIdx].Name + "\n";
-            content += Helper.Tabs(currentTabs) + "{" + "\n"; 
-            content += Helper.Tabs(currentTabs + 1) + "X " + Systems[systemIdx].X + "\n";
-            content += Helper.Tabs(currentTabs + 1) + "Y " + Systems[systemIdx].Y + "\n";
-            content += Data.SaveData(Systems[systemIdx].System, currentTabs + 1, defLib);
-            content += Helper.Tabs(currentTabs) + "}" + "\n";
-
-        }
-        currentTabs--;
-        content += "}" + "\n";
-
-        // Players
-        content += "Players" + "\n";
-        content += "{" + "\n";
-        currentTabs++;
-        for (int PlayerIdx = 0; PlayerIdx < Players.Count; PlayerIdx++)
-        {
-            content += Helper.Tabs(currentTabs) + "Player " + Players[PlayerIdx].PlayerName + "\n";
-            content += Helper.Tabs(currentTabs) + "{" + "\n";
-            content += Data.SaveData(Players[PlayerIdx].Resources, currentTabs + 1, defLib);
-            content += Data.SaveData(Players[PlayerIdx].Status, currentTabs + 1, defLib);
-            content += Data.SaveData(Players[PlayerIdx].Civics, currentTabs + 1, defLib);
-            content += Data.SaveData(Players[PlayerIdx].Bonuses, currentTabs + 1, defLib);
-            for (int colonyIdx = 0; colonyIdx < Players[PlayerIdx].Colonies.Count; colonyIdx++)
-            {
-                content += Data.SaveData(Players[PlayerIdx].Colonies[colonyIdx], currentTabs + 1, defLib);
-            }
-            content += Helper.Tabs(currentTabs) + "}" + "\n";
-
-        }
-        currentTabs--;
-        content += "}" + "\n";
-
-        using var file = FileAccess.Open("res:///Saves/" + saveName + ".sav", FileAccess.ModeFlags.Write);
-        file.StoreString(content);
-    }
-
-    string[] GetWordsFromNextValidRow(string[] rows, ref int rowIdx)
+    string[] LoadMap_GetWordsFromNextValidRow(string[] rows, ref int rowIdx)
     {
         rowIdx++;
         if (rowIdx >= rows.Length)
@@ -194,9 +103,188 @@ public partial class MapData : Node
         string[] words = rows[rowIdx].Split("//")[0].Split(' ', StringSplitOptions.RemoveEmptyEntries);
         if (words.Length == 0)
         {
-            return GetWordsFromNextValidRow(rows, ref rowIdx);
+            return LoadMap_GetWordsFromNextValidRow(rows, ref rowIdx);
         }
         return words;
+    }
+
+    public void SaveMap(string saveName, DefLibrary defLib)
+    {
+        string content = "";
+
+        // GameStats
+        content += Data.SaveData(_Data, 0, defLib);
+
+        using var file = FileAccess.Open("res:///Saves/" + saveName + ".sav", FileAccess.ModeFlags.Write);
+        file.StoreString(content);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public void GenerateGameFromData()
+    {
+        _Node.ClearContainers();
+        ClearMap();
+
+        // Game Stats
+        GameStats = _Data.GetSub("GameStats");
+
+        // Systems
+        int galaxySize = _Data.GetSub("GalaxySize").ValueI;
+        PackedScene gfxScene = GD.Load<PackedScene>("res://3DPrefabs/" + _Node.StarGFXName + ".tscn");
+
+        DataBlock systemList = _Data.GetSub("System_List");
+        Array<DataBlock> systems = systemList.GetSubs("System");
+        for (int idx = 0; idx < systems.Count; idx++)
+        {
+            GenerateGameFromData_System(systems[idx], galaxySize, gfxScene);
+        }
+
+        // Players
+        DataBlock playerList = _Data.GetSub("Player_List");
+        Array<DataBlock> players = playerList.GetSubs("Player");
+        for (int idx = 0; idx < players.Count; idx++)
+        {
+            GenerateGameFromData_Player(players[idx]);
+        }
+    }
+
+    public void GenerateGameFromData_System(DataBlock systemDataBlock, int galaxySize, PackedScene gfxScene)
+    {
+        // Node
+        SystemNode systemNode = new SystemNode();
+        systemNode.Name = systemDataBlock.ValueS;
+
+        _Node.SystemsNode.AddChild(systemNode);//, true, InternalMode.Back);
+        systemNode.Owner = GetTree().EditedSceneRoot;
+
+        // Data
+        SystemData systemData = new SystemData();
+        systemData.Name = systemDataBlock.ValueS + "_Data";
+        systemData.SystemName = systemDataBlock.ValueS;
+        systemData.X = systemDataBlock.GetSub("X").ValueI;
+        systemData.Y = systemDataBlock.GetSub("Y").ValueI;
+
+        DataBlock planetList = systemDataBlock.GetSub("Planet_List");
+        systemData.Planets.AddRange(planetList.GetSubs("Planet"));
+
+        systemNode.Data = systemData;
+        systemData._Node = systemNode;
+
+        systemNode.AddChild(systemData);//, true, InternalMode.Back);
+        systemData.Owner = GetTree().EditedSceneRoot;
+
+        Systems.Add(systemData);
+
+        // GFX
+        Node gfxNode = gfxScene.Instantiate();
+        gfxNode.Name = systemDataBlock.ValueS + "_GFX";
+
+        systemNode.AddChild(gfxNode);//, true, InternalMode.Back);
+        gfxNode.Owner = GetTree().EditedSceneRoot;
+        gfxNode.GetParent().SetEditableInstance(gfxNode, true);
+
+        systemNode.GFX = gfxNode as SystemGFX; // because of this LocationGFX has to be a Tool
+        systemNode.GFX._Node = systemNode;
+        systemNode.GFX.Position = new Vector3(8.6666f * (2.0f * systemData.X - systemData.Y), 0.0f, -systemData.Y * 15.0f) - new Vector3(8.6666f * galaxySize, 0.0f, -galaxySize * 15.0f);
+    }
+
+    public void GenerateGameFromData_Player(DataBlock playerDataBlock)
+    {
+        // Node
+        PlayerNode playerNode = new PlayerNode();
+        playerNode.Name = playerDataBlock.ValueS;
+
+        _Node.PlayersNode.AddChild(playerNode);//, true, InternalMode.Back);
+        playerNode.Owner = GetTree().EditedSceneRoot;
+
+        // Data
+        PlayerData playerData = new PlayerData();
+        playerData.Name = playerDataBlock.ValueS + "_Data";
+        playerData.PlayerName = playerDataBlock.ValueS;
+        playerData.Resources = playerDataBlock.GetSub("Resources");
+        playerData.Status = playerDataBlock.GetSub("Status");
+        playerData.Civics = playerDataBlock.GetSub("Civics");
+        playerData.Bonuses = playerDataBlock.GetSub("Bonuses");
+        playerData.Human = playerDataBlock.GetSub("Human") != null;
+
+        DataBlock colonyList = playerDataBlock.GetSub("Colony_List");
+        Array<DataBlock> colonies = colonyList.GetSubs("Colony");
+        for (int idx = 0; idx < colonies.Count; idx++)
+        {
+            GenerateGameFromData_Player_Colony(colonies[idx], playerData);
+        }
+
+        playerNode.Data = playerData;
+        playerData._Node = playerNode;
+
+        playerNode.AddChild(playerData);//, true, InternalMode.Back);
+        playerData.Owner = GetTree().EditedSceneRoot;
+
+        Players.Add(playerData);
+    }
+
+    public void GenerateGameFromData_Player_Colony(DataBlock colonyDataBlock, PlayerData playerData)
+    {
+        // Node
+        ColonyNode colonyNode = new ColonyNode();
+        colonyNode.Name = colonyDataBlock.ValueS;
+
+        _Node.PlayersNode.AddChild(colonyNode);//, true, InternalMode.Back);
+        colonyNode.Owner = GetTree().EditedSceneRoot;
+
+        // Data
+        ColonyData colonyData = new ColonyData();
+        colonyData.Name = colonyDataBlock.ValueS + "_Data";
+        colonyData.ColonyName = colonyDataBlock.ValueS;
+        colonyData.DataBlock = colonyDataBlock;
+        colonyData.Resources = colonyDataBlock.GetSub("Resources");
+        colonyData.Buildings = colonyDataBlock.GetSub("Buildings");
+        colonyData.Support = colonyDataBlock.GetSub("Support");
+        colonyData.Bonuses = colonyDataBlock.GetSub("Bonuses");
+
+        colonyNode.Data = colonyData;
+        colonyData._Node = colonyNode;
+
+        colonyNode.AddChild(colonyData);//, true, InternalMode.Back);
+        colonyData.Owner = GetTree().EditedSceneRoot;
+
+        // links
+        DataBlock link = colonyDataBlock.GetLink("Link:System:Planet");
+        string system = Helper.Split_0(link.ValueS);
+        string planet = Helper.Split_1(link.ValueS);
+        for (int systemIdx = 0; systemIdx < Systems.Count; systemIdx++)
+        {
+            if (Systems[systemIdx].SystemName == system)
+            {
+                for (int planetIdx = 0; planetIdx < Systems[systemIdx].Planets.Count; planetIdx++)
+                {
+                    if (Systems[systemIdx].Planets[planetIdx].ValueS == planet)
+                    {
+                        colonyData.System = Systems[systemIdx];
+                        colonyData.Planet = Systems[systemIdx].Planets[planetIdx];
+                        Systems[systemIdx].Colonies.Add(colonyData);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+
+        playerData.Colonies.Add(colonyData);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public SystemData GetSystem(string system)
+    {
+        for (int idx = 0; idx < Systems.Count; idx++)
+        {
+            if (Systems[idx].SystemName == system)
+            {
+                return Systems[idx];
+            }
+        }
+
+        return null;
     }
 
     public PlayerData GetPlayer(string player)

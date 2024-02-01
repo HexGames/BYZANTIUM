@@ -7,6 +7,15 @@
 // TECHNOLOGY - improve random cards, imrpove random cards of type, improve specific card, unlock new cards
 // DIPLOMACY - improve relations, make agreements
 
+// EXPLORE - on map overlay with actions and icons
+// COMBAT - on map overlay with actions and icons
+// SHIPYARD - choose between cards ? - multistep ? - multichoice with confirm/validate at end
+// COLONIAL - choose between cards - per advanced colony / progress-bar with choice at start 
+// ECONOMY - choose between cards - per advanced colony / progress-bar with choice at start 
+// CIVIC - choose between cards - progress-bar with unlock point to be assigned in a tree screen
+// TECHNOLOGY - choose between cards - progress-bar wiht choice at start 
+// DIPLOMACY - choose between cards ? - multistep ?
+
 Action Expolre_System
 {
 	// Acion Owner PLAYER implicit

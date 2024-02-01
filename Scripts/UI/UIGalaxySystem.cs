@@ -12,7 +12,7 @@ public partial class UIGalaxySystem : Control
 
     [ExportCategory("Runtime")]
     [Export]
-    public LocationNode _Location = null;
+    public SystemNode _System = null;
 
     Game Game;
 
@@ -27,14 +27,14 @@ public partial class UIGalaxySystem : Control
         ExtraColonies = GetNode<Label>("VBoxContainer/PanelContainer_3/Extra");
     }
 
-    public void Refresh( LocationNode system )
+    public void Refresh( SystemNode system )
     {
-        _Location = system;
-        if (_Location == null) return;
+        _System = system;
+        if (_System == null) return;
 
-        _Location.GFX.HUD = this;
+        _System.GFX.HUD = this;
 
-        SystemName.Text = _Location.Data.System.ValueS;
+        SystemName.Text = _System.Data.SystemName;
         if (SystemName.Text.Contains("Sol"))
         {
             ColonyName.Text = "Colony";
@@ -50,7 +50,7 @@ public partial class UIGalaxySystem : Control
     }
     public override void _Process(double delta)
     {
-        Vector2 pos2D = Game.Camera.UnprojectPosition(_Location.GFX.Position + new Vector3(0.0f, 0.0f, 2.5f));
+        Vector2 pos2D = Game.Camera.UnprojectPosition(_System.GFX.Position + new Vector3(0.0f, 0.0f, 2.5f));
         Position = pos2D;
     }
 

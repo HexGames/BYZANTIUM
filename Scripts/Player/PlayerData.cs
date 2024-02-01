@@ -5,6 +5,11 @@ using Godot.Collections;
 [Tool]
 public partial class PlayerData : Node
 {
+    [ExportCategory("PlayerData-Node")]
+    [Export]
+    public PlayerNode _Node = null;
+
+    [ExportCategory("PlayerData")]
     [Export]
     public string PlayerName = "";
 
@@ -17,24 +22,25 @@ public partial class PlayerData : Node
     [Export]
     public DataBlock Bonuses = null;
     [Export]
-    public Array<DataBlock> Colonies = new Array<DataBlock>();
-
-    [Export]
-    public Array<LocationData> LocationsOwned = new Array<LocationData>();
-
-    [Export]
-    public Array<PawnData> PawnsOwned = new Array<PawnData>();
-
-    [Export]
     public bool Human = false;
+
+    [ExportCategory("PlayerData-Links")]
+    [Export]
+    public Array<ColonyData> Colonies = new Array<ColonyData>();
+    //[Export]
+    //public Array<SystemData> LocationsOwned = new Array<SystemData>();
+    //[Export]
+    //public Array<PawnData> PawnsOwned = new Array<PawnData>();
+
+    [ExportCategory("PlayerData-Runtime")]
     [Export]
     public bool TurnFinished = false;
 
-    public DataBlock GetColony(string colony)
+    public ColonyData GetColony(string colony)
     {
         for (int idx = 0; idx < Colonies.Count; idx++)
         {
-            if (Colonies[idx].ValueS == colony)
+            if (Colonies[idx].ColonyName == colony)
             {
                 return Colonies[idx];
             }

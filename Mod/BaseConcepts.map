@@ -15,52 +15,54 @@ Opportunity - def
 GEN - Planet Exploration Pattern - def
 GEN - System Pattern - def
 
-Systems 
-	Location SystemName_Loc
-		X 0
-		Y 0
-		System SystemName --------------------------------------- System Info
-			[] Planet PlanetName -------------------------------- Planey Info / Colony
-				Link:Player:Colony Player_0:Terra
-Players
-	Player PlayerName
-		Action_Civic -------------------------------------------- Civics / Factions - Action_Civic -> Civics List | Factions Support List
-		Action_Species ------------------------------------------ Species - Action_Species -> Trait List
-		Action_ShipDesign --------------------------------------- Ship Design
-		Action_Research_1 --------------------------------------- Research x5 - Action_Research -> Technology List | Technology Type List
-		Action_Research_2
-		Action_Research_3
-		Action_Research_4
-		Action_Research_5
-		Action_Diplomatic_1 ------------------------------------- Diplomacy x5 - Other Player Info - Action_Diplomatic
-		Action_Diplomatic_2
-		Action_Diplomatic_3
-		Action_Diplomatic_4
-		Action_Diplomatic_5
-		Resources ----------------------------------------------- Resource Bar
-		Status -------------------------------------------------- ?
-		Civics -------------------------------------------------- Civics / Factions
-		Colonies
-			[] Colony ColonyName -------------------------------- Planey Info / Colony
-				Action_Building --------------------------------- Planey Info / Colony - Action_Building -> Building List | Project List
-				Action_Terraforming ----------------------------- Planey Info / Colony - Action_Terraforming -> Terraforming Target | Terraforming Stance
-				Action_Shipyard --------------------------------- Shipyard - Action_Shipyard -> Ship Components
-				Resources --------------------------------------- Planey Info / Colony - Resources Info
-				Buildings --------------------------------------- Planey Info / Colony - Buildings Info
-				Support ----------------------------------------- Planey Info / Colony - Support Info
-				Link:Location:Planet Sol_Loc:Terra
-		Fleets
-			[] Fleet FleetName ---------------------------------- Fleet / Ships
-				Action_Fleet ------------------------------------ Fleet / Ships - Action_Fleet
-				Action_Explore ---------------------------------- Fleet / Ships - Action_Explore
-				Action_Combat ----------------------------------- Fleet / Ships - Action_Combat
-				Ships ------------------------------------------- Fleet / Ships
-					[] Ship ShipName ---------------------------- Ship Info
-				Link:Location:Planet Sol_Loc:Terra
-Relations
-	[] Relation ------------------------------------------------- Diplomacy Screen - Pact List
-		Link_1:Player
-		Link_2:Player
+Map
+	GameStats 
+	System_List
+		[] System SystemName --------------------------------------- System Info
+			X 0
+			Y 0
+			Planet_List
+				[] Planet PlanetName -------------------------------- Planey Info / Colony
+					Link:Player:Colony Player_0:Terra
+	Player_List
+		[] Player PlayerName
+			Action_Civic -------------------------------------------- Civics / Factions - Action_Civic -> Civics List | Factions Support List
+			Action_Species ------------------------------------------ Species - Action_Species -> Trait List
+			Action_ShipDesign --------------------------------------- Ship Design
+			Action_Research_1 --------------------------------------- Research x5 - Action_Research -> Technology List | Technology Type List
+			Action_Research_2
+			Action_Research_3
+			Action_Research_4
+			Action_Research_5
+			Action_Diplomatic_1 ------------------------------------- Diplomacy x5 - Other Player Info - Action_Diplomatic
+			Action_Diplomatic_2
+			Action_Diplomatic_3
+			Action_Diplomatic_4
+			Action_Diplomatic_5
+			Resources ----------------------------------------------- Resource Bar
+			Status -------------------------------------------------- ?
+			Civics -------------------------------------------------- Civics / Factions
+			Colony_List
+				[] Colony ColonyName -------------------------------- Planey Info / Colony
+					Action_Building --------------------------------- Planey Info / Colony - Action_Building -> Building List | Project List
+					Action_Terraforming ----------------------------- Planey Info / Colony - Action_Terraforming -> Terraforming Target | Terraforming Stance
+					Action_Shipyard --------------------------------- Shipyard - Action_Shipyard -> Ship Components
+					Resources --------------------------------------- Planey Info / Colony - Resources Info
+					Buildings --------------------------------------- Planey Info / Colony - Buildings Info
+					Support ----------------------------------------- Planey Info / Colony - Support Info
+					Link:Location:Planet Sol_Loc:Terra
+			Fleet_List
+				[] Fleet FleetName ---------------------------------- Fleet / Ships
+					Action_Fleet ------------------------------------ Fleet / Ships - Action_Fleet
+					Action_Explore ---------------------------------- Fleet / Ships - Action_Explore
+					Action_Combat ----------------------------------- Fleet / Ships - Action_Combat
+					Ships ------------------------------------------- Fleet / Ships
+						[] Ship ShipName ---------------------------- Ship Info
+					Link:Location:Planet Sol_Loc:Terra
+	Relation_List
+		[] Relation ------------------------------------------------- Diplomacy Screen - Pact List
+			Link_1:Player
+			Link_2:Player
 
 
 

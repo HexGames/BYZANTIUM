@@ -6,7 +6,7 @@ AUTHORITY - cap (domestic stuff)
 INFLUENCE - cap (external stuff)
 Sepcial resource - Access to special resource at a level
 
-PPOP - value for each planet
+POP - value for each planet
 
 Colonies - new / abandon / improve
 Ships - build / scrap / move / explore / attack
@@ -25,6 +25,17 @@ CIVIC - improve Authority, improve Influence, unlock civics
 TECHNOLOGY - improve random cards, imrpove random cards of type, improve specific card, unlock new cards
 DIPLOMACY - improve relations, make agreements
 // - LEADERS - recruit, reassign, swap, dismiss
+
+ship actions x3 --------- 150 >>>  50 ?? s/3 ?? (20 combat 100 explore)
+shipyard actions x2 ----- 100 >>   50 ?? s/3 100 (50w 50aux)
+terraforming actions x1 -  50 =    50 ?? s/3 ?? (30) + colonial
+building actions x3  ---- 150 >>  100 ?? s/3 50
+civic/ethics actions x1 -  50 <<  100 ?? s/3 40 - 7*8 + 16 = 56+16 = 72 || 5*8 + 16 = 56
+species-mod actions x1 --  50 <<  100 ?? s/3 50
+research actions x3 ----- 150 <   200 ?? s/3 120 (moo - 180)
+diplomatic actions x2 --- 100 >>   50 ?? s/3 ?? (30)
+
+------------- s
 
 Energy
 Minerals

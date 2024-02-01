@@ -11,6 +11,9 @@ public partial class DefLibrary : Node
     [Export]
     public Dictionary<string, int> DB_Types_I = new Dictionary<string, int>();
 
+    [Export]
+    public Array<DataBlock> Buildings = new Array<DataBlock>();
+
     public string LocationsDir = "res:///Def/Locations/";
     //[Export]
     //public Array<LocationDef> Locations = new Array<LocationDef>();
@@ -22,35 +25,153 @@ public partial class DefLibrary : Node
     [Export]
     public DefUIPlanets UIPlanets = null;
 
-    public override void _Ready()
+    [ExportCategory("Def Generators")]
+    [Export]
+    public bool GenerateBuidingsDef
     {
-        DirAccess folder = null;
-        string[] files = null;
-
-        // Locations
-        //Locations.Clear();
-
-        folder = DirAccess.Open(LocationsDir);
-        files = folder.GetFiles();
-
-        //for ( int idx = 0; idx < files.Length; idx++ )
-        //{
-        //    Resource res = GD.Load<Resource>(LocationsDir + files[idx]);
-        //    Locations.Add(res as LocationDef);
-        //}
-
-        // Pawns
-        Pawns.Clear();
-
-        folder = DirAccess.Open(PawnsDir);
-        files = folder.GetFiles();
-
-        for (int idx = 0; idx < files.Length; idx++)
+        get => false;
+        set
         {
-            Resource res = GD.Load<Resource>(PawnsDir + files[idx]);
-            Pawns.Add(res as PawnDef);
+            if (value)
+            {
+                GenerateBuidingsDefFunc();
+            }
         }
     }
+
+    public void GenerateBuidingsDefFunc()
+    {
+        Buildings.Clear();
+
+        {
+            DataBlock buiding = Data.CreateData("Building", "City", this);
+
+            Data.AddData(buiding, "Cost", 5, this);
+            Data.AddData(buiding, "Turns", 5, this);
+
+            Buildings.Add(buiding);
+        }
+
+        {
+            DataBlock buiding = Data.CreateData("Building", "Private_Business", this);
+
+            Data.AddData(buiding, "Cost", 0, this);
+            Data.AddData(buiding, "Turns", 3, this);
+
+            Buildings.Add(buiding);
+        }
+
+        {
+            DataBlock buiding = Data.CreateData("Building", "Power_Plants", this);
+
+            Data.AddData(buiding, "Cost", 7, this);
+            Data.AddData(buiding, "Turns", 3, this);
+
+            Buildings.Add(buiding);
+        }
+
+        {
+            DataBlock buiding = Data.CreateData("Building", "Mines", this);
+
+            Data.AddData(buiding, "Cost", 4, this);
+            Data.AddData(buiding, "Turns", 3, this);
+
+            Buildings.Add(buiding);
+        }
+
+        {
+            DataBlock buiding = Data.CreateData("Building", "Goverment_Offices", this);
+
+            Data.AddData(buiding, "Cost", 2, this);
+            Data.AddData(buiding, "Turns", 3, this);
+
+            Buildings.Add(buiding);
+        }
+
+        {
+            DataBlock buiding = Data.CreateData("Building", "Diplomatic_Offices", this);
+
+            Data.AddData(buiding, "Cost", 6, this);
+            Data.AddData(buiding, "Turns", 3, this);
+
+            Buildings.Add(buiding);
+        }
+
+        {
+            DataBlock buiding = Data.CreateData("Building", "Research_Labs", this);
+
+            Data.AddData(buiding, "Cost", 4, this);
+            Data.AddData(buiding, "Turns", 3, this);
+
+            Buildings.Add(buiding);
+        }
+
+        {
+            DataBlock buiding = Data.CreateData("Building", "Cultural_Center", this);
+
+            Data.AddData(buiding, "Cost", 6, this);
+            Data.AddData(buiding, "Turns", 3, this);
+
+            Buildings.Add(buiding);
+        }
+
+        {
+            DataBlock buiding = Data.CreateData("Building", "Hydroponics_Farms", this);
+
+            Data.AddData(buiding, "Cost", 5, this);
+            Data.AddData(buiding, "Turns", 3, this);
+
+            Buildings.Add(buiding);
+        }
+
+        {
+            DataBlock buiding = Data.CreateData("Building", "Nature_Biodomes", this);
+
+            Data.AddData(buiding, "Cost", 8, this);
+            Data.AddData(buiding, "Turns", 3, this);
+
+            Buildings.Add(buiding);
+        }
+
+        {
+            DataBlock buiding = Data.CreateData("Building", "City_Biodomes", this);
+
+            Data.AddData(buiding, "Cost", 10, this);
+            Data.AddData(buiding, "Turns", 3, this);
+
+            Buildings.Add(buiding);
+        }
+    }
+
+    //public override void _Ready()
+    //{
+    //    DirAccess folder = null;
+    //    string[] files = null;
+    //
+    //    // Locations
+    //    //Locations.Clear();
+    //
+    //    folder = DirAccess.Open(LocationsDir);
+    //    files = folder.GetFiles();
+    //
+    //    //for ( int idx = 0; idx < files.Length; idx++ )
+    //    //{
+    //    //    Resource res = GD.Load<Resource>(LocationsDir + files[idx]);
+    //    //    Locations.Add(res as LocationDef);
+    //    //}
+    //
+    //    // Pawns
+    //    Pawns.Clear();
+    //
+    //    folder = DirAccess.Open(PawnsDir);
+    //    files = folder.GetFiles();
+    //
+    //    for (int idx = 0; idx < files.Length; idx++)
+    //    {
+    //        Resource res = GD.Load<Resource>(PawnsDir + files[idx]);
+    //        Pawns.Add(res as PawnDef);
+    //    }
+    //}
 
     public int GetDBType(string name, Data.BaseType baseType)
     {

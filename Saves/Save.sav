@@ -1,4976 +1,4990 @@
-Systems
+Map 
 {
-	Location System_49_Loc
+	GameStats 
 	{
-		X 0
-		Y 0
-		System System_49
+		Turn 6
+		Human 0
+	}
+	GalaxySize 5
+	System_List 
+	{
+		System System_0
 		{
-			Planet Star
+			X 0
+			Y 0
+			Planet_List 
 			{
-				Star_Size 1
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 4
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 3
-				CH4 1
-				He3 1
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 3
-				Rings 
-				Magnetic_Field 
-			}
-			Planet Asteroid_Belt
-			{
-				Size 3
-				Type Asteroid_Belt
-				Temperature 3
-			}
-			Planet Desert
-			{
-				Size 2
-				Type Desert
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-				Life Simple_life
-				Ice 
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
+				Planet Star
+				{
+					Star_Size 5
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 5
+					Type Lava
+					Temperature 5
+					Atmosphere CO2
+					Toxic 
+					Vulcanic 
+					Radiation 2
+					Water Vapor
+				}
+				Planet Vulcanic
+				{
+					Size 3
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Low_Atmosphere 
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 5
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 2
+				}
+				Planet Toxic
+				{
+					Size 4
+					Type Toxic
+					Temperature 4
+					Atmosphere CO2
+					Toxic 
+					Molten_Core 
+					Magnetic_Field 
+					Radiation 1
+					Water Vapor
+				}
+				Planet Desert
+				{
+					Size 4
+					Type Desert
+					Temperature 3
+					Atmosphere O2
+					Toxic 
+					Radiation 1
+					Water Vapor
+					Life Micorbial_Life
+				}
+				Planet Temperate
+				{
+					Size 5
+					Type Temperate
+					Temperature 3
+					Atmosphere N
+					Molten_Core 
+					Water Oceans
+					Life Complex_life
+					Hostile_Life 
+					Link:Player:Colony Player_1:Temperate
+				}
+				Planet Temperate
+				{
+					Size 2
+					Type Temperate
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Oceans
+					Life Complex_life
+					Ice 
+					Hostile_Life 
+					Link:Player:Colony Player_2:Temperate
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 1
+					Molten_Core 
+					Magnetic_Field 
+					Alpine 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
 		}
-	}
-	Location System_74_Loc
-	{
-		X 3
-		Y 0
-		System System_74
-		{
-			Planet Star
-			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-			}
-			Planet Ocean
-			{
-				Size 4
-				Type Ocean
-				Temperature 4
-				Atmosphere O2
-				Radiation 
-				Water Water_Covered
-				Life Complex_life
-				Hostile_Life 
-			}
-			Planet Toxic
-			{
-				Size 7
-				Type Toxic
-				Temperature 4
-				Atmosphere CO2
-				Toxic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 3
-				Type Vulcanic
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_82_Loc
-	{
-		X 4
-		Y 0
-		System System_82
-		{
-			Planet Star
-			{
-				Star_Size 1
-				Star_Type Yellow_Dwarf
-			}
-			Planet Vulcanic
-			{
-				Size 1
-				Type Vulcanic
-				Temperature 3
-				Atmosphere CO2
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Frozen
-			{
-				Size 4
-				Type Frozen
-				Temperature 1
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Ice 
-				Life Micorbial_Life
-			}
-			Planet Barren
-			{
-				Size 2
-				Type Barren
-				Temperature 1
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_3_Loc
-	{
-		X 5
-		Y 0
 		System System_3
 		{
-			Planet Star
+			X 3
+			Y 0
+			Planet_List 
 			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Vulcanic
-			{
-				Size 4
-				Type Vulcanic
-				Temperature 5
-				Atmosphere N
-				Toxic 
-				Vulcanic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 2
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Vulcanic 
-				Radiation 
-			}
-			Planet Jungle
-			{
-				Size 1
-				Type Jungle
-				Temperature 4
-				Atmosphere O2
-				Low_Atmosphere 
-				Radiation 
-				Water Oceans
-				Life Complex_life
-				Hostile_Life 
-				Moon 
-			}
-			Planet Ocean
-			{
-				Size 5
-				Type Ocean
-				Temperature 3
-				Atmosphere O2
-				Radiation 
-				Water Water_Covered
-				Life Micorbial_Life
-				Ice 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
+				Planet Star
+				{
+					Star_Size 3
+					Star_Type Yellow_Dwarf
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 5
+					Molten_Core 
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 5
+					Radiation 2
+				}
+				Planet Lava
+				{
+					Size 1
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Arid
+				{
+					Size 4
+					Type Arid
+					Temperature 4
+					Atmosphere CO2
+					Radiation 2
+					Water Lakes
+					Life Micorbial_Life
+				}
+				Planet Artic
+				{
+					Size 2
+					Type Artic
+					Temperature 3
+					Atmosphere O2
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Micorbial_Life
+					Ice 
+				}
+				Planet Ocean
+				{
+					Size 6
+					Type Ocean
+					Temperature 2
+					Atmosphere N
+					Radiation 1
+					Water Water_Covered
+					Life Micorbial_Life
+					Ice 
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
 		}
-	}
-	Location System_48_Loc
-	{
-		X 0
-		Y 1
-		System System_48
+		System System_4
 		{
-			Planet Star
+			X 4
+			Y 0
+			Planet_List 
 			{
-				Star_Size 1
-				Star_Type Yellow_Dwarf
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 2
-				Type Vulcanic
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 4
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 1
-				Radiation 
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
+				Planet Star
+				{
+					Star_Size 7
+					Star_Type Yellow_Dwarf
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 5
+					Radiation 2
+				}
+				Planet Temperate
+				{
+					Size 4
+					Type Temperate
+					Temperature 4
+					Atmosphere N
+					Radiation 2
+					Water Lakes
+					Life Micorbial_Life
+					Link:Player:Colony Player_3:Temperate
+				}
+				Planet Toxic
+				{
+					Size 4
+					Type Toxic
+					Temperature 4
+					Atmosphere CO2
+					Toxic 
+					Radiation 2
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
 		}
-	}
-	Location System_74_Loc
-	{
-		X 3
-		Y 1
-		System System_74
+		System System_5
 		{
-			Planet Star
+			X 5
+			Y 0
+			Planet_List 
 			{
-				Star_Size 5
-				Star_Type Yellow_Dwarf
-			}
-			Planet Barren
-			{
-				Size 4
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Arid
-			{
-				Size 5
-				Type Arid
-				Temperature 4
-				Atmosphere CO2
-				Molten_Core 
-				Magnetic_Field 
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-			}
-			Planet Desert
-			{
-				Size 1
-				Type Desert
-				Temperature 3
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-				Ice 
-				Moon 
-			}
-			Planet Vulcanic
-			{
-				Size 2
-				Type Vulcanic
-				Temperature 3
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Vulcanic 
-				Radiation 
-				Water Vapor
-			}
-			Planet Artic
-			{
-				Size 2
-				Type Artic
-				Temperature 2
-				Atmosphere O2
-				Low_Atmosphere 
-				Radiation 
-				Water Oceans
-				Life Complex_life
-				Ice 
-				Hostile_Life 
-			}
-			Planet Frozen
-			{
-				Size 1
-				Type Frozen
-				Temperature 1
-				Radiation 
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_96_Loc
-	{
-		X 4
-		Y 1
-		System System_96
-		{
-			Planet Star
-			{
-				Star_Size 7
-				Star_Type Yellow_Dwarf
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_99_Loc
-	{
-		X 5
-		Y 1
-		System System_99
-		{
-			Planet Star
-			{
-				Star_Size 2
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 1
-			}
-			Planet Frozen
-			{
-				Size 2
-				Type Frozen
-				Temperature 1
-				Radiation 
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
+				Planet Star
+				{
+					Star_Size 4
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 4
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Lava
+				{
+					Size 3
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Temperate
+				{
+					Size 4
+					Type Temperate
+					Temperature 4
+					Atmosphere N
+					Radiation 2
+					Water Oceans
+					Life Simple_life
+					Link:Player:Colony Player_4:Temperate
+				}
+				Planet Vulcanic
+				{
+					Size 2
+					Type Vulcanic
+					Temperature 3
+					Vulcanic 
+					Radiation 1
+					Moon 
+				}
+				Planet Vulcanic
+				{
+					Size 4
+					Type Vulcanic
+					Temperature 3
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 1
+				}
+				Planet Arid
+				{
+					Size 2
+					Type Arid
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Ice 
+				}
+				Planet Frozen
+				{
+					Size 1
+					Type Frozen
+					Temperature 1
+					Radiation 1
+					Moon 
+				}
+				Planet Frozen
+				{
+					Size 5
+					Type Frozen
+					Temperature 1
+					Radiation 1
+				}
+				Planet Frozen
+				{
+					Size 5
+					Type Frozen
+					Temperature 1
+					Molten_Core 
+				}
+				Planet Frozen
+				{
+					Size 1
+					Type Frozen
+					Temperature 1
+					Radiation 1
+					Ice 
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
 		}
-	}
-	Location System_79_Loc
-	{
-		X 6
-		Y 1
-		System System_79
-		{
-			Planet Star
-			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Barren
-			{
-				Size 4
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Desert
-			{
-				Size 4
-				Type Desert
-				Temperature 4
-				Atmosphere N
-				Radiation 
-				Water Vapor
-				Life Complex_life
-			}
-			Planet Arid
-			{
-				Size 2
-				Type Arid
-				Temperature 3
-				Atmosphere CO2
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Simple_life
-				Ice 
-				Rings 
-				Moon 
-			}
-			Planet Asteroid_Belt
-			{
-				Size 1
-				Type Asteroid_Belt
-				Temperature 3
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 2
-				He3 1
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location Sol_Loc
-	{
-		X 0
-		Y 2
-		System Sol
-		{
-			Planet Star
-			{
-				Star_Size 4
-				Star_Type Yellow_Dwarf
-			}
-			Planet Mercury
-			{
-				Size 1
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Venus
-			{
-				Size 4
-				Type Toxic
-				Temperature 4
-				Atmosphere CO2
-				Toxic 
-				Radiation 
-				Molten_Core 
-				Magnetic_Field 
-				Vulcanic 
-			}
-			Planet Terra
-			{
-				Custom 
-				Size 4
-				Type Temperate
-				Temperature 3
-				Atmosphere O2
-				Atmosphere N
-				Molten_Core 
-				Magnetic_Field 
-				Water Oceans
-				Ice 
-				Life Complex_Life
-				Link:Player:Colony Player_0:Terra
-			}
-			Planet Moon
-			{
-				Size 1
-				Type Barren
-				Temperature 3
-				Radiation 
-				Moon 
-			}
-			Planet Mars
-			{
-				Size 3
-				Type Desert
-				Temperature 2
-				Atmosphere CO2
-				Low_Atmosphere 
-				Radiation 
-			}
-			Planet Asteroid_Belt
-			{
-				Size 3
-				Type Asteroid_Belt
-				Temperature 2
-			}
-			Planet Jupiter
-			{
-				Size 9
-				Type Gas_Giant
-				Temperature 1
-			}
-			Planet Ganymede
-			{
-				Size 2
-				Type Frozen
-				Temperature 1
-				Forzen_Ocean 
-				Moon 
-			}
-			Planet Saturn
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 1
-				CH4 1
-				Rings 
-			}
-			Planet Titan
-			{
-				Size 1
-				Type Frozen
-				Temperature 1
-				CH4 1
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_99_Loc
-	{
-		X 3
-		Y 2
-		System System_99
-		{
-			Planet Star
-			{
-				Star_Size 4
-				Star_Type Yellow_Dwarf
-			}
-			Planet Vulcanic
-			{
-				Size 2
-				Type Vulcanic
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Arid
-			{
-				Size 4
-				Type Arid
-				Temperature 4
-				Atmosphere N
-				Radiation 
-				Water Lakes
-			}
-			Planet Desert
-			{
-				Size 1
-				Type Desert
-				Temperature 3
-				Atmosphere CO2
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-				Ice 
-			}
-			Planet Temperate
-			{
-				Size 6
-				Type Temperate
-				Temperature 2
-				Atmosphere O2
-				Vulcanic 
-				Radiation 
-				Water Lakes
-				Life Simple_life
-				Ice 
-				Link:Player:Colony Player_1:Temperate
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 1
-				Radiation 
-				Moon 
-			}
-			Planet Frozen
-			{
-				Size 1
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Frozen
-			{
-				Size 2
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Frozen
-			{
-				Size 3
-				Type Frozen
-				Temperature 1
-				Radiation 
-				Rings 
-			}
-			Planet Barren
-			{
-				Size 5
-				Type Barren
-				Temperature 1
-				Molten_Core 
-				Magnetic_Field 
-			}
-			Planet Frozen
-			{
-				Size 2
-				Type Frozen
-				Temperature 1
-				Radiation 
-				Ice 
-				Life Micorbial_Life
-				Moon 
-			}
-			Planet Asteroid_Belt
-			{
-				Size 3
-				Type Asteroid_Belt
-				Temperature 1
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_88_Loc
-	{
-		X 4
-		Y 2
-		System System_88
-		{
-			Planet Star
-			{
-				Star_Size 2
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 4
-			}
-			Planet Temperate
-			{
-				Size 1
-				Type Temperate
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-				Link:Player:Colony Player_2:Temperate
-			}
-			Planet Arid
-			{
-				Size 2
-				Type Arid
-				Temperature 3
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Radiation 
-				Water Lakes
-				Ice 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_19_Loc
-	{
-		X 6
-		Y 2
-		System System_19
-		{
-			Planet Star
-			{
-				Star_Size 7
-				Star_Type Yellow_Dwarf
-			}
-			Planet Barren
-			{
-				Size 2
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 3
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 1
-				Type Vulcanic
-				Temperature 5
-				Atmosphere N
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_41_Loc
-	{
-		X 7
-		Y 2
-		System System_41
-		{
-			Planet Star
-			{
-				Star_Size 7
-				Star_Type Yellow_Dwarf
-			}
-			Planet Barren
-			{
-				Size 2
-				Type Barren
-				Temperature 5
-				Molten_Core 
-				Radiation 
-			}
-			Planet Arid
-			{
-				Size 2
-				Type Arid
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_13_Loc
-	{
-		X 0
-		Y 3
-		System System_13
-		{
-			Planet Star
-			{
-				Star_Size 3
-				Star_Type Yellow_Dwarf
-			}
-			Planet Vulcanic
-			{
-				Size 6
-				Type Vulcanic
-				Temperature 5
-				Atmosphere O2
-				Vulcanic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 6
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Vulcanic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 1
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-			}
-			Planet Arid
-			{
-				Size 0
-				Type Arid
-				Temperature 4
-				Atmosphere CO2
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Moon 
-			}
-			Planet Temperate
-			{
-				Size 6
-				Type Temperate
-				Temperature 3
-				Atmosphere N
-				Radiation 
-				Water Oceans
-				Life Complex_life
-				Ice 
-				Hostile_Life 
-				Rings 
-				Link:Player:Colony Player_3:Temperate
-			}
-			Planet Desert
-			{
-				Size 4
-				Type Desert
-				Temperature 2
-				Atmosphere N
-				Radiation 
-				Water Vapor
-				Ice 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_56_Loc
-	{
-		X 1
-		Y 3
-		System System_56
-		{
-			Planet Star
-			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 5
-				Rings 
-			}
-			Planet Arid
-			{
-				Size 3
-				Type Arid
-				Temperature 4
-				Atmosphere N
-				Radiation 
-				Water Lakes
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_26_Loc
-	{
-		X 3
-		Y 3
-		System System_26
-		{
-			Planet Star
-			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Barren
-			{
-				Size 3
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 1
-				Type Vulcanic
-				Temperature 5
-				Atmosphere N
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-				Moon 
-			}
-			Planet Lava
-			{
-				Size 2
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Arid
-			{
-				Size 1
-				Type Arid
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Complex_life
-				Hostile_Life 
-			}
-			Planet Ocean
-			{
-				Size 5
-				Type Ocean
-				Temperature 4
-				Atmosphere N
-				Radiation 
-				Water Water_Covered
-				Life Micorbial_Life
-			}
-			Planet Temperate
-			{
-				Size 2
-				Type Temperate
-				Temperature 3
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Simple_life
-				Link:Player:Colony Player_4:Temperate
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_78_Loc
-	{
-		X 4
-		Y 3
-		System System_78
-		{
-			Planet Star
-			{
-				Star_Size 1
-				Star_Type Yellow_Dwarf
-			}
-			Planet Frozen
-			{
-				Size 3
-				Type Frozen
-				Temperature 1
-				Vulcanic 
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 3
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_36_Loc
-	{
-		X 8
-		Y 3
-		System System_36
-		{
-			Planet Star
-			{
-				Star_Size 4
-				Star_Type Yellow_Dwarf
-			}
-			Planet Lava
-			{
-				Size 2
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 2
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Toxic
-			{
-				Size 1
-				Type Toxic
-				Temperature 4
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Radiation 
-				Moon 
-			}
-			Planet Jungle
-			{
-				Size 2
-				Type Jungle
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Complex_life
-			}
-			Planet Arid
-			{
-				Size 6
-				Type Arid
-				Temperature 4
-				Atmosphere O2
-				Radiation 
-				Water Lakes
-				Life Simple_life
-				Rings 
-			}
-			Planet Ocean
-			{
-				Size 5
-				Type Ocean
-				Temperature 3
-				Atmosphere N
-				Radiation 
-				Water Water_Covered
-				Life Simple_life
-				Ice 
-			}
-			Planet Temperate
-			{
-				Size 2
-				Type Temperate
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Oceans
-				Life Simple_life
-				Ice 
-				Moon 
-				Link:Player:Colony Player_5:Temperate
-			}
-			Planet Swamp
-			{
-				Size 1
-				Type Swamp
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				CH4 1
-				Radiation 
-				Water Lakes
-				Life Simple_life
-				Ice 
-				Moon 
-			}
-			Planet Barren
-			{
-				Size 3
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Frozen
-			{
-				Size 3
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_52_Loc
-	{
-		X 1
-		Y 4
-		System System_52
-		{
-			Planet Star
-			{
-				Star_Size 5
-				Star_Type Yellow_Dwarf
-			}
-			Planet Vulcanic
-			{
-				Size 5
-				Type Vulcanic
-				Temperature 5
-				Atmosphere N
-				Vulcanic 
-				Radiation 
-				Life Micorbial_Life
-			}
-			Planet Swamp
-			{
-				Size 2
-				Type Swamp
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				CH4 1
-				Radiation 
-				Water Lakes
-				Life Complex_life
-				Hostile_Life 
-			}
-			Planet Temperate
-			{
-				Size 5
-				Type Temperate
-				Temperature 3
-				Atmosphere O2
-				Radiation 
-				Water Oceans
-				Life Complex_life
-				Hostile_Life 
-				Link:Player:Colony Player_6:Temperate
-			}
-			Planet Temperate
-			{
-				Size 4
-				Type Temperate
-				Temperature 2
-				Atmosphere N
-				Vulcanic 
-				Radiation 
-				Water Lakes
-				Life Complex_life
-				Ice 
-				Hostile_Life 
-				Link:Player:Colony Player_7:Temperate
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 1
-				Radiation 
-				Moon 
-			}
-			Planet Frozen
-			{
-				Size 1
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 5
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_21_Loc
-	{
-		X 2
-		Y 4
-		System System_21
-		{
-			Planet Star
-			{
-				Star_Size 2
-				Star_Type Yellow_Dwarf
-			}
-			Planet Vulcanic
-			{
-				Size 4
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Vulcanic 
-				Radiation 
-			}
-			Planet Artic
-			{
-				Size 4
-				Type Artic
-				Temperature 3
-				Atmosphere N
-				Vulcanic 
-				Radiation 
-				Water Water-Covered
-				Life Micorbial_Life
-				Ice 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_23_Loc
-	{
-		X 4
-		Y 4
-		System System_23
-		{
-			Planet Star
-			{
-				Star_Size 4
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-			}
-			Planet Lava
-			{
-				Size 3
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-				Moon 
-			}
-			Planet Arid
-			{
-				Size 4
-				Type Arid
-				Temperature 4
-				Atmosphere N
-				Radiation 
-				Water Lakes
-			}
-			Planet Toxic
-			{
-				Size 1
-				Type Toxic
-				Temperature 4
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 4
-				Type Vulcanic
-				Temperature 3
-				Atmosphere CO2
-				Vulcanic 
-				Radiation 
-				Water Vapor
-			}
-			Planet Arid
-			{
-				Size 4
-				Type Arid
-				Temperature 2
-				Atmosphere N
-				Radiation 
-				Water Lakes
-				Life Simple_life
-				Ice 
-			}
-			Planet Desert
-			{
-				Size 4
-				Type Desert
-				Temperature 2
-				Atmosphere N
-				Molten_Core 
-				Alpine 
-				Water Vapor
-				Ice 
-			}
-			Planet Temperate
-			{
-				Size 1
-				Type Temperate
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Simple_life
-				Ice 
-				Moon 
-				Link:Player:Colony Player_8:Temperate
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_28_Loc
-	{
-		X 5
-		Y 4
-		System System_28
-		{
-			Planet Star
-			{
-				Star_Size 5
-				Star_Type Yellow_Dwarf
-			}
-			Planet Vulcanic
-			{
-				Size 4
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Vulcanic 
-				Radiation 
-			}
-			Planet Swamp
-			{
-				Size 3
-				Type Swamp
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				CH4 1
-				Radiation 
-				Water Lakes
-				Life Complex_life
-			}
-			Planet Vulcanic
-			{
-				Size 4
-				Type Vulcanic
-				Temperature 4
-				Atmosphere CO2
-				Vulcanic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 2
-				Type Vulcanic
-				Temperature 4
-				Atmosphere CO2
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-				Moon 
-			}
-			Planet Desert
-			{
-				Size 1
-				Type Desert
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-			}
-			Planet Barren
-			{
-				Size 4
-				Type Barren
-				Temperature 4
-				Molten_Core 
-				Magnetic_Field 
-				Alpine 
-				Radiation 
-			}
-			Planet Temperate
-			{
-				Size 2
-				Type Temperate
-				Temperature 3
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Complex_life
-				Link:Player:Colony Player_9:Temperate
-			}
-			Planet Desert
-			{
-				Size 1
-				Type Desert
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-				Life Micorbial_Life
-				Ice 
-				Rings 
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_91_Loc
-	{
-		X 6
-		Y 4
-		System System_91
-		{
-			Planet Star
-			{
-				Star_Size 5
-				Star_Type Yellow_Dwarf
-			}
-			Planet Vulcanic
-			{
-				Size 5
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Vulcanic 
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 5
-				Radiation 
-				Moon 
-			}
-			Planet Barren
-			{
-				Size 4
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Swamp
-			{
-				Size 1
-				Type Swamp
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				CH4 1
-				Radiation 
-				Water Lakes
-				Life Simple_life
-			}
-			Planet Barren
-			{
-				Size 4
-				Type Barren
-				Temperature 3
-				Radiation 
-			}
-			Planet Desert
-			{
-				Size 2
-				Type Desert
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-				Ice 
-				Moon 
-			}
-			Planet Barren
-			{
-				Size 6
-				Type Barren
-				Temperature 1
-				Atmosphere N
-				Low_Atmosphere 
-				Molten_Core 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_38_Loc
-	{
-		X 9
-		Y 4
-		System System_38
-		{
-			Planet Star
-			{
-				Star_Size 7
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-			}
-			Planet Swamp
-			{
-				Size 4
-				Type Swamp
-				Temperature 4
-				Atmosphere N
-				CH4 1
-				Molten_Core 
-				Alpine 
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-			}
-			Planet Jungle
-			{
-				Size 1
-				Type Jungle
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Toxic 
-				Radiation 
-				Water Oceans
-				Life Complex_life
-			}
-			Planet Desert
-			{
-				Size 3
-				Type Desert
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-			}
-			Planet Desert
-			{
-				Size 5
-				Type Desert
-				Temperature 4
-				Atmosphere N
-				Toxic 
-				Molten_Core 
-				Magnetic_Field 
-				Radiation 
-				Water Vapor
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_68_Loc
-	{
-		X 2
-		Y 5
-		System System_68
-		{
-			Planet Star
-			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Vulcanic
-			{
-				Size 1
-				Type Vulcanic
-				Temperature 5
-				Atmosphere N
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-				Water Vapor
-			}
-			Planet Vulcanic
-			{
-				Size 2
-				Type Vulcanic
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-				Life Micorbial_Life
-			}
-			Planet Jungle
-			{
-				Size 2
-				Type Jungle
-				Temperature 3
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Complex_life
-				Hostile_Life 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_41_Loc
-	{
-		X 3
-		Y 5
-		System System_41
-		{
-			Planet Star
-			{
-				Star_Size 1
-				Star_Type Yellow_Dwarf
-			}
-		}
-	}
-	Location System_3_Loc
-	{
-		X 4
-		Y 5
-		System System_3
-		{
-			Planet Star
-			{
-				Star_Size 2
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 3
-				Rings 
-			}
-			Planet Frozen
-			{
-				Size 1
-				Type Frozen
-				Temperature 1
-				Radiation 
-				Moon 
-			}
-			Planet Barren
-			{
-				Size 5
-				Type Barren
-				Temperature 1
-				Vulcanic 
-				Radiation 
-			}
-			Planet Frozen
-			{
-				Size 1
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 6
-				Type Barren
-				Temperature 1
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 1
-				Radiation 
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_95_Loc
-	{
-		X 6
-		Y 5
-		System System_95
-		{
-			Planet Star
-			{
-				Star_Size 3
-				Star_Type Yellow_Dwarf
-			}
-			Planet Barren
-			{
-				Size 3
-				Type Barren
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Arid
-			{
-				Size 4
-				Type Arid
-				Temperature 4
-				Atmosphere CO2
-				Molten_Core 
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-			}
-			Planet Arid
-			{
-				Size 3
-				Type Arid
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-			}
-			Planet Arid
-			{
-				Size 6
-				Type Arid
-				Temperature 3
-				Atmosphere N
-				Vulcanic 
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-			}
-			Planet Jungle
-			{
-				Size 4
-				Type Jungle
-				Temperature 3
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Simple_life
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_69_Loc
-	{
-		X 7
-		Y 5
-		System System_69
-		{
-			Planet Star
-			{
-				Star_Size 4
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 5
-			}
-			Planet Arid
-			{
-				Size 2
-				Type Arid
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Simple_life
-				Moon 
-			}
-			Planet Temperate
-			{
-				Size 3
-				Type Temperate
-				Temperature 4
-				Atmosphere N
-				Radiation 
-				Water Oceans
-				Life Micorbial_Life
-			}
-			Planet Desert
-			{
-				Size 2
-				Type Desert
-				Temperature 4
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Radiation 
-				Water Vapor
-				Life Simple_life
-			}
-			Planet Artic
-			{
-				Size 3
-				Type Artic
-				Temperature 3
-				Atmosphere O2
-				Radiation 
-				Water Oceans
-				Life Micorbial_Life
-				Ice 
-			}
-			Planet Toxic
-			{
-				Size 5
-				Type Toxic
-				Temperature 2
-				Atmosphere CO2
-				Toxic 
-				Molten_Core 
-				Magnetic_Field 
-				Ice 
-				Rings 
-			}
-			Planet Frozen
-			{
-				Size 1
-				Type Frozen
-				Temperature 1
-				Radiation 
-				Moon 
-			}
-			Planet Barren
-			{
-				Size 3
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 4
-				Type Barren
-				Temperature 1
-				Molten_Core 
-				Alpine 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_72_Loc
-	{
-		X 8
-		Y 5
-		System System_72
-		{
-			Planet Star
-			{
-				Star_Size 1
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-				Rings 
-			}
-			Planet Barren
-			{
-				Size 2
-				Type Barren
-				Temperature 5
-				Radiation 
-				Moon 
-			}
-			Planet Asteroid_Belt
-			{
-				Size 5
-				Type Asteroid_Belt
-				Temperature 4
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_23_Loc
-	{
-		X 1
-		Y 6
-		System System_23
-		{
-			Planet Star
-			{
-				Star_Size 5
-				Star_Type Yellow_Dwarf
-			}
-			Planet Vulcanic
-			{
-				Size 4
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Vulcanic 
-				Radiation 
-			}
-			Planet Swamp
-			{
-				Size 5
-				Type Swamp
-				Temperature 4
-				Atmosphere N
-				CH4 1
-				Molten_Core 
-				Magnetic_Field 
-				Radiation 
-				Water Lakes
-				Life Simple_life
-			}
-			Planet Ocean
-			{
-				Size 4
-				Type Ocean
-				Temperature 3
-				Atmosphere N
-				Radiation 
-				Water Water_Covered
-				Life Complex_life
-				Hostile_Life 
-			}
-			Planet Barren
-			{
-				Size 7
-				Type Barren
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 5
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_76_Loc
-	{
-		X 4
-		Y 6
-		System System_76
-		{
-			Planet Star
-			{
-				Star_Size 7
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-				Rings 
-			}
-			Planet Lava
-			{
-				Size 3
-				Type Lava
-				Temperature 5
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Vulcanic 
-				Radiation 
-				Moon 
-			}
-			Planet Lava
-			{
-				Size 5
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_24_Loc
-	{
-		X 5
-		Y 6
-		System System_24
-		{
-			Planet Star
-			{
-				Star_Size 5
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-				Rings 
-			}
-			Planet Ocean
-			{
-				Size 2
-				Type Ocean
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Molten_Core 
-				Magnetic_Field 
-				Radiation 
-				Water Water_Covered
-				Life Micorbial_Life
-				Moon 
-			}
-			Planet Ocean
-			{
-				Size 4
-				Type Ocean
-				Temperature 3
-				Atmosphere N
-				Low_Atmosphere 
-				Molten_Core 
-				Water Water_Covered
-				Life Micorbial_Life
-				Ice 
-				Rings 
-			}
-			Planet Jungle
-			{
-				Size 1
-				Type Jungle
-				Temperature 3
-				Atmosphere O2
-				Low_Atmosphere 
-				Radiation 
-				Water Oceans
-				Life Simple_life
-				Moon 
-			}
-			Planet Desert
-			{
-				Size 3
-				Type Desert
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-				Life Simple_life
-				Ice 
-			}
-			Planet Frozen
-			{
-				Size 2
-				Type Frozen
-				Temperature 1
-				Molten_Core 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_36_Loc
-	{
-		X 6
-		Y 6
-		System System_36
-		{
-			Planet Star
-			{
-				Star_Size 1
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 3
-			}
-			Planet Frozen
-			{
-				Size 4
-				Type Frozen
-				Temperature 2
-				Vulcanic 
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_90_Loc
-	{
-		X 8
-		Y 6
-		System System_90
-		{
-			Planet Star
-			{
-				Star_Size 4
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-			}
-			Planet Desert
-			{
-				Size 2
-				Type Desert
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-				Moon 
-			}
-			Planet Temperate
-			{
-				Size 1
-				Type Temperate
-				Temperature 4
-				Atmosphere O2
-				Low_Atmosphere 
-				Radiation 
-				Water Oceans
-				Life Complex_life
-				Hostile_Life 
-			}
-			Planet Temperate
-			{
-				Size 6
-				Type Temperate
-				Temperature 4
-				Atmosphere N
-				Molten_Core 
-				Magnetic_Field 
-				Radiation 
-				Water Lakes
-				Life Complex_life
-			}
-			Planet Toxic
-			{
-				Size 5
-				Type Toxic
-				Temperature 3
-				Atmosphere CO2
-				Toxic 
-				Radiation 
-			}
-			Planet Artic
-			{
-				Size 4
-				Type Artic
-				Temperature 3
-				Atmosphere N
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-				Ice 
-			}
-			Planet Desert
-			{
-				Size 6
-				Type Desert
-				Temperature 3
-				Atmosphere N
-				Radiation 
-				Water Vapor
-			}
-			Planet Desert
-			{
-				Size 4
-				Type Desert
-				Temperature 2
-				Atmosphere N
-				Toxic 
-				Radiation 
-				Water Vapor
-				Life Complex_life
-				Ice 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Frozen
-			{
-				Size 1
-				Type Frozen
-				Temperature 1
-				Radiation 
-				Ice 
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_77_Loc
-	{
-		X 9
-		Y 6
-		System System_77
-		{
-			Planet Star
-			{
-				Star_Size 5
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 5
-				Rings 
-			}
-			Planet Vulcanic
-			{
-				Size 1
-				Type Vulcanic
-				Temperature 5
-				Atmosphere O2
-				Low_Atmosphere 
-				Toxic 
-				Vulcanic 
-				Radiation 
-				Moon 
-			}
-			Planet Lava
-			{
-				Size 3
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 2
-				Type Vulcanic
-				Temperature 4
-				Vulcanic 
-				Radiation 
-			}
-			Planet Toxic
-			{
-				Size 3
-				Type Toxic
-				Temperature 3
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Radiation 
-				Ice 
-			}
-			Planet Temperate
-			{
-				Size 1
-				Type Temperate
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Oceans
-				Life Simple_life
-				Ice 
-				Moon 
-			}
-			Planet Frozen
-			{
-				Size 5
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Frozen
-			{
-				Size 3
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 3
-				Type Barren
-				Temperature 1
-				Molten_Core 
-				Magnetic_Field 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_45_Loc
-	{
-		X 2
-		Y 7
-		System System_45
-		{
-			Planet Star
-			{
-				Star_Size 7
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 5
-			}
-			Planet Barren
-			{
-				Size 5
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 2
-				Type Vulcanic
-				Temperature 4
-				Vulcanic 
-				Radiation 
-			}
-			Planet Temperate
-			{
-				Size 1
-				Type Temperate
-				Temperature 3
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Complex_life
-				Hostile_Life 
-				Moon 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 3
-				Radiation 
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_78_Loc
-	{
-		X 6
-		Y 7
-		System System_78
-		{
-			Planet Star
-			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-			}
-			Planet Lava
-			{
-				Size 3
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 2
-				Type Vulcanic
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_78_Loc
-	{
-		X 7
-		Y 7
-		System System_78
-		{
-			Planet Star
-			{
-				Star_Size 4
-				Star_Type Yellow_Dwarf
-			}
-			Planet Lava
-			{
-				Size 3
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 2
-				Type Barren
-				Temperature 4
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 3
-				Radiation 
-				Moon 
-			}
-			Planet Temperate
-			{
-				Size 2
-				Type Temperate
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				Toxic 
-				Radiation 
-				Water Oceans
-				Life Simple_life
-				Ice 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 1
-				Radiation 
-				Rings 
-			}
-			Planet Frozen
-			{
-				Size 7
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 3
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Frozen
-			{
-				Size 5
-				Type Frozen
-				Temperature 1
-				Radiation 
-				Ice 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_2_Loc
-	{
-		X 9
-		Y 7
-		System System_2
-		{
-			Planet Star
-			{
-				Star_Size 5
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-				He3 1
-			}
-			Planet Barren
-			{
-				Size 4
-				Type Barren
-				Temperature 5
-				Radiation 
-				Moon 
-			}
-			Planet Lava
-			{
-				Size 2
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 4
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Vulcanic 
-				Radiation 
-			}
-			Planet Swamp
-			{
-				Size 2
-				Type Swamp
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				CH4 1
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_67_Loc
-	{
-		X 10
-		Y 7
-		System System_67
-		{
-			Planet Star
-			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Lava
-			{
-				Size 1
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 3
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Toxic 
-				Vulcanic 
-				Radiation 
-			}
-			Planet Lava
-			{
-				Size 1
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-				Moon 
-			}
-			Planet Desert
-			{
-				Size 5
-				Type Desert
-				Temperature 4
-				Atmosphere N
-				Toxic 
-				Molten_Core 
-				Magnetic_Field 
-				Radiation 
-				Water Vapor
-				Life Micorbial_Life
-			}
-			Planet Toxic
-			{
-				Size 2
-				Type Toxic
-				Temperature 4
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Vulcanic 
-				Radiation 
-				Life Simple_life
-			}
-			Planet Swamp
-			{
-				Size 5
-				Type Swamp
-				Temperature 4
-				Atmosphere N
-				CH4 1
-				Vulcanic 
-				Radiation 
-				Water Lakes
-				Life Complex_life
-				Hostile_Life 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_71_Loc
-	{
-		X 3
-		Y 8
-		System System_71
-		{
-			Planet Star
-			{
-				Star_Size 4
-				Star_Type Yellow_Dwarf
-			}
-			Planet Lava
-			{
-				Size 2
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Swamp
-			{
-				Size 4
-				Type Swamp
-				Temperature 4
-				Atmosphere N
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-				Rings 
-			}
-			Planet Desert
-			{
-				Size 4
-				Type Desert
-				Temperature 3
-				Atmosphere N
-				Radiation 
-				Water Vapor
-				Life Micorbial_Life
-				Ice 
-			}
-			Planet Frozen
-			{
-				Size 4
-				Type Frozen
-				Temperature 2
-				Radiation 
-				Ice 
-			}
-			Planet Swamp
-			{
-				Size 5
-				Type Swamp
-				Temperature 2
-				Atmosphere N
-				Radiation 
-				Water Lakes
-				Life Complex_life
-				Ice 
-				Hostile_Life 
-			}
-			Planet Temperate
-			{
-				Size 2
-				Type Temperate
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Complex_life
-				Ice 
-				Rings 
-			}
-			Planet Barren
-			{
-				Size 4
-				Type Barren
-				Temperature 1
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-			}
-			Planet Frozen
-			{
-				Size 5
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Frozen
-			{
-				Size 1
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 6
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_15_Loc
-	{
-		X 4
-		Y 8
-		System System_15
-		{
-			Planet Star
-			{
-				Star_Size 3
-				Star_Type Yellow_Dwarf
-			}
-			Planet Barren
-			{
-				Size 4
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Arid
-			{
-				Size 4
-				Type Arid
-				Temperature 4
-				Atmosphere N
-				Radiation 
-				Water Lakes
-			}
-			Planet Ocean
-			{
-				Size 2
-				Type Ocean
-				Temperature 3
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Water_Covered
-				Life Micorbial_Life
-				Moon 
-			}
-			Planet Jungle
-			{
-				Size 3
-				Type Jungle
-				Temperature 3
-				Atmosphere N
-				Radiation 
-				Water Oceans
-				Life Complex_life
-				Hostile_Life 
-			}
-			Planet Ocean
-			{
-				Size 5
-				Type Ocean
-				Temperature 2
-				Atmosphere O2
-				Radiation 
-				Water Water_Covered
-				Life Simple_life
-				Ice 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_20_Loc
-	{
-		X 6
-		Y 8
-		System System_20
-		{
-			Planet Star
-			{
-				Star_Size 2
-				Star_Type Yellow_Dwarf
-			}
-			Planet Barren
-			{
-				Size 4
-				Type Barren
-				Temperature 3
-				Radiation 
-			}
-			Planet Toxic
-			{
-				Size 2
-				Type Toxic
-				Temperature 2
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Radiation 
-				Ice 
-				Moon 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 2
-				Radiation 
-				Moon 
-			}
-			Planet Swamp
-			{
-				Size 5
-				Type Swamp
-				Temperature 2
-				Atmosphere N
-				Toxic 
-				CH4 1
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-				Ice 
-			}
-			Planet Frozen
-			{
-				Size 4
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Asteroid_Belt
-			{
-				Size 2
-				Type Asteroid_Belt
-				Temperature 1
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_44_Loc
-	{
-		X 7
-		Y 8
-		System System_44
-		{
-			Planet Star
-			{
-				Star_Size 2
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 4
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 4
-			}
-			Planet Asteroid_Belt
-			{
-				Size 4
-				Type Asteroid_Belt
-				Temperature 4
-			}
-			Planet Vulcanic
-			{
-				Size 2
-				Type Vulcanic
-				Temperature 3
-				Atmosphere CO2
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_41_Loc
-	{
-		X 10
-		Y 8
-		System System_41
-		{
-			Planet Star
-			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Lava
-			{
-				Size 2
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 5
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 3
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Vulcanic 
-				Radiation 
-			}
-			Planet Lava
-			{
-				Size 4
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_7_Loc
-	{
-		X 4
-		Y 9
-		System System_7
-		{
-			Planet Star
-			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Lava
-			{
-				Size 5
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Vulcanic
-			{
-				Size 1
-				Type Vulcanic
-				Temperature 5
-				Vulcanic 
-				Radiation 
-				Moon 
-			}
-			Planet Desert
-			{
-				Size 3
-				Type Desert
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-				Life Complex_life
-				Hostile_Life 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_31_Loc
-	{
-		X 5
-		Y 9
-		System System_31
-		{
-			Planet Star
-			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-			}
-			Planet Jungle
-			{
-				Size 1
-				Type Jungle
-				Temperature 4
-				Atmosphere O2
-				Low_Atmosphere 
-				Radiation 
-				Water Oceans
-				Life Complex_life
-				Hostile_Life 
-			}
-			Planet Swamp
-			{
-				Size 4
-				Type Swamp
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Simple_life
-				Rings 
-			}
-			Planet Desert
-			{
-				Size 1
-				Type Desert
-				Temperature 3
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-				Ice 
-			}
-			Planet Artic
-			{
-				Size 3
-				Type Artic
-				Temperature 2
-				Atmosphere N
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-				Ice 
-			}
-			Planet Desert
-			{
-				Size 1
-				Type Desert
-				Temperature 2
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-				Ice 
-			}
-			Planet Temperate
-			{
-				Size 3
-				Type Temperate
-				Temperature 2
-				Atmosphere O2
-				Low_Atmosphere 
-				Molten_Core 
-				Water Lakes
-				Life Micorbial_Life
-				Ice 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_24_Loc
-	{
-		X 6
-		Y 9
-		System System_24
-		{
-			Planet Star
-			{
-				Star_Size 4
-				Star_Type Yellow_Dwarf
-			}
-			Planet Lava
-			{
-				Size 4
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Toxic
-			{
-				Size 2
-				Type Toxic
-				Temperature 4
-				Atmosphere CO2
-				Low_Atmosphere 
-				Toxic 
-				Radiation 
-				Water Vapor
-				Life Micorbial_Life
-			}
-			Planet Artic
-			{
-				Size 4
-				Type Artic
-				Temperature 3
-				Atmosphere N
-				Radiation 
-				Water Lakes
-				Life Micorbial_Life
-				Ice 
-			}
-			Planet Ocean
-			{
-				Size 5
-				Type Ocean
-				Temperature 2
-				Atmosphere N
-				Toxic 
-				Radiation 
-				Water Water_Covered
-				Life Simple_life
-				Ice 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 1
-				Radiation 
-			}
-			Planet Barren
-			{
-				Size 5
-				Type Barren
-				Temperature 1
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-			}
-			Planet Frozen
-			{
-				Size 4
-				Type Frozen
-				Temperature 1
-				Molten_Core 
-				Magnetic_Field 
-			}
-			Planet Frozen
-			{
-				Size 7
-				Type Frozen
-				Temperature 1
-				Atmosphere N
-				Low_Atmosphere 
-				Molten_Core 
-			}
-			Planet Barren
-			{
-				Size 3
-				Type Barren
-				Temperature 1
-				Vulcanic 
-				Radiation 
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-	Location System_11_Loc
-	{
-		X 7
-		Y 9
 		System System_11
 		{
-			Planet Star
+			X 0
+			Y 1
+			Planet_List 
 			{
-				Star_Size 1
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 5
-			}
-			Planet Frozen
-			{
-				Size 1
-				Type Frozen
-				Temperature 1
-				Radiation 
-				Moon 
-			}
-			Planet Frozen
-			{
-				Size 6
-				Type Frozen
-				Temperature 1
-				Atmosphere N
-				Low_Atmosphere 
-				Molten_Core 
-			}
-			Planet Frozen
-			{
-				Size 3
-				Type Frozen
-				Temperature 1
-				Radiation 
-				Moon 
-			}
-			Planet Frozen
-			{
-				Size 5
-				Type Frozen
-				Temperature 1
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
+				Planet Star
+				{
+					Star_Size 2
+					Star_Type Yellow_Dwarf
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 3
+					Molten_Core 
+					Magnetic_Field 
+				}
+				Planet Ocean
+				{
+					Size 3
+					Type Ocean
+					Temperature 2
+					Atmosphere N
+					Radiation 1
+					Water Water_Covered
+					Life Micorbial_Life
+					Ice 
+				}
+				Planet Barren
+				{
+					Size 6
+					Type Barren
+					Temperature 1
+					Vulcanic 
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
 		}
-	}
-	Location System_79_Loc
-	{
-		X 10
-		Y 9
-		System System_79
+		System System_14
 		{
-			Planet Star
+			X 3
+			Y 1
+			Planet_List 
 			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Barren
-			{
-				Size 3
-				Type Barren
-				Temperature 5
-				Radiation 
-			}
-			Planet Lava
-			{
-				Size 3
-				Type Lava
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Temperate
-			{
-				Size 6
-				Type Temperate
-				Temperature 4
-				Atmosphere O2
-				Molten_Core 
-				Magnetic_Field 
-				Radiation 
-				Water Oceans
-				Life Complex_life
-				Hostile_Life 
-			}
-			Planet Jungle
-			{
-				Size 1
-				Type Jungle
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Oceans
-				Life Complex_life
-				Hostile_Life 
-				Moon 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
+				Planet Star
+				{
+					Star_Size 4
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 7
+					Type Gas_Giant
+					Temperature 5
+					CH4 1
+					Rings 
+				}
+				Planet Temperate
+				{
+					Size 5
+					Type Temperate
+					Temperature 4
+					Atmosphere O2
+					Radiation 2
+					Water Oceans
+					Life Complex_life
+					Link:Player:Colony Player_5:Temperate
+				}
+				Planet Desert
+				{
+					Size 4
+					Type Desert
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 2
+					Water Vapor
+				}
+				Planet Toxic
+				{
+					Size 2
+					Type Toxic
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Toxic 
+					Radiation 1
+					Life Micorbial_Life
+					Moon 
+				}
+				Planet Arid
+				{
+					Size 2
+					Type Arid
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Ice 
+				}
+				Planet Arid
+				{
+					Size 5
+					Type Arid
+					Temperature 2
+					Atmosphere N
+					Radiation 1
+					Water Lakes
+					Ice 
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
 		}
-	}
-	Location System_34_Loc
-	{
-		X 5
-		Y 10
+		System System_15
+		{
+			X 4
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 7
+					Star_Type Yellow_Dwarf
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 5
+					Radiation 2
+				}
+				Planet Swamp
+				{
+					Size 1
+					Type Swamp
+					Temperature 4
+					Atmosphere CO2
+					Low_Atmosphere 
+					CH4 1
+					Radiation 2
+					Water Lakes
+					Life Complex_life
+				}
+				Planet Toxic
+				{
+					Size 2
+					Type Toxic
+					Temperature 3
+					Atmosphere CO2
+					Low_Atmosphere 
+					Toxic 
+					Radiation 1
+					Water Vapor
+					Life Simple_life
+				}
+				Planet Desert
+				{
+					Size 1
+					Type Desert
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Vapor
+					Ice 
+				}
+				Planet Swamp
+				{
+					Size 1
+					Type Swamp
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Simple_life
+					Ice 
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_16
+		{
+			X 5
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 3
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 7
+					Type Gas_Giant
+					Temperature 5
+					Magnetic_Field 
+				}
+				Planet Toxic
+				{
+					Size 3
+					Type Toxic
+					Temperature 4
+					Atmosphere CO2
+					Toxic 
+					Radiation 2
+				}
+				Planet Toxic
+				{
+					Size 6
+					Type Toxic
+					Temperature 3
+					Atmosphere CO2
+					Toxic 
+					Radiation 1
+					Ice 
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 2
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 1
+					Radiation 1
+					Rings 
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 1
+					Molten_Core 
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 1
+					Molten_Core 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_17
+		{
+			X 6
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 2
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 7
+					Type Gas_Giant
+					Temperature 4
+					CH4 1
+					Magnetic_Field 
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 1
+					Radiation 1
+					Moon 
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 1
+					Radiation 1
+					Moon 
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 1
+					Radiation 1
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System Sol
+		{
+			X 0
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 4
+					Star_Type Yellow_Dwarf
+				}
+				Planet Mercury
+				{
+					Size 1
+					Type Barren
+					Temperature 5
+					Radiation 2
+				}
+				Planet Venus
+				{
+					Size 4
+					Type Toxic
+					Temperature 4
+					Atmosphere CO2
+					Toxic 
+					Radiation 1
+					Molten_Core 
+					Magnetic_Field 
+					Vulcanic 
+				}
+				Planet Terra
+				{
+					Custom 
+					Size 4
+					Type Temperate
+					Temperature 3
+					Atmosphere O2
+					Atmosphere N
+					Molten_Core 
+					Magnetic_Field 
+					Water Oceans
+					Ice 
+					Life Complex_Life
+					Link:Player:Colony Player_0:Terra
+				}
+				Planet Moon
+				{
+					Size 1
+					Type Barren
+					Temperature 3
+					Radiation 1
+					Moon 
+				}
+				Planet Mars
+				{
+					Size 3
+					Type Desert
+					Temperature 2
+					Atmosphere CO2
+					Low_Atmosphere 
+					Radiation 1
+				}
+				Planet Asteroid_Belt
+				{
+					Size 3
+					Type Asteroid_Belt
+					Temperature 2
+				}
+				Planet Jupiter
+				{
+					Size 9
+					Type Gas_Giant
+					Temperature 1
+				}
+				Planet Ganymede
+				{
+					Size 2
+					Type Frozen
+					Temperature 1
+					Forzen_Ocean 
+					Moon 
+				}
+				Planet Saturn
+				{
+					Size 8
+					Type Gas_Giant
+					Temperature 1
+					CH4 1
+					Rings 
+				}
+				Planet Titan
+				{
+					Size 1
+					Type Frozen
+					Temperature 1
+					CH4 1
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_25
+		{
+			X 3
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 5
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 5
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Jungle
+				{
+					Size 4
+					Type Jungle
+					Temperature 4
+					Atmosphere O2
+					Molten_Core 
+					Magnetic_Field 
+					Alpine 
+					Radiation 1
+					Water Lakes
+					Life Simple_life
+				}
+				Planet Swamp
+				{
+					Size 4
+					Type Swamp
+					Temperature 4
+					Atmosphere CO2
+					Radiation 2
+					Water Lakes
+					Life Micorbial_Life
+				}
+				Planet Toxic
+				{
+					Size 2
+					Type Toxic
+					Temperature 3
+					Atmosphere CO2
+					Low_Atmosphere 
+					Toxic 
+					Radiation 1
+					Life Simple_life
+				}
+				Planet Toxic
+				{
+					Size 1
+					Type Toxic
+					Temperature 2
+					Atmosphere CO2
+					Low_Atmosphere 
+					Toxic 
+					Radiation 1
+					Ice 
+					Moon 
+				}
+				Planet Frozen
+				{
+					Size 6
+					Type Frozen
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_26
+		{
+			X 4
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 3
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 8
+					Type Gas_Giant
+					Temperature 5
+					CH4 1
+				}
+				Planet Lava
+				{
+					Size 5
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Lava
+				{
+					Size 2
+					Type Lava
+					Temperature 4
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Temperate
+				{
+					Size 1
+					Type Temperate
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Toxic 
+					Radiation 1
+					Water Lakes
+					Life Micorbial_Life
+					Link:Player:Colony Player_6:Temperate
+				}
+				Planet Swamp
+				{
+					Size 3
+					Type Swamp
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					CH4 1
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+					Ice 
+					Hostile_Life 
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_28
+		{
+			X 6
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 2
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 7
+					Type Gas_Giant
+					Temperature 1
+					CH4 1
+				}
+				Planet Frozen
+				{
+					Size 5
+					Type Frozen
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_29
+		{
+			X 7
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 6
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 1
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Desert
+				{
+					Size 1
+					Type Desert
+					Temperature 4
+					Atmosphere CO2
+					Low_Atmosphere 
+					Toxic 
+					Radiation 2
+					Water Vapor
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Molten_Core 
+					Radiation 1
+					Rings 
+				}
+				Planet Lava
+				{
+					Size 1
+					Type Lava
+					Temperature 4
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 1
+					Type Vulcanic
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Vulcanic 
+					Radiation 1
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_33
+		{
+			X 0
+			Y 3
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 1
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 7
+					Type Gas_Giant
+					Temperature 1
+					Magnetic_Field 
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Molten_Core 
+					Magnetic_Field 
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 1
+					Molten_Core 
+					Alpine 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
 		System System_34
 		{
-			Planet Star
+			X 1
+			Y 3
+			Planet_List 
 			{
-				Star_Size 5
-				Star_Type Yellow_Dwarf
-			}
-			Planet Lava
-			{
-				Size 3
-				Type Lava
-				Temperature 5
-				Atmosphere CO2
-				Toxic 
-				Vulcanic 
-				Radiation 
-				Rings 
-			}
-			Planet Vulcanic
-			{
-				Size 1
-				Type Vulcanic
-				Temperature 5
-				Vulcanic 
-				Radiation 
-			}
-			Planet Jungle
-			{
-				Size 6
-				Type Jungle
-				Temperature 4
-				Atmosphere N
-				Radiation 
-				Water Lakes
-				Life Complex_life
-			}
-			Planet Ocean
-			{
-				Size 3
-				Type Ocean
-				Temperature 4
-				Atmosphere O2
-				Low_Atmosphere 
-				Radiation 
-				Water Water_Covered
-				Life Complex_life
-			}
-			Planet Arid
-			{
-				Size 1
-				Type Arid
-				Temperature 3
-				Atmosphere CO2
-				Low_Atmosphere 
-				Radiation 
-				Water Lakes
-				Life Complex_life
-				Moon 
-			}
-			Planet Asteroid_Belt
-			{
-				Size 3
-				Type Asteroid_Belt
-				Temperature 3
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
+				Planet Star
+				{
+					Star_Size 4
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 3
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Low_Atmosphere 
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 2
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Low_Atmosphere 
+					Vulcanic 
+					Radiation 2
+					Life Micorbial_Life
+				}
+				Planet Desert
+				{
+					Size 3
+					Type Desert
+					Temperature 4
+					Atmosphere CO2
+					Radiation 2
+					Water Vapor
+					Life Micorbial_Life
+				}
+				Planet Temperate
+				{
+					Size 1
+					Type Temperate
+					Temperature 3
+					Atmosphere O2
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Simple_life
+					Ice 
+					Moon 
+					Link:Player:Colony Player_7:Temperate
+				}
+				Planet Desert
+				{
+					Size 6
+					Type Desert
+					Temperature 3
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 1
+					Water Vapor
+					Life Simple_life
+				}
+				Planet Jungle
+				{
+					Size 2
+					Type Jungle
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+				}
+				Planet Arid
+				{
+					Size 1
+					Type Arid
+					Temperature 3
+					Atmosphere CO2
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Micorbial_Life
+					Moon 
+				}
+				Planet Ocean
+				{
+					Size 2
+					Type Ocean
+					Temperature 3
+					Atmosphere O2
+					Low_Atmosphere 
+					Radiation 1
+					Water Water_Covered
+					Life Complex_life
+				}
+				Planet Arid
+				{
+					Size 2
+					Type Arid
+					Temperature 2
+					Atmosphere CO2
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Micorbial_Life
+					Ice 
+				}
+				Planet Desert
+				{
+					Size 5
+					Type Desert
+					Temperature 2
+					Atmosphere N
+					Radiation 1
+					Water Vapor
+					Ice 
+				}
+				Planet Toxic
+				{
+					Size 2
+					Type Toxic
+					Temperature 2
+					Atmosphere CO2
+					Low_Atmosphere 
+					Toxic 
+					Radiation 1
+					Water Vapor
+					Ice 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
 		}
-	}
-	Location System_88_Loc
-	{
-		X 6
-		Y 10
-		System System_88
+		System System_36
 		{
-			Planet Star
+			X 3
+			Y 3
+			Planet_List 
 			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 7
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-				He3 1
-			}
-			Planet Vulcanic
-			{
-				Size 5
-				Type Vulcanic
-				Temperature 5
-				Atmosphere N
-				Vulcanic 
-				Radiation 
-			}
-			Planet Lava
-			{
-				Size 3
-				Type Lava
-				Temperature 4
-				Atmosphere CO2
-				Vulcanic 
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
+				Planet Star
+				{
+					Star_Size 3
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 3
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 4
+					Radiation 2
+					Moon 
+				}
+				Planet Arid
+				{
+					Size 2
+					Type Arid
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+					Hostile_Life 
+				}
+				Planet Toxic
+				{
+					Size 5
+					Type Toxic
+					Temperature 2
+					Atmosphere CO2
+					Toxic 
+					Radiation 1
+					Water Vapor
+					Ice 
+				}
+				Planet Asteroid_Belt
+				{
+					Size 5
+					Type Asteroid_Belt
+					Temperature 2
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
 		}
-	}
-	Location System_92_Loc
-	{
-		X 7
-		Y 10
+		System System_37
+		{
+			X 4
+			Y 3
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 2
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 5
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 1
+					Molten_Core 
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+				}
+				Planet Frozen
+				{
+					Size 2
+					Type Frozen
+					Temperature 1
+					Radiation 1
+				}
+				Planet Frozen
+				{
+					Size 1
+					Type Frozen
+					Temperature 1
+					Radiation 1
+					Ice 
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_41
+		{
+			X 8
+			Y 3
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 7
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 4
+					Type Vulcanic
+					Temperature 5
+					Atmosphere O2
+					Toxic 
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_45
+		{
+			X 1
+			Y 4
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 4
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 6
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Desert
+				{
+					Size 3
+					Type Desert
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 2
+					Water Vapor
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 4
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 4
+					Type Vulcanic
+					Temperature 4
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Toxic
+				{
+					Size 3
+					Type Toxic
+					Temperature 4
+					Atmosphere CO2
+					Toxic 
+					Radiation 2
+				}
+				Planet Jungle
+				{
+					Size 3
+					Type Jungle
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 2
+					Water Oceans
+					Life Complex_life
+					Hostile_Life 
+				}
+				Planet Lava
+				{
+					Size 4
+					Type Lava
+					Temperature 4
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 1
+					Type Vulcanic
+					Temperature 3
+					Vulcanic 
+					Radiation 1
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_46
+		{
+			X 2
+			Y 4
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 5
+					Star_Type Yellow_Dwarf
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 5
+					Radiation 2
+				}
+				Planet Arid
+				{
+					Size 5
+					Type Arid
+					Temperature 4
+					Atmosphere N
+					Molten_Core 
+					Magnetic_Field 
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+				}
+				Planet Arid
+				{
+					Size 5
+					Type Arid
+					Temperature 3
+					Atmosphere N
+					Toxic 
+					Radiation 1
+					Water Lakes
+				}
+				Planet Swamp
+				{
+					Size 3
+					Type Swamp
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					CH4 1
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+					Ice 
+				}
+				Planet Frozen
+				{
+					Size 5
+					Type Frozen
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					CH4 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Frozen
+				{
+					Size 3
+					Type Frozen
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Molten_Core 
+					Ice 
+					Life Micorbial_Life
+				}
+				Planet Frozen
+				{
+					Size 3
+					Type Frozen
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					CH4 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 1
+					Radiation 1
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_48
+		{
+			X 4
+			Y 4
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 1
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 7
+					Type Gas_Giant
+					Temperature 4
+					CH4 1
+					He3 1
+				}
+				Planet Swamp
+				{
+					Size 2
+					Type Swamp
+					Temperature 4
+					Atmosphere CO2
+					Low_Atmosphere 
+					Toxic 
+					CH4 1
+					Radiation 2
+					Water Lakes
+					Life Micorbial_Life
+					Moon 
+				}
+				Planet Temperate
+				{
+					Size 3
+					Type Temperate
+					Temperature 4
+					Atmosphere O2
+					Radiation 2
+					Water Lakes
+					Life Complex_life
+					Hostile_Life 
+					Link:Player:Colony Player_8:Temperate
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_49
+		{
+			X 5
+			Y 4
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 1
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 7
+					Type Gas_Giant
+					Temperature 4
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_50
+		{
+			X 6
+			Y 4
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 5
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 3
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Low_Atmosphere 
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 2
+					Type Vulcanic
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Vulcanic 
+					Radiation 2
+					Water Vapor
+				}
+				Planet Jungle
+				{
+					Size 4
+					Type Jungle
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 2
+					Water Oceans
+					Life Simple_life
+				}
+				Planet Artic
+				{
+					Size 2
+					Type Artic
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Oceans
+					Life Complex_life
+					Ice 
+				}
+				Planet Arid
+				{
+					Size 1
+					Type Arid
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Simple_life
+					Ice 
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_53
+		{
+			X 9
+			Y 4
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 2
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 8
+					Type Gas_Giant
+					Temperature 2
+				}
+				Planet Frozen
+				{
+					Size 6
+					Type Frozen
+					Temperature 1
+					Radiation 1
+				}
+				Planet Frozen
+				{
+					Size 1
+					Type Frozen
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_57
+		{
+			X 2
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 7
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 4
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Toxic
+				{
+					Size 5
+					Type Toxic
+					Temperature 4
+					Atmosphere CO2
+					Toxic 
+					Radiation 2
+				}
+				Planet Toxic
+				{
+					Size 5
+					Type Toxic
+					Temperature 4
+					Atmosphere CO2
+					Toxic 
+					Radiation 2
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_58
+		{
+			X 3
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 7
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 8
+					Type Gas_Giant
+					Temperature 5
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 5
+					Radiation 2
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_59
+		{
+			X 4
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 5
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 4
+					Type Vulcanic
+					Temperature 5
+					Atmosphere N
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Ocean
+				{
+					Size 2
+					Type Ocean
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Molten_Core 
+					Radiation 1
+					Water Water_Covered
+					Life Simple_life
+				}
+				Planet Arid
+				{
+					Size 5
+					Type Arid
+					Temperature 3
+					Atmosphere O2
+					Molten_Core 
+					Water Lakes
+				}
+				Planet Temperate
+				{
+					Size 5
+					Type Temperate
+					Temperature 2
+					Atmosphere N
+					Radiation 1
+					Water Oceans
+					Life Complex_life
+					Ice 
+					Link:Player:Colony Player_9:Temperate
+				}
+				Planet Frozen
+				{
+					Size 4
+					Type Frozen
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					CH4 1
+					Vulcanic 
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Molten_Core 
+				}
+				Planet Frozen
+				{
+					Size 3
+					Type Frozen
+					Temperature 1
+					Radiation 1
+					Ice 
+					Life Micorbial_Life
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 1
+					Radiation 1
+					Moon 
+				}
+				Planet Frozen
+				{
+					Size 6
+					Type Frozen
+					Temperature 1
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_61
+		{
+			X 6
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 5
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 5
+					Type Lava
+					Temperature 5
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 2
+					Rings 
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 5
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 2
+					Moon 
+				}
+				Planet Ocean
+				{
+					Size 4
+					Type Ocean
+					Temperature 4
+					Atmosphere N
+					Radiation 2
+					Water Water_Covered
+					Life Micorbial_Life
+					Rings 
+				}
+				Planet Ocean
+				{
+					Size 2
+					Type Ocean
+					Temperature 3
+					Atmosphere O2
+					Low_Atmosphere 
+					Radiation 1
+					Water Water_Covered
+					Life Complex_life
+					Ice 
+					Hostile_Life 
+				}
+				Planet Jungle
+				{
+					Size 3
+					Type Jungle
+					Temperature 3
+					Atmosphere O2
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+					Hostile_Life 
+				}
+				Planet Toxic
+				{
+					Size 4
+					Type Toxic
+					Temperature 3
+					Atmosphere CO2
+					Toxic 
+					Radiation 1
+				}
+				Planet Temperate
+				{
+					Size 1
+					Type Temperate
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Simple_life
+					Ice 
+				}
+				Planet Frozen
+				{
+					Size 0
+					Type Frozen
+					Temperature 1
+					Radiation 1
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_62
+		{
+			X 7
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 6
+					Star_Type Yellow_Dwarf
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 5
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 6
+					Type Vulcanic
+					Temperature 5
+					Atmosphere N
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Asteroid_Belt
+				{
+					Size 4
+					Type Asteroid_Belt
+					Temperature 5
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_63
+		{
+			X 8
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 6
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 3
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Lava
+				{
+					Size 1
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+					Moon 
+				}
+				Planet Ocean
+				{
+					Size 2
+					Type Ocean
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 2
+					Water Water_Covered
+					Life Complex_life
+					Hostile_Life 
+				}
+				Planet Desert
+				{
+					Size 3
+					Type Desert
+					Temperature 4
+					Atmosphere CO2
+					Radiation 2
+					Water Vapor
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_67
+		{
+			X 1
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 3
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 2
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Jungle
+				{
+					Size 3
+					Type Jungle
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 2
+					Water Lakes
+					Life Complex_life
+				}
+				Planet Temperate
+				{
+					Size 1
+					Type Temperate
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Oceans
+					Life Micorbial_Life
+					Ice 
+					Rings 
+					Moon 
+				}
+				Planet Desert
+				{
+					Size 6
+					Type Desert
+					Temperature 3
+					Atmosphere N
+					Radiation 1
+					Water Vapor
+					Ice 
+				}
+				Planet Arid
+				{
+					Size 6
+					Type Arid
+					Temperature 2
+					Atmosphere N
+					Radiation 1
+					Water Lakes
+					Life Simple_life
+					Ice 
+				}
+				Planet Frozen
+				{
+					Size 2
+					Type Frozen
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Moon 
+				}
+				Planet Frozen
+				{
+					Size 4
+					Type Frozen
+					Temperature 1
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_70
+		{
+			X 4
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 1
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 8
+					Type Gas_Giant
+					Temperature 1
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 1
+					Radiation 1
+					Moon 
+				}
+				Planet Frozen
+				{
+					Size 5
+					Type Frozen
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Rings 
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 1
+					Molten_Core 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_71
+		{
+			X 5
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 1
+					Star_Type Yellow_Dwarf
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_72
+		{
+			X 6
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 4
+					Star_Type Yellow_Dwarf
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 5
+					Radiation 2
+				}
+				Planet Lava
+				{
+					Size 5
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 4
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Jungle
+				{
+					Size 2
+					Type Jungle
+					Temperature 4
+					Atmosphere O2
+					Low_Atmosphere 
+					Radiation 2
+					Water Oceans
+					Life Complex_life
+					Hostile_Life 
+				}
+				Planet Temperate
+				{
+					Size 4
+					Type Temperate
+					Temperature 3
+					Atmosphere N
+					Radiation 1
+					Water Oceans
+					Life Simple_life
+					Ice 
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 2
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 1
+					Molten_Core 
+					Magnetic_Field 
+					Alpine 
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_74
+		{
+			X 8
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 7
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 2
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Low_Atmosphere 
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_75
+		{
+			X 9
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 6
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 8
+					Type Gas_Giant
+					Temperature 5
+				}
+				Planet Ocean
+				{
+					Size 1
+					Type Ocean
+					Temperature 4
+					Atmosphere O2
+					Low_Atmosphere 
+					Radiation 2
+					Water Water_Covered
+					Life Micorbial_Life
+					Rings 
+					Moon 
+				}
+				Planet Ocean
+				{
+					Size 2
+					Type Ocean
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Molten_Core 
+					Radiation 1
+					Water Water_Covered
+					Life Micorbial_Life
+					Moon 
+				}
+				Planet Ocean
+				{
+					Size 3
+					Type Ocean
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Water_Covered
+					Life Complex_life
+					Ice 
+					Hostile_Life 
+					Moon 
+				}
+				Planet Temperate
+				{
+					Size 6
+					Type Temperate
+					Temperature 2
+					Atmosphere O2
+					Molten_Core 
+					Water Oceans
+					Life Micorbial_Life
+					Ice 
+				}
+				Planet Frozen
+				{
+					Size 1
+					Type Frozen
+					Temperature 1
+					Radiation 1
+					Ice 
+					Life Micorbial_Life
+					Moon 
+				}
+				Planet Frozen
+				{
+					Size 5
+					Type Frozen
+					Temperature 1
+					Molten_Core 
+					Magnetic_Field 
+					Alpine 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_79
+		{
+			X 2
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 6
+					Star_Type Yellow_Dwarf
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 5
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 2
+				}
+				Planet Desert
+				{
+					Size 6
+					Type Desert
+					Temperature 4
+					Atmosphere N
+					Radiation 2
+					Water Vapor
+					Life Micorbial_Life
+				}
+				Planet Toxic
+				{
+					Size 1
+					Type Toxic
+					Temperature 3
+					Atmosphere CO2
+					Low_Atmosphere 
+					Toxic 
+					Radiation 1
+				}
+				Planet Arid
+				{
+					Size 2
+					Type Arid
+					Temperature 2
+					Atmosphere CO2
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Ice 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_83
+		{
+			X 6
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 7
+					Star_Type Yellow_Dwarf
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_84
+		{
+			X 7
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 5
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 2
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 5
+					Radiation 2
+				}
+				Planet Lava
+				{
+					Size 1
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 5
+					Type Vulcanic
+					Temperature 4
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 2
+					Rings 
+				}
+				Planet Desert
+				{
+					Size 2
+					Type Desert
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Vapor
+					Life Micorbial_Life
+					Ice 
+					Moon 
+				}
+				Planet Toxic
+				{
+					Size 4
+					Type Toxic
+					Temperature 2
+					Atmosphere CO2
+					Toxic 
+					Molten_Core 
+					Magnetic_Field 
+					Life Simple_life
+					Ice 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_86
+		{
+			X 9
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 1
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 7
+					Type Gas_Giant
+					Temperature 5
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_87
+		{
+			X 10
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 2
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 8
+					Type Gas_Giant
+					Temperature 4
+					He3 1
+					Rings 
+				}
+				Planet Frozen
+				{
+					Size 2
+					Type Frozen
+					Temperature 1
+					Molten_Core 
+					Magnetic_Field 
+					Moon 
+				}
+				Planet Frozen
+				{
+					Size 1
+					Type Frozen
+					Temperature 1
+					Radiation 1
+				}
+				Planet Frozen
+				{
+					Size 1
+					Type Frozen
+					Temperature 1
+					Radiation 1
+					Moon 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_91
+		{
+			X 3
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 5
+					Star_Type Yellow_Dwarf
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 5
+					Radiation 2
+				}
+				Planet Swamp
+				{
+					Size 6
+					Type Swamp
+					Temperature 4
+					Atmosphere N
+					Radiation 2
+					Water Lakes
+					Life Simple_life
+				}
+				Planet Arid
+				{
+					Size 3
+					Type Arid
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Moon 
+				}
+				Planet Temperate
+				{
+					Size 6
+					Type Temperate
+					Temperature 2
+					Atmosphere N
+					Toxic 
+					Molten_Core 
+					Magnetic_Field 
+					Water Lakes
+					Life Micorbial_Life
+					Ice 
+				}
+				Planet Ocean
+				{
+					Size 3
+					Type Ocean
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Water_Covered
+					Life Complex_life
+					Ice 
+					Hostile_Life 
+					Moon 
+				}
+				Planet Desert
+				{
+					Size 1
+					Type Desert
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					Toxic 
+					Radiation 1
+					Water Vapor
+					Ice 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
 		System System_92
 		{
-			Planet Star
+			X 4
+			Y 8
+			Planet_List 
 			{
-				Star_Size 6
-				Star_Type Yellow_Dwarf
+				Planet Star
+				{
+					Star_Size 3
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 3
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 4
+					Molten_Core 
+					Alpine 
+					Radiation 1
+				}
+				Planet Vulcanic
+				{
+					Size 5
+					Type Vulcanic
+					Temperature 4
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Arid
+				{
+					Size 6
+					Type Arid
+					Temperature 3
+					Atmosphere N
+					Toxic 
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+					Ice 
+				}
+				Planet Jungle
+				{
+					Size 4
+					Type Jungle
+					Temperature 3
+					Atmosphere O2
+					Radiation 1
+					Water Oceans
+					Life Simple_life
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
-			Planet Vulcanic
+		}
+		System System_94
+		{
+			X 6
+			Y 8
+			Planet_List 
 			{
-				Size 3
-				Type Vulcanic
-				Temperature 5
-				Atmosphere CO2
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
+				Planet Star
+				{
+					Star_Size 5
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 3
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 5
+					Radiation 2
+				}
+				Planet Ocean
+				{
+					Size 5
+					Type Ocean
+					Temperature 4
+					Atmosphere O2
+					Radiation 2
+					Water Water_Covered
+					Life Micorbial_Life
+				}
+				Planet Desert
+				{
+					Size 2
+					Type Desert
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 2
+					Water Vapor
+					Life Simple_life
+					Moon 
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 3
+					Molten_Core 
+				}
+				Planet Temperate
+				{
+					Size 4
+					Type Temperate
+					Temperature 2
+					Atmosphere O2
+					Radiation 1
+					Water Lakes
+					Life Simple_life
+					Ice 
+				}
+				Planet Desert
+				{
+					Size 4
+					Type Desert
+					Temperature 2
+					Atmosphere N
+					Radiation 1
+					Water Vapor
+					Ice 
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Vulcanic 
+					Radiation 1
+				}
+				Planet Asteroid_Belt
+				{
+					Size 4
+					Type Asteroid_Belt
+					Temperature 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
-			Planet Temperate
+		}
+		System System_95
+		{
+			X 7
+			Y 8
+			Planet_List 
 			{
-				Size 3
-				Type Temperate
-				Temperature 4
-				Atmosphere N
-				Low_Atmosphere 
-				Toxic 
-				Radiation 
-				Water Oceans
-				Life Complex_life
-				Hostile_Life 
+				Planet Star
+				{
+					Star_Size 5
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 3
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Temperate
+				{
+					Size 5
+					Type Temperate
+					Temperature 4
+					Atmosphere N
+					Radiation 2
+					Water Lakes
+					Life Simple_life
+				}
+				Planet Artic
+				{
+					Size 7
+					Type Artic
+					Temperature 3
+					Atmosphere N
+					Molten_Core 
+					Magnetic_Field 
+					Water Water-Covered
+					Life Micorbial_Life
+					Ice 
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 2
+					Radiation 1
+				}
+				Planet Toxic
+				{
+					Size 5
+					Type Toxic
+					Temperature 2
+					Atmosphere CO2
+					Toxic 
+					Vulcanic 
+					Radiation 1
+					Ice 
+				}
+				Planet Barren
+				{
+					Size 6
+					Type Barren
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Vulcanic 
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
-			Planet Swamp
+		}
+		System System_98
+		{
+			X 10
+			Y 8
+			Planet_List 
 			{
-				Size 5
-				Type Swamp
-				Temperature 4
-				Atmosphere N
-				CH4 1
-				Molten_Core 
-				Magnetic_Field 
-				Radiation 
-				Water Lakes
-				Life Complex_life
-				Hostile_Life 
+				Planet Star
+				{
+					Star_Size 2
+					Star_Type Yellow_Dwarf
+				}
+				Planet Jungle
+				{
+					Size 3
+					Type Jungle
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+				}
+				Planet Temperate
+				{
+					Size 6
+					Type Temperate
+					Temperature 3
+					Atmosphere N
+					Molten_Core 
+					Water Oceans
+					Life Simple_life
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 1
+					Radiation 1
+					Rings 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
-			Planet Desert
+		}
+		System System_103
+		{
+			X 4
+			Y 9
+			Planet_List 
 			{
-				Size 2
-				Type Desert
-				Temperature 3
-				Atmosphere N
-				Low_Atmosphere 
-				Radiation 
-				Water Vapor
-				Ice 
-				Moon 
+				Planet Star
+				{
+					Star_Size 4
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 4
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 1
+					Type Vulcanic
+					Temperature 4
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 5
+					Type Vulcanic
+					Temperature 4
+					Atmosphere CO2
+					Toxic 
+					Vulcanic 
+					Radiation 2
+					Water Vapor
+				}
+				Planet Toxic
+				{
+					Size 2
+					Type Toxic
+					Temperature 4
+					Atmosphere CO2
+					Low_Atmosphere 
+					Toxic 
+					Radiation 2
+					Rings 
+					Moon 
+				}
+				Planet Temperate
+				{
+					Size 2
+					Type Temperate
+					Temperature 3
+					Atmosphere O2
+					Low_Atmosphere 
+					Radiation 1
+					Water Oceans
+					Life Micorbial_Life
+					Moon 
+				}
+				Planet Arid
+				{
+					Size 6
+					Type Arid
+					Temperature 2
+					Atmosphere N
+					Toxic 
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+					Ice 
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Frozen
+				{
+					Size 5
+					Type Frozen
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					CH4 1
+					Molten_Core 
+				}
+				Planet Asteroid_Belt
+				{
+					Size 5
+					Type Asteroid_Belt
+					Temperature 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
-			Planet Outer_System
+		}
+		System System_104
+		{
+			X 5
+			Y 9
+			Planet_List 
 			{
-				Type Outer_System
+				Planet Star
+				{
+					Star_Size 1
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 5
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Toxic 
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_105
+		{
+			X 6
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 6
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 1
+					Type Vulcanic
+					Temperature 5
+					Atmosphere CO2
+					Low_Atmosphere 
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Lava
+				{
+					Size 1
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+					Moon 
+				}
+				Planet Toxic
+				{
+					Size 1
+					Type Toxic
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Toxic 
+					Radiation 2
+					Water Lakes
+					Life Simple_life
+					Rings 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_106
+		{
+			X 7
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 6
+					Star_Type Yellow_Dwarf
+				}
+				Planet Vulcanic
+				{
+					Size 2
+					Type Vulcanic
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Jungle
+				{
+					Size 1
+					Type Jungle
+					Temperature 4
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 2
+					Water Oceans
+					Life Complex_life
+					Hostile_Life 
+					Moon 
+				}
+				Planet Toxic
+				{
+					Size 1
+					Type Toxic
+					Temperature 4
+					Atmosphere CO2
+					Low_Atmosphere 
+					Toxic 
+					Radiation 2
+				}
+				Planet Jungle
+				{
+					Size 4
+					Type Jungle
+					Temperature 4
+					Atmosphere O2
+					Molten_Core 
+					Magnetic_Field 
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+					Hostile_Life 
+				}
+				Planet Arid
+				{
+					Size 1
+					Type Arid
+					Temperature 3
+					Atmosphere O2
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+					Hostile_Life 
+				}
+				Planet Asteroid_Belt
+				{
+					Size 3
+					Type Asteroid_Belt
+					Temperature 2
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_109
+		{
+			X 10
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 1
+					Star_Type Yellow_Dwarf
+				}
+			}
+		}
+		System System_115
+		{
+			X 5
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 5
+					Star_Type Yellow_Dwarf
+				}
+				Planet Lava
+				{
+					Size 3
+					Type Lava
+					Temperature 5
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Toxic
+				{
+					Size 5
+					Type Toxic
+					Temperature 4
+					Atmosphere CO2
+					Toxic 
+					Radiation 2
+				}
+				Planet Jungle
+				{
+					Size 2
+					Type Jungle
+					Temperature 3
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Complex_life
+					Hostile_Life 
+					Rings 
+					Moon 
+				}
+				Planet Temperate
+				{
+					Size 5
+					Type Temperate
+					Temperature 2
+					Atmosphere N
+					Radiation 1
+					Water Oceans
+					Life Complex_life
+					Ice 
+				}
+				Planet Arid
+				{
+					Size 2
+					Type Arid
+					Temperature 2
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Water Lakes
+					Life Simple_life
+					Ice 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_116
+		{
+			X 6
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 4
+					Star_Type Yellow_Dwarf
+				}
+				Planet Barren
+				{
+					Size 5
+					Type Barren
+					Temperature 5
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 1
+					Type Vulcanic
+					Temperature 5
+					Atmosphere O2
+					Low_Atmosphere 
+					Toxic 
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Vulcanic
+				{
+					Size 4
+					Type Vulcanic
+					Temperature 4
+					Atmosphere N
+					Vulcanic 
+					Radiation 2
+				}
+				Planet Desert
+				{
+					Size 3
+					Type Desert
+					Temperature 3
+					Atmosphere N
+					Radiation 1
+					Water Vapor
+					Ice 
+				}
+				Planet Desert
+				{
+					Size 4
+					Type Desert
+					Temperature 2
+					Atmosphere N
+					Radiation 1
+					Water Vapor
+					Ice 
+				}
+				Planet Frozen
+				{
+					Size 6
+					Type Frozen
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Molten_Core 
+				}
+				Planet Frozen
+				{
+					Size 2
+					Type Frozen
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 6
+					Type Barren
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Radiation 1
+					Rings 
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Frozen
+				{
+					Size 6
+					Type Frozen
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					CH4 1
+					Vulcanic 
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 3
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_117
+		{
+			X 7
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 2
+					Star_Type Yellow_Dwarf
+				}
+				Planet Gas Giant
+				{
+					Size 7
+					Type Gas_Giant
+					Temperature 1
+					CH4 1
+					Rings 
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 1
+					Atmosphere N
+					Low_Atmosphere 
+					Molten_Core 
+					Moon 
+				}
+				Planet Frozen
+				{
+					Size 4
+					Type Frozen
+					Temperature 1
+					Molten_Core 
+					Alpine 
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
+			}
+		}
+		System System_120
+		{
+			X 10
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Size 2
+					Star_Type Yellow_Dwarf
+				}
+				Planet Barren
+				{
+					Size 1
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 4
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Barren
+				{
+					Size 2
+					Type Barren
+					Temperature 1
+					Radiation 1
+				}
+				Planet Outer_System
+				{
+					Type Outer_System
+				}
 			}
 		}
 	}
-	Location System_92_Loc
+	Player_List 
 	{
-		X 10
-		Y 10
-		System System_92
+		Player Player_0
 		{
-			Planet Star
-			{
-				Star_Size 7
-				Star_Type Yellow_Dwarf
-			}
-			Planet Gas Giant
-			{
-				Size 8
-				Type Gas_Giant
-				Temperature 5
-				CH4 1
-			}
-			Planet Vulcanic
-			{
-				Size 2
-				Type Vulcanic
-				Temperature 4
-				Atmosphere CO2
-				Low_Atmosphere 
-				Vulcanic 
-				Radiation 
-				Moon 
-			}
-			Planet Barren
-			{
-				Size 1
-				Type Barren
-				Temperature 3
-				Radiation 
-			}
-			Planet Temperate
-			{
-				Size 4
-				Type Temperate
-				Temperature 2
-				Atmosphere O2
-				Radiation 
-				Water Oceans
-				Life Simple_life
-				Ice 
-			}
-			Planet Frozen
-			{
-				Size 4
-				Type Frozen
-				Temperature 1
-				Vulcanic 
-				Radiation 
-			}
-			Planet Outer_System
-			{
-				Type Outer_System
-			}
-		}
-	}
-}
-Players
-{
-	Player Player_0
-	{
-		Resources 
-		{
-			Energy_income 0
-			Metal_income 0
-			Credits 0
-			Credits_income 0
-			Authoriy 0
-			Authoriy_used 0
-			Influence 0
-			Influence_used 0
-			TechPoints_income 0
-			CivicPoints_income 0
-			Pops 0
-		}
-		Status 
-		{
-			TechPoints_max 0
-			TechPoints_tech None
-		}
-		Civics 
-		Bonuses 
-		Colony Terra
-		{
-			Action None
+			Human 0
 			Resources 
 			{
-				Credits_treasury 3000
-				Pops 11000
+				Energy_income 0
+				Metal_income 0
+				Credits 0
+				Credits_income 0
+				Authoriy 0
+				Authoriy_used 0
+				Influence 0
+				Influence_used 0
+				TechPoints_income 0
+				CivicPoints_income 0
+				Pops 0
 			}
-			Buildings 
+			Status 
 			{
-				Private_Business 250
-				Power_Plants 15
-				Mines 10
-				Goverment_Offices 5
-				Diplomatic_Offices 1
-				Research_Labs 5
-				Cultural_Center 5
+				TechPoints_max 0
+				TechPoints_tech None
 			}
-			Support 
+			Civics 
+			Bonuses 
+			Colony_List 
 			{
-				Democratic 
+				Colony Terra
 				{
-					Facton_Size 30
-					Happiness 7
-				}
-				Industrialist 
-				{
-					Facton_Size 20
-					Happiness 7
-				}
-				Ecologist 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Religious 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Liberty 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Unity 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Pacifist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Millitarist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Scientist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Bio-engineering 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Mechanist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Autocratic 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofile 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofob 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Federation 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Empire 
-				{
-					Facton_Size 3
-					Happiness 7
+					Resources 
+					{
+						Credits_treasury 3000
+						Pops 11000
+					}
+					Buildings 
+					{
+						Private_Business 250
+						Power_Plants 15
+						Mines 10
+						Goverment_Offices 5
+						Diplomatic_Offices 1
+						Research_Labs 6
+						Cultural_Center 5
+						Nature_Biodomes 1
+					}
+					Support 
+					{
+						Democratic 
+						{
+							Facton_Size 30
+							Happiness 7
+						}
+						Industrialist 
+						{
+							Facton_Size 20
+							Happiness 7
+						}
+						Ecologist 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Religious 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Liberty 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Unity 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Pacifist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Millitarist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Scientist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Bio-engineering 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Mechanist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Autocratic 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofile 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofob 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Federation 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Empire 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+					}
+					Bonuses 
+					Link:System:Planet Sol:Terra
 				}
 			}
-			Link:Location:Planet Sol_Loc:Terra
 		}
-	}
-	Player Player_1
-	{
-		Resources 
+		Player Player_1
 		{
-			Energy_income 0
-			Metal_income 0
-			Credits 0
-			Credits_income 0
-			Authoriy 0
-			Authoriy_used 0
-			Influence 0
-			Influence_used 0
-			TechPoints_income 0
-			CivicPoints_income 0
-			Pops 0
-		}
-		Status 
-		{
-			TechPoints_max 0
-			TechPoints_tech None
-		}
-		Civics 
-		Bonuses 
-		Colony Temperate
-		{
-			Action None
 			Resources 
 			{
-				Credits_treasury 3000
-				Pops 11000
+				Energy_income 0
+				Metal_income 0
+				Credits 0
+				Credits_income 0
+				Authoriy 0
+				Authoriy_used 0
+				Influence 0
+				Influence_used 0
+				TechPoints_income 0
+				CivicPoints_income 0
+				Pops 0
 			}
-			Buildings 
+			Status 
 			{
-				Private_Business 250
-				Power_Plants 15
-				Mines 10
-				Goverment_Offices 5
-				Diplomatic_Offices 1
-				Research_Labs 5
-				Cultural_Center 5
+				TechPoints_max 0
+				TechPoints_tech None
 			}
-			Support 
+			Civics 
+			Bonuses 
+			Colony_List 
 			{
-				Democratic 
+				Colony Temperate
 				{
-					Facton_Size 30
-					Happiness 7
-				}
-				Industrialist 
-				{
-					Facton_Size 20
-					Happiness 7
-				}
-				Ecologist 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Religious 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Liberty 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Unity 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Pacifist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Millitarist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Scientist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Bio-engineering 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Mechanist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Autocratic 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofile 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofob 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Federation 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Empire 
-				{
-					Facton_Size 3
-					Happiness 7
+					Resources 
+					{
+						Credits_treasury 3000
+						Pops 11000
+					}
+					Buildings 
+					{
+						Private_Business 250
+						Power_Plants 15
+						Mines 10
+						Goverment_Offices 5
+						Diplomatic_Offices 1
+						Research_Labs 5
+						Cultural_Center 5
+					}
+					Support 
+					{
+						Democratic 
+						{
+							Facton_Size 30
+							Happiness 7
+						}
+						Industrialist 
+						{
+							Facton_Size 20
+							Happiness 7
+						}
+						Ecologist 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Religious 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Liberty 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Unity 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Pacifist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Millitarist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Scientist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Bio-engineering 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Mechanist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Autocratic 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofile 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofob 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Federation 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Empire 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+					}
+					Bonuses 
+					Link:System:Planet System_0:Temperate
 				}
 			}
-			Link:Location:Planet System_99_Loc:Temperate
 		}
-	}
-	Player Player_2
-	{
-		Resources 
+		Player Player_2
 		{
-			Energy_income 0
-			Metal_income 0
-			Credits 0
-			Credits_income 0
-			Authoriy 0
-			Authoriy_used 0
-			Influence 0
-			Influence_used 0
-			TechPoints_income 0
-			CivicPoints_income 0
-			Pops 0
-		}
-		Status 
-		{
-			TechPoints_max 0
-			TechPoints_tech None
-		}
-		Civics 
-		Bonuses 
-		Colony Temperate
-		{
-			Action None
 			Resources 
 			{
-				Credits_treasury 3000
-				Pops 11000
+				Energy_income 0
+				Metal_income 0
+				Credits 0
+				Credits_income 0
+				Authoriy 0
+				Authoriy_used 0
+				Influence 0
+				Influence_used 0
+				TechPoints_income 0
+				CivicPoints_income 0
+				Pops 0
 			}
-			Buildings 
+			Status 
 			{
-				Private_Business 250
-				Power_Plants 15
-				Mines 10
-				Goverment_Offices 5
-				Diplomatic_Offices 1
-				Research_Labs 5
-				Cultural_Center 5
+				TechPoints_max 0
+				TechPoints_tech None
 			}
-			Support 
+			Civics 
+			Bonuses 
+			Colony_List 
 			{
-				Democratic 
+				Colony Temperate
 				{
-					Facton_Size 30
-					Happiness 7
-				}
-				Industrialist 
-				{
-					Facton_Size 20
-					Happiness 7
-				}
-				Ecologist 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Religious 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Liberty 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Unity 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Pacifist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Millitarist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Scientist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Bio-engineering 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Mechanist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Autocratic 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofile 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofob 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Federation 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Empire 
-				{
-					Facton_Size 3
-					Happiness 7
+					Resources 
+					{
+						Credits_treasury 3000
+						Pops 11000
+					}
+					Buildings 
+					{
+						Private_Business 250
+						Power_Plants 15
+						Mines 10
+						Goverment_Offices 5
+						Diplomatic_Offices 1
+						Research_Labs 5
+						Cultural_Center 5
+					}
+					Support 
+					{
+						Democratic 
+						{
+							Facton_Size 30
+							Happiness 7
+						}
+						Industrialist 
+						{
+							Facton_Size 20
+							Happiness 7
+						}
+						Ecologist 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Religious 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Liberty 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Unity 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Pacifist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Millitarist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Scientist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Bio-engineering 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Mechanist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Autocratic 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofile 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofob 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Federation 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Empire 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+					}
+					Bonuses 
+					Link:System:Planet System_0:Temperate
 				}
 			}
-			Link:Location:Planet System_88_Loc:Temperate
 		}
-	}
-	Player Player_3
-	{
-		Resources 
+		Player Player_3
 		{
-			Energy_income 0
-			Metal_income 0
-			Credits 0
-			Credits_income 0
-			Authoriy 0
-			Authoriy_used 0
-			Influence 0
-			Influence_used 0
-			TechPoints_income 0
-			CivicPoints_income 0
-			Pops 0
-		}
-		Status 
-		{
-			TechPoints_max 0
-			TechPoints_tech None
-		}
-		Civics 
-		Bonuses 
-		Colony Temperate
-		{
-			Action None
 			Resources 
 			{
-				Credits_treasury 3000
-				Pops 11000
+				Energy_income 0
+				Metal_income 0
+				Credits 0
+				Credits_income 0
+				Authoriy 0
+				Authoriy_used 0
+				Influence 0
+				Influence_used 0
+				TechPoints_income 0
+				CivicPoints_income 0
+				Pops 0
 			}
-			Buildings 
+			Status 
 			{
-				Private_Business 250
-				Power_Plants 15
-				Mines 10
-				Goverment_Offices 5
-				Diplomatic_Offices 1
-				Research_Labs 5
-				Cultural_Center 5
+				TechPoints_max 0
+				TechPoints_tech None
 			}
-			Support 
+			Civics 
+			Bonuses 
+			Colony_List 
 			{
-				Democratic 
+				Colony Temperate
 				{
-					Facton_Size 30
-					Happiness 7
-				}
-				Industrialist 
-				{
-					Facton_Size 20
-					Happiness 7
-				}
-				Ecologist 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Religious 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Liberty 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Unity 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Pacifist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Millitarist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Scientist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Bio-engineering 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Mechanist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Autocratic 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofile 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofob 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Federation 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Empire 
-				{
-					Facton_Size 3
-					Happiness 7
+					Resources 
+					{
+						Credits_treasury 3000
+						Pops 11000
+					}
+					Buildings 
+					{
+						Private_Business 250
+						Power_Plants 15
+						Mines 10
+						Goverment_Offices 5
+						Diplomatic_Offices 1
+						Research_Labs 5
+						Cultural_Center 5
+					}
+					Support 
+					{
+						Democratic 
+						{
+							Facton_Size 30
+							Happiness 7
+						}
+						Industrialist 
+						{
+							Facton_Size 20
+							Happiness 7
+						}
+						Ecologist 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Religious 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Liberty 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Unity 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Pacifist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Millitarist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Scientist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Bio-engineering 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Mechanist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Autocratic 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofile 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofob 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Federation 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Empire 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+					}
+					Bonuses 
+					Link:System:Planet System_4:Temperate
 				}
 			}
-			Link:Location:Planet System_13_Loc:Temperate
 		}
-	}
-	Player Player_4
-	{
-		Resources 
+		Player Player_4
 		{
-			Energy_income 0
-			Metal_income 0
-			Credits 0
-			Credits_income 0
-			Authoriy 0
-			Authoriy_used 0
-			Influence 0
-			Influence_used 0
-			TechPoints_income 0
-			CivicPoints_income 0
-			Pops 0
-		}
-		Status 
-		{
-			TechPoints_max 0
-			TechPoints_tech None
-		}
-		Civics 
-		Bonuses 
-		Colony Temperate
-		{
-			Action None
 			Resources 
 			{
-				Credits_treasury 3000
-				Pops 11000
+				Energy_income 0
+				Metal_income 0
+				Credits 0
+				Credits_income 0
+				Authoriy 0
+				Authoriy_used 0
+				Influence 0
+				Influence_used 0
+				TechPoints_income 0
+				CivicPoints_income 0
+				Pops 0
 			}
-			Buildings 
+			Status 
 			{
-				Private_Business 250
-				Power_Plants 15
-				Mines 10
-				Goverment_Offices 5
-				Diplomatic_Offices 1
-				Research_Labs 5
-				Cultural_Center 5
+				TechPoints_max 0
+				TechPoints_tech None
 			}
-			Support 
+			Civics 
+			Bonuses 
+			Colony_List 
 			{
-				Democratic 
+				Colony Temperate
 				{
-					Facton_Size 30
-					Happiness 7
-				}
-				Industrialist 
-				{
-					Facton_Size 20
-					Happiness 7
-				}
-				Ecologist 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Religious 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Liberty 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Unity 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Pacifist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Millitarist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Scientist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Bio-engineering 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Mechanist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Autocratic 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofile 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofob 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Federation 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Empire 
-				{
-					Facton_Size 3
-					Happiness 7
+					Resources 
+					{
+						Credits_treasury 3000
+						Pops 11000
+					}
+					Buildings 
+					{
+						Private_Business 250
+						Power_Plants 15
+						Mines 10
+						Goverment_Offices 5
+						Diplomatic_Offices 1
+						Research_Labs 5
+						Cultural_Center 5
+					}
+					Support 
+					{
+						Democratic 
+						{
+							Facton_Size 30
+							Happiness 7
+						}
+						Industrialist 
+						{
+							Facton_Size 20
+							Happiness 7
+						}
+						Ecologist 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Religious 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Liberty 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Unity 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Pacifist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Millitarist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Scientist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Bio-engineering 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Mechanist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Autocratic 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofile 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofob 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Federation 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Empire 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+					}
+					Bonuses 
+					Link:System:Planet System_5:Temperate
 				}
 			}
-			Link:Location:Planet System_26_Loc:Temperate
 		}
-	}
-	Player Player_5
-	{
-		Resources 
+		Player Player_5
 		{
-			Energy_income 0
-			Metal_income 0
-			Credits 0
-			Credits_income 0
-			Authoriy 0
-			Authoriy_used 0
-			Influence 0
-			Influence_used 0
-			TechPoints_income 0
-			CivicPoints_income 0
-			Pops 0
-		}
-		Status 
-		{
-			TechPoints_max 0
-			TechPoints_tech None
-		}
-		Civics 
-		Bonuses 
-		Colony Temperate
-		{
-			Action None
 			Resources 
 			{
-				Credits_treasury 3000
-				Pops 11000
+				Energy_income 0
+				Metal_income 0
+				Credits 0
+				Credits_income 0
+				Authoriy 0
+				Authoriy_used 0
+				Influence 0
+				Influence_used 0
+				TechPoints_income 0
+				CivicPoints_income 0
+				Pops 0
 			}
-			Buildings 
+			Status 
 			{
-				Private_Business 250
-				Power_Plants 15
-				Mines 10
-				Goverment_Offices 5
-				Diplomatic_Offices 1
-				Research_Labs 5
-				Cultural_Center 5
+				TechPoints_max 0
+				TechPoints_tech None
 			}
-			Support 
+			Civics 
+			Bonuses 
+			Colony_List 
 			{
-				Democratic 
+				Colony Temperate
 				{
-					Facton_Size 30
-					Happiness 7
-				}
-				Industrialist 
-				{
-					Facton_Size 20
-					Happiness 7
-				}
-				Ecologist 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Religious 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Liberty 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Unity 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Pacifist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Millitarist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Scientist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Bio-engineering 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Mechanist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Autocratic 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofile 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofob 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Federation 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Empire 
-				{
-					Facton_Size 3
-					Happiness 7
+					Resources 
+					{
+						Credits_treasury 3000
+						Pops 11000
+					}
+					Buildings 
+					{
+						Private_Business 250
+						Power_Plants 15
+						Mines 10
+						Goverment_Offices 5
+						Diplomatic_Offices 1
+						Research_Labs 5
+						Cultural_Center 5
+					}
+					Support 
+					{
+						Democratic 
+						{
+							Facton_Size 30
+							Happiness 7
+						}
+						Industrialist 
+						{
+							Facton_Size 20
+							Happiness 7
+						}
+						Ecologist 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Religious 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Liberty 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Unity 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Pacifist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Millitarist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Scientist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Bio-engineering 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Mechanist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Autocratic 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofile 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofob 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Federation 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Empire 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+					}
+					Bonuses 
+					Link:System:Planet System_14:Temperate
 				}
 			}
-			Link:Location:Planet System_36_Loc:Temperate
 		}
-	}
-	Player Player_6
-	{
-		Resources 
+		Player Player_6
 		{
-			Energy_income 0
-			Metal_income 0
-			Credits 0
-			Credits_income 0
-			Authoriy 0
-			Authoriy_used 0
-			Influence 0
-			Influence_used 0
-			TechPoints_income 0
-			CivicPoints_income 0
-			Pops 0
-		}
-		Status 
-		{
-			TechPoints_max 0
-			TechPoints_tech None
-		}
-		Civics 
-		Bonuses 
-		Colony Temperate
-		{
-			Action None
 			Resources 
 			{
-				Credits_treasury 3000
-				Pops 11000
+				Energy_income 0
+				Metal_income 0
+				Credits 0
+				Credits_income 0
+				Authoriy 0
+				Authoriy_used 0
+				Influence 0
+				Influence_used 0
+				TechPoints_income 0
+				CivicPoints_income 0
+				Pops 0
 			}
-			Buildings 
+			Status 
 			{
-				Private_Business 250
-				Power_Plants 15
-				Mines 10
-				Goverment_Offices 5
-				Diplomatic_Offices 1
-				Research_Labs 5
-				Cultural_Center 5
+				TechPoints_max 0
+				TechPoints_tech None
 			}
-			Support 
+			Civics 
+			Bonuses 
+			Colony_List 
 			{
-				Democratic 
+				Colony Temperate
 				{
-					Facton_Size 30
-					Happiness 7
-				}
-				Industrialist 
-				{
-					Facton_Size 20
-					Happiness 7
-				}
-				Ecologist 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Religious 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Liberty 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Unity 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Pacifist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Millitarist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Scientist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Bio-engineering 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Mechanist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Autocratic 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofile 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofob 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Federation 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Empire 
-				{
-					Facton_Size 3
-					Happiness 7
+					Resources 
+					{
+						Credits_treasury 3000
+						Pops 11000
+					}
+					Buildings 
+					{
+						Private_Business 250
+						Power_Plants 15
+						Mines 10
+						Goverment_Offices 5
+						Diplomatic_Offices 1
+						Research_Labs 5
+						Cultural_Center 5
+					}
+					Support 
+					{
+						Democratic 
+						{
+							Facton_Size 30
+							Happiness 7
+						}
+						Industrialist 
+						{
+							Facton_Size 20
+							Happiness 7
+						}
+						Ecologist 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Religious 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Liberty 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Unity 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Pacifist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Millitarist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Scientist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Bio-engineering 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Mechanist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Autocratic 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofile 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofob 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Federation 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Empire 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+					}
+					Bonuses 
+					Link:System:Planet System_26:Temperate
 				}
 			}
-			Link:Location:Planet System_52_Loc:Temperate
 		}
-	}
-	Player Player_7
-	{
-		Resources 
+		Player Player_7
 		{
-			Energy_income 0
-			Metal_income 0
-			Credits 0
-			Credits_income 0
-			Authoriy 0
-			Authoriy_used 0
-			Influence 0
-			Influence_used 0
-			TechPoints_income 0
-			CivicPoints_income 0
-			Pops 0
-		}
-		Status 
-		{
-			TechPoints_max 0
-			TechPoints_tech None
-		}
-		Civics 
-		Bonuses 
-		Colony Temperate
-		{
-			Action None
 			Resources 
 			{
-				Credits_treasury 3000
-				Pops 11000
+				Energy_income 0
+				Metal_income 0
+				Credits 0
+				Credits_income 0
+				Authoriy 0
+				Authoriy_used 0
+				Influence 0
+				Influence_used 0
+				TechPoints_income 0
+				CivicPoints_income 0
+				Pops 0
 			}
-			Buildings 
+			Status 
 			{
-				Private_Business 250
-				Power_Plants 15
-				Mines 10
-				Goverment_Offices 5
-				Diplomatic_Offices 1
-				Research_Labs 5
-				Cultural_Center 5
+				TechPoints_max 0
+				TechPoints_tech None
 			}
-			Support 
+			Civics 
+			Bonuses 
+			Colony_List 
 			{
-				Democratic 
+				Colony Temperate
 				{
-					Facton_Size 30
-					Happiness 7
-				}
-				Industrialist 
-				{
-					Facton_Size 20
-					Happiness 7
-				}
-				Ecologist 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Religious 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Liberty 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Unity 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Pacifist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Millitarist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Scientist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Bio-engineering 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Mechanist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Autocratic 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofile 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofob 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Federation 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Empire 
-				{
-					Facton_Size 3
-					Happiness 7
+					Resources 
+					{
+						Credits_treasury 3000
+						Pops 11000
+					}
+					Buildings 
+					{
+						Private_Business 250
+						Power_Plants 15
+						Mines 10
+						Goverment_Offices 5
+						Diplomatic_Offices 1
+						Research_Labs 5
+						Cultural_Center 5
+					}
+					Support 
+					{
+						Democratic 
+						{
+							Facton_Size 30
+							Happiness 7
+						}
+						Industrialist 
+						{
+							Facton_Size 20
+							Happiness 7
+						}
+						Ecologist 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Religious 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Liberty 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Unity 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Pacifist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Millitarist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Scientist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Bio-engineering 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Mechanist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Autocratic 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofile 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofob 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Federation 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Empire 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+					}
+					Bonuses 
+					Link:System:Planet System_34:Temperate
 				}
 			}
-			Link:Location:Planet System_52_Loc:Temperate
 		}
-	}
-	Player Player_8
-	{
-		Resources 
+		Player Player_8
 		{
-			Energy_income 0
-			Metal_income 0
-			Credits 0
-			Credits_income 0
-			Authoriy 0
-			Authoriy_used 0
-			Influence 0
-			Influence_used 0
-			TechPoints_income 0
-			CivicPoints_income 0
-			Pops 0
-		}
-		Status 
-		{
-			TechPoints_max 0
-			TechPoints_tech None
-		}
-		Civics 
-		Bonuses 
-		Colony Temperate
-		{
-			Action None
 			Resources 
 			{
-				Credits_treasury 3000
-				Pops 11000
+				Energy_income 0
+				Metal_income 0
+				Credits 0
+				Credits_income 0
+				Authoriy 0
+				Authoriy_used 0
+				Influence 0
+				Influence_used 0
+				TechPoints_income 0
+				CivicPoints_income 0
+				Pops 0
 			}
-			Buildings 
+			Status 
 			{
-				Private_Business 250
-				Power_Plants 15
-				Mines 10
-				Goverment_Offices 5
-				Diplomatic_Offices 1
-				Research_Labs 5
-				Cultural_Center 5
+				TechPoints_max 0
+				TechPoints_tech None
 			}
-			Support 
+			Civics 
+			Bonuses 
+			Colony_List 
 			{
-				Democratic 
+				Colony Temperate
 				{
-					Facton_Size 30
-					Happiness 7
-				}
-				Industrialist 
-				{
-					Facton_Size 20
-					Happiness 7
-				}
-				Ecologist 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Religious 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Liberty 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Unity 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Pacifist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Millitarist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Scientist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Bio-engineering 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Mechanist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Autocratic 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofile 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofob 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Federation 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Empire 
-				{
-					Facton_Size 3
-					Happiness 7
+					Resources 
+					{
+						Credits_treasury 3000
+						Pops 11000
+					}
+					Buildings 
+					{
+						Private_Business 250
+						Power_Plants 15
+						Mines 10
+						Goverment_Offices 5
+						Diplomatic_Offices 1
+						Research_Labs 5
+						Cultural_Center 5
+					}
+					Support 
+					{
+						Democratic 
+						{
+							Facton_Size 30
+							Happiness 7
+						}
+						Industrialist 
+						{
+							Facton_Size 20
+							Happiness 7
+						}
+						Ecologist 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Religious 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Liberty 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Unity 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Pacifist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Millitarist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Scientist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Bio-engineering 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Mechanist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Autocratic 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofile 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofob 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Federation 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Empire 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+					}
+					Bonuses 
+					Link:System:Planet System_48:Temperate
 				}
 			}
-			Link:Location:Planet System_23_Loc:Temperate
 		}
-	}
-	Player Player_9
-	{
-		Resources 
+		Player Player_9
 		{
-			Energy_income 0
-			Metal_income 0
-			Credits 0
-			Credits_income 0
-			Authoriy 0
-			Authoriy_used 0
-			Influence 0
-			Influence_used 0
-			TechPoints_income 0
-			CivicPoints_income 0
-			Pops 0
-		}
-		Status 
-		{
-			TechPoints_max 0
-			TechPoints_tech None
-		}
-		Civics 
-		Bonuses 
-		Colony Temperate
-		{
-			Action None
 			Resources 
 			{
-				Credits_treasury 3000
-				Pops 11000
+				Energy_income 0
+				Metal_income 0
+				Credits 0
+				Credits_income 0
+				Authoriy 0
+				Authoriy_used 0
+				Influence 0
+				Influence_used 0
+				TechPoints_income 0
+				CivicPoints_income 0
+				Pops 0
 			}
-			Buildings 
+			Status 
 			{
-				Private_Business 250
-				Power_Plants 15
-				Mines 10
-				Goverment_Offices 5
-				Diplomatic_Offices 1
-				Research_Labs 5
-				Cultural_Center 5
+				TechPoints_max 0
+				TechPoints_tech None
 			}
-			Support 
+			Civics 
+			Bonuses 
+			Colony_List 
 			{
-				Democratic 
+				Colony Temperate
 				{
-					Facton_Size 30
-					Happiness 7
-				}
-				Industrialist 
-				{
-					Facton_Size 20
-					Happiness 7
-				}
-				Ecologist 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Religious 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Liberty 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Unity 
-				{
-					Facton_Size 5
-					Happiness 7
-				}
-				Pacifist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Millitarist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Scientist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Bio-engineering 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Mechanist 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Autocratic 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofile 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Xenofob 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Federation 
-				{
-					Facton_Size 3
-					Happiness 7
-				}
-				Empire 
-				{
-					Facton_Size 3
-					Happiness 7
+					Resources 
+					{
+						Credits_treasury 3000
+						Pops 11000
+					}
+					Buildings 
+					{
+						Private_Business 250
+						Power_Plants 15
+						Mines 10
+						Goverment_Offices 5
+						Diplomatic_Offices 1
+						Research_Labs 5
+						Cultural_Center 5
+					}
+					Support 
+					{
+						Democratic 
+						{
+							Facton_Size 30
+							Happiness 7
+						}
+						Industrialist 
+						{
+							Facton_Size 20
+							Happiness 7
+						}
+						Ecologist 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Religious 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Liberty 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Unity 
+						{
+							Facton_Size 5
+							Happiness 7
+						}
+						Pacifist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Millitarist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Scientist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Bio-engineering 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Mechanist 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Autocratic 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofile 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Xenofob 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Federation 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+						Empire 
+						{
+							Facton_Size 3
+							Happiness 7
+						}
+					}
+					Bonuses 
+					Link:System:Planet System_59:Temperate
 				}
 			}
-			Link:Location:Planet System_28_Loc:Temperate
 		}
 	}
 }

@@ -50,6 +50,7 @@ public partial class Data
         data.Name = name;
 
         parent.Subs.Add(data);
+        //data.Parent = parent;
 
         return data;
     }
@@ -63,6 +64,7 @@ public partial class Data
         data.ValueI = value;
 
         parent.Subs.Add(data);
+        //data.Parent = parent;
 
         return data;
     }
@@ -76,6 +78,7 @@ public partial class Data
         data.ValueS = value;
 
         parent.Subs.Add(data);
+        //data.Parent = parent;
 
         return data;
     }
@@ -114,7 +117,9 @@ public partial class Data
                 if (words[nextSubEnd] == "}") depth--;
             }
 
-            data.Subs.Add(LoadData(words.GetRange(nextSubStart, nextSubEnd + 1 - nextSubStart), df));
+            DataBlock subData = LoadData(words.GetRange(nextSubStart, nextSubEnd + 1 - nextSubStart), df);
+            data.Subs.Add(subData);
+            //subData.Parent = data;
 
             subDataStart = nextSubEnd + 1;
         }
@@ -133,6 +138,12 @@ public partial class Data
         }
 
         text += Helper.Tabs(currentTabs) + df.GetDBValue(dataBlock.Type) + " " + dataBlock.ValueToString() + "\n";
+
+        if (text.Contains("ActionColonyBuild"))
+        {
+            GD.Print("HIT");
+        }
+
         if (dataBlock.Subs.Count > 0)
         {
             text += Helper.Tabs(currentTabs) + "{" + "\n";

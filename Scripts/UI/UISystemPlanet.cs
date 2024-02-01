@@ -27,7 +27,7 @@ public partial class UISystemPlanet : Button
         Parent = GetNode<UISystem>("../../../../");
     }
 
-    public void Refresh( LocationData system, DataBlock planetSelected )
+    public void Refresh( SystemData system, DataBlock planetSelected )
     {
         _Data = planetSelected;
         if (_Data == null) return;

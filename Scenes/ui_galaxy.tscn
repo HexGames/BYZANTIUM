@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxySystem.cs" id="2_mmjn7"]
 
-[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("Systems")]
+[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("Systems", "CurrentTurn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ieb0k")
 Systems = [NodePath("SystemsHUD/System")]
+CurrentTurn = NodePath("Turn")
 
 [node name="SystemsHUD" type="Control" parent="."]
 layout_mode = 1
@@ -83,3 +84,45 @@ theme = ExtResource("1_cqepg")
 text = "+4"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="EndTurn" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="EndTurn"]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("1_cqepg")
+text = "END TURN"
+
+[node name="Turn" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Current Turn: 0"
+
+[connection signal="pressed" from="EndTurn/Button" to="." method="OnEndTurn"]

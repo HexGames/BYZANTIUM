@@ -6,23 +6,28 @@ using System.Collections.Generic;
 public partial class UISystem : Control
 {
     [Export]
-    public UISystemPanel Planet = null;
+    public UISystemPanel PlanetPanel = null;
     [Export]
-    public UISystemPanel Terraforming = null;
+    public UISystemPanel TerraformingPanel = null;
     [Export]
-    public UISystemPanel Exploration = null;
+    public UISystemPanel ExplorationPanel = null;
     [Export]
-    public UISystemPanel Colony = null;
+    public UISystemPanel ColonyPanel = null;
     [Export]
-    public UISystemPanel Support = null;
+    public UISystemPanel SupportPanel = null;
     [Export]
-    public UISystemPanel Buildings = null;
+    public UISystemPanel BuildingsPanel = null;
 
     [Export]
     public Array<UISystemPlanet> Planets = new Array<UISystemPlanet>();
 
     [Export]
-    public Array<DataBlock> _PlanetsData = null;
+    public UIColonyActionBuild ActionBuild = null;
+
+    [Export]
+    public SystemData _SystemData = null;
+    [Export]
+    public ColonyData _ColonyData = null;
     [Export]
     public UISystemPlanet PlanetSelected = null;
 
@@ -54,16 +59,16 @@ public partial class UISystem : Control
             //OnSelect += PlayerInput.SelectLocation;
             Visible = false;
 
-            Planet.Visible = false;
-            Terraforming.Visible = false;
-            Exploration.Visible = false;
-            Colony.Visible = false;
-            Support.Visible = false;
-            Buildings.Visible = false;
+            PlanetPanel.Visible = false;
+            TerraformingPanel.Visible = false;
+            ExplorationPanel.Visible = false;
+            ColonyPanel.Visible = false;
+            SupportPanel.Visible = false;
+            BuildingsPanel.Visible = false;
         }
     }
 
-    public void Refresh( LocationData system )
+    public void Refresh( SystemData system )
     {
         if (system == null)
         {
@@ -76,19 +81,30 @@ public partial class UISystem : Control
                 }
             }
 
+            PlanetPanel.Visible = false;
+            TerraformingPanel.Visible = false;
+            ExplorationPanel.Visible = false;
+            ColonyPanel.Visible = false;
+            SupportPanel.Visible = false;
+            BuildingsPanel.Visible = false;
+
+            _SystemData = null;
+            _ColonyData = null;
+            PlanetSelected = null;
+
             Visible = false;
             Game.Camera.UILockSystem = false;
 
             return;
         }
 
-        _PlanetsData = system.System.GetSubs("Planet");
+        _SystemData = system;
 
         for (int idx = 0; idx < Planets.Count; idx++)
         {
-            if (idx < _PlanetsData.Count)
+            if (idx < _SystemData.Planets.Count)
             {
-                Planets[idx].Refresh(system, _PlanetsData[idx]);
+                Planets[idx].Refresh(system, _SystemData.Planets[idx]);
                 Planets[idx].Visible = true;
             }
             else
@@ -131,29 +147,41 @@ public partial class UISystem : Control
     {
         // make the proper panel visible
         Array<DataBlock> planetProperties = planetUI._Data.GetSubs();
-        PlayerData playerData = null;
-        DataBlock colony = Data.GetPlayerColony(Game.Map.Data, planetUI._Data, out playerData);
+        ColonyData colony = _SystemData.GetColony(planetUI._Data);
 
-        Planet.Visible = true;
-        Terraforming.Visible = false;
-        Exploration.Visible = false;
+        PlanetPanel.Visible = true;
+        TerraformingPanel.Visible = false;
+        ExplorationPanel.Visible = false;
 
-        RefreshInfoPanels_Default(Planet, planetProperties);
+        RefreshInfoPanels_Default(PlanetPanel, planetProperties);
 
         if (colony != null)
         {
-            Colony.Visible = true;
-            Support.Visible = true;
-            Buildings.Visible = true;
+            if (_ColonyData != colony)
+            {
+                _ColonyData = colony;
+                _ColonyData._Node.Select();
 
-            Array<DataBlock> colonySubs = colony.GetSubs();
-            RefreshInfoPanels_Default(Colony, colonySubs);
+                ColonyPanel.Visible = true;
+                SupportPanel.Visible = true;
+                BuildingsPanel.Visible = true;
+
+                Array<DataBlock> colonySubs = new Array<DataBlock>();
+                colonySubs.AddRange(_ColonyData.Resources.GetSubs());
+                colonySubs.AddRange(_ColonyData.Bonuses.GetSubs());
+
+                RefreshInfoPanels_Default(ColonyPanel, colonySubs);
+
+                ActionBuild.Refresh(_ColonyData);
+            }
         }
         else
         {
-            Colony.Visible = false;
-            Support.Visible = false;
-            Buildings.Visible = false;
+            _ColonyData = null;
+
+            ColonyPanel.Visible = false;
+            SupportPanel.Visible = false;
+            BuildingsPanel.Visible = false;
         }
 
         //Array<DataBlock> Properties = new Array<DataBlock>();

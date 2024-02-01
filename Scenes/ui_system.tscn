@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://vh0pcrygv61d"]
+[gd_scene load_steps=18 format=3 uid="uid://vh0pcrygv61d"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UISystem.cs" id="1_6msa3"]
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_br2ry"]
@@ -9,7 +9,10 @@
 [ext_resource type="Script" path="res://Scripts/UI/UISystemPlanet.cs" id="3_yhybq"]
 [ext_resource type="Texture2D" uid="uid://d0dgbe1qxxslt" path="res://Assets/Planets/Sun.png" id="4_t1ih4"]
 [ext_resource type="Texture2D" uid="uid://bpeiu3mhak0kn" path="res://Assets/Planets/MoonOverlay.png" id="5_e11r8"]
+[ext_resource type="Script" path="res://Scripts/UI/UIColonyActionBuild.cs" id="6_ds5ny"]
 [ext_resource type="Texture2D" uid="uid://coqsjpw7qqqb5" path="res://Assets/Planets/Barren.png" id="6_rb7i6"]
+[ext_resource type="Theme" uid="uid://ccrra41cmxbe3" path="res://UITheme/UITheme.tres" id="7_0rej8"]
+[ext_resource type="Texture2D" uid="uid://dqhju10mfykde" path="res://Assets/UI/arrow.png" id="7_4dyub"]
 [ext_resource type="Texture2D" uid="uid://dtebju6geermh" path="res://Assets/Planets/ToxicYellow.png" id="7_nwhkf"]
 [ext_resource type="Texture2D" uid="uid://ci2vnc3vrtcks" path="res://Assets/Planets/Rings.png" id="9_60rk0"]
 
@@ -20,7 +23,7 @@ bg_color = Color(0, 0, 0, 0.501961)
 shader = ExtResource("2_20v37")
 shader_parameter/amount = 2.0
 
-[node name="UISystem" type="Control" node_paths=PackedStringArray("Planet", "Terraforming", "Exploration", "Colony", "Support", "Buildings", "Planets")]
+[node name="UISystem" type="Control" node_paths=PackedStringArray("PlanetPanel", "TerraformingPanel", "ExplorationPanel", "ColonyPanel", "SupportPanel", "BuildingsPanel", "Planets", "ActionBuild")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,13 +31,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6msa3")
-Planet = NodePath("Container/PlanetInfo/Planet")
-Terraforming = NodePath("Container/PlanetInfo/Terraforming")
-Exploration = NodePath("Container/PlanetInfo/Exploration")
-Colony = NodePath("Container/ColonyInfo/Colony")
-Support = NodePath("Container/ColonyInfo/Support")
-Buildings = NodePath("Container/ColonyInfo/Buildings")
+PlanetPanel = NodePath("Container/PlanetInfo/Planet")
+TerraformingPanel = NodePath("Container/PlanetInfo/Terraforming")
+ExplorationPanel = NodePath("Container/PlanetInfo/Exploration")
+ColonyPanel = NodePath("Container/ColonyInfo/Colony")
+SupportPanel = NodePath("Container/ColonyInfo/Support")
+BuildingsPanel = NodePath("Container/ColonyInfo/Buildings")
 Planets = [NodePath("Container/SystemInfo/HBoxContainer/Planet_0"), NodePath("Container/SystemInfo/HBoxContainer/Planet_1"), NodePath("Container/SystemInfo/HBoxContainer/Planet_2"), NodePath("Container/SystemInfo/HBoxContainer/Planet_3"), NodePath("Container/SystemInfo/HBoxContainer/Planet_4"), NodePath("Container/SystemInfo/HBoxContainer/Planet_5"), NodePath("Container/SystemInfo/HBoxContainer/Planet_6"), NodePath("Container/SystemInfo/HBoxContainer/Planet_7"), NodePath("Container/SystemInfo/HBoxContainer/Planet_8"), NodePath("Container/SystemInfo/HBoxContainer/Planet_9"), NodePath("Container/SystemInfo/HBoxContainer/Planet_10"), NodePath("Container/SystemInfo/HBoxContainer/Planet_11"), NodePath("Container/SystemInfo/HBoxContainer/Planet_12")]
+ActionBuild = NodePath("Container/ColonyInfo/Buildings/UIActionCoonyBuild")
 
 [node name="TransparentBg" type="Panel" parent="."]
 layout_mode = 1
@@ -230,7 +234,7 @@ anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 32.0
 offset_right = -8.0
-offset_bottom = -8.0
+offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -247,6 +251,136 @@ custom_minimum_size = Vector2(432, 2)
 layout_mode = 2
 theme = ExtResource("1_br2ry")
 theme_type_variation = &"PanelLine"
+
+[node name="UIActionCoonyBuild" type="Control" parent="Container/ColonyInfo/Buildings" node_paths=PackedStringArray("Progress", "CurrentAction", "SwitchBtn", "ActionsBg", "Actions")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("6_ds5ny")
+Progress = NodePath("InProgress/ProgressBar")
+CurrentAction = NodePath("InProgress/Label")
+SwitchBtn = NodePath("InProgress/SwitchBtn")
+ActionsBg = NodePath("Actions")
+Actions = [NodePath("Actions/ScrollContainer/VBoxContainer/Action_1")]
+
+[node name="InProgress" type="Panel" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_br2ry")
+
+[node name="ProgressBar" type="ProgressBar" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/InProgress"]
+custom_minimum_size = Vector2(180, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -24.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_br2ry")
+value = 36.57
+
+[node name="Label" type="Label" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/InProgress"]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 4.0
+offset_right = -16.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_br2ry")
+text = "Building Power Plant"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SwitchBtn" type="Button" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/InProgress"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_right = 4.0
+grow_vertical = 2
+theme = ExtResource("1_br2ry")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/InProgress/SwitchBtn"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_4dyub")
+expand_mode = 1
+
+[node name="Actions" type="Panel" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild"]
+custom_minimum_size = Vector2(200, 384)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = 4.0
+grow_vertical = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/Actions"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 8.0
+offset_right = -2.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/Actions/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 10
+theme = ExtResource("7_0rej8")
+theme_override_constants/separation = 6
+alignment = 2
+
+[node name="Action_1" type="Button" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/Actions/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(180, 24)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_br2ry")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Build Something"
 
 [node name="SystemInfo" type="HBoxContainer" parent="Container"]
 custom_minimum_size = Vector2(0, 256)

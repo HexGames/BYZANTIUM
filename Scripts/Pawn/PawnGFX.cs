@@ -22,7 +22,7 @@ public partial class PawnGFX : Node3D
                 if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
                 {
                     //GD.Print("You clicked on " + Label.Text);
-                    LocationNode parentLocationNode = GetParent<LocationNode>();
+                    SystemNode parentLocationNode = GetParent<SystemNode>();
                     parentLocationNode.Select();
                 }
             }

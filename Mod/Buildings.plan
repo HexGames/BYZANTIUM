@@ -1,4 +1,5 @@
-Cities
+Cities 
+Private Business
 
 Power Plants
 Mines
@@ -14,8 +15,8 @@ Nature-Bio-Domes
 Bio-Domes
 
 
-private economy - manufacturing / energy / mining / services / research -> grows on it's own, get tax (growth vs hapiness),  can buy output for credits
-1000 - 200 man / 220 egy / 100 min / 200 serv / 90 res  - 190 free to grow
+Private Business - manufacturing / energy / mining / services / research -> grows on it's own, get tax (growth vs hapiness),  can buy output for credits
+500 - prvate business
 public economy - manufacturing / energy / mining / diplo|gov services / research / cultural cenetrs -> must build buildings, must pay upkeep
 100
 

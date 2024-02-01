@@ -6,6 +6,8 @@ public partial class UIGalaxy : Control
     [ExportCategory("Links")]
     [Export]
     public Array<UIGalaxySystem> Systems = new Array<UIGalaxySystem>();
+    [Export]
+    public Label CurrentTurn = null;
 
     [ExportCategory("Runtime")]
     [Export]
@@ -45,5 +47,16 @@ public partial class UIGalaxy : Control
                 Systems[idx].Refresh(Game.Map.Data.Systems[idx]._Node);
             }
         }
+    }
+
+    public void Refresh()
+    {
+        CurrentTurn.Text = "Current Turn: " + Game.Map.Data.Turn.ToString();
+    }
+
+    public void OnEndTurn()
+    {
+        Game.TurnLoop.CurrentPlayerData.TurnFinished = true;
+        Game.TurnLoop.WaitingForHuman = false;
     }
 }
