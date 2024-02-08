@@ -8,6 +8,8 @@ public partial class PlayerNode : Node
     [ExportCategory("Generated")]
     [Export]
     public PlayerData Data = null;
+    [Export]
+    public Color GFX = new Color(1, 0, 1, 1);
 
     //[ExportCategory("Runtime")]
     //[Export]

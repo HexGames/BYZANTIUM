@@ -12,16 +12,16 @@ public partial class MapGenerator : Node
     {
         DataBlock resources = Data.AddData(player, "Resources", DefLibrary);
 
-        Data.AddData(resources, "Energy_income", 0, DefLibrary);
-        Data.AddData(resources, "Metal_income", 0, DefLibrary);
+        Data.AddData(resources, "Energy:Income", 0, DefLibrary);
+        Data.AddData(resources, "Metal:Income", 0, DefLibrary);
         Data.AddData(resources, "Credits", 0, DefLibrary);
-        Data.AddData(resources, "Credits_income", 0, DefLibrary);
+        Data.AddData(resources, "Credits:Income", 0, DefLibrary);
         Data.AddData(resources, "Authoriy", 0, DefLibrary);
-        Data.AddData(resources, "Authoriy_used", 0, DefLibrary);
+        Data.AddData(resources, "Authoriy:Used", 0, DefLibrary);
         Data.AddData(resources, "Influence", 0, DefLibrary);
-        Data.AddData(resources, "Influence_used", 0, DefLibrary);
-        Data.AddData(resources, "TechPoints_income", 0, DefLibrary);
-        Data.AddData(resources, "CivicPoints_income", 0, DefLibrary);
+        Data.AddData(resources, "Influence:Used", 0, DefLibrary);
+        Data.AddData(resources, "TechPoints:Income", 0, DefLibrary);
+        Data.AddData(resources, "CivicPoints:Income", 0, DefLibrary);
 
         Data.AddData(resources, "Pops", 0, DefLibrary);
     }

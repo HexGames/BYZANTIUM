@@ -1,10 +1,13 @@
 using Godot;
 using Godot.Collections;
+using System.Collections.Generic;
 
 // Generated
 [Tool]
 public partial class SystemData : Node
 {
+    [Export]
+    public DataBlock _Data = null;
     [Export]
     public SystemNode _Node = null;
     [Export]
@@ -14,6 +17,8 @@ public partial class SystemData : Node
     [Export]
     public int Y;
 
+    [Export]
+    public Array<SystemData> PathsTo = new Array<SystemData>();
     [Export]
     public Array<DataBlock> Planets = new Array<DataBlock>();
     [Export]
@@ -32,5 +37,18 @@ public partial class SystemData : Node
             }
         }
         return null;
+    }
+
+    public List<PlayerData> GetPlayersPresentinSystem()
+    {
+        List<PlayerData> players = new List<PlayerData>();
+        for (int idx = 0; idx < Colonies.Count; idx++)
+        {
+            if (players.Contains(Colonies[idx].Player) == false)
+            {
+                players.Add(Colonies[idx].Player);
+            }
+        }
+        return players;
     }
 }

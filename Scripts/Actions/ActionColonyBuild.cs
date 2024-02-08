@@ -10,14 +10,14 @@ public class ActionColonyBuild : Action
     {
         colony.ActionsBuildPossible.Clear();
 
-        for (int idx = 0; idx < df.Buildings.Count; idx++)
+        for (int idx = 0; idx < df.BuildingsInfo.Count; idx++)
         {
             ActionColonyBuild action = new ActionColonyBuild();
 
             action.Init(df);
 
             action.Selected = colony.DataBlock;
-            action.TargetChosen = df.Buildings[idx];
+            action.TargetInfo = df.BuildingsInfo[idx];
 
             action.Colony = colony;
 
@@ -27,13 +27,11 @@ public class ActionColonyBuild : Action
 
     public override void Start()
     {
-        int turns = TargetChosen.GetSub("Turns").ValueI;
-
         Colony.ActionBuild = Data.AddData(Selected, "ActionColonyBuild", DefLib);
     
         Data.AddData(Colony.ActionBuild, "Progress", 0, DefLib);
-        Data.AddData(Colony.ActionBuild, "Progress_Max", turns, DefLib);
-        Data.AddData(Colony.ActionBuild, "Building", TargetChosen.ValueS, DefLib);
+        Data.AddData(Colony.ActionBuild, "Progress_Max", TargetInfo.Turns, DefLib);
+        Data.AddData(Colony.ActionBuild, "Building", TargetInfo.Name, DefLib);
     }
 
     static public void Update(ColonyData colony, DefLibrary df)

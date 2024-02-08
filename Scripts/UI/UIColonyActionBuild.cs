@@ -109,7 +109,8 @@ public partial class UIColonyActionBuild : Control
             {
                 if (idx < colony.ActionsBuildPossible.Count)
                 {
-                    Actions[idx].Text = colony.ActionsBuildPossible[idx].TargetChosen.ValueS;
+                    Actions[idx].Text = colony.ActionsBuildPossible[idx].TargetInfo._Data.ValueS;
+                    Actions[idx].TooltipText = GetBuldingTooltip(colony.ActionsBuildPossible[idx].TargetInfo._Data);
                     Actions[idx].Visible = true;
                 }
                 else
@@ -127,5 +128,23 @@ public partial class UIColonyActionBuild : Control
         _ColonyData.ActionsBuildPossible[idx].Start();
 
         Refresh(_ColonyData);
+    }
+
+    static private string GetBuldingTooltip(DataBlock building)
+    {
+        string text = "";
+
+        DataBlock turns = building.GetSub("Turns");
+        DataBlock cost = building.GetSub("Cost");
+        DataBlock benefit = building.GetSub("Benefit");
+
+        text += turns.ToToolTipString();
+        text += "\n";
+        text += cost.ToToolTipString();
+        text += "\n";
+        text += benefit.ToToolTipString();
+
+
+        return text;
     }
 }

@@ -1,0 +1,76 @@
+
+Hull size -> capacity / hp
+
+Computers -> to hit chance
+
+Shields -> damage absorb
+
+ECM -> anti missiles
+
+Armor -> more hp
+
+Engines -> warp speed
+
+Thrusters -> harder to hit
+
+Weapons x2-7 -> deal damage
+
+Scanners -> enemy ship info / explore planets bonus
+
+Science lab -> research anomalies bonus
+
+Ship ammenities -> explore planets bonus / research anomalies bonus / XP bonus
+
+fighter/drone hangars -> carries drones/fighters
+
+repair bay -> replaces lost drones/fighters
+
+barracks -> marines for invasions
+
+Colony -> makes colonies
+
+Contructor -> makes starbases
+
+Integration -> more space / much more cost
+
+Automated repair unit -> faster repair / repairs to a higher hull %
+
+Weapons:
+ - lasers - better to hit, high cost, big for low tech
+ - mass - average
+ - missiles - high damage
+ - topedos - very high damage, low range, low to hit
+ - gatling/swarmer - more small hits (less damage, more dps)
+ - poimt defence -> anti missiles / low range, many very small hits
+
+stellaris  ~ 50 weapons
+MOO        - 26 weapons + 15 missiles + 7 bombs
+our target - 12 weapons + 8 swarmer + 3 pd + 3 bombs
+
+Ship ship_name
+{
+	Stats
+	{
+		HP 100
+		Speed 3
+		Evasion 2
+		Antimissile 3
+		Shield 1
+		Weapon:1 5
+		{
+			ToHit 3
+			Hits 3
+			Damage:Min 1
+			Damage:Max 3
+		}
+	}
+	Modules
+	{
+		Hull Medium
+		Computers Com2
+	}
+}
+
+Links: 
+moo manual
+https://strategywiki.org/wiki/Master_of_Orion/Attack_roll

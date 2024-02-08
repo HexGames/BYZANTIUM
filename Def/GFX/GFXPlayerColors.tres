@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c2ujqh26p16k8"]
+
+[ext_resource type="Script" path="res://Scripts/Def/DefGFXPlayerColors.cs" id="1_g2iy8"]
+
+[resource]
+script = ExtResource("1_g2iy8")
+PrimaryColors = [Color(0.286275, 0.4, 0.792157, 1), Color(0.666667, 0.192157, 0.180392, 1), Color(0.831373, 0.6, 0.290196, 1), Color(0.278431, 0.596078, 0.360784, 1), Color(0.337255, 0.4, 0.407843, 1), Color(0.705882, 0.368627, 0.180392, 1), Color(0.603922, 0.164706, 0.356863, 1), Color(0.541176, 0.509804, 0.129412, 1), Color(0.811765, 0.741176, 0.603922, 1), Color(0.423529, 0.67451, 0.878431, 1)]

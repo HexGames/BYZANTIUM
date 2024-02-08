@@ -5,7 +5,7 @@ public class Action
     public DataBlock ActionData = null;
 
     public DataBlock Selected = null;
-    public DataBlock TargetChosen = null;
+    public ActionTargetInfo TargetInfo = null;
 
     public DataBlock Cost = null;
 

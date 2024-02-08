@@ -24,9 +24,10 @@ public class Helper
     {
         return text.Split(':')[0];
     }
-
+    
     public static string Split_1(string text)
     {
-        return text.Split(':')[1];
+        string[] split = text.Split(':');
+        return split.Length > 1 ? split[1] : "";
     }
 }

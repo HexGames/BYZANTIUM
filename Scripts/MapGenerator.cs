@@ -48,7 +48,7 @@ public partial class MapGenerator : Node
     {
         Map.Data._Data = GenerateNewMapSave();
 
-        Map.Data.GenerateGameFromData();
+        Map.Data.GenerateGameFromData(DefLibrary);
 
         // set camera
         MapCamera Camera = GetTree().EditedSceneRoot.GetNode<MapCamera>("Camera3D");
@@ -106,13 +106,89 @@ public partial class MapGenerator : Node
 
                 DataBlock systemData = Data.AddData(systemList, "System", name, DefLibrary);
 
+                Data.AddData(systemData, "ID", systemList.GetSubs().Count, DefLibrary);
                 Data.AddData(systemData, "X", x, DefLibrary);
                 Data.AddData(systemData, "Y", y, DefLibrary);
 
                 GenerateNewMapSave_Systems_Planets(systemData);
             }
         }
+
+        // make all pathways
+        Array<DataBlock> systems = systemList.GetSubs("System");
+        for (int fromIdx = 0; fromIdx < systems.Count; fromIdx++)
+        {
+            for (int toIdx = fromIdx+1; toIdx < systems.Count; toIdx++)
+            {
+                int from_x = systems[fromIdx].GetSub("X").ValueI;
+                int from_y = systems[fromIdx].GetSub("Y").ValueI;
+                int to_x = systems[toIdx].GetSub("X").ValueI;
+                int to_y = systems[toIdx].GetSub("Y").ValueI;
+
+                if ((from_x == to_x && Mathf.Abs(from_y - to_y) <= 1)
+                    || (from_y == to_y && Mathf.Abs(from_x - to_x) <= 1)
+                    || (from_x == to_x - 1 && from_y == to_y - 1)
+                    || (from_x - 1 == to_x && from_y - 1 == to_y))
+                {
+                    Data.AddData(systems[fromIdx], "PathTo", systems[toIdx].GetSub("ID").ValueI, DefLibrary);
+                    Data.AddData(systems[toIdx], "PathTo", systems[fromIdx].GetSub("ID").ValueI, DefLibrary);
+                }
+            }
+        }
+
+        // delete some pathways
+        List<Vector2> protectedPaths = new List<Vector2>();
+        for (int fromIdx = 0; fromIdx < systems.Count; fromIdx++)
+        {
+            Array<DataBlock> toSystems = GetSystemsWithDirectPath(systems, systems[fromIdx]);
+            for (int toIdx = 0; toIdx < toSystems.Count; toIdx++)
+            {
+                if (RNG.RandiRange(0, 99) < 50 && protectedPaths.Contains(new Vector2(systems[fromIdx].GetSub("ID").ValueI, toSystems[toIdx].GetSub("ID").ValueI)) == false)
+                {
+                    for (int otherIdx = 0; otherIdx < toSystems.Count; otherIdx++)
+                    {
+                        if (toIdx != otherIdx)
+                        {
+                            Array<DataBlock> thirdSystems = GetSystemsWithDirectPath(systems, toSystems[otherIdx]);
+                            for (int thirdIdx = 0; thirdIdx < thirdSystems.Count; thirdIdx++)
+                            {
+                                if (thirdSystems[thirdIdx] == toSystems[toIdx])
+                                {
+                                    Data.RemoveData(systems[fromIdx], "PathTo", toSystems[toIdx].GetSub("ID").ValueI, DefLibrary);
+                                    Data.RemoveData(toSystems[toIdx], "PathTo", systems[fromIdx].GetSub("ID").ValueI, DefLibrary);
+                                    protectedPaths.Add(new Vector2(systems[fromIdx].GetSub("ID").ValueI, toSystems[otherIdx].GetSub("ID").ValueI));
+                                    protectedPaths.Add(new Vector2(toSystems[otherIdx].GetSub("ID").ValueI, systems[fromIdx].GetSub("ID").ValueI));
+                                    protectedPaths.Add(new Vector2(toSystems[otherIdx].GetSub("ID").ValueI, toSystems[toIdx].GetSub("ID").ValueI));
+                                    protectedPaths.Add(new Vector2(toSystems[toIdx].GetSub("ID").ValueI, toSystems[otherIdx].GetSub("ID").ValueI));
+                                    // toSystems does not get updated, but it does not matter
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+
+    private static Array<DataBlock> GetSystemsWithDirectPath(Array<DataBlock> systems, DataBlock fromSystem)
+    {
+        Array<DataBlock> toSystems = new Array<DataBlock>();
+        Array<DataBlock> paths = fromSystem.GetSubs("PathTo");
+        for (int pathIdx = 0; pathIdx < paths.Count; pathIdx++)
+        {
+            for (int toIdx = 0; toIdx < systems.Count; toIdx++)
+            {
+                if (paths[pathIdx].ValueI == systems[toIdx].GetSub("ID").ValueI)
+                {
+                    toSystems.Add(systems[toIdx]);
+                }
+            }
+        }
+
+        return toSystems;
+    }
+
     // --------------------------------------------------------------------------------------------------
     public void GenerateNewMapSave_Systems_Planets(DataBlock system)
     {
@@ -161,6 +237,7 @@ public partial class MapGenerator : Node
             GenerateNewMapSave_Players_Bonuses(playerData);
 
             GenerateNewMapSave_Players_StartingColony(playerData, startingSystem, startingPlanet);
+            GenerateNewMapSave_Players_StartingStaton(playerData, startingSystem);
         }
     }
 
@@ -221,10 +298,39 @@ public partial class MapGenerator : Node
         Data.AddData(startingPlanet, "Link:Player:Colony", playerData.ValueS + ":" + colonyData.ValueS, DefLibrary);
     }
 
+    private void GenerateNewMapSave_Players_StartingStaton(DataBlock playerData, DataBlock startingSystem)
+    {
+        DataBlock colonyList = playerData.GetSub("Colony_List");
+        DataBlock star = GenerateNewMapSave_Players_StartingStaton_GetStar(startingSystem);
+
+        DataBlock colonyData = Data.AddData(colonyList, "Colony", startingSystem.ValueS + "_Station", DefLibrary);
+
+        GenerateNewMapSave_Players_StartingStation_Resources(colonyData);
+        GenerateNewMapSave_Players_StartingStation_Buildings(colonyData);
+        GenerateNewMapSave_Players_StartingStation_Support(colonyData);
+        GenerateNewMapSave_Players_StartingStation_Bonuses(colonyData);
+
+        Data.AddData(colonyData, "Link:System:Planet", startingSystem.ValueS + ":" + star.ValueS, DefLibrary);
+        Data.AddData(star, "Link:Player:Colony", playerData.ValueS + ":" + colonyData.ValueS, DefLibrary);
+    }
+
+    private DataBlock GenerateNewMapSave_Players_StartingStaton_GetStar(DataBlock startingSystem)
+    {
+        Array<DataBlock> planets = startingSystem.GetSub("Planet_List").GetSubs("Planet");
+        for (int idx = 0; idx < planets.Count; idx++)
+        {
+            if (planets[idx].GetSub("Star_Type") != null)
+            {
+                return planets[idx];
+            }
+        }
+        return null;
+    }
+
     // --------------------------------------------------------------------------------------------------
     private void LoadMapFile()
     {
-        using var file = FileAccess.Open("res:///Mod/" + MapTypeFile + ".map", FileAccess.ModeFlags.Read);
+        using var file = FileAccess.Open("res:///Map/" + MapTypeFile + ".map", FileAccess.ModeFlags.Read);
         string content = file.GetAsText();
         char[] delimiters = { '\n', '\r' ,'\t' };
         string[] rows = content.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);

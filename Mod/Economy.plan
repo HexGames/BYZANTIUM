@@ -1,0 +1,38 @@
+
+
+                 >  Farms       --> Pop growth
+     Pops ------|                
+                 >  Cities      --> Building Slots --> A I SP CP <-- 
+                     ^
+                     | 
+                  Surplus      --> bc
+Energy ------\       |
+              |>-----------------> Buildings/Ships/Terraforming
+Minerals ----/       ^ 
+                     |
+                  Deficit      <-- bc
+                     |
+              Private Industry --> bc (tax)
+
+
+
+
+Add growth per farm (tech/civic)
+Add growth per city (tech/civic)
+Transform fartms to cities (action)
+Increase pops from migration (action)
+More building slots per city (tech/civic)
+
+Increase cities buy surplus price (tech/civic)
+Increase cities buy surplus capacity (tech/civic)
+
+Add Energy production (action)
+Improve Energy production capacity (tech new buildings)
+
+Add Minerals production (action)
+Improve Minerals production capacity (tech new buildings)
+
+Decrease Private Industry cover deficit price (tech/civic)
+Increase Private Industry capacity to cover deficit (tech/civic)
+Increase Private Industry tax (tech/civic)
+Add Private Industries (action)

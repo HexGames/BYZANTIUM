@@ -7,6 +7,10 @@ public partial class UIGalaxy : Control
     [Export]
     public Array<UIGalaxySystem> Systems = new Array<UIGalaxySystem>();
     [Export]
+    public UIGalaxyResources Resources = new UIGalaxyResources();
+    [Export]
+    public UIPawnList PawnList = null;
+    [Export]
     public Label CurrentTurn = null;
 
     [ExportCategory("Runtime")]
@@ -21,6 +25,7 @@ public partial class UIGalaxy : Control
 
         Init();
     }
+
     public void Init()
     {
         // delete surplus
@@ -52,6 +57,9 @@ public partial class UIGalaxy : Control
     public void Refresh()
     {
         CurrentTurn.Text = "Current Turn: " + Game.Map.Data.Turn.ToString();
+
+        Resources.Refresh(Game.TurnLoop.CurrentHumanPlayerData.Resources);
+        PawnList.Refresh(Game.TurnLoop.CurrentHumanPlayerData);
     }
 
     public void OnEndTurn()

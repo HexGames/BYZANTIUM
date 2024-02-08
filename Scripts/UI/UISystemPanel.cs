@@ -82,6 +82,7 @@ public partial class UISystemPanel : Panel
             styleBox.BgColor = infos[idx].BGColor;
             Properties[idx].Text = " " + infos[idx].Text + " ";
             Properties[idx].AddThemeStyleboxOverride("normal", styleBox);
+            if (infos[idx].Tooltip != "") Properties[idx].TooltipText = infos[idx].Tooltip;
             Properties[idx].Visible = true;
         }
 

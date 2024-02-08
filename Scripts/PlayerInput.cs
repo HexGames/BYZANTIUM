@@ -46,7 +46,7 @@ public partial class PlayerInput : Node
                 if (keyButtonEvent.Keycode == Key.D)
                 {
                     Game.Map.LoadMap();
-                    Game.Map.Data.GenerateGameFromData();
+                    Game.Map.Data.GenerateGameFromData(Game.Def);
                 }
             }
         }

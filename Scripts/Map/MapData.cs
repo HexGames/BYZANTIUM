@@ -120,7 +120,7 @@ public partial class MapData : Node
     }
 
     // --------------------------------------------------------------------------------------------
-    public void GenerateGameFromData()
+    public void GenerateGameFromData(DefLibrary defLib)
     {
         _Node.ClearContainers();
         ClearMap();
@@ -139,12 +139,22 @@ public partial class MapData : Node
             GenerateGameFromData_System(systems[idx], galaxySize, gfxScene);
         }
 
+        // Link Systems Paths
+        PackedScene gfxPathScene = GD.Load<PackedScene>("res://3DPrefabs/" + _Node.PathGFXName + ".tscn");
+        GenerateGameFromData_Paths(gfxPathScene);
+
         // Players
         DataBlock playerList = _Data.GetSub("Player_List");
         Array<DataBlock> players = playerList.GetSubs("Player");
         for (int idx = 0; idx < players.Count; idx++)
         {
-            GenerateGameFromData_Player(players[idx]);
+            GenerateGameFromData_Player(players[idx], idx, defLib);
+        }
+
+        // Refresh system GFX
+        for (int idx = 0; idx < Systems.Count; idx++)
+        {
+            Systems[idx]._Node.GFX.RefreshPlayerColors();
         }
     }
 
@@ -159,6 +169,7 @@ public partial class MapData : Node
 
         // Data
         SystemData systemData = new SystemData();
+        systemData._Data = systemDataBlock;
         systemData.Name = systemDataBlock.ValueS + "_Data";
         systemData.SystemName = systemDataBlock.ValueS;
         systemData.X = systemDataBlock.GetSub("X").ValueI;
@@ -182,23 +193,67 @@ public partial class MapData : Node
         systemNode.AddChild(gfxNode);//, true, InternalMode.Back);
         gfxNode.Owner = GetTree().EditedSceneRoot;
         gfxNode.GetParent().SetEditableInstance(gfxNode, true);
+        //gfxNode.
 
         systemNode.GFX = gfxNode as SystemGFX; // because of this LocationGFX has to be a Tool
         systemNode.GFX._Node = systemNode;
         systemNode.GFX.Position = new Vector3(8.6666f * (2.0f * systemData.X - systemData.Y), 0.0f, -systemData.Y * 15.0f) - new Vector3(8.6666f * galaxySize, 0.0f, -galaxySize * 15.0f);
     }
 
-    public void GenerateGameFromData_Player(DataBlock playerDataBlock)
+    public void GenerateGameFromData_Paths(PackedScene gfxScene)
+    {
+        for (int fromIdx = 0; fromIdx < Systems.Count; fromIdx++)
+        {
+            Array<DataBlock> paths = Systems[fromIdx]._Data.GetSubs("PathTo");
+            for (int pathIdx = 0; pathIdx < paths.Count; pathIdx++)
+            {
+                for (int toIdx = 0; toIdx < Systems.Count; toIdx++)
+                {
+                    if (Systems[toIdx]._Data.GetSub("ID").ValueI == paths[pathIdx].ValueI)
+                    {
+                        Systems[fromIdx].PathsTo.Add(Systems[toIdx]);
+                        break;
+                    }
+                }
+            }
+        }
+
+        // GFX
+        for (int fromIdx = 0; fromIdx < Systems.Count; fromIdx++)
+        {
+            for (int toIdx = 0; toIdx < Systems[fromIdx].PathsTo.Count; toIdx++)
+            {
+                if (Systems[fromIdx]._Data.GetSub("ID").ValueI < Systems[fromIdx].PathsTo[toIdx]._Data.GetSub("ID").ValueI)
+                {
+                    Node gfxNode = gfxScene.Instantiate();
+                    gfxNode.Name = "Path_" + Systems[fromIdx].SystemName + "_" + Systems[fromIdx].PathsTo[toIdx].SystemName;
+
+                    _Node.PathsNode.AddChild(gfxNode);//, true, InternalMode.Back);
+                    gfxNode.Owner = GetTree().EditedSceneRoot;
+                    gfxNode.GetParent().SetEditableInstance(gfxNode, true);
+                    //gfxNode.
+
+                    Node3D node3D = gfxNode as Node3D;
+                    node3D.Position = (Systems[fromIdx]._Node.GFX.Position + Systems[fromIdx].PathsTo[toIdx]._Node.GFX.Position) / 2;
+                    node3D.Rotation = new Vector3(0.0f, -(Systems[fromIdx]._Node.GFX.Position - Systems[fromIdx].PathsTo[toIdx]._Node.GFX.Position).SignedAngleTo(Vector3.Forward, Vector3.Up), 0.0f);
+                }
+            }
+        }
+    }
+
+    public void GenerateGameFromData_Player(DataBlock playerDataBlock, int id, DefLibrary defLib)
     {
         // Node
         PlayerNode playerNode = new PlayerNode();
         playerNode.Name = playerDataBlock.ValueS;
+        playerNode.GFX = defLib.GFXPlayerColors.PrimaryColors[id % defLib.GFXPlayerColors.PrimaryColors.Count];
 
         _Node.PlayersNode.AddChild(playerNode);//, true, InternalMode.Back);
         playerNode.Owner = GetTree().EditedSceneRoot;
 
         // Data
         PlayerData playerData = new PlayerData();
+        playerData._Node = playerNode;
         playerData.Name = playerDataBlock.ValueS + "_Data";
         playerData.PlayerName = playerDataBlock.ValueS;
         playerData.Resources = playerDataBlock.GetSub("Resources");
@@ -215,7 +270,6 @@ public partial class MapData : Node
         }
 
         playerNode.Data = playerData;
-        playerData._Node = playerNode;
 
         playerNode.AddChild(playerData);//, true, InternalMode.Back);
         playerData.Owner = GetTree().EditedSceneRoot;
@@ -229,7 +283,7 @@ public partial class MapData : Node
         ColonyNode colonyNode = new ColonyNode();
         colonyNode.Name = colonyDataBlock.ValueS;
 
-        _Node.PlayersNode.AddChild(colonyNode);//, true, InternalMode.Back);
+        playerData._Node.AddChild(colonyNode);//, true, InternalMode.Back);
         colonyNode.Owner = GetTree().EditedSceneRoot;
 
         // Data
@@ -249,6 +303,8 @@ public partial class MapData : Node
         colonyData.Owner = GetTree().EditedSceneRoot;
 
         // links
+        colonyData.Player = playerData;
+
         DataBlock link = colonyDataBlock.GetLink("Link:System:Planet");
         string system = Helper.Split_0(link.ValueS);
         string planet = Helper.Split_1(link.ValueS);

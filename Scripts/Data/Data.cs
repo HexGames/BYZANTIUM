@@ -1,4 +1,5 @@
 ﻿using Godot;
+using Godot.Collections;
 using System.Collections.Generic;
 
 public partial class Data
@@ -81,6 +82,51 @@ public partial class Data
         //data.Parent = parent;
 
         return data;
+    }
+
+    static public void RemoveData(DataBlock parent, string name, DefLibrary df)
+    {
+        int type = df.GetDBType(name, BaseType.STRING);
+
+        for (int idx = 0; idx < parent.Subs.Count; idx++)
+        {
+            DataBlock data = parent.Subs[idx];
+            if (data.Type == type)
+            {
+                parent.Subs.RemoveAt(idx);
+                break;
+            }
+        }
+    }
+
+    static public void RemoveData(DataBlock parent, string name, int value, DefLibrary df)
+    {
+        int type = df.GetDBType(name, BaseType.STRING);
+
+        for (int idx = 0; idx < parent.Subs.Count; idx++)
+        {
+            DataBlock data = parent.Subs[idx];
+            if (data.Type == type && data.ValueI == value)
+            {
+                parent.Subs.RemoveAt(idx);
+                break;
+            }
+        }
+    }
+
+    static public void RemoveData(DataBlock parent, string name, string value, DefLibrary df)
+    {
+        int type = df.GetDBType(name, BaseType.STRING);
+
+        for (int idx = 0; idx < parent.Subs.Count; idx++)
+        {
+            DataBlock data = parent.Subs[idx];
+            if (data.Type == type && data.ValueS == value)
+            {
+                parent.Subs.RemoveAt(idx);
+                break;
+            }
+        }
     }
 
     static public DataBlock LoadData(List<string> words, DefLibrary df)

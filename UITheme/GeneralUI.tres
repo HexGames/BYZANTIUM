@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://h0pqg2crxlit"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://h0pqg2crxlit"]
 
-[ext_resource type="FontFile" uid="uid://dideoxjxinbge" path="res://Fonts/rimouski sb.otf" id="1_46yrb"]
+[ext_resource type="FontFile" uid="uid://bxipta6pvl42e" path="res://Fonts/DroidSansMono.ttf" id="1_hswo1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whma6"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 1)
@@ -30,6 +30,51 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.87451, 0.25098, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8100b"]
+bg_color = Color(0.25098, 0.0627451, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyvws"]
+bg_color = Color(0.501961, 0.12549, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8kv2"]
+bg_color = Color(1, 0.501961, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuifk"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25098, 0.0627451, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xba6n"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25098, 0.0627451, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2l0c"]
 bg_color = Color(0.32549, 0.0823529, 0.00392157, 1)
@@ -129,6 +174,14 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsnrd"]
+bg_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+
 [resource]
 Button/constants/h_separation = 0
 Button/styles/disabled = SubResource("StyleBoxFlat_whma6")
@@ -136,8 +189,13 @@ Button/styles/focus = SubResource("StyleBoxFlat_kyy6d")
 Button/styles/hover = SubResource("StyleBoxFlat_rqh1g")
 Button/styles/normal = SubResource("StyleBoxFlat_jawlx")
 Button/styles/pressed = SubResource("StyleBoxFlat_uaxgc")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_8100b")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_wyvws")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_m8kv2")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_nuifk")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_xba6n")
 Label/font_sizes/font_size = 14
-Label/fonts/font = ExtResource("1_46yrb")
+Label/fonts/font = ExtResource("1_hswo1")
 LabelPlanet/base_type = &"Label"
 LabelPlanet/font_sizes/font_size = 16
 LabelPlanet/styles/normal = SubResource("StyleBoxFlat_x2l0c")
@@ -155,4 +213,6 @@ PanelTransparent/base_type = &"Panel"
 PanelTransparent/styles/panel = SubResource("StyleBoxFlat_ig4tm")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_0kr2f")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_77rj7")
+TooltipLabel/font_sizes/font_size = 16
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_fsnrd")
 VBoxContainer/constants/separation = 8

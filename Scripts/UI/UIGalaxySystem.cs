@@ -3,6 +3,7 @@ using Godot.Collections;
 
 public partial class UIGalaxySystem : Control
 {
+    // is beeing duplicated
     PanelContainer SystemBg = null;
     PanelContainer ColonyBg = null;
     PanelContainer ExtraBg = null;

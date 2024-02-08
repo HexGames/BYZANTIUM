@@ -12,7 +12,7 @@ public partial class MapGenerator : Node
     {
         DataBlock resources = Data.AddData(colony, "Resources", DefLibrary);
 
-        Data.AddData(resources, "Credits_treasury", 3000, DefLibrary);
+        Data.AddData(resources, "Credits:private", 3000, DefLibrary);
         Data.AddData(resources, "Pops", 11000, DefLibrary);
     }
 
@@ -89,6 +89,36 @@ public partial class MapGenerator : Node
         Data.AddData(faction, "Happiness", 7, DefLibrary);
     }
     private void GenerateNewMapSave_Players_StartingColony_Bonuses(DataBlock colony)
+    {
+        DataBlock bonuses = Data.AddData(colony, "Bonuses", DefLibrary);
+    }
+
+    private void GenerateNewMapSave_Players_StartingStation_Resources(DataBlock colony)
+    {
+        DataBlock resources = Data.AddData(colony, "Resources", DefLibrary);
+
+        Data.AddData(resources, "Credits:private", 100, DefLibrary);
+        Data.AddData(resources, "Pops", 2, DefLibrary);
+    }
+
+    private void GenerateNewMapSave_Players_StartingStation_Buildings(DataBlock colony)
+    {
+        DataBlock buildings = Data.AddData(colony, "Buildings", DefLibrary);
+
+        Data.AddData(buildings, "Living_Quarters", 2, DefLibrary);
+        Data.AddData(buildings, "Shipyard", 1, DefLibrary);
+    }
+
+    private void GenerateNewMapSave_Players_StartingStation_Support(DataBlock colony)
+    {
+        DataBlock support = Data.AddData(colony, "Support", DefLibrary);// 50
+
+        DataBlock faction = null;
+        faction = Data.AddData(support, "Industrialist", DefLibrary);
+        Data.AddData(faction, "Facton_Size", 100, DefLibrary);
+        Data.AddData(faction, "Happiness", 7, DefLibrary);
+    }
+    private void GenerateNewMapSave_Players_StartingStation_Bonuses(DataBlock colony)
     {
         DataBlock bonuses = Data.AddData(colony, "Bonuses", DefLibrary);
     }

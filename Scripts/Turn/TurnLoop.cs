@@ -13,6 +13,8 @@ public partial class TurnLoop : Node
     public int CurrentPlayerIdx = -1;
     [Export]
     public PlayerData CurrentPlayerData = null;
+    [Export]
+    public PlayerData CurrentHumanPlayerData = null;
 
     //[ExportCategory("Runtime - Colony")]
     //[Export]
@@ -36,8 +38,20 @@ public partial class TurnLoop : Node
         }
     }
 
+    public void Init()
+    {
+        CurrentHumanPlayerData = GetHumanPlayer();
+        EndTurn_Resources();
+        Game.GalaxyUI.Refresh();
+    }
+
     public override void _Process(double delta)
     {
+        if (CurrentHumanPlayerData == null)
+        {
+            Init();
+        }
+
         if (WaitingForHuman == true)
         {
             return;
@@ -96,29 +110,16 @@ public partial class TurnLoop : Node
         return null;
     }
 
-    void EndTurn()
+    PlayerData GetHumanPlayer()
     {
-        Game.Map.Data.Turn = Game.Map.Data.Turn + 1;
-        for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
+        for (int idx = 0; idx < Game.Map.Data.Players.Count; idx++)
         {
-            PlayerData player = Game.Map.Data.Players[playerIdx];
-            for (int colonyIdx = 0; colonyIdx < player.Colonies.Count; colonyIdx++)
+            if (Game.Map.Data.Players[idx].Human)
             {
-                ColonyData colony = player.Colonies[colonyIdx];
-
-                if (colony.ActionBuild != null)
-                {
-                    ActionColonyBuild.Update(colony, Game.Def);
-                }
+                return Game.Map.Data.Players[idx];
             }
         }
-
-        Game.GalaxyUI.Refresh();
-
-        for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
-        {
-            Game.Map.Data.Players[playerIdx].TurnFinished = false;
-        }
+        return null;
     }
 
     //DataBlock GetNextColony(PlayerData playerData, out int colonyIdx, out SystemNode colonyLocation, out DataBlock colonyAction)

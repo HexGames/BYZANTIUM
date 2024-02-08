@@ -16,7 +16,11 @@ public partial class MapNode : Node
     [Export]
     public string StarGFXName = "";
     [Export]
+    public string PathGFXName = "";
+    [Export]
     public Node SystemsNode = null;
+    [Export]
+    public Node PathsNode = null;
     [Export]
     public Node PlayersNode = null;
     [Export]
@@ -79,6 +83,13 @@ public partial class MapNode : Node
         {
             Node child = SystemsNode.GetChild(0, true);
             SystemsNode.RemoveChild(child);
+            child.Free();
+        }
+
+        while (PathsNode.GetChildCount(true) > 0)
+        {
+            Node child = PathsNode.GetChild(0, true);
+            PathsNode.RemoveChild(child);
             child.Free();
         }
 

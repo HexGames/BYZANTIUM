@@ -5,6 +5,9 @@ using System.Collections.Generic;
 //[Tool]
 public partial class UISystem : Control
 {
+    [ExportCategory("Links")]
+    [Export]
+    public UIPawnList SystemBar = null;
     [Export]
     public UISystemPanel PlanetPanel = null;
     [Export]
@@ -18,19 +21,19 @@ public partial class UISystem : Control
     [Export]
     public UISystemPanel BuildingsPanel = null;
 
-    [Export]
-    public Array<UISystemPlanet> Planets = new Array<UISystemPlanet>();
+    //[Export]
+    //public Array<UISystemPlanet> Planets = new Array<UISystemPlanet>();
 
     [Export]
     public UIColonyActionBuild ActionBuild = null;
 
+    [ExportCategory("Runtime")]
     [Export]
     public SystemData _SystemData = null;
     [Export]
     public ColonyData _ColonyData = null;
     [Export]
-    public UISystemPlanet PlanetSelected = null;
-
+    public UIPawnListPlanet PlanetSelected = null;
 
     //[Export]
     //public bool AutoLink
@@ -73,13 +76,7 @@ public partial class UISystem : Control
         if (system == null)
         {
             // deselect other planets
-            for (int idx = 0; idx < Planets.Count; idx++)
-            {
-                if (Planets[idx].Selected)
-                {
-                    Planets[idx].Deselect();
-                }
-            }
+            SystemBar.Visible = false;
 
             PlanetPanel.Visible = false;
             TerraformingPanel.Visible = false;
@@ -100,37 +97,18 @@ public partial class UISystem : Control
 
         _SystemData = system;
 
-        for (int idx = 0; idx < Planets.Count; idx++)
-        {
-            if (idx < _SystemData.Planets.Count)
-            {
-                Planets[idx].Refresh(system, _SystemData.Planets[idx]);
-                Planets[idx].Visible = true;
-            }
-            else
-            {
-                Planets[idx].Visible = false;
-            }
-        }
+        SystemBar.Refresh(system);
+
         //Game.ActionColonyUI.Visible = false;
         Visible = true;
         Game.Camera.UILockSystem = true;
     }
 
-    public void Select(UISystemPlanet planetUI)
+    public void Select(UIPawnListPlanet planetUI)
     {
         PlanetSelected = planetUI;
 
         RefreshInfoPanels(planetUI);
-
-        // deselect other planets
-        for (int idx = 0; idx < Planets.Count; idx++)
-        {
-            if (Planets[idx].Selected && planetUI != Planets[idx])
-            {
-                Planets[idx].Deselect();
-            }
-        }
 
         //if (Data.GetPlayer(Game.Map.Data, PlanetSelected._Data)?.Human == true)
         //{
@@ -143,11 +121,11 @@ public partial class UISystem : Control
         //}
     }
 
-    private void RefreshInfoPanels(UISystemPlanet planetUI)
+    private void RefreshInfoPanels(UIPawnListPlanet planetUI)
     {
         // make the proper panel visible
-        Array<DataBlock> planetProperties = planetUI._Data.GetSubs();
-        ColonyData colony = _SystemData.GetColony(planetUI._Data);
+        Array<DataBlock> planetProperties = planetUI._PlanetData.GetSubs();
+        ColonyData colony = _SystemData.GetColony(planetUI._PlanetData);
 
         PlanetPanel.Visible = true;
         TerraformingPanel.Visible = false;
@@ -171,6 +149,7 @@ public partial class UISystem : Control
                 colonySubs.AddRange(_ColonyData.Bonuses.GetSubs());
 
                 RefreshInfoPanels_Default(ColonyPanel, colonySubs);
+                RefreshInfoPanels_Buildings(BuildingsPanel, _ColonyData.Buildings.GetSubs());
 
                 ActionBuild.Refresh(_ColonyData);
             }
@@ -183,62 +162,6 @@ public partial class UISystem : Control
             SupportPanel.Visible = false;
             BuildingsPanel.Visible = false;
         }
-
-        //Array<DataBlock> Properties = new Array<DataBlock>();
-        //
-        //for (int idx = 0; idx < planetProperties.Count; idx++)
-        //{
-        //    planetProperties
-        //}
-        //
-        //if (selectedIdx < (_PlanetsData.Count + 1) / 2)
-        //{
-        //    for (int idx = 0; idx < PlaneRightRows.Count; idx++) PlaneRightRows[idx].Visible = false;
-        //    for (int idx = 0; idx < PlaneRightRowsProperies.Count; idx++) PlaneRightRowsProperies[idx].Visible = false;
-        //    
-        //    if (playerData != null)
-        //    {
-        //        string text = "Owned by " + playerData.PlayerName;
-        //        Color color = Game.UILib.GetPlayerColor(playerData.PlayerName);
-        //
-        //        StyleBoxFlat styleBox = new StyleBoxFlat();
-        //        styleBox.BgColor = color;
-        //
-        //        PlaneRightRowsProperies[0].Text = text;
-        //        PlaneRightRowsProperies[0].Visible = true;
-        //        PlaneRightRowsProperies[0].AddThemeStyleboxOverride("normal", styleBox);
-        //        PlaneRightRows[0].Visible = true;
-        //    }
-        //
-        //    for (int idx = 0; idx < planetProperties.Count; idx++)
-        //    {
-        //        int row = planetProperties[idx].ToUIRow();
-        //
-        //        if (row >= 0 && row < 7)
-        //        {
-        //            for (int propertyIdx = row * 9; propertyIdx < row * 9 + 9; propertyIdx++)
-        //            {
-        //                if (PlaneRightRowsProperies[propertyIdx].Visible == false)
-        //                {
-        //                    string text = planetProperties[idx].ToUIString();
-        //                    Color color = planetProperties[idx].ToUIColor();
-        //
-        //                    StyleBoxFlat styleBox = new StyleBoxFlat();
-        //                    styleBox.BgColor = color;
-        //
-        //                    PlaneRightRowsProperies[propertyIdx].Text = text;
-        //                    PlaneRightRowsProperies[propertyIdx].Visible = true;
-        //                    PlaneRightRowsProperies[propertyIdx].AddThemeStyleboxOverride("normal", styleBox);
-        //                    PlaneRightRows[row].Visible = true;
-        //                    break;
-        //                }
-        //            }
-        //        }
-        //    }
-        //
-        //    PlanetLeft.Visible = false;
-        //    PlanetRight.Visible = true;
-        //}
     }
 
     public class PropertyInfo
@@ -247,7 +170,9 @@ public partial class UISystem : Control
         public string Text;
         public Color BGColor;
         public int Row;
+        public string Tooltip = "";
     }
+
     private void RefreshInfoPanels_Default(UISystemPanel panel, Array<DataBlock> properties)
     {
         List<PropertyInfo> propertiesInfos = new List<PropertyInfo>();
@@ -258,6 +183,26 @@ public partial class UISystem : Control
             info.Text = properties[idx].ToUIString();
             info.BGColor = properties[idx].ToUIColor();
             info.Row = properties[idx].ToUIRow();
+            propertiesInfos.Add(info);
+        }
+
+        propertiesInfos.Sort((x, y) => x.Row.CompareTo(y.Row));
+
+        panel.Refresh(propertiesInfos);
+    }
+
+    private void RefreshInfoPanels_Buildings(UISystemPanel panel, Array<DataBlock> properties)
+    {
+        List<PropertyInfo> propertiesInfos = new List<PropertyInfo>();
+        for (int idx = 0; idx < properties.Count; idx++)
+        {
+            PropertyInfo info = new PropertyInfo();
+            info._Data = properties[idx];
+            info.Text = properties[idx].ToUIString();
+            info.BGColor = properties[idx].ToUIColor();
+            info.Row = properties[idx].ToUIRow();
+            DataBlock benefit = Game.Def.GetBuilding(properties[idx].Name).GetSub("Benefit");
+            if (benefit != null) info.Tooltip = benefit.ToToolTipString();
             propertiesInfos.Add(info);
         }
 

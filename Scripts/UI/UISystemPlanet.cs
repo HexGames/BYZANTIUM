@@ -98,7 +98,7 @@ public partial class UISystemPlanet : Button
 
     public void OnHoverEnter()
     {
-        if (Parent.PlanetSelected != this) PlanetName.AnchorTop = 0.6f;
+        //if (Parent.PlanetSelected != this) PlanetName.AnchorTop = 0.6f;
 
         //if (Parent.PlanetSelected != null && Parent.PlanetSelected != this)
         //    Parent.PlanetSelected.PlanetName.AnchorTop = 0.9f;
@@ -120,7 +120,7 @@ public partial class UISystemPlanet : Button
         PlanetName.AnchorTop = 0.8f;
 
         Selected = true;
-        Parent.Select( this );
+        //Parent.Select( this );
     }
 
 

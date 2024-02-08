@@ -33,6 +33,8 @@ public partial class ColonyData : Node
 
     [ExportCategory("ColonyData-Links")]
     [Export]
+    public PlayerData Player = null;
+    [Export]
     public SystemData System = null;
     [Export]
     public DataBlock Planet = null;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vh0pcrygv61d"]
+[gd_scene load_steps=55 format=3 uid="uid://vh0pcrygv61d"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UISystem.cs" id="1_6msa3"]
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_br2ry"]
@@ -11,10 +11,24 @@
 [ext_resource type="Texture2D" uid="uid://bpeiu3mhak0kn" path="res://Assets/Planets/MoonOverlay.png" id="5_e11r8"]
 [ext_resource type="Script" path="res://Scripts/UI/UIColonyActionBuild.cs" id="6_ds5ny"]
 [ext_resource type="Texture2D" uid="uid://coqsjpw7qqqb5" path="res://Assets/Planets/Barren.png" id="6_rb7i6"]
-[ext_resource type="Theme" uid="uid://ccrra41cmxbe3" path="res://UITheme/UITheme.tres" id="7_0rej8"]
 [ext_resource type="Texture2D" uid="uid://dqhju10mfykde" path="res://Assets/UI/arrow.png" id="7_4dyub"]
 [ext_resource type="Texture2D" uid="uid://dtebju6geermh" path="res://Assets/Planets/ToxicYellow.png" id="7_nwhkf"]
 [ext_resource type="Texture2D" uid="uid://ci2vnc3vrtcks" path="res://Assets/Planets/Rings.png" id="9_60rk0"]
+[ext_resource type="Script" path="res://Scripts/UI/UIPawnList.cs" id="15_3bkhh"]
+[ext_resource type="Script" path="res://Scripts/UI/UIPawnListGroupHeader.cs" id="16_5mfle"]
+[ext_resource type="Texture2D" uid="uid://c5qcijiud43e" path="res://Assets/UI/pin.png" id="17_i7gpy"]
+[ext_resource type="Texture2D" uid="uid://dgayj1suaea3g" path="res://Assets/Custom/ToggleOn.png" id="18_i5o54"]
+[ext_resource type="Texture2D" uid="uid://d0tof7wh66pfl" path="res://Assets/Custom/ToggleOff.png" id="19_rn2bm"]
+[ext_resource type="Texture2D" uid="uid://btedb181w8kd" path="res://Assets/UI/hide.png" id="20_qi7ww"]
+[ext_resource type="Texture2D" uid="uid://ceyqr5puhfmn0" path="res://Assets/UI/right.png" id="21_jj3qp"]
+[ext_resource type="Texture2D" uid="uid://qvxxtu5jlkbt" path="res://Assets/UI/left.png" id="22_rrkq5"]
+[ext_resource type="Script" path="res://Scripts/UI/Base/UIVisualMask.cs" id="23_nvqsg"]
+[ext_resource type="Script" path="res://Scripts/UI/UIPawnListPlanet.cs" id="24_yy134"]
+[ext_resource type="Texture2D" uid="uid://dw1asyhh6eqa2" path="res://Assets/Planets/Star.png" id="25_o0m54"]
+[ext_resource type="Texture2D" uid="uid://wv33nebj4neu" path="res://Assets/Planets/Swamp.png" id="25_ri2yi"]
+[ext_resource type="Texture2D" uid="uid://cdmy8ckgkhory" path="res://Assets/Planets/ShadowPlanet.png" id="26_yb0yv"]
+[ext_resource type="Texture2D" uid="uid://csplvtf23t4w8" path="res://Assets/Planets/Shadow.png" id="27_2bd7c"]
+[ext_resource type="Texture2D" uid="uid://csd84oyl26blq" path="res://Assets/Planets/SpaceStation.png" id="29_bo3jb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vcjk"]
 bg_color = Color(0, 0, 0, 0.501961)
@@ -23,7 +37,176 @@ bg_color = Color(0, 0, 0, 0.501961)
 shader = ExtResource("2_20v37")
 shader_parameter/amount = 2.0
 
-[node name="UISystem" type="Control" node_paths=PackedStringArray("PlanetPanel", "TerraformingPanel", "ExplorationPanel", "ColonyPanel", "SupportPanel", "BuildingsPanel", "Planets", "ActionBuild")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whma6"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyy6d"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqh1g"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jawlx"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uaxgc"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3416"]
+bg_color = Color(0.196078, 0.0901961, 0.00784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65ng8"]
+bg_color = Color(0.101961, 0.0352941, 0.00392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r205"]
+bg_color = Color(1, 0.14902, 0, 0.12549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kr2f"]
+bg_color = Color(0.192157, 0.203922, 0.203922, 1)
+skew = Vector2(0.3, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.878431, 0.25098, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77rj7"]
+bg_color = Color(0.439216, 0.482353, 0.639216, 1)
+skew = Vector2(0.3, 0)
+border_color = Color(0.999459, 0.286711, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_yygrc"]
+Button/constants/h_separation = 0
+Button/styles/disabled = SubResource("StyleBoxFlat_whma6")
+Button/styles/focus = SubResource("StyleBoxFlat_kyy6d")
+Button/styles/hover = SubResource("StyleBoxFlat_rqh1g")
+Button/styles/normal = SubResource("StyleBoxFlat_jawlx")
+Button/styles/pressed = SubResource("StyleBoxFlat_uaxgc")
+LineEdit/colors/font_uneditable_color = Color(1, 1, 1, 1)
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_q3416")
+Panel/styles/panel = SubResource("StyleBoxFlat_65ng8")
+PanelTransparent/base_type = &"Panel"
+PanelTransparent/styles/panel = SubResource("StyleBoxFlat_7r205")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_0kr2f")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_77rj7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ndm6"]
+bg_color = Color(0.25098, 0.0627451, 0, 1)
+skew = Vector2(0.3, 0)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1rbl"]
+bg_color = Color(0.25098, 0.0627451, 0, 1)
+skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0a7q"]
+skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0cmj"]
+bg_color = Color(0.501961, 0.12549, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 12
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5fno"]
+bg_color = Color(1, 0.25098, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a31pm"]
+bg_color = Color(1, 0.501961, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k0hh"]
+bg_color = Color(0.25098, 0.0627451, 0, 0.752941)
+skew = Vector2(0.3, 0)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fqvt"]
+bg_color = Color(0.25098, 0.0627451, 0, 1)
+skew = Vector2(0.3, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25098, 0.0627451, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc7hh"]
+bg_color = Color(1, 0.25098, 0, 1)
+skew = Vector2(0.3, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.25098, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gult"]
+bg_color = Color(1, 0.501961, 0, 1)
+skew = Vector2(0.3, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.501961, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqvct"]
+bg_color = Color(1, 1, 1, 1)
+skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjqcq"]
+bg_color = Color(0, 0, 0, 0.752941)
+skew = Vector2(0.3, 0)
+
+[node name="UISystem" type="Control" node_paths=PackedStringArray("SystemBar", "PlanetPanel", "TerraformingPanel", "ExplorationPanel", "ColonyPanel", "SupportPanel", "BuildingsPanel", "ActionBuild")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,13 +214,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6msa3")
+SystemBar = NodePath("Container/SystemBar")
 PlanetPanel = NodePath("Container/PlanetInfo/Planet")
 TerraformingPanel = NodePath("Container/PlanetInfo/Terraforming")
 ExplorationPanel = NodePath("Container/PlanetInfo/Exploration")
 ColonyPanel = NodePath("Container/ColonyInfo/Colony")
 SupportPanel = NodePath("Container/ColonyInfo/Support")
 BuildingsPanel = NodePath("Container/ColonyInfo/Buildings")
-Planets = [NodePath("Container/SystemInfo/HBoxContainer/Planet_0"), NodePath("Container/SystemInfo/HBoxContainer/Planet_1"), NodePath("Container/SystemInfo/HBoxContainer/Planet_2"), NodePath("Container/SystemInfo/HBoxContainer/Planet_3"), NodePath("Container/SystemInfo/HBoxContainer/Planet_4"), NodePath("Container/SystemInfo/HBoxContainer/Planet_5"), NodePath("Container/SystemInfo/HBoxContainer/Planet_6"), NodePath("Container/SystemInfo/HBoxContainer/Planet_7"), NodePath("Container/SystemInfo/HBoxContainer/Planet_8"), NodePath("Container/SystemInfo/HBoxContainer/Planet_9"), NodePath("Container/SystemInfo/HBoxContainer/Planet_10"), NodePath("Container/SystemInfo/HBoxContainer/Planet_11"), NodePath("Container/SystemInfo/HBoxContainer/Planet_12")]
 ActionBuild = NodePath("Container/ColonyInfo/Buildings/UIActionCoonyBuild")
 
 [node name="TransparentBg" type="Panel" parent="."]
@@ -122,6 +305,7 @@ grow_vertical = 2
 
 [node name="Label_1" type="Label" parent="Container/ColonyInfo/Support/Content"]
 layout_mode = 2
+mouse_filter = 0
 theme = ExtResource("1_br2ry")
 theme_type_variation = &"LabelProperty"
 text = " Property "
@@ -181,6 +365,7 @@ grow_vertical = 2
 
 [node name="Label_1" type="Label" parent="Container/ColonyInfo/Colony/Content"]
 layout_mode = 2
+mouse_filter = 0
 theme = ExtResource("1_br2ry")
 theme_type_variation = &"LabelProperty"
 text = " Property "
@@ -240,6 +425,7 @@ grow_vertical = 2
 
 [node name="Label_1" type="Label" parent="Container/ColonyInfo/Buildings/Content"]
 layout_mode = 2
+mouse_filter = 0
 theme = ExtResource("1_br2ry")
 theme_type_variation = &"LabelProperty"
 text = " Property "
@@ -369,7 +555,7 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 10
-theme = ExtResource("7_0rej8")
+theme = SubResource("Theme_yygrc")
 theme_override_constants/separation = 6
 alignment = 2
 
@@ -383,6 +569,7 @@ shortcut_in_tooltip = false
 text = "Build Something"
 
 [node name="SystemInfo" type="HBoxContainer" parent="Container"]
+visible = false
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 theme_override_constants/separation = 16
@@ -1341,6 +1528,375 @@ text = "Venus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SystemBar" type="Control" parent="Container" node_paths=PackedStringArray("ScrollBar", "ParentNode", "GroupHeaders", "Planets")]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("15_3bkhh")
+ScrollBar = NodePath("HScrollBar")
+ParentNode = NodePath("HBoxContainer")
+GroupHeaders = [NodePath("HBoxContainer/Group_1")]
+Planets = [NodePath("HBoxContainer/Planet_1")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/SystemBar"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -72.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Group_1" type="Panel" parent="Container/SystemBar/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 144)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ndm6")
+script = ExtResource("16_5mfle")
+
+[node name="GroupNamePanel" type="Panel" parent="Container/SystemBar/HBoxContainer/Group_1"]
+custom_minimum_size = Vector2(138, 24)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -28.0
+offset_right = 160.0
+offset_bottom = -4.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p1rbl")
+
+[node name="GroupName" type="Label" parent="Container/SystemBar/HBoxContainer/Group_1/GroupNamePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_br2ry")
+theme_override_font_sizes/font_size = 12
+text = "System Loooong Name "
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="Panel_5" type="Panel" parent="Container/SystemBar/HBoxContainer/Group_1"]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 0
+offset_left = 19.0
+offset_top = 2.0
+offset_right = 47.0
+offset_bottom = 30.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x0a7q")
+
+[node name="PinnedIcon" type="TextureRect" parent="Container/SystemBar/HBoxContainer/Group_1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 25.0
+offset_right = 45.0
+offset_bottom = 20.0
+texture = ExtResource("17_i7gpy")
+expand_mode = 1
+
+[node name="PinnedCheck" type="CheckButton" parent="Container/SystemBar/HBoxContainer/Group_1"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 0
+offset_left = 7.5
+offset_top = 14.0
+offset_right = 51.5
+offset_bottom = 38.0
+focus_mode = 0
+theme_override_icons/checked = ExtResource("18_i5o54")
+theme_override_icons/unchecked = ExtResource("19_rn2bm")
+button_pressed = true
+
+[node name="HiddenIcon" type="TextureRect" parent="Container/SystemBar/HBoxContainer/Group_1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 13.0
+offset_top = 40.0
+offset_right = 33.0
+offset_bottom = 60.0
+texture = ExtResource("20_qi7ww")
+expand_mode = 1
+
+[node name="HiddenCheck" type="CheckButton" parent="Container/SystemBar/HBoxContainer/Group_1"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 0
+offset_left = -5.0
+offset_top = 56.0
+offset_right = 39.0
+offset_bottom = 80.0
+focus_mode = 0
+theme_override_icons/checked = ExtResource("18_i5o54")
+theme_override_icons/unchecked = ExtResource("19_rn2bm")
+
+[node name="MoveRight" type="Button" parent="Container/SystemBar/HBoxContainer/Group_1"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 96.0
+offset_right = 15.0
+offset_bottom = 112.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_v0cmj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y5fno")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a31pm")
+icon = ExtResource("21_jj3qp")
+expand_icon = true
+
+[node name="MoveLeft" type="Button" parent="Container/SystemBar/HBoxContainer/Group_1"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 124.0
+offset_right = 6.0
+offset_bottom = 140.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_v0cmj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y5fno")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a31pm")
+icon = ExtResource("22_rrkq5")
+expand_icon = true
+
+[node name="Mask" type="Panel" parent="Container/SystemBar/HBoxContainer/Group_1"]
+visible = false
+custom_minimum_size = Vector2(32, 144)
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3k0hh")
+script = ExtResource("23_nvqsg")
+
+[node name="Planet_1" type="Button" parent="Container/SystemBar/HBoxContainer"]
+custom_minimum_size = Vector2(96, 144)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3fqvt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yc7hh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7gult")
+script = ExtResource("24_yy134")
+
+[node name="Mask" type="Panel" parent="Container/SystemBar/HBoxContainer/Planet_1"]
+clip_children = 1
+custom_minimum_size = Vector2(96, 144)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dqvct")
+
+[node name="Background" type="TextureRect" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_1dtr5")
+expand_mode = 1
+
+[node name="Simple" type="TextureRect" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("25_o0m54")
+expand_mode = 1
+
+[node name="Parent" type="TextureRect" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask"]
+visible = false
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.6
+anchor_bottom = 0.6
+offset_left = -72.0
+offset_right = -72.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("25_ri2yi")
+expand_mode = 1
+
+[node name="Shadow" type="TextureRect" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask/Parent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("26_yb0yv")
+expand_mode = 1
+
+[node name="Rings" type="TextureRect" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask/Parent"]
+custom_minimum_size = Vector2(384, 128)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -64.0
+offset_right = 192.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_60rk0")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask/Parent"]
+custom_minimum_size = Vector2(256, 160)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -94.4
+offset_right = 176.0
+offset_bottom = 65.6
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Planet" type="TextureRect" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.6
+anchor_bottom = 0.6
+offset_left = 32.0
+offset_right = 32.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("25_ri2yi")
+expand_mode = 1
+
+[node name="Shadow" type="TextureRect" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask/Planet"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("27_2bd7c")
+expand_mode = 1
+
+[node name="Rings" type="TextureRect" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask/Planet"]
+visible = false
+custom_minimum_size = Vector2(216, 72)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -36.0
+offset_right = 108.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_60rk0")
+expand_mode = 1
+
+[node name="Station" type="TextureRect" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_left = -32.0
+offset_top = 8.0
+offset_right = -32.0
+offset_bottom = 8.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("29_bo3jb")
+expand_mode = 1
+
+[node name="NameBackground" type="Panel" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask"]
+custom_minimum_size = Vector2(96, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjqcq")
+
+[node name="Name" type="Label" parent="Container/SystemBar/HBoxContainer/Planet_1/Mask/NameBackground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_br2ry")
+theme_override_font_sizes/font_size = 12
+text = "Long Name for a Planet"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="HScrollBar" type="HScrollBar" parent="Container/SystemBar"]
+visible = false
+custom_minimum_size = Vector2(1024, 8)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 144.0
+offset_top = -4.0
+offset_right = -192.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_br2ry")
+max_value = 50.0
+step = 1.0
+page = 10.0
+value = 6.0
+rounded = true
+
 [node name="PlanetInfo" type="HBoxContainer" parent="Container"]
 custom_minimum_size = Vector2(0, 384)
 layout_mode = 2
@@ -1394,6 +1950,7 @@ grow_vertical = 2
 
 [node name="Label_1" type="Label" parent="Container/PlanetInfo/Terraforming/Content"]
 layout_mode = 2
+mouse_filter = 0
 theme = ExtResource("1_br2ry")
 theme_type_variation = &"LabelProperty"
 text = " Property "
@@ -1453,6 +2010,7 @@ grow_vertical = 2
 
 [node name="Label_1" type="Label" parent="Container/PlanetInfo/Planet/Content"]
 layout_mode = 2
+mouse_filter = 0
 theme = ExtResource("1_br2ry")
 theme_type_variation = &"LabelProperty"
 text = " Property "
@@ -1512,6 +2070,7 @@ grow_vertical = 2
 
 [node name="Label_1" type="Label" parent="Container/PlanetInfo/Exploration/Content"]
 layout_mode = 2
+mouse_filter = 0
 theme = ExtResource("1_br2ry")
 theme_type_variation = &"LabelProperty"
 text = " Property "
@@ -1563,3 +2122,6 @@ theme_type_variation = &"PanelLine"
 [connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_12" to="Container/SystemInfo/HBoxContainer/Planet_12" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_12" to="Container/SystemInfo/HBoxContainer/Planet_12" method="OnHoverExit"]
 [connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_12" to="Container/SystemInfo/HBoxContainer/Planet_12" method="OnSelect"]
+[connection signal="mouse_entered" from="Container/SystemBar/HBoxContainer/Group_1/Mask" to="Container/SystemBar/HBoxContainer/Group_1/Mask" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Container/SystemBar/HBoxContainer/Group_1/Mask" to="Container/SystemBar/HBoxContainer/Group_1/Mask" method="OnHoverExit"]
+[connection signal="pressed" from="Container/SystemBar/HBoxContainer/Planet_1" to="Container/SystemBar/HBoxContainer/Planet_1" method="OnSelect"]
