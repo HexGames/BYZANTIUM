@@ -6,6 +6,9 @@ using System.Linq;
 // Editor
 public partial class DefLibrary : Node
 {
+    [ExportCategory("Def Buildings")]
+    [Export]
+    public DataBlock BuildingsList = null;
     [Export]
     public Array<DataBlock> Buildings = new Array<DataBlock>();
 
@@ -43,12 +46,14 @@ public partial class DefLibrary : Node
         return null;
     }
 
-    public void GenerateBuidingsDefFunc()
+    public void GenerateBuildingsDefFunc()
     {
+        BuildingsList = Data.CreateData("Def_Buildings", this);
+
         Buildings.Clear();
 
         {
-            DataBlock buiding = Data.CreateData("Building", "City", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "City", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 500, this);
@@ -64,7 +69,7 @@ public partial class DefLibrary : Node
         }
 
         {
-            DataBlock buiding = Data.CreateData("Building", "Private_Business", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "Private_Business", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 1000, this);
@@ -79,7 +84,7 @@ public partial class DefLibrary : Node
         }
 
         {
-            DataBlock buiding = Data.CreateData("Building", "Power_Plants", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "Power_Plants", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 300, this);
@@ -94,7 +99,7 @@ public partial class DefLibrary : Node
         }
 
         {
-            DataBlock buiding = Data.CreateData("Building", "Mines", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "Mines", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 500, this);
@@ -108,7 +113,7 @@ public partial class DefLibrary : Node
         }
 
         {
-            DataBlock buiding = Data.CreateData("Building", "Goverment_Offices", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "Goverment_Offices", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 500, this);
@@ -123,7 +128,7 @@ public partial class DefLibrary : Node
         }
 
         {
-            DataBlock buiding = Data.CreateData("Building", "Diplomatic_Offices", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "Diplomatic_Offices", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 500, this);
@@ -138,7 +143,7 @@ public partial class DefLibrary : Node
         }
 
         {
-            DataBlock buiding = Data.CreateData("Building", "Research_Labs", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "Research_Labs", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 500, this);
@@ -153,7 +158,7 @@ public partial class DefLibrary : Node
         }
 
         {
-            DataBlock buiding = Data.CreateData("Building", "Cultural_Center", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "Cultural_Center", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 500, this);
@@ -168,7 +173,7 @@ public partial class DefLibrary : Node
         }
 
         {
-            DataBlock buiding = Data.CreateData("Building", "Hydroponics_Farms", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "Hydroponics_Farms", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 500, this);
@@ -183,7 +188,7 @@ public partial class DefLibrary : Node
         }
 
         {
-            DataBlock buiding = Data.CreateData("Building", "Nature_Biodomes", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "Nature_Biodomes", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 1000, this);
@@ -198,7 +203,7 @@ public partial class DefLibrary : Node
         }
 
         {
-            DataBlock buiding = Data.CreateData("Building", "City_Biodomes", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "City_Biodomes", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 1000, this);
@@ -214,7 +219,7 @@ public partial class DefLibrary : Node
 
         // Station
         {
-            DataBlock buiding = Data.CreateData("Building", "Shipyard", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "Shipyard", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 500, this);
@@ -228,7 +233,7 @@ public partial class DefLibrary : Node
         }
 
         {
-            DataBlock buiding = Data.CreateData("Building", "Living_Quarters", this);
+            DataBlock buiding = Data.AddData(BuildingsList, "Building", "Living_Quarters", this);
 
             DataBlock cost = Data.AddData(buiding, "Cost", this);
             Data.AddData(cost, "Credits", 1000, this);
@@ -241,5 +246,20 @@ public partial class DefLibrary : Node
 
             Buildings.Add(buiding);
         }
+
+        SaveBuildingsDef();
+    }
+
+    public void SaveBuildingsDef()
+    {
+        Data.SaveToFile(BuildingsList, "Defs_Mod/Buildings.mod", this);
+    }
+
+    public void LoadBuildingsDefFunc()
+    {
+        BuildingsList = Data.LoadFile("Defs_Mod/Buildings.mod", this);
+
+        Buildings.Clear();
+        Buildings = BuildingsList.GetSubs("Building");
     }
 }

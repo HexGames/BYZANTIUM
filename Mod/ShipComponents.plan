@@ -1,39 +1,39 @@
 
-Hull size -> capacity / hp
+1. Hull size -> capacity / hp
 
-Computers -> to hit chance
+2. Armor -> more hp
 
-Shields -> damage absorb
+3. Engines -> warp speed
 
-ECM -> anti missiles
+4. Thrusters -> harder to hit
 
-Armor -> more hp
+5. ECM -> anti missiles
 
-Engines -> warp speed
+6. Computers -> to hit chance
 
-Thrusters -> harder to hit
+7. Shields -> damage absorb
 
-Weapons x2-7 -> deal damage
+8-11. Weapons x2-7 -> deal damage
 
-Scanners -> enemy ship info / explore planets bonus
+E12-14. Scanners -> enemy ship info / explore planets bonus
 
-Science lab -> research anomalies bonus
+E12-14. Science lab -> research anomalies bonus
 
-Ship ammenities -> explore planets bonus / research anomalies bonus / XP bonus
+? Ship ammenities -> explore planets bonus / research anomalies bonus / XP bonus
 
-fighter/drone hangars -> carries drones/fighters
+?. Integration -> more space / much more cost
 
-repair bay -> replaces lost drones/fighters
+? fighter/drone hangars -> carries drones/fighters
 
-barracks -> marines for invasions
+E12-14. repair bay -> replaces lost drones/fighters
 
-Colony -> makes colonies
+X E12-14. barracks -> marines for invasions X -- always available as a replenishable supply / a bonus to max can be freely added to a free slot
 
-Contructor -> makes starbases
+X E12-14. Colony -> makes colonies X ----------- can be freely added to a free slot
+ 
+X E12-14. Contructor -> makes starbases x ------ can be freely added to a free slot
 
-Integration -> more space / much more cost
-
-Automated repair unit -> faster repair / repairs to a higher hull %
+E12-14. Automated repair unit -> faster repair / repairs to a higher hull %
 
 Weapons:
  - lasers - better to hit, high cost, big for low tech

@@ -69,12 +69,12 @@ public partial class MapNode : Node
 
     public void LoadMap()
     {
-        Data.LoadMap(SaveName, DefLibrary);
+        Data.LoadMap("Saves/" + SaveName + ".sav", DefLibrary);
     }
     
     public void SaveMap()
     {
-        Data.SaveMap(SaveName, DefLibrary);
+        Data.SaveMap("Saves/" + SaveName + ".sav", DefLibrary);
     }
 
     public void ClearContainers()

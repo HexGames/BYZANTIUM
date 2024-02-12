@@ -1,0 +1,77 @@
+
+1. Hull size -> capacity / hp
+
+2. Armor -> more hp
+
+3. Engines -> warp speed
+
+4. Thrusters -> harder to hit
+
+5. ECM -> anti missiles
+
+6. Computers -> to hit chance
+
+7. Shields -> damage absorb
+
+8-11. Weapons x2-7 -> deal damage
+
+E12-14. Scanners -> enemy ship info / explore planets bonus
+
+E12-14. Science lab -> research anomalies bonus
+
+? Ship ammenities -> explore planets bonus / research anomalies bonus / XP bonus
+
+?. Integration -> more space / much more cost
+
+? fighter/drone hangars -> carries drones/fighters
+
+E12-14. repair bay -> replaces lost drones/fighters
+
+X E12-14. barracks -> marines for invasions X -- always available as a replenishable supply / a bonus to max can be freely added to a free slot
+
+X E12-14. Colony -> makes colonies X ----------- can be freely added to a free slot
+ 
+X E12-14. Contructor -> makes starbases x ------ can be freely added to a free slot
+
+E12-14. Automated repair unit -> faster repair / repairs to a higher hull %
+
+Weapons:
+ - lasers - better to hit, high cost, big for low tech
+ - mass - average
+ - missiles - high damage
+ - topedos - very high damage, low range, low to hit
+ - gatling/swarmer - more small hits (less damage, more dps)
+ - poimt defence -> anti missiles / low range, many very small hits
+
+stellaris  ~ 50 weapons
+MOO        - 26 weapons + 15 missiles + 7 bombs
+our target - 12 weapons + 8 swarmer + 3 pd + 3 bombs
+
+ShipType Figher
+{
+	Stats
+	{
+		HP 100
+		Warp 0
+		Shield 0
+		Evasion 4
+		ECM 0
+		Weapon:1
+		{
+		}
+	}
+	Modules
+	{
+		Computer Computer_I
+		Armor Alloy
+		ECM No_ECM
+		Shield No_Shield
+		Drive No_FTL_Drive
+		Thrusters No_Thrusters
+		Weapon:1 Empty_Weapon_Slot
+	}
+}
+
+Links: 
+moo manual
+https://strategywiki.org/wiki/Master_of_Orion/Attack_roll

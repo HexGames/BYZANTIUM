@@ -1,0 +1,27 @@
+Ship Babylon
+	{
+		ShipType Medium
+		Modules
+		{
+			Computer No_Computer
+			Armor Alloy
+			ECM No_ECM
+			Shield No_Shield
+			Warp_Drive Warp_Drive
+			Thrusters No_Thrusters
+			Weapon:1 Railgun
+			{
+				Count 2
+			}
+			Weapon:2 Heavy_Laser
+			{
+				Count 1
+			}
+			Weapon:3 Nuclear_Mssiles
+			{
+				Count 2
+			}
+			Special:1 Empty_Special_Slot
+			Special:2 Empty_Special_Slot
+		}
+	}

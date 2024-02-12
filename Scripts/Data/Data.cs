@@ -1,5 +1,6 @@
 ﻿using Godot;
 using Godot.Collections;
+using System;
 using System.Collections.Generic;
 
 public partial class Data
@@ -129,6 +130,48 @@ public partial class Data
         }
     }
 
+    // ----------------------------------------------------------------------------------------------------
+    static public DataBlock LoadFile(string fileName, DefLibrary defLib)
+    {
+        using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Read);
+        string content = file.GetAsText();
+
+        char[] delimiters = { '\n', '\r' ,'\t' };
+        string[] rows = content.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+        int rowIdx = -1;
+
+        List<string> words = new List<string>();
+        string[] wordsOnRow = LoadFile_GetWordsFromNextValidRow(rows, ref rowIdx);
+        while (wordsOnRow != null)
+        {
+            if (words.Count > 0 && words[words.Count - 1] != "{" && words[words.Count - 1] != "}" && wordsOnRow[0] != "{")
+            {
+                words.Add("{");
+                words.Add("}");
+            }
+            words.AddRange(wordsOnRow);
+            wordsOnRow = LoadFile_GetWordsFromNextValidRow(rows, ref rowIdx);
+        }
+
+        return LoadData(words, defLib);
+    }
+
+    static string[] LoadFile_GetWordsFromNextValidRow(string[] rows, ref int rowIdx)
+    {
+        rowIdx++;
+        if (rowIdx >= rows.Length)
+        {
+            // GD.PrintErr("Load map data error 01");
+            return null;
+        }
+        string[] words = rows[rowIdx].Split("//")[0].Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        if (words.Length == 0)
+        {
+            return LoadFile_GetWordsFromNextValidRow(rows, ref rowIdx);
+        }
+        return words;
+    }
+
     static public DataBlock LoadData(List<string> words, DefLibrary df)
     {
         DataBlock data = new DataBlock();
@@ -173,6 +216,19 @@ public partial class Data
         return data;
     }
 
+
+    // ----------------------------------------------------------------------------------------------------
+    static public void SaveToFile(DataBlock data, string fileName, DefLibrary defLib)
+    {
+        string content = "";
+
+        // GameStats
+        content += Data.SaveData(data, 0, defLib);
+
+        using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Write);
+        file.StoreString(content);
+    }
+
     static public string SaveData(DataBlock dataBlock, int currentTabs, DefLibrary df)
     {
         string text = "";
@@ -200,5 +256,72 @@ public partial class Data
             text += Helper.Tabs(currentTabs) + "}" + "\n";
         }
         return text;
+    }
+
+    // ----------------------------------------------------------------------------------------------------
+    static public DataBlock LoadCSV(string fileName, DefLibrary defLib)
+    {
+        using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Read);
+        string content = file.GetAsText();
+
+        content = content.Replace("\r", "");
+        content = content.Replace("\t", "");
+        content = content.Replace(" ", "");
+
+        char[] delimiters = { '\n' };
+        string[] rows = content.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+
+        if (rows.Length < 4) return null;
+
+        string[] tableHeadRow_1 = rows[0].Split(',');
+        string[] tableHeadRow_2 = rows[1].Split(',');
+        string[] tableHeadRow_3 = rows[2].Split(',');
+        if (tableHeadRow_1[0] == "") return null;
+
+        DataBlock data = CreateData(tableHeadRow_1[0] + "s", defLib);
+
+        List<string> words = new List<string>();
+        for (int idx = 3; idx < rows.Length; idx++)
+        {
+            string[] wordsOnRow = rows[idx].Split(',');
+            if (wordsOnRow[0] == "") continue;
+
+            DataBlock item = AddData(data, tableHeadRow_1[0], wordsOnRow[0], defLib);
+
+            for (int colIdx = 1; colIdx < wordsOnRow.Length; colIdx++)
+            {
+                if (wordsOnRow[colIdx] == "") continue;
+                if (colIdx < tableHeadRow_1.Length && colIdx < tableHeadRow_2.Length && colIdx < tableHeadRow_3.Length)
+                {
+                    if (tableHeadRow_3[colIdx] != "" && tableHeadRow_2[colIdx] != "" && tableHeadRow_1[colIdx] != "")
+                    {
+                        DataBlock level1 = item.GetSub(tableHeadRow_1[colIdx]);
+                        if (level1 == null) level1 = AddData(item, tableHeadRow_1[colIdx], defLib);
+
+                        DataBlock level2 = level1.GetSub(tableHeadRow_2[colIdx]);
+                        if (level2 == null) level2 = AddData(level1, tableHeadRow_2[colIdx], defLib);
+
+                        if (System.Char.IsLetter(wordsOnRow[colIdx][0])) AddData(level2, tableHeadRow_3[colIdx], wordsOnRow[colIdx], defLib);
+                        else AddData(level2, tableHeadRow_3[colIdx], wordsOnRow[colIdx].ToInt(), defLib);
+
+                    }
+                    else if (tableHeadRow_2[colIdx] != "" && tableHeadRow_1[colIdx] != "")
+                    {
+                        DataBlock level1 = item.GetSub(tableHeadRow_1[colIdx]);
+                        if (level1 == null) level1 = AddData(item, tableHeadRow_1[colIdx], defLib);
+
+                        if (System.Char.IsLetter(wordsOnRow[colIdx][0])) AddData(level1, tableHeadRow_2[colIdx], wordsOnRow[colIdx], defLib);
+                        else AddData(level1, tableHeadRow_2[colIdx], wordsOnRow[colIdx].ToInt(), defLib);
+                    }
+                    else
+                    {
+                        if (System.Char.IsLetter(wordsOnRow[colIdx][0])) AddData(item, tableHeadRow_1[colIdx], wordsOnRow[colIdx], defLib);
+                        else AddData(item, tableHeadRow_1[colIdx], wordsOnRow[colIdx].ToInt(), defLib);
+                    }
+                }
+            }
+        }
+
+        return data;
     }
 }

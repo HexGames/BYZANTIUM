@@ -236,8 +236,12 @@ public partial class MapGenerator : Node
             GenerateNewMapSave_Players_Civics(playerData);
             GenerateNewMapSave_Players_Bonuses(playerData);
 
+            GenerateNewMapSave_Players_Ship_Designs(playerData);
+
             GenerateNewMapSave_Players_StartingColony(playerData, startingSystem, startingPlanet);
             GenerateNewMapSave_Players_StartingStaton(playerData, startingSystem);
+
+            GenerateNewMapSave_Players_StartingShip(playerData, startingSystem);
         }
     }
 

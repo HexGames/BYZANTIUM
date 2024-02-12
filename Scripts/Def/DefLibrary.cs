@@ -24,8 +24,8 @@ public partial class DefLibrary : Node
     [Export]
     public DefGFXPlayerColors GFXPlayerColors = null;
 
-    [ExportCategory("Def Generators")]
-    [Export]
+    //[ExportCategory("Def Generators")]
+    /*[Export]
     public bool GenerateBuidingsDef
     {
         get => false;
@@ -33,10 +33,48 @@ public partial class DefLibrary : Node
         {
             if (value)
             {
-                GenerateBuidingsDefFunc();
+                GenerateBuildingsDefFunc();
+            }
+        }
+    }*/
+
+    [ExportCategory("Def Loaders")]
+    [Export]
+    public bool LoadBuildingsDef
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                LoadBuildingsDefFunc();
             }
         }
     }
+    [Export]
+    public bool LoadShipPartsDef
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                LoadShipPartsDefFunc();
+            }
+        }
+    }
+    /*[Export]
+    public bool SaveShipPartsDefButton
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                SaveShipPartsDef();
+            }
+        }
+    }*/
 
     public override void _Ready()
     {

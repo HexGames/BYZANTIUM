@@ -65,58 +65,13 @@ public partial class MapData : Node
     }
 
     // --------------------------------------------------------------------------------------------
-    public void LoadMap( string saveName, DefLibrary defLib )
+    public void LoadMap(string saveName, DefLibrary defLib)
     {
-        using var file = FileAccess.Open("res:///Saves/" + saveName + ".sav", FileAccess.ModeFlags.Read);
-        string content = file.GetAsText();
-
-        char[] delimiters = { '\n', '\r' ,'\t' };
-        string[] rows = content.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
-        int rowIdx = -1;
-
-        List<string> words = new List<string>();
-        string[] wordsOnRow = LoadMap_GetWordsFromNextValidRow(rows, ref rowIdx);
-        while (wordsOnRow != null)
-        {
-            if (words.Count > 0 && words[words.Count - 1] != "{" && words[words.Count - 1] != "}" && wordsOnRow[0] != "{")
-            {
-                words.Add("{");
-                words.Add("}");
-            }
-            words.AddRange(wordsOnRow);
-            wordsOnRow = LoadMap_GetWordsFromNextValidRow(rows, ref rowIdx);
-        }
-
-        int wordIdx = 0;
-
-        _Data = Data.LoadData(words, defLib);
+        _Data = Data.LoadFile("Saves/" + saveName + ".sav", defLib);
     }
-
-    string[] LoadMap_GetWordsFromNextValidRow(string[] rows, ref int rowIdx)
-    {
-        rowIdx++;
-        if (rowIdx >= rows.Length)
-        {
-            // GD.PrintErr("Load map data error 01");
-            return null;
-        }
-        string[] words = rows[rowIdx].Split("//")[0].Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        if (words.Length == 0)
-        {
-            return LoadMap_GetWordsFromNextValidRow(rows, ref rowIdx);
-        }
-        return words;
-    }
-
     public void SaveMap(string saveName, DefLibrary defLib)
     {
-        string content = "";
-
-        // GameStats
-        content += Data.SaveData(_Data, 0, defLib);
-
-        using var file = FileAccess.Open("res:///Saves/" + saveName + ".sav", FileAccess.ModeFlags.Write);
-        file.StoreString(content);
+        Data.SaveToFile(_Data, saveName, defLib);
     }
 
     // --------------------------------------------------------------------------------------------
