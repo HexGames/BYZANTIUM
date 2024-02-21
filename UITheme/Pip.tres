@@ -1,0 +1,86 @@
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://cnntmgn04735w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixcio"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g83ki"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixvj7"]
+bg_color = Color(1, 0.752941, 0, 0.501961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3ry0"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7ge4"]
+bg_color = Color(1, 0.752941, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfbo5"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jw570"]
+bg_color = Color(1, 0.752941, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkj15"]
+bg_color = Color(1, 0.878431, 0.501961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5x3o1"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojn41"]
+bg_color = Color(1, 0.752941, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3y5k"]
+bg_color = Color(0.501961, 0.188235, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgcsq"]
+bg_color = Color(0.627451, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdtkv"]
+bg_color = Color(1, 0.376471, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqfof"]
+bg_color = Color(0.627451, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ij43"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13x3r"]
+bg_color = Color(0.501961, 0.188235, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5vs4"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75whf"]
+bg_color = Color(1, 0.376471, 0.12549, 0.501961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlrlh"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ftbe"]
+bg_color = Color(1, 0.376471, 0.12549, 1)
+
+[resource]
+AddPip/base_type = &"Button"
+AddPip/styles/disabled = SubResource("StyleBoxFlat_ixcio")
+AddPip/styles/focus = SubResource("StyleBoxFlat_g83ki")
+AddPip/styles/hover = SubResource("StyleBoxFlat_ixvj7")
+AddPip/styles/normal = SubResource("StyleBoxFlat_g3ry0")
+AddPip/styles/pressed = SubResource("StyleBoxFlat_c7ge4")
+Button/styles/disabled = SubResource("StyleBoxFlat_pfbo5")
+Button/styles/focus = SubResource("StyleBoxFlat_jw570")
+Button/styles/hover = SubResource("StyleBoxFlat_kkj15")
+Button/styles/normal = SubResource("StyleBoxFlat_5x3o1")
+Button/styles/pressed = SubResource("StyleBoxFlat_ojn41")
+Deficit/base_type = &"Button"
+Deficit/styles/disabled = SubResource("StyleBoxFlat_f3y5k")
+Deficit/styles/focus = SubResource("StyleBoxFlat_qgcsq")
+Deficit/styles/hover = SubResource("StyleBoxFlat_kdtkv")
+Deficit/styles/normal = SubResource("StyleBoxFlat_xqfof")
+Deficit/styles/pressed = SubResource("StyleBoxFlat_6ij43")
+DeficitAdd/base_type = &"Button"
+DeficitAdd/styles/disabled = SubResource("StyleBoxFlat_13x3r")
+DeficitAdd/styles/focus = SubResource("StyleBoxFlat_m5vs4")
+DeficitAdd/styles/hover = SubResource("StyleBoxFlat_75whf")
+DeficitAdd/styles/normal = SubResource("StyleBoxFlat_xlrlh")
+DeficitAdd/styles/pressed = SubResource("StyleBoxFlat_5ftbe")

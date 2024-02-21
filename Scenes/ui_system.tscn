@@ -1,21 +1,18 @@
-[gd_scene load_steps=55 format=3 uid="uid://vh0pcrygv61d"]
+[gd_scene load_steps=56 format=3 uid="uid://vh0pcrygv61d"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UISystem.cs" id="1_6msa3"]
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_br2ry"]
 [ext_resource type="Texture2D" uid="uid://c6ulfomgv6xo0" path="res://Assets/Planets/Background.png" id="2_1dtr5"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_20v37"]
-[ext_resource type="Script" path="res://Scripts/UI/UISystemPanel.cs" id="3_2k58t"]
 [ext_resource type="Texture2D" uid="uid://cet6pwryuqcts" path="res://Assets/UI/white.png" id="3_d5phl"]
-[ext_resource type="Script" path="res://Scripts/UI/UISystemPlanet.cs" id="3_yhybq"]
-[ext_resource type="Texture2D" uid="uid://d0dgbe1qxxslt" path="res://Assets/Planets/Sun.png" id="4_t1ih4"]
-[ext_resource type="Texture2D" uid="uid://bpeiu3mhak0kn" path="res://Assets/Planets/MoonOverlay.png" id="5_e11r8"]
+[ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="5_2qmhi"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="6_2o72x"]
 [ext_resource type="Script" path="res://Scripts/UI/UIColonyActionBuild.cs" id="6_ds5ny"]
-[ext_resource type="Texture2D" uid="uid://coqsjpw7qqqb5" path="res://Assets/Planets/Barren.png" id="6_rb7i6"]
 [ext_resource type="Texture2D" uid="uid://dqhju10mfykde" path="res://Assets/UI/arrow.png" id="7_4dyub"]
-[ext_resource type="Texture2D" uid="uid://dtebju6geermh" path="res://Assets/Planets/ToxicYellow.png" id="7_nwhkf"]
+[ext_resource type="PackedScene" uid="uid://dh77fsdgom01p" path="res://Scenes/ui_buget.tscn" id="7_r63na"]
 [ext_resource type="Texture2D" uid="uid://ci2vnc3vrtcks" path="res://Assets/Planets/Rings.png" id="9_60rk0"]
-[ext_resource type="Script" path="res://Scripts/UI/UIPawnList.cs" id="15_3bkhh"]
-[ext_resource type="Script" path="res://Scripts/UI/UIPawnListGroupHeader.cs" id="16_5mfle"]
+[ext_resource type="Script" path="res://Scripts/UI/Extra/UIPawnList.cs" id="15_3bkhh"]
+[ext_resource type="Script" path="res://Scripts/UI/Extra/UIPawnListGroupHeader.cs" id="16_5mfle"]
 [ext_resource type="Texture2D" uid="uid://c5qcijiud43e" path="res://Assets/UI/pin.png" id="17_i7gpy"]
 [ext_resource type="Texture2D" uid="uid://dgayj1suaea3g" path="res://Assets/Custom/ToggleOn.png" id="18_i5o54"]
 [ext_resource type="Texture2D" uid="uid://d0tof7wh66pfl" path="res://Assets/Custom/ToggleOff.png" id="19_rn2bm"]
@@ -23,12 +20,14 @@
 [ext_resource type="Texture2D" uid="uid://ceyqr5puhfmn0" path="res://Assets/UI/right.png" id="21_jj3qp"]
 [ext_resource type="Texture2D" uid="uid://qvxxtu5jlkbt" path="res://Assets/UI/left.png" id="22_rrkq5"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UIVisualMask.cs" id="23_nvqsg"]
-[ext_resource type="Script" path="res://Scripts/UI/UIPawnListPlanet.cs" id="24_yy134"]
+[ext_resource type="Script" path="res://Scripts/UI/Extra/UIPawnListPlanet.cs" id="24_yy134"]
 [ext_resource type="Texture2D" uid="uid://dw1asyhh6eqa2" path="res://Assets/Planets/Star.png" id="25_o0m54"]
 [ext_resource type="Texture2D" uid="uid://wv33nebj4neu" path="res://Assets/Planets/Swamp.png" id="25_ri2yi"]
 [ext_resource type="Texture2D" uid="uid://cdmy8ckgkhory" path="res://Assets/Planets/ShadowPlanet.png" id="26_yb0yv"]
 [ext_resource type="Texture2D" uid="uid://csplvtf23t4w8" path="res://Assets/Planets/Shadow.png" id="27_2bd7c"]
 [ext_resource type="Texture2D" uid="uid://csd84oyl26blq" path="res://Assets/Planets/SpaceStation.png" id="29_bo3jb"]
+[ext_resource type="PackedScene" uid="uid://btm8s0fh8xu5d" path="res://Scenes/ui_itemlist.tscn" id="30_ptwfv"]
+[ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="31_c0p6d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vcjk"]
 bg_color = Color(0, 0, 0, 0.501961)
@@ -36,6 +35,11 @@ bg_color = Color(0, 0, 0, 0.501961)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_po7qo"]
 shader = ExtResource("2_20v37")
 shader_parameter/amount = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d13nr"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 0.501961)
+border_width_left = 4
+border_color = Color(0.87451, 0.25098, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whma6"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 1)
@@ -206,7 +210,10 @@ skew = Vector2(0.3, 0)
 bg_color = Color(0, 0, 0, 0.752941)
 skew = Vector2(0.3, 0)
 
-[node name="UISystem" type="Control" node_paths=PackedStringArray("SystemBar", "PlanetPanel", "TerraformingPanel", "ExplorationPanel", "ColonyPanel", "SupportPanel", "BuildingsPanel", "ActionBuild")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_johyr"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0.25098)
+
+[node name="UISystem" type="Control" node_paths=PackedStringArray("SystemBar", "Budget", "ActionBuild")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -215,13 +222,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6msa3")
 SystemBar = NodePath("Container/SystemBar")
-PlanetPanel = NodePath("Container/PlanetInfo/Planet")
-TerraformingPanel = NodePath("Container/PlanetInfo/Terraforming")
-ExplorationPanel = NodePath("Container/PlanetInfo/Exploration")
-ColonyPanel = NodePath("Container/ColonyInfo/Colony")
-SupportPanel = NodePath("Container/ColonyInfo/Support")
-BuildingsPanel = NodePath("Container/ColonyInfo/Buildings")
-ActionBuild = NodePath("Container/ColonyInfo/Buildings/UIActionCoonyBuild")
+Budget = NodePath("Container/HBoxContainer/ActionsInfo/Width/UiBuget")
+ActionBuild = NodePath("Container/ColonyInfo/UIActionCoonyBuild")
 
 [node name="TransparentBg" type="Panel" parent="."]
 layout_mode = 1
@@ -252,201 +254,131 @@ grow_vertical = 2
 theme_override_constants/separation = 16
 alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Container"]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+alignment = 1
+
+[node name="BuildingInfo" parent="Container/HBoxContainer" node_paths=PackedStringArray("Title", "Properties") instance=ExtResource("30_ptwfv")]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+Title = NodePath("../../Info/TradeInfo/Margins/Title")
+Properties = [NodePath("../../Info/TradeInfo/Margins/ScrollContainer/VBoxContainer/Property_1")]
+
+[node name="ActionsInfo" type="Control" parent="Container/HBoxContainer"]
+custom_minimum_size = Vector2(1072, 0)
+layout_mode = 2
+
+[node name="Types" type="Control" parent="Container/HBoxContainer/ActionsInfo"]
+visible = false
+custom_minimum_size = Vector2(136, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Container/HBoxContainer/ActionsInfo/Types"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d13nr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/HBoxContainer/ActionsInfo/Types/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Budget" type="Button" parent="Container/HBoxContainer/ActionsInfo/Types/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("5_2qmhi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/HBoxContainer/ActionsInfo/Types/Panel/VBoxContainer/Budget"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 6.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("6_2o72x")
+theme_type_variation = &"RTLButton"
+bbcode_enabled = true
+text = "[center]BUDGET[/center]"
+
+[node name="Building" type="Button" parent="Container/HBoxContainer/ActionsInfo/Types/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("5_2qmhi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/HBoxContainer/ActionsInfo/Types/Panel/VBoxContainer/Building"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 6.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("6_2o72x")
+theme_type_variation = &"RTLButton"
+bbcode_enabled = true
+text = "[center]CONSTRUCTION[/center]"
+
+[node name="Width" type="Control" parent="Container/HBoxContainer/ActionsInfo"]
+custom_minimum_size = Vector2(928, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -928.0
+offset_top = -180.0
+offset_bottom = 180.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="UiBuget" parent="Container/HBoxContainer/ActionsInfo/Width" instance=ExtResource("7_r63na")]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="ColonyInfo" type="HBoxContainer" parent="Container"]
-custom_minimum_size = Vector2(0, 384)
+visible = false
+custom_minimum_size = Vector2(0, 320)
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Support" type="Panel" parent="Container/ColonyInfo" node_paths=PackedStringArray("ContentParent", "Properties", "Lines")]
-custom_minimum_size = Vector2(448, 256)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 5
-theme = ExtResource("1_br2ry")
-script = ExtResource("3_2k58t")
-ContentParent = NodePath("Content")
-Properties = [NodePath("Content/Label_1")]
-Lines = [NodePath("Content/Line_1")]
-
-[node name="TitleBar" type="Panel" parent="Container/ColonyInfo/Support"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelTransparent"
-
-[node name="Label" type="Label" parent="Container/ColonyInfo/Support/TitleBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelTitle"
-text = "Population"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Content" type="HFlowContainer" parent="Container/ColonyInfo/Support"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 32.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label_1" type="Label" parent="Container/ColonyInfo/Support/Content"]
-layout_mode = 2
-mouse_filter = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelProperty"
-text = " Property "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Line_1" type="Panel" parent="Container/ColonyInfo/Support/Content"]
-custom_minimum_size = Vector2(432, 2)
-layout_mode = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelLine"
-
-[node name="Colony" type="Panel" parent="Container/ColonyInfo" node_paths=PackedStringArray("ContentParent", "Properties", "Lines")]
-custom_minimum_size = Vector2(448, 256)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 5
-theme = ExtResource("1_br2ry")
-script = ExtResource("3_2k58t")
-ContentParent = NodePath("Content")
-Properties = [NodePath("Content/Label_1")]
-Lines = [NodePath("Content/Line_1")]
-
-[node name="TitleBar" type="Panel" parent="Container/ColonyInfo/Colony"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelTransparent"
-
-[node name="Label" type="Label" parent="Container/ColonyInfo/Colony/TitleBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelTitle"
-text = "Colony"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Content" type="HFlowContainer" parent="Container/ColonyInfo/Colony"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 32.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label_1" type="Label" parent="Container/ColonyInfo/Colony/Content"]
-layout_mode = 2
-mouse_filter = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelProperty"
-text = " Property "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Line_1" type="Panel" parent="Container/ColonyInfo/Colony/Content"]
-custom_minimum_size = Vector2(432, 2)
-layout_mode = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelLine"
-
-[node name="Buildings" type="Panel" parent="Container/ColonyInfo" node_paths=PackedStringArray("ContentParent", "Properties", "Lines")]
-custom_minimum_size = Vector2(448, 256)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 5
-theme = ExtResource("1_br2ry")
-script = ExtResource("3_2k58t")
-ContentParent = NodePath("Content")
-Properties = [NodePath("Content/Label_1")]
-Lines = [NodePath("Content/Line_1")]
-
-[node name="TitleBar" type="Panel" parent="Container/ColonyInfo/Buildings"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelTransparent"
-
-[node name="Label" type="Label" parent="Container/ColonyInfo/Buildings/TitleBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelTitle"
-text = "Buildings"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Content" type="HFlowContainer" parent="Container/ColonyInfo/Buildings"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 32.0
-offset_right = -8.0
-offset_bottom = -68.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label_1" type="Label" parent="Container/ColonyInfo/Buildings/Content"]
-layout_mode = 2
-mouse_filter = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelProperty"
-text = " Property "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Line_1" type="Panel" parent="Container/ColonyInfo/Buildings/Content"]
-custom_minimum_size = Vector2(432, 2)
-layout_mode = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelLine"
-
-[node name="UIActionCoonyBuild" type="Control" parent="Container/ColonyInfo/Buildings" node_paths=PackedStringArray("Progress", "CurrentAction", "SwitchBtn", "ActionsBg", "Actions")]
+[node name="UIActionCoonyBuild" type="Control" parent="Container/ColonyInfo" node_paths=PackedStringArray("Progress", "CurrentAction", "SwitchBtn", "ActionsBg", "Actions")]
+visible = false
 custom_minimum_size = Vector2(0, 64)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
 mouse_filter = 2
 script = ExtResource("6_ds5ny")
 Progress = NodePath("InProgress/ProgressBar")
@@ -455,7 +387,7 @@ SwitchBtn = NodePath("InProgress/SwitchBtn")
 ActionsBg = NodePath("Actions")
 Actions = [NodePath("Actions/ScrollContainer/VBoxContainer/Action_1")]
 
-[node name="InProgress" type="Panel" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild"]
+[node name="InProgress" type="Panel" parent="Container/ColonyInfo/UIActionCoonyBuild"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 1
 anchors_preset = 15
@@ -465,7 +397,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_br2ry")
 
-[node name="ProgressBar" type="ProgressBar" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/InProgress"]
+[node name="ProgressBar" type="ProgressBar" parent="Container/ColonyInfo/UIActionCoonyBuild/InProgress"]
 custom_minimum_size = Vector2(180, 24)
 layout_mode = 1
 anchors_preset = -1
@@ -480,7 +412,7 @@ grow_vertical = 2
 theme = ExtResource("1_br2ry")
 value = 36.57
 
-[node name="Label" type="Label" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/InProgress"]
+[node name="Label" type="Label" parent="Container/ColonyInfo/UIActionCoonyBuild/InProgress"]
 custom_minimum_size = Vector2(192, 24)
 layout_mode = 1
 anchors_preset = -1
@@ -498,7 +430,7 @@ text = "Building Power Plant"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SwitchBtn" type="Button" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/InProgress"]
+[node name="SwitchBtn" type="Button" parent="Container/ColonyInfo/UIActionCoonyBuild/InProgress"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 1
 anchors_preset = -1
@@ -513,7 +445,7 @@ theme = ExtResource("1_br2ry")
 icon_alignment = 1
 expand_icon = true
 
-[node name="TextureRect" type="TextureRect" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/InProgress/SwitchBtn"]
+[node name="TextureRect" type="TextureRect" parent="Container/ColonyInfo/UIActionCoonyBuild/InProgress/SwitchBtn"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
 anchors_preset = -1
@@ -526,7 +458,7 @@ grow_vertical = 2
 texture = ExtResource("7_4dyub")
 expand_mode = 1
 
-[node name="Actions" type="Panel" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild"]
+[node name="Actions" type="Panel" parent="Container/ColonyInfo/UIActionCoonyBuild"]
 custom_minimum_size = Vector2(200, 384)
 layout_mode = 1
 anchors_preset = -1
@@ -538,7 +470,7 @@ offset_left = 4.0
 offset_right = 4.0
 grow_vertical = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/Actions"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/ColonyInfo/UIActionCoonyBuild/Actions"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -551,7 +483,7 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/Actions/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/ColonyInfo/UIActionCoonyBuild/Actions/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 10
@@ -559,7 +491,7 @@ theme = SubResource("Theme_yygrc")
 theme_override_constants/separation = 6
 alignment = 2
 
-[node name="Action_1" type="Button" parent="Container/ColonyInfo/Buildings/UIActionCoonyBuild/Actions/ScrollContainer/VBoxContainer"]
+[node name="Action_1" type="Button" parent="Container/ColonyInfo/UIActionCoonyBuild/Actions/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(180, 24)
 layout_mode = 2
 focus_mode = 0
@@ -568,968 +500,8 @@ shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "Build Something"
 
-[node name="SystemInfo" type="HBoxContainer" parent="Container"]
-visible = false
-custom_minimum_size = Vector2(0, 256)
-layout_mode = 2
-theme_override_constants/separation = 16
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Container/SystemInfo"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="Planet_0" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_0"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_t1ih4")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_0/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_0"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_0"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Sol"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_1" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.4
-anchor_top = 0.4
-anchor_right = 0.6
-anchor_bottom = 0.6
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_rb7i6")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_1/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_1"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 2.28882e-05
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Mercury"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_2" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_nwhkf")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_2/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_2"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Venus"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_3" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_nwhkf")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_3/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_3"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Venus"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_4" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_4"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_nwhkf")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_4/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_4"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_4"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Venus"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_5" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_5"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_nwhkf")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_5/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_5"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Venus"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_6" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_6"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_nwhkf")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_6/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_6"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_6"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Venus"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_7" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_7"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_nwhkf")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_7/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_7"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_7"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Venus"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_8" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_8"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_nwhkf")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_8/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_8"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_8"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Venus"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_9" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_9"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_nwhkf")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_9/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_9"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_9"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Venus"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_10" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_10"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_nwhkf")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_10/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_10"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_10"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Venus"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_11" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_11"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_nwhkf")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_11/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_11"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_11"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Venus"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Planet_12" type="Button" parent="Container/SystemInfo/HBoxContainer" node_paths=PackedStringArray("PlanetImage", "RingsOverlayImage", "MoonOverlayImage", "PlanetName")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("1_br2ry")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-icon = ExtResource("2_1dtr5")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_yhybq")
-PlanetImage = NodePath("Planet")
-RingsOverlayImage = NodePath("Planet/RingsOverlay")
-MoonOverlayImage = NodePath("MoonOverlay")
-PlanetName = NodePath("Label")
-
-[node name="Planet" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_12"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_nwhkf")
-expand_mode = 1
-
-[node name="RingsOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_12/Planet"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_60rk0")
-expand_mode = 1
-
-[node name="MoonOverlay" type="TextureRect" parent="Container/SystemInfo/HBoxContainer/Planet_12"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_e11r8")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Container/SystemInfo/HBoxContainer/Planet_12"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelPlanet"
-text = "Venus"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="SystemBar" type="Control" parent="Container" node_paths=PackedStringArray("ScrollBar", "ParentNode", "GroupHeaders", "Planets")]
-custom_minimum_size = Vector2(0, 192)
+custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("15_3bkhh")
@@ -1897,231 +869,335 @@ page = 10.0
 value = 6.0
 rounded = true
 
-[node name="PlanetInfo" type="HBoxContainer" parent="Container"]
-custom_minimum_size = Vector2(0, 384)
+[node name="Info" type="HBoxContainer" parent="Container"]
+custom_minimum_size = Vector2(0, 320)
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Terraforming" type="Panel" parent="Container/PlanetInfo" node_paths=PackedStringArray("ContentParent", "Properties", "Lines")]
-custom_minimum_size = Vector2(448, 256)
+[node name="PlanetInfo" parent="Container/Info" instance=ExtResource("30_ptwfv")]
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 5
-theme = ExtResource("1_br2ry")
-script = ExtResource("3_2k58t")
-ContentParent = NodePath("Content")
-Properties = [NodePath("Content/Label_1")]
-Lines = [NodePath("Content/Line_1")]
 
-[node name="TitleBar" type="Panel" parent="Container/PlanetInfo/Terraforming"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelTransparent"
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/Info"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="Container/PlanetInfo/Terraforming/TitleBar"]
+[node name="ColonyInfo" type="Control" parent="Container/Info/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Container/Info/VBoxContainer/ColonyInfo"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelTitle"
-text = "Terraforming"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+
+[node name="Label" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 2.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme = ExtResource("31_c0p6d")
+theme_type_variation = &"Title"
+text = "SYSTEM INFO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Content" type="HFlowContainer" parent="Container/PlanetInfo/Terraforming"]
+[node name="ColorRect" type="ColorRect" parent="Container/Info/VBoxContainer/ColonyInfo/Label"]
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 1
 anchors_preset = -1
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
+offset_left = -32.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 0.25098, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/Info/VBoxContainer/ColonyInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
 offset_top = 32.0
-offset_right = -8.0
-offset_bottom = -8.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label_1" type="Label" parent="Container/PlanetInfo/Terraforming/Content"]
+[node name="Rsource_1" type="Panel" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
-mouse_filter = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelProperty"
-text = " Property "
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
 
-[node name="Line_1" type="Panel" parent="Container/PlanetInfo/Terraforming/Content"]
-custom_minimum_size = Vector2(432, 2)
-layout_mode = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelLine"
-
-[node name="Planet" type="Panel" parent="Container/PlanetInfo" node_paths=PackedStringArray("ContentParent", "Properties", "Lines")]
-custom_minimum_size = Vector2(448, 256)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 5
-theme = ExtResource("1_br2ry")
-script = ExtResource("3_2k58t")
-ContentParent = NodePath("Content")
-Properties = [NodePath("Content/Label_1")]
-Lines = [NodePath("Content/Line_1")]
-
-[node name="TitleBar" type="Panel" parent="Container/PlanetInfo/Planet"]
-custom_minimum_size = Vector2(0, 24)
+[node name="Resource" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_1"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 20.0
 grow_horizontal = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelTransparent"
+theme = ExtResource("31_c0p6d")
+text = "Minerals"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Container/PlanetInfo/Planet/TitleBar"]
+[node name="Value" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_1"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("31_c0p6d")
+theme_type_variation = &"LabelBold"
+text = "+20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rsource_2" type="Panel" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+
+[node name="Resource" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme = ExtResource("31_c0p6d")
+text = "Energy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("31_c0p6d")
+theme_type_variation = &"LabelBold"
+text = "+20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rsource_3" type="Panel" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+
+[node name="Resource" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_3"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme = ExtResource("31_c0p6d")
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_3"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("31_c0p6d")
+theme_type_variation = &"LabelBold"
+text = "+20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rsource_4" type="Panel" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+
+[node name="Resource" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_4"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme = ExtResource("31_c0p6d")
+text = "Tech Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_4"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("31_c0p6d")
+theme_type_variation = &"LabelBold"
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rsource_5" type="Panel" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+
+[node name="Resource" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_5"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme = ExtResource("31_c0p6d")
+text = "Civic Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_5"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("31_c0p6d")
+theme_type_variation = &"LabelBold"
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rsource_6" type="Panel" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+
+[node name="Resource" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_6"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme = ExtResource("31_c0p6d")
+text = "Authority"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_6"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("31_c0p6d")
+theme_type_variation = &"LabelBold"
+text = "5/20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rsource_7" type="Panel" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+
+[node name="Resource" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_7"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme = ExtResource("31_c0p6d")
+text = "Influence"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Container/Info/VBoxContainer/ColonyInfo/HBoxContainer/Rsource_7"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("31_c0p6d")
+theme_type_variation = &"LabelBold"
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PopsInfo" type="Control" parent="Container/Info/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Container/Info/VBoxContainer/PopsInfo"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelTitle"
-text = "Planet"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="Content" type="HFlowContainer" parent="Container/PlanetInfo/Planet"]
+[node name="Label" type="Label" parent="Container/Info/VBoxContainer/PopsInfo"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 32.0
-offset_right = -8.0
-offset_bottom = -8.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+text = "[Pops Info]"
 
-[node name="Label_1" type="Label" parent="Container/PlanetInfo/Planet/Content"]
+[node name="TradeInfo" parent="Container/Info" instance=ExtResource("30_ptwfv")]
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-mouse_filter = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelProperty"
-text = " Property "
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="Line_1" type="Panel" parent="Container/PlanetInfo/Planet/Content"]
-custom_minimum_size = Vector2(432, 2)
-layout_mode = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelLine"
-
-[node name="Exploration" type="Panel" parent="Container/PlanetInfo" node_paths=PackedStringArray("ContentParent", "Properties", "Lines")]
-custom_minimum_size = Vector2(448, 256)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 5
-theme = ExtResource("1_br2ry")
-script = ExtResource("3_2k58t")
-ContentParent = NodePath("Content")
-Properties = [NodePath("Content/Label_1")]
-Lines = [NodePath("Content/Line_1")]
-
-[node name="TitleBar" type="Panel" parent="Container/PlanetInfo/Exploration"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelTransparent"
-
-[node name="Label" type="Label" parent="Container/PlanetInfo/Exploration/TitleBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelTitle"
-text = "Exploration"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Content" type="HFlowContainer" parent="Container/PlanetInfo/Exploration"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 32.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label_1" type="Label" parent="Container/PlanetInfo/Exploration/Content"]
-layout_mode = 2
-mouse_filter = 0
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"LabelProperty"
-text = " Property "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Line_1" type="Panel" parent="Container/PlanetInfo/Exploration/Content"]
-custom_minimum_size = Vector2(432, 2)
-layout_mode = 2
-theme = ExtResource("1_br2ry")
-theme_type_variation = &"PanelLine"
-
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_0" to="Container/SystemInfo/HBoxContainer/Planet_0" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_0" to="Container/SystemInfo/HBoxContainer/Planet_0" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_0" to="Container/SystemInfo/HBoxContainer/Planet_0" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_1" to="Container/SystemInfo/HBoxContainer/Planet_1" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_1" to="Container/SystemInfo/HBoxContainer/Planet_1" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_1" to="Container/SystemInfo/HBoxContainer/Planet_1" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_2" to="Container/SystemInfo/HBoxContainer/Planet_2" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_2" to="Container/SystemInfo/HBoxContainer/Planet_2" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_2" to="Container/SystemInfo/HBoxContainer/Planet_2" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_3" to="Container/SystemInfo/HBoxContainer/Planet_3" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_3" to="Container/SystemInfo/HBoxContainer/Planet_3" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_3" to="Container/SystemInfo/HBoxContainer/Planet_3" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_4" to="Container/SystemInfo/HBoxContainer/Planet_4" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_4" to="Container/SystemInfo/HBoxContainer/Planet_4" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_4" to="Container/SystemInfo/HBoxContainer/Planet_4" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_5" to="Container/SystemInfo/HBoxContainer/Planet_5" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_5" to="Container/SystemInfo/HBoxContainer/Planet_5" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_5" to="Container/SystemInfo/HBoxContainer/Planet_5" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_6" to="Container/SystemInfo/HBoxContainer/Planet_6" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_6" to="Container/SystemInfo/HBoxContainer/Planet_6" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_6" to="Container/SystemInfo/HBoxContainer/Planet_6" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_7" to="Container/SystemInfo/HBoxContainer/Planet_7" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_7" to="Container/SystemInfo/HBoxContainer/Planet_7" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_7" to="Container/SystemInfo/HBoxContainer/Planet_7" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_8" to="Container/SystemInfo/HBoxContainer/Planet_8" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_8" to="Container/SystemInfo/HBoxContainer/Planet_8" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_8" to="Container/SystemInfo/HBoxContainer/Planet_8" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_9" to="Container/SystemInfo/HBoxContainer/Planet_9" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_9" to="Container/SystemInfo/HBoxContainer/Planet_9" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_9" to="Container/SystemInfo/HBoxContainer/Planet_9" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_10" to="Container/SystemInfo/HBoxContainer/Planet_10" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_10" to="Container/SystemInfo/HBoxContainer/Planet_10" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_10" to="Container/SystemInfo/HBoxContainer/Planet_10" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_11" to="Container/SystemInfo/HBoxContainer/Planet_11" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_11" to="Container/SystemInfo/HBoxContainer/Planet_11" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_11" to="Container/SystemInfo/HBoxContainer/Planet_11" method="OnSelect"]
-[connection signal="mouse_entered" from="Container/SystemInfo/HBoxContainer/Planet_12" to="Container/SystemInfo/HBoxContainer/Planet_12" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Container/SystemInfo/HBoxContainer/Planet_12" to="Container/SystemInfo/HBoxContainer/Planet_12" method="OnHoverExit"]
-[connection signal="pressed" from="Container/SystemInfo/HBoxContainer/Planet_12" to="Container/SystemInfo/HBoxContainer/Planet_12" method="OnSelect"]
 [connection signal="mouse_entered" from="Container/SystemBar/HBoxContainer/Group_1/Mask" to="Container/SystemBar/HBoxContainer/Group_1/Mask" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="Container/SystemBar/HBoxContainer/Group_1/Mask" to="Container/SystemBar/HBoxContainer/Group_1/Mask" method="OnHoverExit"]
 [connection signal="pressed" from="Container/SystemBar/HBoxContainer/Planet_1" to="Container/SystemBar/HBoxContainer/Planet_1" method="OnSelect"]

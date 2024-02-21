@@ -13,7 +13,63 @@ public partial class MapGenerator : Node
         DataBlock resources = Data.AddData(colony, "Resources", DefLibrary);
 
         Data.AddData(resources, "Credits:private", 3000, DefLibrary);
+        Data.AddData(resources, "Minerals:private", 3000, DefLibrary);
+        Data.AddData(resources, "Energy:private", 3000, DefLibrary);
         Data.AddData(resources, "Pops", 11000, DefLibrary);
+    }
+    private void GenerateNewMapSave_Players_StartingColony_Budget(DataBlock colony)
+    {
+        DataBlock budget = Data.AddData(colony, "Budget", DefLibrary);
+
+        Data.AddData(budget, "Cooldown", 5, DefLibrary);
+
+        DataBlock minerals = Data.AddData(budget, "Minerals", DefLibrary);
+        {
+            DataBlock project = Data.AddData(minerals, "Project", "Buildings", DefLibrary);
+            Data.AddData(project, "Locked", 1, DefLibrary);
+            Data.AddData(project, "Value", 6, DefLibrary);
+        }
+        {
+            DataBlock project = Data.AddData(minerals, "Project", "Shipyard", DefLibrary);
+            Data.AddData(project, "Locked", 1, DefLibrary);
+            Data.AddData(project, "Value", 6, DefLibrary);
+        }
+        {
+            DataBlock project = Data.AddData(minerals, "Project", "Project", DefLibrary);
+            Data.AddData(project, "Locked", 1, DefLibrary);
+            Data.AddData(project, "Value", 3, DefLibrary);
+        }
+        {
+            DataBlock project = Data.AddData(minerals, "Project", "Galactic_Project", DefLibrary);
+            Data.AddData(project, "Locked", 1, DefLibrary);
+            Data.AddData(project, "Value", 0, DefLibrary);
+        }
+        {
+            DataBlock project = Data.AddData(minerals, "Treasury", "Credits", DefLibrary);
+            Data.AddData(project, "Locked", 0, DefLibrary);
+            Data.AddData(project, "Value", 1, DefLibrary);
+        }
+        DataBlock energy = Data.AddData(budget, "Energy", DefLibrary);
+        {
+            DataBlock project = Data.AddData(energy, "Project", "Growth", DefLibrary);
+            Data.AddData(project, "Locked", 1, DefLibrary);
+            Data.AddData(project, "Value", 8, DefLibrary);
+        }
+        {
+            DataBlock project = Data.AddData(energy, "Project", "Extra_Research", DefLibrary);
+            Data.AddData(project, "Locked", 1, DefLibrary);
+            Data.AddData(project, "Value", 8, DefLibrary);
+        }
+        {
+            DataBlock project = Data.AddData(energy, "Project", "Terraforming", DefLibrary);
+            Data.AddData(project, "Locked", 1, DefLibrary);
+            Data.AddData(project, "Value", 0, DefLibrary);
+        }
+        {
+            DataBlock project = Data.AddData(energy, "Treasury", "Credits", DefLibrary);
+            Data.AddData(project, "Locked", 0, DefLibrary);
+            Data.AddData(project, "Value", 1, DefLibrary);
+        }
     }
 
     private void GenerateNewMapSave_Players_StartingColony_Buildings(DataBlock colony)

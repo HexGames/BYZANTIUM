@@ -1,0 +1,78 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dlj1asuerdg5h"]
+
+[ext_resource type="FontFile" uid="uid://c07x8aitn5v38" path="res://Fonts/Fredoka/Fredoka_SemiCondensed-Regular.ttf" id="1_7xll8"]
+[ext_resource type="FontFile" uid="uid://bs5q0synwkaku" path="res://Fonts/Fredoka/Fredoka_SemiCondensed-SemiBold.ttf" id="2_1pew4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_871hh"]
+bg_color = Color(0, 0, 0, 0.25098)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.376471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggmkv"]
+bg_color = Color(1, 0.25098, 0, 0.25098)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+expand_margin_left = 4.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s73xn"]
+bg_color = Color(1, 0.25098, 0, 0.501961)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+expand_margin_left = 4.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnmn2"]
+bg_color = Color(1, 1, 1, 0.501961)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+expand_margin_left = 4.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxoxg"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 0.501961)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+expand_margin_left = 4.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rw5t"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+expand_margin_left = 4.0
+anti_aliasing = false
+
+[resource]
+BoxContainer/constants/separation = 0
+Label/colors/font_color = Color(0.815686, 0.815686, 0.815686, 1)
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("1_7xll8")
+LabelBold/base_type = &"Label"
+LabelBold/font_sizes/font_size = 18
+LabelBold/fonts/font = ExtResource("2_1pew4")
+Panel/styles/panel = SubResource("StyleBoxFlat_871hh")
+Title/base_type = &"Label"
+Title/colors/font_color = Color(1, 1, 1, 1)
+Title/font_sizes/font_size = 20
+Title/fonts/font = ExtResource("2_1pew4")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_ggmkv")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_s73xn")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_vnmn2")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_fxoxg")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_6rw5t")

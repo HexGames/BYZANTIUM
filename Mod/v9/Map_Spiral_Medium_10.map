@@ -1,4 +1,5 @@
 // size padding_characer no_star_characher sectors_count groups_count core_0 sector_group_1 ...
+// 10 * 5 + 6 = 56 systems
 5 , . 11 5 0 abc de fgh ij
 
 , , , , , b b b . . e

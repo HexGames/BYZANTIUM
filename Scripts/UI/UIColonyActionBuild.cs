@@ -137,13 +137,20 @@ public partial class UIColonyActionBuild : Control
         DataBlock turns = building.GetSub("Turns");
         DataBlock cost = building.GetSub("Cost");
         DataBlock benefit = building.GetSub("Benefit");
-
-        text += turns.ToToolTipString();
-        text += "\n";
-        text += cost.ToToolTipString();
-        text += "\n";
-        text += benefit.ToToolTipString();
-
+        if (turns != null)
+        {
+            text += turns.ToToolTipString();
+            text += "\n";
+        }
+        if (cost != null)
+        {
+            text += cost.ToToolTipString();
+            text += "\n";
+        }
+        if (benefit != null)
+        {
+            text += benefit.ToToolTipString();
+        }
 
         return text;
     }

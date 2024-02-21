@@ -1,0 +1,119 @@
+[gd_scene load_steps=5 format=3 uid="uid://btm8s0fh8xu5d"]
+
+[ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="1_laq5a"]
+[ext_resource type="Script" path="res://Scripts/UI/Base/UIItemList.cs" id="1_msybk"]
+[ext_resource type="Script" path="res://Scripts/UI/Base/UIItemListItem.cs" id="3_ofbn3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g4td"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0.376471)
+skew = Vector2(0.32, 0)
+
+[node name="UIItemList" type="Control" node_paths=PackedStringArray("Title", "Properties")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1696.0
+offset_bottom = -760.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_msybk")
+Title = NodePath("Margins/Title")
+Properties = [NodePath("Margins/ScrollContainer/VBoxContainer/Property_1")]
+
+[node name="Margins" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Margins"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 4.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme = ExtResource("1_laq5a")
+theme_type_variation = &"Title"
+theme_override_styles/normal = SubResource("StyleBoxFlat_1g4td")
+text = "Item List"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="Line" type="ColorRect" parent="Margins"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 26.0
+offset_bottom = 28.0
+color = Color(1, 0.25098, 0, 0.501961)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Margins"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_laq5a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margins/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_laq5a")
+
+[node name="Property_1" type="Control" parent="Margins/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+script = ExtResource("3_ofbn3")
+
+[node name="BG" type="Panel" parent="Margins/ScrollContainer/VBoxContainer/Property_1"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_laq5a")
+
+[node name="Name" type="Label" parent="Margins/ScrollContainer/VBoxContainer/Property_1/BG"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 128.0
+grow_vertical = 2
+theme = ExtResource("1_laq5a")
+text = "Property Name"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Margins/ScrollContainer/VBoxContainer/Property_1/BG"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -118.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_laq5a")
+theme_type_variation = &"LabelBold"
+text = "Value"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true

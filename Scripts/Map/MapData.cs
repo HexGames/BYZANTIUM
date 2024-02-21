@@ -51,6 +51,8 @@ public partial class MapData : Node
         }
     }
 
+    private RandomNumberGenerator RNG = new RandomNumberGenerator();
+
     public void GetTurnData()
     {
     }
@@ -67,7 +69,9 @@ public partial class MapData : Node
     // --------------------------------------------------------------------------------------------
     public void LoadMap(string saveName, DefLibrary defLib)
     {
-        _Data = Data.LoadFile("Saves/" + saveName + ".sav", defLib);
+        _Data = Data.LoadFile( saveName, defLib);
+
+        GenerateGameFromData(defLib);
     }
     public void SaveMap(string saveName, DefLibrary defLib)
     {
@@ -75,10 +79,16 @@ public partial class MapData : Node
     }
 
     // --------------------------------------------------------------------------------------------
-    public void GenerateGameFromData(DefLibrary defLib)
+    public void Clear()
     {
         _Node.ClearContainers();
         ClearMap();
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public void GenerateGameFromData(DefLibrary defLib)
+    {
+        Clear();
 
         // Game Stats
         GameStats = _Data.GetSub("GameStats");
@@ -152,7 +162,9 @@ public partial class MapData : Node
 
         systemNode.GFX = gfxNode as SystemGFX; // because of this LocationGFX has to be a Tool
         systemNode.GFX._Node = systemNode;
+
         systemNode.GFX.Position = new Vector3(8.6666f * (2.0f * systemData.X - systemData.Y), 0.0f, -systemData.Y * 15.0f) - new Vector3(8.6666f * galaxySize, 0.0f, -galaxySize * 15.0f);
+        systemNode.GFX.Position += (0.05f * systemDataBlock.GetSub("GFX_RNG_1").ValueI) * Vector3.Right.Rotated(Vector3.Up, 0.01f * Mathf.Pi * systemDataBlock.GetSub("GFX_RNG_2").ValueI);
     }
 
     public void GenerateGameFromData_Paths(PackedScene gfxScene)
@@ -247,6 +259,7 @@ public partial class MapData : Node
         colonyData.ColonyName = colonyDataBlock.ValueS;
         colonyData.DataBlock = colonyDataBlock;
         colonyData.Resources = colonyDataBlock.GetSub("Resources");
+        colonyData.Budget = colonyDataBlock.GetSub("Budget");
         colonyData.Buildings = colonyDataBlock.GetSub("Buildings");
         colonyData.Support = colonyDataBlock.GetSub("Support");
         colonyData.Bonuses = colonyDataBlock.GetSub("Bonuses");

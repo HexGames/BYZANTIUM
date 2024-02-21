@@ -9,17 +9,7 @@ public partial class UISystem : Control
     [Export]
     public UIPawnList SystemBar = null;
     [Export]
-    public UISystemPanel PlanetPanel = null;
-    [Export]
-    public UISystemPanel TerraformingPanel = null;
-    [Export]
-    public UISystemPanel ExplorationPanel = null;
-    [Export]
-    public UISystemPanel ColonyPanel = null;
-    [Export]
-    public UISystemPanel SupportPanel = null;
-    [Export]
-    public UISystemPanel BuildingsPanel = null;
+    public UIBudget Budget = null;
 
     //[Export]
     //public Array<UISystemPlanet> Planets = new Array<UISystemPlanet>();
@@ -62,12 +52,7 @@ public partial class UISystem : Control
             //OnSelect += PlayerInput.SelectLocation;
             Visible = false;
 
-            PlanetPanel.Visible = false;
-            TerraformingPanel.Visible = false;
-            ExplorationPanel.Visible = false;
-            ColonyPanel.Visible = false;
-            SupportPanel.Visible = false;
-            BuildingsPanel.Visible = false;
+            Budget.Visible = false;
         }
     }
 
@@ -78,12 +63,7 @@ public partial class UISystem : Control
             // deselect other planets
             SystemBar.Visible = false;
 
-            PlanetPanel.Visible = false;
-            TerraformingPanel.Visible = false;
-            ExplorationPanel.Visible = false;
-            ColonyPanel.Visible = false;
-            SupportPanel.Visible = false;
-            BuildingsPanel.Visible = false;
+            Budget.Visible = false;
 
             _SystemData = null;
             _ColonyData = null;
@@ -127,44 +107,11 @@ public partial class UISystem : Control
         Array<DataBlock> planetProperties = planetUI._PlanetData.GetSubs();
         ColonyData colony = _SystemData.GetColony(planetUI._PlanetData);
 
-        PlanetPanel.Visible = true;
-        TerraformingPanel.Visible = false;
-        ExplorationPanel.Visible = false;
-
-        RefreshInfoPanels_Default(PlanetPanel, planetProperties);
-
-        if (colony != null)
-        {
-            if (_ColonyData != colony)
-            {
-                _ColonyData = colony;
-                _ColonyData._Node.Select();
-
-                ColonyPanel.Visible = true;
-                SupportPanel.Visible = true;
-                BuildingsPanel.Visible = true;
-
-                Array<DataBlock> colonySubs = new Array<DataBlock>();
-                colonySubs.AddRange(_ColonyData.Resources.GetSubs());
-                colonySubs.AddRange(_ColonyData.Bonuses.GetSubs());
-
-                RefreshInfoPanels_Default(ColonyPanel, colonySubs);
-                RefreshInfoPanels_Buildings(BuildingsPanel, _ColonyData.Buildings.GetSubs());
-
-                ActionBuild.Refresh(_ColonyData);
-            }
-        }
-        else
-        {
-            _ColonyData = null;
-
-            ColonyPanel.Visible = false;
-            SupportPanel.Visible = false;
-            BuildingsPanel.Visible = false;
-        }
+        Budget.RefreshBudget(colony.Budget, false, false);
+        Budget.Visible = true;
     }
 
-    public class PropertyInfo
+    /*public class PropertyInfo
     {
         public DataBlock _Data;
         public string Text;
@@ -201,7 +148,13 @@ public partial class UISystem : Control
             info.Text = properties[idx].ToUIString();
             info.BGColor = properties[idx].ToUIColor();
             info.Row = properties[idx].ToUIRow();
-            DataBlock benefit = Game.Def.GetBuilding(properties[idx].Name).GetSub("Benefit");
+            DataBlock buildingInfo = Game.Def.GetBuilding(properties[idx].Name); 
+            if (buildingInfo == null)
+            {
+                GD.Print("BUILDING NOT FOUND! - " + properties[idx].Name);
+                continue;
+            }
+            DataBlock benefit = buildingInfo.GetSub("Benefit");
             if (benefit != null) info.Tooltip = benefit.ToToolTipString();
             propertiesInfos.Add(info);
         }
@@ -209,5 +162,5 @@ public partial class UISystem : Control
         propertiesInfos.Sort((x, y) => x.Row.CompareTo(y.Row));
 
         panel.Refresh(propertiesInfos);
-    }
+    }*/
 }

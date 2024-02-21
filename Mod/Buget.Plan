@@ -1,0 +1,38 @@
+Colony
+{
+	Budget
+	{
+		Cooldown 5
+		Minerals
+		{ 
+			Project Buildings
+			{
+				Locked 1
+				Value 2
+			}	
+			Project Shipyard
+			{
+				Locked 1
+				Value 1
+			}	
+			Treasury Credits
+			{
+				Locked 0
+				Value 0
+			}
+		}
+		Energy
+		{
+			Project Growth
+			{
+				Locked 1
+				Value 1
+			}
+			Treasury Credits
+			{
+				Locked 0
+				Value 0
+			}
+		}
+	}
+}

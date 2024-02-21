@@ -21,6 +21,8 @@ public partial class ColonyData : Node
     [Export]
     public DataBlock Resources = null;
     [Export]
+    public DataBlock Budget = null;
+    [Export]
     public DataBlock Buildings = null;
     [Export]
     public DataBlock Support = null;

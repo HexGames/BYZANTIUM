@@ -74,7 +74,7 @@ public class ResourcesWrapperTemp : ResourcesWrapper
         }
     }
 
-    public void Add(ResourcesWrapper otherRes)
+    public void Add(ResourcesWrapper otherRes, int factor = 1)
     { 
         for (int resIdx = 0; resIdx < Resources.Count; resIdx++)
         {
@@ -82,8 +82,8 @@ public class ResourcesWrapperTemp : ResourcesWrapper
             {
                 if (Resources[resIdx].Name == otherRes.Resources[otherIdx].Name)
                 {
-                    Resources[resIdx].Value_1 += otherRes.Resources[otherIdx].Value_1;
-                    Resources[resIdx].Value_2 += otherRes.Resources[otherIdx].Value_2;
+                    Resources[resIdx].Value_1 += factor * otherRes.Resources[otherIdx].Value_1;
+                    Resources[resIdx].Value_2 += factor * otherRes.Resources[otherIdx].Value_2;
                 }
             }
         }

@@ -1,6 +1,6 @@
 
 ENERGY - value
-METAL - value
+Minerals - value
 CREDITS - stockpile
 AUTHORITY - cap (domestic stuff)
 INFLUENCE - cap (external stuff)
@@ -20,7 +20,7 @@ EXPLORE - explore, anomaly, colonize
 COMBAT - defend, attack 
 SHIPYARD - Build ships, improve shipyards
 COLONIAL - Grow colony, small scale bonuses
-ECONOMY - improve energy, improve metal, improve credits income, credit bonuses
+ECONOMY - improve energy, improve Minerals, improve credits income, credit bonuses
 CIVIC - improve Authority, improve Influence, unlock civics
 TECHNOLOGY - improve random cards, imrpove random cards of type, improve specific card, unlock new cards
 DIPLOMACY - improve relations, make agreements

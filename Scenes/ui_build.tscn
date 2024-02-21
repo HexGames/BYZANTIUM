@@ -1,0 +1,663 @@
+[gd_scene load_steps=13 format=3 uid="uid://xuydwgov7vak"]
+
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_rihns"]
+[ext_resource type="Texture2D" uid="uid://cet6pwryuqcts" path="res://Assets/UI/white.png" id="2_15utd"]
+[ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="3_nc8ym"]
+[ext_resource type="Theme" uid="uid://31g04ftbqfmt" path="res://UITheme/BuildUI.tres" id="4_en77o"]
+[ext_resource type="Texture2D" uid="uid://btfmip2xdiafk" path="res://Assets/UI/Symbols/MineralsO32.png" id="4_r5fqp"]
+[ext_resource type="Texture2D" uid="uid://b0hf203g0lcrk" path="res://Assets/UI/Buildings/Factory.png" id="5_wwsvj"]
+[ext_resource type="Texture2D" uid="uid://ckj32ifpuj24h" path="res://Assets/UI/Buildings/Mine.png" id="6_3ouav"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uqbc"]
+bg_color = Color(0, 0, 0, 0.501961)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spu3m"]
+shader = ExtResource("1_rihns")
+shader_parameter/amount = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsk48"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+skew = Vector2(0.32, 0)
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="Gradient" id="Gradient_e1uc4"]
+colors = PackedColorArray(0.246779, 0.141749, 0.0282861, 1, 0.527057, 0.325129, 0.105715, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0vtgy"]
+gradient = SubResource("Gradient_e1uc4")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
+[node name="UiBuild" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TransparentBg" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8uqbc")
+
+[node name="TransparentBlur" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_spu3m")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_15utd")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1268, 800)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleBar" type="Control" parent="Panel"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Panel/TitleBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nc8ym")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_bsk48")
+text = "Build At Earth"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="BuildingList" type="Control" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/HBoxContainer/BuildingList"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Panel/HBoxContainer/BuildingList/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="Building_1" type="Panel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(224, 160)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0vtgy")
+
+[node name="ResourceIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -36.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 36.0
+grow_horizontal = 0
+texture = ExtResource("4_r5fqp")
+expand_mode = 1
+
+[node name="PrimaryTitle" type="Label" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme = ExtResource("4_en77o")
+theme_type_variation = &"TitleSmall"
+text = "Factories"
+
+[node name="Single" type="Control" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PrimaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Single"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wwsvj")
+expand_mode = 1
+
+[node name="Dual" type="Control" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PrimaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.35
+anchor_right = 0.3
+anchor_bottom = 0.35
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wwsvj")
+expand_mode = 1
+
+[node name="SecondaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.5
+anchor_right = 0.7
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_3ouav")
+expand_mode = 1
+
+[node name="SecondaryTitle" type="Label" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 0.85
+offset_left = 8.0
+offset_top = -24.0
+offset_right = -8.0
+offset_bottom = -4.0
+grow_horizontal = 2
+theme = ExtResource("4_en77o")
+theme_type_variation = &"TitleSmall"
+text = "Deuterium Extractors"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Plus_BG_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
+visible = false
+custom_minimum_size = Vector2(30, 12)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.0901961, 0.0431373, 1)
+
+[node name="Plus_BG_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
+visible = false
+custom_minimum_size = Vector2(12, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.0901961, 0.0431373, 1)
+
+[node name="Plus_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
+custom_minimum_size = Vector2(24, 6)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Plus_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
+custom_minimum_size = Vector2(6, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 0.85
+offset_left = 4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+
+[node name="Qunatity" type="Label" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -24.0
+offset_right = -8.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme = ExtResource("4_en77o")
+theme_type_variation = &"Title"
+text = "x200"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuildingInfo" type="Control" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/BuildingInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Picture" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+custom_minimum_size = Vector2(280, 180)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0vtgy")
+
+[node name="PrimaryTitle" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme = ExtResource("4_en77o")
+theme_type_variation = &"Title"
+text = "Factories"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Single" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PrimaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Single"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wwsvj")
+expand_mode = 1
+
+[node name="Dual" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PrimaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
+custom_minimum_size = Vector2(112, 112)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.4
+anchor_right = 0.3
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wwsvj")
+expand_mode = 1
+
+[node name="SecondaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
+custom_minimum_size = Vector2(112, 112)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.6
+anchor_right = 0.7
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_3ouav")
+expand_mode = 1
+
+[node name="SecondaryName" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -32.0
+offset_right = -8.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_en77o")
+theme_type_variation = &"Title"
+text = "Deuterium Extractors"
+horizontal_alignment = 2
+vertical_alignment = 2
+uppercase = true
+
+[node name="Plus_BG_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
+visible = false
+custom_minimum_size = Vector2(30, 12)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.0901961, 0.0431373, 1)
+
+[node name="Plus_BG_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
+visible = false
+custom_minimum_size = Vector2(12, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.0901961, 0.0431373, 1)
+
+[node name="Plus_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
+custom_minimum_size = Vector2(24, 6)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Plus_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
+custom_minimum_size = Vector2(6, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gap_1" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="CostSubtitle" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_nc8ym")
+text = "Cost:
+"
+vertical_alignment = 1
+
+[node name="Line_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(1, 0.25098, 0, 0.25098)
+
+[node name="GapSmall_1" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_nc8ym")
+text = "600 Minerals"
+vertical_alignment = 1
+
+[node name="Line_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+
+[node name="Gap_2" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="BonusesSubtitle" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_nc8ym")
+text = "Effect:"
+vertical_alignment = 1
+
+[node name="Line_3" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(1, 0.25098, 0, 0.25098)
+
+[node name="GapSmall_2" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Bonuses" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_nc8ym")
+text = "+40 Energy production
+"
+vertical_alignment = 1
+
+[node name="Line_4" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+
+[node name="Gap_3" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Description" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_nc8ym")
+text = "A power plant that uses terrestial resources like water, wind and solar for energy generation.
+"
+autowrap_mode = 2
+
+[node name="Bottom" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Line_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+
+[node name="ProjectSizeTitle" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_nc8ym")
+text = "Project size"
+vertical_alignment = 1
+
+[node name="ProjectSizeTurns" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer/ProjectSizeTitle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "7 turns"
+horizontal_alignment = 2
+
+[node name="ProjectSizeSliderBg" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="ProjectSizeSlider" type="HSlider" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer/ProjectSizeSliderBg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_en77o")
+min_value = 4.0
+max_value = 10.0
+step = 3.0
+value = 7.0
+rounded = true
+scrollable = false
+tick_count = 3
+ticks_on_borders = true
+
+[node name="Quantity" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_en77o")
+theme_override_font_sizes/font_size = 20
+text = "x200"
+horizontal_alignment = 1
+
+[node name="GapSmall_2" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Line_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+
+[node name="Buttons" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="BuildBtn" type="Button" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.5
+anchor_right = 0.75
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BUILD"
+
+[node name="CancelBtn" type="Button" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.5
+anchor_right = 0.25
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CANCEL"

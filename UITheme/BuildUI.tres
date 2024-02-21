@@ -1,0 +1,39 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://31g04ftbqfmt"]
+
+[ext_resource type="Texture2D" uid="uid://4vurxrooqs43" path="res://Assets/UI/SliderGraber.png" id="1_tew73"]
+[ext_resource type="Texture2D" uid="uid://csxver5exwgkf" path="res://Assets/UI/SliderTick.png" id="2_evnru"]
+[ext_resource type="FontFile" uid="uid://bs5q0synwkaku" path="res://Fonts/Fredoka/Fredoka_SemiCondensed-SemiBold.ttf" id="3_pw0pi"]
+[ext_resource type="FontFile" uid="uid://c07x8aitn5v38" path="res://Fonts/Fredoka/Fredoka_SemiCondensed-Regular.ttf" id="3_q4bil"]
+[ext_resource type="FontFile" uid="uid://cpgdwfaylgfgc" path="res://Fonts/Fredoka/Fredoka_Condensed-SemiBold.ttf" id="4_3t30f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55wne"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2nar"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gscm3"]
+expand_margin_bottom = 8.0
+
+[resource]
+HSlider/constants/center_grabber = 1
+HSlider/constants/grabber_offset = 4
+HSlider/icons/grabber = ExtResource("1_tew73")
+HSlider/icons/tick = ExtResource("2_evnru")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_55wne")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_b2nar")
+HSlider/styles/slider = SubResource("StyleBoxFlat_gscm3")
+Title/base_type = &"Label"
+Title/colors/font_outline_color = Color(0, 0, 0, 1)
+Title/constants/outline_size = 4
+Title/font_sizes/font_size = 18
+Title/fonts/font = ExtResource("3_pw0pi")
+TitleSmall/base_type = &"Label"
+TitleSmall/colors/font_color = Color(1, 1, 1, 1)
+TitleSmall/colors/font_outline_color = Color(0, 0, 0, 1)
+TitleSmall/constants/outline_size = 4
+TitleSmall/font_sizes/font_size = 16
+TitleSmall/fonts/font = ExtResource("3_q4bil")
+TitleSmallBold/base_type = &"Label"
+TitleSmallBold/colors/font_color = Color(0.815686, 0.815686, 0.815686, 1)
+TitleSmallBold/colors/font_outline_color = Color(0, 0, 0, 1)
+TitleSmallBold/font_sizes/font_size = 16
+TitleSmallBold/fonts/font = ExtResource("4_3t30f")

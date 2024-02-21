@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dpkvs0dtidjf4"]
+
+[ext_resource type="FontFile" uid="uid://bs5q0synwkaku" path="res://Fonts/Fredoka/Fredoka_SemiCondensed-SemiBold.ttf" id="1_r08y0"]
+[ext_resource type="FontFile" uid="uid://bkthnbeagrphi" path="res://Fonts/Fredoka/Fredoka_SemiCondensed-Bold.ttf" id="2_xbg7k"]
+[ext_resource type="FontFile" uid="uid://dc670f842n36x" path="res://Fonts/B612Mone/B612Mono-Regular.ttf" id="3_0mpku"]
+[ext_resource type="FontFile" uid="uid://cl4rjgf2gk8rh" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="4_nxbov"]
+
+[resource]
+LWindowTitle/base_type = &"Label"
+LWindowTitle/font_sizes/font_size = 22
+LWindowTitle/fonts/font = ExtResource("1_r08y0")
+RTLButton/base_type = &"RichTextLabel"
+RTLButton/font_sizes/bold_font_size = 16
+RTLButton/font_sizes/normal_font_size = 16
+RTLButton/fonts/bold_font = ExtResource("2_xbg7k")
+RTLButton/fonts/normal_font = ExtResource("1_r08y0")
+RichTextLabel/font_sizes/bold_font_size = 16
+RichTextLabel/font_sizes/mono_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/fonts/bold_font = ExtResource("1_r08y0")
+RichTextLabel/fonts/mono_font = ExtResource("3_0mpku")
+RichTextLabel/fonts/normal_font = ExtResource("4_nxbov")

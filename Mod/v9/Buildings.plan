@@ -21,7 +21,7 @@ public economy - manufacturing / energy / mining / diplo|gov services / research
 100
 
 Power Plants - ENERGY - value
-Mines - METAL - value
+Mines - Minerals - value
 CREDITS - stockpile
 Goverment Offices - AUTHORITY - cap (domestic stuff)
 Diplomatic Offices - INFLUENCE - cap (external stuff)

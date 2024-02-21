@@ -1,0 +1,22 @@
+// size padding_characer no_star_characher sectors_count groups_count core_0 sector_group_1 ...
+9 , . 20 9 0 abc def gh ij klm nop qr st
+
+, , , , , , , , , . b b b c c c m . .
+ , , , , , , , , . b b b c c c m m . .
+  , , , , , , , a a a . . . . . m m l .
+   , , , , , , a a . . . . . . . m l l .
+    , , , , , a . . . . . . . . . l l . .
+     , , , , . . . . . . . . . . m l . . g
+      , , , . . . s s t . . . m m m . . g g
+       , , . . . s s t t t 0 m m . . . . g g
+        , . . j s s t t 0 0 0 0 . . . . g h .
+         . . j j j . . . 0 . 0 . . . h h h . .
+          . j i . . . . 0 0 0 0 q q r r h . . ,
+           i i . . . . p p 0 q q q r r . . . , ,
+            i i . . p p p . . . q r r . . . , , ,
+             i . . o p . . . . . . . . . . , , , ,
+              . . o o . . . . . . . . . d , , , , ,
+               . o o n . . . . . . . d d , , , , , ,
+                . o n n . . . . . d d d , , , , , , ,
+                 . . n n f f f e e e . , , , , , , , ,
+                  . . n f f f e e e . , , , , , , , , ,

@@ -16,6 +16,18 @@ public partial class MapGenerator : Node
     public string MapTypeFile = "";
 
     [Export]
+    public bool ClearMap
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                ClearMapFunc();
+            }
+        }
+    }
+    [Export]
     public bool GenerateMap
     {
         get => false;
@@ -43,6 +55,11 @@ public partial class MapGenerator : Node
     //public override void _Ready()
     //{
     //}
+
+    public void ClearMapFunc()
+    {
+        Map.Data.Clear();
+    }
 
     public void GenerateMapFunc()
     {
@@ -107,12 +124,19 @@ public partial class MapGenerator : Node
                 DataBlock systemData = Data.AddData(systemList, "System", name, DefLibrary);
 
                 Data.AddData(systemData, "ID", systemList.GetSubs().Count, DefLibrary);
+
+                Data.AddData(systemData, "GFX_RNG_1", RNG.RandiRange(0, 100), DefLibrary);
+                Data.AddData(systemData, "GFX_RNG_2", RNG.RandiRange(0, 100), DefLibrary);
+
                 Data.AddData(systemData, "X", x, DefLibrary);
                 Data.AddData(systemData, "Y", y, DefLibrary);
 
                 GenerateNewMapSave_Systems_Planets(systemData);
             }
         }
+
+        // no paths
+        return;
 
         // make all pathways
         Array<DataBlock> systems = systemList.GetSubs("System");
@@ -238,6 +262,7 @@ public partial class MapGenerator : Node
 
             GenerateNewMapSave_Players_Ship_Designs(playerData);
 
+            //GenerateNewMapSave_Players_StartingSystem();
             GenerateNewMapSave_Players_StartingColony(playerData, startingSystem, startingPlanet);
             GenerateNewMapSave_Players_StartingStaton(playerData, startingSystem);
 
@@ -294,6 +319,7 @@ public partial class MapGenerator : Node
         DataBlock colonyData = Data.AddData(colonyList, "Colony", startingPlanet.ValueS, DefLibrary);
 
         GenerateNewMapSave_Players_StartingColony_Resources(colonyData);
+        GenerateNewMapSave_Players_StartingColony_Budget(colonyData);
         GenerateNewMapSave_Players_StartingColony_Buildings(colonyData);
         GenerateNewMapSave_Players_StartingColony_Support(colonyData);
         GenerateNewMapSave_Players_StartingColony_Bonuses(colonyData);

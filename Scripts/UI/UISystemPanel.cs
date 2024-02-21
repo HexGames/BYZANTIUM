@@ -34,7 +34,7 @@ public partial class UISystemPanel : Panel
         }
     }
 
-    public void Refresh(List<UISystem.PropertyInfo> infos)
+    /*public void Refresh(List<UISystem.PropertyInfo> infos)
     {
         Clear();
 
@@ -97,5 +97,5 @@ public partial class UISystemPanel : Panel
             ContentParent.AddChild(Lines[idx]);
             Lines[idx].Visible = false;
         }
-    }
+    }*/
 }

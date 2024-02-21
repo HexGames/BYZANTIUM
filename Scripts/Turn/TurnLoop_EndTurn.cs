@@ -82,12 +82,25 @@ public partial class TurnLoop : Node
                     ActionTargetInfo buildingInfo =  Game.Def.GetBuildingInfo(buildings[buildingIdx].Name);
                     int buildingCount = buildings[buildingIdx].ValueI;
 
-                    playerRes.Add(buildingInfo.Benefit);
+                    if (buildingInfo == null)
+                    {
+                        GD.Print("BUILDING NOT FOUND! - " + buildings[buildingIdx].Name);
+                        continue;
+                    }
+
+                    playerRes.Add(buildingInfo.Benefit, buildingCount);
                 }
 
                 if (colony.ActionBuild != null)
                 {
                     ActionTargetInfo buildingInfo = Game.Def.GetBuildingInfo(colony.ActionBuild.GetSub("Building").ValueS);
+
+                    if (buildingInfo == null)
+                    {
+                        GD.Print("BUILDING NOT FOUND! - " + colony.ActionBuild.GetSub("Building").ValueS);
+                        continue;
+                    }
+
                     playerRes.Use(buildingInfo.Cost);
                 }
             }

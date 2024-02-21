@@ -12,7 +12,7 @@ public partial class MapGenerator : Node
     {
         DataBlock shipDesigns = Data.AddData(player, "ShipDesigns", DefLibrary);
 
-        Data.AddData(shipDesigns, "Slot_1", "-", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_1", "none", DefLibrary);
         DataBlock design_2 = Data.AddData(shipDesigns, "Slot_2", "Babylon", DefLibrary);
         {
             Data.AddData(design_2, "ShipType", "Medium", DefLibrary);
@@ -34,19 +34,19 @@ public partial class MapGenerator : Node
                 Data.AddData(modules, "Special:2", "Empty_Special_Slot", DefLibrary);
             }
         }
-        Data.AddData(shipDesigns, "Slot_3", "-", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_4", "-", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_5", "-", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_6", "-", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_7", "-", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_3", "none", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_4", "none", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_5", "none", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_6", "none", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_7", "none", DefLibrary);
 
-        Data.AddData(shipDesigns, "Slot_1_Obsolete", "-", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_2_Obsolete", "-", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_3_Obsolete", "-", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_4_Obsolete", "-", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_5_Obsolete", "-", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_6_Obsolete", "-", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_7_Obsolete", "-", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_1_Obsolete", "none", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_2_Obsolete", "none", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_3_Obsolete", "none", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_4_Obsolete", "none", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_5_Obsolete", "none", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_6_Obsolete", "none", DefLibrary);
+        Data.AddData(shipDesigns, "Slot_7_Obsolete", "none", DefLibrary);
     }
 
     private void GenerateNewMapSave_Players_StartingShip(DataBlock player, DataBlock system)
