@@ -120,7 +120,9 @@ public partial class MapCamera : Camera3D
     //public Transform CameraTransform; //camera tranform
 
     // calculated
-    private Vector3 TargetPosition; //camera position
+    [ExportCategory("Runtime")]
+    [Export]
+    public Vector3 TargetPosition; //camera position
     private float TargetDistance;
     private float CurrentRotationX;
 
@@ -174,6 +176,7 @@ public partial class MapCamera : Camera3D
     {
         if (Engine.IsEditorHint())
             return;
+
         TargetPosition = new Vector3(TransformNode.Position.X, 0f, TransformNode.Position.Z);
         TargetDistance = ZoomMaxHeight;
         CurrentRotationX = RotationXDefault;

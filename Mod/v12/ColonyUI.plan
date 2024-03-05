@@ -1,0 +1,54 @@
+Outpost
+   - Bio-Domes (Auto 0 - if required)
+   - Private Industry (Auto 5)
+   - Mines
+-> Button to Subsidize
+[Inverst 2/4/8 M into outpost]
+
+Colony
+   - Cities (1 M pops - 1 for each 10 M pops)
+   - Mega Cities (the first one makes it a world if independent) (10 M pops)
+   - Power Plants (auto if required)
+   - Fusion Reactors (auto if required)
+   - Anti-Matter Reactors (auto if required)
+   - Factory (auto for mines on planet, 5% for mines in system)
+   - Research Labs (proportional with pops and empty slots percentage with double in favor of parent, or if parent has no slots left)
+   - Cultural Centers (proportional with pops and empty slots percentage with double in favor of parent, or if parent has no slots left)
+   - Construction Sector
+-> Button to become independent colony/world (build power + mines)
+-> Building queue if independent 
+
+World
+   - Administrative HQs
+   - Diplomatic Centers
+
+Capital
+   - Capital City (Auto 0 - may be moved or improved by special civic action)
+
+Space Station
+   - Deuterium Extractors 
+   - Shipyards
+   - Asteroid Mines
+   - Asteroid Colectors
+
+////////////////////////////////////////// v13
+
+Planet info
+
+System / Hovered|Selected buildings ? - flavor ?
+
+System Production info
+
+System Trade 
+
+System/Sector Budget
+
+Current Project
+
+Current Campaign
+
+System / Hovered|Selected Planet Pop info
+
+Fleets
+
+

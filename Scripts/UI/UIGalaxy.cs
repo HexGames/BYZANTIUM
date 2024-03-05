@@ -9,7 +9,7 @@ public partial class UIGalaxy : Control
     [Export]
     public UIGalaxyResources Resources = new UIGalaxyResources();
     [Export]
-    public UIPawnList PawnList = null;
+    public UIGalaxyBarList PawnList = null;
     [Export]
     public Label CurrentTurn = null;
 
@@ -29,7 +29,7 @@ public partial class UIGalaxy : Control
     public void Init()
     {
         // delete surplus
-        while (Systems.Count > Mathf.Max(Game.Map.Data.Systems.Count, 1))
+        while (Systems.Count > Mathf.Max(Game.Map.Data.Stars.Count, 1))
         {
             Node node = Systems[Systems.Count - 1];
             Systems[0].GetParent().RemoveChild(node);
@@ -37,7 +37,7 @@ public partial class UIGalaxy : Control
         }
 
         // grow
-        while (Systems.Count < Game.Map.Data.Systems.Count)
+        while (Systems.Count < Game.Map.Data.Stars.Count)
         {
             UIGalaxySystem newSys = Systems[0].Duplicate(7) as UIGalaxySystem;
             Systems[0].GetParent().AddChild(newSys);
@@ -47,9 +47,9 @@ public partial class UIGalaxy : Control
         // update
         for ( int idx = 0; idx < Systems.Count; idx++ ) 
         {
-            if (idx < Game.Map.Data.Systems.Count)
+            if (idx < Game.Map.Data.Stars.Count)
             {
-                Systems[idx].Refresh(Game.Map.Data.Systems[idx]._Node);
+                Systems[idx].Refresh(Game.Map.Data.Stars[idx]._Node);
             }
         }
     }

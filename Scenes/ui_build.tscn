@@ -3,8 +3,8 @@
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_rihns"]
 [ext_resource type="Texture2D" uid="uid://cet6pwryuqcts" path="res://Assets/UI/white.png" id="2_15utd"]
 [ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="3_nc8ym"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="4_4xdln"]
 [ext_resource type="Theme" uid="uid://31g04ftbqfmt" path="res://UITheme/BuildUI.tres" id="4_en77o"]
-[ext_resource type="Texture2D" uid="uid://btfmip2xdiafk" path="res://Assets/UI/Symbols/MineralsO32.png" id="4_r5fqp"]
 [ext_resource type="Texture2D" uid="uid://b0hf203g0lcrk" path="res://Assets/UI/Buildings/Factory.png" id="5_wwsvj"]
 [ext_resource type="Texture2D" uid="uid://ckj32ifpuj24h" path="res://Assets/UI/Buildings/Mine.png" id="6_3ouav"]
 
@@ -89,7 +89,7 @@ theme = ExtResource("3_nc8ym")
 theme_type_variation = &"Title"
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_bsk48")
-text = "Build At Earth"
+text = "Build At Sol System"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -116,204 +116,378 @@ anchor_bottom = 1.0
 offset_left = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
-[node name="HFlowContainer" type="HFlowContainer" parent="Panel/HBoxContainer/BuildingList/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/BuildingList/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 8
+theme_override_constants/separation = 8
 
-[node name="Building_1" type="Panel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer"]
-custom_minimum_size = Vector2(224, 160)
+[node name="Item_1" type="Control" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_1"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_0vtgy")
-
-[node name="ResourceIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -36.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = 36.0
-grow_horizontal = 0
-texture = ExtResource("4_r5fqp")
-expand_mode = 1
-
-[node name="PrimaryTitle" type="Label" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_left = 8.0
-offset_top = 4.0
 offset_right = -8.0
-offset_bottom = 24.0
-grow_horizontal = 2
-theme = ExtResource("4_en77o")
-theme_type_variation = &"TitleSmall"
-text = "Factories"
-
-[node name="Single" type="Control" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PrimaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Single"]
-custom_minimum_size = Vector2(128, 128)
+[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_1/Panel"]
+custom_minimum_size = Vector2(0, 26)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.8
 anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -12.0
+offset_right = -16.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_wwsvj")
-expand_mode = 1
-
-[node name="Dual" type="Control" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PrimaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.35
-anchor_right = 0.3
-anchor_bottom = 0.35
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_wwsvj")
-expand_mode = 1
-
-[node name="SecondaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.7
-anchor_top = 0.5
-anchor_right = 0.7
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_3ouav")
-expand_mode = 1
-
-[node name="SecondaryTitle" type="Label" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.85
-anchor_right = 1.0
-anchor_bottom = 0.85
-offset_left = 8.0
-offset_top = -24.0
-offset_right = -8.0
-offset_bottom = -4.0
-grow_horizontal = 2
-theme = ExtResource("4_en77o")
-theme_type_variation = &"TitleSmall"
-text = "Deuterium Extractors"
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="Plus_BG_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
-visible = false
-custom_minimum_size = Vector2(30, 12)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.156863, 0.0901961, 0.0431373, 1)
-
-[node name="Plus_BG_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
-visible = false
-custom_minimum_size = Vector2(12, 30)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.156863, 0.0901961, 0.0431373, 1)
-
-[node name="Plus_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
-custom_minimum_size = Vector2(24, 6)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Plus_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1/Dual"]
-custom_minimum_size = Vector2(6, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.85
-anchor_right = 1.0
-anchor_bottom = 0.85
-offset_left = 4.0
-offset_right = -4.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.501961, 0.501961, 0.501961, 0.25098)
-
-[node name="Qunatity" type="Label" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/HFlowContainer/Building_1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = -24.0
-offset_right = -8.0
-offset_bottom = -2.0
-grow_horizontal = 2
-theme = ExtResource("4_en77o")
+theme = ExtResource("4_4xdln")
 theme_type_variation = &"Title"
-text = "x200"
-horizontal_alignment = 1
-vertical_alignment = 1
+bbcode_enabled = true
+text = "[left]$Name[/left]"
+
+[node name="Benefit" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_1/Panel"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -25.0
+offset_right = -16.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[right]0-20%[img=24x24]Assets/UI/Symbols/Research.png[/img][/right]"
+
+[node name="Turns" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_1/Panel"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]$turns Turns[/center]"
+
+[node name="Item_2" type="Control" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_2/Panel"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.8
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -12.0
+offset_right = -16.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[left]$Name[/left]"
+
+[node name="Benefit" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_2/Panel"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -25.0
+offset_right = -16.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[right]0-20%[img=24x24]Assets/UI/Symbols/MineralsO.png[/img][/right]"
+
+[node name="Turns" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_2/Panel"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]$turns Turns[/center]"
+
+[node name="PlanetList" type="Control" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+theme_override_colors/default_color = Color(0.501961, 0.501961, 0.501961, 1)
+bbcode_enabled = true
+text = "[center]Select a project first...[/center]"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/HBoxContainer/PlanetList"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/PlanetList/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Location_1" type="Control" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Panel"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.8
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[left]$Location[/left]"
+
+[node name="Benefit" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Panel"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[right]20%[img=24x24]Assets/UI/Symbols/Research.png[/img][/right]"
+
+[node name="Turns" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Panel"]
+visible = false
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]$turns Turns[/center]"
+
+[node name="Location_2" type="Control" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_2/Panel"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.8
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[left]$Location[/left]"
+
+[node name="Benefit" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_2/Panel"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[right]20%[img=24x24]Assets/UI/Symbols/Research.png[/img][/right]"
+
+[node name="Turns" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_2/Panel"]
+visible = false
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]$turns Turns[/center]"
+
+[node name="Location_3" type="Control" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_3/Panel"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.8
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[left]$Location[/left]"
+
+[node name="Benefit" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_3/Panel"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[right]10%[img=24x24]Assets/UI/Symbols/Research.png[/img][/right]"
+
+[node name="Turns" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_3/Panel"]
+visible = false
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]$turns Turns[/center]"
+
+[node name="Gap_2" type="Control" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
 
 [node name="BuildingInfo" type="Control" parent="Panel/HBoxContainer"]
 custom_minimum_size = Vector2(320, 0)

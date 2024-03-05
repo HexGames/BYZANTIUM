@@ -20,14 +20,26 @@ public class Helper
         secondPart = split[1];
     }
 
-    public static string Split_0(string text)
+    public static string Split_0(string text, char separator = ':')
     {
-        return text.Split(':')[0];
+        return text.Split(separator)[0];
     }
     
-    public static string Split_1(string text)
+    public static string Split_1(string text, char separator = ':')
     {
-        string[] split = text.Split(':');
+        string[] split = text.Split(separator);
         return split.Length > 1 ? split[1] : "";
+    }
+
+    public static string ResValueToString(int value)
+    {
+        if (value >= 10)
+        {
+            return (value / 10).ToString();
+        }
+        else
+        {
+            return (value / 10).ToString() + (value % 10 != 0 ? "." + (value % 10).ToString() : "");
+        }
     }
 }

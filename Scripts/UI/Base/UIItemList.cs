@@ -2,12 +2,12 @@ using Godot;
 using Godot.Collections;
 using System.ComponentModel;
 
-//[Tool]
 public partial class UIItemList : Control
 {
     [ExportCategory("Links")]
     [Export]
-    public Label Title = null;
+    private RichTextLabel TitleLabel = null;
+    private string TitleLabel_Original = null;
     [Export]
     public Array<UIItemListItem> Properties = new Array<UIItemListItem>();
 
@@ -21,14 +21,18 @@ public partial class UIItemList : Control
 
     public override void _Ready()
     {
-        if (Engine.IsEditorHint()) return;
         Game = GetNode<Game>("/root/Main/Game");
+
+        TitleLabel_Original = TitleLabel.Text;
     }
 
-    public void Refresh(DataBlock data)
+    public void Refresh(DataBlock data, string forceTitle = "")
     {
-        Title.Text = data.ValueToString();
-        if (Title.Text == "") Title.Text = data.Name;
+        string name = forceTitle;
+        if (name == "") data.ValueToString();
+        if (name == "") name = data.Name;
+
+        TitleLabel.Text = TitleLabel_Original.Replace("$name", name);
 
         Array<DataBlock> subs = data.GetSubs();
 

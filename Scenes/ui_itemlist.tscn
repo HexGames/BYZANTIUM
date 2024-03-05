@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://btm8s0fh8xu5d"]
+[gd_scene load_steps=6 format=3 uid="uid://btm8s0fh8xu5d"]
 
 [ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="1_laq5a"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UIItemList.cs" id="1_msybk"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="2_ongvp"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UIItemListItem.cs" id="3_ofbn3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g4td"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 0.376471)
 skew = Vector2(0.32, 0)
 
-[node name="UIItemList" type="Control" node_paths=PackedStringArray("Title", "Properties")]
+[node name="UIItemList" type="Control" node_paths=PackedStringArray("TitleLabel", "Properties")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +19,7 @@ offset_bottom = -760.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_msybk")
-Title = NodePath("Margins/Title")
+TitleLabel = NodePath("Margins/TitleBg/Title")
 Properties = [NodePath("Margins/ScrollContainer/VBoxContainer/Property_1")]
 
 [node name="Margins" type="Control" parent="."]
@@ -33,7 +34,7 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="Margins"]
+[node name="TitleBg" type="Panel" parent="Margins"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -41,13 +42,20 @@ offset_left = 4.0
 offset_right = -4.0
 offset_bottom = 26.0
 grow_horizontal = 2
-theme = ExtResource("1_laq5a")
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1g4td")
+
+[node name="Title" type="RichTextLabel" parent="Margins/TitleBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ongvp")
 theme_type_variation = &"Title"
-theme_override_styles/normal = SubResource("StyleBoxFlat_1g4td")
-text = "Item List"
-horizontal_alignment = 1
-vertical_alignment = 2
-uppercase = true
+bbcode_enabled = true
+text = "[center]$name[/center]"
 
 [node name="Line" type="ColorRect" parent="Margins"]
 custom_minimum_size = Vector2(0, 2)

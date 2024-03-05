@@ -41,8 +41,38 @@ public partial class TurnLoop : Node
     public void Init()
     {
         CurrentHumanPlayerData = GetHumanPlayer();
+        Init_Resources();
         EndTurn_Resources();
         Game.GalaxyUI.Refresh();
+    }
+
+    public void Init_Resources()
+    {
+        for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.Map.Data.Players[playerIdx];
+            player.ResourcesPerTurn = new ResourcesWrapperTemp(player.Resources);
+
+            for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
+            {
+                SectorData sector = player.Sectors[sectorIdx];
+                sector.ResourcesPerTurn = new ResourcesWrapperTemp(sector.Resources);
+                //sector.BudgetPerTurn = new BudgetWrapper(sector.Budget);
+
+                for (int systemIdx = 0; systemIdx < sector.Systems.Count; systemIdx++)
+                {
+                    SystemData system = sector.Systems[sectorIdx];
+                    system.ResourcesPerTurn = new ResourcesWrapperTemp(system.Resources);
+
+                    for (int colonyIdx = 0; colonyIdx < sector.Systems.Count; colonyIdx++)
+                    {
+                        ColonyData colony = system.Colonies[colonyIdx];
+                        colony.ResourcesPerTurn = new ResourcesWrapperTemp(colony.Resources);
+                        //colony.ActionsConPerTurn = new ActionsConWrapper(colony.ActionConBuildings, colony.ActionConColony, colony.ActionConShipyard, sector.ActionConTreasury);
+                    }
+                }
+            }
+        }
     }
 
     public override void _Process(double delta)

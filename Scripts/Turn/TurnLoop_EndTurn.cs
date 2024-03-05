@@ -32,15 +32,15 @@ public partial class TurnLoop : Node
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.Map.Data.Players[playerIdx];
-            for (int colonyIdx = 0; colonyIdx < player.Colonies.Count; colonyIdx++)
-            {
-                ColonyData colony = player.Colonies[colonyIdx];
+            //for (int colonyIdx = 0; colonyIdx < player.Colonies.Count; colonyIdx++)
+            //{
+             //   ColonyData colony = player.Colonies[colonyIdx];
 
-                if (colony.ActionBuild != null)
-                {
-                    ActionColonyBuild.Update(colony, Game.Def);
-                }
-            }
+                //if (colony.ActionBuild != null)
+                //{
+                //    ActionSectorBuild.Update(colony, Game.Def);
+                //}
+            //}
         }
     }
 
@@ -68,46 +68,98 @@ public partial class TurnLoop : Node
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.Map.Data.Players[playerIdx];
+            player.ResourcesPerTurn.Refresh();
 
-            ResourcesWrapperTemp playerRes = new ResourcesWrapperTemp(player.Resources);
-
-            playerRes.Clear();
-
-            for (int colonyIdx = 0; colonyIdx < player.Colonies.Count; colonyIdx++)
+            for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
             {
-                ColonyData colony = player.Colonies[colonyIdx];
-                Array<DataBlock> buildings = colony.Buildings.GetSubs();
-                for (int buildingIdx = 0; buildingIdx < buildings.Count; buildingIdx++)
+                SectorData sector = player.Sectors[sectorIdx];
+                //sector.BudgetPerTurn.Refresh();
+                sector.ResourcesPerTurn.Refresh();
+
+                for (int systemIdx = 0; systemIdx < sector.Systems.Count; systemIdx++)
                 {
-                    ActionTargetInfo buildingInfo =  Game.Def.GetBuildingInfo(buildings[buildingIdx].Name);
-                    int buildingCount = buildings[buildingIdx].ValueI;
+                    SystemData system = sector.Systems[sectorIdx];
+                    system.ResourcesPerTurn.Refresh();
 
-                    if (buildingInfo == null)
+                    for (int colonyIdx = 0; colonyIdx < sector.Systems.Count; colonyIdx++)
                     {
-                        GD.Print("BUILDING NOT FOUND! - " + buildings[buildingIdx].Name);
-                        continue;
-                    }
+                        ColonyData colony = system.Colonies[colonyIdx];
+                        colony.ResourcesPerTurn.Refresh();
+                        //colony.ActionsConPerTurn.Refresh();
 
-                    playerRes.Add(buildingInfo.Benefit, buildingCount);
+                        DataBlock baseGrowth = colony.Resources.GetSub("Growth");
+                        colony.ResourcesPerTurn.Add(baseGrowth.Name, baseGrowth.ValueI);
+
+                        DataBlock pops = colony.Resources.GetSub("Pops*Used");
+                        colony.ResourcesPerTurn.Add("BuildingSlots", pops.ValueI / 1000);
+
+                        Array<DataBlock> buildings = colony.Buildings.GetSubs();
+                        int totalBuildings = 0;
+                        for (int buildingIdx = 0; buildingIdx < buildings.Count; buildingIdx++)
+                        {
+                            ActionTargetInfo buildingInfo =  Game.Def.GetBuildingInfo(buildings[buildingIdx].Name);
+                            int buildingCount = buildings[buildingIdx].ValueI;
+
+                            if (buildingInfo == null)
+                            {
+                                GD.Print("BUILDING NOT FOUND! - " + buildings[buildingIdx].Name);
+                                continue;
+                            }
+
+                            colony.ResourcesPerTurn.Add(buildingInfo.Benefit, buildingCount);
+                            totalBuildings += buildingCount;
+                        }
+                        colony.ResourcesPerTurn.Use("BuildingSlots", totalBuildings);
+                        colony.ResourcesPerTurn.AddIncome();
+                        colony.ResourcesPerTurn.Save();
+                        system.ResourcesPerTurn.Add(colony.ResourcesPerTurn);
+                    }
+                    system.ResourcesPerTurn.AddIncome();
+                    system.ResourcesPerTurn.Save();
+                    sector.ResourcesPerTurn.Add(system.ResourcesPerTurn);
+                }
+                sector.ResourcesPerTurn.AddIncome();
+                sector.ResourcesPerTurn.Save();
+                player.ResourcesPerTurn.Add(sector.ResourcesPerTurn);
+            }
+            player.ResourcesPerTurn.AddIncome();
+            player.ResourcesPerTurn.Save();
+        }
+        /*for (int colonyIdx = 0; colonyIdx < player.Colonies.Count; colonyIdx++)
+        {
+            ColonyData colony = player.Colonies[colonyIdx];
+            Array<DataBlock> buildings = colony.Buildings.GetSubs();
+            for (int buildingIdx = 0; buildingIdx < buildings.Count; buildingIdx++)
+            {
+                ActionTargetInfo buildingInfo =  Game.Def.GetBuildingInfo(buildings[buildingIdx].Name);
+                int buildingCount = buildings[buildingIdx].ValueI;
+
+                if (buildingInfo == null)
+                {
+                    GD.Print("BUILDING NOT FOUND! - " + buildings[buildingIdx].Name);
+                    continue;
                 }
 
-                if (colony.ActionBuild != null)
-                {
-                    ActionTargetInfo buildingInfo = Game.Def.GetBuildingInfo(colony.ActionBuild.GetSub("Building").ValueS);
-
-                    if (buildingInfo == null)
-                    {
-                        GD.Print("BUILDING NOT FOUND! - " + colony.ActionBuild.GetSub("Building").ValueS);
-                        continue;
-                    }
-
-                    playerRes.Use(buildingInfo.Cost);
-                }
+                playerRes.Add(buildingInfo.Benefit, buildingCount);
             }
 
-            playerRes.AddIncome();
+            //if (colony.ActionBuild != null)
+            //{
+            //    ActionTargetInfo buildingInfo = Game.Def.GetBuildingInfo(colony.ActionBuild.GetSub("Building").ValueS);
+            //
+            //    if (buildingInfo == null)
+            //    {
+            //        GD.Print("BUILDING NOT FOUND! - " + colony.ActionBuild.GetSub("Building").ValueS);
+            //        continue;
+            //    }
+            //
+            //    playerRes.Use(buildingInfo.Cost);
+            //}
+        }*/
 
-            playerRes.Save();
-        }
+        //    playerRes.AddIncome();
+        //
+        //    playerRes.Save();
+        //}
     }
 }

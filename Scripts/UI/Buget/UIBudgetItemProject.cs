@@ -24,7 +24,7 @@ public partial class UIBudgetItemProject : Control
     public int Pips = 0;
     public int PipsRemaining = 0;
     public int Value = 0;
-    public int ValueMax = 0;
+    //public int ValueMax = 0;
 
     Game Game;
 
@@ -57,18 +57,17 @@ public partial class UIBudgetItemProject : Control
         }
     }
 
-    public void Refresh(DataBlock data, int pipsRemaining, int value, int valueMax)
+    public void Refresh(string name, int locked, int unlocked, int pipsRemaining, int value/*, int valueMax*/)
     {
-        _Data = data;
-        Locked = _Data.GetSub("Locked").ValueI;
-        Pips = _Data.GetSub("Value").ValueI;
+        Locked = locked;
+        Pips = unlocked;
 
         PipsRemaining = pipsRemaining;
         Value = value;
-        ValueMax = valueMax;
+        //ValueMax = valueMax;
 
-        NameLabel.Text = NameLabel_Original.Replace("$project", _Data.ValueS );
-        ValueLabel.Text = ValueLabel_Original.Replace( "$value", value.ToString() );
+        NameLabel.Text = NameLabel_Original.Replace("$project", name);
+        ValueLabel.Text = ValueLabel_Original.Replace( "$value", (value / 10).ToString() );
 
         //ValueBar.CustomMinimumSize = new Vector2(ValueBar.CustomMinimumSize.X, 112 * value / valueMax);
 

@@ -1,135 +1,67 @@
-Resources:
 
-ENERGY - value
-Minerals - value
-CREDITS - stockpile
-AUTHORITY - cap (domestic stuff)
-INFLUENCE - cap (external stuff)
+Goals:
+   - more production                         CB
+      - more pops - working class
+      - more energy                          CB
+         - more pops - middle class
+      - more minerals                        CB
+         - more pops - working class
+   - more research                           CB
+      - more pops - middle class
+      - more energy                          -
+   - more culture                            CB
+      - more pops - middle classes           
+   - more authority                          CB
+      - more pops - upper class
+   - more influence                          CB
+      - more pops - upper class
+   
+   - have private industry
+      - tax level to grow or exploit         TAX
+      - more energy sources - does not make initial investmet, grows fast depending on free space (future growth opportunity)
+                                             Sell to PI
+      - more mineral sources - does not make initial investmet, grows fast depending on free space (future growth opportunity
+                                             Sell to PI
+      - more special resources               .
+      - more technology                      .
 
-technology points - global income to progress bar || action
-civics point - global icome to progress bar || action
+   - planet specialization:
+      - mining                               .
+      - energy                               .
+      - production                           .
+      - research                             .
+      - culture                              .
 
-Schema:
+   - track wealth - more wealth means more buildings per pop               - pop TAX?, technology, no resource shortage, transports available, 
+   - track inequality between classes                                      . caused by PI growth and wealth growth
+   - track happiness - more hapiness - more pop growth                     .
 
-                 >  Farms       --> Pop growth
-     Pops ------|                
-                 >  Cities      --> Building Slots --> A I SP CP <-- 
-                     ^
-                     | 
-                  Surplus      --> bc
-Energy ------\       |
-              |>-----------------> Buildings/Ships/Terraforming
-Minerals ----/       ^ 
-                     |
-                  Deficit      <-- bc
-                     |
-              Private Industry --> bc (tax)
+   - track working/middle/upper class divide
+      - too much upper class means high upkeep (more than 10%)             . 
+      - too much working class means less productivity (more than 60%)     .
 
+   - shipyard takes resources - based on the number of shipyard docks      - build shipyards
 
-1 E ~ 1M ~ 1bc ~ 0.5 tp ~ 0.5 cp ~ 0.1 A ~ 0.1 I
+   - colonization takes resources - based on sector constructors           - build constructor ships
 
-Energy:
+   - migration takes resources - based on global transports                - build transports
 
-Power Plant (0.5 E)
-Fusion Reactor (1 E) - requires a linked Deuterium Extractor on a cold/freezing gas giant
-AntiMatter Reactor (2 E) - requires a linked Anti-Matter Extractor
-
-Deuterium Extractor - enables Fusion Reactors - a cold/freezing gas giant (without No Deuterium present modifier)
-Deuterium Extractor - on rich gas giant - enables Fusion Reactors with -10 M cost reduction
-Deuterium Extractor - in different System - enables Fusion Reactors with -0.2 E efficency for each kpc (sitance - kiloparsec) to the colony
-
-Minerals:
-
-Mines (0.5 M) - on poor minerals
-Mines (1.0 M)
-Asteroid Mines (1.5 M) - requires linked Asteroid Field Station (cost an extra 0.2 E for each kpc to the colony)
-Ring Mines (2 M) - requires linked Space Station at a planet with a Ring (cost an extra 0.2 E for each kpc to the colony) (limited to 5, 10, 20 for ring size 1, 2, 3)
-
-x0.5 - for Poor
-x2 - for Rich
-x4 - for Ultra Rich
-
-City - provied a building slot
-Upkeep 0.1 E
-
-every 30-40 cities you get a megacity ( -9 cities ) - provides 10 building slots
-upkeep 1 E
-
-Passive bc income:
-
-1 bc for each surplus energy/minerals
-
--- City slots - (1 for each city, 10 for each megacity) --
-
-Private Industry: 
-
-Upkeep 0.1 E & 0.1 M
-Produces 0.2 bc & 0.1 tp & 0.1 cp
-
-Research Lab
-
-upkeep 0.5 E
-produces 1 tp
-
-Culture Center
-
-produces 0.5 cp
-
--- Beurocratic slots - (10%) --
-
-Admin HQ 
-
-produces 1 A
-
-Diplo Center 
-
-produces 1 I
+   - logistics takes away from migration transports
 
 
------------------------------------------
+-------------------------
 
-Just priorities
+pop 
+growth
+infrastructure
+production
+private industry
+credits
 
-M OOO-----
-E OO------
-R XX------
-C OO------
-A OOOOO---
-I --------
+energy
+minerals
 
-Outpost 
-M XXX
-E XXX
-
-Colony - 
-M XX
-E XX
-R X
-C X
-
-World - 
-M X
-E X
-R XX
-C XX
-A X
-I X
-
-Ecu -
-A XXX
-I XXX
-
-Forge -
-M XXXXX
-A X
-
-Research -
-R XXXX
-C X
-A X
-
-Culture - 
-C XXXX
-I XX
-
-SEE BUDGET.PLAN !!!
+research
+culture
+authority
+influence

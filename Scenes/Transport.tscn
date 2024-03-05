@@ -1,0 +1,1037 @@
+[gd_scene load_steps=9 format=3 uid="uid://hc0gidi13t6s"]
+
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_ewuvn"]
+[ext_resource type="Texture2D" uid="uid://cet6pwryuqcts" path="res://Assets/UI/white.png" id="2_k4gym"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="3_nx8jj"]
+[ext_resource type="Texture2D" uid="uid://ceyqr5puhfmn0" path="res://Assets/UI/right.png" id="4_1oj5d"]
+[ext_resource type="Texture2D" uid="uid://qvxxtu5jlkbt" path="res://Assets/UI/left.png" id="5_fld1a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a531d"]
+bg_color = Color(0, 0, 0, 0.501961)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3hcd"]
+shader = ExtResource("1_ewuvn")
+shader_parameter/amount = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pab0p"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+skew = Vector2(0.32, 0)
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[node name="Transport" type="Control"]
+custom_minimum_size = Vector2(1280, 960)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-397, -70)
+
+[node name="TransparentBg" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a531d")
+
+[node name="TransparentBlur" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_w3hcd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k4gym")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nx8jj")
+theme_type_variation = &"LWindowTitle"
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_pab0p")
+text = "Transport"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Line" type="ColorRect" parent="Panel/Title"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_right = 13.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 0.25098, 0, 0.501961)
+
+[node name="Container" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 24.0
+offset_right = -4.0
+grow_horizontal = 2
+
+[node name="Description" type="Control" parent="Panel/Container"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Container/Description"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -16.0
+offset_right = 128.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Description"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Container/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Galaxy" type="VBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sector_1" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy"]
+layout_mode = 2
+
+[node name="InSector" type="VBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="System" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector"]
+layout_mode = 2
+
+[node name="InSystem" type="VBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Planets" type="VBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem"]
+layout_mode = 2
+
+[node name="Planet" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets"]
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Planet2" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets"]
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet2/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet2/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Planet3" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets"]
+visible = false
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet3/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet3/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Less" type="Button" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet3/Trade/Panel"]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_right = 4.0
+grow_vertical = 2
+
+[node name="Values" type="RichTextLabel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet3/Trade/Panel"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nx8jj")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]+10[img=24x24]Assets/UI/Symbols/Prod.png[/img][/center]
+[center]-1[img=24x24]Assets/UI/Symbols/Freighter.png[/img][/center]
+"
+
+[node name="More" type="Button" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/InSystem/Planets/Planet3/Trade/Panel"]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SystemValueBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Balance" type="RichTextLabel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/SystemValueBg"]
+custom_minimum_size = Vector2(0, 144)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nx8jj")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]Balance[/center]
+[center]+2000[/center]
+[center]-2000[/center]
+[center]------------[/center]
+[center]0[/center]
+"
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="ExportMore" type="Button" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade"]
+visible = false
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Values" type="RichTextLabel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade/ExportMore"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nx8jj")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]+10[img=24x24]Assets/UI/Symbols/Prod.png[/img][/center]
+[center]-2[img=24x24]Assets/UI/Symbols/Trade.png[/img][/center]
+"
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade/ExportMore"]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_right = 4.0
+grow_vertical = 2
+texture = ExtResource("4_1oj5d")
+expand_mode = 1
+
+[node name="ExportLess" type="Button" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade"]
+visible = false
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+
+[node name="Values" type="RichTextLabel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade/ExportLess"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nx8jj")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]-10[img=24x24]Assets/UI/Symbols/Prod.png[/img][/center]
+[center]+2[img=24x24]Assets/UI/Symbols/Trade.png[/img][/center]
+"
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade/ExportLess"]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_fld1a")
+expand_mode = 1
+
+[node name="ImportLess" type="Button" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Values" type="RichTextLabel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade/ImportLess"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nx8jj")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]+10[img=24x24]Assets/UI/Symbols/Prod.png[/img][/center]
+"
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade/ImportLess"]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_right = 4.0
+grow_vertical = 2
+texture = ExtResource("4_1oj5d")
+expand_mode = 1
+
+[node name="ImportMore" type="Button" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+
+[node name="Values" type="RichTextLabel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade/ImportMore"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nx8jj")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]-10[img=24x24]Assets/UI/Symbols/Prod.png[/img][/center]
+"
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System/Trade/ImportMore"]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_fld1a")
+expand_mode = 1
+
+[node name="System2" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector"]
+layout_mode = 2
+
+[node name="InSystem" type="VBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Planets" type="VBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem"]
+layout_mode = 2
+
+[node name="Planet" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets"]
+visible = false
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Planet2" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets"]
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet2/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet2/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Planet3" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets"]
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet3/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/InSystem/Planets/Planet3/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SystemValueBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/InSector/System2/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SectorValueBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Balance" type="RichTextLabel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/SectorValueBg"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nx8jj")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center](-400[img=24x24]Assets/UI/Symbols/Trade.png[/img])[/center]
+[center]Balance[/center]
+[center]+2000[img=24x24]Assets/UI/Symbols/Prod.png[/img][/center]
+[center]-2000[img=24x24]Assets/UI/Symbols/Prod.png[/img][/center]
+[center]------------[/center]
+[center]0[img=24x24]Assets/UI/Symbols/Prod.png[/img][/center]"
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Less" type="Button" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/Trade/Panel"]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_right = 4.0
+grow_vertical = 2
+
+[node name="Values" type="RichTextLabel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/Trade/Panel"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nx8jj")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]+10[img=24x24]Assets/UI/Symbols/Prod.png[/img][/center]
+"
+
+[node name="More" type="Button" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_1/Trade/Panel"]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Sector_2" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy"]
+layout_mode = 2
+
+[node name="InSector" type="VBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="System" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector"]
+layout_mode = 2
+
+[node name="InSystem" type="VBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Planets" type="VBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem"]
+layout_mode = 2
+
+[node name="Planet" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets"]
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Planet2" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets"]
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet2/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet2/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Planet3" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets"]
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet3/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/InSystem/Planets/Planet3/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SystemValueBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="System2" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector"]
+layout_mode = 2
+
+[node name="InSystem" type="VBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Planets" type="VBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem"]
+layout_mode = 2
+
+[node name="Planet" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets"]
+visible = false
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Planet2" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets"]
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet2/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet2/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Planet3" type="HBoxContainer" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets"]
+layout_mode = 2
+
+[node name="PlanetBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlanetName" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet3/PlanetName"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet3"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/InSystem/Planets/Planet3/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SystemValueBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/InSector/System2/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SectorValueBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Trade" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/Galaxy/Sector_2/Trade"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GalaxyValueBg" type="Panel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Balance" type="RichTextLabel" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer/GalaxyValueBg"]
+custom_minimum_size = Vector2(0, 144)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nx8jj")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]Balance[/center]
+[center]+2000[/center]
+[center]-2000[/center]
+[center]------------[/center]
+[center]0[/center]
+"
+
+[node name="Gap" type="Control" parent="Panel/Container/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2

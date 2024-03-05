@@ -4,6 +4,6 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Scripts\Colony\" />
+    <Folder Include="Scripts\System\Sub\" />
   </ItemGroup>
 </Project>

@@ -16,8 +16,8 @@ public partial class Data
     {
         DataBlock data = new DataBlock();
 
-        data.Type = df.GetDBType(name, BaseType.NONE);
-        data.Name = name;
+        data.Type = df.GetDBType("_" + name, BaseType.NONE);
+        data.Name = name; 
 
         return data;
     }
@@ -26,7 +26,7 @@ public partial class Data
     {
         DataBlock data = new DataBlock();
 
-        data.Type = df.GetDBType(name, BaseType.NONE);
+        data.Type = df.GetDBType("i_" + name, BaseType.NONE);
         data.Name = name;
         data.ValueI = value;
 
@@ -37,7 +37,7 @@ public partial class Data
     {
         DataBlock data = new DataBlock();
 
-        data.Type = df.GetDBType(name, BaseType.STRING);
+        data.Type = df.GetDBType("s_" + name, BaseType.STRING);
         data.Name = name;
         data.ValueS = value;
 
@@ -48,7 +48,7 @@ public partial class Data
     {
         DataBlock data = new DataBlock();
 
-        data.Type = df.GetDBType(name, BaseType.NONE);
+        data.Type = df.GetDBType("_" + name, BaseType.NONE);
         data.Name = name;
 
         parent.Subs.Add(data);
@@ -61,7 +61,7 @@ public partial class Data
     {
         DataBlock data = new DataBlock();
 
-        data.Type = df.GetDBType(name, BaseType.INT);
+        data.Type = df.GetDBType("i_" + name, BaseType.INT);
         data.Name = name;
         data.ValueI = value;
 
@@ -75,7 +75,7 @@ public partial class Data
     {
         DataBlock data = new DataBlock();
 
-        data.Type = df.GetDBType(name, BaseType.STRING);
+        data.Type = df.GetDBType("s_" + name, BaseType.STRING);
         data.Name = name;
         data.ValueS = value;
 
@@ -87,7 +87,7 @@ public partial class Data
 
     static public void RemoveData(DataBlock parent, string name, DefLibrary df)
     {
-        int type = df.GetDBType(name, BaseType.STRING);
+        int type = df.GetDBType("_" + name, BaseType.STRING);
 
         for (int idx = 0; idx < parent.Subs.Count; idx++)
         {
@@ -102,7 +102,7 @@ public partial class Data
 
     static public void RemoveData(DataBlock parent, string name, int value, DefLibrary df)
     {
-        int type = df.GetDBType(name, BaseType.STRING);
+        int type = df.GetDBType("i_" + name, BaseType.STRING);
 
         for (int idx = 0; idx < parent.Subs.Count; idx++)
         {
@@ -117,7 +117,7 @@ public partial class Data
 
     static public void RemoveData(DataBlock parent, string name, string value, DefLibrary df)
     {
-        int type = df.GetDBType(name, BaseType.STRING);
+        int type = df.GetDBType("s_" + name, BaseType.STRING);
 
         for (int idx = 0; idx < parent.Subs.Count; idx++)
         {
@@ -181,7 +181,10 @@ public partial class Data
         else if (System.Char.IsLetter(words[1][0])) baseType = BaseType.STRING;
         else if (words[1].Contains(".")) baseType = BaseType.FLOAT;
 
-        data.Type = df.GetDBType(words[0], baseType);
+        string prefix = "_";
+        if (baseType == BaseType.INT) prefix = "i_";
+        if (baseType == BaseType.STRING) prefix = "s_";
+        data.Type = df.GetDBType(prefix + words[0], baseType);
         data.Name = words[0];
         switch (baseType)
         {
@@ -239,7 +242,14 @@ public partial class Data
             return "";
         }
 
-        text += Helper.Tabs(currentTabs) + df.GetDBValue(dataBlock.Type) + " " + dataBlock.ValueToString() + "\n";
+        string name = df.GetDBValue(dataBlock.Type);
+        if (name == "")
+        {
+            name = dataBlock.Name;
+        }
+        if (name.StartsWith("_")) name = name.Substring(1);
+        else name = name.Substring(2); // for i_ and s_
+        text += Helper.Tabs(currentTabs) + name + " " + dataBlock.ValueToString() + "\n";
 
         if (text.Contains("ActionColonyBuild"))
         {

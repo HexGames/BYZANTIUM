@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3uw8v4mo63r7"]
+[gd_scene load_steps=17 format=3 uid="uid://d3uw8v4mo63r7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Buget/UIBudget.cs" id="1_3uhjb"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_2v7dh"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="2_ah2m0"]
-[ext_resource type="Script" path="res://Scripts/UI/Buget/UIBudgetItemBuilding.cs" id="3_33gkc"]
 [ext_resource type="Texture2D" uid="uid://cet6pwryuqcts" path="res://Assets/UI/white.png" id="3_x4yx1"]
 [ext_resource type="Theme" uid="uid://cnntmgn04735w" path="res://UITheme/Pip.tres" id="4_fla1i"]
 [ext_resource type="Texture2D" uid="uid://xaeuvseeyw5t" path="res://Assets/UI/Symbols/MineralsO.png" id="5_d7j4j"]
@@ -30,7 +29,7 @@ expand_margin_right = 8.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77gwh"]
 bg_color = Color(0.188235, 0.188235, 0.188235, 1)
 
-[node name="UiBuget" type="Control" node_paths=PackedStringArray("Buildings", "ProjectsMinerals", "TreasuryMinerals", "ProjectsEnergy", "TreasuryEnergy", "Upkeep", "Title", "Description", "CostLabel", "CancelBtn")]
+[node name="UiBuget" type="Control" node_paths=PackedStringArray("ProjectsProduction", "TreasuryProduction", "Title", "Description", "CostLabel", "CancelBtn")]
 custom_minimum_size = Vector2(1400, 640)
 layout_mode = 3
 anchors_preset = 8
@@ -41,12 +40,8 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3uhjb")
-Buildings = [NodePath("Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1")]
-ProjectsMinerals = [NodePath("Panel/Container/Bottom/ScrollContainer/Graph/Projects_M/Project_M")]
-TreasuryMinerals = NodePath("Panel/Container/Bottom/ScrollContainer/Graph/Treasury_M")
-ProjectsEnergy = [NodePath("Panel/Container/Bottom/ScrollContainer/Graph/Projects_E/Project_E")]
-TreasuryEnergy = NodePath("Panel/Container/Bottom/ScrollContainer/Graph/Treasury_E")
-Upkeep = NodePath("Panel/Container/Bottom/ScrollContainer/Graph/Upkeep")
+ProjectsProduction = [NodePath("Panel/Container/Bottom/ScrollContainer/Graph/Projects_M/Project_M")]
+TreasuryProduction = NodePath("Panel/Container/Bottom/ScrollContainer/Graph/Treasury_M")
 Title = NodePath("Panel/Title")
 Description = NodePath("Panel/Container/Description")
 CostLabel = NodePath("Panel/Container/Cost/Cost")
@@ -175,400 +170,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 alignment = 1
-
-[node name="BuildingsM_unused" type="HBoxContainer" parent="Panel/Container/Bottom/ScrollContainer/Graph"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Building_1" type="Control" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused"]
-custom_minimum_size = Vector2(128, 0)
-layout_mode = 2
-script = ExtResource("3_33gkc")
-
-[node name="Main" type="Control" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -28.0
-offset_bottom = -36.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer"]
-custom_minimum_size = Vector2(48, 192)
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 2
-
-[node name="Add_6" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-theme_type_variation = &"AddPip"
-
-[node name="Plus_1" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_6"]
-custom_minimum_size = Vector2(8, 24)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -12.0
-offset_right = 4.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Plus_2" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_6"]
-custom_minimum_size = Vector2(24, 8)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -4.0
-offset_right = 12.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Add_5" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-theme_type_variation = &"AddPip"
-
-[node name="Plus_1" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_5"]
-custom_minimum_size = Vector2(8, 24)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -12.0
-offset_right = 4.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Plus_2" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_5"]
-custom_minimum_size = Vector2(24, 8)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -4.0
-offset_right = 12.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Add_4" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-theme_type_variation = &"AddPip"
-
-[node name="Plus_1" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_4"]
-custom_minimum_size = Vector2(8, 24)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -12.0
-offset_right = 4.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Plus_2" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_4"]
-custom_minimum_size = Vector2(24, 8)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -4.0
-offset_right = 12.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Add_3" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-theme_type_variation = &"AddPip"
-
-[node name="Plus_1" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_3"]
-custom_minimum_size = Vector2(8, 24)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -12.0
-offset_right = 4.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Plus_2" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_3"]
-custom_minimum_size = Vector2(24, 8)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -4.0
-offset_right = 12.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Add_2" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-theme_type_variation = &"AddPip"
-
-[node name="Plus_1" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_2"]
-custom_minimum_size = Vector2(8, 24)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -12.0
-offset_right = 4.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Plus_2" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_2"]
-custom_minimum_size = Vector2(24, 8)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -4.0
-offset_right = 12.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Add_1" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-theme_type_variation = &"AddPip"
-
-[node name="Plus_1" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_1"]
-custom_minimum_size = Vector2(8, 24)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -12.0
-offset_right = 4.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Plus_2" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer/Add_1"]
-custom_minimum_size = Vector2(24, 8)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -4.0
-offset_right = 12.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Pip_6" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-
-[node name="Pip_5" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-
-[node name="Pip_4" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-
-[node name="Pip_3" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-
-[node name="Pip_2" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-
-[node name="Pip_1" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-theme = ExtResource("4_fla1i")
-
-[node name="Color_1" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer"]
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-color = Color(0.333333, 0.2, 0.0509804, 1)
-
-[node name="ResourceIcon" type="TextureRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/Color_1"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_d7j4j")
-expand_mode = 1
-
-[node name="Zero" type="Button" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Main/VBoxContainer/Color_1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("6_osa00")
-theme_type_variation = &"TransparentZero"
-
-[node name="Color_2" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.333333, 0.2, 0.0509804, 1)
-
-[node name="Value" type="RichTextLabel" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Color_2"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_ah2m0")
-theme_override_font_sizes/normal_font_size = 18
-theme_override_font_sizes/bold_font_size = 18
-bbcode_enabled = true
-text = "[center][b]$value[img=24x24]Assets/UI/Buildings/Factory.png[/img][/b][/center]"
-
-[node name="ColorBar" type="ColorRect" parent="Panel/Container/Bottom/ScrollContainer/Graph/BuildingsM_unused/Building_1/Color_2"]
-custom_minimum_size = Vector2(24, 32)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_top = -4.0
-offset_bottom = -4.0
-grow_horizontal = 0
-grow_vertical = 0
-color = Color(0.333333, 0.2, 0.0509804, 1)
 
 [node name="Projects_M" type="HBoxContainer" parent="Panel/Container/Bottom/ScrollContainer/Graph"]
 layout_mode = 2
@@ -1536,6 +1137,7 @@ custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
 
 [node name="Upkeep" type="Control" parent="Panel/Container/Bottom/ScrollContainer/Graph"]
+visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 script = ExtResource("9_4ygpd")
@@ -1654,6 +1256,7 @@ bbcode_enabled = true
 text = "[center][b]$value[img=24x24]Assets/UI/Symbols/EnergyO.png[/img][/b][/center]"
 
 [node name="Projects_E" type="HBoxContainer" parent="Panel/Container/Bottom/ScrollContainer/Graph"]
+visible = false
 layout_mode = 2
 
 [node name="Project_E" type="Control" parent="Panel/Container/Bottom/ScrollContainer/Graph/Projects_E"]
@@ -2110,6 +1713,7 @@ bbcode_enabled = true
 text = "[center][b]$value[img=24x24]Assets/UI/Symbols/EnergyO.png[/img][/b][/center]"
 
 [node name="Treasury_E" type="Control" parent="Panel/Container/Bottom/ScrollContainer/Graph"]
+visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 script = ExtResource("8_vwk1t")

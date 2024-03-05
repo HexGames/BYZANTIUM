@@ -9,6 +9,10 @@ public partial class PlayerData : Node
     [Export]
     public PlayerNode _Node = null;
 
+    [ExportCategory("PlayerRawData")]
+    [Export]
+    public DataBlock Data = null;
+
     [ExportCategory("PlayerData")]
     [Export]
     public string PlayerName = "";
@@ -26,26 +30,26 @@ public partial class PlayerData : Node
 
     [ExportCategory("PlayerData-Links")]
     [Export]
-    public Array<ColonyData> Colonies = new Array<ColonyData>();
-    //[Export]
-    //public Array<SystemData> LocationsOwned = new Array<SystemData>();
-    //[Export]
-    //public Array<PawnData> PawnsOwned = new Array<PawnData>();
+    public Array<SectorData> Sectors = new Array<SectorData>();
 
     [ExportCategory("PlayerData-Runtime")]
     [Export]
     public bool TurnFinished = false;
 
-    public ColonyData GetColony(string colony)
-    {
-        for (int idx = 0; idx < Colonies.Count; idx++)
-        {
-            if (Colonies[idx].ColonyName == colony)
-            {
-                return Colonies[idx];
-            }
-        }
+    // resources
+    public ResourcesWrapperTemp ResourcesPerTurn = null;
 
-        return null;
-    }
+
+    //public ColonyData GetColony(string colony)
+    //{
+    //    for (int idx = 0; idx < Colonies.Count; idx++)
+    //    {
+    //        if (Colonies[idx].ColonyName == colony)
+    //        {
+    //            return Colonies[idx];
+    //        }
+    //    }
+    //
+    //    return null;
+    //}
 }

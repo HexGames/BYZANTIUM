@@ -8,5 +8,5 @@ public partial class PawnData : Node
     public DataBlock Fleet = null;
 
     [Export]
-    public SystemData InLocation = null;
+    public StarData InLocation = null;
 }

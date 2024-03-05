@@ -13,7 +13,7 @@ public partial class UIGalaxySystem : Control
 
     [ExportCategory("Runtime")]
     [Export]
-    public SystemNode _System = null;
+    public StarNode _System = null;
 
     Game Game;
 
@@ -28,14 +28,14 @@ public partial class UIGalaxySystem : Control
         ExtraColonies = GetNode<Label>("VBoxContainer/PanelContainer_3/Extra");
     }
 
-    public void Refresh( SystemNode system )
+    public void Refresh( StarNode system )
     {
         _System = system;
         if (_System == null) return;
 
         _System.GFX.HUD = this;
 
-        SystemName.Text = _System.Data.SystemName;
+        SystemName.Text = _System.Data.StarName;
         if (SystemName.Text.Contains("Sol"))
         {
             ColonyName.Text = "Colony";

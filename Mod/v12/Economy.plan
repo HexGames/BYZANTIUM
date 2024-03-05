@@ -1,0 +1,293 @@
+Resources:
+
+ENERGY - value
+Minerals - value
+CREDITS - stockpile
+AUTHORITY - cap (domestic stuff)
+INFLUENCE - cap (external stuff)
+
+technology points - global income to progress bar || action
+civics point - global icome to progress bar || action
+
+Schema:
+
+                 >  Farms       --> Pop growth
+     Pops ------|                
+                 >  Cities      --> Building Slots --> A I SP CP <-- 
+                     ^
+                     | 
+                  Surplus      --> bc
+Energy ------\       |
+              |>-----------------> Buildings/Ships/Terraforming
+Minerals ----/       ^ 
+                     |
+                  Deficit      <-- bc
+                     |
+              Private Industry --> bc (tax)
+
+
+1 E ~ 1M ~ 1bc ~ 0.5 tp ~ 0.5 cp ~ 0.1 A ~ 0.1 I
+
+Energy:
+
+Power Plant (0.5 E)
+Fusion Reactor (1 E) - requires a linked Deuterium Extractor on a cold/freezing gas giant
+AntiMatter Reactor (2 E) - requires a linked Anti-Matter Extractor
+
+Deuterium Extractor - enables Fusion Reactors - a cold/freezing gas giant (without No Deuterium present modifier)
+Deuterium Extractor - on rich gas giant - enables Fusion Reactors with -10 M cost reduction
+Deuterium Extractor - in different System - enables Fusion Reactors with -0.2 E efficency for each kpc (sitance - kiloparsec) to the colony
+
+Minerals:
+
+Mines (0.5 M) - on poor minerals
+Mines (1.0 M)
+Asteroid Mines (1.5 M) - requires linked Asteroid Field Station (cost an extra 0.2 E for each kpc to the colony)
+Ring Mines (2 M) - requires linked Space Station at a planet with a Ring (cost an extra 0.2 E for each kpc to the colony) (limited to 5, 10, 20 for ring size 1, 2, 3)
+
+x0.5 - for Poor
+x2 - for Rich
+x4 - for Ultra Rich
+
+City - provied a building slot
+Upkeep 0.1 E
+
+every 30-40 cities you get a megacity ( -9 cities ) - provides 10 building slots
+upkeep 1 E
+
+Passive bc income:
+
+1 bc for each surplus energy/minerals
+
+-- City slots - (1 for each city, 10 for each megacity) --
+
+Private Industry: 
+
+Upkeep 0.1 E & 0.1 M
+Produces 0.2 bc & 0.1 tp & 0.1 cp
+
+Research Lab
+
+upkeep 0.5 E
+produces 1 tp
+
+Culture Center
+
+produces 0.5 cp
+
+-- Beurocratic slots - (10%) --
+
+Admin HQ 
+
+produces 1 A
+
+Diplo Center 
+
+produces 1 I
+
+
+-----------------------------------------
+
+Just priorities
+
+M OOO-----
+E OO------
+R XX------
+C OO------
+A OOOOO---
+I --------
+
+Outpost 
+M XXX
+E XXX
+
+Colony - 
+M XX
+E XX
+R X
+C X
+
+World - 
+M X
+E X
+R XX
+C XX
+A X
+I X
+
+Ecu -
+A XXX
+I XXX
+
+Forge -
+M XXXXX
+A X
+
+Research -
+R XXXX
+C X
+A X
+
+Culture - 
+C XXXX
+I XX
+
+SEE BUDGET.PLAN !!!
+
+-------------------------------------------
+
+enable resource level 1 / 2 / 3 (global)
+energy (sector)
+factory capacity (sector)
+production (world or sector capital)
+science (global)
+culture (global)
+
+growth bonus (world/sector)
+energy bonus (world/sector)
+production bonus (world/sector)
+science bonus (world/sector)
+culture bonus (world/sector)
+
+research lab per pop
+factory per pop
+
+authority (global)
+influence (global)
+
+Growth Planet
+Energy Planet/Sector
+Factory Cap Sector
+Production Planet/Sector_Center
+BC (Planet/Sector/Global)
+Science Planet/Sector/Global
+Culture Planet/Sector/Global
+Authority (Planet/Sector/Global)
+Influence (Planet/Sector/Global)
+
+
+    | Orbital Station          | Outpost                  | Colony                   | World                    | Center/Capital           | Sector                    | Global                   |
+    | ........................ | ........................ | ........................ | ........................ | ........................ | ......................... | ........................ |
+    |                          |                          | Pops ? (0-1)             | Pops                     | Pops                     | Pops - total              |                          |
+    |                          |                          | Pops Cap                 | Pops Cap                 | Pops Cap                 |                           |                          |
+    |                          |                          |                          | Buildings                | Buildings                |                           |                          |
+    |                          |                          | Growth ?                 | Growth                   | Growth                   |                           |                          |
+    | Energy                   | Energy                   | Energy                   | Energy                   | Energy                   | Energy - balance          |                          |
+    | Factory Cap              | Factory Cap              | Factory Cap              | Factory Cap              | Factory Cap              | Factory Cap - balance     |                          |
+    | Production -> Center     | Production -> Center     | Production -> Center     | Production               | Production + balance     |                           |                          |
+    | BC                       | BC                       | BC                       | BC                       | BC                       | BC - total                | BC - stockpile           |
+    | Science                  | Science                  | Science                  | Science                  | Science                  | Science - total           | Science - total          |
+    | Culture                  | Culture                  | Culture                  | Culture                  | Culture                  | Culture - total           | Culture - total          |
+    | Authority                | Authority                | Authority                | Authority                | Authority                | Authority                 | Authority - balance      |
+    | Influence                | Influence                | Influence                | Influence                | Influence                | Influence                 | Influence - balance      |
+    |                          |                          |                          |                          |                          |                           |                          |
+    | Resource                 |                          |                          |                          |                          |                           |                          |
+    | growth bonus w/s         |                          |                          |                          |                          |                           |                          |
+    | energy bonus w/s         |                          |                          |                          |                          |                           |                          |
+    | production bonus w/s     |                          |                          |                          |                          |                           |                          |
+    | science bonus w/s        |                          |                          |                          |                          |                           |                          |
+    | culture bonus w/s        |                          |                          |                          |                          |                           |                          |
+    |                          |                          |                          | [buildings per pop]      | [buildings per pop]      |                           |                          |
+    |                          | progress to colony       | progress to world        | Construction progress    | Construction  progress   |                           |                          |
+    |                          |                          |                          |                          | Center/Capital           |                           |                          |
+    |                          |                          |                          | Make Center Btn          | Make Capital Btn         |                           |                          |
+
+Construction:
+
+   - Power Plane - energy
+   - Factory - production
+   - Research Lab - research
+   - Cultural Center - culture
+   Goverment Office - authority
+   Diplo Office - influence
+
+   - Mines - factory cap (I-X)
+   Cloning Center - growth
+
+   Factories Upg ( II-V )
+   Power Plnat Upg (II-III)
+
+   Nature Preserve - (I-V - based on planet)
+   Science Preserve - (I-V - based on planet)
+
+   Prepare Terraforming - (I-V - based on planet) - normal planet - max mines III
+
+   Forge World - (I-V - based on planet) - dead world with toxic athmosphere - high energy cost, much more mines, much cheaper mines - max mines X
+   Machine World - (I-X - based on planet)
+   Gaia Project - (I-III - based on planet) - requires terraforming V - high culture, somewhat high research - no mines
+   Ecumenopolis - (I-X - based on planet) - requires terraforming V - very high population - max mines III
+   
+   Resource Extractor - resource (I-II)
+   Research Station - research bonus sector
+
+   Culture Sharing Center - diplo
+   Science Sharing Center - diplo
+   Propaganda Cener - diplo
+
+Campaigns:
+
+   Terraforming (I-X)
+   Growth_Incentives - fixed turns
+   Migration - fixed turns
+   Reeducation Campaign - fixed turns
+   Clean Pollution - fixed turns
+
+--------------------------------------------------------------------------
+
+Factories - production
+mine/advanced mine/ core mine - production
+Consumer goods - production to aproval (hapiness+authority)
+Spaace Factory - production to military cap
+Weapon Manufaturer - production to military cap
+Industrial lab/particle colider - production to science
+astro university - aproval and science
+Housing - +1 building slot (increasing cost)
+Wetworks HQ - espionage
+Cities - aproval
+embasies - aproval
+Emigration center - building slots on adjacent planets
+Stock exchange - trade
+
+ground battery - planet combat
+barraks - NOPE
+
+-----------------------------------------------------------------
+
+new outpost/starbase
+
+starbase speciality - mining/energy/extraction/science/culture+bonus at border system/influence at border system/authority at special planets - fixed cost
+
+outpost speciality - mining/energy/extraction/science/culture+bonus at border system/influence at border system/authority at special planets - based on habitability cost
+
+colony speciality - mining/energy/extraction/science/culture+bonus at border system/influence at border system/authority at special planets - double of outpost (nust have both starbase and outpost)
+
+change speciality with a auhority button
+
+
+mine 
+asteroid mine (rings/asterid belt)
+cheap energy (star/very hot)
+extraction (any resource present)
+science bonus (anywhere with bonuses for unique stuff)
+culture (anywhare with bonuses for border systems)
+cheap authority (on unique planets)
+
+power plant 
+Factory
+research lab
+culture center
+goverment office - only sector capitals
+diplo office -  
+
+
+
+
+
+
+
+
+
+
+
+
+

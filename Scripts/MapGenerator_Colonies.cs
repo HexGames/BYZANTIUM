@@ -12,78 +12,90 @@ public partial class MapGenerator : Node
     {
         DataBlock resources = Data.AddData(colony, "Resources", DefLibrary);
 
-        Data.AddData(resources, "Credits:private", 3000, DefLibrary);
-        Data.AddData(resources, "Minerals:private", 3000, DefLibrary);
-        Data.AddData(resources, "Energy:private", 3000, DefLibrary);
-        Data.AddData(resources, "Pops", 11000, DefLibrary);
-    }
-    private void GenerateNewMapSave_Players_StartingColony_Budget(DataBlock colony)
-    {
-        DataBlock budget = Data.AddData(colony, "Budget", DefLibrary);
+        Data.AddData(resources, "Wealth", 3000, DefLibrary);
 
-        Data.AddData(budget, "Cooldown", 5, DefLibrary);
+        Data.AddData(resources, "Pops", 25000, DefLibrary);
+        Data.AddData(resources, "Pops*Used", 16000, DefLibrary);
+        Data.AddData(resources, "BuildingSlots", 0, DefLibrary);
+        Data.AddData(resources, "BuildingSlots*Used", 0, DefLibrary);
+        Data.AddData(resources, "Growth", 200, DefLibrary);
+        Data.AddData(resources, "Infrastructure", 0, DefLibrary);
+        Data.AddData(resources, "Prod*Income", 0, DefLibrary);
+        Data.AddData(resources, "PrivateIndustry", 0, DefLibrary);
 
-        DataBlock minerals = Data.AddData(budget, "Minerals", DefLibrary);
-        {
-            DataBlock project = Data.AddData(minerals, "Project", "Buildings", DefLibrary);
-            Data.AddData(project, "Locked", 1, DefLibrary);
-            Data.AddData(project, "Value", 6, DefLibrary);
-        }
-        {
-            DataBlock project = Data.AddData(minerals, "Project", "Shipyard", DefLibrary);
-            Data.AddData(project, "Locked", 1, DefLibrary);
-            Data.AddData(project, "Value", 6, DefLibrary);
-        }
-        {
-            DataBlock project = Data.AddData(minerals, "Project", "Project", DefLibrary);
-            Data.AddData(project, "Locked", 1, DefLibrary);
-            Data.AddData(project, "Value", 3, DefLibrary);
-        }
-        {
-            DataBlock project = Data.AddData(minerals, "Project", "Galactic_Project", DefLibrary);
-            Data.AddData(project, "Locked", 1, DefLibrary);
-            Data.AddData(project, "Value", 0, DefLibrary);
-        }
-        {
-            DataBlock project = Data.AddData(minerals, "Treasury", "Credits", DefLibrary);
-            Data.AddData(project, "Locked", 0, DefLibrary);
-            Data.AddData(project, "Value", 1, DefLibrary);
-        }
-        DataBlock energy = Data.AddData(budget, "Energy", DefLibrary);
-        {
-            DataBlock project = Data.AddData(energy, "Project", "Growth", DefLibrary);
-            Data.AddData(project, "Locked", 1, DefLibrary);
-            Data.AddData(project, "Value", 8, DefLibrary);
-        }
-        {
-            DataBlock project = Data.AddData(energy, "Project", "Extra_Research", DefLibrary);
-            Data.AddData(project, "Locked", 1, DefLibrary);
-            Data.AddData(project, "Value", 8, DefLibrary);
-        }
-        {
-            DataBlock project = Data.AddData(energy, "Project", "Terraforming", DefLibrary);
-            Data.AddData(project, "Locked", 1, DefLibrary);
-            Data.AddData(project, "Value", 0, DefLibrary);
-        }
-        {
-            DataBlock project = Data.AddData(energy, "Treasury", "Credits", DefLibrary);
-            Data.AddData(project, "Locked", 0, DefLibrary);
-            Data.AddData(project, "Value", 1, DefLibrary);
-        }
+        Data.AddData(resources, "Constructor", 0, DefLibrary);
+        Data.AddData(resources, "Shipyard", 0, DefLibrary);
+
+        Data.AddData(resources, "Energy", 0, DefLibrary);
+        Data.AddData(resources, "Energy*Used", 0, DefLibrary);
+        Data.AddData(resources, "Minerals", 0, DefLibrary);
+        Data.AddData(resources, "Minerals*Used", 0, DefLibrary);
+
+        Data.AddData(resources, "BC*Income", 0, DefLibrary);
+        Data.AddData(resources, "TechPoints*Income", 0, DefLibrary);
+        Data.AddData(resources, "CivicPoints*Income", 0, DefLibrary);
+        Data.AddData(resources, "Authority", 0, DefLibrary);
+        Data.AddData(resources, "Authority*Used", 0, DefLibrary);
+        Data.AddData(resources, "Influence", 0, DefLibrary);
+        Data.AddData(resources, "Influence*Used", 0, DefLibrary);
     }
 
     private void GenerateNewMapSave_Players_StartingColony_Buildings(DataBlock colony)
     {
         DataBlock buildings = Data.AddData(colony, "Buildings", DefLibrary);
 
-        Data.AddData(buildings, "Private_Business", 250, DefLibrary);
+        //Data.AddData(buildings, "Private_Business", 250, DefLibrary);
 
-        Data.AddData(buildings, "Power_Plants", 15, DefLibrary);
-        Data.AddData(buildings, "Mines", 10, DefLibrary);
-        Data.AddData(buildings, "Goverment_Offices", 5, DefLibrary);
-        Data.AddData(buildings, "Diplomatic_Offices", 1, DefLibrary);
-        Data.AddData(buildings, "Research_Labs", 5, DefLibrary);
-        Data.AddData(buildings, "Cultural_Center", 5, DefLibrary);
+        Data.AddData(buildings, "Mine", 1, DefLibrary);
+        Data.AddData(buildings, "Power_Plants", 4, DefLibrary);
+        Data.AddData(buildings, "Factory_I", 4, DefLibrary);
+        Data.AddData(buildings, "Research_Labs", 2, DefLibrary);
+        Data.AddData(buildings, "Culture_Centers", 2, DefLibrary);
+    }
+
+    private void GenerateNewMapSave_Players_StartingColony_ConBuildings(DataBlock colony, DataBlock system)
+    {
+        DataBlock campaign = Data.AddData(colony, "ActionConBuildings", DefLibrary);
+
+        Data.AddData(campaign, "Priority", 2, DefLibrary);
+
+        Data.AddData(campaign, "Count", 1, DefLibrary);
+        Data.AddData(campaign, "Name", "Factory_I", DefLibrary);
+        Data.AddData(campaign, "Link:System:Colony", system.ValueS + ":" + colony.ValueS, DefLibrary);
+        Data.AddData(campaign, "Progress:Current", 4000, DefLibrary);
+        Data.AddData(campaign, "Progress:Total", 5000, DefLibrary);
+        
+        Data.AddData(campaign, "Overflow", 0, DefLibrary);
+    }
+
+    private void GenerateNewMapSave_Players_StartingColony_ConColony(DataBlock colony, DataBlock system)
+    {
+        DataBlock campaign = Data.AddData(colony, "ActionConColony", DefLibrary);
+
+        Data.AddData(campaign, "Priority", 0, DefLibrary);
+
+        Data.AddData(campaign, "Count", 0, DefLibrary);
+        Data.AddData(campaign, "Name", "none", DefLibrary);
+        Data.AddData(campaign, "Link:System:Colony", system.ValueS + ":" + colony.ValueS, DefLibrary);
+        Data.AddData(campaign, "Progress:Current", 1, DefLibrary);
+        Data.AddData(campaign, "Progress:Total", 3, DefLibrary);
+
+        Data.AddData(campaign, "Overflow", 0, DefLibrary);
+    }
+
+    private void GenerateNewMapSave_Players_StartingColony_ConShipyard(DataBlock colony, DataBlock system)
+    {
+        DataBlock campaign = Data.AddData(colony, "ActionConShipyard", DefLibrary);
+
+        Data.AddData(campaign, "Priority", 0, DefLibrary);
+
+        Data.AddData(campaign, "Count", 0, DefLibrary);
+        Data.AddData(campaign, "Name", "none", DefLibrary);
+        Data.AddData(campaign, "Link:System:Colony", system.ValueS + ":" + colony.ValueS, DefLibrary);
+        Data.AddData(campaign, "Progress:Current", 0, DefLibrary);
+        Data.AddData(campaign, "Progress:Total", 3, DefLibrary);
+
+        Data.AddData(campaign, "Overflow", 0, DefLibrary);
     }
 
     private void GenerateNewMapSave_Players_StartingColony_Support(DataBlock colony)
@@ -144,7 +156,8 @@ public partial class MapGenerator : Node
         Data.AddData(faction, "Facton_Size", 3, DefLibrary);
         Data.AddData(faction, "Happiness", 7, DefLibrary);
     }
-    private void GenerateNewMapSave_Players_StartingColony_Bonuses(DataBlock colony)
+
+    /*private void GenerateNewMapSave_Players_StartingColony_Bonuses(DataBlock colony)
     {
         DataBlock bonuses = Data.AddData(colony, "Bonuses", DefLibrary);
     }
@@ -177,5 +190,5 @@ public partial class MapGenerator : Node
     private void GenerateNewMapSave_Players_StartingStation_Bonuses(DataBlock colony)
     {
         DataBlock bonuses = Data.AddData(colony, "Bonuses", DefLibrary);
-    }
+    }*/
 }

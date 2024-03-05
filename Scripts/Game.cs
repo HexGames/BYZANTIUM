@@ -3,6 +3,7 @@ using System;
 
 public partial class Game : Node
 {
+    [ExportCategory("Links")]
     [Export]
     public DefLibrary Def;
     [Export]
@@ -22,15 +23,27 @@ public partial class Game : Node
     [Export]
     public TurnLoop TurnLoop;
 
-    // Called when the node enters the scene tree for the first time.
-    //public override void _Ready()
-    //{
-    //	PlayerInput = GetNode<PlayerInput>("/root/PlayerInput");
-    //    SystemUI = GetNode<UISystem>("/root/SystemUI");
-    //}
+    [ExportCategory("Runtime")]
+    [Export]
+    public PlayerData HumanPlayer = null;
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //public override void _Process(double delta)
-    //{
-    //}
+    private bool FirstFrame = true;
+
+    public override void _Process(double delta)
+    {
+        if (FirstFrame)
+        {
+            for (int idx = 0; idx < Map.Data.Players.Count; idx++)
+            {
+                if (Map.Data.Players[idx].Human)
+                {
+                    HumanPlayer = Map.Data.Players[idx];
+                    Camera.TargetPosition = HumanPlayer.Sectors[0].Systems[0].Star._Node.GFX.GlobalPosition;
+                    break;
+                }
+            }
+
+            FirstFrame = false;
+        }
+    }
 }

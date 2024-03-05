@@ -52,6 +52,18 @@ public partial class DefLibrary : Node
         }
     }
     [Export]
+    public bool LoadCampaignsDef
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                LoadCampaignsDefFunc();
+            }
+        }
+    }
+    [Export]
     public bool LoadShipPartsDef
     {
         get => false;
@@ -127,18 +139,18 @@ public partial class DefLibrary : Node
         return type;
     }
 
-    public int GetDBType(string name)
-    {
-
-        int type;
-        if (DB_Types_I.TryGetValue(name, out type) == false)
-        {
-            GD.PrintErr("Def Data Block Type  " + name + " not found!");
-            return -1;
-        }
-
-        return type;
-    }
+    //public int GetDBType(string name) // not used
+    //{
+    //
+    //    int type;
+    //    if (DB_Types_I.TryGetValue(name, out type) == false)
+    //    {
+    //        GD.PrintErr("Def Data Block Type  " + name + " not found!");
+    //        return -1;
+    //    }
+    //
+    //    return type;
+    //}
 
     public string GetDBValue(int type)
     {

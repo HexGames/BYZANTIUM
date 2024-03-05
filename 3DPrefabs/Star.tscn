@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://ceuovcmnc2grc"]
 
-[ext_resource type="Script" path="res://Scripts/System/SystemGFX.cs" id="1_oyjdi"]
+[ext_resource type="Script" path="res://Scripts/System/StarGFX.cs" id="1_oyjdi"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_57fiv"]
 radial_segments = 32

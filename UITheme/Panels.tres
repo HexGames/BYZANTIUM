@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dwsejpps13na3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik0uy"]
+bg_color = Color(0, 0, 0, 0.752941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqpw1"]
+bg_color = Color(0, 0, 0, 0.752941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_va20j"]
+bg_color = Color(0, 0, 0, 0.752941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3i6e"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+skew = Vector2(0.32, 0)
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[resource]
+Black/base_type = &"Panel"
+Black/styles/panel = SubResource("StyleBoxFlat_ik0uy")
+Panel/styles/panel = SubResource("StyleBoxFlat_bqpw1")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_va20j")
+Title/base_type = &"Panel"
+Title/styles/panel = SubResource("StyleBoxFlat_j3i6e")

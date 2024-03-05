@@ -5,6 +5,7 @@ using System.ComponentModel;
 //[Tool]
 public partial class UIItemListItem : Control
 {
+    // is beeing duplicated
     private Panel BG = null;
     private Label Property = null;
     private Label Value = null;

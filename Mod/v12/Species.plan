@@ -1,0 +1,94 @@
+Humans
+Space_Elves
+Space_Dwarves
+Space_Orcs
+Cat_People
+Giants
+Space_Squids
+Space_Bears
+Space_Ants
+Space_Lizards
+Fungoids
+Silicoids
+Robots
+Androids
+Arachnids
+
+Inteligent
+Strong
+Adaptive
+Industrious
+Fertile
+Iradiated
+O2_Breathers
+CO2_Breathers
+CH4_Breathers
+Clones
+Low_Gravity_Adapted
+High_Gravity_Adapted
+Cibernetic
+Hive-Mind
+Aquatic
+
+temp: hot temperate low
+
+atmo: no  low  average  high
+
+water none vapor/ice liquid ocean
+
+
+    | Name         | cold         | temperate    | hot          | average atmo | dense atmo   | Si           | CO2 - O2     | CH4 - H2     | So2          | needs water  |
+    | ............ | ............ | ............ | ............ | ............ | ............ | ............ | ............ | ............ | ............ | ............ |
+    |              |              |              |              |              |              |              |              |              |              |              |
+    | Animal       | yes          | yes          | yes          | yes          |              |              | yes          |              |              | yes          |
+    | Plant        |              | yes          | yes          | yes          | yes          |              | yes          |              |              | yes          |
+    | Rock         | yes          | yes          |              |              | yes          | yes          |              |              |              |              |
+    | Fungus       |              | yes          | yes          | yes          | yes          |              |              | yes          |              | some         |
+    | Necroid      | yes          | yes          | yes          |              | yes          |              |              | yes          |              | some         |
+    | Vulcanic     |              |              | yes          |              | yes          |              |              |              | yes          |              |
+    | Artificial   | yes          | yes          | yes          | yes          | yes          |              |              |              |              |              |
+
+
+
+
+Mamals: 
+
+temp: temperate - low
+
+atmo: average - N-O2
+
+water: lakes - oceans
+
+reptilians
+
+temp: hot - 
+
+carbon-oxigen - plants / animals / aquatic
+carbon-hydrogen - plants / animals / aquatic 
+silicon - no/low atmo
+sulfur - high atmo + vulcanic
+artificial
+
+Type C-O
+Type C-H
+Type S
+barren
+
+humans - type 0
+non-humans - type 1 
+alien - type 2
+
+
+Lava - S 
+Vulcanic - S  
+Barren - Si
+Toxic
+Tomb - Si
+Desert - H / O
+Arid - H / O
+Temperate - H / O
+Swamp - H / O
+Jungle - H / O
+Ocean - H / O
+Artic - H / O
+Frozen - H / O

@@ -7,17 +7,15 @@ public partial class UIBudget : Control
 {
     [ExportCategory("Links")]
     [Export]
-    public Array<UIBudgetItemBuilding> Buildings = new Array<UIBudgetItemBuilding>(); // UNUSED !!!
+    public Array<UIBudgetItemProject> ProjectsProduction = new Array<UIBudgetItemProject>();
     [Export]
-    public Array<UIBudgetItemProject> ProjectsMinerals = new Array<UIBudgetItemProject>();
-    [Export]
-    public UIBudgetItemTreasury TreasuryMinerals = null;
-    [Export]
-    public Array<UIBudgetItemProject> ProjectsEnergy = new Array<UIBudgetItemProject>();
-    [Export]
-    public UIBudgetItemTreasury TreasuryEnergy = null;
-    [Export]
-    public UIBudgetItemUpkeep Upkeep = null;
+    public UIBudgetItemTreasury TreasuryProduction = null;
+    //[Export]
+    //public Array<UIBudgetItemProject> ProjectsEnergy = new Array<UIBudgetItemProject>();
+    //[Export]
+    //public UIBudgetItemTreasury TreasuryEnergy = null;
+    //[Export]
+    //public UIBudgetItemUpkeep Upkeep = null;
 
     [Export]
     public Label Title = null;
@@ -29,7 +27,7 @@ public partial class UIBudget : Control
     public Button CancelBtn = null;
 
     [ExportCategory("Runtime")]
-    public DataBlock _Data;
+    public SectorData _Data;
 
     Game Game;
 
@@ -41,97 +39,69 @@ public partial class UIBudget : Control
         }
     }
 
-    public void RefreshBudget(DataBlock budgetData, bool edit, bool showCancel)
+    public void RefreshBudget(SectorData sector, int production, bool edit, bool showCancel)
     {
-        // clear buildings
-        for (int idx = 0; idx < Buildings.Count; idx++)
-        {
-            Buildings[idx].Visible = false;
-        }
-
         // budget
-        _Data = budgetData;
+        _Data = sector;
 
-        DataBlock minerals = _Data.GetSub("Minerals");
-        if (minerals != null)
+        //DataBlock production = _Data.GetSub("Production");
+        //if (production != null)
         {
             // projects
-            Array<DataBlock> projects = minerals.GetSubs("Project");
+            //Array<DataBlock> projects = production.GetSubs("Project");
 
-            // grow
-            while (ProjectsMinerals.Count < projects.Count)
-            {
-                UIBudgetItemProject newProject = ProjectsMinerals[0].Duplicate(7) as UIBudgetItemProject;
-                ProjectsMinerals[0].GetParent().AddChild(newProject);
-                ProjectsMinerals.Add(newProject);
-            }
+            List<BudgetWrapper.Info> projects = new List<BudgetWrapper.Info>();
+            BudgetWrapper.Info treasury = null;
+            //projects.AddRange(sector.BudgetPerTurn.Items);
+            //for (int idx = 0; idx < projects.Count; idx++)
+            //{
+            //    if (projects[idx].IsTreasury)
+            //    {
+            //        treasury = projects[idx];
+            //        projects.RemoveAt(idx);
+            //        idx--;
+            //        break;
+            //    }
+            //}
 
-            for (int idx = 0; idx < ProjectsMinerals.Count; idx++)
-            {
-                if (idx < projects.Count)
-                {
-                    ProjectsMinerals[idx].Refresh(projects[idx], 0, 300, 2967);
-                    ProjectsMinerals[idx].Visible = true;
-                }
-                else
-                {
-                    ProjectsMinerals[idx].Visible = false;
-                }
-            }
+            //// grow
+            //while (ProjectsProduction.Count < projects.Count - 1)
+            //{
+            //    UIBudgetItemProject newProject = ProjectsProduction[0].Duplicate(7) as UIBudgetItemProject;
+            //    ProjectsProduction[0].GetParent().AddChild(newProject);
+            //    ProjectsProduction.Add(newProject);
+            //}
+            //
+            //for (int idx = 0; idx < ProjectsProduction.Count; idx++)
+            //{
+            //    if (idx < projects.Count)
+            //    {
+            //        int locked = projects[idx].Locked;
+            //        int unlocked = projects[idx].Value - locked;
+            //        ProjectsProduction[idx].Refresh(projects[idx].Name, locked, unlocked, 0, sector.BudgetPerTurn.GetProduction(sector.BudgetPerTurn.Items[idx].Name, production));
+            //        ProjectsProduction[idx].Visible = true;
+            //    }
+            //    else
+            //    {
+            //        ProjectsProduction[idx].Visible = false;
+            //    }
+            //}
 
-            // treasury
-            TreasuryMinerals.Refresh(minerals.GetSub("Treasury"), 0, 432, 2967);
+            //// treasury
+            //{
+            //    int locked = treasury.Locked;
+            //    int unlocked = treasury.Value - locked;
+            //    TreasuryProduction.Refresh(locked, unlocked, 0, production);
+            //}
         }
-        else
-        {
-            for (int idx = 0; idx < ProjectsMinerals.Count; idx++)
-            {
-                ProjectsMinerals[idx].Visible = false;
-            }
-            TreasuryMinerals.Visible = false;
-        }
-
-        DataBlock energy = _Data.GetSub("Energy");
-        if (energy != null)
-        {
-            // projects
-            Array<DataBlock> projects = energy.GetSubs("Project");
-
-            // grow
-            while (ProjectsEnergy.Count < projects.Count)
-            {
-                UIBudgetItemProject newProject = ProjectsEnergy[0].Duplicate(7) as UIBudgetItemProject;
-                ProjectsEnergy[0].GetParent().AddChild(newProject);
-                ProjectsEnergy.Add(newProject);
-            }
-
-            for (int idx = 0; idx < ProjectsEnergy.Count; idx++)
-            {
-                if (idx < projects.Count)
-                {
-                    ProjectsEnergy[idx].Refresh(projects[idx], 0, 300, 2967);
-                    ProjectsEnergy[idx].Visible = true;
-                }
-                else
-                {
-                    ProjectsEnergy[idx].Visible = false;
-                }
-            }
-
-            // upkeep
-            Upkeep.Refresh(578, 2967);
-
-            // treasury
-            TreasuryEnergy.Refresh(energy.GetSub("Treasury"), 0, 432, 2967);
-        }
-        else
-        {
-            for (int idx = 0; idx < ProjectsEnergy.Count; idx++)
-            {
-                ProjectsEnergy[idx].Visible = false;
-            }
-            TreasuryEnergy.Visible = false;
-        }
+        //else
+        //{
+        //    for (int idx = 0; idx < ProjectsProduction.Count; idx++)
+        //    {
+        //        ProjectsProduction[idx].Visible = false;
+        //    }
+        //    TreasuryProduction.Visible = false;
+        //}
 
         CancelBtn.Visible = showCancel;
     }

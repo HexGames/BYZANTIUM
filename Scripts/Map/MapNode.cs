@@ -18,7 +18,7 @@ public partial class MapNode : Node
     [Export]
     public string PathGFXName = "";
     [Export]
-    public Node SystemsNode = null;
+    public Node StarNode = null;
     [Export]
     public Node PathsNode = null;
     [Export]
@@ -79,10 +79,10 @@ public partial class MapNode : Node
 
     public void ClearContainers()
     {
-        while (SystemsNode.GetChildCount(true) > 0)
+        while (StarNode.GetChildCount(true) > 0)
         {
-            Node child = SystemsNode.GetChild(0, true);
-            SystemsNode.RemoveChild(child);
+            Node child = StarNode.GetChild(0, true);
+            StarNode.RemoveChild(child);
             child.Free();
         }
 

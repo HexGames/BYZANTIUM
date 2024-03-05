@@ -20,10 +20,13 @@ public partial class DataBlock : Resource
     [Export]
     public Array<DataBlock> Subs = new Array<DataBlock>();
 
+    //[Export]
+    //public DataBlock Parent = null;
+
     public string ValueToString()
     {
         Data.BaseType baseType = (Data.BaseType)(Type/10000);
-
+        
         switch(baseType)
         {
             case Data.BaseType.INT: return ValueI.ToString();

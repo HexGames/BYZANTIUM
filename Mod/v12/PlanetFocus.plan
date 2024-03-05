@@ -1,0 +1,46 @@
+Relic -- ?
+Hive -- ?
+Ringworld -- ?
+
+Forge world -> high production, high tech -> high factory cap in sector, high energy cost
+
+Ecumenopolis -> high pops, lower production -> low happiness, high pops
+
+Gaia -> 0 pollution, big planet -> high happiness, high culture 
+
+Machine World -> low pops, high science and production, high tech -> double/triple/quadruple factories/science labs
+
+Tomb -> max pollution, high production -> high factory cap in sector, High production, low happiness
+
+Nature preserve -> requires life -> sector science bonus 
+
+Science preserve -> requires life or special anomalies -> sector science bonus
+
+->-> life (can make nature/science preserve)
+->-> athmosphere (high cost for none, low, insane cost for high)
+->-> water (high cost for none, low cost for some, normal for a lot)
+->-> polution (happines)
+->-> living space (total pops, happines)
+->-> production bonus planet/sector 
+->-> science bonus planet/sector
+->-> science anomaly
+->-> rich minerals
+
+enable resource level 1 / 2 / 3 (global)
+energy (sector)
+factory capacity (sector)
+production (world or sector capital)
+science (global)
+culture (global)
+
+growth bonus (world/sector)
+energy bonus (world/sector)
+production bonus (world/sector)
+science bonus (world/sector)
+culture bonus (world/sector)
+
+research lab per pop
+factory per pop
+
+authority (global)
+influence (global)

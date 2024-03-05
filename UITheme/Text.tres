@@ -20,3 +20,6 @@ RichTextLabel/font_sizes/normal_font_size = 16
 RichTextLabel/fonts/bold_font = ExtResource("1_r08y0")
 RichTextLabel/fonts/mono_font = ExtResource("3_0mpku")
 RichTextLabel/fonts/normal_font = ExtResource("4_nxbov")
+Title/base_type = &"RichTextLabel"
+Title/font_sizes/normal_font_size = 20
+Title/fonts/normal_font = ExtResource("1_r08y0")

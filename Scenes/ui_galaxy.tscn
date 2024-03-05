@@ -1,22 +1,22 @@
-[gd_scene load_steps=33 format=3 uid="uid://bukr82o6e8rl3"]
+[gd_scene load_steps=34 format=3 uid="uid://bukr82o6e8rl3"]
 
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_cqepg"]
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxySystem.cs" id="2_mmjn7"]
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxyResources.cs" id="4_ifmcg"]
-[ext_resource type="Script" path="res://Scripts/UI/Extra/UIPawnList.cs" id="5_0oouu"]
 [ext_resource type="Texture2D" uid="uid://c6ulfomgv6xo0" path="res://Assets/Planets/Background.png" id="5_0ym4c"]
 [ext_resource type="Texture2D" uid="uid://c5qcijiud43e" path="res://Assets/UI/pin.png" id="5_cyro3"]
+[ext_resource type="Script" path="res://Scripts/UI/BarList/GalaxyBar/UIGalaxyBarList.cs" id="5_yvxje"]
 [ext_resource type="Texture2D" uid="uid://dgayj1suaea3g" path="res://Assets/Custom/ToggleOn.png" id="6_03uyk"]
-[ext_resource type="Script" path="res://Scripts/UI/Extra/UIPawnListGroupHeader.cs" id="6_fsiip"]
 [ext_resource type="Texture2D" uid="uid://wv33nebj4neu" path="res://Assets/Planets/Swamp.png" id="6_g2r0g"]
+[ext_resource type="Script" path="res://Scripts/UI/BarList/GalaxyBar/UIGalaxyBarListGroupHeader.cs" id="6_n7b0t"]
 [ext_resource type="Texture2D" uid="uid://d0tof7wh66pfl" path="res://Assets/Custom/ToggleOff.png" id="7_2j5s2"]
 [ext_resource type="Texture2D" uid="uid://btedb181w8kd" path="res://Assets/UI/hide.png" id="8_ks6bc"]
 [ext_resource type="Texture2D" uid="uid://ceyqr5puhfmn0" path="res://Assets/UI/right.png" id="9_8tm1n"]
 [ext_resource type="Texture2D" uid="uid://qvxxtu5jlkbt" path="res://Assets/UI/left.png" id="10_8y5em"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UIVisualMask.cs" id="11_irgss"]
 [ext_resource type="Texture2D" uid="uid://ci2vnc3vrtcks" path="res://Assets/Planets/Rings.png" id="13_8m4y8"]
-[ext_resource type="Script" path="res://Scripts/UI/Extra/UIPawnListPlanet.cs" id="14_otf7v"]
+[ext_resource type="Script" path="res://Scripts/UI/BarList/UIBarListPlanet.cs" id="14_fifjl"]
 [ext_resource type="Texture2D" uid="uid://cdmy8ckgkhory" path="res://Assets/Planets/ShadowPlanet.png" id="17_6la41"]
 [ext_resource type="Texture2D" uid="uid://csplvtf23t4w8" path="res://Assets/Planets/Shadow.png" id="17_o8h35"]
 [ext_resource type="Texture2D" uid="uid://csd84oyl26blq" path="res://Assets/Planets/SpaceStation.png" id="20_0sphu"]
@@ -124,6 +124,20 @@ skew = Vector2(0.3, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uw8gh"]
 bg_color = Color(0, 0, 0, 0.752941)
 skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iv5bl"]
+bg_color = Color(1, 0.501961, 0, 1)
+draw_center = false
+skew = Vector2(0.3, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.501961, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="UIGalaxy" type="Control" node_paths=PackedStringArray("Systems", "Resources", "PawnList", "CurrentTurn")]
 layout_mode = 3
@@ -253,7 +267,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("5_0oouu")
+script = ExtResource("5_yvxje")
 ScrollBar = NodePath("HScrollBar")
 ParentNode = NodePath("HBoxContainer")
 GroupHeaders = [NodePath("HBoxContainer/Group_1")]
@@ -281,7 +295,7 @@ custom_minimum_size = Vector2(32, 144)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_momec")
-script = ExtResource("6_fsiip")
+script = ExtResource("6_n7b0t")
 
 [node name="GroupNamePanel" type="Panel" parent="GameBar/HBoxContainer/Group_1"]
 custom_minimum_size = Vector2(138, 24)
@@ -400,7 +414,7 @@ focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_p1ycs")
 theme_override_styles/hover = SubResource("StyleBoxFlat_n37xf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ibdst")
-script = ExtResource("14_otf7v")
+script = ExtResource("14_fifjl")
 
 [node name="Mask" type="Panel" parent="GameBar/HBoxContainer/Planet_1"]
 clip_children = 1
@@ -496,15 +510,9 @@ expand_mode = 1
 [node name="ColorRect" type="ColorRect" parent="GameBar/HBoxContainer/Planet_1/Mask/Parent"]
 custom_minimum_size = Vector2(256, 160)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -94.4
-offset_right = 176.0
-offset_bottom = 65.6
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -595,6 +603,16 @@ text = "Long Name for a Planet"
 horizontal_alignment = 1
 vertical_alignment = 1
 text_overrun_behavior = 1
+
+[node name="Selected" type="Panel" parent="GameBar/HBoxContainer/Planet_1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iv5bl")
 
 [node name="HScrollBar" type="HScrollBar" parent="GameBar"]
 custom_minimum_size = Vector2(1024, 8)

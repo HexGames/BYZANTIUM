@@ -8,7 +8,7 @@ public partial class PlayerInput : Node
     [Export]
     public Game Game = null;
     [Export]
-    public SystemNode SelectedLocation = null;
+    public StarNode SelectedLocation = null;
 
     public override void _Ready()
     {
@@ -52,12 +52,12 @@ public partial class PlayerInput : Node
         }
     }
 
-    public void SelectLocation( SystemNode newSelectedLocation )
+    public void SelectLocation( StarNode newSelectedLocation )
     {
         if (SelectedLocation == newSelectedLocation)
         {
             // on reselect
-            GD.Print("PlayerInput - reselecteed " + SelectedLocation.Data.SystemName);
+            GD.Print("PlayerInput - reselecteed " + SelectedLocation.Data.StarName);
 
             return;
         }
@@ -71,13 +71,13 @@ public partial class PlayerInput : Node
         Game.SystemUI.Refresh(SelectedLocation.Data);
 
         // on select
-        if (SelectedLocation != null) GD.Print("PlayerInput - selected " + SelectedLocation.Data.SystemName);
+        if (SelectedLocation != null) GD.Print("PlayerInput - selected " + SelectedLocation.Data.StarName);
     }
 
     public void DeselectLocation()
     {
         // on deselect
-        if (SelectedLocation != null) GD.Print("PlayerInput - deselected " + SelectedLocation.Data.SystemName);
+        if (SelectedLocation != null) GD.Print("PlayerInput - deselected " + SelectedLocation.Data.StarName);
 
         SelectedLocation = null;
 

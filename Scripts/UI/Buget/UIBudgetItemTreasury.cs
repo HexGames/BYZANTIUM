@@ -20,12 +20,11 @@ public partial class UIBudgetItemTreasury : Control
 
     [ExportCategory("Runtime")]
     [Export]
-    public DataBlock _Data;
     public int Locked = 0;
     public int Pips = 0;
     public int PipsRemaining = 0;
     public int Value = 0;
-    public int ValueMax = 0;
+    //public int ValueMax = 0;
 
     Game Game;
 
@@ -72,90 +71,114 @@ public partial class UIBudgetItemTreasury : Control
         }
     }
 
-    public void Refresh(DataBlock data, int pipsRemaining, int value, int valueMax)
+    public void Refresh(int locked, int unlocked, int pipsRemaining, int value/*, int valueMax*/)
     {
-        _Data = data;
-        Pips = _Data.GetSub("Value").ValueI;
+        Locked = locked;
+        Pips = unlocked;
 
         PipsRemaining = pipsRemaining;
         Value = value;
-        ValueMax = valueMax;
+        //ValueMax = valueMax;
 
-        ValueLabel.Text = ValueLabel_Original.Replace("$value", value.ToString());
+        ValueLabel.Text = ValueLabel_Original.Replace("$value", (value / 10).ToString());
 
         //ValueBar.CustomMinimumSize = new Vector2(ValueBar.CustomMinimumSize.X, 112 * Mathf.Abs(value) / valueMax);
         //BarOverlay.Visible = value < 0;
-
-        for (int idx = 0; idx < Pip.Count; idx++)
+        if (value >= 0)
         {
-            if (idx < Locked)
+            for (int idx = 0; idx < Pip.Count; idx++)
             {
-                Pip[idx].Disabled = true;
-                Pip[idx].Visible = true;
+                if (idx < Locked)
+                {
+                    Pip[idx].Disabled = true;
+                    Pip[idx].Visible = true;
+                }
+                else if (idx < Locked + Pips)
+                {
+                    Pip[idx].Disabled = false;
+                    Pip[idx].Visible = true;
+                }
+                else
+                {
+                    Pip[idx].Visible = false;
+                }
             }
-            else if (idx < Locked + Pips)
-            {
-                Pip[idx].Disabled = false;
-                Pip[idx].Visible = true;
-            }
-            else
-            {
-                Pip[idx].Visible = false;
-            }
-        }
 
-        for (int idx = 0; idx < Add.Count; idx++)
-        {
-            if (idx < pipsRemaining)
+            for (int idx = 0; idx < Add.Count; idx++)
             {
-                Add[idx].Visible = true;
+                if (idx < pipsRemaining)
+                {
+                    Add[idx].Visible = true;
+                }
+                else
+                {
+                    Add[idx].Visible = false;
+                }
             }
-            else
-            {
-                Add[idx].Visible = false;
-            }
-        }
-
-        for (int idx = 0; idx < Deficit.Count; idx++)
-        {
-            if (idx < -Locked)
-            {
-                Deficit[idx].Disabled = true;
-                Deficit[idx].Visible = true;
-            }
-            else if (idx < -Locked - Pips)
-            {
-                Deficit[idx].Disabled = false;
-                Deficit[idx].Visible = true;
-            }
-            else
+            for (int idx = 0; idx < Deficit.Count; idx++)
             {
                 Deficit[idx].Visible = false;
             }
-        }
-
-        for (int idx = 0; idx < AddDeficit.Count; idx++)
-        {
-            if (idx < pipsRemaining)
+            for (int idx = 0; idx < Gap.Count; idx++)
             {
-                AddDeficit[idx].Visible = true;
+                Gap[idx].Visible = false;
             }
-            else
+            for (int idx = 0; idx < AddDeficit.Count; idx++)
             {
                 AddDeficit[idx].Visible = false;
             }
         }
-
-        for (int idx = 0; idx < Gap.Count; idx++)
+        else
         {
-            //if (idx >= pipsRemaining)
-            //{
-            //    Gap[idx].Visible = true;
-            //}
-            //else
-            //{
-                Gap[idx].Visible = false;
-            //}
+            for (int idx = 0; idx < Pip.Count; idx++)
+            {
+                Pip[idx].Visible = false;
+            }
+            for (int idx = 0; idx < Add.Count; idx++)
+            {
+                Add[idx].Visible = false;
+            }
+            for (int idx = 0; idx < Deficit.Count; idx++)
+            {
+                if (idx < -Locked)
+                {
+                    Deficit[idx].Disabled = true;
+                    Deficit[idx].Visible = true;
+                }
+                else if (idx < -Locked - Pips)
+                {
+                    Deficit[idx].Disabled = false;
+                    Deficit[idx].Visible = true;
+                }
+                else
+                {
+                    Deficit[idx].Visible = false;
+                }
+            }
+
+            for (int idx = 0; idx < AddDeficit.Count; idx++)
+            {
+                if (idx < pipsRemaining)
+                {
+                    AddDeficit[idx].Visible = true;
+                }
+                else
+                {
+                    AddDeficit[idx].Visible = false;
+                }
+            }
+
+            for (int idx = 0; idx < Gap.Count; idx++)
+            {
+                if (idx >= pipsRemaining)
+                {
+                    Gap[idx].Visible = true;
+                }
+                else
+                {
+                    Gap[idx].Visible = false;
+                }
+            }
         }
 
         Visible = true;
