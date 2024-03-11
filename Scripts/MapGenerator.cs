@@ -334,11 +334,11 @@ public partial class MapGenerator : Node
 
         Data.AddData(colony, "Capital", DefLibrary);
         GenerateNewMapSave_Players_StartingColony_Resources(colony);
+        GenerateNewMapSave_Players_StartingColony_Jobs(colony);
         GenerateNewMapSave_Players_StartingColony_Buildings(colony);
         GenerateNewMapSave_Players_StartingColony_Support(colony);
-        GenerateNewMapSave_Players_StartingColony_ConBuildings(colony, system);
-        GenerateNewMapSave_Players_StartingColony_ConColony(colony, system);
-        GenerateNewMapSave_Players_StartingColony_ConShipyard(colony, system);
+        GenerateNewMapSave_Players_StartingColony_Construction(colony, system);
+        GenerateNewMapSave_Players_StartingColony_Shipbuilding(colony, system);
         //GenerateNewMapSave_Players_StartingColony_ConTreasury(colony, system);
         //GenerateNewMapSave_Players_StartingColony_Bonuses(colonyData);
 

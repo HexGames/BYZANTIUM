@@ -74,27 +74,29 @@ public partial class TurnLoop : Node
             {
                 SectorData sector = player.Sectors[sectorIdx];
                 //sector.BudgetPerTurn.Refresh();
-                sector.ResourcesPerTurn.Refresh();
+                sector.Resources_PerTurn.Refresh();
 
                 for (int systemIdx = 0; systemIdx < sector.Systems.Count; systemIdx++)
                 {
                     SystemData system = sector.Systems[sectorIdx];
-                    system.ResourcesPerTurn.Refresh();
+                    system.Resources_PerTurn.Refresh();
 
                     for (int colonyIdx = 0; colonyIdx < sector.Systems.Count; colonyIdx++)
                     {
                         ColonyData colony = system.Colonies[colonyIdx];
-                        colony.ResourcesPerTurn.Refresh();
+                        colony.Resources_PerTurn.Refresh();
                         //colony.ActionsConPerTurn.Refresh();
 
                         DataBlock baseGrowth = colony.Resources.GetSub("Growth");
-                        colony.ResourcesPerTurn.Add(baseGrowth.Name, baseGrowth.ValueI);
+                        colony.Resources_PerTurn.Add(baseGrowth.Name, baseGrowth.ValueI);
 
                         DataBlock pops = colony.Resources.GetSub("Pops*Used");
-                        colony.ResourcesPerTurn.Add("BuildingSlots", pops.ValueI / 1000);
+                        colony.Resources_PerTurn.Add("BuildingSlots", pops.ValueI / 1000);
+
+                        colony.Jobs_PerTurn.Refresh(pops.ValueI);
 
                         Array<DataBlock> buildings = colony.Buildings.GetSubs();
-                        int totalBuildings = 0;
+                        //int totalBuildings = 0;
                         for (int buildingIdx = 0; buildingIdx < buildings.Count; buildingIdx++)
                         {
                             ActionTargetInfo buildingInfo =  Game.Def.GetBuildingInfo(buildings[buildingIdx].Name);
@@ -106,21 +108,22 @@ public partial class TurnLoop : Node
                                 continue;
                             }
 
-                            colony.ResourcesPerTurn.Add(buildingInfo.Benefit, buildingCount);
-                            totalBuildings += buildingCount;
+                            colony.Resources_PerTurn.Add(buildingInfo.Benefit, buildingCount);
+                            //totalBuildings += buildingCount;
                         }
-                        colony.ResourcesPerTurn.Use("BuildingSlots", totalBuildings);
-                        colony.ResourcesPerTurn.AddIncome();
-                        colony.ResourcesPerTurn.Save();
-                        system.ResourcesPerTurn.Add(colony.ResourcesPerTurn);
+                        colony.Resources_PerTurn.Add(colony.Jobs_PerTurn);
+                        //colony.Resources_PerTurn.Use("BuildingSlots", totalBuildings);
+                        colony.Resources_PerTurn.AddIncome();
+                        colony.Resources_PerTurn.Save();
+                        system.Resources_PerTurn.Add(colony.Resources_PerTurn);
                     }
-                    system.ResourcesPerTurn.AddIncome();
-                    system.ResourcesPerTurn.Save();
-                    sector.ResourcesPerTurn.Add(system.ResourcesPerTurn);
+                    system.Resources_PerTurn.AddIncome();
+                    system.Resources_PerTurn.Save();
+                    sector.Resources_PerTurn.Add(system.Resources_PerTurn);
                 }
-                sector.ResourcesPerTurn.AddIncome();
-                sector.ResourcesPerTurn.Save();
-                player.ResourcesPerTurn.Add(sector.ResourcesPerTurn);
+                sector.Resources_PerTurn.AddIncome();
+                sector.Resources_PerTurn.Save();
+                player.ResourcesPerTurn.Add(sector.Resources_PerTurn);
             }
             player.ResourcesPerTurn.AddIncome();
             player.ResourcesPerTurn.Save();

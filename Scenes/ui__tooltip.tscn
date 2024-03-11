@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcujexjsspq5a"]
+
+[ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_o7c1n"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="2_wahaa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ixe2"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.752941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uoqy0"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.752941)
+
+[node name="UITooltip" type="PanelContainer"]
+custom_minimum_size = Vector2(320, 64)
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1792.0
+offset_bottom = -1016.0
+theme = ExtResource("1_o7c1n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="title" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ixe2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wahaa")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "$title"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Left_1" type="RichTextLabel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wahaa")
+bbcode_enabled = true
+text = "$varaible
+"
+fit_content = true
+scroll_active = false
+
+[node name="Right_1" type="RichTextLabel" parent="VBoxContainer/MarginContainer/VBoxContainer/Left_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wahaa")
+bbcode_enabled = true
+text = "[right]$value[/right]"
+fit_content = true
+scroll_active = false
+
+[node name="Line_1" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uoqy0")
+
+[node name="Left_2" type="RichTextLabel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wahaa")
+bbcode_enabled = true
+text = "$varaible
+"
+fit_content = true
+scroll_active = false
+
+[node name="Right_2" type="RichTextLabel" parent="VBoxContainer/MarginContainer/VBoxContainer/Left_2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wahaa")
+bbcode_enabled = true
+text = "[right]$value[/right]"
+fit_content = true
+scroll_active = false
+
+[node name="Line_2" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uoqy0")
+
+[node name="Left_3" type="RichTextLabel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wahaa")
+bbcode_enabled = true
+text = "$varaible
+"
+fit_content = true
+scroll_active = false
+
+[node name="Right_3" type="RichTextLabel" parent="VBoxContainer/MarginContainer/VBoxContainer/Left_3"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wahaa")
+bbcode_enabled = true
+text = "[right]$value[/right]"
+fit_content = true
+scroll_active = false

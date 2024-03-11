@@ -343,13 +343,12 @@ public partial class MapData : Node
         colonyData.Name = colonyDataBlock.ValueS + "_Data";
         colonyData.ColonyName = colonyDataBlock.ValueS;
         colonyData.Resources = colonyDataBlock.GetSub("Resources");
-        //colonyData.Budget = colonyDataBlock.GetSub("Budget");
+        colonyData.Jobs = colonyDataBlock.GetSub("Jobs");
         colonyData.Buildings = colonyDataBlock.GetSub("Buildings");
         colonyData.Support = colonyDataBlock.GetSub("Support");
 
-        colonyData.ActionConBuildings = colonyDataBlock.GetSub("ActionConBuildings");
-        colonyData.ActionConColony = colonyDataBlock.GetSub("ActionConColony");
-        colonyData.ActionConShipyard = colonyDataBlock.GetSub("ActionConShipyard");
+        colonyData.ActionConstruction = colonyDataBlock.GetSub("ActionConstruction");
+        colonyData.ActionShipbuilding = colonyDataBlock.GetSub("ActionShipbuilding");
         //colonyData.ActionConTreasury = colonyDataBlock.GetSub("ActionConTreasury");
 
         colonyData.Data = colonyDataBlock;

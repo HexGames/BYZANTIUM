@@ -1,0 +1,93 @@
+
+	SpecialRes Resonant_Crystals
+	{
+		DefLink:Building Jazz_Bar
+	}
+	SpecialRes Exotic_Resonant_Crystals
+	{
+		ApearWith Resonant_Crystals
+		RevealDelay:Min 20
+		RevealDelay:Max 40
+		Reveal:Perc 50
+		RevealTech Exotic_Resonant_Crystals
+		DefLink:Building Exotic_Jazz_Bar
+	}
+
+	Job Production
+	{
+		Benefit // -- made into a bonus
+		{
+			Minerals*Used 50
+			Energy*Used 10
+			Production*Income 100
+			Production*Perc 100 // as percent -- applied to this Job only
+		}
+	}
+
+	Building Jazz_Bar
+	{
+		Show
+		{
+			Obsolete Player:Tech:Factory_III
+			Requires:Planet:SpecialRes Res_103 // on planet
+			Requires:Player:Tech Factory_II
+		}
+		Build
+		{
+			Requires:Sector:SpecialRes Res_103 // in sector
+			Requires_Not:Building Rock_Bar // on planet
+		}
+		Benefit:Colony
+		{
+			Production*Perc 10 // as percent -- applied to colony only
+		}
+		Benefit:Sector
+		{
+			Production*Income 100 // gives this to sector
+			Production*Perc 10 // as percent -- applied to sector
+		}
+		Benefit:Colony Job:Production // name of job -- applied to colony only
+		{
+			Minerals*Used -10 // give this to job productin
+			Production*Income 10 // give this to job productin
+			Production*v 10 // as percent -- applied to this Job only
+		}
+		Benefit:Sector Job:Production // name of job -- applied to colony only
+		{
+			Minerals*Used -10 // give this to job productin
+			Production*Income 10 // give this to job productin
+			Production*Perc 10 // as percent -- applied to this Job only
+		}
+		Benefit:Global Job:Production // name of job -- applied to colony only
+		{
+			Minerals*Used -10 // give this to job productin
+			Production*Income 10 // give this to job productin
+			Production*v 10 // as percent -- applied to this Job only
+		}
+	}
+
+	--- save ---
+
+	// ... map
+	SpecialRes 
+	{
+		Res_103 
+		{
+			Name Xilophones // random
+			Spwan Res_Con_12
+		}
+	}
+
+	// ...  player / sector / colony
+	Resources 
+	{
+		Energy 0
+		Energy*Used 0
+
+		Minerals 0
+		Minerals*Used 0
+
+		Production*Income 0
+	}
+
+	

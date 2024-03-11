@@ -39,12 +39,12 @@ public partial class SectorData : Node
     public Array<SystemData> Systems = new Array<SystemData>();
 
     // resources
-    public ResourcesWrapperTemp ResourcesPerTurn = null;
+    public ResourcesWrapper Resources_PerTurn = null;
     // budget
     //public BudgetWrapper BudgetPerTurn = null;
 
     // actions
-    public List<ActionSectorCampaign> ActionsCampaignPossible = new List<ActionSectorCampaign>();
+    public List<ActionColonyConBuildings> ActionsCampaignPossible = new List<ActionColonyConBuildings>();
 
 
     public PlanetData GetPlanet(string planetName)

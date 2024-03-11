@@ -31,15 +31,15 @@ public class Helper
         return split.Length > 1 ? split[1] : "";
     }
 
-    public static string ResValueToString(int value)
+    public static string ResValueToString(int value, int precision = 10)
     {
-        if (value >= 10)
+        if (value >= 10 * precision)
         {
-            return (value / 10).ToString();
+            return (value / precision).ToString();
         }
         else
         {
-            return (value / 10).ToString() + (value % 10 != 0 ? "." + (value % 10).ToString() : "");
+            return (value / precision).ToString() + ((value * 10 / precision) % 10 != 0 ? "." + ((value * 10 / precision) % 10).ToString() : "");
         }
     }
 }

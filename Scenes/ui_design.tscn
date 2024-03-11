@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://o8timm7nutl3"]
 
-[ext_resource type="Script" path="res://Scripts/UI/UISystem.cs" id="1_6msa3"]
+[ext_resource type="Script" path="res://Scripts/UI/System/UISystem.cs" id="1_6msa3"]
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_br2ry"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_20v37"]
 [ext_resource type="Script" path="res://Scripts/UI/UISystemPanel.cs" id="3_2k58t"]

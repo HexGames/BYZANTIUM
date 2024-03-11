@@ -32,7 +32,7 @@ public partial class SystemData : Node
     public StarData Star = null;
 
     // resources
-    public ResourcesWrapperTemp ResourcesPerTurn = null;
+    public ResourcesWrapper Resources_PerTurn = null;
 
     // actions
     //public List<ActionSectorBuild> ActionsBuildPossible = new List<ActionSectorBuild>();

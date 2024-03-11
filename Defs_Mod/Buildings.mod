@@ -5,7 +5,7 @@ Def_Buildings
 	{
 		Cost 
 		{
-			Prod 5000
+			Production 5000
 		}
 		Benefit 
 		{
@@ -18,13 +18,13 @@ Def_Buildings
 		Obsolete Player:Tech:Factory_II
 		Cost 
 		{
-			Prod 5000
+			Production 5000
 		}
 		Benefit 
 		{
 			Minerals*Used 100
 			Energy*Used 50
-			Prod*Income 100
+			Production*Income 100
 		}
 	}
 	Building Factory_II
@@ -36,13 +36,13 @@ Def_Buildings
 		}
 		Cost 
 		{
-			Prod 7500
+			Production 7500
 		}
 		Benefit 
 		{
 			Minerals*Used 150
 			Energy*Used 75
-			Prod*Income 150
+			Production*Income 150
 		}
 	}
 	Building Factory_III
@@ -54,13 +54,13 @@ Def_Buildings
 		}
 		Cost 
 		{
-			Prod 10000
+			Production 10000
 		}
 		Benefit 
 		{
 			Minerals*Used 200
 			Energy*Used 100
-			Prod*Income 200
+			Production*Income 200
 		}
 	}
 	Building Factory_IV
@@ -72,13 +72,13 @@ Def_Buildings
 		}
 		Cost 
 		{
-			Prod 12500
+			Production 12500
 		}
 		Benefit 
 		{
 			Minerals*Used 250
 			Energy*Used 125
-			Prod*Income 250
+			Production*Income 250
 		}
 	}
 	Building Factory_V
@@ -89,13 +89,13 @@ Def_Buildings
 		}
 		Cost 
 		{
-			Prod 15000
+			Production 15000
 		}
 		Benefit 
 		{
 			Minerals*Used 300
 			Energy*Used 150
-			Prod*Income 300
+			Production*Income 300
 		}
 	}
 	// energy ------------------------------------
@@ -104,7 +104,7 @@ Def_Buildings
 		Obsolete Resource:Deuterium
 		Cost 
 		{
-			Prod 5000
+			Production 5000
 		}
 		Benefit 
 		{
@@ -120,7 +120,7 @@ Def_Buildings
 		}
 		Cost 
 		{
-			Prod 10000
+			Production 10000
 		}
 		Benefit 
 		{
@@ -135,7 +135,7 @@ Def_Buildings
 		}
 		Cost 
 		{
-			Prod 15000
+			Production 15000
 		}
 		Benefit 
 		{
@@ -147,7 +147,7 @@ Def_Buildings
 	{	
 		Cost 
 		{
-			Prod 10000
+			Production 10000
 		}
 		Benefit 
 		{
@@ -160,7 +160,7 @@ Def_Buildings
 	{	
 		Cost 
 		{
-			Prod 10000
+			Production 10000
 		}
 		Benefit 
 		{
@@ -173,7 +173,7 @@ Def_Buildings
 	{	
 		Cost 
 		{
-			Prod 10000
+			Production 10000
 		}
 		Benefit 
 		{
@@ -185,7 +185,7 @@ Def_Buildings
 	{	
 		Cost 
 		{
-			Prod 10000
+			Production 10000
 		}
 		Benefit 
 		{
@@ -198,11 +198,11 @@ Def_Buildings
 	{	
 		Require
 		{
-			Player:Resource:Prod*Income 1000
+			Player:Resource:Production*Income 1000
 		}
 		Cost 
 		{
-			Prod 10000
+			Production 10000
 		}
 		Benefit 
 		{
@@ -215,11 +215,11 @@ Def_Buildings
 	{	
 		Require
 		{
-			Player:Resource:Prod*Income 1000
+			Player:Resource:Production*Income 1000
 		}
 		Cost 
 		{
-			Prod 10000
+			Production 10000
 		}
 		Benefit 
 		{

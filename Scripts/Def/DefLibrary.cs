@@ -52,14 +52,26 @@ public partial class DefLibrary : Node
         }
     }
     [Export]
-    public bool LoadCampaignsDef
+    public bool LoadJobsDef
     {
         get => false;
         set
         {
             if (value)
             {
-                LoadCampaignsDefFunc();
+                LoadJobsDefFunc();
+            }
+        }
+    }
+    [Export]
+    public bool LoadPlanetsDef
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                LoadPlanetsDefFunc();
             }
         }
     }
@@ -91,6 +103,7 @@ public partial class DefLibrary : Node
     public override void _Ready()
     {
         _Ready_Buildings();
+        _Ready_Jobs();
     }
     //    DirAccess folder = null;
     //    string[] files = null;

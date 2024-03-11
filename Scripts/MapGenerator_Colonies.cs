@@ -16,28 +16,56 @@ public partial class MapGenerator : Node
 
         Data.AddData(resources, "Pops", 25000, DefLibrary);
         Data.AddData(resources, "Pops*Used", 16000, DefLibrary);
-        Data.AddData(resources, "BuildingSlots", 0, DefLibrary);
-        Data.AddData(resources, "BuildingSlots*Used", 0, DefLibrary);
         Data.AddData(resources, "Growth", 200, DefLibrary);
-        Data.AddData(resources, "Infrastructure", 0, DefLibrary);
-        Data.AddData(resources, "Prod*Income", 0, DefLibrary);
-        Data.AddData(resources, "PrivateIndustry", 0, DefLibrary);
-
-        Data.AddData(resources, "Constructor", 0, DefLibrary);
-        Data.AddData(resources, "Shipyard", 0, DefLibrary);
 
         Data.AddData(resources, "Energy", 0, DefLibrary);
         Data.AddData(resources, "Energy*Used", 0, DefLibrary);
         Data.AddData(resources, "Minerals", 0, DefLibrary);
         Data.AddData(resources, "Minerals*Used", 0, DefLibrary);
+        Data.AddData(resources, "Production*Income", 0, DefLibrary);
+        Data.AddData(resources, "Shipbuilding*Income", 0, DefLibrary);
+        //Data.AddData(resources, "PrivateIndustry", 0, DefLibrary);
 
-        Data.AddData(resources, "BC*Income", 0, DefLibrary);
         Data.AddData(resources, "TechPoints*Income", 0, DefLibrary);
         Data.AddData(resources, "CivicPoints*Income", 0, DefLibrary);
         Data.AddData(resources, "Authority", 0, DefLibrary);
         Data.AddData(resources, "Authority*Used", 0, DefLibrary);
         Data.AddData(resources, "Influence", 0, DefLibrary);
         Data.AddData(resources, "Influence*Used", 0, DefLibrary);
+        Data.AddData(resources, "BC*Income", 0, DefLibrary);
+    }
+
+    private void GenerateNewMapSave_Players_StartingColony_Jobs(DataBlock colony)
+    {
+        DataBlock jobs = Data.AddData(colony, "Jobs", DefLibrary);
+
+        Data.AddData(jobs, "ActionCooldown", 4, DefLibrary);
+        Data.AddData(jobs, "TotalFocus", 600, DefLibrary);
+        {
+            DataBlock job = Data.AddData(jobs, "Focus", "Energy", DefLibrary);
+            Data.AddData(job, "Value", 100, DefLibrary);
+        }
+        {
+            DataBlock job = Data.AddData(jobs, "Focus", "Minerals", DefLibrary);
+            Data.AddData(job, "Value", 100, DefLibrary);
+        }
+        {
+            DataBlock job = Data.AddData(jobs, "Focus", "Production", DefLibrary);
+            Data.AddData(job, "Value", 120, DefLibrary);
+            Data.AddData(job, "Change", 20, DefLibrary);
+        }
+        {
+            DataBlock job = Data.AddData(jobs, "Focus", "All", DefLibrary);
+            Data.AddData(job, "Value", 280, DefLibrary);
+            Data.AddData(job, "Change", -20, DefLibrary);
+            Data.AddData(job, "Job", "Shipbuilding", DefLibrary);
+            Data.AddData(job, "Job", "Trade", DefLibrary);
+            Data.AddData(job, "Job", "TechPoints", DefLibrary);
+            Data.AddData(job, "Job", "CulturePoints", DefLibrary);
+            Data.AddData(job, "Job", "Authority", DefLibrary);
+            Data.AddData(job, "Job", "Influence", DefLibrary);
+            Data.AddData(job, "Job", "BC", DefLibrary);
+        }
     }
 
     private void GenerateNewMapSave_Players_StartingColony_Buildings(DataBlock colony)
@@ -46,31 +74,16 @@ public partial class MapGenerator : Node
 
         //Data.AddData(buildings, "Private_Business", 250, DefLibrary);
 
-        Data.AddData(buildings, "Mine", 1, DefLibrary);
-        Data.AddData(buildings, "Power_Plants", 4, DefLibrary);
-        Data.AddData(buildings, "Factory_I", 4, DefLibrary);
-        Data.AddData(buildings, "Research_Labs", 2, DefLibrary);
-        Data.AddData(buildings, "Culture_Centers", 2, DefLibrary);
+        //Data.AddData(buildings, "Mine", 1, DefLibrary);
+        //Data.AddData(buildings, "Power_Plants", 4, DefLibrary);
+        //Data.AddData(buildings, "Factory_I", 4, DefLibrary);
+        //Data.AddData(buildings, "Research_Labs", 2, DefLibrary);
+        //Data.AddData(buildings, "Culture_Centers", 2, DefLibrary);
     }
 
-    private void GenerateNewMapSave_Players_StartingColony_ConBuildings(DataBlock colony, DataBlock system)
+    private void GenerateNewMapSave_Players_StartingColony_Construction(DataBlock colony, DataBlock system)
     {
-        DataBlock campaign = Data.AddData(colony, "ActionConBuildings", DefLibrary);
-
-        Data.AddData(campaign, "Priority", 2, DefLibrary);
-
-        Data.AddData(campaign, "Count", 1, DefLibrary);
-        Data.AddData(campaign, "Name", "Factory_I", DefLibrary);
-        Data.AddData(campaign, "Link:System:Colony", system.ValueS + ":" + colony.ValueS, DefLibrary);
-        Data.AddData(campaign, "Progress:Current", 4000, DefLibrary);
-        Data.AddData(campaign, "Progress:Total", 5000, DefLibrary);
-        
-        Data.AddData(campaign, "Overflow", 0, DefLibrary);
-    }
-
-    private void GenerateNewMapSave_Players_StartingColony_ConColony(DataBlock colony, DataBlock system)
-    {
-        DataBlock campaign = Data.AddData(colony, "ActionConColony", DefLibrary);
+        DataBlock campaign = Data.AddData(colony, "ActionConstruction", DefLibrary);
 
         Data.AddData(campaign, "Priority", 0, DefLibrary);
 
@@ -83,9 +96,9 @@ public partial class MapGenerator : Node
         Data.AddData(campaign, "Overflow", 0, DefLibrary);
     }
 
-    private void GenerateNewMapSave_Players_StartingColony_ConShipyard(DataBlock colony, DataBlock system)
+    private void GenerateNewMapSave_Players_StartingColony_Shipbuilding(DataBlock colony, DataBlock system)
     {
-        DataBlock campaign = Data.AddData(colony, "ActionConShipyard", DefLibrary);
+        DataBlock campaign = Data.AddData(colony, "ActionShipbuilding", DefLibrary);
 
         Data.AddData(campaign, "Priority", 0, DefLibrary);
 

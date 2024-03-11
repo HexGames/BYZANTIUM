@@ -51,23 +51,24 @@ public partial class TurnLoop : Node
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.Map.Data.Players[playerIdx];
-            player.ResourcesPerTurn = new ResourcesWrapperTemp(player.Resources);
+            player.ResourcesPerTurn = new ResourcesWrapper(player.Resources);
 
             for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
             {
                 SectorData sector = player.Sectors[sectorIdx];
-                sector.ResourcesPerTurn = new ResourcesWrapperTemp(sector.Resources);
+                sector.Resources_PerTurn = new ResourcesWrapper(sector.Resources);
                 //sector.BudgetPerTurn = new BudgetWrapper(sector.Budget);
 
                 for (int systemIdx = 0; systemIdx < sector.Systems.Count; systemIdx++)
                 {
                     SystemData system = sector.Systems[sectorIdx];
-                    system.ResourcesPerTurn = new ResourcesWrapperTemp(system.Resources);
+                    system.Resources_PerTurn = new ResourcesWrapper(system.Resources);
 
                     for (int colonyIdx = 0; colonyIdx < sector.Systems.Count; colonyIdx++)
                     {
                         ColonyData colony = system.Colonies[colonyIdx];
-                        colony.ResourcesPerTurn = new ResourcesWrapperTemp(colony.Resources);
+                        colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources);
+                        colony.Jobs_PerTurn = new JobsWrapper(colony.Jobs, Game.Def);
                         //colony.ActionsConPerTurn = new ActionsConWrapper(colony.ActionConBuildings, colony.ActionConColony, colony.ActionConShipyard, sector.ActionConTreasury);
                     }
                 }

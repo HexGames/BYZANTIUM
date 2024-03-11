@@ -50,8 +50,8 @@ public partial class UIBudget : Control
             // projects
             //Array<DataBlock> projects = production.GetSubs("Project");
 
-            List<BudgetWrapper.Info> projects = new List<BudgetWrapper.Info>();
-            BudgetWrapper.Info treasury = null;
+            //List<BudgetWrapper.Info> projects = new List<BudgetWrapper.Info>();
+            //BudgetWrapper.Info treasury = null;
             //projects.AddRange(sector.BudgetPerTurn.Items);
             //for (int idx = 0; idx < projects.Count; idx++)
             //{

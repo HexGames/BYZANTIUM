@@ -92,15 +92,28 @@ public partial class DataBlock : Resource
         return null;
     }
 
-    public Array<DataBlock> GetSubs(string type)
+    public Array<DataBlock> GetSubs(string type, bool startsWith = false)
     {
         Array<DataBlock> ret = new Array<DataBlock>();
 
-        for (int idx = 0; idx < Subs.Count; idx++)
+        if (startsWith)
         {
-            if (Subs[idx].Name == type)
+            for (int idx = 0; idx < Subs.Count; idx++)
             {
-                ret.Add(Subs[idx]);
+                if (Subs[idx].Name.StartsWith(type))
+                {
+                    ret.Add(Subs[idx]);
+                }
+            }
+        }
+        else
+        {
+            for (int idx = 0; idx < Subs.Count; idx++)
+            {
+                if (Subs[idx].Name == type)
+                {
+                    ret.Add(Subs[idx]);
+                }
             }
         }
 

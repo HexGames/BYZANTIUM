@@ -28,8 +28,9 @@ BacgroundMoonTexture = ExtResource("1_22vhd")
 Textures = {
 "Arid": ExtResource("6_adafn"),
 "Artic": ExtResource("11_3jefm"),
-"Asteroid_Belt": ExtResource("15_wmk4x"),
+"Asteroid_Field": ExtResource("15_wmk4x"),
 "Barren": ExtResource("3_p2unt"),
+"Continents": ExtResource("7_1o5nc"),
 "Desert": ExtResource("5_7xwgu"),
 "Frozen": ExtResource("12_kp02f"),
 "Gas_Giant": ExtResource("13_6j1v1"),
@@ -39,7 +40,6 @@ Textures = {
 "Outer_System": ExtResource("15_3o4q4"),
 "Star": ExtResource("1_gbqhk"),
 "Swamp": ExtResource("8_kkap6"),
-"Temperate": ExtResource("7_1o5nc"),
 "Terra": ExtResource("16_y836j"),
 "Toxic": ExtResource("4_idcnd"),
 "Vulcanic": ExtResource("2_60k7k")

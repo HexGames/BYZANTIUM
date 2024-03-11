@@ -37,7 +37,7 @@ public partial class PlayerData : Node
     public bool TurnFinished = false;
 
     // resources
-    public ResourcesWrapperTemp ResourcesPerTurn = null;
+    public ResourcesWrapper ResourcesPerTurn = null;
 
 
     //public ColonyData GetColony(string colony)

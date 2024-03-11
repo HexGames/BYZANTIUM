@@ -8,6 +8,8 @@ Def_SpecialResources
 		Hyperflux-8
 		Omega-1
 		Silicate-4
+		Brom-2
+		Carbon-6
 	}
 	Names Production
 	{
@@ -17,6 +19,8 @@ Def_SpecialResources
 		Tritonite
 		Hyperium
 		Tritanium
+		Basteel
+		Grogonite
 	}
 	Names Research
 	{
@@ -26,15 +30,8 @@ Def_SpecialResources
 		S-Plasma
 		N-Solid
 		L-Atoms
-	}
-	Names Growth
-	{
-		Zetan
-		Chrono
-		Polaros
-		Noxium
-		Melange
-		Exo
+		M-Fluid
+		P-Quarq
 	}
 	SpecialResource Energy_1
 	{

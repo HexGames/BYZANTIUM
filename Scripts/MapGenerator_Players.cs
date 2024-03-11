@@ -18,7 +18,7 @@ public partial class MapGenerator : Node
         //Data.AddData(resources, "Pops*Used", 16000, DefLibrary);
         //Data.AddData(resources, "Growth", 200, DefLibrary);
         //Data.AddData(resources, "Infrastructure", 0, DefLibrary);
-        //Data.AddData(resources, "Prod*Income", 0, DefLibrary);
+        //Data.AddData(resources, "Production*Income", 0, DefLibrary);
         //Data.AddData(resources, "PrivateIndustry", 0, DefLibrary);
 
         //Data.AddData(resources, "Energy", 0, DefLibrary);

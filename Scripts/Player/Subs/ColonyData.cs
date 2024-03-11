@@ -21,28 +21,31 @@ public partial class ColonyData : Node
     [Export]
     public DataBlock Resources = null;
     [Export]
+    public DataBlock Jobs = null;
+    [Export]
     public DataBlock Buildings = null;
     [Export]
     public DataBlock Support = null;
 
     [ExportCategory("ColonyData-Actions")]
     [Export]
-    public DataBlock ActionConBuildings = null;
+    public DataBlock ActionConstruction = null;
     [Export]
-    public DataBlock ActionConColony = null;
-    [Export]
-    public DataBlock ActionConShipyard = null;
+    public DataBlock ActionShipbuilding = null;
 
     [ExportCategory("ColonyData-Links")]
     [Export]
     public PlanetData Planet = null;
 
     // resources
-    public ResourcesWrapperTemp ResourcesPerTurn = null;
+    public ResourcesWrapper Resources_PerTurn = null;
+
+    // jobs
+    public JobsWrapper Jobs_PerTurn = null;
 
     // actions
     //public ActionsConWrapper ActionsConPerTurn = null;
 
     // actions
-    //public List<ActionColonyBuild> ActionsBuildPossible = new List<ActionColonyBuild>();
+    public List<ActionColonyConBuildings> ActionsConBuildingsPossible = new List<ActionColonyConBuildings>();
 }

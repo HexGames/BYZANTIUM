@@ -40,14 +40,14 @@ public partial class DefUIPlanets : Resource
         Textures.Add("Toxic", (Texture2D)GD.Load("res://Assets/Planets/Toxic.png"));
         Textures.Add("Desert", (Texture2D)GD.Load("res://Assets/Planets/Desert.png"));
         Textures.Add("Arid", (Texture2D)GD.Load("res://Assets/Planets/Arid.png"));
-        Textures.Add("Temperate", (Texture2D)GD.Load("res://Assets/Planets/Temperate.png"));
+        Textures.Add("Continents", (Texture2D)GD.Load("res://Assets/Planets/Temperate.png"));
         Textures.Add("Swamp", (Texture2D)GD.Load("res://Assets/Planets/Swamp.png"));
         Textures.Add("Jungle", (Texture2D)GD.Load("res://Assets/Planets/Jungle.png"));
         Textures.Add("Ocean", (Texture2D)GD.Load("res://Assets/Planets/Ocean.png"));
         Textures.Add("Artic", (Texture2D)GD.Load("res://Assets/Planets/Artic.png"));
         Textures.Add("Frozen", (Texture2D)GD.Load("res://Assets/Planets/Frozen.png"));
         Textures.Add("Gas_Giant", (Texture2D)GD.Load("res://Assets/Planets/GasGiant.png"));
-        Textures.Add("Asteroid_Belt", (Texture2D)GD.Load("res://Assets/Planets/AsteroidBelt.png"));
+        Textures.Add("Asteroid_Field", (Texture2D)GD.Load("res://Assets/Planets/AsteroidBelt.png"));
         Textures.Add("Outer_System", (Texture2D)GD.Load("res://Assets/Planets/OuterSystem.png"));
 
         Textures.Add("Terra", (Texture2D)GD.Load("res://Assets/Planets/Terra.png"));
