@@ -176,4 +176,22 @@ public partial class DefLibrary : Node
 
         return name;
     }
+
+    static public string GetIcon(string resource)
+    {
+        switch(resource)
+        {
+            case "Energy": return "Assets/UI/Symbols/Energy.png";
+            case "Minerals": return "Assets/UI/Symbols/Minerals.png";
+            case "Production": return "Assets/UI/Symbols/Prod.png";
+            case "Shipbuilding": return "Assets/UI/Symbols/Shipyard.png";
+            case "Trade": return "Assets/UI/Symbols/Trade.png";
+            case "TechPoints": return "Assets/UI/Symbols/Research.png";
+            case "CulturePoints": return "Assets/UI/Symbols/Culture.png";
+            case "Authority": return "Assets/UI/Symbols/Authority.png";
+            case "Influence": return "Assets/UI/Symbols/Influence.png";
+            case "BC": return "Assets/UI/Symbols/BC.png";
+        }
+        return "";
+    }
 }

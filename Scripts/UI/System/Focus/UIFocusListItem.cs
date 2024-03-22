@@ -1,14 +1,14 @@
 using Godot;
 using Godot.Collections;
-using System;
-using System.ComponentModel;
-using System.Threading.Tasks.Dataflow;
 
 //[Tool]
 public partial class UIFocusListItem : Control
 {
     // is beeing duplicated
     private Panel BG = null;
+    private UITooltipTrigger ValueTooltip = null;
+    private string ValueTooltip_Row_1_Original = null;
+    private string ValueTooltip_Row_1_Right_Original = null;
     private Control Growing = null;
     private Control Declining = null;
     private Array<Control> Pips = new Array<Control>();
@@ -26,6 +26,13 @@ public partial class UIFocusListItem : Control
         Game = GetNode<Game>("/root/Main/Game");
 
         BG = GetNode<Panel>("BG");
+
+        if (HasNode("BG/Row/Job/UITooltipTrigger"))
+        {
+            ValueTooltip = GetNode<UITooltipTrigger>("BG/Row/Job/UITooltipTrigger");
+            ValueTooltip_Row_1_Original = ValueTooltip.Row_1;
+            ValueTooltip_Row_1_Right_Original = ValueTooltip.Row_1_Right;
+        }
         Growing = GetNode<Control>("BG/Row/Change/Growing");
         Declining = GetNode<Control>("BG/Row/Change/Declining");
 
@@ -45,22 +52,20 @@ public partial class UIFocusListItem : Control
     }
 
     private RandomNumberGenerator RNG = new RandomNumberGenerator();
-    public bool Refresh(JobsWrapper.Info jobInfo)
+    public void Refresh(JobsWrapper.Info jobInfo)
     {
-        if (jobInfo.FocusValue > 0)
+        if (jobInfo.Focused)
         {
-            Refresh(jobInfo.FocusValue, jobInfo.FocusChange);
+            Refresh(jobInfo.FocusValue, jobInfo.FocusChange, jobInfo.Pops, jobInfo.GetMainRes());
             Visible = true;
-            return true;
         }
         else
         {
             Visible = false;
-            return false;
         }
     }
 
-    public void Refresh(int value, int change)
+    public void Refresh(int value, int change, int pops = 0, int res = 0)
     {
         int pips = value / 100;
         for (int idx = 0; idx < Pips.Count; idx++)
@@ -101,5 +106,11 @@ public partial class UIFocusListItem : Control
 
         Growing.Visible = change > 0;
         Declining.Visible = change < 0;
+
+        if (ValueTooltip != null)
+        {
+            ValueTooltip.Row_1 = ValueTooltip_Row_1_Original.Replace("$value", Helper.ResValueToString(pops, 1000));
+            ValueTooltip.Row_1_Right = ValueTooltip_Row_1_Right_Original.Replace("$value", Helper.ResValueToString(res));
+        }
     }
 }

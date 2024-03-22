@@ -1,0 +1,174 @@
+[gd_scene load_steps=6 format=3 uid="uid://0svrlyhb7gcc"]
+
+[ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_itbsh"]
+[ext_resource type="Script" path="res://Scripts/UI/Economy/UIEconomyInfoItem.cs" id="2_7ig82"]
+[ext_resource type="Script" path="res://Scripts/UI/Economy/UIEconomyBar.cs" id="2_svv2k"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="3_8htuy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_johyr"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0.25098)
+
+[node name="Economy" type="PanelContainer" node_paths=PackedStringArray("BC", "Trade", "Research", "Culture", "Authority", "Influence")]
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1048.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_itbsh")
+script = ExtResource("2_svv2k")
+BC = NodePath("SecondRow/BC")
+Trade = NodePath("SecondRow/Trade")
+Research = NodePath("SecondRow/Research")
+Culture = NodePath("SecondRow/Culture")
+Authority = NodePath("SecondRow/Authority")
+Influence = NodePath("SecondRow/Influence")
+
+[node name="SecondRow" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+alignment = 1
+
+[node name="BC" type="Panel" parent="SecondRow"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme = ExtResource("1_itbsh")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("2_7ig82")
+
+[node name="Value" type="RichTextLabel" parent="SecondRow/BC"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_8htuy")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/BC.png[/img][/b][/center]"
+
+[node name="Gap" type="Control" parent="SecondRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Trade" type="Panel" parent="SecondRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("1_itbsh")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("2_7ig82")
+
+[node name="Value" type="RichTextLabel" parent="SecondRow/Trade"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_8htuy")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Trade.png[/img][/b][/center]"
+
+[node name="Research" type="Panel" parent="SecondRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("1_itbsh")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("2_7ig82")
+
+[node name="Value" type="RichTextLabel" parent="SecondRow/Research"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_8htuy")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Research.png[/img][/b][/center]"
+
+[node name="Culture" type="Panel" parent="SecondRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("1_itbsh")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("2_7ig82")
+
+[node name="Value" type="RichTextLabel" parent="SecondRow/Culture"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_8htuy")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Culture.png[/img][/b][/center]"
+
+[node name="Authority" type="Panel" parent="SecondRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("1_itbsh")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("2_7ig82")
+
+[node name="Value" type="RichTextLabel" parent="SecondRow/Authority"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_8htuy")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Authority.png[/img][/b][/center]"
+
+[node name="Influence" type="Panel" parent="SecondRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("1_itbsh")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("2_7ig82")
+
+[node name="Value" type="RichTextLabel" parent="SecondRow/Influence"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_8htuy")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Influence.png[/img][/b][/center]"

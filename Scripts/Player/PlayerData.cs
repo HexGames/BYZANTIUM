@@ -37,8 +37,22 @@ public partial class PlayerData : Node
     public bool TurnFinished = false;
 
     // resources
-    public ResourcesWrapper ResourcesPerTurn = null;
+    public ResourcesWrapper Resources_PerTurn = null;
 
+
+    // --------------------------------------------------------------------------------------------
+    public SectorData GetSector(string sector)
+    {
+        for (int idx = 0; idx < Sectors.Count; idx++)
+        {
+            if (Sectors[idx].SectorName == sector)
+            {
+                return Sectors[idx];
+            }
+        }
+
+        return null;
+    }
 
     //public ColonyData GetColony(string colony)
     //{

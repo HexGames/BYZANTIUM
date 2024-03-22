@@ -16,6 +16,9 @@ public partial class TurnLoop : Node
         // update resources
         EndTurn_Resources();
 
+        // update actions
+        EndTurn_NewActions();
+
         // update UI
         Game.GalaxyUI.Refresh();
 
@@ -68,7 +71,7 @@ public partial class TurnLoop : Node
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.Map.Data.Players[playerIdx];
-            player.ResourcesPerTurn.Refresh();
+            player.Resources_PerTurn.Refresh();
 
             for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
             {
@@ -87,11 +90,11 @@ public partial class TurnLoop : Node
                         colony.Resources_PerTurn.Refresh();
                         //colony.ActionsConPerTurn.Refresh();
 
-                        DataBlock baseGrowth = colony.Resources.GetSub("Growth");
-                        colony.Resources_PerTurn.Add(baseGrowth.Name, baseGrowth.ValueI);
+                        DataBlock baseGrowth = colony.Resources.GetSub("Growth*Income");
+                        colony.Resources_PerTurn.AddIncome(baseGrowth.Name, baseGrowth.ValueI);
 
                         DataBlock pops = colony.Resources.GetSub("Pops*Used");
-                        colony.Resources_PerTurn.Add("BuildingSlots", pops.ValueI / 1000);
+                        colony.Resources_PerTurn.AddTotal("BuildingSlots", pops.ValueI / 1000);
 
                         colony.Jobs_PerTurn.Refresh(pops.ValueI);
 
@@ -113,20 +116,16 @@ public partial class TurnLoop : Node
                         }
                         colony.Resources_PerTurn.Add(colony.Jobs_PerTurn);
                         //colony.Resources_PerTurn.Use("BuildingSlots", totalBuildings);
-                        colony.Resources_PerTurn.AddIncome();
-                        colony.Resources_PerTurn.Save();
+                        colony.Resources_PerTurn.ProcessIncome();
                         system.Resources_PerTurn.Add(colony.Resources_PerTurn);
                     }
-                    system.Resources_PerTurn.AddIncome();
-                    system.Resources_PerTurn.Save();
+                    system.Resources_PerTurn.ProcessIncome();
                     sector.Resources_PerTurn.Add(system.Resources_PerTurn);
                 }
-                sector.Resources_PerTurn.AddIncome();
-                sector.Resources_PerTurn.Save();
-                player.ResourcesPerTurn.Add(sector.Resources_PerTurn);
+                sector.Resources_PerTurn.ProcessIncome();
+                player.Resources_PerTurn.Add(sector.Resources_PerTurn);
             }
-            player.ResourcesPerTurn.AddIncome();
-            player.ResourcesPerTurn.Save();
+            player.Resources_PerTurn.ProcessIncome();
         }
         /*for (int colonyIdx = 0; colonyIdx < player.Colonies.Count; colonyIdx++)
         {
@@ -164,5 +163,20 @@ public partial class TurnLoop : Node
         //
         //    playerRes.Save();
         //}
+    }
+
+    private void EndTurn_NewActions()
+    {
+        for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.Map.Data.Players[playerIdx];
+
+            for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
+            {
+                SectorData sector = player.Sectors[sectorIdx];
+
+                ActionBuild.RefreshAvailableBuildings(sector, Game.Def);
+            }
+        }
     }
 }

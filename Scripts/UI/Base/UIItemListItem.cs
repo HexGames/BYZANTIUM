@@ -1,6 +1,4 @@
 using Godot;
-using Godot.Collections;
-using System.ComponentModel;
 
 //[Tool]
 public partial class UIItemListItem : Control
@@ -27,8 +25,8 @@ public partial class UIItemListItem : Control
 
     public void Refresh(DataBlock data)
     {
-        Property.Text = data.Name;
-        Value.Text = data.ValueToString();
+        Property.Text = data.ToUIName();
+        Value.Text = data.ToUIValue();
 
         string tooltip = data.ToToolTipString();
         BG.TooltipText = tooltip;

@@ -1,13 +1,9 @@
 using Godot;
-using Godot.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Drawing;
 
 // Generated
 public partial class DataBlock : Resource
 {
-    public Godot.Color ToUIColor()
+    /*public Godot.Color ToUIColor()
     {
         switch (Name)
         {
@@ -47,9 +43,9 @@ public partial class DataBlock : Resource
         }
 
         return new Godot.Color("232323");
-    }
+    }*/
 
-    public int ToUIRow()
+    /*public int ToUIRow()
     {
         if (Name.StartsWith("Link")) return -1;
 
@@ -93,9 +89,25 @@ public partial class DataBlock : Resource
             case "City_Biodomes": return 11;
         }
         return 0;
+    }*/
+
+    public bool ToUIShow()
+    {
+        if (Name.StartsWith("Link")) return false;
+        return true;
     }
 
-    public string ToUIString()
+    public string ToUIName()
+    {
+        //switch (Name)
+        //{
+        //    case "Size": return "Size";
+        //    case "Temperature": return "Temperature";
+        //}
+
+        return Name.Replace('_', ' ');
+    }
+    public string ToUIValue()
     {
         switch (Name)
         {
@@ -103,15 +115,12 @@ public partial class DataBlock : Resource
                 {
                     switch (ValueI)
                     {
-                        case 1: return "Size: Very Small";
-                        case 2: return "Size: Small";
-                        case 3: return "Size: Below Average";
-                        case 4: return "Size: Average Size";
-                        case 5: return "Size: Above Average";
-                        case 6: return "Size: Large";
-                        case 7: return "Size: Very Large";
-                        case 8: return "Size: Huge";
-                        case 9: return "Size: Giant";
+                        case 1: return "Small";
+                        case 2: return "Average";
+                        case 3: return "Large";
+                        case 4: return "Small Giant";
+                        case 5: return "Giant";
+                        case 6: return "Supergiant";
                     }
                     break;
                 }
@@ -119,34 +128,17 @@ public partial class DataBlock : Resource
                 {
                     switch (ValueI)
                     {
-                        case 1: return "Temp: Frozen";
-                        case 2: return "Temp: Cold";
-                        case 3: return "Temp: Normal";
-                        case 4: return "Temp: Hot";
-                        case 5: return "Temp: Molten";
-                    }
-                    break;
-                }
-            case "Radiation":
-                {
-                    switch (ValueI)
-                    {
-                        case 1: return "Low Radiation";
-                        case 2: return "High Radiation";
+                        case 1: return "Frozen";
+                        case 2: return "Cold";
+                        case 3: return "Normal";
+                        case 4: return "Hot";
+                        case 5: return "Molten";
                     }
                     break;
                 }
         }
 
-        Data.BaseType baseType = (Data.BaseType)(Type/10000);
-        switch (baseType)
-        {
-            case Data.BaseType.NONE: return Name.Replace('_', ' ');
-            case Data.BaseType.INT: return Name.Replace('_',' ') + ": " + ValueI.ToString();
-            case Data.BaseType.STRING: return Name.Replace('_', ' ') + ": " + ValueS.Replace('_', ' ');
-        }
-
-        return "";
+        return ValueS.Replace('_', ' ');
     }
 
     public string ToToolTipString()
@@ -154,16 +146,16 @@ public partial class DataBlock : Resource
         string text = "";
         if (Subs.Count > 0)
         {
-            text += Name + ":" + "\n";
+            text += ToUIName() + ":" + "\n";
 
             for (int idx = 0; idx < Subs.Count; idx++)
             {
-                text += "  " + Subs[idx].Name.PadRight(20) + Subs[idx].ValueToString().PadLeft(10) + "\n";
+                text += "  " + Subs[idx].ToUIName().PadRight(20) + Subs[idx].ToUIValue().PadLeft(10) + "\n";
             }
         }
         else
         {
-            text += (Name + ":").PadRight(20) + ValueToString().PadLeft(12) + "\n";
+            text += (ToUIName() + ":").PadRight(20) + ToUIValue().PadLeft(12) + "\n";
         }
 
         return text;
@@ -179,7 +171,7 @@ public partial class DataBlock : Resource
             case "Authoriy": return "A";
             case "Influence": return "I";
             case "TechPoints": return "TP";
-            case "CivicPoints": return "CP";
+            case "CulturePoints": return "CP";
             case "Pops": return "Pops";
         }
 

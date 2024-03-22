@@ -24,6 +24,21 @@ public partial class StarData : Node
     [Export]
     public SystemData System = null;
 
+
+    // --------------------------------------------------------------------------------------------
+    public PlanetData GetPlanet(string planet)
+    {
+        for (int idx = 0; idx < Planets.Count; idx++)
+        {
+            if (Planets[idx].PlanetName == planet)
+            {
+                return Planets[idx];
+            }
+        }
+
+        return null;
+    }
+
     //[Export]
     //public Array<PawnData> PawnsInLocation = new Array<PawnData>();
 
@@ -50,5 +65,5 @@ public partial class StarData : Node
     //        }
     //    }
     //    return players;
-    //}
+    //}    
 }

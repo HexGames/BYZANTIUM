@@ -1,12 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://xuydwgov7vak"]
+[gd_scene load_steps=20 format=3 uid="uid://xuydwgov7vak"]
 
+[ext_resource type="Script" path="res://Scripts/UI/Build/UIBuild.cs" id="1_oquml"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_rihns"]
 [ext_resource type="Texture2D" uid="uid://cet6pwryuqcts" path="res://Assets/UI/white.png" id="2_15utd"]
 [ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="3_nc8ym"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="4_4xdln"]
 [ext_resource type="Theme" uid="uid://31g04ftbqfmt" path="res://UITheme/BuildUI.tres" id="4_en77o"]
+[ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="4_fpoqf"]
 [ext_resource type="Texture2D" uid="uid://b0hf203g0lcrk" path="res://Assets/UI/Buildings/Factory.png" id="5_wwsvj"]
-[ext_resource type="Texture2D" uid="uid://ckj32ifpuj24h" path="res://Assets/UI/Buildings/Mine.png" id="6_3ouav"]
+[ext_resource type="Script" path="res://Scripts/UI/Build/UIBuildBuilding.cs" id="6_qb7jp"]
+[ext_resource type="Script" path="res://Scripts/UI/Build/UIBuildLocation.cs" id="8_2luna"]
+[ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="9_g6yrd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uqbc"]
 bg_color = Color(0, 0, 0, 0.501961)
@@ -21,21 +25,58 @@ skew = Vector2(0.32, 0)
 expand_margin_left = 8.0
 expand_margin_right = 8.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uenyh"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0.752941)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.752941, 0.188235, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fta2"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.752941)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
 [sub_resource type="Gradient" id="Gradient_e1uc4"]
-colors = PackedColorArray(0.246779, 0.141749, 0.0282861, 1, 0.527057, 0.325129, 0.105715, 1)
+colors = PackedColorArray(0.0901961, 0.0901961, 0.0901961, 1, 0.313726, 0.313726, 0.313726, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0vtgy"]
 gradient = SubResource("Gradient_e1uc4")
-fill_from = Vector2(1, 1)
-fill_to = Vector2(0, 0)
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
 
-[node name="UiBuild" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afwpv"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="UiBuild" type="Control" node_paths=PackedStringArray("Buildings", "Unavailable", "Locations", "BuildingSelected", "BuildingName", "Cost", "Effects", "Description", "BuildingNone")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oquml")
+Buildings = [NodePath("PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1")]
+Unavailable = [NodePath("PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1")]
+Locations = [NodePath("PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1")]
+BuildingSelected = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected")
+BuildingName = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Picture/Title2")
+Cost = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Cost")
+Effects = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Benefits")
+Description = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Description")
+BuildingNone = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingNone")
 
 [node name="TransparentBg" type="Panel" parent="."]
 layout_mode = 1
@@ -56,33 +97,36 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_15utd")
 
-[node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(1268, 800)
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -390.0
+offset_top = -438.0
+offset_right = 390.0
+offset_bottom = 438.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_fpoqf")
 
-[node name="TitleBar" type="Control" parent="Panel"]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
+[node name="Vertical" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
 
-[node name="Title" type="Label" parent="Panel/TitleBar"]
+[node name="Top" type="Control" parent="PanelContainer/Vertical"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/Vertical/Top"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
+offset_left = -111.5
+offset_top = -15.0
+offset_right = 111.5
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_nc8ym")
@@ -94,21 +138,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 24.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Gap" type="Control" parent="PanelContainer/Vertical"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Vertical"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
 alignment = 2
 
-[node name="BuildingList" type="Control" parent="Panel/HBoxContainer"]
+[node name="BuildingList" type="Control" parent="PanelContainer/Vertical/HBoxContainer"]
+custom_minimum_size = Vector2(448, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/HBoxContainer/BuildingList"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -119,150 +163,174 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/BuildingList/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="Item_1" type="Control" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+[node name="Available" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -8.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Building_1" type="HBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available"]
+layout_mode = 2
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"Grey"
+script = ExtResource("6_qb7jp")
 
-[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_1/Panel"]
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"GreyC"
+
+[node name="Button" type="Button" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container"]
+layout_mode = 2
+theme = ExtResource("9_g6yrd")
+theme_type_variation = &"Build"
+
+[node name="Panel" type="Panel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uenyh")
+
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Benefit" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Container/VBoxContainer"]
 custom_minimum_size = Vector2(0, 26)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 0.8
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = -12.0
-offset_right = -16.0
-offset_bottom = -12.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("4_4xdln")
 theme_type_variation = &"Title"
 bbcode_enabled = true
-text = "[left]$Name[/left]"
+text = "[right]$value[/right]"
+fit_content = true
 
-[node name="Benefit" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_1/Panel"]
+[node name="Title" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Container/VBoxContainer/Benefit"]
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = -25.0
-offset_right = -16.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("4_4xdln")
 theme_type_variation = &"Title"
 bbcode_enabled = true
-text = "[right]0-20%[img=24x24]Assets/UI/Symbols/Research.png[/img][/right]"
+text = "[left]$name[/left]"
 
-[node name="Turns" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_1/Panel"]
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Container/VBoxContainer"]
 custom_minimum_size = Vector2(0, 22)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("4_4xdln")
 bbcode_enabled = true
 text = "[center]$turns Turns[/center]"
 
-[node name="Item_2" type="Control" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+[node name="Gap" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1"]
+custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -8.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Unavailable" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
 
-[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_2/Panel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.501961, 0.501961, 0.501961, 1)
+bbcode_enabled = true
+text = "[center]Unavailable:[/center]"
+fit_content = true
+
+[node name="Unavailable_1" type="HBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable"]
+layout_mode = 2
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"Grey"
+script = ExtResource("6_qb7jp")
+
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"GreyC"
+
+[node name="Panel" type="Panel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5fta2")
+
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Benefit" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container/Container/VBoxContainer"]
 custom_minimum_size = Vector2(0, 26)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 0.8
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = -12.0
-offset_right = -16.0
-offset_bottom = -12.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("4_4xdln")
 theme_type_variation = &"Title"
+theme_override_colors/default_color = Color(0.501961, 0.501961, 0.501961, 1)
 bbcode_enabled = true
-text = "[left]$Name[/left]"
+text = "[right]$value[/right]"
+fit_content = true
 
-[node name="Benefit" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_2/Panel"]
+[node name="Title" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container/Container/VBoxContainer/Benefit"]
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = -25.0
-offset_right = -16.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("4_4xdln")
 theme_type_variation = &"Title"
+theme_override_colors/default_color = Color(0.501961, 0.501961, 0.501961, 1)
 bbcode_enabled = true
-text = "[right]0-20%[img=24x24]Assets/UI/Symbols/MineralsO.png[/img][/right]"
+text = "[left]$name[/left]"
 
-[node name="Turns" type="RichTextLabel" parent="Panel/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Item_2/Panel"]
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container/Container/VBoxContainer"]
 custom_minimum_size = Vector2(0, 22)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("4_4xdln")
+theme_override_colors/default_color = Color(0.501961, 0.501961, 0.501961, 1)
 bbcode_enabled = true
 text = "[center]$turns Turns[/center]"
 
-[node name="PlanetList" type="Control" parent="Panel/HBoxContainer"]
+[node name="Gap" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="PlanetList" type="Control" parent="PanelContainer/Vertical/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(352, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/PlanetList"]
+visible = false
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 1
 anchors_preset = 14
@@ -276,8 +344,7 @@ theme_override_colors/default_color = Color(0.501961, 0.501961, 0.501961, 1)
 bbcode_enabled = true
 text = "[center]Select a project first...[/center]"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/HBoxContainer/PlanetList"]
-visible = false
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -288,212 +355,100 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/PlanetList/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="Location_1" type="Control" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+[node name="Location_1" type="HBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"Grey"
+script = ExtResource("8_2luna")
 
-[node name="Panel" type="Panel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Panel"]
-custom_minimum_size = Vector2(0, 26)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 0.8
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_right = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_4xdln")
-theme_type_variation = &"Title"
-bbcode_enabled = true
-text = "[left]$Location[/left]"
-
-[node name="Benefit" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Panel"]
-custom_minimum_size = Vector2(0, 26)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_right = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_4xdln")
-theme_type_variation = &"Title"
-bbcode_enabled = true
-text = "[right]20%[img=24x24]Assets/UI/Symbols/Research.png[/img][/right]"
-
-[node name="Turns" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Panel"]
-visible = false
-custom_minimum_size = Vector2(0, 22)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_4xdln")
-bbcode_enabled = true
-text = "[center]$turns Turns[/center]"
-
-[node name="Location_2" type="Control" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"GreyC"
 
-[node name="Panel" type="Panel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_2/Panel"]
-custom_minimum_size = Vector2(0, 26)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 0.8
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_right = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_4xdln")
-theme_type_variation = &"Title"
-bbcode_enabled = true
-text = "[left]$Location[/left]"
-
-[node name="Benefit" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_2/Panel"]
-custom_minimum_size = Vector2(0, 26)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_right = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_4xdln")
-theme_type_variation = &"Title"
-bbcode_enabled = true
-text = "[right]20%[img=24x24]Assets/UI/Symbols/Research.png[/img][/right]"
-
-[node name="Turns" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_2/Panel"]
-visible = false
-custom_minimum_size = Vector2(0, 22)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_4xdln")
-bbcode_enabled = true
-text = "[center]$turns Turns[/center]"
-
-[node name="Location_3" type="Control" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+[node name="Button" type="Button" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container"]
 layout_mode = 2
+theme = ExtResource("9_g6yrd")
+theme_type_variation = &"Build"
 
-[node name="Panel" type="Panel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_3/Panel"]
-custom_minimum_size = Vector2(0, 26)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 0.8
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_right = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_4xdln")
-theme_type_variation = &"Title"
-bbcode_enabled = true
-text = "[left]$Location[/left]"
-
-[node name="Benefit" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_3/Panel"]
-custom_minimum_size = Vector2(0, 26)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_right = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_4xdln")
-theme_type_variation = &"Title"
-bbcode_enabled = true
-text = "[right]10%[img=24x24]Assets/UI/Symbols/Research.png[/img][/right]"
-
-[node name="Turns" type="RichTextLabel" parent="Panel/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_3/Panel"]
+[node name="Panel" type="Panel" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container"]
 visible = false
-custom_minimum_size = Vector2(0, 22)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_4xdln")
-bbcode_enabled = true
-text = "[center]$turns Turns[/center]"
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uenyh")
 
-[node name="Gap_2" type="Control" parent="Panel/HBoxContainer"]
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Location" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container/Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]$location[/center]"
+fit_content = true
+
+[node name="Gap" type="Control" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1"]
 custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 
-[node name="BuildingInfo" type="Control" parent="Panel/HBoxContainer"]
+[node name="Gap_2" type="Control" parent="PanelContainer/Vertical/HBoxContainer"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="BuildingInfo" type="Control" parent="PanelContainer/Vertical/HBoxContainer"]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/BuildingInfo"]
+[node name="BuildingNone" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo"]
+custom_minimum_size = Vector2(304, 180)
+layout_mode = 1
+offset_left = 8.0
+offset_right = 8.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingNone"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0vtgy")
+
+[node name="Title" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingNone"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]NO BUILDING SELECTED[/center]"
+fit_content = true
+
+[node name="BuildingSelected" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -504,11 +459,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Picture" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="Picture" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 custom_minimum_size = Vector2(280, 180)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Picture"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -517,7 +472,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_0vtgy")
 
-[node name="PrimaryTitle" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture"]
+[node name="Title" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Picture"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -532,134 +488,46 @@ text = "Factories"
 vertical_alignment = 1
 uppercase = true
 
-[node name="Single" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture"]
+[node name="Icon" type="TextureRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Picture"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PrimaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Single"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_wwsvj")
 expand_mode = 1
 
-[node name="Dual" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture"]
+[node name="Title2" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Picture"]
+custom_minimum_size = Vector2(0, 26)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="PrimaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
-custom_minimum_size = Vector2(112, 112)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.4
-anchor_right = 0.3
-anchor_bottom = 0.4
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_wwsvj")
-expand_mode = 1
-
-[node name="SecondaryIcon" type="TextureRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
-custom_minimum_size = Vector2(112, 112)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.7
-anchor_top = 0.6
-anchor_right = 0.7
-anchor_bottom = 0.6
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_3ouav")
-expand_mode = 1
-
-[node name="SecondaryName" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = -32.0
-offset_right = -8.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("4_en77o")
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
 theme_type_variation = &"Title"
-text = "Deuterium Extractors"
-horizontal_alignment = 2
-vertical_alignment = 2
-uppercase = true
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]$name[/center]"
+fit_content = true
 
-[node name="Plus_BG_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
-visible = false
-custom_minimum_size = Vector2(30, 12)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.6
-anchor_right = 0.5
-anchor_bottom = 0.6
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.156863, 0.0901961, 0.0431373, 1)
-
-[node name="Plus_BG_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
-visible = false
-custom_minimum_size = Vector2(12, 30)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.6
-anchor_right = 0.5
-anchor_bottom = 0.6
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.156863, 0.0901961, 0.0431373, 1)
-
-[node name="Plus_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
-custom_minimum_size = Vector2(24, 6)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.6
-anchor_right = 0.5
-anchor_bottom = 0.6
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Plus_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Picture/Dual"]
-custom_minimum_size = Vector2(6, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.6
-anchor_right = 0.5
-anchor_bottom = 0.6
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Gap_1" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="Gap_1" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="CostSubtitle" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="CostSubtitle" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("3_nc8ym")
@@ -667,99 +535,89 @@ text = "Cost:
 "
 vertical_alignment = 1
 
-[node name="Line_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="Line_1" type="ColorRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(1, 0.25098, 0, 0.25098)
 
-[node name="GapSmall_1" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="GapSmall_1" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="Cost" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="Cost" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("3_nc8ym")
-text = "600 Minerals"
-vertical_alignment = 1
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[right]$value[img=24x24]Assets/UI/Symbols/Prod.png[/img][/right]"
+fit_content = true
 
-[node name="Line_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="Line_2" type="ColorRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0.501961, 0.501961, 0.501961, 0.25098)
 
-[node name="Gap_2" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="Gap_2" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="BonusesSubtitle" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="BonusesSubtitle" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("3_nc8ym")
 text = "Effect:"
 vertical_alignment = 1
 
-[node name="Line_3" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="Line_3" type="ColorRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(1, 0.25098, 0, 0.25098)
 
-[node name="GapSmall_2" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="GapSmall_2" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="Bonuses" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="Benefits" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("3_nc8ym")
-text = "+40 Energy production
-"
-vertical_alignment = 1
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[right]$effects[/right]"
+fit_content = true
 
-[node name="Line_4" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="Line_4" type="ColorRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0.501961, 0.501961, 0.501961, 0.25098)
 
-[node name="Gap_3" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="Gap_3" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="Description" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
-custom_minimum_size = Vector2(128, 128)
+[node name="Description" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
 layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("3_nc8ym")
-text = "A power plant that uses terrestial resources like water, wind and solar for energy generation.
-"
-autowrap_mode = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[left]$description[/left]"
+fit_content = true
 
-[node name="Bottom" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer"]
+[node name="Bottom" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 alignment = 2
 
-[node name="Line_1" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+[node name="Line_1" type="ColorRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom"]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0.501961, 0.501961, 0.501961, 0.25098)
 
-[node name="ProjectSizeTitle" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+[node name="ProjectSizeTitle" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("3_nc8ym")
 text = "Project size"
 vertical_alignment = 1
 
-[node name="ProjectSizeTurns" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer/ProjectSizeTitle"]
+[node name="ProjectSizeTurns" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom/ProjectSizeTitle"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -769,11 +627,11 @@ grow_vertical = 2
 text = "7 turns"
 horizontal_alignment = 2
 
-[node name="ProjectSizeSliderBg" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+[node name="ProjectSizeSliderBg" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="ProjectSizeSlider" type="HSlider" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer/ProjectSizeSliderBg"]
+[node name="ProjectSizeSlider" type="HSlider" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom/ProjectSizeSliderBg"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -792,28 +650,116 @@ scrollable = false
 tick_count = 3
 ticks_on_borders = true
 
-[node name="Quantity" type="Label" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+[node name="Quantity" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom"]
 layout_mode = 2
 theme = ExtResource("4_en77o")
 theme_override_font_sizes/font_size = 20
 text = "x200"
 horizontal_alignment = 1
 
-[node name="GapSmall_2" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+[node name="GapSmall_2" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom"]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="Line_2" type="ColorRect" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
+[node name="Bottom" type="Control" parent="PanelContainer/Vertical"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PanelContainer/Vertical/Bottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_afwpv")
+
+[node name="Line_2" type="ColorRect" parent="PanelContainer/Vertical/Bottom"]
+visible = false
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+offset_right = 1136.0
+offset_bottom = 2.0
+color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/Bottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Line_1" type="ColorRect" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0.501961, 0.501961, 0.501961, 0.25098)
 
-[node name="Buttons" type="Control" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+[node name="ProjectSizeTitle" type="Label" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_nc8ym")
+text = "Project size"
+vertical_alignment = 1
+
+[node name="ProjectSizeTurns" type="Label" parent="PanelContainer/Vertical/Bottom/VBoxContainer/ProjectSizeTitle"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "7 turns"
+horizontal_alignment = 2
+
+[node name="ProjectSizeSliderBg" type="Control" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="BuildBtn" type="Button" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(96, 32)
+[node name="ProjectSizeSlider" type="HSlider" parent="PanelContainer/Vertical/Bottom/VBoxContainer/ProjectSizeSliderBg"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_en77o")
+min_value = 4.0
+max_value = 10.0
+step = 3.0
+value = 7.0
+rounded = true
+scrollable = false
+tick_count = 3
+ticks_on_borders = true
+
+[node name="Quantity" type="Label" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_en77o")
+theme_override_font_sizes/font_size = 20
+text = "x200"
+horizontal_alignment = 1
+
+[node name="GapSmall_2" type="Control" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Buttons" type="Control" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="BuildBtn" type="Button" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75
@@ -822,10 +768,50 @@ anchor_right = 0.75
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "BUILD"
+theme = ExtResource("9_g6yrd")
 
-[node name="CancelBtn" type="Button" parent="Panel/HBoxContainer/BuildingInfo/VBoxContainer/Bottom/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(96, 32)
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/BuildBtn"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]BUILD[/center]"
+fit_content = true
+
+[node name="QueueBtn" type="Button" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_g6yrd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/QueueBtn"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]ADD TO QUEUE[/center]"
+fit_content = true
+
+[node name="CancelBtn" type="Button" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25
@@ -834,4 +820,22 @@ anchor_right = 0.25
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "CANCEL"
+theme = ExtResource("9_g6yrd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/CancelBtn"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]CANCEL[/center]"
+fit_content = true
+
+[connection signal="pressed" from="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Button" to="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1" method="OnSelect"]
+[connection signal="pressed" from="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container/Button" to="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1" method="OnSelect"]
+[connection signal="pressed" from="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/CancelBtn" to="." method="OnCancel"]

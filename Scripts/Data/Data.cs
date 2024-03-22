@@ -131,6 +131,20 @@ public partial class Data
     }
 
     // ----------------------------------------------------------------------------------------------------
+    static public void ChangeDataType(DataBlock data, string name, DefLibrary df)
+    {
+        Data.BaseType baseType = (Data.BaseType)(data.Type/10000);
+        switch (baseType)
+        {
+            case BaseType.NONE: data.Type = df.GetDBType("_" + name, BaseType.STRING); break;
+            case BaseType.INT: data.Type = df.GetDBType("i_" + name, BaseType.STRING); break;
+            case BaseType.STRING: data.Type = df.GetDBType("s_" + name, BaseType.STRING); break;
+        }
+
+        data.Name = name;
+    }
+
+    // ----------------------------------------------------------------------------------------------------
     static public DataBlock LoadFile(string fileName, DefLibrary defLib)
     {
         using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Read);

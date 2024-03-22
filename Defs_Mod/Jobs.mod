@@ -49,14 +49,14 @@ Def_Jobs
 		Benefit 
 		{
 			Energy*Used 10
-			TechPoints 50
+			TechPoints*Income 50
 		}
 	}
 	Job CulturePoints
 	{
 		Benefit 
 		{
-			CulturePoints 50
+			CulturePoints*Income 50
 		}
 	}
 	Job Authority
@@ -77,7 +77,7 @@ Def_Jobs
 	{
 		Benefit 
 		{
-			BC 100
+			BC*Income 100
 		}
 	}
 }

@@ -80,8 +80,12 @@ Def_Planets
 	{
 		Features
 		{
-			Rings:Perc 30
-			RichGases:Perc 20
+			Mod:Rings:Perc 30
+			OR:Perc 20
+			{
+				Rich_Gases:Weight 4
+				Ultra_Rich_Gases:Weight 1
+			}
 			Deuterium:Perc 5
 		}
 	}
@@ -91,9 +95,11 @@ Def_Planets
 		{
 			OR
 			{
-				Minerals:Weight 2
-				RichMinerals:Weight 1
+				Small_Asteroids:Weight 1
+				Average_Asteroids:Weight 2
+				Large_Asteroids:Weight 1
 			}
+			Gold_Asteroid:Perc 20
 		}
 	}
 	// ----------------------------------------------- planets
@@ -105,6 +111,7 @@ Def_Planets
 		ExoticResourceFlag
 		Features
 		{
+			Mod:Rings:Perc 10
 			Low_Atmosphere:Perc 90
 			Mod:MineralVeins:Perc 10
 			Bacterial_Life:Perc 20
@@ -118,7 +125,7 @@ Def_Planets
 		ExoticResourceFlag
 		Features
 		{
-			Rings:Perc 10
+			Mod:Rings:Perc 10
 			Low_Atmosphere
 			OR:Perc 25
 			{
@@ -135,7 +142,7 @@ Def_Planets
 		ExoticResourceFlag
 		Features
 		{
-			Rings:Perc 10
+			Mod:Rings:Perc 10
 			OR:Perc 25
 			{
 				Mod:MineralVeins:Weight 1
@@ -152,7 +159,7 @@ Def_Planets
 		ExoticResourceFlag
 		Features
 		{
-			Rings:Perc 10
+			Mod:Rings:Perc 10
 			Mod NormalPlanet
 			OR:Perc 50
 			{
@@ -180,7 +187,7 @@ Def_Planets
 		ExoticResourceFlag
 		Features
 		{
-			Rings:Perc 10
+			Mod:Rings:Perc 10
 			Ice_Caps:Perc 50
 			Mod NormalPlanet
 			OR:Perc 50
@@ -209,7 +216,7 @@ Def_Planets
 		ExoticResourceFlag
 		Features
 		{
-			Rings:Perc 10
+			Mod:Rings:Perc 10
 			Hostile_Fauna:Perc 50
 			Big_Oceans:Perc 50
 			Mod NormalPlanet
@@ -234,7 +241,7 @@ Def_Planets
 		ExoticResourceFlag
 		Features
 		{
-			Rings:Perc 10
+			Mod:Rings:Perc 10
 			No_Land:Perc 50
 			Mod NormalPlanet
 			Low_Atmosphere:Perc 50
@@ -259,7 +266,7 @@ Def_Planets
 		ExoticResourceFlag
 		Features
 		{
-			Rings:Perc 10
+			Mod:Rings:Perc 10
 			Mod NormalPlanet
 			Hostile_Fauna
 			OR:Perc 25
@@ -283,7 +290,7 @@ Def_Planets
 		ExoticResourceFlag
 		Features
 		{
-			Rings:Perc 10
+			Mod:Rings:Perc 10
 			Mod NormalPlanet
 			OR:Perc 50
 			{
@@ -311,7 +318,7 @@ Def_Planets
 		ExoticResourceFlag
 		Features
 		{
-			Rings:Perc 10
+			Mod:Rings:Perc 10
 			Mod:NormalPlanet
 			LowA_tmosphere:Perc 50
 			OR
@@ -335,7 +342,7 @@ Def_Planets
 		ExoticResourceFlag
 		Features
 		{
-			Rings:Perc 10
+			Mod:Rings:Perc 10
 			Mod:NormalPlanet
 			LowA_tmosphere:Perc 50
 			Mod:MineralVeins
@@ -414,6 +421,7 @@ Def_Planets
 				Fertile:Weight 1
 			}
 		}
+		Gold_Deposit:Perc 20
 	}
 	Mod MineralVeins
 	{
@@ -433,6 +441,14 @@ Def_Planets
 			Many_Gerothermal_Vents:Weight 4
 			Powerful_Gerothermal_Vents:Weight 4
 			Super_Gerothermal_Vents:Weight 1
+		}
+	}
+	Mod Rings
+	{
+		OR
+		{
+			Rings:Weight 4
+			Large_Rings:Weight 1
 		}
 	}
 }

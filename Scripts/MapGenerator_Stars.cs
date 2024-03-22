@@ -322,10 +322,10 @@ public partial class MapGenerator : Node
 
         if (currentTemp == 5) Data.AddData(planet, "High_Radiation", DefLibrary);
         if (currentTemp == 4 && RNG.RandiRange(0, 99) < 50) Data.AddData(planet, "High_Radiation", DefLibrary);
-        DataBlock starFeatures = chosenPlanetData.GetSub("Features");
-        if (starFeatures != null)
+        DataBlock planetFeatures = chosenPlanetData.GetSub("Features");
+        if (planetFeatures != null)
         {
-            GenerateNewMapSave_Stars_Planets_Random__AddFeatures(planet, starFeatures);
+            GenerateNewMapSave_Stars_Planets_Random__AddFeatures(planet, planetFeatures);
         }
     }
 

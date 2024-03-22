@@ -270,30 +270,30 @@ public partial class MapData : Node
     public void GenerateGameFromData_Player_Sector(DataBlock sectorDataBlock, PlayerData playerData)
     {
         // Data
-        SectorData sectorData = new SectorData();
-        sectorData.Name = sectorDataBlock.ValueS + "_Data";
-        sectorData.SectorName = sectorDataBlock.ValueS;
-        sectorData.Resources = sectorDataBlock.GetSub("Resources");
-        sectorData.Budget = sectorDataBlock.GetSub("Budget");
-        sectorData.Buildings = sectorDataBlock.GetSub("Buildings");
-        sectorData.ActionConTreasury = sectorDataBlock.GetSub("ActionConTreasury");
+        SectorData sector = new SectorData();
+        sector.Name = sectorDataBlock.ValueS + "_Data";
+        sector.SectorName = sectorDataBlock.ValueS;
+        sector.Resources = sectorDataBlock.GetSub("Resources");
+        sector.ActionBuildQueue = sectorDataBlock.GetSub("ActionBuildQueue");
+        //sectorData.Budget = sectorDataBlock.GetSub("Budget");
+        //sectorData.Buildings = sectorDataBlock.GetSub("Buildings");
+        //sectorData.ActionConTreasury = sectorDataBlock.GetSub("ActionConTreasury");
         //sectorData.ActionCampaign = sectorDataBlock.GetSub("Campaign");
-        //sectorData.ActionBuild = sectorDataBlock.GetSub("Construction_1");
 
-        sectorData.Data = sectorDataBlock;
+        sector.Data = sectorDataBlock;
 
-        sectorData._Player = playerData;
+        sector._Player = playerData;
 
-        playerData.AddChild(sectorData);//, true, InternalMode.Back);
-        sectorData.Owner = GetTree().EditedSceneRoot;
+        playerData.AddChild(sector);//, true, InternalMode.Back);
+        sector.Owner = GetTree().EditedSceneRoot;
 
-        playerData.Sectors.Add(sectorData);
+        playerData.Sectors.Add(sector);
 
         DataBlock systemList = sectorDataBlock.GetSub("System_List");
         Array<DataBlock> systems = systemList.GetSubs("System");
         for (int idx = 0; idx < systems.Count; idx++)
         {
-            GenerateGameFromData_Player_Sector_System(systems[idx], sectorData);
+            GenerateGameFromData_Player_Sector_System(systems[idx], sector);
         }
     }
 
@@ -301,84 +301,59 @@ public partial class MapData : Node
     {
 
         // Data
-        SystemData systemData = new SystemData();
-        systemData.Name = systemDataBlock.ValueS + "_Data";
-        systemData.Resources = systemDataBlock.GetSub("Resources");
-        systemData.Budget = systemDataBlock.GetSub("Budget");
-        systemData.Buildings = systemDataBlock.GetSub("Buildings");
+        SystemData system = new SystemData();
+        system.Name = systemDataBlock.ValueS + "_Data";
+        system.Resources = systemDataBlock.GetSub("Resources");
+        system.Budget = systemDataBlock.GetSub("Budget");
+        system.Buildings = systemDataBlock.GetSub("Buildings");
 
-        systemData.Data = systemDataBlock;
+        system.Data = systemDataBlock;
 
-        systemData._Sector = sectorData;
+        system._Sector = sectorData;
 
-        DataBlock link = systemDataBlock.GetLink("Link:Star");
-        string star = link.ValueS;
-        for (int systemIdx = 0; systemIdx < Stars.Count; systemIdx++)
-        {
-            if (Stars[systemIdx].StarName == star)
-            {
-                systemData.Star = Stars[systemIdx];
-                Stars[systemIdx].System = systemData;
-                break;
-            }
-        }
+        system.Star = Data.GetLinkStarData(systemDataBlock, this);
+        system.Star.System = system;
 
-        sectorData.AddChild(systemData);//, true, InternalMode.Back);
-        systemData.Owner = GetTree().EditedSceneRoot;
+        sectorData.AddChild(system);//, true, InternalMode.Back);
+        system.Owner = GetTree().EditedSceneRoot;
 
-        sectorData.Systems.Add(systemData);
+        sectorData.Systems.Add(system);
 
         DataBlock colonyList = systemDataBlock.GetSub("Colony_List");
         Array<DataBlock> colonies = colonyList.GetSubs("Colony");
         for (int idx = 0; idx < colonies.Count; idx++)
         {
-            GenerateGameFromData_Player_Sector_System_Colony(colonies[idx], systemData);
+            ColonyData colony = GenerateGameFromData_Player_Sector_System_Colony(colonies[idx], system);
+            system.Colonies.Add(colony);
         }
     }
 
-    public void GenerateGameFromData_Player_Sector_System_Colony(DataBlock colonyDataBlock, SystemData systemData)
+    public ColonyData GenerateGameFromData_Player_Sector_System_Colony(DataBlock colonyDataBlock, SystemData systemData)
     {
         // Data
-        ColonyData colonyData = new ColonyData();
-        colonyData.Name = colonyDataBlock.ValueS + "_Data";
-        colonyData.ColonyName = colonyDataBlock.ValueS;
-        colonyData.Resources = colonyDataBlock.GetSub("Resources");
-        colonyData.Jobs = colonyDataBlock.GetSub("Jobs");
-        colonyData.Buildings = colonyDataBlock.GetSub("Buildings");
-        colonyData.Support = colonyDataBlock.GetSub("Support");
+        ColonyData colony = new ColonyData();
+        colony.Name = colonyDataBlock.ValueS + "_Data";
+        colony.ColonyName = colonyDataBlock.ValueS;
+        colony.Resources = colonyDataBlock.GetSub("Resources");
+        colony.Jobs = colonyDataBlock.GetSub("Jobs");
+        colony.Buildings = colonyDataBlock.GetSub("Buildings");
+        colony.Support = colonyDataBlock.GetSub("Support");
 
-        colonyData.ActionConstruction = colonyDataBlock.GetSub("ActionConstruction");
-        colonyData.ActionShipbuilding = colonyDataBlock.GetSub("ActionShipbuilding");
+        colony.ActionConstruction = colonyDataBlock.GetSub("ActionConstruction");
+        colony.ActionShipbuilding = colonyDataBlock.GetSub("ActionShipbuilding");
         //colonyData.ActionConTreasury = colonyDataBlock.GetSub("ActionConTreasury");
 
-        colonyData.Data = colonyDataBlock;
+        colony.Data = colonyDataBlock;
 
-        colonyData._System = systemData;
+        colony._System = systemData;
 
-        DataBlock link = colonyDataBlock.GetLink("Link:Star:Planet");
-        string star = Helper.Split_0(link.ValueS);
-        string planet = Helper.Split_1(link.ValueS);
-        for (int systemIdx = 0; systemIdx < Stars.Count; systemIdx++)
-        {
-            if (Stars[systemIdx].StarName == star)
-            {
-                for (int planetIdx = 0; planetIdx < Stars[systemIdx].Planets.Count; planetIdx++)
-                {
-                    if (Stars[systemIdx].Planets[planetIdx].PlanetName == planet)
-                    {
-                        colonyData.Planet = Stars[systemIdx].Planets[planetIdx];
-                        Stars[systemIdx].Planets[planetIdx].Colony = colonyData;
-                        break;
-                    }
-                }
-                break;
-            }
-        }
+        colony.Planet = Data.GetLinkPlanetData(colonyDataBlock, this);
+        colony.Planet.Colony = colony;
 
-        systemData.AddChild(colonyData);//, true, InternalMode.Back);
-        colonyData.Owner = GetTree().EditedSceneRoot;
+        systemData.AddChild(colony);//, true, InternalMode.Back);
+        colony.Owner = GetTree().EditedSceneRoot;
 
-        systemData.Colonies.Add(colonyData);
+        return colony;
     }
 
     // --------------------------------------------------------------------------------------------

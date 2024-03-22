@@ -1,9 +1,16 @@
-[gd_scene format=3 uid="uid://dq46g5i5ev83s"]
+[gd_scene load_steps=2 format=3 uid="uid://dq46g5i5ev83s"]
 
-[node name="UiTooltipTrigger" type="Control"]
+[ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="1_ovou4"]
+
+[node name="UITooltipTrigger" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_ovou4")
+
+[connection signal="mouse_entered" from="." to="." method="OnHoverEnter"]
+[connection signal="mouse_exited" from="." to="." method="OnHoverExit"]

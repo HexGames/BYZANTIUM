@@ -1,7 +1,4 @@
 using Godot;
-using Godot.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
 
 //[Tool]
 public partial class UISystem : Control
@@ -11,8 +8,6 @@ public partial class UISystem : Control
     public UISystemBarList SystemBar = null;
     [Export]
     public UIBudget Budget = null;
-    [Export]
-    public UIJobList JobList = null;
     [Export]
     public UIConstruction SectorConstruction = null;
     [Export]
@@ -73,7 +68,6 @@ public partial class UISystem : Control
             SystemBar.Visible = false;
 
             Budget.Visible = false;
-            JobList.Visible = false;
             SectorConstruction.Visible = false;
             SectorShipbuilding.Visible = false;
             PlanetInfo.Visible = false;
@@ -99,7 +93,6 @@ public partial class UISystem : Control
             //int totalProduction = star.System._Sector.ResourcesPerTurn.Get("Production").Value_1 - star.System._Sector.ResourcesPerTurn.Get("Production").Value_2;
             //Budget.RefreshBudget(star.System._Sector, totalProduction, false, false);
             Budget.Visible = false;
-            JobList.Visible = false;
             SectorConstruction.Visible = false;
             SectorShipbuilding.Visible = false;
 
@@ -123,7 +116,6 @@ public partial class UISystem : Control
         else
         {
             Budget.Visible = false;
-            JobList.Visible = false;
             SectorConstruction.Visible = false;
             SectorShipbuilding.Visible = false;
 
@@ -247,12 +239,11 @@ public partial class UISystem : Control
 
             //JobList.Refresh(colony);
             //JobList.Visible = true;
-            JobList.Visible = false;
 
             int production = colony.Resources_PerTurn.Get("Production").Value_2;
             int shipbuilding = colony.Resources_PerTurn.Get("Shipbuilding").Value_1;
 
-            SectorConstruction.Refresh(colony.ColonyName, colony.ActionConstruction, production);
+            SectorConstruction.Refresh(colony._System._Sector);
             SectorConstruction.Visible = true;
 
             SectorShipbuilding.Refresh(colony.ColonyName, colony.ActionShipbuilding, shipbuilding);
@@ -263,7 +254,6 @@ public partial class UISystem : Control
             BuildingInfo.Visible = false;
             EconomyInfo.Visible = false;
             FocusInfo.Visible = false;
-            JobList.Visible = false;
             SectorConstruction.Visible = false;
             SectorShipbuilding.Visible = false;
         }

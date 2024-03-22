@@ -19,6 +19,8 @@ public partial class UIBarListPlanet : Control
     private TextureRect ParentPlanetRings = null;
     private TextureRect Station = null;
     private Panel Selected = null;
+    private Control BuildAvalilable = null;
+    private Control BuildBtn = null;
 
     [ExportCategory("Runtime")]
     [Export]
@@ -30,6 +32,8 @@ public partial class UIBarListPlanet : Control
     public PlanetData _ParentPlanetData = null;
 
     Game Game;
+
+    private bool LockBuildButton = false;
 
     public override void _Ready()
     {
@@ -46,6 +50,12 @@ public partial class UIBarListPlanet : Control
             ParentPlanetRings = GetNode<TextureRect>("Mask/Parent/Rings");
             Station = GetNode<TextureRect>("Mask/Station");
             Selected = GetNode<Panel>("Selected");
+
+            if (HasNode("AvailableBuild"))
+            {
+                BuildAvalilable = GetNode<Control>("AvailableBuild");
+                BuildBtn = GetNode<Control>("ButtonBuild");
+            }
 
             Visible = false;
         }
@@ -173,6 +183,36 @@ public partial class UIBarListPlanet : Control
             }
         }
 
+        bool hasPossibleBuildings = false;
+        for (int idx = 0; idx < Game.TurnLoop.CurrentHumanPlayerData.Sectors.Count; idx++)
+        {
+            SectorData sector = Game.TurnLoop.CurrentHumanPlayerData.Sectors[idx];
+            for (int buildIdx = 0; buildIdx < sector.AvailableBuildings_PerTurn.Count; buildIdx++)
+            {
+                ActionTargetInfo info = sector.AvailableBuildings_PerTurn[buildIdx];
+                if (info._Planet == planetData)
+                {
+                    LockBuildButton = sector.ActionBuildQueue.GetSubs("Building").Count == 0;
+                    hasPossibleBuildings = true;
+                    break;
+                }
+            }
+            if (hasPossibleBuildings) break;
+        }
+
+        if (BuildAvalilable != null)
+        {
+            if (hasPossibleBuildings)
+            {
+                BuildBtn.Visible = LockBuildButton || IsSelected;
+                BuildAvalilable.Visible = true;
+            }
+            else
+            {
+                BuildAvalilable.Visible = false;
+            }            
+        }
+
         PlanetName.Text = _PlanetData.PlanetName;
 
         Visible = true;
@@ -200,6 +240,7 @@ public partial class UIBarListPlanet : Control
         IsSelected = true;
 
         Selected.Visible = true;
+        BuildBtn.Visible = true;
 
         if (GalaxyList != null)
         {
@@ -214,7 +255,13 @@ public partial class UIBarListPlanet : Control
     public void Deselect()
     {
         Selected.Visible = false;
+        BuildBtn.Visible = LockBuildButton;
 
         IsSelected = false;
+    }
+
+    public void OnBuild()
+    {
+        Game.WindowsUI.Build(_PlanetData);
     }
 }

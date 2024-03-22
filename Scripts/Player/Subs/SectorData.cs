@@ -20,19 +20,19 @@ public partial class SectorData : Node
 
     [Export]
     public DataBlock Resources = null;
-    [Export]
-    public DataBlock Budget = null;
-    [Export]
-    public DataBlock Buildings = null;
+    //[Export]
+    //public DataBlock Budget = null;
+    //[Export]
+    //public DataBlock Buildings = null;
 
 
     [ExportCategory("ColonyData-Actions")]
-    [Export]
-    public DataBlock ActionConTreasury = null;
+    //[Export]
+    //public DataBlock ActionConTreasury = null;
     //[Export]
     //public DataBlock ActionCampaign = null;
-    //[Export]
-    //public DataBlock ActionBuild = null;
+    [Export]
+    public DataBlock ActionBuildQueue = null;
 
     [ExportCategory("ColonyData-Links")]
     [Export]
@@ -44,8 +44,24 @@ public partial class SectorData : Node
     //public BudgetWrapper BudgetPerTurn = null;
 
     // actions
+    //public List<ActionTargetInfo> BuildQueue_PerTurn = new List<ActionTargetInfo>();
+    public List<ActionTargetInfo> AvailableBuildings_PerTurn = new List<ActionTargetInfo>();
     public List<ActionColonyConBuildings> ActionsCampaignPossible = new List<ActionColonyConBuildings>();
 
+
+    // --------------------------------------------------------------------------------------------
+    public SystemData GetSystem(string system)
+    {
+        for (int idx = 0; idx < Systems.Count; idx++)
+        {
+            if (Systems[idx].SystemName == system)
+            {
+                return Systems[idx];
+            }
+        }
+
+        return null;
+    }
 
     public PlanetData GetPlanet(string planetName)
     {

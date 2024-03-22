@@ -5,6 +5,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Scripts\System\Sub\" />
-    <Folder Include="Scripts\UI\System\Jobs\" />
   </ItemGroup>
 </Project>

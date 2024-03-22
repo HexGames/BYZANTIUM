@@ -10,29 +10,13 @@ public partial class MapGenerator : Node
 {
     private void GenerateNewMapSave_Players_StartingColony_Resources(DataBlock colony)
     {
-        DataBlock resources = Data.AddData(colony, "Resources", DefLibrary);
+        DataBlock resources = Create_Colony_Resources(colony, DefLibrary);
 
         Data.AddData(resources, "Wealth", 3000, DefLibrary);
 
         Data.AddData(resources, "Pops", 25000, DefLibrary);
         Data.AddData(resources, "Pops*Used", 16000, DefLibrary);
-        Data.AddData(resources, "Growth", 200, DefLibrary);
-
-        Data.AddData(resources, "Energy", 0, DefLibrary);
-        Data.AddData(resources, "Energy*Used", 0, DefLibrary);
-        Data.AddData(resources, "Minerals", 0, DefLibrary);
-        Data.AddData(resources, "Minerals*Used", 0, DefLibrary);
-        Data.AddData(resources, "Production*Income", 0, DefLibrary);
-        Data.AddData(resources, "Shipbuilding*Income", 0, DefLibrary);
-        //Data.AddData(resources, "PrivateIndustry", 0, DefLibrary);
-
-        Data.AddData(resources, "TechPoints*Income", 0, DefLibrary);
-        Data.AddData(resources, "CivicPoints*Income", 0, DefLibrary);
-        Data.AddData(resources, "Authority", 0, DefLibrary);
-        Data.AddData(resources, "Authority*Used", 0, DefLibrary);
-        Data.AddData(resources, "Influence", 0, DefLibrary);
-        Data.AddData(resources, "Influence*Used", 0, DefLibrary);
-        Data.AddData(resources, "BC*Income", 0, DefLibrary);
+        Data.AddData(resources, "Growth*Income", 200, DefLibrary);
     }
 
     private void GenerateNewMapSave_Players_StartingColony_Jobs(DataBlock colony)
@@ -70,7 +54,7 @@ public partial class MapGenerator : Node
 
     private void GenerateNewMapSave_Players_StartingColony_Buildings(DataBlock colony)
     {
-        DataBlock buildings = Data.AddData(colony, "Buildings", DefLibrary);
+        DataBlock resources = Create_Colony_Buildings(colony, DefLibrary);
 
         //Data.AddData(buildings, "Private_Business", 250, DefLibrary);
 
@@ -81,7 +65,7 @@ public partial class MapGenerator : Node
         //Data.AddData(buildings, "Culture_Centers", 2, DefLibrary);
     }
 
-    private void GenerateNewMapSave_Players_StartingColony_Construction(DataBlock colony, DataBlock system)
+    /*private void GenerateNewMapSave_Players_StartingColony_Construction(DataBlock colony, DataBlock system)
     {
         DataBlock campaign = Data.AddData(colony, "ActionConstruction", DefLibrary);
 
@@ -109,7 +93,7 @@ public partial class MapGenerator : Node
         Data.AddData(campaign, "Progress:Total", 3, DefLibrary);
 
         Data.AddData(campaign, "Overflow", 0, DefLibrary);
-    }
+    }*/
 
     private void GenerateNewMapSave_Players_StartingColony_Support(DataBlock colony)
     {

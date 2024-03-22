@@ -2,6 +2,8 @@
 {
     public DataBlock _Data;
 
+    public PlanetData _Planet;
+
     public string Name = "";
     public int Turns = 0;
     public ResourcesWrapper Cost = null;

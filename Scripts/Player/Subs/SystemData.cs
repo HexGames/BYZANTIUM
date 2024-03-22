@@ -14,6 +14,8 @@ public partial class SystemData : Node
     [Export]
     public DataBlock Data = null;
 
+    public string SystemName { get { return Star.StarName; } }
+
     [Export]
     public DataBlock Resources = null;
     [Export]
@@ -21,9 +23,9 @@ public partial class SystemData : Node
     [Export]
     public DataBlock Buildings = null;
 
-    [ExportCategory("SystemData-Actions")]
-    [Export]
-    public DataBlock ActionBuild = null;
+    //[ExportCategory("SystemData-Actions")]
+    //[Export]
+    //public DataBlock ActionBuild = null;
 
     [ExportCategory("SystemData-Links")]
     [Export]
@@ -36,4 +38,18 @@ public partial class SystemData : Node
 
     // actions
     //public List<ActionSectorBuild> ActionsBuildPossible = new List<ActionSectorBuild>();
+
+    // --------------------------------------------------------------------------------------------
+    public ColonyData GetColony(string colony)
+    {
+        for (int idx = 0; idx < Colonies.Count; idx++)
+        {
+            if (Colonies[idx].ColonyName == colony)
+            {
+                return Colonies[idx];
+            }
+        }
+
+        return null;
+    }
 }

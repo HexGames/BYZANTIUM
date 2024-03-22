@@ -318,6 +318,7 @@ public partial class MapGenerator : Node
         DataBlock sector = Data.AddData(sectorList, "Sector", "Core", DefLibrary);
         GenerateNewMapSave_Players_StartingColony_SectorResources(sector);
         GenerateNewMapSave_Players_StartingColony_SectorConTreasury(sector);
+        GenerateNewMapSave_Players_StartingColony_SectorActionBuild(sector);
         //GenerateNewMapSave_Players_StartingColony_SectorBudget(sector);
 
         DataBlock systemList = Data.AddData(sector, "System_List", DefLibrary);
@@ -325,8 +326,8 @@ public partial class MapGenerator : Node
         DataBlock system = Data.AddData(systemList, "System", "Sol", DefLibrary);
         GenerateNewMapSave_Players_StartingColony_SystemResources(system);
 
-        Data.AddData(system, "Link:Star", startingStar.ValueS, DefLibrary);
-        Data.AddData(startingStar, "Link:Player:Sector:System", playerData.ValueS + ":" + sector.ValueS + ":" + system.ValueS, DefLibrary);
+        Data.AddData(system, "Link:Star", startingStar.ValueS, DefLibrary); // no StarData yet
+        Data.AddData(startingStar, "Link:Player:Sector:System", playerData.ValueS + ":" + sector.ValueS + ":" + system.ValueS, DefLibrary); // no SystemData yet
 
         DataBlock colonyList = Data.AddData(system, "Colony_List", DefLibrary);
 
@@ -337,13 +338,13 @@ public partial class MapGenerator : Node
         GenerateNewMapSave_Players_StartingColony_Jobs(colony);
         GenerateNewMapSave_Players_StartingColony_Buildings(colony);
         GenerateNewMapSave_Players_StartingColony_Support(colony);
-        GenerateNewMapSave_Players_StartingColony_Construction(colony, system);
-        GenerateNewMapSave_Players_StartingColony_Shipbuilding(colony, system);
+        //GenerateNewMapSave_Players_StartingColony_Construction(colony, system);
+        //GenerateNewMapSave_Players_StartingColony_Shipbuilding(colony, system);
         //GenerateNewMapSave_Players_StartingColony_ConTreasury(colony, system);
         //GenerateNewMapSave_Players_StartingColony_Bonuses(colonyData);
 
-        Data.AddData(colony, "Link:Star:Planet", startingStar.ValueS + ":" + startingPlanet.ValueS, DefLibrary);
-        Data.AddData(startingPlanet, "Link:Player:Sector:System:Colony", playerData.ValueS + ":" + sector.ValueS + ":" + system.ValueS + ":" + colony.ValueS, DefLibrary);
+        Data.AddData(colony, "Link:Star:Planet", startingStar.ValueS + ":" + startingPlanet.ValueS, DefLibrary); // no PlanetData yet
+        Data.AddData(startingPlanet, "Link:Player:Sector:System:Colony", playerData.ValueS + ":" + sector.ValueS + ":" + system.ValueS + ":" + colony.ValueS, DefLibrary); // no ColonyData yet
 
         // actions
         //GenerateNewMapSave_Players_StartingColony_SectorCampaign(sector, system, colony);

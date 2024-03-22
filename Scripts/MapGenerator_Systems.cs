@@ -24,8 +24,10 @@ public partial class MapGenerator : Node
         Data.AddData(resources, "Shipbuilding*Income", 0, DefLibrary);
         //Data.AddData(resources, "PrivateIndustry", 0, DefLibrary);
 
+        Data.AddData(resources, "Trade", 0, DefLibrary);
+        Data.AddData(resources, "Trade*Used", 0, DefLibrary);
         Data.AddData(resources, "TechPoints*Income", 0, DefLibrary);
-        Data.AddData(resources, "CivicPoints*Income", 0, DefLibrary);
+        Data.AddData(resources, "CulturePoints*Income", 0, DefLibrary);
         Data.AddData(resources, "Authority", 0, DefLibrary);
         Data.AddData(resources, "Authority*Used", 0, DefLibrary);
         Data.AddData(resources, "Influence", 0, DefLibrary);

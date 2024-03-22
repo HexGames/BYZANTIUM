@@ -1,6 +1,5 @@
 using Godot;
 using Godot.Collections;
-using System.ComponentModel;
 
 public partial class UIItemList : Control
 {
@@ -46,7 +45,7 @@ public partial class UIItemList : Control
 
         for (int idx = 0; idx < Properties.Count; idx++)
         {
-            if (idx < subs.Count)
+            if (idx < subs.Count && subs[idx].ToUIShow())
             {
                 Properties[idx].Refresh(subs[idx]);
                 Properties[idx].Visible = true;

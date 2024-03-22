@@ -43,6 +43,7 @@ public partial class TurnLoop : Node
         CurrentHumanPlayerData = GetHumanPlayer();
         Init_Resources();
         EndTurn_Resources();
+        EndTurn_NewActions();
         Game.GalaxyUI.Refresh();
     }
 
@@ -51,7 +52,7 @@ public partial class TurnLoop : Node
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.Map.Data.Players[playerIdx];
-            player.ResourcesPerTurn = new ResourcesWrapper(player.Resources);
+            player.Resources_PerTurn = new ResourcesWrapper(player.Resources);
 
             for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
             {

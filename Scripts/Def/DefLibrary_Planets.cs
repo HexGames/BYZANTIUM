@@ -48,7 +48,7 @@ public partial class DefLibrary : Node
 
     public void SavePlanetsDef()
     {
-        Data.SaveToFile(BuildingsList, "Defs_Mod/Planets_s.mod", this);
+        Data.SaveToFile(PlanetsDefData, "Defs_Mod/Planets_s.mod", this);
     }
 
     public void LoadPlanetsDefFunc()
@@ -65,16 +65,22 @@ public partial class DefLibrary : Node
         {
             for (int idx = 0; idx < Planets.Count; idx++)
             {
-                Array<DataBlock> subs = Planets[idx].Subs;
-                for ( int subIdx = 0; subIdx < subs.Count; subIdx++)
+                DataBlock features = Planets[idx].GetSub("Features");
+                if (features != null)
                 {
-                    if (subs[subIdx].Name.StartsWith("Mod:" + mods[modIdx].ValueS))
+                    Array<DataBlock> subs = features.Subs;
+                    for (int subIdx = 0; subIdx < subs.Count; subIdx++)
                     {
-                        subs[subIdx].Name.Replace("Mod:", "");
-                        subs[subIdx].Subs = mods[modIdx].Subs;
+                        if (subs[subIdx].Name.StartsWith("Mod:" + mods[modIdx].ValueS))
+                        {
+                            Data.ChangeDataType(subs[subIdx], subs[subIdx].Name.Replace("Mod:", ""), this);
+                            subs[subIdx].Subs = mods[modIdx].Subs;
+                        }
                     }
                 }
             }
         }
+
+        //SavePlanetsDef();
     }
 }

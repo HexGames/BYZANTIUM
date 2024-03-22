@@ -1,6 +1,4 @@
 using Godot;
-using Godot.Collections;
-using System.ComponentModel;
 
 public partial class UIFocusList : Control
 {
@@ -31,25 +29,28 @@ public partial class UIFocusList : Control
     [Export]
     public UIFocusListItem All = null;
     [Export]
-    public Control All_Energy = null;
+    public UIFocusListIcon All_Energy = null;
     [Export]
-    public Control All_Minerals = null;
+    public UIFocusListIcon All_Minerals = null;
     [Export]
-    public Control All_Production = null;
+    public UIFocusListIcon All_Production = null;
     [Export]
-    public Control All_Shipbuilding = null;
+    public UIFocusListIcon All_Shipbuilding = null;
     [Export]
-    public Control All_Trade = null;
+    public UIFocusListIcon All_Trade = null;
     [Export]
-    public Control All_TechPoints = null;
+    public UIFocusListIcon All_TechPoints = null;
     [Export]
-    public Control All_CulturePoints = null;
+    public UIFocusListIcon All_CulturePoints = null;
     [Export]
-    public Control All_Authority = null;
+    public UIFocusListIcon All_Authority = null;
     [Export]
-    public Control All_Influence = null;
+    public UIFocusListIcon All_Influence = null;
     [Export]
-    public Control All_BC = null;
+    public UIFocusListIcon All_BC = null;
+    [Export]
+    public UITooltipTrigger All_Pops_Tooltip = null;
+    private string All_Pops_Tooltip_Original = null;
 
     [ExportCategory("Runtime")]
     [Export]
@@ -64,34 +65,56 @@ public partial class UIFocusList : Control
         Game = GetNode<Game>("/root/Main/Game");
 
         TitleLabel_Original = TitleLabel.Text;
+
+        All_Pops_Tooltip_Original = All_Pops_Tooltip.Row_1_Right;
     }
 
     public void Refresh(ColonyData colony)
     {
         TitleLabel.Text = TitleLabel_Original.Replace("$name", colony.ColonyName).Replace("$value", Helper.ResValueToString(colony.Resources_PerTurn.Get("Pops").Value_2, 1000));
 
-        bool energy = Energy.Refresh(colony.Jobs_PerTurn.Get("Energy"));
-        bool minerals = Minerals.Refresh(colony.Jobs_PerTurn.Get("Minerals"));
-        bool prod = Production.Refresh(colony.Jobs_PerTurn.Get("Production"));
-        bool ship = Shipbuilding.Refresh(colony.Jobs_PerTurn.Get("Shipbuilding"));
-        bool trade = Trade.Refresh(colony.Jobs_PerTurn.Get("Trade"));
-        bool tech = TechPoints.Refresh(colony.Jobs_PerTurn.Get("TechPoints"));
-        bool culture = CulturePoints.Refresh(colony.Jobs_PerTurn.Get("CulturePoints"));
-        bool authority = Authority.Refresh(colony.Jobs_PerTurn.Get("Authority"));
-        bool influence = Influence.Refresh(colony.Jobs_PerTurn.Get("Influence"));
-        bool bc = BC.Refresh(colony.Jobs_PerTurn.Get("BC"));
+        var energy = colony.Jobs_PerTurn.Get("Energy");
+        Energy.Refresh(energy);
+        All_Energy.Refresh(energy);
+
+        var minerals = colony.Jobs_PerTurn.Get("Minerals");
+        Minerals.Refresh(minerals);
+        All_Minerals.Refresh(minerals);
+
+        var prod = colony.Jobs_PerTurn.Get("Production");
+        Production.Refresh(prod);
+        All_Production.Refresh(prod);
+
+        var ship = colony.Jobs_PerTurn.Get("Shipbuilding");
+        Shipbuilding.Refresh(ship);
+        All_Shipbuilding.Refresh(ship);
+
+        var trade = colony.Jobs_PerTurn.Get("Trade");
+        Trade.Refresh(trade);
+        All_Trade.Refresh(trade);
+
+        var tech = colony.Jobs_PerTurn.Get("TechPoints");
+        TechPoints.Refresh(tech);
+        All_TechPoints.Refresh(tech);
+
+        var culture = colony.Jobs_PerTurn.Get("CulturePoints");
+        CulturePoints.Refresh(culture);
+        All_CulturePoints.Refresh(culture);
+
+        var authority = colony.Jobs_PerTurn.Get("Authority");
+        Authority.Refresh(authority);
+        All_Authority.Refresh(authority);
+
+        var influence = colony.Jobs_PerTurn.Get("Influence");
+        Influence.Refresh(influence);
+        All_Influence.Refresh(influence);
+
+        var bc = colony.Jobs_PerTurn.Get("BC");
+        BC.Refresh(bc);
+        All_BC.Refresh(bc);
 
         All.Refresh(colony.Jobs_PerTurn.AllFocusValue, colony.Jobs_PerTurn.AllFocusChange);
 
-        All_Energy.Visible = !energy;
-        All_Minerals.Visible = !minerals;
-        All_Production.Visible = !prod;
-        All_Shipbuilding.Visible = !ship;
-        All_Trade.Visible = !trade;
-        All_TechPoints.Visible = !tech;
-        All_CulturePoints.Visible = !culture;
-        All_Authority.Visible = !authority;
-        All_Influence.Visible = !influence;
-        All_BC.Visible = !bc;
+        All_Pops_Tooltip.Row_1_Right = All_Pops_Tooltip_Original.Replace("$value", Helper.ResValueToString(colony.Jobs_PerTurn.AllTotalPops, 1000));
     }
 }

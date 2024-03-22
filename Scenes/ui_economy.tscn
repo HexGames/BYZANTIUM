@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://py7tx1sn7xf2"]
 
-[ext_resource type="Script" path="res://Scripts/UI/System/Economy/UIEconomyInfo.cs" id="1_7f8ae"]
+[ext_resource type="Script" path="res://Scripts/UI/Economy/UIEconomyInfo.cs" id="1_2s0iy"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="2_0ygdb"]
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="3_r0xue"]
-[ext_resource type="Script" path="res://Scripts/UI/System/Economy/UIEconomyInfoItem.cs" id="5_klp45"]
+[ext_resource type="Script" path="res://Scripts/UI/Economy/UIEconomyInfoItem.cs" id="4_6plu3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kh0fa"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 1)
@@ -24,7 +24,7 @@ offset_right = -1120.0
 offset_bottom = -936.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7f8ae")
+script = ExtResource("1_2s0iy")
 Title = NodePath("TitleBox/Title")
 Local = NodePath("VBoxContainer/FirstRow/Local")
 Pops = NodePath("VBoxContainer/FirstRow/Local/Pops")
@@ -152,7 +152,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Local/Pops"]
 custom_minimum_size = Vector2(0, 20)
@@ -187,7 +187,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Local/Growth"]
 custom_minimum_size = Vector2(0, 20)
@@ -246,7 +246,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Energy"]
 custom_minimum_size = Vector2(0, 20)
@@ -281,7 +281,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Minerals"]
 custom_minimum_size = Vector2(0, 20)
@@ -316,7 +316,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Production"]
 custom_minimum_size = Vector2(0, 20)
@@ -351,7 +351,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Shipbuilding"]
 custom_minimum_size = Vector2(0, 20)
@@ -411,7 +411,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/Trade"]
 custom_minimum_size = Vector2(0, 20)
@@ -423,7 +423,7 @@ offset_bottom = 6.0
 grow_horizontal = 2
 theme = ExtResource("2_0ygdb")
 bbcode_enabled = true
-text = "[center]Treasury[/center]"
+text = "[center]Trade[/center]"
 
 [node name="Value" type="RichTextLabel" parent="VBoxContainer/SecondRow/Trade"]
 custom_minimum_size = Vector2(0, 24)
@@ -446,7 +446,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/Research"]
 custom_minimum_size = Vector2(0, 20)
@@ -481,7 +481,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/Culture"]
 custom_minimum_size = Vector2(0, 20)
@@ -516,7 +516,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/Authority"]
 custom_minimum_size = Vector2(0, 20)
@@ -551,7 +551,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/Influence"]
 custom_minimum_size = Vector2(0, 20)
@@ -586,7 +586,7 @@ layout_mode = 2
 theme = ExtResource("3_r0xue")
 theme_type_variation = &"Black"
 theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("5_klp45")
+script = ExtResource("4_6plu3")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/BC"]
 custom_minimum_size = Vector2(0, 20)

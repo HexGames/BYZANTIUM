@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_cqepg"]
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxySystem.cs" id="2_mmjn7"]
-[ext_resource type="Script" path="res://Scripts/UI/UIGalaxyResources.cs" id="4_ifmcg"]
+[ext_resource type="PackedScene" uid="uid://0svrlyhb7gcc" path="res://Scenes/ui_economy_bar.tscn" id="4_y8k0i"]
 [ext_resource type="Texture2D" uid="uid://c6ulfomgv6xo0" path="res://Assets/Planets/Background.png" id="5_0ym4c"]
 [ext_resource type="Texture2D" uid="uid://c5qcijiud43e" path="res://Assets/UI/pin.png" id="5_cyro3"]
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxyBarList.cs" id="5_yvxje"]
@@ -149,7 +149,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ieb0k")
 Systems = [NodePath("SystemsHUD/System")]
-Resources = NodePath("Resources")
+Resources = NodePath("Economy")
 PawnList = NodePath("GameBar")
 CurrentTurn = NodePath("Turn")
 
@@ -222,42 +222,16 @@ text = "+4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Resources" type="Control" parent="." node_paths=PackedStringArray("Resources")]
+[node name="Economy" parent="." instance=ExtResource("4_y8k0i")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("4_ifmcg")
-Resources = [NodePath("Panel/HBoxContainer/Res_1")]
-
-[node name="Panel" type="Panel" parent="Resources"]
-custom_minimum_size = Vector2(800, 24)
-layout_mode = 1
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = 8.0
-offset_bottom = 8.0
-grow_horizontal = 2
-theme = ExtResource("1_cqepg")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Resources/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 16
-alignment = 1
-
-[node name="Res_1" type="Label" parent="Resources/Panel/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_cqepg")
-text = "+800 E"
+anchor_bottom = 0.0
+offset_left = -294.0
+offset_right = 294.0
+offset_bottom = 32.0
+grow_vertical = 1
 
 [node name="GameBar" type="Control" parent="." node_paths=PackedStringArray("ScrollBar", "ParentNode", "GroupHeaders", "Planets")]
 layout_mode = 1

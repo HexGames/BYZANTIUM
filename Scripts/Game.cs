@@ -13,9 +13,13 @@ public partial class Game : Node
     [Export]
     public UILibrary UILib;
     [Export]
+    public UITooltipManager Tooltips;
+    [Export]
     public UIGalaxy GalaxyUI;
     [Export]
     public UISystem SystemUI;
+    [Export]
+    public UIWindows WindowsUI;
     //[Export]
     //public UIActionColony ActionColonyUI;
     [Export]

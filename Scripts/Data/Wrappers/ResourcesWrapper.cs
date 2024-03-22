@@ -20,10 +20,11 @@ public class ResourcesWrapper
         public int Value_2 = 0;
 
         public string Name = "Res";
+        public DataBlock _Data = null;
 
         public int GetBenefitValue()
         {
-            switch(ResType)
+            switch (ResType)
             {
                 case Type.VALUE: return Value_1;
                 case Type.VALUE_INCOME: return Value_2;
@@ -32,7 +33,24 @@ public class ResourcesWrapper
             }
             return 0;
         }
-    };
+
+        public void SaveValue()
+        {
+            switch (ResType)
+            {
+                case Info.Type.VALUE:
+                    {
+                        _Data.GetSub(Name).ValueI = Value_1;
+                        break;
+                    }
+                case Info.Type.VALUE_INCOME:
+                    {
+                        _Data.GetSub(Name).ValueI = Value_1;
+                        break;
+                    }
+            }
+        }
+    }
 
     protected DataBlock _Data = null;
     public List<Info> Resources = new List<Info>();
@@ -79,6 +97,7 @@ public class ResourcesWrapper
             if (found == false)
             {
                 Info newRes = new Info();
+                newRes._Data = resDataSubs[idxData];
                 newRes.Name = name;
                 if (type == "Income")
                 {
@@ -100,8 +119,7 @@ public class ResourcesWrapper
         }
     }
 
-
-    public void Add(string name, int value)
+    public void AddValue(string name, int value)
     {
         for (int idx = 0; idx < Resources.Count; idx++)
         {
@@ -116,17 +134,30 @@ public class ResourcesWrapper
                         }
                     case Info.Type.VALUE_INCOME:
                         {
+                            Resources[idx].Value_1 += value;
+                            break;
+                        }
+                }
+                break;
+            }
+        }
+    }
+    public void AddIncome(string name, int value)
+    {
+        for (int idx = 0; idx < Resources.Count; idx++)
+        {
+            if (Resources[idx].Name == Helper.Split_0(name, '*'))
+            {
+                switch (Resources[idx].ResType)
+                {
+                    case Info.Type.VALUE_INCOME:
+                        {
                             Resources[idx].Value_2 += value;
                             break;
                         }
                     case Info.Type.INCOME:
                         {
                             Resources[idx].Value_2 += value;
-                            break;
-                        }
-                    case Info.Type.TOTAL_USED:
-                        {
-                            Resources[idx].Value_1 += value;
                             break;
                         }
                 }
@@ -158,7 +189,7 @@ public class ResourcesWrapper
         }
     }
 
-    public void Use(string name, int value)
+    public void AddUsed(string name, int value)
     {
         for (int idx = 0; idx < Resources.Count; idx++)
         {
@@ -166,21 +197,6 @@ public class ResourcesWrapper
             {
                 switch (Resources[idx].ResType)
                 {
-                    case Info.Type.VALUE:
-                        {
-                            Resources[idx].Value_1 -= value;
-                            break;
-                        }
-                    case Info.Type.VALUE_INCOME:
-                        {
-                            Resources[idx].Value_2 -= value;
-                            break;
-                        }
-                    case Info.Type.INCOME:
-                        {
-                            Resources[idx].Value_2 -= value;
-                            break;
-                        }
                     case Info.Type.TOTAL_USED:
                         {
                             Resources[idx].Value_2 += value;
@@ -191,22 +207,41 @@ public class ResourcesWrapper
             }
         }
     }
-
-    public void Use(ResourcesWrapper otherRes)
+    public void AddTotal(string name, int value)
     {
-        for (int resIdx = 0; resIdx < Resources.Count; resIdx++)
+        for (int idx = 0; idx < Resources.Count; idx++)
         {
-            for (int otherIdx = 0; otherIdx < otherRes.Resources.Count; otherIdx++)
+            if (Resources[idx].Name == name)
             {
-                if (Resources[resIdx].Name == otherRes.Resources[otherIdx].Name)
+                switch (Resources[idx].ResType)
                 {
-                    Resources[resIdx].Value_1 -= otherRes.Resources[otherIdx].Value_1;
-                    Resources[resIdx].Value_2 -= otherRes.Resources[otherIdx].Value_2;
+                    case Info.Type.TOTAL_USED:
+                        {
+                            Resources[idx].Value_1 += value;
+                            break;
+                        }
                 }
+                break;
             }
         }
     }
-    public void AddIncome()
+
+    //public void Use(ResourcesWrapper otherRes)
+    //{
+    //    for (int resIdx = 0; resIdx < Resources.Count; resIdx++)
+    //    {
+    //        for (int otherIdx = 0; otherIdx < otherRes.Resources.Count; otherIdx++)
+    //        {
+    //            if (Resources[resIdx].Name == otherRes.Resources[otherIdx].Name)
+    //            {
+    //                Resources[resIdx].Value_1 -= otherRes.Resources[otherIdx].Value_1;
+    //                Resources[resIdx].Value_2 -= otherRes.Resources[otherIdx].Value_2;
+    //            }
+    //        }
+    //    }
+    //}
+
+    public void ProcessIncome()
     {
         for (int idx = 0; idx < Resources.Count; idx++)
         {
@@ -227,37 +262,37 @@ public class ResourcesWrapper
     }
 
 
-    public void Save()
-    {
-        for (int idx = 0; idx < Resources.Count; idx++)
-        {
-            switch (Resources[idx].ResType)
-            {
-                case Info.Type.VALUE:
-                    {
-                        _Data.GetSub(Resources[idx].Name).ValueI = Resources[idx].Value_1;
-                        break;
-                    }
-                case Info.Type.VALUE_INCOME:
-                    {
-                        _Data.GetSub(Resources[idx].Name).ValueI = Resources[idx].Value_1;
-                        _Data.GetSub(Resources[idx].Name + "*Income").ValueI = Resources[idx].Value_2;
-                        break;
-                    }
-                case Info.Type.INCOME:
-                    {
-                        _Data.GetSub(Resources[idx].Name + "*Income").ValueI = Resources[idx].Value_2;
-                        break;
-                    }
-                case Info.Type.TOTAL_USED:
-                    {
-                        _Data.GetSub(Resources[idx].Name + "").ValueI = Resources[idx].Value_1;
-                        _Data.GetSub(Resources[idx].Name + "*Used").ValueI = Resources[idx].Value_2;
-                        break;
-                    }
-            }
-        }
-    }
+    //public void Save()
+    //{
+    //    for (int idx = 0; idx < Resources.Count; idx++)
+    //    {
+    //        switch (Resources[idx].ResType)
+    //        {
+    //            case Info.Type.VALUE:
+    //                {
+    //                    _Data.GetSub(Resources[idx].Name).ValueI = Resources[idx].Value_1;
+    //                    break;
+    //                }
+    //            case Info.Type.VALUE_INCOME:
+    //                {
+    //                    _Data.GetSub(Resources[idx].Name).ValueI = Resources[idx].Value_1;
+    //                    //_Data.GetSub(Resources[idx].Name + "*Income").ValueI = Resources[idx].Value_2;
+    //                    break;
+    //                }
+    //            case Info.Type.INCOME:
+    //                {
+    //                    //_Data.GetSub(Resources[idx].Name + "*Income").ValueI = Resources[idx].Value_2;
+    //                    break;
+    //                }
+    //            case Info.Type.TOTAL_USED:
+    //                {
+    //                    //_Data.GetSub(Resources[idx].Name + "").ValueI = Resources[idx].Value_1;
+    //                    //_Data.GetSub(Resources[idx].Name + "*Used").ValueI = Resources[idx].Value_2;
+    //                    break;
+    //                }
+    //        }
+    //    }
+    //}
 
     public Info Get(string name)
     {
@@ -289,6 +324,56 @@ public class ResourcesWrapper
     //    }
     //    return "";
     //}
+
+    public string GetAllString(bool withIcons = true)
+    {
+        string str = "";
+
+        for (int idx = 0; idx < Resources.Count; idx++)
+        {
+            if (str.Length > 0) str += "/n";
+            switch (Resources[idx].ResType)
+            {
+                case Info.Type.VALUE:
+                    {
+                        break;
+                    }
+                case Info.Type.VALUE_INCOME:
+                    {
+                        str += Helper.ResValueToString(Resources[idx].Value_1) + "(" + (Resources[idx].Value_2 >= 0 ? "+" : "") + Helper.ResValueToString(Resources[idx].Value_2) + ")";
+                        break;
+                    }
+                case Info.Type.INCOME:
+                    {
+                        str += (Resources[idx].Value_2 >= 0 ? "+" : "") + Helper.ResValueToString(Resources[idx].Value_2);
+                        break;
+                    }
+                case Info.Type.TOTAL_USED:
+                    {
+                        str += (Resources[idx].Value_1 / 100).ToString() + ((Resources[idx].Value_1 / 10) % 10 != 0 ? "." + ((Resources[idx].Value_1 / 10) % 10).ToString() : "" + "%");
+                        break;
+                    }
+            }
+            if (withIcons)
+            {
+                str += "[img=24x24]" + DefLibrary.GetIcon(Resources[idx].Name) + "[/img]";
+            }
+        }
+
+        return str;
+    }
+
+    public string GetStockpileString(string name)
+    {
+        for (int idx = 0; idx < Resources.Count; idx++)
+        {
+            if (Resources[idx].Name == name)
+            {
+                return Helper.ResValueToString(Resources[idx].Value_1) + "(" + (Resources[idx].Value_2 >= 0 ? "+" : "")  + Helper.ResValueToString(Resources[idx].Value_2) + ")";
+            }
+        }
+        return "";
+    }
 
     public string GetIncomeString(string name)
     {
@@ -344,7 +429,7 @@ public class ResourcesWrapper
         {
             if (Resources[idx].Name == name)
             {
-                return (Resources[idx].Value_1 / 100).ToString() + ((Resources[idx].Value_1 / 10) % 10 != 0 ? "." + ((Resources[idx].Value_1 / 10) % 10).ToString() : "" + "%");
+                return (Resources[idx].Value_2 / 100).ToString() + ((Resources[idx].Value_2 / 10) % 10 != 0 ? "." + ((Resources[idx].Value_2 / 10) % 10).ToString() : "" + "%");
             }
         }
         return "";

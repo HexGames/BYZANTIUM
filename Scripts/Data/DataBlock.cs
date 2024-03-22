@@ -1,8 +1,5 @@
 using Godot;
 using Godot.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Drawing;
 
 // Generated
 [GlobalClass]

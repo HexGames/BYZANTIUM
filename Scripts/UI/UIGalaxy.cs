@@ -7,7 +7,7 @@ public partial class UIGalaxy : Control
     [Export]
     public Array<UIGalaxySystem> Systems = new Array<UIGalaxySystem>();
     [Export]
-    public UIGalaxyResources Resources = new UIGalaxyResources();
+    public UIEconomyBar Resources = null;
     [Export]
     public UIGalaxyBarList PawnList = null;
     [Export]
@@ -58,7 +58,7 @@ public partial class UIGalaxy : Control
     {
         CurrentTurn.Text = "Current Turn: " + Game.Map.Data.Turn.ToString();
 
-        Resources.Refresh(Game.TurnLoop.CurrentHumanPlayerData.Resources);
+        Resources.Refresh(Game.TurnLoop.CurrentHumanPlayerData);
         PawnList.Refresh(Game.TurnLoop.CurrentHumanPlayerData);
     }
 

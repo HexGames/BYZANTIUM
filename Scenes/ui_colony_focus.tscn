@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d07nreiik6fo3"]
+[gd_scene load_steps=26 format=3 uid="uid://d07nreiik6fo3"]
 
 [ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="1_laq5a"]
 [ext_resource type="Script" path="res://Scripts/UI/System/Focus/UIFocusList.cs" id="1_oab1v"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c54y278yatv8p" path="res://Assets/UI/Symbols/Prod.png" id="9_adou0"]
 [ext_resource type="Texture2D" uid="uid://cscremncpfis7" path="res://Assets/UI/Symbols/Shipyard.png" id="10_cw8ah"]
 [ext_resource type="Texture2D" uid="uid://glb8jqcasoms" path="res://Assets/UI/Symbols/Trade.png" id="11_ides4"]
+[ext_resource type="PackedScene" uid="uid://dq46g5i5ev83s" path="res://Scenes/ui__tooltip_trigger.tscn" id="11_jb6uc"]
 [ext_resource type="Texture2D" uid="uid://be1jjobxapwqy" path="res://Assets/UI/Symbols/Growth.png" id="12_6chy2"]
 [ext_resource type="Texture2D" uid="uid://dnl7e0b78l55e" path="res://Assets/UI/Symbols/Research.png" id="12_lsk3l"]
 [ext_resource type="Texture2D" uid="uid://r320fq44uyeg" path="res://Assets/UI/Symbols/Culture.png" id="13_lo8vw"]
@@ -18,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://70jr8aqayaxd" path="res://Assets/UI/Symbols/SinglePop.png" id="14_l5ixb"]
 [ext_resource type="Texture2D" uid="uid://cfoo0ffowp61b" path="res://Assets/UI/Symbols/Influence.png" id="15_wcsif"]
 [ext_resource type="Texture2D" uid="uid://e0pkpwa427r0" path="res://Assets/UI/Symbols/BC.png" id="16_k3sbf"]
+[ext_resource type="Script" path="res://Scripts/UI/System/Focus/UIFocusListIcon.cs" id="19_swnok"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g4td"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 0.376471)
@@ -52,7 +54,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="UIFocus" type="Control" node_paths=PackedStringArray("TitleLabel", "Energy", "Minerals", "Production", "Shipbuilding", "Trade", "TechPoints", "CulturePoints", "Authority", "Influence", "BC", "All", "All_Energy", "All_Minerals", "All_Production", "All_Shipbuilding", "All_Trade", "All_TechPoints", "All_CulturePoints", "All_Authority", "All_Influence", "All_BC")]
+[node name="UIFocus" type="Control" node_paths=PackedStringArray("TitleLabel", "Energy", "Minerals", "Production", "Shipbuilding", "Trade", "TechPoints", "CulturePoints", "Authority", "Influence", "BC", "All", "All_Energy", "All_Minerals", "All_Production", "All_Shipbuilding", "All_Trade", "All_TechPoints", "All_CulturePoints", "All_Authority", "All_Influence", "All_BC", "All_Pops_Tooltip")]
 custom_minimum_size = Vector2(288, 386)
 layout_mode = 3
 anchors_preset = 15
@@ -85,6 +87,7 @@ All_CulturePoints = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_7")
 All_Authority = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_8")
 All_Influence = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_9")
 All_BC = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_10")
+All_Pops_Tooltip = NodePath("Margins/VBoxContainer/All/BG/Row/TextureRect/UITooltipTrigger")
 
 [node name="Margins" type="Control" parent="."]
 layout_mode = 1
@@ -191,6 +194,12 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("14_l5ixb")
 expand_mode = 1
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/Job_1/BG/Row/Job" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Energy"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Energy.png[/img][/b]"
 
 [node name="Gap_1" type="Control" parent="Margins/VBoxContainer/Job_1/BG/Row"]
 custom_minimum_size = Vector2(8, 0)
@@ -341,6 +350,12 @@ grow_vertical = 0
 texture = ExtResource("14_l5ixb")
 expand_mode = 1
 
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/Job_2/BG/Row/Job" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Minerals"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Minerals.png[/img][/b]"
+
 [node name="Gap_1" type="Control" parent="Margins/VBoxContainer/Job_2/BG/Row"]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
@@ -489,6 +504,12 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("14_l5ixb")
 expand_mode = 1
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/Job_3/BG/Row/Job" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Production"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Prod.png[/img][/b]"
 
 [node name="Gap_1" type="Control" parent="Margins/VBoxContainer/Job_3/BG/Row"]
 custom_minimum_size = Vector2(8, 0)
@@ -640,6 +661,12 @@ grow_vertical = 0
 texture = ExtResource("14_l5ixb")
 expand_mode = 1
 
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/Job_4/BG/Row/Job" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Shipbuilding"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Shipyard.png[/img][/b]"
+
 [node name="Gap_1" type="Control" parent="Margins/VBoxContainer/Job_4/BG/Row"]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
@@ -741,7 +768,6 @@ texture = ExtResource("5_cvfr3")
 expand_mode = 1
 
 [node name="Job_5" type="Control" parent="Margins/VBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 script = ExtResource("4_t2ht3")
@@ -789,6 +815,12 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("14_l5ixb")
 expand_mode = 1
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/Job_5/BG/Row/Job" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Trade"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Trade.png[/img][/b]"
 
 [node name="Gap_1" type="Control" parent="Margins/VBoxContainer/Job_5/BG/Row"]
 custom_minimum_size = Vector2(8, 0)
@@ -891,7 +923,6 @@ texture = ExtResource("5_cvfr3")
 expand_mode = 1
 
 [node name="Job_6" type="Control" parent="Margins/VBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 script = ExtResource("4_t2ht3")
@@ -939,6 +970,12 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("14_l5ixb")
 expand_mode = 1
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/Job_6/BG/Row/Job" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Research"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Research.png[/img][/b]"
 
 [node name="Gap_1" type="Control" parent="Margins/VBoxContainer/Job_6/BG/Row"]
 custom_minimum_size = Vector2(8, 0)
@@ -1090,6 +1127,12 @@ grow_vertical = 0
 texture = ExtResource("14_l5ixb")
 expand_mode = 1
 
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/Job_7/BG/Row/Job" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Culture"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Culture.png[/img][/b]"
+
 [node name="Gap_1" type="Control" parent="Margins/VBoxContainer/Job_7/BG/Row"]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
@@ -1239,6 +1282,12 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("14_l5ixb")
 expand_mode = 1
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/Job_8/BG/Row/Job" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Authoriry"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Authority.png[/img][/b]"
 
 [node name="Gap_1" type="Control" parent="Margins/VBoxContainer/Job_8/BG/Row"]
 custom_minimum_size = Vector2(8, 0)
@@ -1390,6 +1439,12 @@ grow_vertical = 0
 texture = ExtResource("14_l5ixb")
 expand_mode = 1
 
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/Job_9/BG/Row/Job" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Influence"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Influence.png[/img][/b]"
+
 [node name="Gap_1" type="Control" parent="Margins/VBoxContainer/Job_9/BG/Row"]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
@@ -1540,6 +1595,12 @@ grow_vertical = 0
 texture = ExtResource("14_l5ixb")
 expand_mode = 1
 
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/Job_10/BG/Row/Job" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Credits"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/BC.png[/img][/b]"
+
 [node name="Gap_1" type="Control" parent="Margins/VBoxContainer/Job_10/BG/Row"]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
@@ -1685,6 +1746,13 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("7_r7bmy")
 expand_mode = 1
+script = ExtResource("19_swnok")
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/All/BG/Icons/Job_1" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Energy"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Energy.png[/img][/b]"
 
 [node name="Job_2" type="TextureRect" parent="Margins/VBoxContainer/All/BG/Icons"]
 custom_minimum_size = Vector2(24, 24)
@@ -1692,6 +1760,13 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("8_l637r")
 expand_mode = 1
+script = ExtResource("19_swnok")
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/All/BG/Icons/Job_2" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Minerals"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Minerals.png[/img][/b]"
 
 [node name="Job_3" type="TextureRect" parent="Margins/VBoxContainer/All/BG/Icons"]
 custom_minimum_size = Vector2(24, 24)
@@ -1699,6 +1774,13 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("9_adou0")
 expand_mode = 1
+script = ExtResource("19_swnok")
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/All/BG/Icons/Job_3" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Production"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Prod.png[/img][/b]"
 
 [node name="Job_4" type="TextureRect" parent="Margins/VBoxContainer/All/BG/Icons"]
 custom_minimum_size = Vector2(24, 24)
@@ -1706,6 +1788,13 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("10_cw8ah")
 expand_mode = 1
+script = ExtResource("19_swnok")
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/All/BG/Icons/Job_4" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Shipbuilding"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Shipyard.png[/img][/b]"
 
 [node name="Job_5" type="TextureRect" parent="Margins/VBoxContainer/All/BG/Icons"]
 custom_minimum_size = Vector2(24, 24)
@@ -1713,6 +1802,13 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("11_ides4")
 expand_mode = 1
+script = ExtResource("19_swnok")
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/All/BG/Icons/Job_5" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Trade"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Trade.png[/img][/b]"
 
 [node name="Job_6" type="TextureRect" parent="Margins/VBoxContainer/All/BG/Icons"]
 custom_minimum_size = Vector2(24, 24)
@@ -1720,6 +1816,13 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("12_lsk3l")
 expand_mode = 1
+script = ExtResource("19_swnok")
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/All/BG/Icons/Job_6" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Research"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Research.png[/img][/b]"
 
 [node name="Job_7" type="TextureRect" parent="Margins/VBoxContainer/All/BG/Icons"]
 custom_minimum_size = Vector2(24, 24)
@@ -1727,6 +1830,13 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("13_lo8vw")
 expand_mode = 1
+script = ExtResource("19_swnok")
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/All/BG/Icons/Job_7" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Culture"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Culture.png[/img][/b]"
 
 [node name="Job_8" type="TextureRect" parent="Margins/VBoxContainer/All/BG/Icons"]
 custom_minimum_size = Vector2(24, 24)
@@ -1734,6 +1844,13 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("14_676le")
 expand_mode = 1
+script = ExtResource("19_swnok")
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/All/BG/Icons/Job_8" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Authoriry"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Authority.png[/img][/b]"
 
 [node name="Job_9" type="TextureRect" parent="Margins/VBoxContainer/All/BG/Icons"]
 custom_minimum_size = Vector2(24, 24)
@@ -1741,6 +1858,13 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("15_wcsif")
 expand_mode = 1
+script = ExtResource("19_swnok")
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/All/BG/Icons/Job_9" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Influence"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Influence.png[/img][/b]"
 
 [node name="Job_10" type="TextureRect" parent="Margins/VBoxContainer/All/BG/Icons"]
 custom_minimum_size = Vector2(24, 24)
@@ -1748,6 +1872,13 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("16_k3sbf")
 expand_mode = 1
+script = ExtResource("19_swnok")
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/All/BG/Icons/Job_10" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Title = "Credits"
+Row_1 = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/BC.png[/img][/b]"
 
 [node name="Row" type="HBoxContainer" parent="Margins/VBoxContainer/All/BG"]
 layout_mode = 1
@@ -1770,6 +1901,13 @@ custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("5_i0sw3")
 expand_mode = 1
+
+[node name="UITooltipTrigger" parent="Margins/VBoxContainer/All/BG/Row/TextureRect" instance=ExtResource("11_jb6uc")]
+layout_mode = 1
+Width = 256
+Title = "Population"
+Row_1 = "[b]Remaining population:[/b]"
+Row_1_Right = "[b]$value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b]"
 
 [node name="ColorRect" type="ColorRect" parent="Margins/VBoxContainer/All/BG/Row"]
 visible = false

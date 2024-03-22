@@ -71,7 +71,7 @@ public partial class UIShipbuilding : Control
         if (powerValue > 0) title.Replace("$value", powerValue.ToString());
         TitleLabel.Text = title;
 
-        int count = actionCon.GetSub("Count").ValueI;
+        int count = 0; // actionCon.GetSub("Count").ValueI;
         if (count > 0)
         {
             DataBlock name = actionCon.GetSub("Name");
@@ -107,10 +107,10 @@ public partial class UIShipbuilding : Control
         }
         else
         {
-            DataBlock progressTotal = actionCon.GetSub("Progress:Total");
-            DataBlock progressCurrent = actionCon.GetSub("Progress:Current");
-            int remaining = progressTotal.ValueI - progressCurrent.ValueI;
-            IdleLabel.Text = IdleLabel_Original.Replace("$turns", remaining.ToString());
+            //DataBlock progressTotal = actionCon.GetSub("Progress:Total");
+            //DataBlock progressCurrent = actionCon.GetSub("Progress:Current");
+            //int remaining = progressTotal.ValueI - progressCurrent.ValueI;
+            //IdleLabel.Text = IdleLabel_Original.Replace("$turns", remaining.ToString());
 
             Working.Visible = false;
             Idle.Visible = true;
