@@ -45,7 +45,9 @@ public partial class UIBuildBuilding : Control
 
         Benefit.Text = Benefit_Original.Replace("$value", _Building.Benefit.GetAllString());
 
-        Turns.Text = Turns_Original.Replace("$turns", _Building.Turns.ToString());
+        int production = buildingTarget._Sector.Resources_PerTurn.Get("Production").Value_2;
+        int cost = buildingTarget.Cost.Get("Production").Value_1;
+        Turns.Text = Turns_Original.Replace("$turns", Mathf.CeilToInt(1.0f * cost / production).ToString());
 
         Selected.Visible = false;
     }

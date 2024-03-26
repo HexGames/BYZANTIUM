@@ -62,6 +62,10 @@ public partial class UISystem : Control
 
     public void Refresh( StarData star )
     {
+        PlanetSelected = null;
+        SystemSelected = null;
+        SectorSelected = null;
+
         if (star == null)
         {
             // deselect other planets
@@ -74,9 +78,6 @@ public partial class UISystem : Control
             BuildingInfo.Visible = false;
 
             _StarData = null;
-            PlanetSelected = null;
-            SystemSelected = null;
-            SectorSelected = null;
 
             Visible = false;
             Game.Camera.UILockSystem = false;
@@ -90,19 +91,11 @@ public partial class UISystem : Control
 
         if (_StarData.System != null)
         {
-            //int totalProduction = star.System._Sector.ResourcesPerTurn.Get("Production").Value_1 - star.System._Sector.ResourcesPerTurn.Get("Production").Value_2;
-            //Budget.RefreshBudget(star.System._Sector, totalProduction, false, false);
             Budget.Visible = false;
-            SectorConstruction.Visible = false;
+
+            SectorConstruction.Refresh(_StarData.System._Sector);
+            SectorConstruction.Visible = true;
             SectorShipbuilding.Visible = false;
-
-            //int campaignProgress = star.System._Sector.ResourcesPerTurn.Get("Energy").Value_1 - star.System._Sector.ResourcesPerTurn.Get("Energy").Value_2;
-            //SectorCampaignProgress.RefreshCampaignProgress(star.System._Sector.ActionCampaign, campaignProgress);
-            //SectorCampaignProgress.Visible = true;
-
-            //int constructionProgress = star.System._Sector.BudgetPerTurn.GetProduction("Construction_1", totalProduction);
-            //SectorConstructionProgress.RefreshConstructionProgress(star.System._Sector.ActionBuild, constructionProgress);
-            //SectorConstructionProgress.Visible = true;
 
             PlanetInfo.Visible = false;
             BuildingInfo.Visible = false;
@@ -243,9 +236,6 @@ public partial class UISystem : Control
             int production = colony.Resources_PerTurn.Get("Production").Value_2;
             int shipbuilding = colony.Resources_PerTurn.Get("Shipbuilding").Value_1;
 
-            SectorConstruction.Refresh(colony._System._Sector);
-            SectorConstruction.Visible = true;
-
             SectorShipbuilding.Refresh(colony.ColonyName, colony.ActionShipbuilding, shipbuilding);
             SectorShipbuilding.Visible = true;
         }
@@ -254,7 +244,6 @@ public partial class UISystem : Control
             BuildingInfo.Visible = false;
             EconomyInfo.Visible = false;
             FocusInfo.Visible = false;
-            SectorConstruction.Visible = false;
             SectorShipbuilding.Visible = false;
         }
     }

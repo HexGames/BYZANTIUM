@@ -46,6 +46,7 @@ public partial class SectorData : Node
     // actions
     //public List<ActionTargetInfo> BuildQueue_PerTurn = new List<ActionTargetInfo>();
     public List<ActionTargetInfo> AvailableBuildings_PerTurn = new List<ActionTargetInfo>();
+    //public List<ActionTargetInfo> UnavailableBuildings_PerTurn = new List<ActionTargetInfo>();
     public List<ActionColonyConBuildings> ActionsCampaignPossible = new List<ActionColonyConBuildings>();
 
 

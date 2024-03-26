@@ -14,10 +14,10 @@ public partial class TurnLoop : Node
         EndTurn_Actions();
 
         // update resources
-        EndTurn_Resources();
+        StartTurn_Resources();
 
         // update actions
-        EndTurn_NewActions();
+        StartTurn_NewActions();
 
         // update UI
         Game.GalaxyUI.Refresh();
@@ -35,15 +35,12 @@ public partial class TurnLoop : Node
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.Map.Data.Players[playerIdx];
-            //for (int colonyIdx = 0; colonyIdx < player.Colonies.Count; colonyIdx++)
-            //{
-             //   ColonyData colony = player.Colonies[colonyIdx];
+            for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
+            {
+                SectorData sector = player.Sectors[sectorIdx];
 
-                //if (colony.ActionBuild != null)
-                //{
-                //    ActionSectorBuild.Update(colony, Game.Def);
-                //}
-            //}
+                ActionBuild.Update(sector, Game); // --- !!! ---
+            }
         }
     }
 
@@ -66,7 +63,7 @@ public partial class TurnLoop : Node
         public string Name = "Res";
     };
 
-    private void EndTurn_Resources()
+    private void StartTurn_Resources()
     {
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
@@ -116,56 +113,21 @@ public partial class TurnLoop : Node
                         }
                         colony.Resources_PerTurn.Add(colony.Jobs_PerTurn);
                         //colony.Resources_PerTurn.Use("BuildingSlots", totalBuildings);
-                        colony.Resources_PerTurn.ProcessIncome();
+
+                        colony.Resources_PerTurn.ProcessIncome(); // --- !!! ---
                         system.Resources_PerTurn.Add(colony.Resources_PerTurn);
                     }
-                    system.Resources_PerTurn.ProcessIncome();
+                    system.Resources_PerTurn.ProcessIncome(); // --- !!! ---
                     sector.Resources_PerTurn.Add(system.Resources_PerTurn);
                 }
-                sector.Resources_PerTurn.ProcessIncome();
+                sector.Resources_PerTurn.ProcessIncome(); // --- !!! ---
                 player.Resources_PerTurn.Add(sector.Resources_PerTurn);
             }
-            player.Resources_PerTurn.ProcessIncome();
+            player.Resources_PerTurn.ProcessIncome(); // --- !!! ---
         }
-        /*for (int colonyIdx = 0; colonyIdx < player.Colonies.Count; colonyIdx++)
-        {
-            ColonyData colony = player.Colonies[colonyIdx];
-            Array<DataBlock> buildings = colony.Buildings.GetSubs();
-            for (int buildingIdx = 0; buildingIdx < buildings.Count; buildingIdx++)
-            {
-                ActionTargetInfo buildingInfo =  Game.Def.GetBuildingInfo(buildings[buildingIdx].Name);
-                int buildingCount = buildings[buildingIdx].ValueI;
-
-                if (buildingInfo == null)
-                {
-                    GD.Print("BUILDING NOT FOUND! - " + buildings[buildingIdx].Name);
-                    continue;
-                }
-
-                playerRes.Add(buildingInfo.Benefit, buildingCount);
-            }
-
-            //if (colony.ActionBuild != null)
-            //{
-            //    ActionTargetInfo buildingInfo = Game.Def.GetBuildingInfo(colony.ActionBuild.GetSub("Building").ValueS);
-            //
-            //    if (buildingInfo == null)
-            //    {
-            //        GD.Print("BUILDING NOT FOUND! - " + colony.ActionBuild.GetSub("Building").ValueS);
-            //        continue;
-            //    }
-            //
-            //    playerRes.Use(buildingInfo.Cost);
-            //}
-        }*/
-
-        //    playerRes.AddIncome();
-        //
-        //    playerRes.Save();
-        //}
     }
 
-    private void EndTurn_NewActions()
+    private void StartTurn_NewActions()
     {
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {

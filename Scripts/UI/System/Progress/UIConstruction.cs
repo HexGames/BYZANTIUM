@@ -46,28 +46,28 @@ public partial class UIConstruction : Control
         _Data = sector;
         // TitleLabel.Text = TitleLabel_Original.Replace("$name", sector.SectorName);
 
-        Array<DataBlock> buildings = sector.ActionBuildQueue.GetSubs("Building");
+        Array<DataBlock> queuedBuildings = sector.ActionBuildQueue.GetSubs("Building");
         int production = _Data.Resources_PerTurn.Get("Production").Value_2;
 
-        if (buildings.Count > 0)
+        if (queuedBuildings.Count > 0)
         {
             int overflow = sector.ActionBuildQueue.GetSub("Overflow").ValueI;
             int turns = 1;
-            Current.Refresh(buildings[0], production, ref overflow, ref turns);
+            Current.Refresh(queuedBuildings[0], production, ref overflow, ref turns);
 
             // grow
-            while (Queue.Count < buildings.Count - 1)
+            while (Queue.Count < queuedBuildings.Count - 1)
             {
                 UIConstructionItem newItem = Queue[0].Duplicate(7) as UIConstructionItem;
                 Queue[0].GetParent().AddChild(newItem);
                 Queue.Add(newItem);
             }
 
-            for (int idx = Queue.Count - 1; idx >= 0; idx++)
+            for (int idx = Queue.Count - 1; idx >= 0; idx--)
             {
-                if (idx + 1 < buildings.Count)
+                if (idx + 1 < queuedBuildings.Count)
                 {
-                    Queue[idx].Refresh(buildings[buildings.Count - 1 - idx], production, ref overflow, ref turns);
+                    Queue[idx].Refresh(queuedBuildings[queuedBuildings.Count - 1 - idx], production, ref overflow, ref turns);
                     Queue[idx].Visible = true;
                 }
                 else
@@ -90,10 +90,5 @@ public partial class UIConstruction : Control
         ExtraEnergy.Visible = false;
         ExtraBC.Visible = false;
         ExtraPrivateIndustry.Visible = false;
-    }
-
-    public void OnBuild()
-    {
-        //Game.WindowsUI.Build(_Data);
     }
 }

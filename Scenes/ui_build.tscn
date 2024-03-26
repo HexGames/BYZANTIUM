@@ -420,6 +420,7 @@ layout_mode = 2
 [node name="BuildingNone" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo"]
 custom_minimum_size = Vector2(304, 180)
 layout_mode = 1
+anchors_preset = 0
 offset_left = 8.0
 offset_right = 8.0
 
@@ -838,4 +839,6 @@ fit_content = true
 
 [connection signal="pressed" from="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Button" to="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1" method="OnSelect"]
 [connection signal="pressed" from="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container/Button" to="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1" method="OnSelect"]
+[connection signal="pressed" from="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/BuildBtn" to="." method="OnBuild"]
+[connection signal="pressed" from="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/QueueBtn" to="." method="OnAddToQueue"]
 [connection signal="pressed" from="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/CancelBtn" to="." method="OnCancel"]

@@ -207,6 +207,7 @@ TitleLabel = NodePath("../../PlanetInfo/PlanetInfo/Margins/TitleBg/Title")
 Properties = [NodePath("../../PlanetInfo/PlanetInfo/Margins/ScrollContainer/VBoxContainer/Property_1")]
 
 [node name="Center" type="Control" parent="Container/Info/BuildingsInfo"]
+visible = false
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
@@ -677,7 +678,69 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7gult")
 
+[node name="NoBuild" type="TextureRect" parent="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1"]
+visible = false
+self_modulate = Color(0.25098, 0.25098, 0.25098, 1)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -136.0
+offset_right = 54.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("16_di42q")
+expand_mode = 1
+
+[node name="UnavailableBuild" type="Button" parent="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -136.0
+offset_right = 54.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("19_to7qt")
+theme_type_variation = &"RoundGrey"
+
+[node name="Icon" type="TextureRect" parent="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1/UnavailableBuild"]
+self_modulate = Color(0.25098, 0.25098, 0.25098, 1)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 16)
+mouse_filter = 2
+texture = ExtResource("16_di42q")
+expand_mode = 1
+script = ExtResource("14_tm1ai")
+SizeMin = 0.9
+On = true
+
 [node name="AvailableBuild" type="TextureRect" parent="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1"]
+visible = false
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = -1
@@ -696,6 +759,7 @@ texture = ExtResource("10_baqn7")
 expand_mode = 1
 
 [node name="ButtonBuild" type="Button" parent="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1"]
+visible = false
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = -1
@@ -712,7 +776,7 @@ grow_vertical = 2
 theme = ExtResource("19_to7qt")
 theme_type_variation = &"Round"
 
-[node name="BuildingAvailable" type="TextureRect" parent="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1/ButtonBuild"]
+[node name="Icon" type="TextureRect" parent="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1/ButtonBuild"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 8
@@ -2072,4 +2136,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_86eyj")
 [connection signal="mouse_entered" from="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1" to="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1" method="OnHover"]
 [connection signal="mouse_exited" from="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1" to="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1" method="OnDehover"]
 [connection signal="pressed" from="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1" to="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1" method="OnSelect"]
+[connection signal="pressed" from="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1/UnavailableBuild" to="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1" method="OnBuild"]
 [connection signal="pressed" from="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1/ButtonBuild" to="Container/SystemBar/OuterCOntainer/HBoxContainer/Planet_1" method="OnBuild"]

@@ -20,7 +20,7 @@ public class ResourcesWrapper
         public int Value_2 = 0;
 
         public string Name = "Res";
-        public DataBlock _Data = null;
+        public ResourcesWrapper _Parent = null;
 
         public int GetBenefitValue()
         {
@@ -40,19 +40,19 @@ public class ResourcesWrapper
             {
                 case Info.Type.VALUE:
                     {
-                        _Data.GetSub(Name).ValueI = Value_1;
+                        _Parent._Data.GetSub(Name).ValueI = Value_1;
                         break;
                     }
                 case Info.Type.VALUE_INCOME:
                     {
-                        _Data.GetSub(Name).ValueI = Value_1;
+                        _Parent._Data.GetSub(Name).ValueI = Value_1;
                         break;
                     }
             }
         }
     }
 
-    protected DataBlock _Data = null;
+    public DataBlock _Data = null;
     public List<Info> Resources = new List<Info>();
 
     public ResourcesWrapper(DataBlock resData)
@@ -97,7 +97,7 @@ public class ResourcesWrapper
             if (found == false)
             {
                 Info newRes = new Info();
-                newRes._Data = resDataSubs[idxData];
+                newRes._Parent = this;
                 newRes.Name = name;
                 if (type == "Income")
                 {
@@ -248,6 +248,7 @@ public class ResourcesWrapper
             if (Resources[idx].ResType == Info.Type.VALUE_INCOME)
             {
                 Resources[idx].Value_1 += Resources[idx].Value_2;
+                Resources[idx].SaveValue();
             }
         }
     }

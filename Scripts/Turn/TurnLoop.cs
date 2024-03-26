@@ -42,8 +42,8 @@ public partial class TurnLoop : Node
     {
         CurrentHumanPlayerData = GetHumanPlayer();
         Init_Resources();
-        EndTurn_Resources();
-        EndTurn_NewActions();
+        StartTurn_Resources();
+        StartTurn_NewActions();
         Game.GalaxyUI.Refresh();
     }
 

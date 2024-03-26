@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class ActionColonyConBuildings : Action
 {
-    private ColonyData Colony = null;
+    //private ColonyData Colony = null;
 
     static public void RefreshColonyActions(ColonyData colony, DefLibrary df)
     {

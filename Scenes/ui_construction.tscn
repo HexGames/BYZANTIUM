@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcmj5bohen8h7"]
+[gd_scene load_steps=17 format=3 uid="uid://dcmj5bohen8h7"]
 
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_rk2rl"]
 [ext_resource type="Script" path="res://Scripts/UI/System/Progress/UIConstruction.cs" id="2_6ft6r"]
@@ -26,6 +26,8 @@ skew = Vector2(0.32, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7raiu"]
 bg_color = Color(0.188235, 0.109804, 0.027451, 1)
 skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7gws"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xqbp"]
 bg_color = Color(0.247059, 0.14902, 0.0470588, 1)
@@ -238,23 +240,31 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7raiu")
 
-[node name="NextTurn" type="Panel" parent="VBoxContainer/Working/Item_Current/MarginContainer/Panel"]
+[node name="NextTurn" type="ProgressBar" parent="VBoxContainer/Working/Item_Current/MarginContainer/Panel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.563
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0xqbp")
+theme_override_styles/background = SubResource("StyleBoxEmpty_q7gws")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0xqbp")
+step = 1.0
+value = 55.0
+show_percentage = false
 
-[node name="Progres" type="Panel" parent="VBoxContainer/Working/Item_Current/MarginContainer/Panel"]
+[node name="Progress" type="ProgressBar" parent="VBoxContainer/Working/Item_Current/MarginContainer/Panel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.448
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yw11h")
+theme_override_styles/background = SubResource("StyleBoxEmpty_q7gws")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yw11h")
+step = 1.0
+value = 45.0
+show_percentage = false
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/Working/Item_Current/MarginContainer/Panel"]
 custom_minimum_size = Vector2(0, 20)

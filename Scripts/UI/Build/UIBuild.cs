@@ -34,6 +34,8 @@ public partial class UIBuild : Control
     public SectorData _Sector = null;
     [Export]
     public PlanetData _Planet = null;
+    [Export]
+    public UIBuildBuilding Selected = null;
 
     Game Game;
 
@@ -144,21 +146,28 @@ public partial class UIBuild : Control
 
     public void Select(UIBuildBuilding building)
     {
-        for (int idx = 0; idx < Buildings.Count; idx++)
+        //for (int idx = 0; idx < Buildings.Count; idx++)
+        //{
+        //    if (Buildings[idx] != building)
+        //    {
+        //        Buildings[idx].Deselect();
+        //    }
+        //}
+
+        if (Selected != null)
         {
-            if (Buildings[idx] != building)
-            {
-                Buildings[idx].Deselect();
-            }
+            Selected.Deselect();
         }
 
-        BuildingName.Text = BuildingName_Original.Replace("$name", building._Building.Name);
+        Selected = building;
 
-        Cost.Text = Cost_Original.Replace("$value", Helper.ResValueToString(building._Building.Cost.Get("Production").Value_1));
+        BuildingName.Text = BuildingName_Original.Replace("$name", Selected._Building.Name);
 
-        Effects.Text = Effects_Original.Replace("$effects", building._Building.Benefit.GetAllString());
+        Cost.Text = Cost_Original.Replace("$value", Helper.ResValueToString(Selected._Building.Cost.Get("Production").Value_1));
 
-        Description.Text = Description_Original.Replace("$description", building._Building.Name + " is a building");
+        Effects.Text = Effects_Original.Replace("$effects", Selected._Building.Benefit.GetAllString());
+
+        Description.Text = Description_Original.Replace("$description", Selected._Building.Name + " is a building");
 
         BuildingSelected.Visible = true;
         BuildingNone.Visible = false;
@@ -323,6 +332,22 @@ public partial class UIBuild : Control
             }
         }
     }*/
+
+    public void OnBuild()
+    {
+        ActionBuild.AddToQueue(Selected._Building, Game);
+        ActionBuild.ReorderInQueue(Selected._Building, int.MinValue, Game);
+
+        Game.SystemUI.Refresh(Selected._Building._Planet._Star);
+        Game.WindowsUI.HideAll();
+    }
+    public void OnAddToQueue()
+    {
+        ActionBuild.AddToQueue(Selected._Building, Game);
+
+        Game.SystemUI.Refresh(Selected._Building._Planet._Star);
+        Game.WindowsUI.HideAll();
+    }
 
     public void OnCancel()
     {

@@ -27,6 +27,7 @@ public class ActionBuild
                             {
                                 ActionTargetInfo action = new ActionTargetInfo(df.BuildingsInfo[idx]._Data);
                                 action._Planet = planet;
+                                action._Sector = sector;
                                 sector.AvailableBuildings_PerTurn.Add(action);
                             }
                         }
@@ -36,24 +37,25 @@ public class ActionBuild
         }
     }
 
-    static public void AddToQueue(ActionTargetInfo action, Game game, DefLibrary df)
+    static public void AddToQueue(ActionTargetInfo action, Game game)
     {
-        SectorData sector = action._Planet?._Star.System?._Sector;
-        if (sector == null) return;
-
-        DataBlock building = Data.AddData(sector.ActionBuildQueue, "Building", action.Name, df);
-        Data.AddLink(building, action._Planet, df);
-        Data.AddData(building, "Progress:Max", action.Cost.Get("Production").Value_1, df);
+        DataBlock building = Data.AddData(action._Sector.ActionBuildQueue, "Building", action.Name, game.Def);
+        Data.AddLink(building, action._Planet, game.Def);
+        Data.AddData(building, "Progress:Max", action.Cost.Get("Production").Value_1, game.Def);
     }
 
-    static public void ReorderInQueue(ActionTargetInfo action, Game game, DefLibrary df)
+    static public void ReorderInQueue(ActionTargetInfo action, int orderChange, Game game)
     {
-        //SectorData sector = action._Planet?._Star.System?._Sector;
-        //if (sector == null) return;
-        //
-        //DataBlock building = Data.AddData(sector.ActionBuildQueue, "Building", action.Name, df);
-        //Data.AddLink(building, action._Planet, df);
-        //Data.AddData(building, "Progress:Max", action.Cost.Get("Production").Value_1, df);
+        for (int idx = 0; idx < action._Sector.ActionBuildQueue.Subs.Count; idx++)
+        {
+            if (action._Sector.ActionBuildQueue.Subs[idx].ValueS == action.Name)
+            {
+                DataBlock data = action._Sector.ActionBuildQueue.Subs[idx];
+                action._Sector.ActionBuildQueue.Subs.RemoveAt(idx);
+                action._Sector.ActionBuildQueue.Subs.Insert(Mathf.Clamp(idx + orderChange, 0, action._Sector.ActionBuildQueue.Subs.Count - 1), data);
+                break;
+            }
+        }
     }
 
     static public void DeleteFromQueue(ActionTargetInfo action, Game game, DefLibrary df)
@@ -66,7 +68,7 @@ public class ActionBuild
         //Data.AddData(building, "Progress:Max", action.Cost.Get("Production").Value_1, df);
     }
 
-    static public void Update(SectorData sector, Game game, DefLibrary df)
+    static public void Update(SectorData sector, Game game)
     {
         DataBlock overflow = sector.ActionBuildQueue.GetSub("Overflow");
         int production = sector.Resources_PerTurn.Get("Production").Value_2 + overflow.ValueI;
@@ -91,28 +93,28 @@ public class ActionBuild
                 SystemData system = planet._Star.System;
                 DataBlock colonyList = system.Data.GetSub("Colony_List");
 
-                DataBlock colonyData = Data.AddData(colonyList, "Colony", planet.PlanetName, df);
-                Data.AddData(colonyData, "Outpost", df);
-                MapGenerator.Create_Colony_Resources(colonyData, df);
+                DataBlock colonyData = Data.AddData(colonyList, "Colony", planet.PlanetName, game.Def);
+                Data.AddData(colonyData, "Outpost", game.Def);
+                MapGenerator.Create_Colony_Resources(colonyData, game.Def);
 
-                MapGenerator.Create_Colony_Buildings(colonyData, df);
+                MapGenerator.Create_Colony_Buildings(colonyData, game.Def);
 
                 // ---
                 // order maters x3
-                Data.AddLink(colonyData, planet, df); // 1
+                Data.AddLink(colonyData, planet, game.Def); // 1
                 game.Map.Data.GenerateGameFromData_Player_Sector_System_Colony(colonyData, system); // 2
-                Data.AddLink(planet.Data, planet.Colony, df);  // 3
+                Data.AddLink(planet.Data, planet.Colony, game.Def);  // 3
             }
 
             DataBlock building = planet.Colony.Buildings.GetSub(buildingQueue[0].ValueS);
             bool completed = false;
             if (building == null)
             {
-                building = Data.AddData(planet.Colony.Buildings, buildingQueue[0].ValueS, df);
+                building = Data.AddData(planet.Colony.Buildings, buildingQueue[0].ValueS, game.Def);
 
                 int progressMax = buildingQueue[0].GetSub("Progress:Max").ValueI;
-                DataBlock inConstruction = Data.AddData(building, "InConstruction", df);
-                Data.AddData(inConstruction, "Progress:Max", progressMax, df);
+                DataBlock inConstruction = Data.AddData(building, "InConstruction", game.Def);
+                Data.AddData(inConstruction, "Progress:Max", progressMax, game.Def);
                 if (production >= progressMax)
                 {
                     production -= progressMax;
@@ -120,7 +122,8 @@ public class ActionBuild
                 }
                 else
                 {
-                    Data.AddData(inConstruction, "Progress", production, df);
+                    Data.AddData(inConstruction, "Progress", production, game.Def);
+                    production = 0;
                 }
             }
             else
@@ -138,12 +141,15 @@ public class ActionBuild
                 else
                 {
                     progressData.ValueI += production;
+                    production = 0;
                 }
             }
 
             if (completed)
             {
-                Data.RemoveData(building, "InConstruction", df);
+                Data.RemoveData(building, "InConstruction", game.Def);
+                sector.ActionBuildQueue.Subs.Remove(buildingQueue[0]);
+                buildingQueue.RemoveAt(0);
             }
         }
 

@@ -102,6 +102,7 @@ public partial class UISystemBarList : Control
         for (int planetIdx = 0; planetIdx < Planets.Count; planetIdx++)
         {
             Planets[planetIdx].Visible = false;
+            Planets[planetIdx].IsSelected = false;
         }
 
         // refresh planets

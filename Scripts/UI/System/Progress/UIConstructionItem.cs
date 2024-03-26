@@ -9,15 +9,15 @@ public partial class UIConstructionItem : Control
     private RichTextLabel TitleLabel;
     private string TitleLabel_Original;
     private Panel ProgressBG = null;
-    private Panel ProgressCurrent = null;
-    private Panel ProgressNextTurn = null;
+    private ProgressBar ProgressCurrent = null;
+    private ProgressBar ProgressNextTurn = null;
     private RichTextLabel Turn;
     private string Turn_Original;
 
     [ExportCategory("Runtime")]
     public DataBlock _Data = null;
 
-    private float MaxProgress = 128f;
+    //private float MaxProgress = 128f;
 
     Game Game;
 
@@ -28,11 +28,11 @@ public partial class UIConstructionItem : Control
         TitleLabel = GetNode<RichTextLabel>("MarginContainer/Panel/Name");
         TitleLabel_Original = TitleLabel.Text;
         ProgressBG = GetNode<Panel>("MarginContainer/Panel");
-        if (HasNode("MarginContainer/Panel/Progres"))
+        if (HasNode("MarginContainer/Panel/Progress"))
         {
-            MaxProgress = ProgressBG.Size.X;
-            ProgressCurrent = GetNode<Panel>("MarginContainer/Panel/Progres");
-            ProgressNextTurn = GetNode<Panel>("MarginContainer/Panel/NextTurn");
+            //MaxProgress = ProgressBG.Size.X;
+            ProgressCurrent = GetNode<ProgressBar>("MarginContainer/Panel/Progress");
+            ProgressNextTurn = GetNode<ProgressBar>("MarginContainer/Panel/NextTurn");
         }
         Turn = GetNode<RichTextLabel>("MarginContainer/Panel/Name/Turns");
         Turn_Original = Turn.Text;
@@ -45,29 +45,48 @@ public partial class UIConstructionItem : Control
         PlanetData planet = Data.GetLinkPlanetData(building, Game.Map.Data);
         TitleLabel.Text = TitleLabel_Original.Replace("$name", _Data.Name).Replace("$location", planet.PlanetName);
 
-        if (ProgressCurrent != null)
+        DataBlock realBuilding = null;
+        if (planet.Colony != null)
         {
-            DataBlock inConstruction = building.GetSub("InConstruction");
-            DataBlock progressData = inConstruction.GetSub("Progress");
-            int progressCurrent = progressData.ValueI;
+            realBuilding = planet.Colony.Buildings.GetSub(building.ValueS);
+        }
+
+        if (realBuilding != null)
+        {
+            DataBlock inConstruction = realBuilding.GetSub("InConstruction");
+            int progressCurrent = inConstruction.GetSub("Progress").ValueI;
             int progressMax = inConstruction.GetSub("Progress:Max").ValueI;
             int progressNextTurn = Mathf.Min(progressMax, progressCurrent + production);
 
-            float progress = 1.0f * progressCurrent / progressMax;
-            float nextTurn = 1.0f * progressNextTurn / progressMax;
-            ProgressCurrent.Size = new Vector2(progress * MaxProgress, ProgressCurrent.Size.Y);
-            ProgressNextTurn.Size = new Vector2(nextTurn * MaxProgress, ProgressCurrent.Size.Y);
+            if (ProgressCurrent != null)
+            {
+                ProgressCurrent.MaxValue = progressMax;
+                ProgressCurrent.Value = progressCurrent;
+                ProgressNextTurn.MaxValue = progressMax;
+                ProgressNextTurn.Value = progressNextTurn;
+            }
 
             int remaining = progressMax - progressCurrent;
-            turns += (remaining - overflow) / production;
-            overflow = (remaining - overflow) % production;
+            turns += Mathf.CeilToInt(1.0f * (remaining - overflow) / production);
+            overflow = turns * production - (remaining - overflow);
             Turn.Text = Turn_Original.Replace("$value", turns.ToString());
         }
         else
         {
             int progressMax = building.GetSub("Progress:Max").ValueI;
-            turns += (progressMax - overflow) / production;
-            overflow = (progressMax - overflow) % production;
+            int progressNextTurn = Mathf.Min(progressMax, production);
+
+            if (ProgressCurrent != null)
+            {
+                ProgressCurrent.MaxValue = progressMax;
+                ProgressCurrent.Value = 0;
+                ProgressNextTurn.MaxValue = progressMax;
+                ProgressNextTurn.Value = progressNextTurn;
+            }
+
+            int remaining = progressMax;
+            turns += Mathf.CeilToInt(1.0f * (remaining - overflow) / production);
+            overflow = turns * production - (remaining - overflow);
             Turn.Text = Turn_Original.Replace("$value", turns.ToString());
         }
     }
