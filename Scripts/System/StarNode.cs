@@ -27,13 +27,10 @@ public partial class StarNode : Node
         if (Engine.IsEditorHint()) return;
 
         PlayerInput = GetNode<PlayerInput>("/root/Main/PlayerInput");
-        //OnSelect += PlayerInput.SelectLocation;
     }
 
     public void Select()
     {
-        //GD.Print("You selected " + Def.LocationName);
-        //EmitSignal(SignalName.OnSelect);
-        PlayerInput.SelectLocation( this );
+        PlayerInput.SelectStar( Data );
     }
 }

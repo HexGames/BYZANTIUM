@@ -3,15 +3,9 @@ using Godot.Collections;
 using System.Collections.Generic;
 using System.Transactions;
 
-public partial class UIBuild : Control
+public partial class UIWindow : Control
 {
     [ExportCategory("Links")]
-    [Export]
-    public Array<UIBuildBuilding> Buildings;
-    [Export]
-    public Array<UIBuildBuilding> Unavailable;
-    [Export]
-    public Array<UIBuildLocation> Locations;
     [Export]
     public Control BuildingSelected;
     [Export]
@@ -34,8 +28,6 @@ public partial class UIBuild : Control
     public SectorData _Sector = null;
     [Export]
     public PlanetData _Planet = null;
-    [Export]
-    public UIBuildBuilding Selected = null;
 
     Game Game;
 
@@ -70,27 +62,27 @@ public partial class UIBuild : Control
         }
 
         // grow
-        while (Buildings.Count < targets.Count)
-        {
-            UIBuildBuilding newItem = Buildings[0].Duplicate(7) as UIBuildBuilding;
-            Buildings[0].GetParent().AddChild(newItem);
-            Buildings.Add(newItem);
-        }
-
-        for (int buildingsIdx = 0; buildingsIdx < Buildings.Count; buildingsIdx++)
-        {
-            if (buildingsIdx < targets.Count)
-            {
-                Buildings[buildingsIdx].Refresh(targets[buildingsIdx]);
-                Buildings[buildingsIdx].Visible = true;
-            }
-            else
-            {
-                Buildings[buildingsIdx]._Building = null;
-                Buildings[buildingsIdx].Visible = false;
-                //Buildings[buildingsIdx].LocationActions.Clear();
-            }
-        }
+        //while (Buildings.Count < targets.Count)
+        //{
+        //    UIBuildBuilding newItem = Buildings[0].Duplicate(7) as UIBuildBuilding;
+        //    Buildings[0].GetParent().AddChild(newItem);
+        //    Buildings.Add(newItem);
+        //}
+        //
+        //for (int buildingsIdx = 0; buildingsIdx < Buildings.Count; buildingsIdx++)
+        //{
+        //    if (buildingsIdx < targets.Count)
+        //    {
+        //        Buildings[buildingsIdx].Refresh(targets[buildingsIdx]);
+        //        Buildings[buildingsIdx].Visible = true;
+        //    }
+        //    else
+        //    {
+        //        Buildings[buildingsIdx]._Building = null;
+        //        Buildings[buildingsIdx].Visible = false;
+        //        //Buildings[buildingsIdx].LocationActions.Clear();
+        //    }
+        //}
 
         // --- 
         /*for (int unavailableIdx = 0; unavailableIdx < Game.Def.BuildingsInfo.Count; unavailableIdx++)
@@ -143,35 +135,6 @@ public partial class UIBuild : Control
         //    }
         //}
     }
-
-    public void Select(UIBuildBuilding building)
-    {
-        //for (int idx = 0; idx < Buildings.Count; idx++)
-        //{
-        //    if (Buildings[idx] != building)
-        //    {
-        //        Buildings[idx].Deselect();
-        //    }
-        //}
-
-        if (Selected != null)
-        {
-            Selected.Deselect();
-        }
-
-        Selected = building;
-
-        BuildingName.Text = BuildingName_Original.Replace("$name", Selected._Building.Name);
-
-        Cost.Text = Cost_Original.Replace("$value", Helper.ResValueToString(Selected._Building.Cost.Get("Production").Value_1));
-
-        Effects.Text = Effects_Original.Replace("$effects", Selected._Building.Benefit.GetAllString());
-
-        Description.Text = Description_Original.Replace("$description", Selected._Building.Name + " is a building");
-
-        BuildingSelected.Visible = true;
-        BuildingNone.Visible = false;
-}
 
     /*public void Refresh(SectorData _sector)
     {
@@ -335,17 +298,10 @@ public partial class UIBuild : Control
 
     public void OnBuild()
     {
-        ActionBuild.AddToQueue(Selected._Building, Game);
-        ActionBuild.ReorderInQueue(Selected._Building, int.MinValue, Game);
+        //ActionBuild.AddToQueue(Selected._Building, Game);
+        //ActionBuild.ReorderInQueue(Selected._Building, int.MinValue, Game);
 
-        Game.SystemUI.Refresh(Selected._Building._Planet._Star);
-        Game.WindowsUI.HideAll();
-    }
-    public void OnAddToQueue()
-    {
-        ActionBuild.AddToQueue(Selected._Building, Game);
-
-        Game.SystemUI.Refresh(Selected._Building._Planet._Star);
+        //Game.SystemUI.Refresh(Selected._Building._Planet._Star);
         Game.WindowsUI.HideAll();
     }
 

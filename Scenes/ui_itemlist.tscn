@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://btm8s0fh8xu5d"]
+[gd_scene load_steps=7 format=3 uid="uid://btm8s0fh8xu5d"]
 
 [ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="1_laq5a"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UIItemList.cs" id="1_msybk"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="2_ongvp"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UIItemListItem.cs" id="3_ofbn3"]
+[ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="5_8aw70"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g4td"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 0.376471)
@@ -98,12 +99,14 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_8aw70")
+theme_type_variation = &"PanelLine"
 
 [node name="Name" type="Label" parent="Margins/ScrollContainer/VBoxContainer/Property_1/BG"]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = -1
 anchor_bottom = 1.0
+offset_left = 8.0
 offset_right = 128.0
 grow_vertical = 2
 theme = ExtResource("1_laq5a")
@@ -112,11 +115,12 @@ vertical_alignment = 1
 
 [node name="Value" type="Label" parent="Margins/ScrollContainer/VBoxContainer/Property_1/BG"]
 layout_mode = 1
-anchors_preset = 11
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -118.0
+offset_right = -8.0
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("1_laq5a")

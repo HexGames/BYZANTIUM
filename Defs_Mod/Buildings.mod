@@ -1,397 +1,885 @@
-Def_Buildings 
+Buildings 
 {
-	// Ej - Gerothermal_Vents x4
-	// E - Active star x2
-	// E - Rich gases
-	// Mj - Mineral_Veins x4
-	// M - Rings
-	// M - Minerals x2
-	// Rj - Life study x3
-	// SR-E - Deuterium
-	// SR-E - Anti-Matter
-
-	// Colony
-	// Infrastructure 5 / 10 / 20 / 50 / 100 / 200 / 500 / 1000 - accelerated growth until 5/10/20... pops
-	// 
-
-	// Empire Capitals
-
-	// Active
-	Building Flare_Catcher
+	Building Star_Orbit
 	{
-		Require
-		{
-			Planet:Feature Active
-		}
+		Upgrade Starport
+		Slot Star
+		Icon 0
+		Idx 0
+	}
+	Building Starport
+	{
+		Upgrade Gate
 		Cost 
 		{
-			Production 2500
+			Production 1500
 		}
-		Benefit Planet
+		Slot Star
+		Level I
+		Icon S
+		Idx 0
+		1 
 		{
-			Energy 100
+			Authority 1
+		}
+		Benefit 
+		{
+			SectorControl yes
 		}
 	}
-	Building Flare_Catcher_II
+	Building Gate
 	{
-		Replace Flare_Catcher
-		Cost 
-		{
-			Production 5000
-		}
-		Benefit Planet
-		{
-			Energy 200
-		}
-	}
-
-	// HyperActive
-	Building Hyper_Flare_Catcher
-	{
-		Require
-		{
-			Planet:Feature Active
-		}
-		Cost 
-		{
-			Production 2500
-		}
-		Benefit Planet
-		{
-			Energy 200
-		}
-	}
-	Building Hyper_Flare_Catcher_II
-	{
-		Replace Hyper_Flare_Catcher
-		Cost 
-		{
-			Production 5000
-		}
-		Benefit Planet
-		{
-			Energy 400
-		}
-	}
-	Building Hyper_Flare_Catcher_III
-	{
-		Replace Hyper_Flare_Catcher_II
+		Upgrade Supergate
 		Cost 
 		{
 			Production 10000
 		}
-		Benefit Planet
+		Slot Star
+		Level II
+		Icon G
+		Idx 0
+		1 
 		{
-			Energy 600
+			Authority 2
+		}
+		Benefit 
+		{
+			SectorControl yes
 		}
 	}
-
-	// Rich_Gases
-	Building Gas_Extractor
+	Building Supergate
 	{
-		Require
+		Cost 
 		{
-			Planet:Feature Rich_Gases
+			Production 20000
 		}
+		Slot Star
+		Level III
+		Icon SG
+		Idx 0
+		1 
+		{
+			Authority 3
+		}
+		Benefit 
+		{
+			SectorControl yes
+		}
+	}
+	Building Stable_Orbit
+	{
+		Upgrade Energy_Capture_I
+		Slot Outpost
+		Icon E
+	}
+	Building Energy_Capture_I
+	{
+		Upgrade Energy_Capture_II
+		Cost 
+		{
+			Production 800
+		}
+		Slot Outpost
+		Level I
+		Icon E
+		Benefit 
+		{
+			Energy*Income 40
+		}
+	}
+	Building Energy_Capture_II
+	{
+		Upgrade Energy_Capture_III
+		Cost 
+		{
+			Production 1200
+		}
+		Slot Outpost
+		Level II
+		Icon E
+		Benefit 
+		{
+			Energy*Income 80
+		}
+	}
+	Building Energy_Capture_III
+	{
+		Upgrade Energy_Capture_IV
 		Cost 
 		{
 			Production 2500
 		}
-		Benefit Planet
+		Slot Outpost
+		Level III
+		Icon E
+		Benefit 
 		{
-			Energy 150
+			Energy*Income 150
 		}
 	}
-	Building Gas_Extractor_II
+	Building Energy_Capture_IV
 	{
-		Replace Gas_Extractor
-		Cost 
-		{
-			Production 5000
-		}
-		Benefit Planet
-		{
-			Energy 300
-		}
-	}
-
-	// Ultra_Rich_Gases
-	Building Ultra_Gas_Extractor
-	{
-		Require
-		{
-			Planet:Feature Ultra_Rich_Gases
-		}
-		Cost 
-		{
-			Production 2500
-		}
-		Benefit Planet
-		{
-			Energy 250
-		}
-	}
-	Building Ultra_Gas_Extractor_II
-	{
-		Replace Gas_Extractor
-		Cost 
-		{
-			Production 5000
-		}
-		Benefit Planet
-		{
-			Energy 500
-		}
-	}
-	Building Ultra_Gas_Extractor_III
-	{
-		Replace Ultra_Gas_Extractor_II
+		Upgrade Energy_Capture_V
 		Cost 
 		{
 			Production 10000
 		}
-		Benefit Planet
+		Slot Outpost
+		Level IV
+		Icon E
+		Required Colony
+		Benefit 
 		{
-			Energy 750
+			Energy*Income 500
 		}
 	}
-
-	// Rings
-	Building Ring_Mineral_Collector
+	Building Energy_Capture_V
 	{
-		Require
-		{
-			Planet:Feature Rings
-		}
 		Cost 
 		{
-			Production 2500
+			Production 40000
 		}
-		Benefit Planet
+		Slot Outpost
+		Level V
+		Icon E
+		Required Colony
+		Benefit 
 		{
-			Minerals 100
+			Energy*Income 1200
 		}
 	}
-	Building Ring_Mineral_Collector_II
+	Building Ring_Minerals
 	{
-		Replace Ring_Mineral_Collector
+		Upgrade Ring_Mine
+		Slot Outpost
+		Icon RM
+	}
+	Building Ring_Mine
+	{
 		Cost 
 		{
-			Production 5000
+			Production 1200
 		}
-		Benefit Planet
+		Slot Outpost
+		Level I
+		Icon RM
+		Benefit 
 		{
-			Minerals 200
+			Minerals*Income 100
 		}
 	}
-
-	// Large_Rings
-	Building Large_Ring_Mineral_Collector
+	Building Possible_Asteroid_Mines
 	{
-		Require
-		{
-			Planet:Feature Large_Rings
-		}
-		Cost 
-		{
-			Production 2500
-		}
-		Benefit Planet
-		{
-			Minerals 200
-		}
+		Upgrade Asteroid_Mines_I
+		Slot Outpost
 	}
-	Building Large_Ring_Mineral_Collector_II
+	Building Asteroid_Mines_I
 	{
-		Replace Ring_Mineral_Collector
-		Cost 
-		{
-			Production 5000
-		}
-		Benefit Planet
-		{
-			Minerals 400
-		}
-	}
-	Building Large_Ring_Mineral_Collector_III
-	{
-		Replace Large_Ring_Mineral_Collector_II
-		Cost 
-		{
-			Production 1000
-		}
-		Benefit Planet
-		{
-			Minerals 600
-		}
-	}
-
-
-	// Small_Asteroids
-	Building Small_Asteroids_Mines
-	{
-		Require
-		{
-			Planet:Feature Small_Asteroids
-		}
+		Upgrade Asteroid_Mines_II
 		Cost 
 		{
 			Production 2000
 		}
-		Benefit Planet
+		Slot Outpost
+		Level I
+		Benefit 
 		{
-			Minerals 150
+			Minerals*Income 150
 		}
 	}
-	Building Small_Asteroids_Mines_II
+	Building Asteroid_Mines_II
 	{
-		Replace Small_Asteroids_Mines
-		Cost 
-		{
-			Production 4000
-		}
-		Benefit Planet
-		{
-			Minerals 300
-		}
-	}
-
-	// Average_Asteroids
-	Building Asteroids_Mines
-	{
-		Require
-		{
-			Planet:Feature Average_Asteroids
-		}
-		Cost 
-		{
-			Production 4000
-		}
-		Benefit Planet
-		{
-			Minerals 300
-		}
-	}
-	Building Asteroids_Mines_II
-	{
-		Replace Asteroids_Mines
-		Cost 
-		{
-			Production 8000
-		}
-		Benefit Planet
-		{
-			Minerals 600
-		}
-	}
-	Building Asteroids_Mines_III
-	{
-		Replace Asteroids_Mines_II
-		Cost 
-		{
-			Production 16000
-		}
-		Benefit Planet
-		{
-			Minerals 900
-		}
-	}
-
-	// Large_Asteroids
-	Building Large_Asteroids_Mines
-	{
-		Require
-		{
-			Planet:Feature Large_Asteroids
-		}
-		Cost 
-		{
-			Production 6000
-		}
-		Benefit Planet
-		{
-			Minerals 500
-		}
-	}
-	Building Large_Asteroids_Mines_II
-	{
-		Replace Large_Asteroids_Mines
-		Cost 
-		{
-			Production 12000
-		}
-		Benefit Planet
-		{
-			Minerals 1000
-		}
-	}
-	Building Large_Asteroids_Mines_III
-	{
-		Replace Large_Asteroids_Mines_II
-		Cost 
-		{
-			Production 24000
-		}
-		Benefit Planet
-		{
-			Minerals 1500
-		}
-	}
-	Building Large_Asteroids_Mines_IV
-	{
-		Replace Large_Asteroids_Mines_III
-		Cost 
-		{
-			Production 36000
-		}
-		Benefit Planet
-		{
-			Minerals 2000
-		}
-	}
-	Building Large_Asteroids_Mines_V
-	{
-		Replace Large_Asteroids_Mines_IV
-		Cost 
-		{
-			Production 48000
-		}
-		Benefit Planet
-		{
-			Minerals 2500
-		}
-	}
-
-	// Gold_Asteroid
-	Building Gold_Asteroid_Mine
-	{
-		Require
-		{
-			Planet:Feature Gold_Asteroid
-		}
+		Upgrade Asteroid_Mines_III
 		Cost 
 		{
 			Production 5000
 		}
-		Benefit Planet
+		Slot Outpost
+		Level II
+		Benefit 
 		{
-			BC 250
+			Minerals*Income 400
 		}
 	}
-	// Gold_Deposit
-	Building Gold_Deposit_Mine
+	Building Asteroid_Mines_III
 	{
-		Require
+		Cost 
 		{
-			Planet:Feature Gold_Deposit
+			Production 10000
 		}
+		Slot Outpost
+		Level III
+		Benefit 
+		{
+			Minerals*Income 800
+		}
+	}
+	Building Possible_Outpost
+	{
+		Upgrade Mineral_Processers_I
+		Upgrade Research_Lab_I
+		Upgrade Trade_Post_I
+		Upgrade Energy_Generators_I
+		Slot Outpost
+		Icon O
+	}
+	Building Mineral_Processers_I
+	{
+		Upgrade Mineral_Processers_II
+		Cost 
+		{
+			Production 800
+		}
+		Slot Outpost
+		Level I
+		Icon M
+		AddSlot Possible_Colony
+		Benefit 
+		{
+			Minerals*Income 50
+		}
+	}
+	Building Mineral_Processers_II
+	{
+		Upgrade Mineral_Processers_III
+		Cost 
+		{
+			Production 1200
+		}
+		Slot Outpost
+		Level II
+		Icon M
+		Benefit 
+		{
+			Minerals*Income 100
+		}
+	}
+	Building Mineral_Processers_III
+	{
+		Upgrade Mineral_Processers_IV
+		Cost 
+		{
+			Production 2500
+		}
+		Slot Outpost
+		Level III
+		Icon M
+		Benefit 
+		{
+			Minerals*Income 200
+		}
+	}
+	Building Mineral_Processers_IV
+	{
+		Upgrade Mineral_Processers_V
+		Cost 
+		{
+			Production 10000
+		}
+		Slot Outpost
+		Level IV
+		Icon M
+		Required Colony
+		Benefit 
+		{
+			Minerals*Income 500
+		}
+	}
+	Building Mineral_Processers_V
+	{
+		Cost 
+		{
+			Production 40000
+		}
+		Slot Outpost
+		Level V
+		Icon M
+		Required Colony
+		Benefit 
+		{
+			Minerals*Income 1200
+		}
+	}
+	Building Research_Lab_I
+	{
+		Upgrade Research_Lab_II
+		Cost 
+		{
+			Production 1200
+		}
+		Slot Outpost
+		Level I
+		Icon R
+		AddSlot Possible_Colony
+		Benefit 
+		{
+			Research*Income 20
+		}
+	}
+	Building Research_Lab_II
+	{
+		Upgrade Research_Lab_III
+		Cost 
+		{
+			Production 3000
+		}
+		Slot Outpost
+		Level II
+		Icon R
+		Benefit 
+		{
+			Research*Income 50
+		}
+	}
+	Building Research_Lab_III
+	{
+		Upgrade Research_Lab_IV
 		Cost 
 		{
 			Production 5000
 		}
-		Benefit Planet
+		Slot Outpost
+		Level III
+		Icon R
+		Benefit 
 		{
-			Minerals 200
+			Research*Income 100
+		}
+	}
+	Building Research_Lab_IV
+	{
+		Upgrade Research_Lab_V
+		Cost 
+		{
+			Production 10000
+		}
+		Slot Outpost
+		Level IV
+		Icon R
+		Required Colony
+		Benefit 
+		{
+			Research*Income 300
+		}
+	}
+	Building Research_Lab_V
+	{
+		Cost 
+		{
+			Production 30000
+		}
+		Slot Outpost
+		Level V
+		Icon R
+		Required Colony
+		Benefit 
+		{
+			Research*Income 1000
+		}
+	}
+	Building Trade_Post_I
+	{
+		Upgrade Trade_Post_II
+		Cost 
+		{
+			Production 2000
+		}
+		Slot Outpost
+		Level I
+		Icon T
+		AddSlot Possible_Colony
+		Benefit 
+		{
+			BC*Income 50
+		}
+	}
+	Building Trade_Post_II
+	{
+		Upgrade Trade_Post_III
+		Cost 
+		{
+			Production 5000
+		}
+		Slot Outpost
+		Level II
+		Icon T
+		Benefit 
+		{
+			BC*Income 150
+		}
+	}
+	Building Trade_Post_III
+	{
+		Upgrade Trade_Post_IV
+		Cost 
+		{
+			Production 10000
+		}
+		Slot Outpost
+		Level III
+		Icon T
+		Benefit 
+		{
+			BC*Income 300
+		}
+	}
+	Building Trade_Post_IV
+	{
+		Upgrade Trade_Post_V
+		Cost 
+		{
+			Production 20000
+		}
+		Slot Outpost
+		Level IV
+		Icon T
+		Required Colony
+		Benefit 
+		{
+			BC*Income 800
+		}
+	}
+	Building Trade_Post_V
+	{
+		Cost 
+		{
+			Production 50000
+		}
+		Slot Outpost
+		Level V
+		Icon T
+		Required Colony
+		Benefit 
+		{
+			BC*Income 2000
+		}
+	}
+	Building Energy_Generators_I
+	{
+		Upgrade Energy_Generators_II
+		Cost 
+		{
+			Production 800
+		}
+		Slot Outpost
+		Level I
+		Icon E
+		AddSlot Possible_Colony
+		Benefit 
+		{
+			Energy*Income 50
+		}
+	}
+	Building Energy_Generators_II
+	{
+		Upgrade Energy_Generators_III
+		Cost 
+		{
+			Production 1200
+		}
+		Slot Outpost
+		Level II
+		Icon E
+		Benefit 
+		{
+			Energy*Income 80
+		}
+	}
+	Building Energy_Generators_III
+	{
+		Cost 
+		{
+			Production 2500
+		}
+		Slot Outpost
+		Level III
+		Icon E
+		Benefit 
+		{
+			Energy*Income 120
+		}
+	}
+	Building Possible_Colony
+	{
+		Upgrade Factory_I
+		Upgrade Shipyard_I
+		Upgrade Cultural_Retreat_I
+		Slot Colony
+		Icon C
+	}
+	Building Factory_I
+	{
+		Upgrade Factory_II
+		Cost 
+		{
+			Production 5000
+		}
+		Slot Colony
+		Level I
+		Icon F
+		AddSlot World
+		1 
+		{
+			Authority 1
+		}
+		Benefit 
+		{
+			Production*Income 100
+		}
+	}
+	Building Factory_II
+	{
+		Upgrade Factory_III
+		Cost 
+		{
+			Production 10000
+		}
+		Slot Colony
+		Level II
+		Icon F
+		1 
+		{
+			Authority 1
+		}
+		Benefit 
+		{
+			Production*Income 300
+		}
+	}
+	Building Factory_III
+	{
+		Cost 
+		{
+			Production 30000
+		}
+		Slot Colony
+		Level III
+		Icon F
+		1 
+		{
+			Authority 1
+		}
+		Benefit 
+		{
+			Production*Income 1000
+		}
+	}
+	Building Shipyard_I
+	{
+		Upgrade Shipyard_II
+		Cost 
+		{
+			Production 10000
+		}
+		Slot Colony
+		Level I
+		Icon S
+		AddSlot World
+		1 
+		{
+			Authority 1
+		}
+		Benefit 
+		{
+			Shipbuilding*Income 100
+		}
+	}
+	Building Shipyard_II
+	{
+		Upgrade Shipyard_III
+		Cost 
+		{
+			Production 20000
+		}
+		Slot Colony
+		Level II
+		Icon S
+		1 
+		{
+			Authority 1
+		}
+		Benefit 
+		{
+			Shipbuilding*Income 300
+		}
+	}
+	Building Shipyard_III
+	{
+		Cost 
+		{
+			Production 50000
+		}
+		Slot Colony
+		Level III
+		Icon S
+		1 
+		{
+			Authority 1
+		}
+		Benefit 
+		{
+			Shipbuilding*Income 1000
+		}
+	}
+	Building Cultural_Retreat_I
+	{
+		Upgrade Cultural_Retreat_II
+		Cost 
+		{
+			Production 3000
+		}
+		Slot Colony
+		Level I
+		Icon U
+		AddSlot World
+		1 
+		{
+			Authority 1
+		}
+		Benefit 
+		{
+			Culture*Income 50
+		}
+	}
+	Building Cultural_Retreat_II
+	{
+		Upgrade Cultural_Retreat_III
+		Cost 
+		{
+			Production 5000
+		}
+		Slot Colony
+		Level II
+		Icon U
+		1 
+		{
+			Authority 1
+		}
+		Benefit 
+		{
+			Culture*Income 100
+		}
+	}
+	Building Cultural_Retreat_III
+	{
+		Cost 
+		{
+			Production 10000
+		}
+		Slot Colony
+		Level III
+		Icon U
+		1 
+		{
+			Authority 1
+		}
+		Benefit 
+		{
+			Culture*Income 200
+		}
+	}
+	Building World
+	{
+		Upgrade Cities
+		Slot Main
+		Icon Y
+	}
+	Building Cities
+	{
+		Upgrade Global_Centers
+		Cost 
+		{
+			Production 10000
+		}
+		Slot Main
+		Level I
+		Icon Y
+		AddSlot District
+		1 
+		{
+			Authority 2
+		}
+		Benefit 
+		{
+			Districts 1
+			Energy*Income 20
+			Minerals*Income 20
+			Production*Income 20
+			Influence*Income 3
+			BC*PerPop 20
+		}
+	}
+	Building Global_Centers
+	{
+		Upgrade Ecumenopolis
+		Cost 
+		{
+			Production 50000
+		}
+		Slot Main
+		Level II
+		Icon Y
+		AddSlot District
+		1 
+		{
+			Authority 5
+		}
+		Benefit 
+		{
+			Districts 2
+			Energy*Income 40
+			Minerals*Income 40
+			Production*Income 40
+			Influence*Income 10
+			BC*PerPop 30
+			Bonus*MaxPop*Percent 100
+		}
+	}
+	Building Ecumenopolis
+	{
+		Cost 
+		{
+			Production 250000
+		}
+		Slot Main
+		Level III
+		Icon Y
+		Required Controled_Enviroment_III
+		AddSlot District
+		1 
+		{
+			Authority 20
+		}
+		Benefit 
+		{
+			Districts 3
+			Energy*Income 100
+			Minerals*Income 100
+			Production*Income 100
+			Influence*Income 50
+			BC*PerPop 50
+			Bonus*MaxPop*Percent 300
+		}
+	}
+	Building District
+	{
+		Upgrade Entertaiment_District
+		Upgrade Industrial_District
+		Upgrade Science_District
+		Upgrade Culture_District
+		Slot District
+		Icon D
+	}
+	Building Entertaiment_District
+	{
+		Cost 
+		{
+			Production 25000
+		}
+		Slot District
+		Icon ED
+		Benefit 
+		{
+			BC*Income 500
+			Influence*Income 1
+			Bonus*Growth*Perc 100
+		}
+	}
+	Building Industrial_District
+	{
+		Cost 
+		{
+			Production 25000
+		}
+		Slot District
+		Icon ID
+		Benefit 
+		{
+			Production*Income 200
+			BC*Income 500
+			Production*PerPop 40
+		}
+	}
+	Building Science_District
+	{
+		Cost 
+		{
+			Production 25000
+		}
+		Slot District
+		Icon SD
+		Benefit 
+		{
+			Research*Income 1000
+			Science*PerPop 40
+		}
+	}
+	Building Culture_District
+	{
+		Cost 
+		{
+			Production 25000
+		}
+		Slot District
+		Icon CD
+		Benefit 
+		{
+			Influence*Income 3
+			Culture*PerPop 40
+		}
+	}
+	Building Terraform
+	{
+		Upgrade Controled_Enviroment_I
+		Slot Geo
+		Icon X
+		Benefit 
+		{
+			GeoLevel 0
+		}
+	}
+	Building Controled_Enviroment_I
+	{
+		Upgrade Controled_Enviroment_II
+		Cost 
+		{
+			Production 10000
+		}
+		Slot Geo
+		Level I
+		Icon X
+		Benefit 
+		{
+			GeoLevel 1
+		}
+	}
+	Building Controled_Enviroment_II
+	{
+		Upgrade Controled_Enviroment_III
+		Cost 
+		{
+			Production 50000
+		}
+		Slot Geo
+		Level II
+		Icon X
+		Benefit 
+		{
+			GeoLevel 2
+		}
+	}
+	Building Controled_Enviroment_III
+	{
+		Cost 
+		{
+			Production 100000
+		}
+		Slot Geo
+		Level III
+		Icon X
+		Benefit 
+		{
+			GeoLevel 3
 		}
 	}
 }

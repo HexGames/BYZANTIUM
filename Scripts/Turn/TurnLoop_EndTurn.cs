@@ -20,7 +20,7 @@ public partial class TurnLoop : Node
         StartTurn_NewActions();
 
         // update UI
-        Game.GalaxyUI.Refresh();
+        Game.GalaxyUI.StartTurn();
 
         // reset players states
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
@@ -108,7 +108,7 @@ public partial class TurnLoop : Node
                                 continue;
                             }
 
-                            colony.Resources_PerTurn.Add(buildingInfo.Benefit, buildingCount);
+                            if (buildingInfo.Benefit != null) colony.Resources_PerTurn.Add(buildingInfo.Benefit, buildingCount);
                             //totalBuildings += buildingCount;
                         }
                         colony.Resources_PerTurn.Add(colony.Jobs_PerTurn);
@@ -137,7 +137,9 @@ public partial class TurnLoop : Node
             {
                 SectorData sector = player.Sectors[sectorIdx];
 
-                ActionBuild.RefreshAvailableBuildings(sector, Game.Def);
+                ActionBuild.RefreshAvailableBuildings(Game, sector);
+
+                sector.BuildQueue_PerTurn_ActionChange.Refresh();
             }
         }
     }

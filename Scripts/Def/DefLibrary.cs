@@ -52,6 +52,18 @@ public partial class DefLibrary : Node
         }
     }
     [Export]
+    public bool SaveBuildingsDefButton
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                SaveBuildingsDef();
+            }
+        }
+    }
+    [Export]
     public bool LoadJobsDef
     {
         get => false;
@@ -72,6 +84,30 @@ public partial class DefLibrary : Node
             if (value)
             {
                 LoadPlanetsDefFunc();
+            }
+        }
+    }
+    [Export]
+    public bool LoadSpeciesDef
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                LoadSpeciesDefFunc();
+            }
+        }
+    }
+    [Export]
+    public bool LoadEmpiresDef
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                LoadEmpiresDefFunc();
             }
         }
     }

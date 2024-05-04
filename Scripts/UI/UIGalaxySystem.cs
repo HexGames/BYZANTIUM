@@ -7,9 +7,9 @@ public partial class UIGalaxySystem : Control
     PanelContainer SystemBg = null;
     PanelContainer ColonyBg = null;
     PanelContainer ExtraBg = null;
-    Label SystemName = null;
-    Label ColonyName = null;
-    Label ExtraColonies = null;
+    RichTextLabel SystemName = null;
+    RichTextLabel ColonyName = null;
+    RichTextLabel ExtraColonies = null;
 
     [ExportCategory("Runtime")]
     [Export]
@@ -23,9 +23,9 @@ public partial class UIGalaxySystem : Control
         SystemBg = GetNode<PanelContainer>("VBoxContainer/PanelContainer_1");
         ColonyBg = GetNode<PanelContainer>("VBoxContainer/PanelContainer_2");
         ExtraBg = GetNode<PanelContainer>("VBoxContainer/PanelContainer_3");
-        SystemName = GetNode<Label>("VBoxContainer/PanelContainer_1/System");
-        ColonyName = GetNode<Label>("VBoxContainer/PanelContainer_2/Colony");
-        ExtraColonies = GetNode<Label>("VBoxContainer/PanelContainer_3/Extra");
+        SystemName = GetNode<RichTextLabel>("VBoxContainer/PanelContainer_1/System");
+        ColonyName = GetNode<RichTextLabel>("VBoxContainer/PanelContainer_2/Colony");
+        ExtraColonies = GetNode<RichTextLabel>("VBoxContainer/PanelContainer_3/Extra");
     }
 
     public void Refresh( StarNode system )

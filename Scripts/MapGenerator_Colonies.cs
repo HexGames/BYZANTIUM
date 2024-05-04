@@ -52,15 +52,23 @@ public partial class MapGenerator : Node
         }
     }
 
+    private void GenerateNewMapSave_Players_StartingColony_SpacePort(DataBlock colony)
+    {
+        DataBlock buildings = Create_Colony_Buildings(colony, DefLibrary);
+
+        Data.AddData(buildings, "Building", "Starport", DefLibrary);
+    }
+
     private void GenerateNewMapSave_Players_StartingColony_Buildings(DataBlock colony)
     {
-        DataBlock resources = Create_Colony_Buildings(colony, DefLibrary);
+        DataBlock buildings = Create_Colony_Buildings(colony, DefLibrary);
 
         //Data.AddData(buildings, "Private_Business", 250, DefLibrary);
 
-        //Data.AddData(buildings, "Mine", 1, DefLibrary);
-        //Data.AddData(buildings, "Power_Plants", 4, DefLibrary);
-        //Data.AddData(buildings, "Factory_I", 4, DefLibrary);
+        Data.AddData(buildings, "Building", "Research_Lab_I", DefLibrary);
+        Data.AddData(buildings, "Building", "Factory_I", DefLibrary);
+        Data.AddData(buildings, "Building", "Global_Centers", DefLibrary);
+        Data.AddData(buildings, "Building", "District", DefLibrary);
         //Data.AddData(buildings, "Research_Labs", 2, DefLibrary);
         //Data.AddData(buildings, "Culture_Centers", 2, DefLibrary);
     }

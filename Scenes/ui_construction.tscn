@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcmj5bohen8h7"]
+[gd_scene load_steps=16 format=3 uid="uid://dcmj5bohen8h7"]
 
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_rk2rl"]
 [ext_resource type="Script" path="res://Scripts/UI/System/Progress/UIConstruction.cs" id="2_6ft6r"]
@@ -16,7 +16,7 @@ border_width_bottom = 2
 border_color = Color(0.501961, 0.12549, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17foh"]
-bg_color = Color(0.25098, 0.25098, 0.25098, 0.376471)
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
 skew = Vector2(0.32, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ico8t"]
@@ -37,11 +37,10 @@ skew = Vector2(0.32, 0)
 bg_color = Color(0.341176, 0.215686, 0.0784314, 1)
 skew = Vector2(0.32, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_welep"]
-bg_color = Color(0.12549, 0.12549, 0.12549, 1)
-
-[node name="ConstructionConstruction" type="Panel" node_paths=PackedStringArray("TitleLabel", "Working", "Queue", "Current", "Idle", "ProgressLabel", "ExtraEnergy", "ExtraBC", "ExtraPrivateIndustry")]
-custom_minimum_size = Vector2(448, 256)
+[node name="ConstructionConstruction" type="Control" node_paths=PackedStringArray("TitleLabel", "Working", "Queue", "Current", "Idle", "ProgressLabel", "ExtraEnergy", "ExtraBC", "ExtraPrivateIndustry")]
+custom_minimum_size = Vector2(320, 256)
+layout_mode = 3
+anchors_preset = 0
 theme = ExtResource("1_rk2rl")
 script = ExtResource("2_6ft6r")
 TitleLabel = NodePath("VBoxContainer/Title/TitleBg/HBoxContainer/TitleBg/HBoxContainer/Title")
@@ -54,8 +53,16 @@ ExtraEnergy = NodePath("VBoxContainer/Bottom/Extra/PrivateIndustry/PrivateIndust
 ExtraBC = NodePath("VBoxContainer/Bottom/Extra/BC/BCOn")
 ExtraPrivateIndustry = NodePath("VBoxContainer/Bottom/Extra/Energy/EnergyOn")
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rk2rl")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(448, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,11 +76,10 @@ alignment = 2
 layout_mode = 2
 
 [node name="TitleBg" type="PanelContainer" parent="VBoxContainer/Title"]
-layout_mode = 2
-offset_left = 137.0
-offset_top = -12.5
-offset_right = 327.0
-offset_bottom = 12.5
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_n6w4y")
@@ -162,6 +168,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 16
@@ -169,6 +176,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="Panel" type="Panel" parent="VBoxContainer/Working/Queue/Item_1/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ico8t")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/Working/Queue/Item_1/MarginContainer/Panel"]
@@ -182,6 +190,7 @@ offset_left = 8.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("3_lc4mh")
 bbcode_enabled = true
 text = "[left][b]$name[/b] at $location[/left]"
@@ -195,6 +204,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("3_lc4mh")
 bbcode_enabled = true
 text = "[right][b]$value[img=24x24]Assets/UI/Symbols/Turn.png[/img][/b][/right]"
@@ -231,6 +241,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 16
@@ -238,6 +249,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="Panel" type="Panel" parent="VBoxContainer/Working/Item_Current/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7raiu")
 
 [node name="NextTurn" type="ProgressBar" parent="VBoxContainer/Working/Item_Current/MarginContainer/Panel"]
@@ -247,6 +259,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_q7gws")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0xqbp")
 step = 1.0
@@ -260,6 +273,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_q7gws")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yw11h")
 step = 1.0
@@ -277,6 +291,7 @@ offset_left = 8.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("3_lc4mh")
 bbcode_enabled = true
 text = "[left][b]$name[/b] at $location[/left]"
@@ -290,6 +305,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("3_lc4mh")
 bbcode_enabled = true
 text = "[right][b]$value[img=24x24]Assets/UI/Symbols/Turn.png[/img][/b][/right]"
@@ -317,7 +333,8 @@ layout_mode = 2
 [node name="Bottom" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_welep")
+theme = ExtResource("1_rk2rl")
+theme_type_variation = &"Bottom"
 
 [node name="Value" type="RichTextLabel" parent="VBoxContainer/Bottom"]
 custom_minimum_size = Vector2(128, 24)

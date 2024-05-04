@@ -1,0 +1,200 @@
+
+Each species has at least 1 pop group.
+Each empire has at least 1 pop group.
+
+PopGroup Erudite_Humans
+{
+	AbsorbedIn Terran_Empire
+	// 
+	Species Human
+	Ethics
+	{
+		Militarist
+		Materialist
+	}
+	Locations
+	{
+		Location Earth
+		{
+			//Pops 10
+			Link:System:Planet Sol:Earth
+		}
+		Location Mars
+		{
+			//Pops 1
+			Link:System:Planet Sol:MArs
+		}
+	}
+	Presence
+	{
+		Presence Space_Elves
+		{
+			Link:Player Space_Elves
+		}
+	}
+}
+
+
+Location Earth
+{
+	PopGroups
+	{
+		Erudite_Humans 10
+		Various_Aliens 2
+	}
+}
+Location ElvesHomePlanet
+{
+	PopGroups
+	{
+		Erudite_Humans 0
+	}
+}
+
+
+-- new/delete
+-- new/delete location
+-- new/delete presence
+-- new/delete species
+-- change ethics
+-- new/delete homeworld
+-- new/delete presence
+-- influence_in (are an independent presence in an empire)
+-- integrate_in (are part of an empire)
+-- independence_from (become an independent presence in an empire -> from integrate to influence)
+
+// ----------------
+
+Caladan
+{
+	In control - Atreides
+	
+	Control 
+	{
+		Atreides 144
+	}
+	
+	Influence
+	{
+		Benne Gesserit 25
+		Guild 13
+		Corino 5
+	}
+}
+
+Dune
+{
+	In control - Atreides
+	
+	Control 
+	{
+		Atreides 100
+		Fremen 80
+		Harkonen 34
+	}
+	
+	Influence
+	{
+		Guild 80
+		Corino 70
+		Bene Gesserit 55
+	}
+}
+
+-- transform influence to Control (transforms all influence to 0.5x control)
+-- increase control
+-- decrease other control
+-- WAR: control caries depending on techs and orbining spaceships
+-- coup - take control
+
+// ----------------
+
+each faction must have
+
+a bonus for presence
+a bigger bonus for beein favored of that faction
+a malus if they are our enemies
+
+Alliance - both have high influence with eachother
+Sway - the smaller one has influence on the large
+Control - the bigger one has influence on the small
+
+
+// -------------------
+
+UI:
+
+Dune --- 288 - Great
+
+Pops:           44.7
+Atredies 3.5
+Fremen 26
+Harkonen 0.2
+Bene Gesserit
+Corino
+Guild
+CHOAM
+Locals 15
+
+Influence:      240
+Atredies 50
+Fremen 45
+Harkonen 15
+Bene Gesserit 20
+Corino 40
+Guild 60
+CHOAM 10
+
+Caladan --- 160 - Major
+
+Pops:           35
+Atredies 20
+Guild
+CHOAM
+Locals 15
+
+Influence:      125
+Atredies 100
+Guild 10
+CHOAM 15
+
+
+Sol Station -- 150 - Major
+
+Influence: 150
+Terran Alliance 100
+Atredies 10
+Guild 25
+CHOAM 15
+
+
+Atreides ---
+
+Home World - Caladan
+
+Systems 4 (0)
+Worlds 3 (0)
+Colonies 5
+Outposts 13
+
+Fremen 
+- relation 80
+- atreides influence 53.5 
+- fremen influence 71
+
+Bene Gesserit
+- relation 10
+- atreides influence 14.8
+- Bene Gesserit influence 10
+
+Fremen ---
+
+Home World - Dune
+
+System 0 (1)
+Worlds 0 (1)
+Colonies 0
+Outposts 1
+
+------------------------------
+

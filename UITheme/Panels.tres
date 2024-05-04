@@ -1,7 +1,15 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dwsejpps13na3"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dwsejpps13na3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik0uy"]
 bg_color = Color(0, 0, 0, 0.752941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_re53n"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.376471, 0.376471, 0.376471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0v3t"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 0.752941)
@@ -29,9 +37,32 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqpw1"]
 bg_color = Color(0, 0, 0, 0.752941)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.376471, 0.376471, 0.376471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_va20j"]
 bg_color = Color(0, 0, 0, 0.752941)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rh4a"]
+bg_color = Color(0, 0, 0, 0.752941)
+border_width_bottom = 2
+border_color = Color(0.501961, 0.505882, 0.501961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dfcn"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25098, 0.25098, 0.25098, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3i6e"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 1)
@@ -42,11 +73,17 @@ expand_margin_right = 8.0
 [resource]
 Black/base_type = &"Panel"
 Black/styles/panel = SubResource("StyleBoxFlat_ik0uy")
+Bottom/base_type = &"Panel"
+Bottom/styles/panel = SubResource("StyleBoxFlat_re53n")
 Grey/base_type = &"Panel"
 Grey/styles/panel = SubResource("StyleBoxFlat_c0v3t")
 GreyC/base_type = &"PanelContainer"
 GreyC/styles/panel = SubResource("StyleBoxFlat_vp8ft")
 Panel/styles/panel = SubResource("StyleBoxFlat_bqpw1")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_va20j")
+PanelLine/base_type = &"Panel"
+PanelLine/styles/panel = SubResource("StyleBoxFlat_0rh4a")
+SolidDarkGrey/base_type = &"Panel"
+SolidDarkGrey/styles/panel = SubResource("StyleBoxFlat_0dfcn")
 Title/base_type = &"Panel"
 Title/styles/panel = SubResource("StyleBoxFlat_j3i6e")

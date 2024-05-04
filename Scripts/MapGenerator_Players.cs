@@ -8,6 +8,13 @@ using System.Transactions;
 // Editor
 public partial class MapGenerator : Node
 {
+    private void GenerateNewMapSave_Players_Empire(DataBlock player, DataBlock empireInfo)
+    {
+        DataBlock empire = Data.AddData(player, "Empire", DefLibrary);
+
+        Data.AddData(empire, "Flag", empireInfo.GetSub("Flag").ValueS, DefLibrary);
+    }
+
     private void GenerateNewMapSave_Players_Resources(DataBlock player)
     {
         DataBlock resources = Data.AddData(player, "Resources", DefLibrary);

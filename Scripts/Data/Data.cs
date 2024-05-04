@@ -178,11 +178,13 @@ public partial class Data
             // GD.PrintErr("Load map data error 01");
             return null;
         }
+        rows[rowIdx] = rows[rowIdx].Replace("res://", "$res$");
         string[] words = rows[rowIdx].Split("//")[0].Split(' ', StringSplitOptions.RemoveEmptyEntries);
         if (words.Length == 0)
         {
             return LoadFile_GetWordsFromNextValidRow(rows, ref rowIdx);
         }
+        for (int i = 0; i < words.Length; i++) words[i] = words[i].Replace("$res$", "res://");
         return words;
     }
 

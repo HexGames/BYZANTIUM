@@ -233,27 +233,25 @@ public partial class MapGenerator : Node
         for (int n = 0; n < 10; n++)
         {
             bool human = false;
-            string startingPlanetCustom = "";
-            string startingPlanetType = "";
-            if (n == 0)
-            {
-                startingPlanetCustom = "Terra";
-                startingPlanetType = "Temperate";
-                human = true;
-            }
-            else
-            {
-                startingPlanetType = "Temperate";
-            }
+            if (n == 0) human = true;
+
+            // empire info
+            DataBlock empireInfo = DefLibrary.Empires[n];
+
+            string startingPlanetCustom = empireInfo.GetSub("StartingPlanet").ValueS;
+            string startingPlanetType = empireInfo.GetSub("StartingPlanetType").ValueS;
 
             DataBlock startingPlanet;
             DataBlock startingStar;
-            GenerateNewMapSave_Players_GetStartingPlanet(map, startingPlanetCustom, startingPlanetType, out startingPlanet, out startingStar);
+            DataBlock startingStarPlanet;
+            GenerateNewMapSave_Players_GetStartingPlanet(map, startingPlanetCustom, startingPlanetType, out startingPlanet, out startingStar, out startingStarPlanet);
             if (startingPlanet == null || startingStar == null) continue;
 
             DataBlock playerData = Data.AddData(playerList, "Player", "Player_" + n.ToString(), DefLibrary); 
             if (human) Data.AddData(playerData, "Human", DefLibrary);
 
+
+            GenerateNewMapSave_Players_Empire(playerData, empireInfo);
             GenerateNewMapSave_Players_Resources(playerData);
             GenerateNewMapSave_Players_Status(playerData);
             GenerateNewMapSave_Players_Civics(playerData);
@@ -262,14 +260,14 @@ public partial class MapGenerator : Node
             GenerateNewMapSave_Players_Ship_Designs(playerData);
 
             //GenerateNewMapSave_Players_StartingStar();
-            GenerateNewMapSave_Players_StartingColony(playerData, startingStar, startingPlanet);
+            GenerateNewMapSave_Players_StartingColony(playerData, empireInfo, startingStar, startingPlanet, startingStarPlanet);
             //GenerateNewMapSave_Players_StartingStaton(playerData, startingStar);
 
             GenerateNewMapSave_Players_StartingShip(playerData, startingStar);
         }
     }
 
-    private void GenerateNewMapSave_Players_GetStartingPlanet(DataBlock mapData, string customName, string type, out DataBlock planet, out DataBlock star)
+    private void GenerateNewMapSave_Players_GetStartingPlanet(DataBlock mapData, string customName, string type, out DataBlock planet, out DataBlock star, out DataBlock starPlanet)
     {
         DataBlock starList = mapData.GetSub("Star_List");
         Array<DataBlock> stars = starList.GetSubs("Star");
@@ -285,6 +283,7 @@ public partial class MapGenerator : Node
                 {
                     star = stars[starIdx];
                     planet = planets[planetIdx];
+                    starPlanet = planets[0];
                     return;
                 }
             }
@@ -302,6 +301,7 @@ public partial class MapGenerator : Node
                 {
                     star = stars[starIdx];
                     planet = planets[planetIdx];
+                    starPlanet = planets[0];
                     return;
                 }
             }
@@ -309,15 +309,15 @@ public partial class MapGenerator : Node
 
         star = null;
         planet = null;
+        starPlanet = null;
     }
     // --------------------------------------------------------------------------------------------------
-    private void GenerateNewMapSave_Players_StartingColony(DataBlock playerData, DataBlock startingStar, DataBlock startingPlanet)
+    private void GenerateNewMapSave_Players_StartingColony(DataBlock playerData, DataBlock empireInfo, DataBlock startingStar, DataBlock startingPlanet, DataBlock startingStarPlanet)
     {
         DataBlock sectorList = Data.AddData(playerData, "Sector_List", DefLibrary);
 
         DataBlock sector = Data.AddData(sectorList, "Sector", "Core", DefLibrary);
         GenerateNewMapSave_Players_StartingColony_SectorResources(sector);
-        GenerateNewMapSave_Players_StartingColony_SectorConTreasury(sector);
         GenerateNewMapSave_Players_StartingColony_SectorActionBuild(sector);
         //GenerateNewMapSave_Players_StartingColony_SectorBudget(sector);
 
@@ -330,6 +330,13 @@ public partial class MapGenerator : Node
         Data.AddData(startingStar, "Link:Player:Sector:System", playerData.ValueS + ":" + sector.ValueS + ":" + system.ValueS, DefLibrary); // no SystemData yet
 
         DataBlock colonyList = Data.AddData(system, "Colony_List", DefLibrary);
+
+        DataBlock spaceportColony = Data.AddData(colonyList, "Colony", startingStarPlanet.ValueS, DefLibrary);
+        GenerateNewMapSave_Players_StartingColony_Resources(spaceportColony);
+        GenerateNewMapSave_Players_StartingColony_SpacePort(spaceportColony);
+
+        Data.AddData(spaceportColony, "Link:Star:Planet", startingStar.ValueS + ":" + startingStarPlanet.ValueS, DefLibrary); // no PlanetData yet
+        Data.AddData(startingStar, "Link:Player:Sector:System:Colony", playerData.ValueS + ":" + sector.ValueS + ":" + system.ValueS + ":" + spaceportColony.ValueS, DefLibrary); // no ColonyData yet
 
         DataBlock colony = Data.AddData(colonyList, "Colony", startingPlanet.ValueS, DefLibrary);
 

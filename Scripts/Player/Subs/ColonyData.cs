@@ -44,8 +44,5 @@ public partial class ColonyData : Node
     public JobsWrapper Jobs_PerTurn = null;
 
     // actions
-    //public ActionsConWrapper ActionsConPerTurn = null;
-
-    // actions
     public List<ActionColonyConBuildings> ActionsConBuildingsPossible = new List<ActionColonyConBuildings>();
 }

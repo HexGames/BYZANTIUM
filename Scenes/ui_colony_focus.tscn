@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d07nreiik6fo3"]
+[gd_scene load_steps=27 format=3 uid="uid://d07nreiik6fo3"]
 
 [ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="1_laq5a"]
 [ext_resource type="Script" path="res://Scripts/UI/System/Focus/UIFocusList.cs" id="1_oab1v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/System/Focus/UIFocusListItem.cs" id="4_t2ht3"]
 [ext_resource type="Texture2D" uid="uid://dndb4e5tua3s7" path="res://Assets/UI/Symbols/Decline.png" id="5_cvfr3"]
 [ext_resource type="Texture2D" uid="uid://okvyhvbf0rju" path="res://Assets/UI/Symbols/Pops.png" id="5_i0sw3"]
+[ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="5_iljko"]
 [ext_resource type="Texture2D" uid="uid://cen58p831ysqp" path="res://Assets/UI/Symbols/Energy.png" id="7_r7bmy"]
 [ext_resource type="Texture2D" uid="uid://rvohf5tbwt7o" path="res://Assets/UI/Symbols/Minerals.png" id="8_l637r"]
 [ext_resource type="Texture2D" uid="uid://c54y278yatv8p" path="res://Assets/UI/Symbols/Prod.png" id="9_adou0"]
@@ -161,7 +162,8 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
 
 [node name="Row" type="HBoxContainer" parent="Margins/VBoxContainer/Job_1/BG"]
 layout_mode = 1
@@ -316,7 +318,8 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
 
 [node name="Row" type="HBoxContainer" parent="Margins/VBoxContainer/Job_2/BG"]
 layout_mode = 1
@@ -471,7 +474,8 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
 
 [node name="Row" type="HBoxContainer" parent="Margins/VBoxContainer/Job_3/BG"]
 layout_mode = 1
@@ -627,7 +631,8 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
 
 [node name="Row" type="HBoxContainer" parent="Margins/VBoxContainer/Job_4/BG"]
 layout_mode = 1
@@ -782,7 +787,8 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
 
 [node name="Row" type="HBoxContainer" parent="Margins/VBoxContainer/Job_5/BG"]
 layout_mode = 1
@@ -937,7 +943,8 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
 
 [node name="Row" type="HBoxContainer" parent="Margins/VBoxContainer/Job_6/BG"]
 layout_mode = 1
@@ -1093,7 +1100,8 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
 
 [node name="Row" type="HBoxContainer" parent="Margins/VBoxContainer/Job_7/BG"]
 layout_mode = 1
@@ -1249,7 +1257,8 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
 
 [node name="Row" type="HBoxContainer" parent="Margins/VBoxContainer/Job_8/BG"]
 layout_mode = 1
@@ -1405,7 +1414,8 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
 
 [node name="Row" type="HBoxContainer" parent="Margins/VBoxContainer/Job_9/BG"]
 layout_mode = 1
@@ -1561,7 +1571,8 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
 
 [node name="Row" type="HBoxContainer" parent="Margins/VBoxContainer/Job_10/BG"]
 layout_mode = 1
@@ -1701,6 +1712,23 @@ size_flags_vertical = 4
 texture = ExtResource("5_cvfr3")
 expand_mode = 1
 
+[node name="Gap" type="Control" parent="Margins/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BG" type="Panel" parent="Margins/VBoxContainer/Gap"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
+
 [node name="All" type="Control" parent="Margins/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
@@ -1716,7 +1744,8 @@ offset_left = 4.0
 offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_laq5a")
+theme = ExtResource("5_iljko")
+theme_type_variation = &"PanelLine"
 
 [node name="SortContainer" type="VBoxContainer" parent="Margins/VBoxContainer/All/BG"]
 visible = false

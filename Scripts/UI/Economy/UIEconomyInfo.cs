@@ -58,7 +58,7 @@ public partial class UIEconomyInfo : Control
         _System = null;
         _Sector = sector;
 
-        Title.Text = Title_Original.Replace("$title", sector.SectorName + " Sector");
+        Title.Text = Title_Original.Replace("$title", sector.SectorName + " Sector Income");
         Title.Visible = true;
 
         //Pops.Visible = false;
@@ -97,6 +97,8 @@ public partial class UIEconomyInfo : Control
 
         BC.Refresh(_Sector.Resources_PerTurn.GetIncomeString("BC"));
         BC.Visible = true;
+
+        Visible = true;
     }
 
     public void Refresh(SystemData system)
@@ -105,7 +107,7 @@ public partial class UIEconomyInfo : Control
         _System = system;
         _Sector = null;
 
-        Title.Text = Title_Original.Replace("$title", _System.Star.StarName + " System");
+        Title.Text = Title_Original.Replace("$title", _System.Star.StarName + " System Income");
         Title.Visible = true;
 
         //Pops.Visible = false;
@@ -145,6 +147,8 @@ public partial class UIEconomyInfo : Control
 
         BC.Refresh(_System.Resources_PerTurn.GetIncomeString("BC"));
         BC.Visible = true;
+
+        Visible = true;
     }
 
     public void Refresh(ColonyData colony)
@@ -154,7 +158,7 @@ public partial class UIEconomyInfo : Control
         _Sector = null;
 
         {
-            Title.Text = Title_Original.Replace("$title", "Colony " + colony.ColonyName);
+            Title.Text = Title_Original.Replace("$title", "Colony " + colony.ColonyName + " Income");
             Title.Visible = true;
         }
 
@@ -195,5 +199,7 @@ public partial class UIEconomyInfo : Control
 
         BC.Refresh(_Colony.Resources_PerTurn.GetIncomeString("BC"));
         BC.Visible = true;
+
+        Visible = true;
     }
 }

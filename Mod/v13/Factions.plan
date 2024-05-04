@@ -1,0 +1,92 @@
+-- Species
+
+Humans
+Space_Elves
+Space_Dwarves
+Space_Orcs
+Cat_People
+Giants
+Space_Squids
+Space_Bears
+Space_Ants
+Space_Lizards
+Fungoids
+Silicoids
+Robots
+Androids
+Arachnids
+
+-- Ethics
+
+Capitalism
+Communism
+Religion
+Xenofobia
+Gene Splicing
+Cyborg Integration
+Syntetics
+AI
+Militarist - war
+Ecologist - no terraforming
+Unity - high control
+Federalist - low control
+
+Democracy X
+Autocracy X
+
+Pacifist X
+Scientist X
+Xenophile X
+Empire X
+Federalist X
+
+-- Bonuses
+
+production
+shipbuilding
+research
+culture
+influence
+access
+growth
+
+
+minerals x
+energy x
+
+shipbuilding
+research
+culture
+authority
+influence
+BC
+
+Better Lasers
+more ship range
+more actions range
+
+
+-- Factions
+
+Faction 
+	Main Ethic
+	Secondary Ethic
+	Bonus for presence
+	Bonus for pops
+	Bonus for integration
+	Bonus for good relations
+	Malus for bad relations
+
+1  (Bene Gesserit) - influence
+2  (Spacing Guild) - ship/action range
+3  (CHOAM) - BC
+4  (Noble House Honor) - better lasers
+5  (Noble House Benevolent) - better relations
+6  (Noble House Warriors) - more shipbuilding
+7  (Citizen Service) - more production
+8  (Xenophiles) - 
+9  (Communists)
+10 (Greedy Corp Syntetics)
+11 (Greedy Corp AI)
+12 (Greedy Corp Gene Splicing)
+13 (Pacefull Unification)

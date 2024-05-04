@@ -120,6 +120,7 @@ public partial class MapData : Node
         for (int idx = 0; idx < Stars.Count; idx++)
         {
             Stars[idx]._Node.GFX.RefreshPlayerColors();
+            Stars[idx]._Node.GFX.RefreshShips();
         }
     }
 
@@ -244,6 +245,7 @@ public partial class MapData : Node
         playerData._Node = playerNode;
         playerData.Name = playerDataBlock.ValueS + "_Data";
         playerData.PlayerName = playerDataBlock.ValueS;
+        playerData.Empire = playerDataBlock.GetSub("Empire");
         playerData.Resources = playerDataBlock.GetSub("Resources");
         playerData.Status = playerDataBlock.GetSub("Status");
         playerData.Civics = playerDataBlock.GetSub("Civics");
@@ -277,7 +279,6 @@ public partial class MapData : Node
         sector.ActionBuildQueue = sectorDataBlock.GetSub("ActionBuildQueue");
         //sectorData.Budget = sectorDataBlock.GetSub("Budget");
         //sectorData.Buildings = sectorDataBlock.GetSub("Buildings");
-        //sectorData.ActionConTreasury = sectorDataBlock.GetSub("ActionConTreasury");
         //sectorData.ActionCampaign = sectorDataBlock.GetSub("Campaign");
 
         sector.Data = sectorDataBlock;
@@ -341,7 +342,6 @@ public partial class MapData : Node
 
         colony.ActionConstruction = colonyDataBlock.GetSub("ActionConstruction");
         colony.ActionShipbuilding = colonyDataBlock.GetSub("ActionShipbuilding");
-        //colonyData.ActionConTreasury = colonyDataBlock.GetSub("ActionConTreasury");
 
         colony.Data = colonyDataBlock;
 

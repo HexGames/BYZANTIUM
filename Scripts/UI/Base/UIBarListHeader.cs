@@ -3,7 +3,7 @@ using Godot.Collections;
 using System.Collections.Generic;
 
 //[Tool]
-public partial class UIGalaxyBarListGroupHeader : Control
+public partial class UIBarListHeader : Control
 {
     // is beeing duplicated
     private Label GroupName = null;
@@ -19,6 +19,8 @@ public partial class UIGalaxyBarListGroupHeader : Control
 
     [Export]
     public SectorData _SectorData = null;
+    [Export]
+    public SystemData _SystemData = null;
 
 
     //[Export]
@@ -50,12 +52,22 @@ public partial class UIGalaxyBarListGroupHeader : Control
         }
     }
 
-    public void Refresh( SectorData sector )
+    public void Refresh(SectorData sector)
     {
         _SectorData = sector;
         Name = _SectorData.SectorName + "_UI";
 
         GroupName.Text = _SectorData.SectorName;
+
+        Visible = true;
+    }
+
+    public void Refresh(SystemData system)
+    {
+        _SystemData = system;
+        Name = _SystemData.SystemName + "_UI";
+
+        GroupName.Text = _SystemData.SystemName;
 
         Visible = true;
     }

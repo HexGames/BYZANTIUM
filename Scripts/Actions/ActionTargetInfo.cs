@@ -4,6 +4,7 @@
 
     public PlanetData _Planet;
     public SectorData _Sector;
+    public DataBlock _BuildingOld;
 
     public string Name = "";
     //public int Turns = 0;

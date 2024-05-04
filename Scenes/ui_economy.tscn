@@ -124,6 +124,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Local" type="HBoxContainer" parent="VBoxContainer/FirstRow"]
+visible = false
 layout_mode = 2
 
 [node name="Local" type="Panel" parent="VBoxContainer/FirstRow/Local"]
@@ -239,6 +240,7 @@ grow_vertical = 2
 theme = ExtResource("2_0ygdb")
 bbcode_enabled = true
 text = "[center]Sector[/center]"
+fit_content = true
 
 [node name="Energy" type="Panel" parent="VBoxContainer/FirstRow"]
 custom_minimum_size = Vector2(84, 0)

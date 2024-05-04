@@ -10,7 +10,7 @@ Def_Planets
 		Planets:Max 6
 		Features
 		{
-			GasGiantsFirst
+			Building:Stable_Orbit
 		}
 	}
 	Planet:Star White_Dwarf
@@ -19,6 +19,10 @@ Def_Planets
 		PlanetsCold
 		Planets:Min 2
 		Planets:Max 6
+		Features
+		{
+			Building:Stable_Orbit
+		}
 	}
 	Planet:Star Main_Sequence
 	{
@@ -27,11 +31,7 @@ Def_Planets
 		Planets:Max 9
 		Features
 		{
-			OR
-			{
-				Active:Weight 9
-				HyperActive:Weight 1
-			}
+			Building:Stable_Orbit
 		}
 	}
 	Planet:Star Red_Giant
@@ -42,11 +42,7 @@ Def_Planets
 		Planets:Max 6
 		Features
 		{
-			OR
-			{
-				Active:Weight 4
-				HyperActive:Weight 1
-			}
+			Building:Stable_Orbit
 		}
 	}
 	Planet:Star Blue_Giant
@@ -57,11 +53,7 @@ Def_Planets
 		Planets:Max 6
 		Features
 		{
-			OR
-			{
-				Active:Weight 4
-				HyperActive:Weight 1
-			}
+			Building:Stable_Orbit
 		}
 	}
 	Planet:Star Pulsar
@@ -72,7 +64,8 @@ Def_Planets
 		Planets:Max 3
 		Features
 		{
-			Anti-Matter
+			High_Energy
+			Building:Stable_Orbit
 		}
 	}
 	// ----------------------------------------------- specials
@@ -81,25 +74,20 @@ Def_Planets
 		Features
 		{
 			Mod:Rings:Perc 30
-			OR:Perc 20
-			{
-				Rich_Gases:Weight 4
-				Ultra_Rich_Gases:Weight 1
-			}
-			Deuterium:Perc 5
+			Usefull_Gasses:Perc 20
+			Building:Stable_Orbit
 		}
 	}
 	Planet:Asteroid_Field
 	{
 		Features
 		{
-			OR
+			Building:Possible_Asteroid_Mines
+			OR:Perc 25
 			{
-				Small_Asteroids:Weight 1
-				Average_Asteroids:Weight 2
-				Large_Asteroids:Weight 1
+				Rich_Asteroid_Minerals:Weight 1
+				Gold_Asteroid:Weight 1
 			}
-			Gold_Asteroid:Perc 20
 		}
 	}
 	// ----------------------------------------------- planets
@@ -112,9 +100,13 @@ Def_Planets
 		Features
 		{
 			Mod:Rings:Perc 10
-			Low_Atmosphere:Perc 90
-			Mod:MineralVeins:Perc 10
-			Bacterial_Life:Perc 20
+			Building:Possible_Outpost
+			OR:Perc 20
+			{
+				Trapped_Gasses:Weight 1
+				Bacterial_Life:Weight 1
+			}
+			Uninhabitable
 		}
 	}
 	Planet Barren
@@ -126,12 +118,13 @@ Def_Planets
 		Features
 		{
 			Mod:Rings:Perc 10
-			Low_Atmosphere
-			OR:Perc 25
+			Building:Possible_Outpost
+			OR:Perc 20
 			{
-				Mod:MineralVeins:Weight 1
-				Mod:GeotermalVents:Weight 1
+				Trapped_Gasses:Weight 1
+				MineralVeins:Weight 1
 			}
+			Uninhabitable
 		}
 	}
 	Planet Toxic
@@ -143,12 +136,13 @@ Def_Planets
 		Features
 		{
 			Mod:Rings:Perc 10
-			OR:Perc 25
+			Building:Possible_Outpost
+			OR:Perc 20
 			{
-				Mod:MineralVeins:Weight 1
-				Mod:GeotermalVents:Weight 1
+				MineralVeins:Weight 1
+				Bacterial_Life:Weight 1
 			}
-			Bacterial_Life:Perc 50
+			Uninhabitable
 		}
 	}
 	Planet Desert
@@ -160,23 +154,19 @@ Def_Planets
 		Features
 		{
 			Mod:Rings:Perc 10
-			Mod NormalPlanet
-			OR:Perc 50
+			Building:Possible_Outpost
+			OR:Perc 30
 			{
-				Low_Atmosphere:Weight 1
-				Hostile_Fauna:Weight 1
+				Trapped_Gasses:Weight 1
+				MineralVeins:Weight 1
+				OR:Weight 1
+				{
+					Bacterial_Life:Weight 2
+					Simple_Life:Weight 1
+					Complex_Life:Weight 1
+				}
 			}
-			OR:Perc 25
-			{
-				Mod:MineralVeins:Weight 1
-				Mod:GeotermalVents:Weight 1
-			}
-			OR:Perc 20
-			{
-				Bacterial_Life:Weight 2
-				Simple_Life:Weight 1
-				Complex_Life:Weight 1
-			}
+			Mod WorldPlanet
 		}
 	}
 	Planet Arid
@@ -188,24 +178,19 @@ Def_Planets
 		Features
 		{
 			Mod:Rings:Perc 10
-			Ice_Caps:Perc 50
-			Mod NormalPlanet
-			OR:Perc 50
+			Building:Possible_Outpost
+			OR:Perc 40
 			{
-				Low_Atmosphere:Weight 1
-				Hostile_Fauna:Weight 1
+				Trapped_Gasses:Weight 1
+				MineralVeins:Weight 1
+				OR:Weight 2
+				{
+					Bacterial_Life:Weight 2
+					Simple_Life:Weight 1
+					Complex_Life:Weight 1
+				}
 			}
-			OR:Perc 25
-			{
-				Mod:MineralVeins:Weight 1
-				Mod:GeotermalVents:Weight 1
-			}
-			OR:Perc 50
-			{
-				Bacterial_Life:Weight 2
-				Simple_Life:Weight 1
-				Complex_Life:Weight 1
-			}
+			Mod WorldPlanet
 		}
 	}
 	Planet Continents
@@ -217,20 +202,19 @@ Def_Planets
 		Features
 		{
 			Mod:Rings:Perc 10
-			Hostile_Fauna:Perc 50
-			Big_Oceans:Perc 50
-			Mod NormalPlanet
-			OR:Perc 25
+			Building:Possible_Outpost
+			OR:Perc 20
 			{
-				Mod:MineralVeins:Weight 1
-				Mod:GeotermalVents:Weight 1
+				Trapped_Gasses:Weight 1
+				MineralVeins:Weight 1
 			}
-			OR:Perc 80
+			OR
 			{
-				Bacterial_Life:Weight 2
+				Bacterial_Life:Weight 1
 				Simple_Life:Weight 1
 				Complex_Life:Weight 1
 			}
+			Mod WorldPlanet
 		}
 	}
 	Planet Ocean
@@ -242,20 +226,14 @@ Def_Planets
 		Features
 		{
 			Mod:Rings:Perc 10
-			No_Land:Perc 50
-			Mod NormalPlanet
-			Low_Atmosphere:Perc 50
-			OR:Perc 25
+			Building:Possible_Outpost
+			OR
 			{
-				Mod:MineralVeins:Weight 1
-				Mod:GeotermalVents:Weight 1
+				Bacterial_Life:Weight 1
+				Simple_Life:Weight 2
+				Complex_Life:Weight 3
 			}
-			OR:Perc 80
-			{
-				Bacterial_Life:Weight 2
-				Simple_Life:Weight 1
-				Complex_Life:Weight 1
-			}
+			Mod WorldPlanet
 		}
 	}
 	Planet Swamp
@@ -267,19 +245,15 @@ Def_Planets
 		Features
 		{
 			Mod:Rings:Perc 10
-			Mod NormalPlanet
-			Hostile_Fauna
-			OR:Perc 25
-			{
-				Mod:MineralVeins:Weight 1
-				Mod:GeotermalVents:Weight 1
-			}
+			Building:Possible_Outpost
+			Trapped_Gasses
 			OR
 			{
-				Bacterial_Life:Weight 1
+				Bacterial_Life:Weight 3
 				Simple_Life:Weight 2
-				Complex_Life:Weight 3
+				Complex_Life:Weight 1
 			}
+			Mod WorldPlanet
 		}
 	}
 	Planet Artic
@@ -291,23 +265,18 @@ Def_Planets
 		Features
 		{
 			Mod:Rings:Perc 10
-			Mod NormalPlanet
-			OR:Perc 50
+			Building:Possible_Outpost
+			OR:Perc 40
 			{
-				Low_Atmosphere:Weight 1
-				Hostile_Fauna:Weight 1
+				Trapped_Gasses:Weight 1
+				OR:Weight 3
+				{
+					Bacterial_Life:Weight 1
+					Simple_Life:Weight 1
+					Complex_Life:Weight 1
+				}
 			}
-			OR:Perc 25
-			{
-				Mod:MineralVeins:Weight 1
-				Mod:GeotermalVents:Weight 1
-			}
-			OR:Perc 50
-			{
-				Bacterial_Life:Weight 2
-				Simple_Life:Weight 1
-				Complex_Life:Weight 1
-			}
+			Mod WorldPlanet
 		}
 	}
 	Planet Vulcanic
@@ -319,19 +288,18 @@ Def_Planets
 		Features
 		{
 			Mod:Rings:Perc 10
-			Mod:NormalPlanet
-			LowA_tmosphere:Perc 50
-			OR
+			Building:Possible_Outpost
+			OR:Perc 60
 			{
-				Mod:MineralVeins:Weight 1
-				Mod:GeotermalVents:Weight 1
+				MineralVeins:Weight 5
+				OR:Weight 1
+				{
+					Bacterial_Life:Weight 1
+					Simple_Life:Weight 1
+					Complex_Life:Weight 1
+				}
 			}
-			OR:Perc 30
-			{
-				Bacterial_Life:Weight 2
-				Simple_Life:Weight 1
-				Complex_Life:Weight 1
-			}
+			Mod WorldPlanet
 		}
 	}
 	Planet Lava
@@ -344,111 +312,49 @@ Def_Planets
 		{
 			Mod:Rings:Perc 10
 			Mod:NormalPlanet
-			LowA_tmosphere:Perc 50
-			Mod:MineralVeins
-			Mod:GeotermalVents
-			OR:Perc 10
-			{
-				Bacterial_Life:Weight 4
-				Simple_Life:Weight 1
-			}
+			Building:Trapped_Gasses:Perc 50
+			MineralVeins
 		}
 	}
 	// ----------------------------------------------- mods
-	Mod NormalPlanet
+	Mod WorldPlanet
 	{
 		OR:Perc 50
 		{
+			OR:Weight 2
+			{
+				Tiny_Moon:Weight 2
+				Small_Moon:Weight 1
+			}
+			OR:Weight 2
+			{
+				Good_Iron:Weight 2
+				Rich_Iron:Weight 1
+			}
+			OR:Weight 2
+			{
+				Strange:Weight 2
+				Bizarre:Weight 1
+			}
+			OR:Weight 2
+			{
+				Beautiful:Weight 2
+				Paradise:Weight 1
+			}
+			OR:Weight 2
+			{
+				Lush:Weight 2
+				Fertile:Weight 1
+			}
 			High_Gravity:Weight 1
 			Poor_Iron:Weight 1
 			Boring:Weight 1
 			Smelly:Weight 1
 			Semi-Barren:Weight 1
 		}
-		OR:Perc 80
-		{
-			OR:Weight 1
-			{
-				Tiny_Moon:Weight 2
-				Small_Moon:Weight 1
-			}
-			OR:Weight 1
-			{
-				Good_Iron:Weight 2
-				Rich_Iron:Weight 1
-			}
-			OR:Weight 1
-			{
-				Strange:Weight 2
-				Bizarre:Weight 1
-			}
-			OR:Weight 1
-			{
-				Beautiful:Weight 2
-				Paradise:Weight 1
-			}
-			OR:Weight 1
-			{
-				Lush:Weight 2
-				Fertile:Weight 1
-			}
-		}
-		OR:Perc 20
-		{
-			OR:Weight 1
-			{
-				Tiny_Moon:Weight 2
-				Small_Moon:Weight 1
-			}
-			OR:Weight 1
-			{
-				Good_Iron:Weight 2
-				Rich_Iron:Weight 1
-			}
-			OR:Weight 1
-			{
-				Strange:Weight 2
-				Bizarre:Weight 1
-			}
-			OR:Weight 1
-			{
-				Beautiful:Weight 2
-				Paradise:Weight 1
-			}
-			OR:Weight 1
-			{
-				Lush:Weight 2
-				Fertile:Weight 1
-			}
-		}
-		Gold_Deposit:Perc 20
-	}
-	Mod MineralVeins
-	{
-		OR
-		{
-			Mineral_Veins:Weight 9
-			Big_Mineral_Veins:Weight 4
-			Rich_Mineral_Veins:Weight 4
-			Super_Mineral_Veins:Weight 1
-		}
-	}
-	Mod GeotermalVents
-	{
-		OR
-		{
-			Gerothermal_Vents:Weight 9
-			Many_Gerothermal_Vents:Weight 4
-			Powerful_Gerothermal_Vents:Weight 4
-			Super_Gerothermal_Vents:Weight 1
-		}
 	}
 	Mod Rings
 	{
-		OR
-		{
-			Rings:Weight 4
-			Large_Rings:Weight 1
-		}
+		Building:Ring_Minerals
 	}
 }

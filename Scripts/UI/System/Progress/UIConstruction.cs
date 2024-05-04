@@ -29,7 +29,7 @@ public partial class UIConstruction : Control
 
     [ExportCategory("Runtime")]
     [Export]
-    public SectorData _Data = null;
+    public SectorData _Sector = null;
 
     Game Game;
 
@@ -43,10 +43,54 @@ public partial class UIConstruction : Control
 
     public void Refresh(SectorData sector)
     {
-        _Data = sector;
+        _Sector = sector;
         // TitleLabel.Text = TitleLabel_Original.Replace("$name", sector.SectorName);
 
-        Array<DataBlock> queuedBuildings = sector.ActionBuildQueue.GetSubs("Building");
+        if (_Sector.BuildQueue_PerTurn_ActionChange.Buildings.Count > 0)
+        {
+            while (Queue.Count < _Sector.BuildQueue_PerTurn_ActionChange.Buildings.Count - 1)
+            {
+                UIConstructionItem newItem = Queue[0].Duplicate(7) as UIConstructionItem;
+                Queue[0].GetParent().AddChild(newItem);
+                Queue.Add(newItem);
+            }
+
+            for (int idx = Queue.Count - 1; idx >= 0; idx--)
+            {
+                if (idx + 1 < _Sector.BuildQueue_PerTurn_ActionChange.Buildings.Count)
+                {
+                    Queue[idx].Refresh(_Sector.BuildQueue_PerTurn_ActionChange.Buildings[_Sector.BuildQueue_PerTurn_ActionChange.Buildings.Count - 1 - idx]);
+                    Queue[idx].Visible = true;
+                }
+                else
+                {
+                    Queue[idx].Visible = false;
+                }
+            }
+
+            Current.Refresh(_Sector.BuildQueue_PerTurn_ActionChange.Buildings[0]);
+
+            Working.Visible = true;
+            Idle.Visible = false;
+        }
+        else
+        {
+            Working.Visible = false;
+            Idle.Visible = true;
+        }
+
+        int production = _Sector.Resources_PerTurn.Get("Production").Value_2;
+        ProgressLabel.Text = ProgressLabel_Original.Replace("$value", Helper.ResValueToString(production));
+
+        ExtraEnergy.Visible = false;
+        ExtraBC.Visible = false;
+        ExtraPrivateIndustry.Visible = false;
+
+        Visible = true;
+
+
+
+        /*Array<DataBlock> queuedBuildings = sector.ActionBuildQueue.GetSubs("Building");
         int production = _Data.Resources_PerTurn.Get("Production").Value_2;
 
         if (queuedBuildings.Count > 0)
@@ -56,12 +100,6 @@ public partial class UIConstruction : Control
             Current.Refresh(queuedBuildings[0], production, ref overflow, ref turns);
 
             // grow
-            while (Queue.Count < queuedBuildings.Count - 1)
-            {
-                UIConstructionItem newItem = Queue[0].Duplicate(7) as UIConstructionItem;
-                Queue[0].GetParent().AddChild(newItem);
-                Queue.Add(newItem);
-            }
 
             for (int idx = Queue.Count - 1; idx >= 0; idx--)
             {
@@ -83,12 +121,6 @@ public partial class UIConstruction : Control
         {
             Working.Visible = false;
             Idle.Visible = true;
-        }
-
-        ProgressLabel.Text = ProgressLabel_Original.Replace("$value", Helper.ResValueToString(production));
-
-        ExtraEnergy.Visible = false;
-        ExtraBC.Visible = false;
-        ExtraPrivateIndustry.Visible = false;
+        }*/
     }
 }

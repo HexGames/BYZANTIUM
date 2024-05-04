@@ -28,8 +28,6 @@ public partial class SectorData : Node
 
     [ExportCategory("ColonyData-Actions")]
     //[Export]
-    //public DataBlock ActionConTreasury = null;
-    //[Export]
     //public DataBlock ActionCampaign = null;
     [Export]
     public DataBlock ActionBuildQueue = null;
@@ -40,6 +38,7 @@ public partial class SectorData : Node
 
     // resources
     public ResourcesWrapper Resources_PerTurn = null;
+    public BuildingQueueWrapper BuildQueue_PerTurn_ActionChange = null;
     // budget
     //public BudgetWrapper BudgetPerTurn = null;
 

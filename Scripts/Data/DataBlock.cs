@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System.Reflection.Metadata.Ecma335;
 
 // Generated
 [GlobalClass]
@@ -23,8 +24,8 @@ public partial class DataBlock : Resource
     public string ValueToString()
     {
         Data.BaseType baseType = (Data.BaseType)(Type/10000);
-        
-        switch(baseType)
+
+        switch (baseType)
         {
             case Data.BaseType.INT: return ValueI.ToString();
             case Data.BaseType.STRING: return ValueS;
@@ -37,6 +38,43 @@ public partial class DataBlock : Resource
     {
         return Subs;
     }
+
+    public bool HasSub(string type)
+    {
+        for (int idx = 0; idx < Subs.Count; idx++)
+        {
+            if (Subs[idx].Name == type)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool HasSub(string type, int value)
+    {
+        for (int idx = 0; idx < Subs.Count; idx++)
+        {
+            if (Subs[idx].Name == type && Subs[idx].ValueI == value)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool HasSub(string type, string value)
+    {
+        for (int idx = 0; idx < Subs.Count; idx++)
+        {
+            if (Subs[idx].Name == type && Subs[idx].ValueS == value)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public DataBlock GetSub(int type)
     {
@@ -70,6 +108,18 @@ public partial class DataBlock : Resource
         for (int idx = 0; idx < Subs.Count; idx++)
         {
             if (Subs[idx].Name == type)
+            {
+                return Subs[idx];
+            }
+        }
+        return null;
+    }
+
+    public DataBlock GetSub(string type, string name)
+    {
+        for (int idx = 0; idx < Subs.Count; idx++)
+        {
+            if (Subs[idx].Name == type && Subs[idx].ValueS == name)
             {
                 return Subs[idx];
             }

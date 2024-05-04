@@ -5,6 +5,8 @@ public partial class Game : Node
 {
     [ExportCategory("Links")]
     [Export]
+    public AssetLibrary Assets;
+    [Export]
     public DefLibrary Def;
     [Export]
     public MapCamera Camera;

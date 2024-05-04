@@ -53,7 +53,8 @@ public partial class DefLibrary : Node
 
     public void LoadBuildingsDefFunc()
     {
-        BuildingsList = Data.LoadFile("Defs_Mod/Buildings.mod", this);
+        //BuildingsList = Data.LoadFile("Defs_Mod/Buildings.mod", this);
+        BuildingsList = Data.LoadCSV("Defs_Mod/Buildings.table", this);
 
         Buildings.Clear();
         Buildings = BuildingsList.GetSubs("Building");

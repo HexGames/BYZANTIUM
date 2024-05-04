@@ -2,7 +2,7 @@ Map
 {
 	GameStats 
 	{
-		Turn 2
+		Turn 0
 		Human 0
 	}
 	GalaxySize 9
@@ -11,8 +11,8 @@ Map
 		Star Star_2
 		{
 			ID 1
-			GFX_RNG_1 29
-			GFX_RNG_2 58
+			GFX_RNG_1 90
+			GFX_RNG_2 21
 			X 2
 			Y 0
 			Planet_List 
@@ -20,28 +20,47 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Small_Asteroids 
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
 				}
-				Planet Desert
+				Planet Ocean
 				{
-					Type Desert
-					Size 3
+					Type Ocean
+					Size 1
 					Temperature 2
 					Moon 
 					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
 					Mod 
-					Hostile_Fauna 
-					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -52,30 +71,24 @@ Map
 		Star Star_3
 		{
 			ID 2
-			GFX_RNG_1 6
-			GFX_RNG_2 6
+			GFX_RNG_1 90
+			GFX_RNG_2 82
 			X 3
 			Y 0
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Pulsar
-					Anti-Matter 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Small_Asteroids 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -86,51 +99,92 @@ Map
 		Star Star_5
 		{
 			ID 3
-			GFX_RNG_1 33
-			GFX_RNG_2 16
+			GFX_RNG_1 88
+			GFX_RNG_2 28
 			X 5
 			Y 0
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Barren
 				{
-					Type Gas_Giant
-					Size 5
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Small_Asteroids 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 2
-					Temperature 2
-					ExoticResourceFlag 
-					Mod 
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					No_Land 
-					Mod 
-					Low_Atmosphere 
-					Bacterial_Life 
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -141,51 +195,78 @@ Map
 		Star Star_6
 		{
 			ID 4
-			GFX_RNG_1 80
-			GFX_RNG_2 5
+			GFX_RNG_1 84
+			GFX_RNG_2 28
 			X 6
 			Y 0
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Barren
 				{
-					Type Gas_Giant
-					Size 6
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Gas_Giant
+				Planet Lava
 				{
-					Type Gas_Giant
-					Size 6
-					Deuterium 
+					Type Lava
+					Size 3
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
 				}
-				Planet Swamp
+				Planet Gas_Giant
 				{
-					Type Swamp
-					Size 3
-					Temperature 2
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Complex_Life 
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 3
-					Temperature 2
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -196,8 +277,8 @@ Map
 		Star Star_7
 		{
 			ID 5
-			GFX_RNG_1 100
-			GFX_RNG_2 36
+			GFX_RNG_1 76
+			GFX_RNG_2 57
 			X 7
 			Y 0
 			Planet_List 
@@ -205,48 +286,20 @@ Map
 				Planet Star
 				{
 					Star_Type White_Dwarf
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					Rings 
-					Mod 
-					Mod 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					Rings 
-					Hostile_Fauna 
-					Big_Oceans 
-					Mod 
-					Complex_Life 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Rings 
-					Low_Atmosphere 
+					Building Stable_Orbit
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
+					Building Possible_Asteroid_Mines
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-					Rings 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -257,8 +310,8 @@ Map
 		Star Star_21
 		{
 			ID 6
-			GFX_RNG_1 50
-			GFX_RNG_2 79
+			GFX_RNG_1 19
+			GFX_RNG_2 33
 			X 2
 			Y 1
 			Planet_List 
@@ -266,12 +319,21 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -282,8 +344,8 @@ Map
 		Star Sol
 		{
 			ID 7
-			GFX_RNG_1 5
-			GFX_RNG_2 56
+			GFX_RNG_1 51
+			GFX_RNG_2 61
 			X 3
 			Y 1
 			Planet_List 
@@ -291,23 +353,23 @@ Map
 				Planet Star
 				{
 					Star_Type Main_Sequence
-					Active 
-					Link:Player:Sector:System:Colony Player_0:Core:Sol:Star
+					Building Star_Orbit
 				}
 				Planet Mercury
 				{
 					Type Barren
 					Size 1
 					Temperature 5
-					High_Radiation 
-					Low_Atmosphere 
+					Building Possible_Outpost
 				}
 				Planet Venus
 				{
 					Size 2
 					Type Toxic
 					Temperature 4
-					Big_Mineral_Veins 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
 				}
 				Planet Terra
 				{
@@ -315,9 +377,9 @@ Map
 					Size 2
 					Type Continental
 					Temperature 3
-					Big_Oceans 
-					Fertile 
+					Building Possible_Outpost
 					Complex_Life 
+					Fertile 
 					Link:Player:Sector:System:Colony Player_0:Core:Sol:Terra
 				}
 				Planet Moon
@@ -326,26 +388,28 @@ Map
 					Type Barren
 					Temperature 3
 					Moon 
+					Building Possible_Outpost
 				}
 				Planet Mars
 				{
 					Size 1
 					Type Desert
 					Temperature 2
-					Low_Atmosphere 
-					Rich_Mineral_Veins 
+					Building Possible_Outpost
+					Trapped_Gasses 
 					Tiny_Moon 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					RichMinerals 
+					Gold_Asteroid 
 				}
 				Planet Jupiter
 				{
 					Size 6
 					Type Gas_Giant
 					Temperature 1
+					Building Stable_Orbit
 				}
 				Planet Ganymede
 				{
@@ -353,14 +417,17 @@ Map
 					Type Frozen
 					Temperature 1
 					Moon 
+					Building Possible_Outpost
 				}
 				Planet Saturn
 				{
 					Size 5
 					Type Gas_Giant
 					Temperature 1
-					Deuterium 
-					Rings 
+					Building Possible_Outpost
+					Building Ring_Minerals
+					Hidden_Rings 
+					Usefull_Gasses 
 				}
 				Planet Titan
 				{
@@ -368,6 +435,7 @@ Map
 					Type Frozen
 					Temperature 1
 					Moon 
+					Building Possible_Outpost
 				}
 				Planet Outer_System
 				{
@@ -379,8 +447,8 @@ Map
 		Star Star_23
 		{
 			ID 8
-			GFX_RNG_1 49
-			GFX_RNG_2 100
+			GFX_RNG_1 72
+			GFX_RNG_2 15
 			X 4
 			Y 1
 			Planet_List 
@@ -388,23 +456,29 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
-				Planet Asteroid_Field
+				Planet Gas_Giant
 				{
-					Type Asteroid_Field
-					Small_Asteroids 
-					Gold_Asteroid 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Continents
+				Planet Swamp
 				{
-					Type Continents
-					Size 3
+					Type Swamp
+					Size 2
 					Temperature 3
+					Moon 
 					ExoticResourceFlag 
-					Mod 
-					Mod 
+					Building Possible_Outpost
+					Trapped_Gasses 
 					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -415,16 +489,16 @@ Map
 		Star Star_24
 		{
 			ID 9
-			GFX_RNG_1 4
-			GFX_RNG_2 58
+			GFX_RNG_1 85
+			GFX_RNG_2 54
 			X 5
 			Y 1
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
-					Active 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
 				Planet Barren
 				{
@@ -433,18 +507,88 @@ Map
 					Temperature 5
 					ExoticResourceFlag 
 					High_Radiation 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Small_Asteroids 
+					Building Possible_Asteroid_Mines
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
-					Rings 
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -455,8 +599,8 @@ Map
 		Star Star_25
 		{
 			ID 10
-			GFX_RNG_1 89
-			GFX_RNG_2 8
+			GFX_RNG_1 55
+			GFX_RNG_2 54
 			X 6
 			Y 1
 			Planet_List 
@@ -464,13 +608,13 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Giant
-					Active 
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Asteroid_Field
 				{
-					Type Gas_Giant
-					Size 6
-					Rings 
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
 				}
 				Planet Outer_System
 				{
@@ -481,52 +625,42 @@ Map
 		Star Star_26
 		{
 			ID 11
-			GFX_RNG_1 70
-			GFX_RNG_2 35
+			GFX_RNG_1 44
+			GFX_RNG_2 31
 			X 7
 			Y 1
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Swamp
 				{
-					Type Gas_Giant
-					Size 5
+					Type Swamp
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Small_Asteroids 
+					Building Possible_Asteroid_Mines
 				}
-				Planet Desert
+				Planet Gas_Giant
 				{
-					Type Desert
-					Size 3
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					ExoticResourceFlag 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 3
-					Temperature 2
-					ExoticResourceFlag 
-					Mod 
-					Simple_Life 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -537,8 +671,8 @@ Map
 		Star Star_27
 		{
 			ID 12
-			GFX_RNG_1 62
-			GFX_RNG_2 24
+			GFX_RNG_1 27
+			GFX_RNG_2 92
 			X 8
 			Y 1
 			Planet_List 
@@ -546,25 +680,15 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
-					Rings 
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 1
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					No_Land 
-					Mod 
-					Low_Atmosphere 
-					Bacterial_Life 
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -575,27 +699,60 @@ Map
 		Star Star_28
 		{
 			ID 13
-			GFX_RNG_1 66
-			GFX_RNG_2 47
+			GFX_RNG_1 10
+			GFX_RNG_2 78
 			X 9
 			Y 1
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Red_Giant
+					Building Stable_Orbit
 				}
-				Planet Ocean
+				Planet Lava
 				{
-					Type Ocean
+					Type Lava
 					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 3
 					Temperature 4
 					ExoticResourceFlag 
 					High_Radiation 
-					No_Land 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
 					Mod 
-					Low_Atmosphere 
-					Complex_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -606,46 +763,30 @@ Map
 		Star Star_39
 		{
 			ID 14
-			GFX_RNG_1 0
-			GFX_RNG_2 63
+			GFX_RNG_1 25
+			GFX_RNG_2 56
 			X 1
 			Y 2
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Rings 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					Low_Atmosphere 
-					Mod 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Low_Atmosphere 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -656,52 +797,21 @@ Map
 		Star Star_40
 		{
 			ID 15
-			GFX_RNG_1 41
-			GFX_RNG_2 50
+			GFX_RNG_1 20
+			GFX_RNG_2 98
 			X 2
 			Y 2
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
-					Active 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Lava
+				Planet Asteroid_Field
 				{
-					Type Lava
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					MineralVeins 
-					GeotermalVents 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					Ice_Caps 
-					Mod 
-					Simple_Life 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Complex_Life 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -712,56 +822,40 @@ Map
 		Star Star_41
 		{
 			ID 16
-			GFX_RNG_1 38
-			GFX_RNG_2 2
+			GFX_RNG_1 52
+			GFX_RNG_2 47
 			X 3
 			Y 2
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Barren
 				{
 					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Ocean
-				{
-					Type Ocean
 					Size 1
 					Temperature 4
 					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Swamp
+				Planet Toxic
 				{
-					Type Swamp
+					Type Toxic
 					Size 1
-					Temperature 3
+					Temperature 4
 					Moon 
 					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Mod 
-					Complex_Life 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Arid
 				{
@@ -769,29 +863,24 @@ Map
 					Size 1
 					Temperature 3
 					ExoticResourceFlag 
+					Building Possible_Outpost
 					Mod 
-					Hostile_Fauna 
-					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Vulcanic
+				Planet Asteroid_Field
 				{
-					Type Vulcanic
-					Size 2
-					Temperature 2
-					ExoticResourceFlag 
-					NormalPlanet 
-					LowA_tmosphere 
-					Mod 
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
 				}
-				Planet Ocean
+				Planet Gas_Giant
 				{
-					Type Ocean
-					Size 1
-					Temperature 2
-					ExoticResourceFlag 
-					Mod 
-					Low_Atmosphere 
-					Bacterial_Life 
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -802,43 +891,22 @@ Map
 		Star Star_44
 		{
 			ID 17
-			GFX_RNG_1 23
-			GFX_RNG_2 64
+			GFX_RNG_1 13
+			GFX_RNG_2 55
 			X 6
 			Y 2
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
-					Active 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					LowA_tmosphere 
-					Mod 
-					Bacterial_Life 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					Moon 
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
 				}
 				Planet Outer_System
 				{
@@ -849,54 +917,24 @@ Map
 		Star Star_46
 		{
 			ID 18
-			GFX_RNG_1 5
-			GFX_RNG_2 28
+			GFX_RNG_1 71
+			GFX_RNG_2 7
 			X 8
 			Y 2
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Average_Asteroids 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
-					Deuterium 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Low_Atmosphere 
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -907,59 +945,62 @@ Map
 		Star Star_47
 		{
 			ID 19
-			GFX_RNG_1 97
-			GFX_RNG_2 60
+			GFX_RNG_1 92
+			GFX_RNG_2 89
 			X 9
 			Y 2
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Rings 
-					Low_Atmosphere 
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 3
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
-					Hostile_Fauna 
-					Complex_Life 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Low_Atmosphere 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Barren
+				Planet Asteroid_Field
 				{
-					Type Barren
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
 					Size 1
 					Temperature 2
 					Moon 
 					ExoticResourceFlag 
-					Rings 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -970,67 +1011,29 @@ Map
 		Star Star_48
 		{
 			ID 20
-			GFX_RNG_1 59
-			GFX_RNG_2 59
+			GFX_RNG_1 9
+			GFX_RNG_2 43
 			X 10
 			Y 2
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 2
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					MineralVeins 
-					GeotermalVents 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					Bacterial_Life 
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 2
-					Temperature 3
-					ExoticResourceFlag 
-					No_Land 
-					Mod 
-					Low_Atmosphere 
-					Mod 
-					Complex_Life 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Small_Asteroids 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -1041,47 +1044,43 @@ Map
 		Star Star_49
 		{
 			ID 21
-			GFX_RNG_1 73
-			GFX_RNG_2 36
+			GFX_RNG_1 70
+			GFX_RNG_2 31
 			X 11
 			Y 2
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Vulcanic
 				{
-					Type Gas_Giant
-					Size 5
-					Rings 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Large_Asteroids 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 2
-					Temperature 3
-					Moon 
+					Type Vulcanic
+					Size 1
+					Temperature 4
 					ExoticResourceFlag 
-					Hostile_Fauna 
+					Building Possible_Outpost
 					Mod 
-					Mod 
-					Simple_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Toxic
 				{
 					Type Toxic
 					Size 2
-					Temperature 2
-					Moon 
+					Temperature 3
 					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -1092,8 +1091,8 @@ Map
 		Star Star_58
 		{
 			ID 22
-			GFX_RNG_1 33
-			GFX_RNG_2 16
+			GFX_RNG_1 15
+			GFX_RNG_2 8
 			X 1
 			Y 3
 			Planet_List 
@@ -1101,12 +1100,59 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1117,16 +1163,16 @@ Map
 		Star Star_59
 		{
 			ID 23
-			GFX_RNG_1 10
-			GFX_RNG_2 30
+			GFX_RNG_1 40
+			GFX_RNG_2 25
 			X 2
 			Y 3
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type Blue_Giant
+					Building Stable_Orbit
 				}
 				Planet Barren
 				{
@@ -1135,19 +1181,10 @@ Map
 					Temperature 5
 					ExoticResourceFlag 
 					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 2
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					LowA_tmosphere 
-					MineralVeins 
-					GeotermalVents 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Desert
 				{
@@ -1156,34 +1193,24 @@ Map
 					Temperature 4
 					Moon 
 					ExoticResourceFlag 
-					High_Radiation 
+					Building Possible_Outpost
 					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Vulcanic
+				Planet Asteroid_Field
 				{
-					Type Vulcanic
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					NormalPlanet 
-					LowA_tmosphere 
-					Mod 
-					Complex_Life 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 2
-					ExoticResourceFlag 
-					Ice_Caps 
-					Mod 
-					Simple_Life 
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1194,58 +1221,70 @@ Map
 		Star Star_60
 		{
 			ID 24
-			GFX_RNG_1 8
-			GFX_RNG_2 85
+			GFX_RNG_1 34
+			GFX_RNG_2 93
 			X 3
 			Y 3
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Red_Giant
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Vulcanic
 				{
-					Type Gas_Giant
-					Size 6
-					Rich_Gases 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Large_Asteroids 
-				}
-				Planet Swamp
-				{
-					Type Swamp
+					Type Vulcanic
 					Size 2
-					Temperature 3
-					Moon 
+					Temperature 5
 					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
 					Mod 
-					Hostile_Fauna 
-					Simple_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 2
-					Moon 
+					Temperature 5
 					ExoticResourceFlag 
-					Low_Atmosphere 
-					Mod 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Arid
 				{
 					Type Arid
-					Size 1
-					Temperature 2
+					Size 2
+					Temperature 4
 					ExoticResourceFlag 
-					Ice_Caps 
+					Building Possible_Outpost
 					Mod 
-					Low_Atmosphere 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -1256,8 +1295,8 @@ Map
 		Star Star_68
 		{
 			ID 25
-			GFX_RNG_1 30
-			GFX_RNG_2 74
+			GFX_RNG_1 83
+			GFX_RNG_2 0
 			X 11
 			Y 3
 			Planet_List 
@@ -1265,32 +1304,58 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
 				}
-				Planet Continents
+				Planet Swamp
 				{
-					Type Continents
-					Size 1
+					Type Swamp
+					Size 3
 					Temperature 3
 					ExoticResourceFlag 
-					Hostile_Fauna 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
 					Mod 
-					Mod 
-					Simple_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Artic
+				Planet Vulcanic
 				{
-					Type Artic
-					Size 3
+					Type Vulcanic
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
 					Temperature 2
 					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
 					Mod 
-					Low_Atmosphere 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1301,8 +1366,8 @@ Map
 		Star Star_69
 		{
 			ID 26
-			GFX_RNG_1 44
-			GFX_RNG_2 13
+			GFX_RNG_1 89
+			GFX_RNG_2 90
 			X 12
 			Y 3
 			Planet_List 
@@ -1310,29 +1375,27 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
-					Rings 
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Asteroid_Field
+				Planet Arid
 				{
-					Type Asteroid_Field
-					Large_Asteroids 
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 3
-					Temperature 2
+					Type Arid
+					Size 1
+					Temperature 3
+					Moon 
 					ExoticResourceFlag 
-					Rings 
+					Building Possible_Outpost
 					Mod 
-					Hostile_Fauna 
-					Bacterial_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1343,49 +1406,37 @@ Map
 		Star Star_78
 		{
 			ID 27
-			GFX_RNG_1 10
-			GFX_RNG_2 74
+			GFX_RNG_1 12
+			GFX_RNG_2 14
 			X 2
 			Y 4
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
-					Mod 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-					Rings 
-					Deuterium 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Barren
 				{
@@ -1394,7 +1445,22 @@ Map
 					Temperature 2
 					Moon 
 					ExoticResourceFlag 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1405,58 +1471,65 @@ Map
 		Star Star_79
 		{
 			ID 28
-			GFX_RNG_1 60
-			GFX_RNG_2 66
+			GFX_RNG_1 43
+			GFX_RNG_2 63
 			X 3
 			Y 4
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
-					Active 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Rings 
-					Low_Atmosphere 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 1
-					Temperature 4
-					Moon 
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Average_Asteroids 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
-					Rings 
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 3
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1467,20 +1540,65 @@ Map
 		Star Star_89
 		{
 			ID 29
-			GFX_RNG_1 57
-			GFX_RNG_2 45
+			GFX_RNG_1 83
+			GFX_RNG_2 22
 			X 13
 			Y 4
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Small_Asteroids 
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 3
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1491,8 +1609,8 @@ Map
 		Star Star_95
 		{
 			ID 30
-			GFX_RNG_1 75
-			GFX_RNG_2 84
+			GFX_RNG_1 46
+			GFX_RNG_2 4
 			X 0
 			Y 5
 			Planet_List 
@@ -1500,12 +1618,59 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 3
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1516,54 +1681,29 @@ Map
 		Star Star_98
 		{
 			ID 31
-			GFX_RNG_1 57
-			GFX_RNG_2 92
+			GFX_RNG_1 89
+			GFX_RNG_2 58
 			X 3
 			Y 5
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					NormalPlanet 
-					Mod 
-					Bacterial_Life 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 2
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Average_Asteroids 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
-					Rings 
-					Rich_Gases 
-					Deuterium 
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -1574,36 +1714,21 @@ Map
 		Star Star_99
 		{
 			ID 32
-			GFX_RNG_1 78
-			GFX_RNG_2 25
+			GFX_RNG_1 89
+			GFX_RNG_2 28
 			X 4
 			Y 5
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
+					Star_Type Blue_Giant
+					Building Stable_Orbit
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Small_Asteroids 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Bacterial_Life 
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -1614,16 +1739,70 @@ Map
 		Star Star_114
 		{
 			ID 33
-			GFX_RNG_1 79
-			GFX_RNG_2 10
+			GFX_RNG_1 86
+			GFX_RNG_2 47
 			X 0
 			Y 6
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Pulsar
-					Anti-Matter 
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -1634,8 +1813,8 @@ Map
 		Star Star_115
 		{
 			ID 34
-			GFX_RNG_1 40
-			GFX_RNG_2 64
+			GFX_RNG_1 38
+			GFX_RNG_2 63
 			X 1
 			Y 6
 			Planet_List 
@@ -1643,12 +1822,23 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Asteroid_Field
 				{
-					Type Gas_Giant
-					Size 6
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1659,8 +1849,8 @@ Map
 		Star Star_118
 		{
 			ID 35
-			GFX_RNG_1 94
-			GFX_RNG_2 38
+			GFX_RNG_1 76
+			GFX_RNG_2 37
 			X 4
 			Y 6
 			Planet_List 
@@ -1668,24 +1858,46 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-					Rings 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Rich_Gases 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 3
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 3
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1696,50 +1908,67 @@ Map
 		Star Star_119
 		{
 			ID 36
-			GFX_RNG_1 54
-			GFX_RNG_2 28
+			GFX_RNG_1 98
+			GFX_RNG_2 21
 			X 5
 			Y 6
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Barren
+				Planet Swamp
 				{
-					Type Barren
-					Size 1
+					Type Swamp
+					Size 2
 					Temperature 4
 					Moon 
 					ExoticResourceFlag 
 					High_Radiation 
-					Rings 
-					Low_Atmosphere 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
+					Building Possible_Outpost
+					Trapped_Gasses 
 					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 3
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1750,8 +1979,8 @@ Map
 		Star Star_120
 		{
 			ID 37
-			GFX_RNG_1 41
-			GFX_RNG_2 76
+			GFX_RNG_1 67
+			GFX_RNG_2 79
 			X 6
 			Y 6
 			Planet_List 
@@ -1759,47 +1988,41 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Arid
+				Planet Gas_Giant
 				{
-					Type Arid
-					Size 1
-					Temperature 4
-					Moon 
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 2
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Rings 
-					Mod 
-					Hostile_Fauna 
+					Building Possible_Asteroid_Mines
 				}
 				Planet Toxic
 				{
 					Type Toxic
 					Size 1
 					Temperature 2
+					Moon 
 					ExoticResourceFlag 
-					Mod 
-					Bacterial_Life 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1810,28 +2033,21 @@ Map
 		Star Star_124
 		{
 			ID 38
-			GFX_RNG_1 59
-			GFX_RNG_2 70
+			GFX_RNG_1 79
+			GFX_RNG_2 96
 			X 10
 			Y 6
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Red_Giant
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Asteroid_Field
 				{
-					Type Gas_Giant
-					Size 5
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Rings 
-					Rich_Gases 
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -1842,44 +2058,29 @@ Map
 		Star Star_125
 		{
 			ID 39
-			GFX_RNG_1 40
-			GFX_RNG_2 34
+			GFX_RNG_1 35
+			GFX_RNG_2 11
 			X 11
 			Y 6
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					Moon 
-					ExoticResourceFlag 
-					Low_Atmosphere 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Small_Asteroids 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -1890,47 +2091,55 @@ Map
 		Star Star_126
 		{
 			ID 40
-			GFX_RNG_1 32
-			GFX_RNG_2 17
+			GFX_RNG_1 64
+			GFX_RNG_2 89
 			X 12
 			Y 6
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
-				Planet Desert
+				Planet Barren
 				{
-					Type Desert
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					Mod 
-				}
-				Planet Desert
-				{
-					Type Desert
+					Type Barren
 					Size 1
-					Temperature 3
-					Moon 
+					Temperature 5
 					ExoticResourceFlag 
-					Mod 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Ocean
 				{
 					Type Ocean
-					Size 1
-					Temperature 3
+					Size 2
+					Temperature 4
 					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
 					Mod 
-					Low_Atmosphere 
-					Simple_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -1941,22 +2150,21 @@ Map
 		Star Star_133
 		{
 			ID 41
-			GFX_RNG_1 4
-			GFX_RNG_2 14
+			GFX_RNG_1 35
+			GFX_RNG_2 25
 			X 0
 			Y 7
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Red_Giant
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Asteroid_Field
 				{
-					Type Gas_Giant
-					Size 5
-					Rings 
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -1967,8 +2175,8 @@ Map
 		Star Star_134
 		{
 			ID 42
-			GFX_RNG_1 67
-			GFX_RNG_2 29
+			GFX_RNG_1 41
+			GFX_RNG_2 4
 			X 1
 			Y 7
 			Planet_List 
@@ -1976,27 +2184,15 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Average_Asteroids 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 2
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Bacterial_Life 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2007,57 +2203,66 @@ Map
 		Star Star_139
 		{
 			ID 43
-			GFX_RNG_1 35
-			GFX_RNG_2 28
+			GFX_RNG_1 80
+			GFX_RNG_2 12
 			X 6
 			Y 7
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
-					Active 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Lava
+				Planet Gas_Giant
 				{
-					Type Lava
-					Size 2
-					Temperature 5
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 3
 					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					MineralVeins 
-					GeotermalVents 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 5
+					Temperature 2
+					Moon 
 					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					Mod 
-					Bacterial_Life 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Average_Asteroids 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Rings 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2068,8 +2273,8 @@ Map
 		Star Star_140
 		{
 			ID 44
-			GFX_RNG_1 65
-			GFX_RNG_2 26
+			GFX_RNG_1 36
+			GFX_RNG_2 98
 			X 7
 			Y 7
 			Planet_List 
@@ -2077,28 +2282,20 @@ Map
 				Planet Star
 				{
 					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Swamp
+				Planet Asteroid_Field
 				{
-					Type Swamp
-					Size 3
-					Temperature 4
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Mod 
-					Simple_Life 
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
-				Planet Swamp
+				Planet Gas_Giant
 				{
-					Type Swamp
-					Size 1
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Bacterial_Life 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2109,62 +2306,58 @@ Map
 		Star Star_141
 		{
 			ID 45
-			GFX_RNG_1 14
-			GFX_RNG_2 40
+			GFX_RNG_1 53
+			GFX_RNG_2 92
 			X 8
 			Y 7
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
-					Active 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					MineralVeins 
-					GeotermalVents 
-					Bacterial_Life 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					Bacterial_Life 
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 1
 					Temperature 3
-					Moon 
 					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Simple_Life 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Asteroid_Field
+				Planet Gas_Giant
 				{
-					Type Asteroid_Field
-					Small_Asteroids 
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2175,40 +2368,66 @@ Map
 		Star Star_142
 		{
 			ID 46
-			GFX_RNG_1 23
-			GFX_RNG_2 60
+			GFX_RNG_1 11
+			GFX_RNG_2 18
 			X 9
 			Y 7
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Blue_Giant
+					Building Stable_Orbit
 				}
-				Planet Ocean
+				Planet Barren
 				{
-					Type Ocean
-					Size 2
-					Temperature 4
+					Type Barren
+					Size 1
+					Temperature 5
 					ExoticResourceFlag 
 					High_Radiation 
-					No_Land 
-					Mod 
-					Low_Atmosphere 
-					Complex_Life 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Arid
+				Planet Barren
 				{
-					Type Arid
+					Type Barren
 					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
 					Temperature 3
 					Moon 
 					ExoticResourceFlag 
-					Rings 
-					Ice_Caps 
-					Mod 
-					Low_Atmosphere 
-					Bacterial_Life 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2219,54 +2438,33 @@ Map
 		Star Star_143
 		{
 			ID 47
-			GFX_RNG_1 88
-			GFX_RNG_2 85
+			GFX_RNG_1 96
+			GFX_RNG_2 43
 			X 10
 			Y 7
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
-					HyperActive 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Continents
 				{
 					Type Continents
-					Size 2
+					Size 1
 					Temperature 4
 					ExoticResourceFlag 
-					High_Radiation 
-					Rings 
-					Hostile_Fauna 
+					Building Possible_Outpost
+					Complex_Life 
 					Mod 
-					Mod 
-					Bacterial_Life 
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 3
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
-					Hostile_Fauna 
-					Bacterial_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -2277,21 +2475,33 @@ Map
 		Star Star_144
 		{
 			ID 48
-			GFX_RNG_1 25
-			GFX_RNG_2 9
+			GFX_RNG_1 19
+			GFX_RNG_2 6
 			X 11
 			Y 7
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Blue_Giant
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Barren
 				{
-					Type Gas_Giant
-					Size 5
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -2302,8 +2512,8 @@ Map
 		Star Star_145
 		{
 			ID 49
-			GFX_RNG_1 100
-			GFX_RNG_2 13
+			GFX_RNG_1 6
+			GFX_RNG_2 96
 			X 12
 			Y 7
 			Planet_List 
@@ -2311,12 +2521,55 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2327,8 +2580,8 @@ Map
 		Star Star_146
 		{
 			ID 50
-			GFX_RNG_1 73
-			GFX_RNG_2 79
+			GFX_RNG_1 41
+			GFX_RNG_2 38
 			X 13
 			Y 7
 			Planet_List 
@@ -2336,12 +2589,62 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Giant
-					Active 
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 3
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2352,8 +2655,8 @@ Map
 		Star Star_153
 		{
 			ID 51
-			GFX_RNG_1 52
-			GFX_RNG_2 37
+			GFX_RNG_1 3
+			GFX_RNG_2 58
 			X 1
 			Y 8
 			Planet_List 
@@ -2361,28 +2664,21 @@ Map
 				Planet Star
 				{
 					Star_Type White_Dwarf
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 2
-					Temperature 3
-					ExoticResourceFlag 
+					Building Stable_Orbit
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Small_Asteroids 
-					Gold_Asteroid 
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2393,8 +2689,8 @@ Map
 		Star Star_154
 		{
 			ID 52
-			GFX_RNG_1 80
-			GFX_RNG_2 8
+			GFX_RNG_1 42
+			GFX_RNG_2 87
 			X 2
 			Y 8
 			Planet_List 
@@ -2402,42 +2698,15 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Rich_Gases 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-					Rings 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Small_Asteroids 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					ExoticResourceFlag 
-					Low_Atmosphere 
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 1
-					Temperature 2
-					ExoticResourceFlag 
-					No_Land 
-					Mod 
-					Bacterial_Life 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2448,37 +2717,30 @@ Map
 		Star Star_159
 		{
 			ID 53
-			GFX_RNG_1 13
-			GFX_RNG_2 34
+			GFX_RNG_1 58
+			GFX_RNG_2 24
 			X 7
 			Y 8
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
-					Mod 
+					Star_Type Blue_Giant
+					Building Stable_Orbit
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2489,47 +2751,17 @@ Map
 		Star Star_160
 		{
 			ID 54
-			GFX_RNG_1 63
-			GFX_RNG_2 25
+			GFX_RNG_1 50
+			GFX_RNG_2 81
 			X 8
 			Y 8
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 3
-					Temperature 3
-					ExoticResourceFlag 
-					No_Land 
-					Mod 
-					Simple_Life 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
+					Star_Type Pulsar
+					High_Energy 
+					Building Stable_Orbit
 				}
 				Planet Outer_System
 				{
@@ -2540,21 +2772,66 @@ Map
 		Star Star_161
 		{
 			ID 55
-			GFX_RNG_1 25
-			GFX_RNG_2 53
+			GFX_RNG_1 26
+			GFX_RNG_2 63
 			X 9
 			Y 8
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
-					Rich_Gases 
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2565,8 +2842,8 @@ Map
 		Star Star_162
 		{
 			ID 56
-			GFX_RNG_1 70
-			GFX_RNG_2 86
+			GFX_RNG_1 27
+			GFX_RNG_2 7
 			X 10
 			Y 8
 			Planet_List 
@@ -2574,7 +2851,7 @@ Map
 				Planet Star
 				{
 					Star_Type Main_Sequence
-					Active 
+					Building Stable_Orbit
 				}
 				Planet Barren
 				{
@@ -2583,43 +2860,41 @@ Map
 					Temperature 5
 					ExoticResourceFlag 
 					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Hostile_Fauna 
-					Mod 
-					Simple_Life 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Ocean
 				{
 					Type Ocean
-					Size 1
-					Temperature 3
-					Moon 
+					Size 3
+					Temperature 4
 					ExoticResourceFlag 
-					No_Land 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
 					Mod 
-					Bacterial_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -2630,21 +2905,71 @@ Map
 		Star Star_163
 		{
 			ID 57
-			GFX_RNG_1 21
-			GFX_RNG_2 83
+			GFX_RNG_1 69
+			GFX_RNG_2 8
 			X 11
 			Y 8
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Pulsar
-					Anti-Matter 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Desert
 				{
-					Type Gas_Giant
-					Size 6
+					Type Desert
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2655,16 +2980,16 @@ Map
 		Star Star_164
 		{
 			ID 58
-			GFX_RNG_1 92
-			GFX_RNG_2 35
+			GFX_RNG_1 20
+			GFX_RNG_2 82
 			X 12
 			Y 8
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type Red_Giant
+					Building Stable_Orbit
 				}
 				Planet Barren
 				{
@@ -2673,40 +2998,51 @@ Map
 					Temperature 5
 					ExoticResourceFlag 
 					High_Radiation 
-					Low_Atmosphere 
-					Mod 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Desert
+				Planet Lava
 				{
-					Type Desert
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					Mod 
-					Mod 
-					Simple_Life 
-				}
-				Planet Ocean
-				{
-					Type Ocean
+					Type Lava
 					Size 3
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
 					Temperature 4
 					ExoticResourceFlag 
-					No_Land 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
 					Mod 
-					Mod 
-					Complex_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
-					Gold_Asteroid 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -2718,21 +3054,24 @@ Map
 		{
 			ID 59
 			GFX_RNG_1 43
-			GFX_RNG_2 43
+			GFX_RNG_2 28
 			X 13
 			Y 8
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-					Rings 
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2743,54 +3082,43 @@ Map
 		Star Star_166
 		{
 			ID 60
-			GFX_RNG_1 57
-			GFX_RNG_2 33
+			GFX_RNG_1 17
+			GFX_RNG_2 48
 			X 14
 			Y 8
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
-					Active 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Desert
+				Planet Asteroid_Field
 				{
-					Type Desert
-					Size 3
-					Temperature 4
-					ExoticResourceFlag 
-					Mod 
-					Mod 
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
-				Planet Barren
+				Planet Swamp
 				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 3
+					Type Swamp
+					Size 2
+					Temperature 2
 					Moon 
 					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Complex_Life 
 					Mod 
-					Hostile_Fauna 
-					Bacterial_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2801,58 +3129,64 @@ Map
 		Star Star_167
 		{
 			ID 61
-			GFX_RNG_1 84
-			GFX_RNG_2 98
+			GFX_RNG_1 98
+			GFX_RNG_2 69
 			X 15
 			Y 8
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Vulcanic
 				{
-					Type Gas_Giant
-					Size 5
+					Type Vulcanic
+					Size 3
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Desert
+				Planet Barren
 				{
-					Type Desert
+					Type Barren
 					Size 1
 					Temperature 4
-					Moon 
 					ExoticResourceFlag 
-					Mod 
-					Mod 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
 				}
-				Planet Swamp
+				Planet Gas_Giant
 				{
-					Type Swamp
-					Size 3
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Mod 
-					Simple_Life 
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 3
-					Temperature 2
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Complex_Life 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2863,56 +3197,68 @@ Map
 		Star Star_173
 		{
 			ID 62
-			GFX_RNG_1 18
-			GFX_RNG_2 65
+			GFX_RNG_1 43
+			GFX_RNG_2 39
 			X 2
 			Y 9
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 3
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Bacterial_Life 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 3
-					Temperature 3
-					ExoticResourceFlag 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 2
-					Temperature 2
-					ExoticResourceFlag 
-					Hostile_Fauna 
-					Mod 
-					Bacterial_Life 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
-					Deuterium 
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2923,31 +3269,66 @@ Map
 		Star Star_174
 		{
 			ID 63
-			GFX_RNG_1 3
-			GFX_RNG_2 23
+			GFX_RNG_1 15
+			GFX_RNG_2 59
 			X 3
 			Y 9
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
-					Active 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Rings 
-					Low_Atmosphere 
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
+					Building Possible_Asteroid_Mines
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -2958,89 +3339,56 @@ Map
 		Star Star_175
 		{
 			ID 64
-			GFX_RNG_1 30
-			GFX_RNG_2 58
+			GFX_RNG_1 64
+			GFX_RNG_2 7
 			X 4
 			Y 9
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Mod 
-					Simple_Life 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Ocean
 				{
 					Type Ocean
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
 					Size 1
 					Temperature 3
 					ExoticResourceFlag 
-					Rings 
-					Mod 
-					Complex_Life 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Small_Asteroids 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 2
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Ice_Caps 
-					Mod 
-					Low_Atmosphere 
-					Mod 
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -3051,7 +3399,7 @@ Map
 		Star Star_179
 		{
 			ID 65
-			GFX_RNG_1 7
+			GFX_RNG_1 89
 			GFX_RNG_2 38
 			X 8
 			Y 9
@@ -3059,55 +3407,33 @@ Map
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Barren
+				Planet Asteroid_Field
 				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-					Mod 
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
-				Planet Ocean
+				Planet Artic
 				{
-					Type Ocean
-					Size 3
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
-					Bacterial_Life 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 3
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
-					Mod 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
+					Type Artic
 					Size 2
 					Temperature 2
+					Moon 
 					ExoticResourceFlag 
-					NormalPlanet 
+					Building Possible_Outpost
 					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3118,57 +3444,22 @@ Map
 		Star Star_181
 		{
 			ID 66
-			GFX_RNG_1 29
-			GFX_RNG_2 1
+			GFX_RNG_1 15
+			GFX_RNG_2 26
 			X 10
 			Y 9
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type Pulsar
+					High_Energy 
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Asteroid_Field
 				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					Low_Atmosphere 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -3179,30 +3470,103 @@ Map
 		Star Star_185
 		{
 			ID 67
-			GFX_RNG_1 5
-			GFX_RNG_2 69
+			GFX_RNG_1 81
+			GFX_RNG_2 38
 			X 14
 			Y 9
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Vulcanic
 				{
-					Type Gas_Giant
-					Size 6
+					Type Vulcanic
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
 					Temperature 3
 					Moon 
 					ExoticResourceFlag 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3213,63 +3577,80 @@ Map
 		Star Star_186
 		{
 			ID 68
-			GFX_RNG_1 87
-			GFX_RNG_2 60
+			GFX_RNG_1 98
+			GFX_RNG_2 2
 			X 15
 			Y 9
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Vulcanic
 				{
 					Type Vulcanic
 					Size 1
-					Temperature 5
+					Temperature 3
 					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
+					Building Possible_Outpost
+					MineralVeins 
 					Mod 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					Low_Atmosphere 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Small_Asteroids 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3280,87 +3661,24 @@ Map
 		Star Star_187
 		{
 			ID 69
-			GFX_RNG_1 50
-			GFX_RNG_2 76
+			GFX_RNG_1 8
+			GFX_RNG_2 19
 			X 16
 			Y 9
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 3
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
-					Low_Atmosphere 
-					Simple_Life 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 4
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Complex_Life 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Rings 
-					NormalPlanet 
-					Mod 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Average_Asteroids 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
-					Rings 
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3371,49 +3689,25 @@ Map
 		Star Star_193
 		{
 			ID 70
-			GFX_RNG_1 3
-			GFX_RNG_2 74
+			GFX_RNG_1 88
+			GFX_RNG_2 16
 			X 3
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
-					Active 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 4
-					Moon 
-					ExoticResourceFlag 
-					Ice_Caps 
-					Mod 
-					Low_Atmosphere 
-					Mod 
-					Bacterial_Life 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Average_Asteroids 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-					Deuterium 
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3424,8 +3718,8 @@ Map
 		Star Star_194
 		{
 			ID 71
-			GFX_RNG_1 70
-			GFX_RNG_2 42
+			GFX_RNG_1 16
+			GFX_RNG_2 69
 			X 4
 			Y 10
 			Planet_List 
@@ -3433,37 +3727,15 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Small_Asteroids 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 3
-					Temperature 3
-					ExoticResourceFlag 
-					Hostile_Fauna 
-					Big_Oceans 
-					Mod 
-					Mod 
-					Complex_Life 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3474,70 +3746,24 @@ Map
 		Star Star_195
 		{
 			ID 72
-			GFX_RNG_1 34
-			GFX_RNG_2 19
+			GFX_RNG_1 37
+			GFX_RNG_2 53
 			X 5
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 2
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					Mod 
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 1
-					Temperature 5
-					Moon 
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					LowA_tmosphere 
-					MineralVeins 
-					GeotermalVents 
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 2
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
-					Mod 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
-					Rings 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3548,8 +3774,8 @@ Map
 		Star Star_196
 		{
 			ID 73
-			GFX_RNG_1 63
-			GFX_RNG_2 21
+			GFX_RNG_1 97
+			GFX_RNG_2 99
 			X 6
 			Y 10
 			Planet_List 
@@ -3557,7 +3783,7 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Giant
-					Active 
+					Building Stable_Orbit
 				}
 				Planet Barren
 				{
@@ -3566,8 +3792,23 @@ Map
 					Temperature 5
 					ExoticResourceFlag 
 					High_Radiation 
-					Rings 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3578,76 +3819,41 @@ Map
 		Star Star_197
 		{
 			ID 74
-			GFX_RNG_1 41
-			GFX_RNG_2 43
+			GFX_RNG_1 38
+			GFX_RNG_2 16
 			X 7
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 5
-					Moon 
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					LowA_tmosphere 
-					Mod 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
-					Low_Atmosphere 
-					Mod 
-					Simple_Life 
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Low_Atmosphere 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
 					Temperature 2
 					ExoticResourceFlag 
-					NormalPlanet 
-					Mod 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3658,63 +3864,30 @@ Map
 		Star Star_198
 		{
 			ID 75
-			GFX_RNG_1 52
-			GFX_RNG_2 76
+			GFX_RNG_1 41
+			GFX_RNG_2 84
 			X 8
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					Low_Atmosphere 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Swamp
+				Planet Asteroid_Field
 				{
-					Type Swamp
-					Size 3
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
-					Hostile_Fauna 
-					Bacterial_Life 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 1
-					Temperature 2
-					ExoticResourceFlag 
-					Rings 
-					Mod 
-					Bacterial_Life 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 2
-					Temperature 2
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
 				}
 				Planet Outer_System
 				{
@@ -3725,86 +3898,33 @@ Map
 		Star Star_199
 		{
 			ID 76
-			GFX_RNG_1 46
-			GFX_RNG_2 51
+			GFX_RNG_1 89
+			GFX_RNG_2 84
 			X 9
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 4
-					Moon 
-					ExoticResourceFlag 
-					Bacterial_Life 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
 					Temperature 4
 					ExoticResourceFlag 
 					High_Radiation 
-					Ice_Caps 
-					Mod 
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 1
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Complex_Life 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					NormalPlanet 
-					LowA_tmosphere 
-					Mod 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Rings 
-					Rich_Gases 
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -3815,36 +3935,90 @@ Map
 		Star Star_200
 		{
 			ID 77
-			GFX_RNG_1 82
-			GFX_RNG_2 74
+			GFX_RNG_1 86
+			GFX_RNG_2 4
 			X 10
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Ultra_Rich_Gases 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
 					Temperature 3
 					Moon 
 					ExoticResourceFlag 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Small_Asteroids 
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3855,38 +4029,64 @@ Map
 		Star Star_201
 		{
 			ID 78
-			GFX_RNG_1 11
-			GFX_RNG_2 48
+			GFX_RNG_1 1
+			GFX_RNG_2 8
 			X 11
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Ocean
 				{
-					Type Gas_Giant
-					Size 6
-					Rich_Gases 
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 1
-					Temperature 3
-					Moon 
+					Type Ocean
+					Size 3
+					Temperature 4
 					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
 					Mod 
-					Hostile_Fauna 
-					Simple_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Asteroid_Field
+				Planet Arid
 				{
-					Type Asteroid_Field
-					Small_Asteroids 
+					Type Arid
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3897,48 +4097,24 @@ Map
 		Star Star_206
 		{
 			ID 79
-			GFX_RNG_1 73
-			GFX_RNG_2 81
+			GFX_RNG_1 67
+			GFX_RNG_2 45
 			X 16
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-					Ultra_Rich_Gases 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Small_Asteroids 
-					Gold_Asteroid 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 3
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					NormalPlanet 
-					Mod 
-					Bacterial_Life 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Low_Atmosphere 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -3949,8 +4125,8 @@ Map
 		Star Star_207
 		{
 			ID 80
-			GFX_RNG_1 82
-			GFX_RNG_2 96
+			GFX_RNG_1 49
+			GFX_RNG_2 82
 			X 17
 			Y 10
 			Planet_List 
@@ -3958,39 +4134,15 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 5
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 1
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Mod 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Large_Asteroids 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Rings 
-					Low_Atmosphere 
-					Mod 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4001,8 +4153,8 @@ Map
 		Star Star_214
 		{
 			ID 81
-			GFX_RNG_1 88
-			GFX_RNG_2 15
+			GFX_RNG_1 1
+			GFX_RNG_2 70
 			X 5
 			Y 11
 			Planet_List 
@@ -4010,32 +4162,15 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Small_Asteroids 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 2
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Ice_Caps 
-					Mod 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4046,8 +4181,8 @@ Map
 		Star Star_215
 		{
 			ID 82
-			GFX_RNG_1 41
-			GFX_RNG_2 89
+			GFX_RNG_1 70
+			GFX_RNG_2 5
 			X 6
 			Y 11
 			Planet_List 
@@ -4055,28 +4190,25 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 1
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					Big_Oceans 
-					Mod 
-					Bacterial_Life 
+					Building Stable_Orbit
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
+					Building Possible_Asteroid_Mines
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4087,43 +4219,37 @@ Map
 		Star Star_216
 		{
 			ID 83
-			GFX_RNG_1 44
-			GFX_RNG_2 47
+			GFX_RNG_1 67
+			GFX_RNG_2 51
 			X 7
 			Y 11
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Ocean
 				{
 					Type Ocean
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					No_Land 
-					Mod 
-					Low_Atmosphere 
-					Complex_Life 
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 3
+					Size 1
 					Temperature 3
+					Moon 
 					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
 					Mod 
-					Hostile_Fauna 
-					Mod 
-					Complex_Life 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Large_Asteroids 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4134,70 +4260,67 @@ Map
 		Star Star_217
 		{
 			ID 84
-			GFX_RNG_1 36
-			GFX_RNG_2 70
+			GFX_RNG_1 73
+			GFX_RNG_2 11
 			X 8
 			Y 11
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Desert
 				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Ocean
-				{
-					Type Ocean
+					Type Desert
 					Size 1
 					Temperature 4
 					ExoticResourceFlag 
 					High_Radiation 
+					Building Possible_Outpost
 					Mod 
-					Low_Atmosphere 
-					Mod 
-					Bacterial_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Barren
+				Planet Swamp
 				{
-					Type Barren
-					Size 1
+					Type Swamp
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
 					Temperature 3
 					ExoticResourceFlag 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					ExoticResourceFlag 
-					Rings 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4208,8 +4331,8 @@ Map
 		Star Star_218
 		{
 			ID 85
-			GFX_RNG_1 66
-			GFX_RNG_2 70
+			GFX_RNG_1 34
+			GFX_RNG_2 86
 			X 9
 			Y 11
 			Planet_List 
@@ -4217,20 +4340,21 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Low_Atmosphere 
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -4241,39 +4365,79 @@ Map
 		Star Star_219
 		{
 			ID 86
-			GFX_RNG_1 56
-			GFX_RNG_2 53
+			GFX_RNG_1 44
+			GFX_RNG_2 50
 			X 10
 			Y 11
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
-					Active 
+					Star_Type Blue_Giant
+					Building Stable_Orbit
 				}
-				Planet Lava
+				Planet Vulcanic
 				{
-					Type Lava
+					Type Vulcanic
 					Size 2
 					Temperature 5
 					ExoticResourceFlag 
 					High_Radiation 
-					Rings 
-					NormalPlanet 
+					Building Possible_Outpost
 					MineralVeins 
-					GeotermalVents 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Toxic
+				Planet Barren
 				{
-					Type Toxic
+					Type Barren
 					Size 1
-					Temperature 4
-					Moon 
+					Temperature 5
 					ExoticResourceFlag 
 					High_Radiation 
-					Rings 
-					Bacterial_Life 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4284,33 +4448,65 @@ Map
 		Star Star_220
 		{
 			ID 87
-			GFX_RNG_1 19
-			GFX_RNG_2 32
+			GFX_RNG_1 29
+			GFX_RNG_2 29
 			X 11
 			Y 11
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 5
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 1
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					Hostile_Fauna 
-					Big_Oceans 
-					Mod 
-					Bacterial_Life 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4321,8 +4517,8 @@ Map
 		Star Star_221
 		{
 			ID 88
-			GFX_RNG_1 33
-			GFX_RNG_2 27
+			GFX_RNG_1 32
+			GFX_RNG_2 20
 			X 12
 			Y 11
 			Planet_List 
@@ -4330,42 +4526,15 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
-					Rings 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Large_Asteroids 
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 2
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					Rings 
-					Mod 
-					Hostile_Fauna 
-					Simple_Life 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Rings 
-					NormalPlanet 
-					LowA_tmosphere 
-					Mod 
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4376,47 +4545,16 @@ Map
 		Star Star_226
 		{
 			ID 89
-			GFX_RNG_1 71
-			GFX_RNG_2 43
+			GFX_RNG_1 30
+			GFX_RNG_2 1
 			X 17
 			Y 11
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 2
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					MineralVeins 
-					GeotermalVents 
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 2
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					MineralVeins 
-					GeotermalVents 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 4
-					Moon 
-					ExoticResourceFlag 
-					Bacterial_Life 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Barren
 				{
@@ -4424,41 +4562,58 @@ Map
 					Size 1
 					Temperature 4
 					ExoticResourceFlag 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Toxic
+				Planet Continents
 				{
-					Type Toxic
-					Size 3
-					Temperature 3
+					Type Continents
+					Size 1
+					Temperature 4
 					ExoticResourceFlag 
-					Bacterial_Life 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Arid
 				{
 					Type Arid
-					Size 2
+					Size 1
 					Temperature 3
 					ExoticResourceFlag 
-					Rings 
-					Ice_Caps 
+					Building Possible_Outpost
+					Complex_Life 
 					Mod 
-					Simple_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Vulcanic
+				Planet Arid
 				{
-					Type Vulcanic
-					Size 2
+					Type Arid
+					Size 3
 					Temperature 2
 					ExoticResourceFlag 
-					NormalPlanet 
+					Building Possible_Outpost
+					Trapped_Gasses 
 					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Asteroid_Field
+				Planet Arid
 				{
-					Type Asteroid_Field
-					Small_Asteroids 
-					Gold_Asteroid 
+					Type Arid
+					Size 3
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4470,31 +4625,94 @@ Map
 		{
 			ID 90
 			GFX_RNG_1 41
-			GFX_RNG_2 35
+			GFX_RNG_2 7
 			X 18
 			Y 11
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Pulsar
-					Anti-Matter 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
-				Planet Vulcanic
+				Planet Lava
 				{
-					Type Vulcanic
+					Type Lava
 					Size 2
 					Temperature 5
 					ExoticResourceFlag 
 					High_Radiation 
-					NormalPlanet 
 					Mod 
-					Bacterial_Life 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Asteroid_Field
+				Planet Barren
 				{
-					Type Asteroid_Field
-					Small_Asteroids 
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4505,8 +4723,8 @@ Map
 		Star Star_234
 		{
 			ID 91
-			GFX_RNG_1 72
-			GFX_RNG_2 30
+			GFX_RNG_1 45
+			GFX_RNG_2 74
 			X 6
 			Y 12
 			Planet_List 
@@ -4514,42 +4732,20 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Rich_Gases 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 2
-					Temperature 2
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Simple_Life 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Mod 
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -4561,40 +4757,65 @@ Map
 		{
 			ID 92
 			GFX_RNG_1 91
-			GFX_RNG_2 57
+			GFX_RNG_2 29
 			X 7
 			Y 12
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
-					Active 
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 2
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					LowA_tmosphere 
-					MineralVeins 
-					GeotermalVents 
-					Bacterial_Life 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Average_Asteroids 
-					Gold_Asteroid 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-					Rich_Gases 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4605,31 +4826,32 @@ Map
 		Star Star_236
 		{
 			ID 93
-			GFX_RNG_1 28
-			GFX_RNG_2 38
+			GFX_RNG_1 9
+			GFX_RNG_2 26
 			X 8
 			Y 12
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
-					Active 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-					Mod 
+					Star_Type Pulsar
+					High_Energy 
+					Building Stable_Orbit
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4640,54 +4862,21 @@ Map
 		Star Star_240
 		{
 			ID 94
-			GFX_RNG_1 49
-			GFX_RNG_2 57
+			GFX_RNG_1 52
+			GFX_RNG_2 80
 			X 12
 			Y 12
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					HyperActive 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Mod 
-					Complex_Life 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					Bacterial_Life 
+					Star_Type Red_Giant
+					Building Stable_Orbit
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -4698,22 +4887,70 @@ Map
 		Star Star_241
 		{
 			ID 95
-			GFX_RNG_1 1
-			GFX_RNG_2 8
+			GFX_RNG_1 83
+			GFX_RNG_2 94
 			X 13
 			Y 12
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Red_Giant
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Vulcanic
 				{
-					Type Gas_Giant
-					Size 6
-					Rings 
+					Type Vulcanic
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -4724,8 +4961,8 @@ Map
 		Star Star_242
 		{
 			ID 96
-			GFX_RNG_1 95
-			GFX_RNG_2 9
+			GFX_RNG_1 76
+			GFX_RNG_2 44
 			X 14
 			Y 12
 			Planet_List 
@@ -4733,12 +4970,44 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4749,8 +5018,8 @@ Map
 		Star Star_245
 		{
 			ID 97
-			GFX_RNG_1 12
-			GFX_RNG_2 36
+			GFX_RNG_1 94
+			GFX_RNG_2 12
 			X 17
 			Y 12
 			Planet_List 
@@ -4758,19 +5027,15 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
-					Rings 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Rich_Gases 
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Barren
 				{
@@ -4779,25 +5044,28 @@ Map
 					Temperature 3
 					Moon 
 					ExoticResourceFlag 
-					Low_Atmosphere 
-					Mod 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
 				}
-				Planet Arid
+				Planet Toxic
 				{
-					Type Arid
+					Type Toxic
 					Size 2
 					Temperature 2
 					Moon 
 					ExoticResourceFlag 
-					Rings 
-					Mod 
-					Hostile_Fauna 
+					Building Possible_Outpost
 					Bacterial_Life 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4808,21 +5076,59 @@ Map
 		Star Star_246
 		{
 			ID 98
-			GFX_RNG_1 28
-			GFX_RNG_2 54
+			GFX_RNG_1 30
+			GFX_RNG_2 63
 			X 18
 			Y 12
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Lava
 				{
-					Type Gas_Giant
-					Size 5
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
 				}
 				Planet Outer_System
 				{
@@ -4833,41 +5139,44 @@ Map
 		Star Star_261
 		{
 			ID 99
-			GFX_RNG_1 100
-			GFX_RNG_2 7
+			GFX_RNG_1 16
+			GFX_RNG_2 1
 			X 14
 			Y 13
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
-					Simple_Life 
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
-					Low_Atmosphere 
-					Mod 
-					Bacterial_Life 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4878,22 +5187,82 @@ Map
 		Star Star_262
 		{
 			ID 100
-			GFX_RNG_1 75
-			GFX_RNG_2 96
+			GFX_RNG_1 55
+			GFX_RNG_2 40
 			X 15
 			Y 13
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Lava
 				{
-					Type Gas_Giant
-					Size 6
-					Rich_Gases 
+					Type Lava
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4904,16 +5273,21 @@ Map
 		Star Star_265
 		{
 			ID 101
-			GFX_RNG_1 46
-			GFX_RNG_2 21
+			GFX_RNG_1 82
+			GFX_RNG_2 54
 			X 18
 			Y 13
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Pulsar
-					Anti-Matter 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -4924,27 +5298,53 @@ Map
 		Star Star_271
 		{
 			ID 102
-			GFX_RNG_1 42
-			GFX_RNG_2 64
+			GFX_RNG_1 68
+			GFX_RNG_2 43
 			X 5
 			Y 14
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 5
-					Rings 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4955,21 +5355,51 @@ Map
 		Star Star_281
 		{
 			ID 103
-			GFX_RNG_1 11
-			GFX_RNG_2 52
+			GFX_RNG_1 23
+			GFX_RNG_2 87
 			X 15
 			Y 14
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
-					HyperActive 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 3
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -4980,8 +5410,8 @@ Map
 		Star Star_282
 		{
 			ID 104
-			GFX_RNG_1 78
-			GFX_RNG_2 36
+			GFX_RNG_1 69
+			GFX_RNG_2 4
 			X 16
 			Y 14
 			Planet_List 
@@ -4989,17 +5419,29 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
 				}
 				Planet Outer_System
 				{
@@ -5010,8 +5452,8 @@ Map
 		Star Star_291
 		{
 			ID 105
-			GFX_RNG_1 22
-			GFX_RNG_2 19
+			GFX_RNG_1 61
+			GFX_RNG_2 35
 			X 6
 			Y 15
 			Planet_List 
@@ -5019,30 +5461,58 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 5
-					Ultra_Rich_Gases 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
 					Gold_Asteroid 
 				}
-				Planet Swamp
+				Planet Artic
 				{
-					Type Swamp
+					Type Artic
 					Size 3
 					Temperature 2
 					Moon 
 					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
+					Building Possible_Outpost
 					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 3
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5053,45 +5523,67 @@ Map
 		Star Star_292
 		{
 			ID 106
-			GFX_RNG_1 42
-			GFX_RNG_2 90
+			GFX_RNG_1 40
+			GFX_RNG_2 45
 			X 7
 			Y 15
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 1
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Large_Asteroids 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 2
-					Moon 
+					Temperature 5
 					ExoticResourceFlag 
-					Low_Atmosphere 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -5102,34 +5594,45 @@ Map
 		Star Star_300
 		{
 			ID 107
-			GFX_RNG_1 16
-			GFX_RNG_2 100
+			GFX_RNG_1 27
+			GFX_RNG_2 34
 			X 15
 			Y 15
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Barren
 				{
-					Type Gas_Giant
-					Size 5
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 2
-					Temperature 2
-					ExoticResourceFlag 
-					Mod 
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -5140,88 +5643,62 @@ Map
 		Star Star_301
 		{
 			ID 108
-			GFX_RNG_1 6
-			GFX_RNG_2 97
+			GFX_RNG_1 67
+			GFX_RNG_2 96
 			X 16
 			Y 15
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Vulcanic
+				Planet Gas_Giant
 				{
-					Type Vulcanic
-					Size 2
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					LowA_tmosphere 
-					Mod 
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Vulcanic
+				Planet Gas_Giant
 				{
-					Type Vulcanic
-					Size 3
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					LowA_tmosphere 
-					Mod 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Ocean
+				Planet Asteroid_Field
 				{
-					Type Ocean
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					No_Land 
-					Mod 
-					Low_Atmosphere 
-					Complex_Life 
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
 				}
-				Planet Swamp
+				Planet Barren
 				{
-					Type Swamp
-					Size 2
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-					Mod 
-					Complex_Life 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 2
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
-					Bacterial_Life 
-				}
-				Planet Ocean
-				{
-					Type Ocean
+					Type Barren
 					Size 1
 					Temperature 2
+					Moon 
 					ExoticResourceFlag 
-					Mod 
-					Mod 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Arid
+				Planet Toxic
 				{
-					Type Arid
-					Size 3
+					Type Toxic
+					Size 2
 					Temperature 2
+					Moon 
 					ExoticResourceFlag 
-					Ice_Caps 
-					Mod 
-					Hostile_Fauna 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5232,8 +5709,8 @@ Map
 		Star Star_302
 		{
 			ID 109
-			GFX_RNG_1 72
-			GFX_RNG_2 96
+			GFX_RNG_1 21
+			GFX_RNG_2 35
 			X 17
 			Y 15
 			Planet_List 
@@ -5241,28 +5718,27 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Arid
+				Planet Barren
 				{
-					Type Arid
-					Size 2
+					Type Barren
+					Size 1
 					Temperature 3
 					Moon 
 					ExoticResourceFlag 
-					Ice_Caps 
-					Mod 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Average_Asteroids 
-					Gold_Asteroid 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5273,8 +5749,8 @@ Map
 		Star Star_311
 		{
 			ID 110
-			GFX_RNG_1 8
-			GFX_RNG_2 93
+			GFX_RNG_1 63
+			GFX_RNG_2 84
 			X 7
 			Y 16
 			Planet_List 
@@ -5282,11 +5758,42 @@ Map
 				Planet Star
 				{
 					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Asteroid_Field
+				Planet Desert
 				{
-					Type Asteroid_Field
-					Average_Asteroids 
+					Type Desert
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5297,8 +5804,8 @@ Map
 		Star Star_312
 		{
 			ID 111
-			GFX_RNG_1 52
-			GFX_RNG_2 62
+			GFX_RNG_1 17
+			GFX_RNG_2 27
 			X 8
 			Y 16
 			Planet_List 
@@ -5306,13 +5813,44 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
-					Deuterium 
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5323,62 +5861,24 @@ Map
 		Star Star_313
 		{
 			ID 112
-			GFX_RNG_1 60
-			GFX_RNG_2 31
+			GFX_RNG_1 51
+			GFX_RNG_2 63
 			X 9
 			Y 16
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
-					Active 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Vulcanic
+				Planet Gas_Giant
 				{
-					Type Vulcanic
-					Size 3
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					LowA_tmosphere 
-					Mod 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Hostile_Fauna 
-					Big_Oceans 
-					Mod 
-					Simple_Life 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					Low_Atmosphere 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Large_Asteroids 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5389,52 +5889,66 @@ Map
 		Star Star_314
 		{
 			ID 113
-			GFX_RNG_1 85
-			GFX_RNG_2 58
+			GFX_RNG_1 6
+			GFX_RNG_2 39
 			X 10
 			Y 16
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
-					HyperActive 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Arid
 				{
 					Type Arid
 					Size 2
 					Temperature 4
+					Moon 
 					ExoticResourceFlag 
-					High_Radiation 
-					Ice_Caps 
+					Building Possible_Outpost
 					Mod 
-					Low_Atmosphere 
-					Bacterial_Life 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 2
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Mod 
-					Bacterial_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
+					Building Possible_Asteroid_Mines
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5445,28 +5959,29 @@ Map
 		Star Star_316
 		{
 			ID 114
-			GFX_RNG_1 60
-			GFX_RNG_2 56
+			GFX_RNG_1 37
+			GFX_RNG_2 53
 			X 12
 			Y 16
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
-					HyperActive 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Average_Asteroids 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 5
-					Rings 
-					Rich_Gases 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -5477,83 +5992,55 @@ Map
 		Star Star_319
 		{
 			ID 115
-			GFX_RNG_1 25
-			GFX_RNG_2 38
+			GFX_RNG_1 33
+			GFX_RNG_2 87
 			X 15
 			Y 16
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					Mod 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 3
-					Temperature 4
-					ExoticResourceFlag 
-					High_Radiation 
-					Hostile_Fauna 
-					Big_Oceans 
-					Mod 
-					Simple_Life 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 3
-					ExoticResourceFlag 
-					NormalPlanet 
-					LowA_tmosphere 
-					Mod 
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 2
-					Temperature 3
-					ExoticResourceFlag 
-					Mod 
-					Bacterial_Life 
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
 				}
-				Planet Arid
+				Planet Desert
 				{
-					Type Arid
+					Type Desert
 					Size 2
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 3
 					Temperature 2
 					Moon 
 					ExoticResourceFlag 
-					Rings 
+					Building Possible_Outpost
 					Mod 
-					Low_Atmosphere 
-					Bacterial_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5564,8 +6051,8 @@ Map
 		Star Star_320
 		{
 			ID 116
-			GFX_RNG_1 7
-			GFX_RNG_2 63
+			GFX_RNG_1 10
+			GFX_RNG_2 81
 			X 16
 			Y 16
 			Planet_List 
@@ -5573,42 +6060,15 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
-					Rings 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Rings 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Small_Asteroids 
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5619,21 +6079,31 @@ Map
 		Star Star_321
 		{
 			ID 117
-			GFX_RNG_1 21
-			GFX_RNG_2 84
+			GFX_RNG_1 99
+			GFX_RNG_2 43
 			X 17
 			Y 16
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Pulsar
+					High_Energy 
+					Building Stable_Orbit
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5644,76 +6114,52 @@ Map
 		Star Star_332
 		{
 			ID 118
-			GFX_RNG_1 36
-			GFX_RNG_2 9
+			GFX_RNG_1 92
+			GFX_RNG_2 49
 			X 9
 			Y 17
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
-					Active 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Desert
 				{
-					Type Barren
-					Size 1
-					Temperature 5
+					Type Desert
+					Size 2
+					Temperature 4
 					ExoticResourceFlag 
 					High_Radiation 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Barren
+				Planet Continents
 				{
-					Type Barren
+					Type Continents
 					Size 1
-					Temperature 5
+					Temperature 3
 					Moon 
 					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Simple_Life 
 					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Desert
 				{
 					Type Desert
 					Size 1
-					Temperature 4
-					ExoticResourceFlag 
-					Mod 
-					Hostile_Fauna 
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 1
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					Rings 
-					Mod 
-					Mod 
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 1
 					Temperature 2
 					ExoticResourceFlag 
+					Building Possible_Outpost
 					Mod 
-					Low_Atmosphere 
-					Mod 
-					Bacterial_Life 
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 2
-					Temperature 2
-					ExoticResourceFlag 
-					Mod 
-					Simple_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5724,8 +6170,8 @@ Map
 		Star Star_333
 		{
 			ID 119
-			GFX_RNG_1 0
-			GFX_RNG_2 34
+			GFX_RNG_1 30
+			GFX_RNG_2 35
 			X 10
 			Y 17
 			Planet_List 
@@ -5733,40 +6179,42 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Large_Asteroids 
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
 				}
-				Planet Continents
+				Planet Desert
 				{
-					Type Continents
+					Type Desert
 					Size 3
-					Temperature 3
-					Moon 
-					ExoticResourceFlag 
-					Hostile_Fauna 
-					Big_Oceans 
-					Mod 
-					Bacterial_Life 
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 1
 					Temperature 2
 					Moon 
 					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
 					Mod 
-					Low_Atmosphere 
-					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5777,21 +6225,106 @@ Map
 		Star Star_334
 		{
 			ID 120
-			GFX_RNG_1 60
-			GFX_RNG_2 49
+			GFX_RNG_1 14
+			GFX_RNG_2 90
 			X 11
 			Y 17
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
+					Building Possible_Asteroid_Mines
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -5802,39 +6335,30 @@ Map
 		Star Star_335
 		{
 			ID 121
-			GFX_RNG_1 60
-			GFX_RNG_2 44
+			GFX_RNG_1 9
+			GFX_RNG_2 24
 			X 12
 			Y 17
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
-					Active 
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 1
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					MineralVeins 
-					GeotermalVents 
-				}
-				Planet Asteroid_Field
-				{
-					Type Asteroid_Field
-					Average_Asteroids 
-					Gold_Asteroid 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
-					Ultra_Rich_Gases 
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -5845,22 +6369,22 @@ Map
 		Star Star_336
 		{
 			ID 122
-			GFX_RNG_1 89
-			GFX_RNG_2 6
+			GFX_RNG_1 95
+			GFX_RNG_2 29
 			X 13
 			Y 17
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Pulsar
+					High_Energy 
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Asteroid_Field
 				{
-					Type Gas_Giant
-					Size 6
-					Rich_Gases 
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -5871,25 +6395,92 @@ Map
 		Star Star_337
 		{
 			ID 123
-			GFX_RNG_1 47
-			GFX_RNG_2 89
+			GFX_RNG_1 75
+			GFX_RNG_2 61
 			X 14
 			Y 17
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
-				Planet Continents
+				Planet Vulcanic
 				{
-					Type Continents
-					Size 3
-					Temperature 4
+					Type Vulcanic
+					Size 2
+					Temperature 5
 					ExoticResourceFlag 
 					High_Radiation 
-					Big_Oceans 
+					Building Possible_Outpost
+					MineralVeins 
 					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 3
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -5900,42 +6491,35 @@ Map
 		Star Star_338
 		{
 			ID 124
-			GFX_RNG_1 34
-			GFX_RNG_2 32
+			GFX_RNG_1 31
+			GFX_RNG_2 100
 			X 15
 			Y 17
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Red_Giant
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Barren
 				{
-					Type Gas_Giant
-					Size 5
-					Deuterium 
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Asteroid_Field
 				{
 					Type Asteroid_Field
-					Average_Asteroids 
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 1
-					Temperature 2
-					ExoticResourceFlag 
-					Hostile_Fauna 
-					Mod 
-					Simple_Life 
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
 				}
 				Planet Outer_System
 				{
@@ -5946,31 +6530,58 @@ Map
 		Star Star_339
 		{
 			ID 125
-			GFX_RNG_1 35
-			GFX_RNG_2 25
+			GFX_RNG_1 69
+			GFX_RNG_2 86
 			X 16
 			Y 17
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Vulcanic
 				{
-					Type Gas_Giant
-					Size 5
+					Type Vulcanic
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Arid
 				{
 					Type Arid
 					Size 1
-					Temperature 3
+					Temperature 4
 					Moon 
 					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
 					Mod 
-					Simple_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -5981,8 +6592,8 @@ Map
 		Star Star_353
 		{
 			ID 126
-			GFX_RNG_1 12
-			GFX_RNG_2 79
+			GFX_RNG_1 9
+			GFX_RNG_2 72
 			X 11
 			Y 18
 			Planet_List 
@@ -5990,21 +6601,55 @@ Map
 				Planet Star
 				{
 					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
 					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
 					Moon 
 					ExoticResourceFlag 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -6015,58 +6660,40 @@ Map
 		Star Star_354
 		{
 			ID 127
-			GFX_RNG_1 63
-			GFX_RNG_2 17
+			GFX_RNG_1 30
+			GFX_RNG_2 85
 			X 12
 			Y 18
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type White_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Toxic
 				{
-					Type Gas_Giant
-					Size 6
-					Rich_Gases 
-					Deuterium 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
+					Type Toxic
+					Size 3
 					Temperature 4
-					Moon 
 					ExoticResourceFlag 
-					High_Radiation 
-					Low_Atmosphere 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Asteroid_Field
+				Planet Swamp
 				{
-					Type Asteroid_Field
-					Average_Asteroids 
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Moon 
-					ExoticResourceFlag 
-					Low_Atmosphere 
-					Mod 
-				}
-				Planet Artic
-				{
-					Type Artic
+					Type Swamp
 					Size 2
-					Temperature 2
+					Temperature 3
 					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
 					Mod 
-					Mod 
-					Bacterial_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -6077,57 +6704,67 @@ Map
 		Star Star_355
 		{
 			ID 128
-			GFX_RNG_1 56
-			GFX_RNG_2 25
+			GFX_RNG_1 21
+			GFX_RNG_2 36
 			X 13
 			Y 18
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
-					GasGiantsFirst 
+					Star_Type Main_Sequence
+					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Vulcanic
 				{
-					Type Gas_Giant
-					Size 5
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 2
-					Temperature 4
-					Moon 
+					Type Vulcanic
+					Size 3
+					Temperature 5
 					ExoticResourceFlag 
 					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Desert
+				Planet Swamp
 				{
-					Type Desert
+					Type Swamp
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
 					Size 1
 					Temperature 3
 					Moon 
 					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
 					Mod 
-					Hostile_Fauna 
-					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
-				Planet Asteroid_Field
+				Planet Ocean
 				{
-					Type Asteroid_Field
-					Large_Asteroids 
-					Gold_Asteroid 
-				}
-				Planet Artic
-				{
-					Type Artic
+					Type Ocean
 					Size 1
 					Temperature 2
 					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
 					Mod 
-					Low_Atmosphere 
-					Bacterial_Life 
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -6138,32 +6775,24 @@ Map
 		Star Star_357
 		{
 			ID 129
-			GFX_RNG_1 5
-			GFX_RNG_2 10
+			GFX_RNG_1 57
+			GFX_RNG_2 100
 			X 15
 			Y 18
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
-					Active 
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 3
-					Temperature 5
-					ExoticResourceFlag 
-					High_Radiation 
-					NormalPlanet 
-					LowA_tmosphere 
-					Mod 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
 				}
 				Planet Outer_System
 				{
@@ -6175,15 +6804,20 @@ Map
 		{
 			ID 130
 			GFX_RNG_1 29
-			GFX_RNG_2 98
+			GFX_RNG_2 71
 			X 16
 			Y 18
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Pulsar
-					Anti-Matter 
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Asteroid_Field
+				{
+					Type Asteroid_Field
+					Building Possible_Asteroid_Mines
 				}
 				Planet Outer_System
 				{
@@ -6197,16 +6831,20 @@ Map
 		Player Player_0
 		{
 			Human 
+			Empire 
+			{
+				Flag res://Assets/Flags/Earth_Round.png
+			}
 			Resources 
 			{
 				Wealth 3000
-				BC 318
+				BC 106
 				BC*Income 0
 				Trade 0
 				Trade*Used 0
-				TechPoints 159
+				TechPoints 53
 				TechPoints*Income 0
-				CulturePoints 159
+				CulturePoints 53
 				CulturePoints*Income 0
 				Authority 0
 				Authority*Used 0
@@ -6281,20 +6919,10 @@ Map
 						Influence*Used 0
 						BC*Income 0
 					}
-					ActionConTreasury 
-					{
-						Priority 1
-						Progress:Current 5
-						Progress:Total 10
-					}
 					ActionBuildQueue 
 					{
-						Building Flare_Catcher
-						{
-							Link:Star:Planet Sol:Star
-							Progress:Max 2500
-						}
 						Overflow 0
+						Queue 
 					}
 					System_List 
 					{
@@ -6377,6 +7005,12 @@ Map
 										}
 									}
 									Buildings 
+									{
+										Research_Lab_I 
+										Factory_I 
+										Global_Centers 
+										District 
+									}
 									Support 
 									{
 										Democratic 
@@ -6461,40 +7095,6 @@ Map
 										}
 									}
 									Link:Star:Planet Sol:Terra
-								}
-								Colony Star
-								{
-									Outpost 
-									Resources 
-									{
-										Energy 0
-										Energy*Used 0
-										Minerals 0
-										Minerals*Used 0
-										Production*Income 0
-										Shipbuilding*Income 0
-										Trade 0
-										Trade*Used 0
-										TechPoints*Income 0
-										CulturePoints*Income 0
-										Authority 0
-										Authority*Used 0
-										Influence 0
-										Influence*Used 0
-										BC*Income 0
-									}
-									Buildings 
-									{
-										Flare_Catcher 
-										{
-											InConstruction 
-											{
-												Progress:Max 2500
-												Progress 746
-											}
-										}
-									}
-									Link:Star:Planet Sol:Star
 								}
 							}
 						}

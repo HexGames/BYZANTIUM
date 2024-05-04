@@ -31,6 +31,20 @@ public class Helper
         return split.Length > 1 ? split[1] : "";
     }
 
+    //public static string Split_minus1(string text, char separator = ':')
+    //{
+    //    string ret = "";
+    //    string[] split = text.Split(separator);
+    //
+    //    for (int i = 0; i < split.Length - 1; i++)
+    //    {
+    //        if (i > 0) ret += ":";
+    //        ret += split[i];
+    //    }
+    //
+    //    return text.Split(separator)[0];
+    //}
+
     public static string ResValueToString(int value, int precision = 10)
     {
         if (value >= 10 * precision)
@@ -40,6 +54,31 @@ public class Helper
         else
         {
             return (value / precision).ToString() + ((value * 10 / precision) % 10 != 0 ? "." + ((value * 10 / precision) % 10).ToString() : "");
+        }
+    }
+
+    public static string GetOrdinal(int num)
+    {
+        if (num <= 0) return num.ToString();
+
+        switch (num % 100)
+        {
+            case 11:
+            case 12:
+            case 13:
+                return num + "th";
+        }
+
+        switch (num % 10)
+        {
+            case 1:
+                return num + "st";
+            case 2:
+                return num + "nd";
+            case 3:
+                return num + "rd";
+            default:
+                return num + "th";
         }
     }
 }

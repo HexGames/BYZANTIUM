@@ -15,14 +15,14 @@ custom_minimum_size = Vector2(256, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1856.0
-offset_bottom = -966.0
+offset_right = -1664.0
+offset_bottom = -1044.0
 size_flags_vertical = 0
 theme = ExtResource("1_o7c1n")
 script = ExtResource("2_xdy0g")
 
 [node name="Container" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(64, 24)
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
@@ -62,6 +62,7 @@ size_flags_vertical = 0
 mouse_filter = 2
 
 [node name="Left_1" type="RichTextLabel" parent="Container/MarginContainer/Rows"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 1
@@ -87,6 +88,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Line_1" type="Panel" parent="Container/MarginContainer/Rows"]
+visible = false
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 size_flags_vertical = 0
@@ -94,6 +96,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uoqy0")
 
 [node name="Left_2" type="RichTextLabel" parent="Container/MarginContainer/Rows"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 1
@@ -120,6 +123,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Line_2" type="Panel" parent="Container/MarginContainer/Rows"]
+visible = false
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 size_flags_vertical = 0
@@ -127,6 +131,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uoqy0")
 
 [node name="Left_3" type="RichTextLabel" parent="Container/MarginContainer/Rows"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 1

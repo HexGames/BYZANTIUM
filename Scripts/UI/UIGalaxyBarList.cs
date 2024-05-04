@@ -13,7 +13,15 @@ public partial class UIGalaxyBarList : Control
     public Control ParentNode = null;
 
     [Export]
-    public Array<UIGalaxyBarListGroupHeader> GroupHeaders = new Array<UIGalaxyBarListGroupHeader>();
+    public UIBarListGroup ParentSector = null;
+    [Export]
+    public UIBarListGroup ParentSystem = null;
+    [Export]
+    //public Array<UIBarListHeader> GroupHeaders = new Array<UIBarListHeader>();
+    public UIBarListHeader GroupHeader = null;
+
+    [Export]
+    public Array<UIBarListGroup> Groups = new Array<UIBarListGroup>();
 
     [Export]
     public Array<UIBarListPlanet> Planets = new Array<UIBarListPlanet>();
@@ -24,9 +32,13 @@ public partial class UIGalaxyBarList : Control
 
     [ExportCategory("Runtime")]
     [Export]
-    public bool GroupByType = false;
-    [Export]
     public PlayerData _PlayerData = null;
+    [Export]
+    public SectorData _SectorData = null;
+    [Export]
+    public SystemData _SystemData = null;
+    [Export]
+    public StarData _StarData = null;
     [Export]
     public UIBarListPlanet PlanetSelected = null;
     //[Export]
@@ -66,96 +78,166 @@ public partial class UIGalaxyBarList : Control
     {
         _PlayerData = playerData;
 
+        ParentSector.Visible = false;
+        ParentSystem.Visible = false;
+
         // hide all
-        for (int groupIdx = 0; groupIdx < GroupHeaders.Count; groupIdx++)
+        Refresh_HideAll();
+
+        for (int sectorIdx = 0; sectorIdx < _PlayerData.Sectors.Count; sectorIdx++)
         {
-            GroupHeaders[groupIdx].Visible = false;
-        }
-        for (int planetIdx = 0; planetIdx < Planets.Count; planetIdx++)
-        {
-            Planets[planetIdx].Visible = false;
-        }
-
-        if (GroupByType == false)
-        {
-            // refresh groups and planets
-            //int refreshedGroupIdx = 0;
-            //for (int colonyIdx = 0; colonyIdx < _PlayerData.Colonies.Count; colonyIdx++)
-            //{
-            //    bool foundSystem = false;
-            //    for (int groupIdx = 0; groupIdx < GroupHeaders.Count; groupIdx++)
-            //    {
-            //        if (_PlayerData.Colonies[colonyIdx].Star == GroupHeaders[groupIdx]._SystemData)
-            //        {
-            //            foundSystem = true;
-            //            break;
-            //        }
-            //    }
-            //    if (foundSystem == false)
-            //    {
-            //        RefreshGroup(refreshedGroupIdx, _PlayerData.Colonies[colonyIdx].Star);
-            //        refreshedGroupIdx++;
-            //    }
-            //
-            //    RefreshPlanets(colonyIdx, _PlayerData.Colonies[colonyIdx].Star, _PlayerData.Colonies[colonyIdx].Planet);
-            //}
-            int refreshedPlanetIdx = 0;
-            for (int sectorIdx = 0; sectorIdx < _PlayerData.Sectors.Count; sectorIdx++)
-            {
-                RefreshGroup(sectorIdx, _PlayerData.Sectors[sectorIdx]);
-                for (int systemIdx = 0; systemIdx < _PlayerData.Sectors[sectorIdx].Systems.Count; systemIdx++)
-                {
-                    SystemData system = _PlayerData.Sectors[sectorIdx].Systems[systemIdx];
-                    for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
-                    {
-                        ColonyData colony = system.Colonies[colonyIdx];
-                        RefreshPlanets(refreshedPlanetIdx, system.Star, colony.Planet);
-                        refreshedPlanetIdx++;
-                    }
-                }
-            }
-
-            // unparent
-            for (int idx = 0; idx < GroupHeaders.Count; idx++)
-            {
-                ParentNode.RemoveChild(GroupHeaders[idx]);
-            }
-            for (int idx = 0; idx < Planets.Count; idx++)
-            {
-                ParentNode.RemoveChild(Planets[idx]);
-            }
-
-            // reorder
-
-            // parent
-            int planetIdx = 0;
-            for (int groupIdx = 0; groupIdx < GroupHeaders.Count; groupIdx++)
-            {
-                ParentNode.AddChild(GroupHeaders[groupIdx]);
-                while (planetIdx < Planets.Count && GroupHeaders[groupIdx]._SectorData.GetPlanet(Planets[planetIdx]._PlanetData.PlanetName) != null)
-                {
-                    ParentNode.AddChild(Planets[planetIdx]);
-                    planetIdx++;
-                }
-            }
+            RefreshGroup(sectorIdx, _PlayerData.Sectors[sectorIdx]);
         }
 
         Visible = true;
     }
 
-    public void RefreshGroup(int idx, SectorData sectorData)
+    public void Refresh(SectorData sectorData)
     {
-        while (idx >= GroupHeaders.Count) 
+        _SectorData = sectorData;
+
+        ParentSector.Refresh(sectorData, true);
+        ParentSystem.Visible = false;
+
+        // hide all
+        Refresh_HideAll();
+
+        GroupHeader.Refresh(sectorData);
+        GroupHeader.Visible = true;
+
+        for (int sectorIdx = 0; sectorIdx < _SectorData.Systems.Count; sectorIdx++)
         {
-            UIGalaxyBarListGroupHeader newGroup = GroupHeaders[0].Duplicate(7) as UIGalaxyBarListGroupHeader;
-            GroupHeaders[0].GetParent().AddChild(newGroup);
-            GroupHeaders.Add(newGroup);
+            RefreshGroup(sectorIdx, _SectorData.Systems[sectorIdx]);
         }
 
-        GroupHeaders[idx].Refresh(sectorData);
+        Visible = true;
     }
 
-    public void RefreshPlanets(int idx, StarData systemData, PlanetData planetData)
+    public void Refresh(SystemData systemData)
+    {
+        _SystemData = systemData;
+
+        ParentSector.Refresh(systemData._Sector, true);
+        ParentSystem.Refresh(systemData, true);
+
+        // hide all
+        Refresh_HideAll();
+
+        GroupHeader.Refresh(systemData);
+        GroupHeader.Visible = true;
+
+        for (int planetIdx = 0; planetIdx < _SystemData.Star.Planets.Count; planetIdx++)
+        {
+            RefreshPlanet(planetIdx, _SystemData.Star, _SystemData.Star.Planets[planetIdx]);
+        }
+
+        // reorder
+
+        // parent
+        //int planetIdx = 0;
+        //for (int groupIdx = 0; groupIdx < GroupHeaders.Count; groupIdx++)
+        //{
+        //    ParentNode.AddChild(GroupHeaders[groupIdx]);
+        //    while (planetIdx < Planets.Count && GroupHeaders[groupIdx]._SectorData.GetPlanet(Planets[planetIdx]._PlanetData.PlanetName) != null)
+        //    {
+        //        ParentNode.AddChild(Planets[planetIdx]);
+        //        planetIdx++;
+        //    }
+        //}
+
+        Visible = true;
+    }
+
+    public void Refresh(StarData starData)
+    {
+        _StarData = starData;
+
+        ParentSector.Visible = false;
+        ParentSystem.Visible = false;
+
+        // hide all
+        Refresh_HideAll();
+
+        GroupHeader.Visible = false;
+
+        for (int planetIdx = 0; planetIdx < _StarData.Planets.Count; planetIdx++)
+        {
+            RefreshPlanet(planetIdx, _StarData, _StarData.Planets[planetIdx]);
+        }
+
+        // reorder
+
+        // parent
+        //int planetIdx = 0;
+        //for (int groupIdx = 0; groupIdx < GroupHeaders.Count; groupIdx++)
+        //{
+        //    ParentNode.AddChild(GroupHeaders[groupIdx]);
+        //    while (planetIdx < Planets.Count && GroupHeaders[groupIdx]._SectorData.GetPlanet(Planets[planetIdx]._PlanetData.PlanetName) != null)
+        //    {
+        //        ParentNode.AddChild(Planets[planetIdx]);
+        //        planetIdx++;
+        //    }
+        //}
+
+        Visible = true;
+    }
+
+    private void Refresh_HideAll()
+    {
+        //for (int headerIdx = 0; headerIdx < GroupHeaders.Count; headerIdx++)
+        //{
+        //    GroupHeaders[headerIdx].Visible = false;
+        //}
+        GroupHeader.Visible = false;
+        for (int groupIdx = 0; groupIdx < Groups.Count; groupIdx++)
+        {
+            Groups[groupIdx].Visible = false;
+        }
+        for (int planetIdx = 0; planetIdx < Planets.Count; planetIdx++)
+        {
+            Planets[planetIdx].Visible = false;
+        }
+    }
+
+    //public void RefreshHeader(SectorData sectorData)
+    //{
+    //    //while (idx >= GroupHeaders.Count) 
+    //    //{
+    //    //    UIBarListHeader newGroup = GroupHeaders[0].Duplicate(7) as UIBarListHeader;
+    //    //    GroupHeaders[0].GetParent().AddChild(newGroup);
+    //    //    GroupHeaders.Add(newGroup);
+    //    //}
+    //
+    //    GroupHeaders[idx].Refresh(sectorData);
+    //}
+
+    public void RefreshGroup(int idx, SectorData sectorData)
+    {
+        while (idx >= Groups.Count)
+        {
+            UIBarListGroup newGroup = Groups[0].Duplicate(7) as UIBarListGroup;
+            Groups[0].GetParent().AddChild(newGroup);
+            Groups.Add(newGroup);
+        }
+
+        Groups[idx].Refresh(sectorData);
+        Groups[idx].Visible = true;
+    }
+
+    public void RefreshGroup(int idx, SystemData systemData)
+    {
+        while (idx >= Groups.Count)
+        {
+            UIBarListGroup newGroup = Groups[0].Duplicate(7) as UIBarListGroup;
+            Groups[0].GetParent().AddChild(newGroup);
+            Groups.Add(newGroup);
+        }
+
+        Groups[idx].Refresh(systemData);
+        Groups[idx].Visible = true;
+    }
+
+    public void RefreshPlanet(int idx, StarData systemData, PlanetData planetData)
     {
         while (idx >= Planets.Count)
         {
@@ -181,6 +263,7 @@ public partial class UIGalaxyBarList : Control
         }
 
         Planets[idx].Refresh(planetData, parentPlanet);
+        Planets[idx].Visible = true;
     }
 
     //public void Hover(UIBarListPlanet planet)
@@ -202,8 +285,63 @@ public partial class UIGalaxyBarList : Control
         }
     }
 
+    public void Select(PlanetData planet)
+    {
+        if (planet == null)
+        {
+            PlanetSelected = null;
+        }
+        else
+        {
+            for (int idx = 0; idx < Planets.Count; idx++)
+            {
+                if (Planets[idx]._PlanetData == planet)
+                {
+                    PlanetSelected = Planets[idx];
+                }
+            }
+        }
+
+        //RefreshInfoPanels(planetUI);
+
+        // deselect other planets
+        for (int idx = 0; idx < Planets.Count; idx++)
+        {
+            if (Planets[idx] != PlanetSelected)
+            {
+                Planets[idx].Deselect();
+            }
+        }
+    }
+
     public void Select(UIBarListPlanet planet)
     {
+        PlanetSelected = planet;
+        
+        //RefreshInfoPanels(planetUI);
+        
+        // deselect other planets
+        for (int idx = 0; idx < Planets.Count; idx++)
+        {
+            if (Planets[idx] != PlanetSelected)
+            {
+                Planets[idx].Deselect();
+            }
+        }
+    }
+
+    public void Select(UIBarListGroup group, bool ret)
+    {
+        if (group._SystemData != null)
+        {
+            if (ret) Refresh(group._SystemData._Sector);
+            else Refresh(group._SystemData);
+        }
+        else
+        {
+            if (ret) Refresh(group._SectorData._Player);
+            else Refresh(group._SectorData);
+        }
         //PlanetSelected = planetUI;
         //
         //RefreshInfoPanels(planetUI);

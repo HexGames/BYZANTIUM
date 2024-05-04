@@ -54,7 +54,7 @@ public partial class UIFocusListItem : Control
     private RandomNumberGenerator RNG = new RandomNumberGenerator();
     public void Refresh(JobsWrapper.Info jobInfo)
     {
-        if (jobInfo.Focused)
+        if (jobInfo != null && jobInfo.Focused)
         {
             Refresh(jobInfo.FocusValue, jobInfo.FocusChange, jobInfo.Pops, jobInfo.GetMainRes());
             Visible = true;

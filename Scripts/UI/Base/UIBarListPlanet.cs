@@ -11,18 +11,26 @@ public partial class UIBarListPlanet : Control
     // is beeing duplicated
     private UIGalaxyBarList GalaxyList = null;
     private UISystemBarList SystemList = null;
-    private Label PlanetName = null;
+    private RichTextLabel PlanetName = null;
+    private static string PlanetName_Original = "";
     private TextureRect Simple = null;
     private TextureRect Planet = null;
     private TextureRect PlanetRings = null;
     private TextureRect ParentPlanet = null;
     private TextureRect ParentPlanetRings = null;
     private TextureRect Station = null;
+    private TextureRect Flag = null;
+    private Control ActionAvailable = null;
+    private TextureRect BuildUnavailable = null;
+    private TextureRect BuildAvalilable = null;
+    private TextureRect AvailableColonize = null;
+    private TextureRect UnavailableColonize = null;
+    private Control ActionAvailable_Secondary = null;
+    private TextureRect BuildUnavailable_Secondary = null;
+    private TextureRect BuildAvalilable_Secondary = null;
+    private TextureRect AvailableColonize_Secondary = null;
+    private TextureRect UnavailableColonize_Secondary = null;
     private Panel Selected = null;
-    private Control BuildNone = null;
-    private Control BuildUnavailable = null;
-    private Control BuildAvalilable = null;
-    private Control BuildBtn = null;
 
     [ExportCategory("Runtime")]
     [Export]
@@ -45,21 +53,33 @@ public partial class UIBarListPlanet : Control
             Game = GetNode<Game>("/root/Main/Game");
             GalaxyList = GetNode<Control>("../../") as UIGalaxyBarList;
             SystemList = GetNode<Control>("../../../") as UISystemBarList;
-            PlanetName = GetNode<Label>("Mask/NameBackground/Name");
+            PlanetName = GetNode<RichTextLabel>("Mask/NameBackground/Name");
+            if (PlanetName_Original.Length == 0) PlanetName_Original = PlanetName.Text;
             Simple = GetNode<TextureRect>("Mask/Simple");
             Planet = GetNode<TextureRect>("Mask/Planet");
             PlanetRings = GetNode<TextureRect>("Mask/Planet/Rings");
             ParentPlanet = GetNode<TextureRect>("Mask/Parent");
             ParentPlanetRings = GetNode<TextureRect>("Mask/Parent/Rings");
             Station = GetNode<TextureRect>("Mask/Station");
+            Flag = GetNode<TextureRect>("Mask/Flag");
             Selected = GetNode<Panel>("Selected");
 
-            if (HasNode("AvailableBuild"))
+            if (HasNode("Mask/AvailableAction"))
             {
-                BuildNone = GetNode<Control>("NoBuild");
-                BuildUnavailable = GetNode<Control>("UnavailableBuild");
-                BuildAvalilable = GetNode<Control>("AvailableBuild");
-                BuildBtn = GetNode<Control>("ButtonBuild");
+                ActionAvailable = GetNode<Control>("Mask/AvailableAction");
+                BuildAvalilable = GetNode<TextureRect>("Mask/AvailableAction/AvailableBuild");
+                BuildUnavailable = GetNode<TextureRect>("Mask/AvailableAction/UnavailableBuild");
+                AvailableColonize = GetNode<TextureRect>("Mask/AvailableAction/AvailableColonize");
+                UnavailableColonize = GetNode<TextureRect>("Mask/AvailableAction/UnavailableColonize");
+            }
+
+            if (HasNode("Mask/AvailableActionSecondary"))
+            {
+                ActionAvailable_Secondary = GetNode<Control>("Mask/AvailableActionSecondary");
+                BuildAvalilable_Secondary = GetNode<TextureRect>("Mask/AvailableActionSecondary/AvailableBuild");
+                BuildUnavailable_Secondary = GetNode<TextureRect>("Mask/AvailableActionSecondary/UnavailableBuild");
+                AvailableColonize_Secondary = GetNode<TextureRect>("Mask/AvailableActionSecondary/AvailableColonize");
+                UnavailableColonize_Secondary = GetNode<TextureRect>("Mask/AvailableActionSecondary/UnavailableColonize");
             }
 
             Visible = false;
@@ -79,12 +99,22 @@ public partial class UIBarListPlanet : Control
         //float sizeIncremnt = 0.035f;
         //if (typeData?.ValueS == "GasGiant") sizeIncremnt = 0.05f;
 
+        if (_PlanetData.Colony != null)
+        {
+            Flag.Texture = Game.Assets.GetTexture2D(_PlanetData.Colony._System._Sector._Player.Empire.GetSub("Flag").ValueS);
+            Flag.Visible = true;
+        }
+        else
+        {
+            Flag.Visible = false;
+        }
+
         if (_PlanetData.Data.ValueS == "Star" || _PlanetData.Data.ValueS == "Outer_System" || _PlanetData.Data.ValueS == "Asteroid_Field")
         {
             Simple.Texture = Game.Def.UIPlanets.GetPlanetTexture(_PlanetData.Data.ValueS);
             Simple.Visible = true;
 
-            if (_PlanetData.Data.GetSub("Link:Player:Sector:System:Colony") != null)
+            if (_PlanetData._Star.System != null)
             {
                 Station.Visible = true;
             }
@@ -136,7 +166,7 @@ public partial class UIBarListPlanet : Control
                     }
                 }
 
-                if (_PlanetData.Data.GetSub("Rings") != null)
+                if (_PlanetData.Data.GetSub("Hidden_Rings") != null)
                 {
                     PlanetRings.Visible = true;
                 }
@@ -207,23 +237,25 @@ public partial class UIBarListPlanet : Control
             if (HasPossibleBuildings) break;
         }
 
-        if (BuildAvalilable != null)
+        if (ActionAvailable != null)
         {
             if (HasPossibleBuildings)
             {
-                BuildBtn.Visible = LockBuildButton || IsSelected;
                 BuildAvalilable.Visible = true;
-                BuildNone.Visible = false;
+                BuildUnavailable.Visible = false;
+                AvailableColonize.Visible = false;
+                UnavailableColonize.Visible = false;
+
+                ActionAvailable.Visible = true;
             }
             else
             {
-                BuildBtn.Visible = false;
-                BuildAvalilable.Visible = false;
-                BuildNone.Visible = IsSelected;
+                ActionAvailable.Visible = false;
             }            
         }
+        ActionAvailable_Secondary.Visible = false;
 
-        PlanetName.Text = _PlanetData.PlanetName;
+        PlanetName.Text = PlanetName_Original.Replace("$name", _PlanetData.PlanetName);
 
         Visible = true;
     }
@@ -250,28 +282,23 @@ public partial class UIBarListPlanet : Control
         IsSelected = true;
 
         Selected.Visible = true;
-        if (BuildBtn != null) BuildBtn.Visible = HasPossibleBuildings;
 
-        if (GalaxyList != null)
-        {
-            GalaxyList.Select(this);
-        }
-        else if (SystemList != null)
-        {
-            SystemList.Select(this);
-        }
+        Game.Input.SelectPlanet(_PlanetData);
+
+        //if (GalaxyList != null)
+        //{
+        //    //GalaxyList.Select(this);
+        //}
+        //else if (SystemList != null)
+        //{
+        //    SystemList.Select(this);
+        //}
     }
 
     public void Deselect()
     {
         Selected.Visible = false;
-        if (BuildBtn != null) BuildBtn.Visible = LockBuildButton;
 
         IsSelected = false;
-    }
-
-    public void OnBuild()
-    {
-        Game.WindowsUI.Build(_PlanetData);
     }
 }

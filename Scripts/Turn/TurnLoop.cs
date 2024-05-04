@@ -44,7 +44,7 @@ public partial class TurnLoop : Node
         Init_Resources();
         StartTurn_Resources();
         StartTurn_NewActions();
-        Game.GalaxyUI.Refresh();
+        Game.GalaxyUI.StartTurn();
     }
 
     public void Init_Resources()
@@ -58,6 +58,7 @@ public partial class TurnLoop : Node
             {
                 SectorData sector = player.Sectors[sectorIdx];
                 sector.Resources_PerTurn = new ResourcesWrapper(sector.Resources);
+                sector.BuildQueue_PerTurn_ActionChange = new BuildingQueueWrapper(sector, Game);
                 //sector.BudgetPerTurn = new BudgetWrapper(sector.Budget);
 
                 for (int systemIdx = 0; systemIdx < sector.Systems.Count; systemIdx++)
@@ -65,12 +66,11 @@ public partial class TurnLoop : Node
                     SystemData system = sector.Systems[sectorIdx];
                     system.Resources_PerTurn = new ResourcesWrapper(system.Resources);
 
-                    for (int colonyIdx = 0; colonyIdx < sector.Systems.Count; colonyIdx++)
+                    for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
                     {
                         ColonyData colony = system.Colonies[colonyIdx];
                         colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources);
                         colony.Jobs_PerTurn = new JobsWrapper(colony.Jobs, Game.Def);
-                        //colony.ActionsConPerTurn = new ActionsConWrapper(colony.ActionConBuildings, colony.ActionConColony, colony.ActionConShipyard, sector.ActionConTreasury);
                     }
                 }
             }

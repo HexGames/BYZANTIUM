@@ -73,14 +73,16 @@ public partial class DefLibrary : Node
                     {
                         if (subs[subIdx].Name.StartsWith("Mod:" + mods[modIdx].ValueS))
                         {
-                            Data.ChangeDataType(subs[subIdx], subs[subIdx].Name.Replace("Mod:", ""), this);
-                            subs[subIdx].Subs = mods[modIdx].Subs;
+                            //Data.ChangeDataType(subs[subIdx], subs[subIdx].Name.Replace("Mod:", ""), this);
+                            //subs[subIdx].Subs = mods[modIdx].Subs;
+                            subs.AddRange(mods[modIdx].Subs);
+                            subs.RemoveAt(subIdx);
                         }
                     }
                 }
             }
         }
 
-        //SavePlanetsDef();
+        SavePlanetsDef();
     }
 }

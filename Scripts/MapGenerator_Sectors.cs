@@ -8,16 +8,6 @@ using System.Transactions;
 // Editor
 public partial class MapGenerator : Node
 {
-    private void GenerateNewMapSave_Players_StartingColony_SectorConTreasury(DataBlock sector)
-    {
-        DataBlock campaign = Data.AddData(sector, "ActionConTreasury", DefLibrary);
-
-        Data.AddData(campaign, "Priority", 1, DefLibrary);
-
-        Data.AddData(campaign, "Progress:Current", 5, DefLibrary);
-        Data.AddData(campaign, "Progress:Total", 10, DefLibrary);
-    }
-
     private void GenerateNewMapSave_Players_StartingColony_SectorResources(DataBlock sector)
     {
         DataBlock resources = Data.AddData(sector, "Resources", DefLibrary);
@@ -99,5 +89,6 @@ public partial class MapGenerator : Node
     {
         DataBlock actionBuild = Data.AddData(sector, "ActionBuildQueue", DefLibrary);
         Data.AddData(actionBuild, "Overflow", 0, DefLibrary);
+        Data.AddData(actionBuild, "Queue", DefLibrary);
     }
 }

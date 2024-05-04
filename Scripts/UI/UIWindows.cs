@@ -5,7 +5,7 @@ public partial class UIWindows : Control
 {
     [ExportCategory("Links")]
     [Export]
-    public UIBuild BuildWindow = null;
+    //public UIBuild BuildWindow = null;
    
     Game Game;
 
@@ -22,12 +22,12 @@ public partial class UIWindows : Control
 
     public void Build(PlanetData planet)
     {
-        BuildWindow.Refresh(planet);
-        BuildWindow.Visible = true;
+        //BuildWindow.Refresh(planet);
+        //BuildWindow.Visible = true;
     }
 
     public void HideAll()
     {
-        BuildWindow.Visible = false;
+        //BuildWindow.Visible = false;
     }
 }

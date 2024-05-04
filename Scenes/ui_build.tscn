@@ -1,6 +1,5 @@
-[gd_scene load_steps=20 format=3 uid="uid://xuydwgov7vak"]
+[gd_scene load_steps=17 format=3 uid="uid://xuydwgov7vak"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Build/UIBuild.cs" id="1_oquml"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_rihns"]
 [ext_resource type="Texture2D" uid="uid://cet6pwryuqcts" path="res://Assets/UI/white.png" id="2_15utd"]
 [ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="3_nc8ym"]
@@ -8,8 +7,6 @@
 [ext_resource type="Theme" uid="uid://31g04ftbqfmt" path="res://UITheme/BuildUI.tres" id="4_en77o"]
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="4_fpoqf"]
 [ext_resource type="Texture2D" uid="uid://b0hf203g0lcrk" path="res://Assets/UI/Buildings/Factory.png" id="5_wwsvj"]
-[ext_resource type="Script" path="res://Scripts/UI/Build/UIBuildBuilding.cs" id="6_qb7jp"]
-[ext_resource type="Script" path="res://Scripts/UI/Build/UIBuildLocation.cs" id="8_2luna"]
 [ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="9_g6yrd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uqbc"]
@@ -60,23 +57,13 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afwpv"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
 
-[node name="UiBuild" type="Control" node_paths=PackedStringArray("Buildings", "Unavailable", "Locations", "BuildingSelected", "BuildingName", "Cost", "Effects", "Description", "BuildingNone")]
+[node name="UiBuild" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_oquml")
-Buildings = [NodePath("PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1")]
-Unavailable = [NodePath("PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1")]
-Locations = [NodePath("PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1")]
-BuildingSelected = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected")
-BuildingName = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Picture/Title2")
-Cost = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Cost")
-Effects = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Benefits")
-Description = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Description")
-BuildingNone = NodePath("PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingNone")
 
 [node name="TransparentBg" type="Panel" parent="."]
 layout_mode = 1
@@ -175,7 +162,6 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("4_fpoqf")
 theme_type_variation = &"Grey"
-script = ExtResource("6_qb7jp")
 
 [node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1"]
 layout_mode = 2
@@ -258,7 +244,6 @@ fit_content = true
 layout_mode = 2
 theme = ExtResource("4_fpoqf")
 theme_type_variation = &"Grey"
-script = ExtResource("6_qb7jp")
 
 [node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1"]
 layout_mode = 2
@@ -364,7 +349,6 @@ theme_override_constants/separation = 8
 layout_mode = 2
 theme = ExtResource("4_fpoqf")
 theme_type_variation = &"Grey"
-script = ExtResource("8_2luna")
 
 [node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1"]
 layout_mode = 2
@@ -839,6 +823,3 @@ fit_content = true
 
 [connection signal="pressed" from="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Button" to="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1" method="OnSelect"]
 [connection signal="pressed" from="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container/Button" to="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1" method="OnSelect"]
-[connection signal="pressed" from="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/BuildBtn" to="." method="OnBuild"]
-[connection signal="pressed" from="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/QueueBtn" to="." method="OnAddToQueue"]
-[connection signal="pressed" from="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/CancelBtn" to="." method="OnCancel"]

@@ -118,7 +118,8 @@ public partial class MapNode : Node
                 if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
                 {
                     //GD.Print("You clicked on " + Label.Text);
-                    Game.Input.DeselectLocation();
+                    //Game.Input.DeselectAll();
+                    Game.Input.DeselectOneStep();
                 }
             }
         }

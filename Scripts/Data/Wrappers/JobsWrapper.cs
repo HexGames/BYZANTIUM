@@ -49,6 +49,7 @@ public class JobsWrapper
     {
         Jobs.Clear();
         AllFocusChange = 0;
+        if (_Data == null) return;
 
         Array<DataBlock> jobsFocus = _Data.GetSubs("Focus");
         for (int idxData = 0; idxData < jobsFocus.Count; idxData++)

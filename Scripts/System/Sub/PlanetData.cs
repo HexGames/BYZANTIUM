@@ -18,6 +18,9 @@ public partial class PlanetData : Node
     [Export]
     public string PlanetName = "";
 
+    [Export]
+    public DataBlock Empire = null;
+
     [ExportCategory("PlanetData-Links")]
     [Export]
     public ColonyData Colony = null;

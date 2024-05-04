@@ -1,8 +1,9 @@
 using Godot;
 
 public partial class UITooltip : Control
-{ 
+{
     // is beeing duplicated... maybe
+    private Control TitleBg = null;
     private RichTextLabel Title = null;
     private string Title_Original = null;
     private RichTextLabel Row_1 = null;
@@ -20,6 +21,8 @@ public partial class UITooltip : Control
     private RichTextLabel Row_3_Right = null;
     private string Row_3_Right_Original = null;
 
+    public bool CanBeHovered = true;
+
     Game Game;
 
     private bool IsTargetHovered = false;
@@ -30,6 +33,7 @@ public partial class UITooltip : Control
         if (Engine.IsEditorHint()) return;
         Game = GetNode<Game>("/root/Main/Game");
 
+        TitleBg = GetNode<Control>("Container/TitleBG");
         Title = GetNode<RichTextLabel>("Container/TitleBG/Title");
         Title_Original = Title.Text;
 
@@ -91,6 +95,7 @@ public partial class UITooltip : Control
     public void Refresh(string title, string row_1, string row_1_right = "", string row_2 = "", string row_2_right = "", string row_3 = "", string row_3_right = "")
     {
         Title.Text = Title_Original.Replace("$value", title);
+        TitleBg.Visible = Title.Text.Length > 0;
 
         if (row_1 != "")
         {
@@ -116,7 +121,7 @@ public partial class UITooltip : Control
         if (row_2 != "")
         {
             Line_1.Visible = true;
-            Row_2.Text = Row_2_Original.Replace("$value", row_1);
+            Row_2.Text = Row_2_Original.Replace("$value", row_2);
             Row_2.Visible = true;
         }
         else
@@ -168,7 +173,7 @@ public partial class UITooltip : Control
 
     public void OnHoverEnter()
     {
-        IsTooltipHovered = true;
+        IsTooltipHovered = CanBeHovered;
     }
 
     public void OnHoverExit()

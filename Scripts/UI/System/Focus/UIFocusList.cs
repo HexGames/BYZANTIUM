@@ -71,6 +71,7 @@ public partial class UIFocusList : Control
 
     public void Refresh(ColonyData colony)
     {
+        return;
         TitleLabel.Text = TitleLabel_Original.Replace("$name", colony.ColonyName).Replace("$value", Helper.ResValueToString(colony.Resources_PerTurn.Get("Pops").Value_2, 1000));
 
         var energy = colony.Jobs_PerTurn.Get("Energy");
@@ -116,5 +117,7 @@ public partial class UIFocusList : Control
         All.Refresh(colony.Jobs_PerTurn.AllFocusValue, colony.Jobs_PerTurn.AllFocusChange);
 
         All_Pops_Tooltip.Row_1_Right = All_Pops_Tooltip_Original.Replace("$value", Helper.ResValueToString(colony.Jobs_PerTurn.AllTotalPops, 1000));
+
+        Visible = true;
     }
 }

@@ -18,6 +18,8 @@ public partial class PlayerData : Node
     public string PlayerName = "";
 
     [Export]
+    public DataBlock Empire = null;
+    [Export]
     public DataBlock Resources = null;
     [Export]
     public DataBlock Status = null;

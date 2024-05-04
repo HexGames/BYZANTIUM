@@ -13,6 +13,8 @@ public partial class UITooltipTrigger : Control
 
     [ExportCategory("Setup")]
     [Export]
+    public bool CanBeHovered = true;
+    [Export]
     public Orientation Direction = Orientation.Auto;
     [Export]
     public int Width = 128;
@@ -37,6 +39,8 @@ public partial class UITooltipTrigger : Control
 
     [ExportCategory("Runtime Hover")]
     [Export]
+    public bool Disabled = false;
+    [Export]
     public UITooltip _Tooltip = null;
 
     public override void _Ready()
@@ -47,6 +51,9 @@ public partial class UITooltipTrigger : Control
 
     public void OnHoverEnter()
     {
+        if (Disabled)
+            return;
+
         // just the first time
         if (Direction == Orientation.Auto)
         {
@@ -73,6 +80,7 @@ public partial class UITooltipTrigger : Control
         // ---
         _Tooltip = Game.Tooltips.GetTooltip();
         _Tooltip.Refresh(Title, Row_1, Row_1_Right, Row_2, Row_2_Right, Row_3, Row_3_Right);
+        _Tooltip.CanBeHovered = CanBeHovered;
         _Tooltip.CustomMinimumSize = new Vector2(Width, 0);
         _Tooltip.Size = Vector2.Zero;
 
@@ -106,6 +114,10 @@ public partial class UITooltipTrigger : Control
 
     public void OnHoverExit()
     {
-        _Tooltip.TargetHoverExit();
+        if (_Tooltip != null)
+        {
+            _Tooltip.TargetHoverExit();
+            _Tooltip = null;
+        }
     }
 }
