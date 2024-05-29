@@ -15,13 +15,17 @@ public partial class UIGalaxy : Control
     [Export]
     public UIBuildings ColonyBuildings = null;
     [Export]
-    public UIEconomyInfo EconomyInfo = null;
-    [Export]
     public UIConstruction SectorConstruction = null;
     [Export]
-    public UIFocusList ColonyFocus = null;
+    public UIPops PopsInfo = null;
     [Export]
-    public UIItemList PlanetInfo = null;
+    public UIPlanetInfo PlanetInfo = null;
+    [Export]
+    public UIPopsControl ControlInfo = null;
+    [Export]
+    public UIPopsFactions FactionsInfo = null;
+    [Export]
+    public UISelectedFleets FleetsSelected = null;
     [Export]
     public Label CurrentTurn = null;
 
@@ -38,6 +42,10 @@ public partial class UIGalaxy : Control
     public ColonyData SelectedColony = null;
     [Export]
     public PlanetData SelectedPlanet = null;
+    [Export]
+    public bool SelectedTabBuildings = false;
+    [Export]
+    public bool SelectedTabPopulation = false;
 
     Game Game;
 
@@ -47,11 +55,15 @@ public partial class UIGalaxy : Control
 
         Init();
 
-        EconomyInfo.Visible = false;
         ColonyBuildings.Visible = false;
         SectorConstruction.Visible = false;
-        ColonyFocus.Visible = false;
+        PopsInfo.Visible = false;
         PlanetInfo.Visible = false;
+
+        ControlInfo.Visible = false;
+        FactionsInfo.Visible = false;
+
+        FleetsSelected.Visible = false;
     }
 
     public void Init()
@@ -82,9 +94,65 @@ public partial class UIGalaxy : Control
         }
     }
 
+    public void Refresh(bool buildingsTab, bool populationTab)
+    {
+        RefreshLocationUI();
+
+        if (buildingsTab) ShowBuildingsTab();
+        else if (populationTab) ShowPopulationTab();
+        //else HideAllTabs();
+    }
+
+    public void ShowBuildingsTab()
+    {
+        SelectedTabBuildings = true;
+        SelectedTabPopulation = false;
+
+        GalaxyBar.ShowBuildingsTab();
+
+        ColonyBuildings.Visible = true;
+        SectorConstruction.Visible = true;
+        PopsInfo.Visible = SelectedColony != null;
+        PlanetInfo.Visible = true;
+
+        ControlInfo.Visible = false;
+        FactionsInfo.Visible = false;
+    }
+
+    public void ShowPopulationTab()
+    {
+        SelectedTabBuildings = false;
+        SelectedTabPopulation = true;
+
+        GalaxyBar.ShowPopulationTab();
+
+        ColonyBuildings.Visible = false;
+        SectorConstruction.Visible = false;
+        PopsInfo.Visible = SelectedColony != null;
+        PlanetInfo.Visible = false;
+
+        ControlInfo.Visible = SelectedColony != null;
+        FactionsInfo.Visible = SelectedColony != null;
+    }
+
+    public void HideAllTabs()
+    {
+        SelectedTabBuildings = false;
+        SelectedTabPopulation = false;
+
+        GalaxyBar.HideAllTabs();
+    }
+
     public void Refresh()
     {
+        RefreshLocationUI();
+        RefreshPawnsUI();
+    }
+
+    public void RefreshLocationUI()
+    {
         bool refreshEconomy = false;
+        bool refreshPopInfo = false;
         bool refreshGameBar = false;
         bool refreshSelectedPlanet = false;
 
@@ -103,6 +171,7 @@ public partial class UIGalaxy : Control
             {
                 // select planet
                 PlanetInfo.Refresh(SelectedPlanet.Data);
+                PlanetInfo.Visible = GalaxyBar.Tabs_BuildingsSelected.Visible;
                 refreshSelectedPlanet = true;
             }
         }
@@ -114,8 +183,8 @@ public partial class UIGalaxy : Control
             {
                 // deselect colony
                 //ColonyBuildings.Visible = false;
-                ColonyFocus.Visible = false;
                 refreshEconomy = true;
+                refreshPopInfo = true;
             }
             SelectedColony = Game.Input.SelectedPlanet?.Colony;
 
@@ -124,8 +193,8 @@ public partial class UIGalaxy : Control
                 // select colony
                 //ColonyBuildings.Refresh(SelectedColony);
                 //ColonyBuildings.Visible = true;
-                ColonyFocus.Refresh(SelectedColony);
                 refreshEconomy = true;
+                refreshPopInfo = true;
             }
         }
 
@@ -163,6 +232,7 @@ public partial class UIGalaxy : Control
                 // deselect sector
                 SectorConstruction.Visible = false;
                 if (SelectedSystem == null && SelectedColony == null) refreshEconomy = true;
+                if (SelectedColony == null) refreshPopInfo = true;
                 if (SelectedSystem == null && SelectedStar == null) refreshGameBar = true;
             }
             SelectedSector = Game.Input.SelectedSector;
@@ -171,17 +241,50 @@ public partial class UIGalaxy : Control
             {
                 // select sector
                 SectorConstruction.Refresh(SelectedSector);
+                SectorConstruction.Visible = GalaxyBar.Tabs_BuildingsSelected.Visible || SelectedPlanet == null;
                 if (SelectedSystem == null && SelectedColony == null) refreshEconomy = true;
+                if (SelectedColony == null) refreshPopInfo = true;
                 if (SelectedSystem == null && SelectedStar == null) refreshGameBar = true;
             }
         }
 
-        if (refreshEconomy)
+        if (refreshSelectedPlanet)
         {
-            if (SelectedColony != null) EconomyInfo.Refresh(SelectedColony);
-            else if (SelectedSystem != null) EconomyInfo.Refresh(SelectedSystem);
-            else if (SelectedSector != null) EconomyInfo.Refresh(SelectedSector);
-            else EconomyInfo.Visible = false;
+            if (Game.GalaxyUI.ColonyBuildings.IsUpgradeWindowOpen()) Game.GalaxyUI.ColonyBuildings.CloseUpgradeWindow();
+            if (Game.GalaxyUI.ColonyBuildings.IsUpgradingWindowOpen()) Game.GalaxyUI.ColonyBuildings.CloseUpgradingWindow();
+            else
+            {
+                Game.GalaxyUI.ColonyBuildings.Visible = false;
+                Game.GalaxyUI.GalaxyBar.Deselect();
+
+                ControlInfo.Visible = false;
+                FactionsInfo.Visible = false;
+            }
+        }
+
+        if (refreshEconomy || refreshSelectedPlanet)
+        {
+            if (SelectedPlanet != null) Resources.Refresh(Game.HumanPlayer, SelectedPlanet);
+            else if (SelectedStar != null) Resources.Refresh(Game.HumanPlayer,SelectedStar);
+            else if (SelectedSector != null) Resources.Refresh(SelectedSector);
+            else Resources.Refresh(Game.HumanPlayer);
+        }
+
+        if (refreshPopInfo)
+        {
+            if (SelectedColony != null && SelectedColony.Resources_PerTurn.GetPops() != null) 
+            { 
+                PopsInfo.Refresh(SelectedColony); 
+                PopsInfo.Visible = true;
+
+                ControlInfo.Refresh(SelectedColony);
+                ControlInfo.Visible = GalaxyBar.Tabs_PopulationSelected.Visible;
+
+                FactionsInfo.Refresh(SelectedColony);
+                FactionsInfo.Visible = GalaxyBar.Tabs_PopulationSelected.Visible;
+            }
+            else if (SelectedSector != null) { /*PopsInfo.Refresh(SelectedSector);*/ PopsInfo.Visible = false; }
+            else PopsInfo.Visible = false;
         }
 
         if (refreshGameBar)
@@ -198,15 +301,44 @@ public partial class UIGalaxy : Control
             if (SelectedPlanet != null)
             {
                 ColonyBuildings.Refresh(SelectedPlanet);
-                ColonyBuildings.Visible = true;
+                ColonyBuildings.Visible = GalaxyBar.Tabs_BuildingsSelected.Visible;
+
+                bool hasPops = SelectedPlanet.Colony != null && SelectedPlanet.Colony.IsWorld();
+                GalaxyBar.ShowTabsSelector(true, hasPops);
+                if (SelectedTabPopulation && hasPops == false /*&& ColonyBuildings.BuildingNone.Visible == false*/)
+                {
+                    ShowBuildingsTab();
+                }
             }
             else
             {
+                GalaxyBar.HideTabsSelector();
                 ColonyBuildings.Visible = false;
+
+                GalaxyBar.HideTabsSelector();
+
+                SectorConstruction.Visible = SelectedSector != null && (GalaxyBar.Tabs_BuildingsSelected.Visible || SelectedPlanet == null);
             }
         }
     }
 
+
+    public void RefreshPawnsUI()
+    {
+        if (Game.Input.SelectedFleets.Count > 0)
+        {
+            FleetsSelected.Refresh(Game.Input.SelectedFleets);
+            FleetsSelected.Visible = true;
+
+            GalaxyBar.Visible = false;
+        }
+        else
+        {
+            FleetsSelected.Visible = false;
+
+            GalaxyBar.Visible = true;
+        }
+    }
 
     public void StartTurn()
     {
@@ -218,6 +350,8 @@ public partial class UIGalaxy : Control
 
     public void OnEndTurn()
     {
+        Game.Input.DeselectAll();
+
         Game.TurnLoop.CurrentPlayerData.TurnFinished = true;
         Game.TurnLoop.WaitingForHuman = false;
     }

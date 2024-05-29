@@ -18,21 +18,33 @@ Arachnids
 
 -- Ethics
 
-Capitalism
-Communism
-Religion
-Xenofobia
-Gene Splicing
-Cyborg Integration
-Syntetics
-AI
-Militarist - war
-Ecologist - no terraforming
-Unity - high control
-Federalist - low control
+01 Capitalism - +BC
+10 Communism - +Production
 
-Democracy X
-Autocracy X
+02 Unity - high control
+20 Federalist - low control
+
+03 Religion - +influence
+30 Scientist - +research
+
+04 Militarist - war
+40 pacifist ? - diplo
+
+05 Ecologist - no terraforming - high pop
+50 Industrialist - terraforming
+
+06 Xenofobia - no factions
+60 Xenophile - factions
+
+07 Democracy - high influence
+70 Autocracy - low influence
+
+None
+Gene Splicing - more growth
+Cyborg Integration - more research
+Syntetics - more production
+AI - more control
+
 
 Pacifist X
 Scientist X
@@ -90,3 +102,49 @@ Faction
 11 (Greedy Corp AI)
 12 (Greedy Corp Gene Splicing)
 13 (Pacefull Unification)
+
+/// modifiers
+X Open Borders
+X Wars
+X Alliances
+X Rivalry
+X Culture Pact
+X Research Pact
+X non-integraded factions
+X Banned Factions 
+
+// -----
+
+United Terra
+-  
+	- 01 Capitalist
+	- 50 Industrialist
+- 
+	- 10 Communist
+	- 05 Ecologist
+- 
+	- 20 Federalist
+	- 30 Scientist
+
+War Clans
+- 
+	- 04 Militarist
+	- 50 Industrialist
+-
+	- 03 Religious
+	- 04 Militarist
+-
+	- 02 Unity
+	- 07 Autocracy
+
+Empire in Heaven
+-
+	- 03 Religious
+	- 07 Autocracy
+-
+	- 03 Religious
+	- 02 Unity
+-
+	- 40 Pacifist
+	- 05 Ecologist
+

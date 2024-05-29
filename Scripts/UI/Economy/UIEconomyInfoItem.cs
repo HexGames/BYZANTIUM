@@ -7,6 +7,7 @@ public partial class UIEconomyInfoItem : Panel
     // is beeing duplicated
     private RichTextLabel ValueLabel;
     private string ValueLabel_Original;
+    private UITooltipTrigger Tooltip = null;
 
     Game Game;
 
@@ -16,10 +17,16 @@ public partial class UIEconomyInfoItem : Panel
 
         ValueLabel = GetNode<RichTextLabel>("Value");
         ValueLabel_Original = ValueLabel.Text;
+
+        if (HasNode("ToolTip"))
+            Tooltip = GetNode<UITooltipTrigger>("ToolTip");
     }
 
-    public void Refresh(string value)
+    public void Refresh(string value, string tooltip = "")
     {
         ValueLabel.Text = ValueLabel_Original.Replace("$value", value);
+
+        if (Tooltip != null)
+            Tooltip.Row_2 = tooltip;
     }
 }

@@ -86,9 +86,9 @@ public partial class UISystemBarList : Control
             SystemLabel.Text = SystemLabel_Original.Replace("$system", _StarData.StarName);
             SectorLabel.Text = SectorLabel_Original.Replace("$sector", _StarData.System._Sector.SectorName);
 
-            SectorQuickInfoLabel.Text = SectorQuickInfoLabel_Original
-                .Replace("$energy", _StarData.System._Sector.Resources_PerTurn.GetUsedPerTotalString("Energy"))
-                .Replace("$minerals", _StarData.System._Sector.Resources_PerTurn.GetUsedPerTotalString("Minerals"));
+            //SectorQuickInfoLabel.Text = SectorQuickInfoLabel_Original
+            //    .Replace("$energy", _StarData.System._Sector.Resources_PerTurn.GetUsedPerTotalString("Energy"))
+            //   .Replace("$minerals", _StarData.System._Sector.Resources_PerTurn.GetUsedPerTotalString("Minerals"));
         }
         else
         {

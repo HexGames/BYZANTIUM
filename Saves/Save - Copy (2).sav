@@ -1,0 +1,8410 @@
+Map 
+{
+	GameStats 
+	{
+		Turn 0
+		Human 0
+	}
+	GalaxySize 9
+	Star_List 
+	{
+		Star Star_2
+		{
+			ID 1
+			GFX_RNG_1 23
+			GFX_RNG_2 0
+			X 2
+			Y 0
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_3
+		{
+			ID 2
+			GFX_RNG_1 24
+			GFX_RNG_2 41
+			X 3
+			Y 0
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_5
+		{
+			ID 3
+			GFX_RNG_1 70
+			GFX_RNG_2 62
+			X 5
+			Y 0
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 3
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_6
+		{
+			ID 4
+			GFX_RNG_1 52
+			GFX_RNG_2 92
+			X 6
+			Y 0
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_7
+		{
+			ID 5
+			GFX_RNG_1 13
+			GFX_RNG_2 30
+			X 7
+			Y 0
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_21
+		{
+			ID 6
+			GFX_RNG_1 43
+			GFX_RNG_2 37
+			X 2
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 3
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Sol
+		{
+			ID 7
+			GFX_RNG_1 70
+			GFX_RNG_2 77
+			X 3
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Star_Orbit
+				}
+				Planet Mercury
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Building Possible_Outpost
+				}
+				Planet Venus
+				{
+					Size 2
+					Type Toxic
+					Temperature 4
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+				}
+				Planet Terra
+				{
+					Custom 
+					Size 2
+					Type Continental
+					Temperature 3
+					Building Possible_Outpost
+					Complex_Life 
+					Fertile 
+					Link:Player:Sector:System:Colony Player_0:Core:Sol:Terra
+				}
+				Planet Moon
+				{
+					Size 1
+					Type Barren
+					Temperature 3
+					Moon 
+					Building Possible_Outpost
+				}
+				Planet Mars
+				{
+					Size 1
+					Type Desert
+					Temperature 2
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Tiny_Moon 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Gold_Asteroid 
+					Building Possible_Asteroid_Mines
+				}
+				Planet Jupiter
+				{
+					Size 6
+					Type Gas_Giant
+					Temperature 1
+					Building Stable_Orbit
+				}
+				Planet Ganymede
+				{
+					Size 1
+					Type Frozen
+					Temperature 1
+					Moon 
+					Building Possible_Outpost
+				}
+				Planet Saturn
+				{
+					Size 5
+					Type Gas_Giant
+					Temperature 1
+					Building Possible_Outpost
+					Building Ring_Minerals
+					Hidden_Rings 
+					Usefull_Gasses 
+				}
+				Planet Titan
+				{
+					Size 1
+					Type Frozen
+					Temperature 1
+					Moon 
+					Building Possible_Outpost
+				}
+			}
+			Link:Player:Sector:System Player_0:Core:Sol
+			Link:Player:Sector:System:Colony Player_0:Core:Sol:Star
+		}
+		Star Star_23
+		{
+			ID 8
+			GFX_RNG_1 56
+			GFX_RNG_2 61
+			X 4
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_24
+		{
+			ID 9
+			GFX_RNG_1 96
+			GFX_RNG_2 95
+			X 5
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_25
+		{
+			ID 10
+			GFX_RNG_1 37
+			GFX_RNG_2 56
+			X 6
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_26
+		{
+			ID 11
+			GFX_RNG_1 62
+			GFX_RNG_2 65
+			X 7
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_27
+		{
+			ID 12
+			GFX_RNG_1 33
+			GFX_RNG_2 56
+			X 8
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_28
+		{
+			ID 13
+			GFX_RNG_1 35
+			GFX_RNG_2 23
+			X 9
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_39
+		{
+			ID 14
+			GFX_RNG_1 3
+			GFX_RNG_2 39
+			X 1
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_40
+		{
+			ID 15
+			GFX_RNG_1 69
+			GFX_RNG_2 6
+			X 2
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_41
+		{
+			ID 16
+			GFX_RNG_1 14
+			GFX_RNG_2 100
+			X 3
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_44
+		{
+			ID 17
+			GFX_RNG_1 16
+			GFX_RNG_2 37
+			X 6
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_46
+		{
+			ID 18
+			GFX_RNG_1 100
+			GFX_RNG_2 66
+			X 8
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_47
+		{
+			ID 19
+			GFX_RNG_1 72
+			GFX_RNG_2 76
+			X 9
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 3
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_48
+		{
+			ID 20
+			GFX_RNG_1 64
+			GFX_RNG_2 76
+			X 10
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_49
+		{
+			ID 21
+			GFX_RNG_1 12
+			GFX_RNG_2 39
+			X 11
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_58
+		{
+			ID 22
+			GFX_RNG_1 60
+			GFX_RNG_2 12
+			X 1
+			Y 3
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_59
+		{
+			ID 23
+			GFX_RNG_1 23
+			GFX_RNG_2 1
+			X 2
+			Y 3
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_60
+		{
+			ID 24
+			GFX_RNG_1 50
+			GFX_RNG_2 39
+			X 3
+			Y 3
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_68
+		{
+			ID 25
+			GFX_RNG_1 29
+			GFX_RNG_2 53
+			X 11
+			Y 3
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 3
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_69
+		{
+			ID 26
+			GFX_RNG_1 26
+			GFX_RNG_2 30
+			X 12
+			Y 3
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_78
+		{
+			ID 27
+			GFX_RNG_1 57
+			GFX_RNG_2 68
+			X 2
+			Y 4
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 3
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_79
+		{
+			ID 28
+			GFX_RNG_1 41
+			GFX_RNG_2 98
+			X 3
+			Y 4
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_89
+		{
+			ID 29
+			GFX_RNG_1 87
+			GFX_RNG_2 45
+			X 13
+			Y 4
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_95
+		{
+			ID 30
+			GFX_RNG_1 76
+			GFX_RNG_2 16
+			X 0
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_98
+		{
+			ID 31
+			GFX_RNG_1 87
+			GFX_RNG_2 73
+			X 3
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_99
+		{
+			ID 32
+			GFX_RNG_1 0
+			GFX_RNG_2 1
+			X 4
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_114
+		{
+			ID 33
+			GFX_RNG_1 67
+			GFX_RNG_2 56
+			X 0
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_115
+		{
+			ID 34
+			GFX_RNG_1 26
+			GFX_RNG_2 45
+			X 1
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_118
+		{
+			ID 35
+			GFX_RNG_1 56
+			GFX_RNG_2 100
+			X 4
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_119
+		{
+			ID 36
+			GFX_RNG_1 77
+			GFX_RNG_2 18
+			X 5
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_120
+		{
+			ID 37
+			GFX_RNG_1 17
+			GFX_RNG_2 8
+			X 6
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_124
+		{
+			ID 38
+			GFX_RNG_1 22
+			GFX_RNG_2 7
+			X 10
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_125
+		{
+			ID 39
+			GFX_RNG_1 82
+			GFX_RNG_2 71
+			X 11
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_126
+		{
+			ID 40
+			GFX_RNG_1 46
+			GFX_RNG_2 58
+			X 12
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 3
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_133
+		{
+			ID 41
+			GFX_RNG_1 65
+			GFX_RNG_2 23
+			X 0
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 3
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_134
+		{
+			ID 42
+			GFX_RNG_1 31
+			GFX_RNG_2 20
+			X 1
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_139
+		{
+			ID 43
+			GFX_RNG_1 35
+			GFX_RNG_2 32
+			X 6
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_140
+		{
+			ID 44
+			GFX_RNG_1 59
+			GFX_RNG_2 64
+			X 7
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_141
+		{
+			ID 45
+			GFX_RNG_1 37
+			GFX_RNG_2 62
+			X 8
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_142
+		{
+			ID 46
+			GFX_RNG_1 18
+			GFX_RNG_2 80
+			X 9
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_143
+		{
+			ID 47
+			GFX_RNG_1 26
+			GFX_RNG_2 88
+			X 10
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_144
+		{
+			ID 48
+			GFX_RNG_1 96
+			GFX_RNG_2 91
+			X 11
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_145
+		{
+			ID 49
+			GFX_RNG_1 69
+			GFX_RNG_2 17
+			X 12
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_146
+		{
+			ID 50
+			GFX_RNG_1 55
+			GFX_RNG_2 5
+			X 13
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_153
+		{
+			ID 51
+			GFX_RNG_1 62
+			GFX_RNG_2 67
+			X 1
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_154
+		{
+			ID 52
+			GFX_RNG_1 38
+			GFX_RNG_2 53
+			X 2
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_159
+		{
+			ID 53
+			GFX_RNG_1 29
+			GFX_RNG_2 17
+			X 7
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_160
+		{
+			ID 54
+			GFX_RNG_1 45
+			GFX_RNG_2 93
+			X 8
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_161
+		{
+			ID 55
+			GFX_RNG_1 14
+			GFX_RNG_2 54
+			X 9
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_162
+		{
+			ID 56
+			GFX_RNG_1 9
+			GFX_RNG_2 99
+			X 10
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_163
+		{
+			ID 57
+			GFX_RNG_1 56
+			GFX_RNG_2 33
+			X 11
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 3
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_164
+		{
+			ID 58
+			GFX_RNG_1 69
+			GFX_RNG_2 27
+			X 12
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_165
+		{
+			ID 59
+			GFX_RNG_1 98
+			GFX_RNG_2 20
+			X 13
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_166
+		{
+			ID 60
+			GFX_RNG_1 1
+			GFX_RNG_2 94
+			X 14
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_167
+		{
+			ID 61
+			GFX_RNG_1 43
+			GFX_RNG_2 17
+			X 15
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_173
+		{
+			ID 62
+			GFX_RNG_1 98
+			GFX_RNG_2 22
+			X 2
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_174
+		{
+			ID 63
+			GFX_RNG_1 24
+			GFX_RNG_2 61
+			X 3
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_175
+		{
+			ID 64
+			GFX_RNG_1 52
+			GFX_RNG_2 7
+			X 4
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_179
+		{
+			ID 65
+			GFX_RNG_1 34
+			GFX_RNG_2 51
+			X 8
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_181
+		{
+			ID 66
+			GFX_RNG_1 2
+			GFX_RNG_2 89
+			X 10
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_185
+		{
+			ID 67
+			GFX_RNG_1 13
+			GFX_RNG_2 28
+			X 14
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_186
+		{
+			ID 68
+			GFX_RNG_1 92
+			GFX_RNG_2 32
+			X 15
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_187
+		{
+			ID 69
+			GFX_RNG_1 60
+			GFX_RNG_2 86
+			X 16
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_193
+		{
+			ID 70
+			GFX_RNG_1 61
+			GFX_RNG_2 59
+			X 3
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_194
+		{
+			ID 71
+			GFX_RNG_1 13
+			GFX_RNG_2 100
+			X 4
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Pulsar
+					High_Energy 
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_195
+		{
+			ID 72
+			GFX_RNG_1 5
+			GFX_RNG_2 5
+			X 5
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_196
+		{
+			ID 73
+			GFX_RNG_1 77
+			GFX_RNG_2 21
+			X 6
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_197
+		{
+			ID 74
+			GFX_RNG_1 41
+			GFX_RNG_2 85
+			X 7
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_198
+		{
+			ID 75
+			GFX_RNG_1 50
+			GFX_RNG_2 53
+			X 8
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_199
+		{
+			ID 76
+			GFX_RNG_1 80
+			GFX_RNG_2 97
+			X 9
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 3
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_200
+		{
+			ID 77
+			GFX_RNG_1 48
+			GFX_RNG_2 11
+			X 10
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_201
+		{
+			ID 78
+			GFX_RNG_1 54
+			GFX_RNG_2 6
+			X 11
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_206
+		{
+			ID 79
+			GFX_RNG_1 92
+			GFX_RNG_2 47
+			X 16
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_207
+		{
+			ID 80
+			GFX_RNG_1 83
+			GFX_RNG_2 33
+			X 17
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_214
+		{
+			ID 81
+			GFX_RNG_1 24
+			GFX_RNG_2 91
+			X 5
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_215
+		{
+			ID 82
+			GFX_RNG_1 37
+			GFX_RNG_2 58
+			X 6
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_216
+		{
+			ID 83
+			GFX_RNG_1 62
+			GFX_RNG_2 20
+			X 7
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_217
+		{
+			ID 84
+			GFX_RNG_1 79
+			GFX_RNG_2 17
+			X 8
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 3
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_218
+		{
+			ID 85
+			GFX_RNG_1 68
+			GFX_RNG_2 84
+			X 9
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_219
+		{
+			ID 86
+			GFX_RNG_1 77
+			GFX_RNG_2 24
+			X 10
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_220
+		{
+			ID 87
+			GFX_RNG_1 40
+			GFX_RNG_2 47
+			X 11
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_221
+		{
+			ID 88
+			GFX_RNG_1 24
+			GFX_RNG_2 31
+			X 12
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_226
+		{
+			ID 89
+			GFX_RNG_1 64
+			GFX_RNG_2 64
+			X 17
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_227
+		{
+			ID 90
+			GFX_RNG_1 72
+			GFX_RNG_2 80
+			X 18
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_234
+		{
+			ID 91
+			GFX_RNG_1 52
+			GFX_RNG_2 79
+			X 6
+			Y 12
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_235
+		{
+			ID 92
+			GFX_RNG_1 40
+			GFX_RNG_2 68
+			X 7
+			Y 12
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_236
+		{
+			ID 93
+			GFX_RNG_1 35
+			GFX_RNG_2 1
+			X 8
+			Y 12
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_240
+		{
+			ID 94
+			GFX_RNG_1 99
+			GFX_RNG_2 55
+			X 12
+			Y 12
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_241
+		{
+			ID 95
+			GFX_RNG_1 69
+			GFX_RNG_2 19
+			X 13
+			Y 12
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_242
+		{
+			ID 96
+			GFX_RNG_1 27
+			GFX_RNG_2 59
+			X 14
+			Y 12
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_245
+		{
+			ID 97
+			GFX_RNG_1 48
+			GFX_RNG_2 94
+			X 17
+			Y 12
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_246
+		{
+			ID 98
+			GFX_RNG_1 30
+			GFX_RNG_2 10
+			X 18
+			Y 12
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_261
+		{
+			ID 99
+			GFX_RNG_1 65
+			GFX_RNG_2 27
+			X 14
+			Y 13
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_262
+		{
+			ID 100
+			GFX_RNG_1 38
+			GFX_RNG_2 67
+			X 15
+			Y 13
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_265
+		{
+			ID 101
+			GFX_RNG_1 49
+			GFX_RNG_2 66
+			X 18
+			Y 13
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 3
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_271
+		{
+			ID 102
+			GFX_RNG_1 24
+			GFX_RNG_2 63
+			X 5
+			Y 14
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Pulsar
+					High_Energy 
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_281
+		{
+			ID 103
+			GFX_RNG_1 31
+			GFX_RNG_2 60
+			X 15
+			Y 14
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_282
+		{
+			ID 104
+			GFX_RNG_1 78
+			GFX_RNG_2 38
+			X 16
+			Y 14
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_291
+		{
+			ID 105
+			GFX_RNG_1 87
+			GFX_RNG_2 32
+			X 6
+			Y 15
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_292
+		{
+			ID 106
+			GFX_RNG_1 89
+			GFX_RNG_2 57
+			X 7
+			Y 15
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 3
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_300
+		{
+			ID 107
+			GFX_RNG_1 80
+			GFX_RNG_2 57
+			X 15
+			Y 15
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_301
+		{
+			ID 108
+			GFX_RNG_1 48
+			GFX_RNG_2 15
+			X 16
+			Y 15
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_302
+		{
+			ID 109
+			GFX_RNG_1 43
+			GFX_RNG_2 63
+			X 17
+			Y 15
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_311
+		{
+			ID 110
+			GFX_RNG_1 36
+			GFX_RNG_2 87
+			X 7
+			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_312
+		{
+			ID 111
+			GFX_RNG_1 58
+			GFX_RNG_2 65
+			X 8
+			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+			}
+		}
+		Star Star_313
+		{
+			ID 112
+			GFX_RNG_1 22
+			GFX_RNG_2 0
+			X 9
+			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_314
+		{
+			ID 113
+			GFX_RNG_1 91
+			GFX_RNG_2 78
+			X 10
+			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_316
+		{
+			ID 114
+			GFX_RNG_1 22
+			GFX_RNG_2 98
+			X 12
+			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					MineralVeins 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+			}
+		}
+		Star Star_319
+		{
+			ID 115
+			GFX_RNG_1 88
+			GFX_RNG_2 86
+			X 15
+			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_320
+		{
+			ID 116
+			GFX_RNG_1 31
+			GFX_RNG_2 3
+			X 16
+			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 3
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_321
+		{
+			ID 117
+			GFX_RNG_1 91
+			GFX_RNG_2 60
+			X 17
+			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_332
+		{
+			ID 118
+			GFX_RNG_1 97
+			GFX_RNG_2 3
+			X 9
+			Y 17
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_333
+		{
+			ID 119
+			GFX_RNG_1 94
+			GFX_RNG_2 95
+			X 10
+			Y 17
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_334
+		{
+			ID 120
+			GFX_RNG_1 46
+			GFX_RNG_2 62
+			X 11
+			Y 17
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_335
+		{
+			ID 121
+			GFX_RNG_1 31
+			GFX_RNG_2 47
+			X 12
+			Y 17
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_336
+		{
+			ID 122
+			GFX_RNG_1 4
+			GFX_RNG_2 99
+			X 13
+			Y 17
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Rich_Asteroid_Minerals 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_337
+		{
+			ID 123
+			GFX_RNG_1 86
+			GFX_RNG_2 18
+			X 14
+			Y 17
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 3
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_338
+		{
+			ID 124
+			GFX_RNG_1 77
+			GFX_RNG_2 80
+			X 15
+			Y 17
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+		Star Star_339
+		{
+			ID 125
+			GFX_RNG_1 98
+			GFX_RNG_2 41
+			X 16
+			Y 17
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Mod 
+					Building Trapped_Gasses
+					MineralVeins 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					MineralVeins 
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Bacterial_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_353
+		{
+			ID 126
+			GFX_RNG_1 40
+			GFX_RNG_2 5
+			X 11
+			Y 18
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_354
+		{
+			ID 127
+			GFX_RNG_1 34
+			GFX_RNG_2 88
+			X 12
+			Y 18
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Trapped_Gasses 
+					Complex_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+					Gold_Asteroid 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_355
+		{
+			ID 128
+			GFX_RNG_1 30
+			GFX_RNG_2 5
+			X 13
+			Y 18
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					ExoticResourceFlag 
+					High_Radiation 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Usefull_Gasses 
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_357
+		{
+			ID 129
+			GFX_RNG_1 68
+			GFX_RNG_2 80
+			X 15
+			Y 18
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 2
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Simple_Life 
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Uninhabitable 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+			}
+		}
+		Star Star_358
+		{
+			ID 130
+			GFX_RNG_1 19
+			GFX_RNG_2 1
+			X 16
+			Y 18
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Building Stable_Orbit
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 3
+					Moon 
+					ExoticResourceFlag 
+					Building Possible_Outpost
+					Mod 
+					Building Ring_Minerals
+					Hidden_Rings 
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Building Possible_Asteroid_Mines
+				}
+			}
+		}
+	}
+	Player_List 
+	{
+		Player Player_0
+		{
+			Human 
+			Empire 
+			{
+				Flag res://Assets/Flags/Earth_Round.png
+			}
+			Resources 
+			{
+				Energy*Income 0
+				Energy*Upkeep 0
+				Minerals*Income 0
+				Minerals*Upkeep 0
+				Production*Income 0
+				Production*Upkeep 0
+				Shipbuilding*Income 0
+				Shipbuilding*Upkeep 0
+				Research*Stckpile 0
+				Research*Income 0
+				Research*Upkeep 0
+				Culture*Stckpile 0
+				Culture*Income 0
+				Culture*Upkeep 0
+				BC*Stckpile 100
+				BC*Income 0
+				BC*Upkeep 0
+				Influence*Stckpile 0
+				Influence*Income 0
+				Influence*Upkeep 0
+			}
+			Status 
+			{
+				TechPoints_max 0
+				TechPoints_tech None
+			}
+			Civics 
+			Bonuses 
+			ShipDesigns 
+			{
+				Slot_1 none
+				Slot_2 Babylon
+				{
+					ShipType Medium
+					Modules 
+					{
+						Computer No_Computer
+						Armor Alloy
+						ECM No_ECM
+						Shield No_Shield
+						Warp_Drive Warp_Drive
+						Thrusters No_Thrusters
+						Weapon:1 Railgun
+						{
+							Count 2
+							Count 1
+							Count 2
+						}
+						Weapon:2 Heavy_Laser
+						Weapon:3 Nuclear_Mssiles
+						Special:1 Empty_Special_Slot
+						Special:2 Empty_Special_Slot
+					}
+				}
+				Slot_3 none
+				Slot_4 none
+				Slot_5 none
+				Slot_6 none
+				Slot_7 none
+				Slot_1_Obsolete none
+				Slot_2_Obsolete none
+				Slot_3_Obsolete none
+				Slot_4_Obsolete none
+				Slot_5_Obsolete none
+				Slot_6_Obsolete none
+				Slot_7_Obsolete none
+			}
+			Sector_List 
+			{
+				Sector Core
+				{
+					Resources 
+					{
+						Energy*Income 0
+						Energy*Upkeep 0
+						Minerals*Income 0
+						Minerals*Upkeep 0
+						Production*Income 0
+						Production*Upkeep 0
+						Shipbuilding*Income 0
+						Shipbuilding*Upkeep 0
+						Research*Income 0
+						Research*Upkeep 0
+						Culture*Income 0
+						Culture*Upkeep 0
+						BC*Income 0
+						BC*Upkeep 0
+						Influence*Income 0
+						Influence*Upkeep 0
+					}
+					ActionBuildQueue 
+					{
+						Overflow 0
+						Queue 
+						{
+							Building Asteroid_Mines_I
+							{
+								Link:Star:Planet Sol:Asteroids
+								Progress:Max 1000
+								OldBuilding Possible_Asteroid_Mines
+							}
+						}
+					}
+					System_List 
+					{
+						System Sol
+						{
+							Resources 
+							{
+								Energy*Income 0
+								Energy*Upkeep 0
+								Minerals*Income 0
+								Minerals*Upkeep 0
+								Production*Income 0
+								Production*Upkeep 0
+								Shipbuilding*Income 0
+								Shipbuilding*Upkeep 0
+								Research*Income 0
+								Research*Upkeep 0
+								Culture*Income 0
+								Culture*Upkeep 0
+								BC*Income 0
+								BC*Upkeep 0
+								Influence*Income 0
+								Influence*Upkeep 0
+							}
+							Link:Star Sol
+							Colony_List 
+							{
+								Colony Star
+								{
+									Type Star
+									Resources 
+									{
+										Energy*Income 0
+										Energy*PerPop 0
+										Energy*Upkeep 0
+										Minerals*Income 0
+										Minerals*PerPop 0
+										Minerals*Upkeep 0
+										Production*Income 0
+										Production*PerPop 0
+										Production*Upkeep 0
+										Shipbuilding*Income 0
+										Shipbuilding*PerPop 0
+										Shipbuilding*Upkeep 0
+										Research*Income 0
+										Research*PerPop 0
+										Research*Upkeep 0
+										Culture*Income 0
+										Culture*PerPop 0
+										Culture*Upkeep 0
+										BC*Income 0
+										BC*PerPop 0
+										BC*Upkeep 0
+										Influence*Income 0
+										Influence*PerPop 0
+										Influence*Upkeep 0
+										Wealth*Stockpile 3000
+										Pops*Max 16000
+										Pops*Stockpile 12000
+										Pops*MaxBonus 0
+										Pops*Control 0
+										Growth*Growth 200
+										Growth*GrowthBonus 0
+									}
+									Buildings 
+									{
+										Building Starport
+									}
+									Link:Star:Planet Sol:Star
+								}
+								Colony Terra
+								{
+									Type World
+									Resources 
+									{
+										Energy*Income 0
+										Energy*PerPop 0
+										Energy*Upkeep 0
+										Minerals*Income 0
+										Minerals*PerPop 0
+										Minerals*Upkeep 0
+										Production*Income 0
+										Production*PerPop 0
+										Production*Upkeep 0
+										Shipbuilding*Income 0
+										Shipbuilding*PerPop 0
+										Shipbuilding*Upkeep 0
+										Research*Income 0
+										Research*PerPop 0
+										Research*Upkeep 0
+										Culture*Income 0
+										Culture*PerPop 0
+										Culture*Upkeep 0
+										BC*Income 0
+										BC*PerPop 0
+										BC*Upkeep 0
+										Influence*Income 0
+										Influence*PerPop 0
+										Influence*Upkeep 0
+										Wealth*Stockpile 3000
+										Pops*Max 16000
+										Pops*Stockpile 12000
+										Pops*MaxBonus 0
+										Pops*Control 0
+										Growth*Growth 200
+										Growth*GrowthBonus 0
+									}
+									Buildings 
+									{
+										Building Capital
+										Building Shipyard_I
+										Building Cities
+										Building Colonial_Oversight
+										Building District
+									}
+									Support 
+									{
+										Democratic 
+										{
+											Facton_Size 30
+											Happiness 7
+										}
+										Industrialist 
+										{
+											Facton_Size 20
+											Happiness 7
+										}
+										Ecologist 
+										{
+											Facton_Size 5
+											Happiness 7
+										}
+										Religious 
+										{
+											Facton_Size 5
+											Happiness 7
+										}
+										Liberty 
+										{
+											Facton_Size 5
+											Happiness 7
+										}
+										Unity 
+										{
+											Facton_Size 5
+											Happiness 7
+										}
+										Pacifist 
+										{
+											Facton_Size 3
+											Happiness 7
+										}
+										Millitarist 
+										{
+											Facton_Size 3
+											Happiness 7
+										}
+										Scientist 
+										{
+											Facton_Size 3
+											Happiness 7
+										}
+										Bio-engineering 
+										{
+											Facton_Size 3
+											Happiness 7
+										}
+										Mechanist 
+										{
+											Facton_Size 3
+											Happiness 7
+										}
+										Autocratic 
+										{
+											Facton_Size 3
+											Happiness 7
+										}
+										Xenofile 
+										{
+											Facton_Size 3
+											Happiness 7
+										}
+										Xenofob 
+										{
+											Facton_Size 3
+											Happiness 7
+										}
+										Federation 
+										{
+											Facton_Size 3
+											Happiness 7
+										}
+										Empire 
+										{
+											Facton_Size 3
+											Happiness 7
+										}
+									}
+									Link:Star:Planet Sol:Terra
+								}
+							}
+						}
+					}
+				}
+			}
+			Fleets 
+			{
+				Fleet Babylon's_Eye
+				{
+					Ship Babylon_I
+					{
+						Design Babylon
+						HP 0
+						XP 0
+						Marines 100
+						Fighters 0
+						Supply 300
+					}
+				}
+			}
+		}
+	}
+}

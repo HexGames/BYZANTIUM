@@ -1,0 +1,87 @@
+Faction,Ethic,Ethic
+,,
+,,
+Imperial Sanctuary,Autocracy,Xenophile
+Empire of $species,Autocracy,Xenophobe
+Empire of Prosperity,Autocracy,Industrialist
+Nature's Empire,Autocracy,Ecologist
+Empire of Peace,Autocracy,Pacifist
+Empire of War,Autocracy,Militarist
+Imperium of Knowledge,Autocracy,Scientist
+Holy Empire,Autocracy,Religion
+Free Imperium,Autocracy,Federalist
+United Empire,Autocracy,Unity
+People's Empire,Autocracy,Communist
+Imperial Corp,Autocracy,Capitalist
+Liberty for All,Democracy,Xenophile
+$species Citizens,Democracy,Xenophobe
+Citizens Prosperity,Democracy,Industrialist
+Nature's Republic,Democracy,Ecologist
+Peaceful Republic,Democracy,Pacifist
+Managed Democracy,Democracy,Militarist
+Republic of Knowlege,Democracy,Scientist
+Holy Republic,Democracy,Religion
+Free Republic,Democracy,Federalist
+United Republic,Democracy,Unity
+People's Republic,Democracy,Communist
+Liberty Inc.,Democracy,Capitalist
+Prosperity for All,Xenophile,Industrialist
+Nature's Prosperity,Xenophile,Ecologist
+Nature's Peace,Xenophile,Pacifist
+Wrath of Nature,Xenophile,Militarist
+Knowledge for All,Xenophile,Scientist
+Holy Souls,Xenophile,Religion
+Freedom for All,Xenophile,Federalist
+United Species,Xenophile,Unity
+Equality for All,Xenophile,Communist
+Galaxy Corp,Xenophile,Capitalist
+$species Prosperity,Xenophobe,Industrialist
+Nature's Chosen,Xenophobe,Ecologist
+Peace for $species,Xenophobe,Pacifist
+$species First,Xenophobe,Militarist
+Superior Intelect,Xenophobe,Scientist
+Chosen People,Xenophobe,Religion
+Free $species,Xenophobe,Federalist
+United $species,Xenophobe,Unity
+People's Party,Xenophobe,Communist
+$species Corp,Xenophobe,Capitalist
+Peace and Prosperity,Industrialist,Pacifist
+Unlimited Growth,Industrialist,Militarist
+Technological Progress,Industrialist,Scientist
+God's Prosperity,Industrialist,Religion
+Freedom and Prosperity,Industrialist,Federalist
+United Prosperity,Industrialist,Unity
+People's Progress,Industrialist,Communist
+Progress Inc.,Industrialist,Capitalist
+Nature's Peace,Ecologist,Pacifist
+Defenders of Nature,Ecologist,Militarist
+Gaia Project,Ecologist,Scientist
+Holy Worlds,Ecologist,Religion
+Naturalists,Ecologist,Federalist
+Nature's Unity,Ecologist,Unity
+Nature's Commune,Ecologist,Communist
+Gaia Inc.,Ecologist,Capitalist
+Peaceful Minds,Pacifist,Scientist
+God's Peace,Pacifist,Religion
+Peace and Freeadom,Pacifist,Federalist
+Peaceful Federation,Pacifist,Unity
+Peaceful Communes,Pacifist,Communist
+Peace Inc.,Pacifist,Capitalist
+Mind Power,Militarist,Scientist
+Holy War,Militarist,Religion
+United Federation,Militarist,Federalist
+United Galaxy,Militarist,Unity
+Starfleet,Militarist,Communist
+War Corp,Militarist,Capitalist
+Freedom of Thought,Scientist,Federalist
+Unity of Thought,Scientist,Unity
+Peope's Knowlege,Scientist,Communist
+Tech Corp,Scientist,Capitalist
+Freedom of God,Religion,Federalist
+United Church,Religion,Unity
+Peope's Church,Religion,Communist
+Faith Inc.,Religion,Capitalist
+Free People,Federalist,Communist
+The Guild,Federalist,Capitalist
+United People,Unity,Communist
+General Corp,Unity,Capitalist

@@ -28,11 +28,23 @@ public partial class PlayerData : Node
     [Export]
     public DataBlock Bonuses = null;
     [Export]
+    public DataBlock DesignsData = null;
+    [Export]
+    public DataBlock FleetsData = null;
+    [Export]
     public bool Human = false;
 
     [ExportCategory("PlayerData-Links")]
     [Export]
     public Array<SectorData> Sectors = new Array<SectorData>();
+
+    [ExportCategory("PlayerData-Links")]
+    [Export]
+    public Array<DesignData> Designs = new Array<DesignData>();
+
+    [ExportCategory("PlayerData-Links")]
+    [Export]
+    public Array<FleetData> Fleets = new Array<FleetData>();
 
     [ExportCategory("PlayerData-Runtime")]
     [Export]
@@ -50,6 +62,18 @@ public partial class PlayerData : Node
             if (Sectors[idx].SectorName == sector)
             {
                 return Sectors[idx];
+            }
+        }
+
+        return null;
+    }
+    public FleetData GetFleet(string fleet)
+    {
+        for (int idx = 0; idx < Fleets.Count; idx++)
+        {
+            if (Fleets[idx].FleetName == fleet)
+            {
+                return Fleets[idx];
             }
         }
 

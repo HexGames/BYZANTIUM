@@ -26,6 +26,17 @@ public partial class UIGalaxyBarList : Control
     [Export]
     public Array<UIBarListPlanet> Planets = new Array<UIBarListPlanet>();
 
+    [ExportCategory("Tabs")]
+    [Export]
+    public Panel Tabs = null;
+    [Export]
+    public Control Tabs_BuildingsAvailable = null;
+    [Export]
+    public Control Tabs_PopulationAvailable = null;
+    [Export]
+    public Panel Tabs_BuildingsSelected = null;
+    [Export]
+    public Panel Tabs_PopulationSelected = null;
     //[Export]
     //public Array<UIPawnListFleet> Fleets = new Array<UIPawnListFleet>();
 
@@ -222,6 +233,7 @@ public partial class UIGalaxyBarList : Control
 
         Groups[idx].Refresh(sectorData);
         Groups[idx].Visible = true;
+        Tabs.Visible = false;
     }
 
     public void RefreshGroup(int idx, SystemData systemData)
@@ -235,6 +247,7 @@ public partial class UIGalaxyBarList : Control
 
         Groups[idx].Refresh(systemData);
         Groups[idx].Visible = true;
+        Tabs.Visible = false;
     }
 
     public void RefreshPlanet(int idx, StarData systemData, PlanetData planetData)
@@ -247,11 +260,11 @@ public partial class UIGalaxyBarList : Control
         }
 
         PlanetData parentPlanet = null;
-        if (planetData.Data.GetSub("Moon") != null)
+        if (planetData.Data.GetSub("Moon", false) != null)
         {
             for (int systemPlanetIdx = 0; systemPlanetIdx < systemData.Planets.Count; systemPlanetIdx++)
             {
-                if (systemData.Planets[systemPlanetIdx].Data.GetSub("Moon") == null)
+                if (systemData.Planets[systemPlanetIdx].Data.GetSub("Moon", false) == null)
                 {
                     parentPlanet = systemData.Planets[systemPlanetIdx];
                 }
@@ -289,6 +302,7 @@ public partial class UIGalaxyBarList : Control
     {
         if (planet == null)
         {
+            Tabs.Visible = false;
             PlanetSelected = null;
         }
         else
@@ -298,6 +312,7 @@ public partial class UIGalaxyBarList : Control
                 if (Planets[idx]._PlanetData == planet)
                 {
                     PlanetSelected = Planets[idx];
+                    Tabs.Visible = true;
                 }
             }
         }
@@ -354,5 +369,58 @@ public partial class UIGalaxyBarList : Control
         //        Planets[idx].Deselect();
         //    }
         //}
+    }
+
+    public void Deselect()
+    {
+        if (PlanetSelected != null)
+        {
+            PlanetSelected.Deselect();
+        }
+        
+        PlanetSelected = null;
+
+        Tabs.Visible = false;
+    }
+
+    public void OnBuildingsTabSelect()
+    {
+        Game.GalaxyUI.ShowBuildingsTab();
+    }
+
+    public void OnPopulationTabSelect()
+    {
+        Game.GalaxyUI.ShowPopulationTab();
+    }
+
+    public void ShowTabsSelector(bool buildingsAvailable, bool popsAvailable)
+    {
+        Tabs.Visible = true;
+
+        Tabs_BuildingsAvailable.Visible = buildingsAvailable;
+        Tabs_PopulationAvailable.Visible = popsAvailable;
+    }
+
+    public void HideTabsSelector()
+    {
+        Tabs.Visible = false;
+    }
+
+    public void ShowBuildingsTab()
+    {
+        Tabs_BuildingsSelected.Visible = true;
+        Tabs_PopulationSelected.Visible = false;
+    }
+
+    public void ShowPopulationTab()
+    {
+        Tabs_BuildingsSelected.Visible = false;
+        Tabs_PopulationSelected.Visible = true;
+    }
+
+    public void HideAllTabs()
+    {
+        Tabs_BuildingsSelected.Visible = false;
+        Tabs_PopulationSelected.Visible = false;
     }
 }

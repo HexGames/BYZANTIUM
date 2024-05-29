@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://dcmj5bohen8h7"]
 
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_rk2rl"]
-[ext_resource type="Script" path="res://Scripts/UI/System/Progress/UIConstruction.cs" id="2_6ft6r"]
+[ext_resource type="Script" path="res://Scripts/UI/Progress/UIConstruction.cs" id="2_wo6f5"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="3_lc4mh"]
 [ext_resource type="Texture2D" uid="uid://cen58p831ysqp" path="res://Assets/UI/Symbols/Energy.png" id="4_aqn3r"]
-[ext_resource type="Script" path="res://Scripts/UI/System/Progress/UIConstructionItem.cs" id="5_budj7"]
+[ext_resource type="Script" path="res://Scripts/UI/Progress/UIConstructionItem.cs" id="5_rtokv"]
 [ext_resource type="Texture2D" uid="uid://e0pkpwa427r0" path="res://Assets/UI/Symbols/BC.png" id="5_vlt1q"]
 [ext_resource type="Texture2D" uid="uid://ckpikidebn0p8" path="res://Assets/UI/Symbols/PrivateIndustry.png" id="7_pctk4"]
 [ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="8_qm267"]
@@ -42,7 +42,7 @@ custom_minimum_size = Vector2(320, 256)
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_rk2rl")
-script = ExtResource("2_6ft6r")
+script = ExtResource("2_wo6f5")
 TitleLabel = NodePath("VBoxContainer/Title/TitleBg/HBoxContainer/TitleBg/HBoxContainer/Title")
 Working = NodePath("VBoxContainer/Working")
 Queue = [NodePath("VBoxContainer/Working/Queue/Item_1")]
@@ -159,7 +159,7 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("8_qm267")
 theme_type_variation = &"Dragable"
-script = ExtResource("5_budj7")
+script = ExtResource("5_rtokv")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Working/Queue/Item_1"]
 layout_mode = 1
@@ -232,7 +232,7 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("8_qm267")
 theme_type_variation = &"Dragable"
-script = ExtResource("5_budj7")
+script = ExtResource("5_rtokv")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Working/Item_Current"]
 layout_mode = 1

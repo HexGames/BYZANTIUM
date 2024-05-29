@@ -55,7 +55,5 @@ public partial class UIItemList : Control
                 Properties[idx].Visible = false;
             }
         }
-
-        Visible = true;
     }
 }

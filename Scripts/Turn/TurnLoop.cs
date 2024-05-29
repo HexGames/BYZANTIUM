@@ -42,6 +42,7 @@ public partial class TurnLoop : Node
     {
         CurrentHumanPlayerData = GetHumanPlayer();
         Init_Resources();
+        StartTurn_Fleets();
         StartTurn_Resources();
         StartTurn_NewActions();
         Game.GalaxyUI.StartTurn();
@@ -52,25 +53,24 @@ public partial class TurnLoop : Node
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.Map.Data.Players[playerIdx];
-            player.Resources_PerTurn = new ResourcesWrapper(player.Resources);
+            player.Resources_PerTurn = new ResourcesWrapper(player.Resources, ResourcesWrapper.ParentType.Player);
 
             for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
             {
                 SectorData sector = player.Sectors[sectorIdx];
-                sector.Resources_PerTurn = new ResourcesWrapper(sector.Resources);
+                sector.Resources_PerTurn = new ResourcesWrapper(sector.Resources, ResourcesWrapper.ParentType.Sector);
                 sector.BuildQueue_PerTurn_ActionChange = new BuildingQueueWrapper(sector, Game);
                 //sector.BudgetPerTurn = new BudgetWrapper(sector.Budget);
 
                 for (int systemIdx = 0; systemIdx < sector.Systems.Count; systemIdx++)
                 {
                     SystemData system = sector.Systems[sectorIdx];
-                    system.Resources_PerTurn = new ResourcesWrapper(system.Resources);
+                    system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.System);
 
                     for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
                     {
                         ColonyData colony = system.Colonies[colonyIdx];
-                        colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources);
-                        colony.Jobs_PerTurn = new JobsWrapper(colony.Jobs, Game.Def);
+                        colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Planet);
                     }
                 }
             }

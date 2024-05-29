@@ -18,10 +18,6 @@ public partial class SystemData : Node
 
     [Export]
     public DataBlock Resources = null;
-    [Export]
-    public DataBlock Budget = null;
-    [Export]
-    public DataBlock Buildings = null;
 
     //[ExportCategory("SystemData-Actions")]
     //[Export]

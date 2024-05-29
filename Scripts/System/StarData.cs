@@ -24,6 +24,8 @@ public partial class StarData : Node
     [Export]
     public SystemData System = null;
 
+    public List<FleetData> Fleets_PerTurn = new List<FleetData>();
+
 
     // --------------------------------------------------------------------------------------------
     public PlanetData GetPlanet(string planet)

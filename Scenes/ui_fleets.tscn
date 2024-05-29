@@ -1,0 +1,570 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2a0hskimxnut"]
+
+[ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_1f06l"]
+[ext_resource type="Script" path="res://Scripts/UI/Fleets/UISelectedFleets.cs" id="1_nwk5e"]
+[ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="2_21cbh"]
+[ext_resource type="Script" path="res://Scripts/UI/Fleets/UISelectedFleetsItem.cs" id="3_ufxat"]
+[ext_resource type="Texture2D" uid="uid://bydgao82thbxp" path="res://Assets/UI/Symbols/Cancel.png" id="3_yjime"]
+[ext_resource type="Texture2D" uid="uid://dydl5bhyt1p6e" path="res://Assets/UI/Symbols/Minus.png" id="5_8roeh"]
+[ext_resource type="Script" path="res://Scripts/UI/Fleets/UISelectedFleetsItemShips.cs" id="6_dmxfl"]
+[ext_resource type="Texture2D" uid="uid://qo1rwuii0hot" path="res://Assets/UI/Symbols/Plus.png" id="6_rtjo8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3sji"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[node name="SelectedFleets" type="Control" node_paths=PackedStringArray("Fleets", "_Data")]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_bottom = -40.0
+grow_vertical = 0
+script = ExtResource("1_nwk5e")
+Fleets = [NodePath("VBoxContainer/Fleet_1")]
+_Data = []
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -122.0
+offset_right = 402.0
+grow_vertical = 0
+alignment = 2
+
+[node name="Fleet_1" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_1f06l")
+script = ExtResource("3_ufxat")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Fleet_1/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Title" type="Panel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(384, 32)
+layout_mode = 2
+theme = ExtResource("1_1f06l")
+theme_type_variation = &"GreyAlpha"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Control" type="Control" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Title/MarginContainer"]
+layout_mode = 2
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Title/MarginContainer/Control"]
+layout_mode = 2
+offset_right = 368.0
+offset_bottom = 24.0
+bbcode_enabled = true
+text = "[left]$fleet[/left]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="CloseBtn" type="Button" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Title/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+focus_mode = 0
+theme = ExtResource("2_21cbh")
+theme_type_variation = &"Small"
+theme_override_styles/normal = SubResource("StyleBoxFlat_c3sji")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Title/MarginContainer/Control/CloseBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yjime")
+expand_mode = 1
+
+[node name="Faction" type="Panel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(384, 32)
+layout_mode = 2
+theme = ExtResource("1_1f06l")
+theme_type_variation = &"GreyAlpha"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Faction"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TotalShips" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Faction/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[left]$value Ships[/left]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TotalPower" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Faction/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]$value[img=24x24]Assets/UI/Symbols/Power.png[/img][/right]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Ship_0" type="Panel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_1f06l")
+theme_type_variation = &"GreyAlpha"
+script = ExtResource("6_dmxfl")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Ships" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_0/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[left]$value Ships[/left]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Control" type="Control" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_0/MarginContainer/Ships"]
+custom_minimum_size = Vector2(54, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_right = -88.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Remove" type="Button" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_0/MarginContainer/Ships/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_21cbh")
+theme_type_variation = &"Small"
+theme_override_styles/normal = SubResource("StyleBoxFlat_c3sji")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_0/MarginContainer/Ships/Control/Remove"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8roeh")
+expand_mode = 1
+
+[node name="Add" type="Button" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_0/MarginContainer/Ships/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_21cbh")
+theme_type_variation = &"Small"
+theme_override_styles/normal = SubResource("StyleBoxFlat_c3sji")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_0/MarginContainer/Ships/Control/Add"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_rtjo8")
+expand_mode = 1
+
+[node name="Power" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_0/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]$value[img=24x24]Assets/UI/Symbols/Power.png[/img][/right]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Ship_1" type="Panel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_1f06l")
+theme_type_variation = &"GreyAlpha"
+script = ExtResource("6_dmxfl")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Ships" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_1/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[left]$value Ships[/left]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Control" type="Control" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_1/MarginContainer/Ships"]
+custom_minimum_size = Vector2(54, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_right = -88.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Remove" type="Button" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_1/MarginContainer/Ships/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_21cbh")
+theme_type_variation = &"Small"
+theme_override_styles/normal = SubResource("StyleBoxFlat_c3sji")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_1/MarginContainer/Ships/Control/Remove"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8roeh")
+expand_mode = 1
+
+[node name="Add" type="Button" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_1/MarginContainer/Ships/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_21cbh")
+theme_type_variation = &"Small"
+theme_override_styles/normal = SubResource("StyleBoxFlat_c3sji")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_1/MarginContainer/Ships/Control/Add"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_rtjo8")
+expand_mode = 1
+
+[node name="Power" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_1/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]$value[img=24x24]Assets/UI/Symbols/Power.png[/img][/right]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Ship_2" type="Panel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_1f06l")
+theme_type_variation = &"GreyAlpha"
+script = ExtResource("6_dmxfl")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Ships" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_2/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[left]$value Ships[/left]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Control" type="Control" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_2/MarginContainer/Ships"]
+custom_minimum_size = Vector2(54, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_right = -88.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Remove" type="Button" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_2/MarginContainer/Ships/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_21cbh")
+theme_type_variation = &"Small"
+theme_override_styles/normal = SubResource("StyleBoxFlat_c3sji")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_2/MarginContainer/Ships/Control/Remove"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8roeh")
+expand_mode = 1
+
+[node name="Add" type="Button" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_2/MarginContainer/Ships/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_21cbh")
+theme_type_variation = &"Small"
+theme_override_styles/normal = SubResource("StyleBoxFlat_c3sji")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_2/MarginContainer/Ships/Control/Add"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_rtjo8")
+expand_mode = 1
+
+[node name="Power" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_2/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]$value[img=24x24]Assets/UI/Symbols/Power.png[/img][/right]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Ship_3" type="Panel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_1f06l")
+theme_type_variation = &"GreyAlpha"
+script = ExtResource("6_dmxfl")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Ships" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_3/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[left]$value Ships[/left]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Control" type="Control" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_3/MarginContainer/Ships"]
+custom_minimum_size = Vector2(54, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_right = -88.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Remove" type="Button" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_3/MarginContainer/Ships/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_21cbh")
+theme_type_variation = &"Small"
+theme_override_styles/normal = SubResource("StyleBoxFlat_c3sji")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_3/MarginContainer/Ships/Control/Remove"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8roeh")
+expand_mode = 1
+
+[node name="Add" type="Button" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_3/MarginContainer/Ships/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_21cbh")
+theme_type_variation = &"Small"
+theme_override_styles/normal = SubResource("StyleBoxFlat_c3sji")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_3/MarginContainer/Ships/Control/Add"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_rtjo8")
+expand_mode = 1
+
+[node name="Power" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_3/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]$value[img=24x24]Assets/UI/Symbols/Power.png[/img][/right]"
+fit_content = true
+autowrap_mode = 0
+
+[connection signal="pressed" from="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Title/MarginContainer/Control/CloseBtn" to="VBoxContainer/Fleet_1" method="OnDeselect"]

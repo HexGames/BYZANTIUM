@@ -9,12 +9,6 @@ public partial class UIEconomyInfo : Control
     public RichTextLabel Title;
     private string Title_Original;
     [Export]
-    public Control Local;
-    [Export]
-    public UIEconomyInfoItem Pops;
-    [Export]
-    public UIEconomyInfoItem Growth;
-    [Export]
     public UIEconomyInfoItem Energy;
     [Export]
     public UIEconomyInfoItem Minerals;
@@ -23,17 +17,19 @@ public partial class UIEconomyInfo : Control
     [Export]
     public UIEconomyInfoItem Shipbuilding;
     [Export]
-    public UIEconomyInfoItem Trade;
+    public UIEconomyInfoItem BC;
     [Export]
     public UIEconomyInfoItem Research;
     [Export]
     public UIEconomyInfoItem Culture;
     [Export]
-    public UIEconomyInfoItem Authority;
-    [Export]
     public UIEconomyInfoItem Influence;
     [Export]
-    public UIEconomyInfoItem BC;
+    public Control Local;
+    [Export]
+    public UIEconomyInfoItem Pops;
+    [Export]
+    public UIEconomyInfoItem Growth;
 
     [ExportCategory("Runtime")]
     [Export]
@@ -68,10 +64,10 @@ public partial class UIEconomyInfo : Control
 
         Local.Visible = false;
 
-        Energy.Refresh(_Sector.Resources_PerTurn.GetUsedPerTotalString("Energy"));
+        Energy.Refresh(_Sector.Resources_PerTurn.GetIncomeString("Energy"));
         Energy.Visible = true;
 
-        Minerals.Refresh(_Sector.Resources_PerTurn.GetUsedPerTotalString("Minerals"));
+        Minerals.Refresh(_Sector.Resources_PerTurn.GetIncomeString("Minerals"));
         Minerals.Visible = true;
 
         Production.Refresh(_Sector.Resources_PerTurn.GetIncomeString("Production"));
@@ -80,19 +76,13 @@ public partial class UIEconomyInfo : Control
         Shipbuilding.Refresh(_Sector.Resources_PerTurn.GetIncomeString("Shipbuilding"));
         Shipbuilding.Visible = true;
 
-        Trade.Refresh(_Sector.Resources_PerTurn.GetUsedPerTotalString("Trade"));
-        Trade.Visible = true;
-
-        Research.Refresh(_Sector.Resources_PerTurn.GetIncomeString("TechPoints"));
+        Research.Refresh(_Sector.Resources_PerTurn.GetIncomeString("Research"));
         Research.Visible = true;
 
-        Culture.Refresh(_Sector.Resources_PerTurn.GetIncomeString("CulturePoints"));
+        Culture.Refresh(_Sector.Resources_PerTurn.GetIncomeString("Culture"));
         Culture.Visible = true;
 
-        Authority.Refresh(_Sector.Resources_PerTurn.GetUsedPerTotalString("Authority"));
-        Authority.Visible = true;
-
-        Influence.Refresh(_Sector.Resources_PerTurn.GetUsedPerTotalString("Influence"));
+        Influence.Refresh(_Sector.Resources_PerTurn.GetIncomeString("Influence"));
         Influence.Visible = true;
 
         BC.Refresh(_Sector.Resources_PerTurn.GetIncomeString("BC"));
@@ -118,10 +108,10 @@ public partial class UIEconomyInfo : Control
 
         Local.Visible = false;
 
-        Energy.Refresh(_System.Resources_PerTurn.GetUsedPerTotalString("Energy"));
+        Energy.Refresh(_System.Resources_PerTurn.GetIncomeString("Energy"));
         Energy.Visible = true;
 
-        Minerals.Refresh(_System.Resources_PerTurn.GetUsedPerTotalString("Minerals"));
+        Minerals.Refresh(_System.Resources_PerTurn.GetIncomeString("Minerals"));
         Minerals.Visible = true;
 
         Production.Refresh(_System.Resources_PerTurn.GetIncomeString("Production"));
@@ -130,19 +120,13 @@ public partial class UIEconomyInfo : Control
         Shipbuilding.Refresh(_System.Resources_PerTurn.GetIncomeString("Shipbuilding"));
         Shipbuilding.Visible = true;
 
-        Trade.Refresh(_System.Resources_PerTurn.GetUsedPerTotalString("Trade"));
-        Trade.Visible = true;
-
-        Research.Refresh(_System.Resources_PerTurn.GetIncomeString("TechPoints"));
+        Research.Refresh(_System.Resources_PerTurn.GetIncomeString("Research"));
         Research.Visible = true;
 
-        Culture.Refresh(_System.Resources_PerTurn.GetIncomeString("CulturePoints"));
+        Culture.Refresh(_System.Resources_PerTurn.GetIncomeString("Culture"));
         Culture.Visible = true;
 
-        Authority.Refresh(_System.Resources_PerTurn.GetUsedPerTotalString("Authority"));
-        Authority.Visible = true;
-
-        Influence.Refresh(_System.Resources_PerTurn.GetUsedPerTotalString("Influence"));
+        Influence.Refresh(_System.Resources_PerTurn.GetIncomeString("Influence"));
         Influence.Visible = true;
 
         BC.Refresh(_System.Resources_PerTurn.GetIncomeString("BC"));
@@ -162,18 +146,18 @@ public partial class UIEconomyInfo : Control
             Title.Visible = true;
         }
 
-        Pops.Refresh(_Colony.Resources_PerTurn.GetUsedPerTotalString("Pops", 1000));
+        Pops.Refresh(_Colony.Resources_PerTurn.GetPops().ToString_Pops());
         Pops.Visible = true;
 
-        Growth.Refresh(_Colony.Resources_PerTurn.GetPercentString("Growth"));
-        Growth.Visible = true;
+        //Growth.Refresh("+" + Helper.ResValueToString(_Colony.Resources_PerTurn.Get("Pops").Value_1, 1000));
+        Growth.Visible = false;
 
         Local.Visible = true;
 
-        Energy.Refresh(_Colony.Resources_PerTurn.GetUsedPerTotalString("Energy"));
+        Energy.Refresh(_Colony.Resources_PerTurn.GetIncomeString("Energy"));
         Energy.Visible = true;
 
-        Minerals.Refresh(_Colony.Resources_PerTurn.GetUsedPerTotalString("Minerals"));
+        Minerals.Refresh(_Colony.Resources_PerTurn.GetIncomeString("Minerals"));
         Minerals.Visible = true;
 
         Production.Refresh(_Colony.Resources_PerTurn.GetIncomeString("Production"));
@@ -182,19 +166,13 @@ public partial class UIEconomyInfo : Control
         Shipbuilding.Refresh(_Colony.Resources_PerTurn.GetIncomeString("Shipbuilding"));
         Shipbuilding.Visible = true;
 
-        Trade.Refresh(_Colony.Resources_PerTurn.GetUsedPerTotalString("Trade"));
-        Trade.Visible = true;
-
-        Research.Refresh(_Colony.Resources_PerTurn.GetIncomeString("TechPoints"));
+        Research.Refresh(_Colony.Resources_PerTurn.GetIncomeString("Research"));
         Research.Visible = true;
 
-        Culture.Refresh(_Colony.Resources_PerTurn.GetIncomeString("CulturePoints"));
+        Culture.Refresh(_Colony.Resources_PerTurn.GetIncomeString("Culture"));
         Culture.Visible = true;
 
-        Authority.Refresh(_Colony.Resources_PerTurn.GetUsedPerTotalString("Authority"));
-        Authority.Visible = true;
-
-        Influence.Refresh(_Colony.Resources_PerTurn.GetUsedPerTotalString("Influence"));
+        Influence.Refresh(_Colony.Resources_PerTurn.GetIncomeString("Influence"));
         Influence.Visible = true;
 
         BC.Refresh(_Colony.Resources_PerTurn.GetIncomeString("BC"));

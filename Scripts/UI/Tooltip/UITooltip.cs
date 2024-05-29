@@ -34,7 +34,7 @@ public partial class UITooltip : Control
         Game = GetNode<Game>("/root/Main/Game");
 
         TitleBg = GetNode<Control>("Container/TitleBG");
-        Title = GetNode<RichTextLabel>("Container/TitleBG/Title");
+        Title = GetNode<RichTextLabel>("Container/TitleBG/MarginContainer/Title");
         Title_Original = Title.Text;
 
         Row_1 = GetNode<RichTextLabel>("Container/MarginContainer/Rows/Left_1");
@@ -97,7 +97,7 @@ public partial class UITooltip : Control
         Title.Text = Title_Original.Replace("$value", title);
         TitleBg.Visible = Title.Text.Length > 0;
 
-        if (row_1 != "")
+        if (row_1 != "" || row_2 != "" || row_3 != "")
         {
             Row_1.Text = Row_1_Original.Replace("$value", row_1);
             Row_1.Visible = true;
@@ -118,7 +118,7 @@ public partial class UITooltip : Control
         }
 
         // ---
-        if (row_2 != "")
+        if (row_2 != "" || row_3 != "")
         {
             Line_1.Visible = true;
             Row_2.Text = Row_2_Original.Replace("$value", row_2);
@@ -192,5 +192,10 @@ public partial class UITooltip : Control
     public override void _Process(double delta)
     {
         Visible = IsTargetHovered || IsTooltipHovered;
+    }
+
+    public void SetVisible()
+    {
+        Visible = true;
     }
 }

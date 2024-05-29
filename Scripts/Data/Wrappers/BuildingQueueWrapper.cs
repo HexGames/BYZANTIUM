@@ -11,6 +11,8 @@ public class BuildingQueueWrapper
         public PlanetData Planet;
         public DataBlock BuildingDef;
         public DataBlock BuildingReal;
+        public DataBlock BuildingOld;
+        public DataBlock BuildingPlanet;
 
         public int Position = 0;
         public int Progress = 0;
@@ -36,18 +38,20 @@ public class BuildingQueueWrapper
     {
         Buildings.Clear();
         DataBlock queue = _Sector.ActionBuildQueue.GetSub("Queue");
-        int production = _Sector.Resources_PerTurn.Get("Production").Value_2;
+        int production = _Sector.Resources_PerTurn.GetIncome("Production").GetIncomeTotal();
 
         int overflow = _Sector.ActionBuildQueue.GetSub("Overflow").ValueI;
         int turns = 0;
 
         for (int idx = 0; idx < queue.Subs.Count; idx++)
         {
-            ActionTargetInfo buildingInfo = Game.Def.GetBuildingInfo(queue.Subs[idx].ValueS);
+            DefBuildingWrapper buildingInfo = Game.Def.GetBuildingInfo(queue.Subs[idx].ValueS);
 
             Info info = new Info();
             info.Sector = _Sector;
             info.Planet = Data.GetLinkPlanetData(queue.Subs[idx], Game.Map.Data);
+            info.BuildingOld = queue.Subs[idx].GetSub("OldBuilding");
+            info.BuildingPlanet = queue.Subs[idx].GetSub("PlanetBuilding");
             info.BuildingDef = buildingInfo._Data;
             if (info.Planet.Colony != null)
             {
@@ -89,6 +93,18 @@ public class BuildingQueueWrapper
         for (int idx = 0; idx < Buildings.Count; idx++)
         {
             if (Buildings[idx].BuildingDef.ValueS == name && planet == Buildings[idx].Planet)
+            {
+                return Buildings[idx];
+            }
+        }
+        return null;
+    }
+    public Info GetUpgrade(string name, PlanetData planet)
+    {
+        for (int idx = 0; idx < Buildings.Count; idx++)
+        {
+            //Buildings[idx].
+            if ((Buildings[idx].BuildingOld != null && Buildings[idx].BuildingOld.ValueS == name) || (Buildings[idx].BuildingPlanet != null && Buildings[idx].BuildingPlanet.ValueS == name) && planet == Buildings[idx].Planet)
             {
                 return Buildings[idx];
             }

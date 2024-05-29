@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c5iivaa6xe26w"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://c5iivaa6xe26w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acxl4"]
 bg_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
@@ -48,8 +48,41 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p78ku"]
+bg_color = Color(0, 0, 0, 0)
+skew = Vector2(0.3, 0)
+border_color = Color(0.25098, 0.0627451, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53fhm"]
+bg_color = Color(0.25098, 0.0627451, 0, 0.501961)
+skew = Vector2(0.3, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.25098, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk1bu"]
+bg_color = Color(0.25098, 0.0627451, 0, 0.25098)
+skew = Vector2(0.3, 0)
+border_color = Color(0.25098, 0.0627451, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pipdo"]
+bg_color = Color(0.25098, 0.0627451, 0, 0.752941)
+skew = Vector2(0.3, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.501961, 0, 1)
+
 [resource]
 Button/styles/disabled = SubResource("StyleBoxFlat_acxl4")
 Button/styles/hover = SubResource("StyleBoxFlat_yc7hh")
 Button/styles/normal = SubResource("StyleBoxFlat_3fqvt")
 Button/styles/pressed = SubResource("StyleBoxFlat_7gult")
+Small/base_type = &"Button"
+Small/styles/disabled = SubResource("StyleBoxFlat_p78ku")
+Small/styles/hover = SubResource("StyleBoxFlat_53fhm")
+Small/styles/normal = SubResource("StyleBoxFlat_fk1bu")
+Small/styles/pressed = SubResource("StyleBoxFlat_pipdo")

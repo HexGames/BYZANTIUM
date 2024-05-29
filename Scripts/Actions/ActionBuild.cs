@@ -61,9 +61,9 @@ public class ActionBuild
         //    }
         //}
     }
-    static private List<ActionTargetInfo> RefreshAvailableBuildings_AddAllUpgrades(Game game, SectorData sector, DataBlock buildingOld, PlanetData planet)
+    static private List<DefBuildingWrapper> RefreshAvailableBuildings_AddAllUpgrades(Game game, SectorData sector, DataBlock buildingOld, PlanetData planet)
     {
-        List<ActionTargetInfo> buildings = new List<ActionTargetInfo>();
+        List<DefBuildingWrapper> buildings = new List<DefBuildingWrapper>();
 
         DataBlock buildingDef = game.Def.GetBuilding(buildingOld.ValueS);
         if (buildingDef != null)
@@ -71,10 +71,32 @@ public class ActionBuild
             Array<DataBlock> upgrades = buildingDef.GetSubs("Upgrade");
             for (int idx = 0; idx < upgrades.Count; idx++)
             {
-                ActionTargetInfo action = new ActionTargetInfo(game.Def.GetBuilding(upgrades[idx].ValueS));
+                DataBlock upgradeDef = game.Def.GetBuilding(upgrades[idx].ValueS);
+                bool hasRequiredFeatures = true;
+                if (upgradeDef.GetSub("RequiredFeature", false) != null)
+                {
+                    hasRequiredFeatures = false;
+                    string[] features = upgradeDef.GetSub("RequiredFeature").ValueS.Split('|');
+                    for (int featureIdx = 0; featureIdx < features.Length; featureIdx++)
+                    {
+                        if (planet.Data.GetSub(features[featureIdx], false) != null)
+                        {
+                            hasRequiredFeatures = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (hasRequiredFeatures == false)
+                    continue;
+
+                DefBuildingWrapper action = new DefBuildingWrapper(upgradeDef);
                 action._Planet = planet;
                 action._Sector = sector;
-                action._BuildingOld = buildingOld;
+                if (planet.Colony != null)
+                    action._BuildingOld = buildingOld;
+                else
+                    action._BuildingPlanet = buildingOld;
                 buildings.Add(action);
             }
         }
@@ -85,7 +107,8 @@ public class ActionBuild
 
         return buildings;
     }
-    static public ActionTargetInfo GetAvailableBuildings(Game game, SectorData sector, string buildingName, PlanetData planet)
+
+    static public DefBuildingWrapper GetAvailableBuilding(Game game, SectorData sector, string buildingName, PlanetData planet)
     {
         DataBlock buildingDef = game.Def.GetBuilding(buildingName);
         for (int idx = 0; idx < sector.AvailableBuildings_PerTurn.Count; idx++)
@@ -100,17 +123,24 @@ public class ActionBuild
 
     static public void AddToQueue(Game game, SectorData sector, string buildingName, PlanetData planet)
     {
-        AddToQueue(game, GetAvailableBuildings(game, sector, buildingName, planet));
+        AddToQueue(game, GetAvailableBuilding(game, sector, buildingName, planet));
     }
-    static public void AddToQueue(Game game, ActionTargetInfo possibleBuilding)
+    static public void AddToQueue(Game game, DefBuildingWrapper possibleBuilding)
     {
         DataBlock queue = possibleBuilding._Sector.ActionBuildQueue.GetSub("Queue");
         DataBlock building = Data.AddData(queue, "Building", possibleBuilding.Name, game.Def);
         Data.AddLink(building, possibleBuilding._Planet, game.Def);
-        Data.AddData(building, "Progress:Max", possibleBuilding.Cost.Get("Production").Value_1, game.Def);
+        Data.AddData(building, "Progress:Max", possibleBuilding.Cost, game.Def);
 
-        Data.AddData(building, "OldBuilding", possibleBuilding._BuildingOld.ValueS, game.Def);
-        Data.AddData(possibleBuilding._BuildingOld, "NewBuilding", possibleBuilding.Name, game.Def);
+        if (possibleBuilding._BuildingOld != null)
+        {
+            Data.AddData(building, "OldBuilding", possibleBuilding._BuildingOld.ValueS, game.Def);
+            Data.AddData(possibleBuilding._BuildingOld, "NewBuilding", possibleBuilding.Name, game.Def);
+        }
+        else if (possibleBuilding._BuildingPlanet != null)
+        {
+            Data.AddData(building, "PlanetBuilding", possibleBuilding._BuildingPlanet.ValueS, game.Def);
+        }
 
         possibleBuilding._Sector.BuildQueue_PerTurn_ActionChange.Refresh();
     }
@@ -188,21 +218,21 @@ public class ActionBuild
         sector.BuildQueue_PerTurn_ActionChange.Refresh();
     }
 
-    static public void Update(SectorData sector, Game game)
+    static public void EndTurn(SectorData sector, Game game)
     {
         DataBlock overflow = sector.ActionBuildQueue.GetSub("Overflow");
-        int production = sector.Resources_PerTurn.Get("Production").Value_2 + overflow.ValueI;
+        int production = sector.Resources_PerTurn.GetIncome("Production").GetIncomeTotal() + overflow.ValueI;
 
         DataBlock queue = sector.ActionBuildQueue.GetSub("Queue");
 
-        if (queue.Subs.Count == 0)
-        {
-            var bc = sector._Player.Resources_PerTurn.Get("BC");
-            bc.Value_1 += production / 2;
-            bc.SaveValue();
-            overflow.ValueI = 0;
-            return;
-        }
+        //if (queue.Subs.Count == 0)
+        //{
+        //    var bc = sector._Player.Resources_PerTurn.Get("BC");
+        //    bc.Value_1 += production / 2;
+        //    bc.SaveValue();
+        //    overflow.ValueI = 0;
+        //    return;
+        //}
 
         while (production > 0 && queue.Subs.Count > 0)
         {
@@ -214,19 +244,21 @@ public class ActionBuild
                 DataBlock colonyList = system.Data.GetSub("Colony_List");
 
                 DataBlock colonyData = Data.AddData(colonyList, "Colony", planet.PlanetName, game.Def);
-                Data.AddData(colonyData, "Building", "Outpost", game.Def);
+                Data.AddData(colonyData, "Type", "Outpost", game.Def);
                 MapGenerator.Create_Colony_Resources(colonyData, game.Def);
-
                 MapGenerator.Create_Colony_Buildings(colonyData, game.Def);
 
                 // ---
                 // order maters x3
                 Data.AddLink(colonyData, planet, game.Def); // 1
-                game.Map.Data.GenerateGameFromData_Player_Sector_System_Colony(colonyData, system); // 2
+                ColonyData colony = game.Map.Data.GenerateGameFromData_Player_Sector_System_Colony(colonyData, system); // 2
                 Data.AddLink(planet.Data, planet.Colony, game.Def);  // 3
+
+                system.Colonies.Add(colony);
+                colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Planet);
             }
 
-            DataBlock building = planet.Colony.Buildings.GetSub(queue.Subs[0].ValueS);
+            DataBlock building = planet.Colony.Buildings.GetSub("Building", queue.Subs[0].ValueS);
             bool completed = false;
             if (building == null)
             {
@@ -267,6 +299,10 @@ public class ActionBuild
 
             if (completed)
             {
+                if (queue.Subs[0].GetSub("OldBuilding") != null)
+                {
+                    Data.RemoveData(planet.Colony.Buildings, "Building", queue.Subs[0].GetSub("OldBuilding").ValueS, game.Def);
+                }
                 Data.RemoveData(building, "InConstruction", game.Def);
                 sector.ActionBuildQueue.Subs.Remove(queue.Subs[0]);
                 queue.Subs.RemoveAt(0);

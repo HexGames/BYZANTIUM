@@ -67,7 +67,15 @@ public partial class MapGenerator : Node
         Map.Data.GenerateGameFromData(DefLibrary);
 
         // set camera
-        MapCamera Camera = GetTree().EditedSceneRoot.GetNode<MapCamera>("Camera3D");
+        MapCamera Camera = null;
+        if (Engine.IsEditorHint())
+        {
+            Camera = GetTree().EditedSceneRoot.GetNode<MapCamera>("Camera3D");
+        }
+        else
+        {
+            Camera = GetNode<MapCamera>("/root/Main/Camera3D");
+        }
         Camera.MoveLimitX = 8.6666f * 2.0f * 2 * FromFile_Size;
         Camera.MoveLimitY = 15.0f * 2 * FromFile_Size;
     }
@@ -295,7 +303,7 @@ public partial class MapGenerator : Node
             Array<DataBlock> planets = planetList.GetSubs("Planet");
             for (int planetIdx = 0; planetIdx < planets.Count; planetIdx++)
             {
-                DataBlock planetType = planets[planetIdx].GetSub("Type");
+                DataBlock planetType = planets[planetIdx].GetSub("Type", false);
                 DataBlock player = planets[planetIdx].GetLink("Link:Player");
                 if (planetType != null && planetType.ValueS == type && player == null)
                 {
@@ -332,6 +340,7 @@ public partial class MapGenerator : Node
         DataBlock colonyList = Data.AddData(system, "Colony_List", DefLibrary);
 
         DataBlock spaceportColony = Data.AddData(colonyList, "Colony", startingStarPlanet.ValueS, DefLibrary);
+        Data.AddData(spaceportColony, "Type", "Star", DefLibrary);
         GenerateNewMapSave_Players_StartingColony_Resources(spaceportColony);
         GenerateNewMapSave_Players_StartingColony_SpacePort(spaceportColony);
 
@@ -340,9 +349,8 @@ public partial class MapGenerator : Node
 
         DataBlock colony = Data.AddData(colonyList, "Colony", startingPlanet.ValueS, DefLibrary);
 
-        Data.AddData(colony, "Capital", DefLibrary);
+        Data.AddData(colony, "Type", "World", DefLibrary);
         GenerateNewMapSave_Players_StartingColony_Resources(colony);
-        GenerateNewMapSave_Players_StartingColony_Jobs(colony);
         GenerateNewMapSave_Players_StartingColony_Buildings(colony);
         GenerateNewMapSave_Players_StartingColony_Support(colony);
         //GenerateNewMapSave_Players_StartingColony_Construction(colony, system);

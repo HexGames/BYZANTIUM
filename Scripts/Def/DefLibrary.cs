@@ -64,14 +64,38 @@ public partial class DefLibrary : Node
         }
     }
     [Export]
-    public bool LoadJobsDef
+    public bool LoadEthicsDef
     {
         get => false;
         set
         {
             if (value)
             {
-                LoadJobsDefFunc();
+                LoadEthicsDefFunc();
+            }
+        }
+    }
+    [Export]
+    public bool LoadFactionsDef
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                LoadFactionsDefFunc();
+            }
+        }
+    }
+    [Export]
+    public bool SaveFactionsDefButton
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                SaveFactionsDef();
             }
         }
     }
@@ -139,7 +163,6 @@ public partial class DefLibrary : Node
     public override void _Ready()
     {
         _Ready_Buildings();
-        _Ready_Jobs();
     }
     //    DirAccess folder = null;
     //    string[] files = null;
@@ -220,7 +243,7 @@ public partial class DefLibrary : Node
             case "Energy": return "Assets/UI/Symbols/Energy.png";
             case "Minerals": return "Assets/UI/Symbols/Minerals.png";
             case "Production": return "Assets/UI/Symbols/Prod.png";
-            case "Shipbuilding": return "Assets/UI/Symbols/Shipyard.png";
+            case "Shipbuilding": return "Assets/UI/Symbols/Shipbuilding.png";
             case "Trade": return "Assets/UI/Symbols/Trade.png";
             case "TechPoints": return "Assets/UI/Symbols/Research.png";
             case "CulturePoints": return "Assets/UI/Symbols/Culture.png";

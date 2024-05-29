@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://vh0pcrygv61d"]
+[gd_scene load_steps=33 format=3 uid="uid://vh0pcrygv61d"]
 
 [ext_resource type="Script" path="res://Scripts/UI/System/UISystem.cs" id="1_6msa3"]
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_br2ry"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_20v37"]
 [ext_resource type="Texture2D" uid="uid://cet6pwryuqcts" path="res://Assets/UI/white.png" id="3_d5phl"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="6_2o72x"]
-[ext_resource type="PackedScene" uid="uid://dh77fsdgom01p" path="res://Scenes/ui_buget.tscn" id="7_r63na"]
 [ext_resource type="PackedScene" uid="uid://c8n0vxyr5nsyj" path="res://Scenes/ui_buildings.tscn" id="8_8wxfq"]
 [ext_resource type="Texture2D" uid="uid://ci2vnc3vrtcks" path="res://Assets/Planets/Rings.png" id="9_60rk0"]
 [ext_resource type="Texture2D" uid="uid://c54y278yatv8p" path="res://Assets/UI/Symbols/Prod.png" id="10_baqn7"]
@@ -70,7 +69,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6msa3")
 SystemBar = NodePath("Container/SystemBar")
-Budget = NodePath("Container/HBoxContainer/Construction/UiBuget")
+Budget = NodePath("")
 SectorConstruction = NodePath("Container/HBoxContainer/Construction/Construction")
 SectorShipbuilding = NodePath("Container/HBoxContainer/Shipbuilding/ConstructionShipyard")
 EconomyInfo = NodePath("Container/HBoxContainer/Progress/VBoxContainer/Economy")
@@ -227,6 +226,7 @@ custom_minimum_size = Vector2(0, 144)
 layout_mode = 2
 
 [node name="BuildingsInfo" parent="Container/Info/VBoxContainer/BuildingsInfo" node_paths=PackedStringArray("Resources") instance=ExtResource("8_8wxfq")]
+visible = false
 layout_mode = 1
 Resources = []
 
@@ -802,16 +802,6 @@ alignment = 1
 [node name="Construction" type="Control" parent="Container/HBoxContainer"]
 custom_minimum_size = Vector2(464, 0)
 layout_mode = 2
-
-[node name="UiBuget" parent="Container/HBoxContainer/Construction" instance=ExtResource("7_r63na")]
-visible = false
-custom_minimum_size = Vector2(0, 304)
-layout_mode = 1
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
 
 [node name="Construction" parent="Container/HBoxContainer/Construction" instance=ExtResource("12_r5bok")]
 layout_mode = 1

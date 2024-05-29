@@ -70,7 +70,7 @@ public partial class UIBuildingsItem : Control
         IconText.Text = IconText_Original.Replace("$$", _BuildingDef.GetSub("Icon").ValueS);
 
         string level = "";
-        DataBlock LevelData = _BuildingDef.GetSub("Level");
+        DataBlock LevelData = _BuildingDef.GetSub("Level", false);
         if (LevelData != null) level = LevelData.ValueS;
 
         if (level != "")
@@ -98,7 +98,7 @@ public partial class UIBuildingsItem : Control
             int cost = _BuildingDef.GetSub("Cost").GetSub("Production").ValueI;
             if (ConstructCost != null)
             {
-                ConstructCost.Text = ConstructCost_Original.Replace("$value", cost.ToString());
+                ConstructCost.Text = ConstructCost_Original.Replace("$value", (cost / 10).ToString());
                 ConstructCost.Visible = true;
             }
             if (ConstructTurns != null)
@@ -119,19 +119,21 @@ public partial class UIBuildingsItem : Control
         Tooltip.Row_2 = "";
         Tooltip.Row_2_Right = "";
 
-        DataBlock benefit = _BuildingDef.GetSub("Benefit");
+        DataBlock benefit = _BuildingDef.GetSub("Benefit", false);
         if (benefit != null)
         {
+            string row = "";
             for (int idx = 0; idx < benefit.Subs.Count; idx++)
             {
-
-                if (idx > 0)
+                if (row.Length > 0)
                 {
                     Tooltip.Row_2 += "\n";
                     Tooltip.Row_2_Right += "\n";
                 }
-                Tooltip.Row_2 += benefit.Subs[idx].Name;
-                Tooltip.Row_2_Right += benefit.Subs[idx].ValueToString();
+                row = benefit.Subs[idx].ToUIDescription();
+                Tooltip.Row_2 += row;
+                //Tooltip.Row_2 += benefit.Subs[idx].ValueToString() + " " + benefit.Subs[idx].Name;
+                //Tooltip.Row_2_Right += benefit.Subs[idx].ValueToString();
             }
         }
 

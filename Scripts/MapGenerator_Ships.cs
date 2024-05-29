@@ -10,10 +10,9 @@ public partial class MapGenerator : Node
 {
     private void GenerateNewMapSave_Players_Ship_Designs(DataBlock player)
     {
-        DataBlock shipDesigns = Data.AddData(player, "ShipDesigns", DefLibrary);
+        DataBlock Designs = Data.AddData(player, "Designs", DefLibrary);
 
-        Data.AddData(shipDesigns, "Slot_1", "none", DefLibrary);
-        DataBlock design_2 = Data.AddData(shipDesigns, "Slot_2", "Babylon", DefLibrary);
+        DataBlock design_2 = Data.AddData(Designs, "Design", "Babylon", DefLibrary);
         {
             Data.AddData(design_2, "ShipType", "Medium", DefLibrary);
             DataBlock modules = Data.AddData(design_2, "Modules", DefLibrary);
@@ -34,26 +33,16 @@ public partial class MapGenerator : Node
                 Data.AddData(modules, "Special:2", "Empty_Special_Slot", DefLibrary);
             }
         }
-        Data.AddData(shipDesigns, "Slot_3", "none", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_4", "none", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_5", "none", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_6", "none", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_7", "none", DefLibrary);
-
-        Data.AddData(shipDesigns, "Slot_1_Obsolete", "none", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_2_Obsolete", "none", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_3_Obsolete", "none", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_4_Obsolete", "none", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_5_Obsolete", "none", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_6_Obsolete", "none", DefLibrary);
-        Data.AddData(shipDesigns, "Slot_7_Obsolete", "none", DefLibrary);
     }
 
-    private void GenerateNewMapSave_Players_StartingShip(DataBlock player, DataBlock system)
+    private void GenerateNewMapSave_Players_StartingShip(DataBlock player, DataBlock star)
     {
         DataBlock fleets = Data.AddData(player, "Fleets", DefLibrary);
 
         DataBlock fleet = Data.AddData(fleets, "Fleet", "Babylon's_Eye", DefLibrary);
+
+        Data.AddData(fleet, "Link:Star", star.ValueS, DefLibrary); // no StarData yet
+        Data.AddData(star, "Link:Player:Fleet", player.ValueS + ":" + fleet.ValueS, DefLibrary); // no StarData yet
 
         DataBlock ship = Data.AddData(fleet, "Ship", "Babylon_I", DefLibrary);
         Data.AddData(ship, "Design", "Babylon", DefLibrary);

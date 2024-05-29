@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://byodmyewxssx5"]
 
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_lwj1o"]
-[ext_resource type="Script" path="res://Scripts/UI/System/Progress/UIShipbuilding.cs" id="2_8tcic"]
+[ext_resource type="Script" path="res://Scripts/UI/Progress/UIShipbuilding.cs" id="2_8tcic"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="3_7jc3k"]
 [ext_resource type="Texture2D" uid="uid://cen58p831ysqp" path="res://Assets/UI/Symbols/Energy.png" id="4_6qa30"]
 [ext_resource type="Texture2D" uid="uid://e0pkpwa427r0" path="res://Assets/UI/Symbols/BC.png" id="5_3kg1i"]

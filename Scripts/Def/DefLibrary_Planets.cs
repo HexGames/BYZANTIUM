@@ -11,6 +11,8 @@ public partial class DefLibrary : Node
     public DataBlock PlanetsDefData = null;
     [Export]
     public Array<DataBlock> Planets = new Array<DataBlock>();
+    [Export]
+    public Array<DataBlock> PlanetsCustom = new Array<DataBlock>();
 
     //public List<ActionTargetInfo> BuildingsInfo = new List<ActionTargetInfo>();
 
@@ -24,11 +26,23 @@ public partial class DefLibrary : Node
 
     public DataBlock GetPlanet(string name)
     {
-        for (int idx = 0; idx < Buildings.Count; idx++)
+        for (int idx = 0; idx < Planets.Count; idx++)
         {
-            if (Buildings[idx].ValueS == name)
+            if (Planets[idx].ValueS == name)
             {
-                return Buildings[idx];
+                return Planets[idx];
+            }
+        }
+        return null;
+    }
+
+    public DataBlock GetPlanetCustom(string name)
+    {
+        for (int idx = 0; idx < PlanetsCustom.Count; idx++)
+        {
+            if (PlanetsCustom[idx].ValueS == name)
+            {
+                return PlanetsCustom[idx];
             }
         }
         return null;
@@ -60,6 +74,9 @@ public partial class DefLibrary : Node
 
         Planets.Clear();
         Planets = PlanetsDefData.GetSubs("Planet", true);
+
+        PlanetsCustom.Clear();
+        PlanetsCustom = PlanetsDefData.GetSubs("Custom");
 
         for (int modIdx = 0; modIdx < mods.Count; modIdx++)
         {

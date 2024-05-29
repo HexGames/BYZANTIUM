@@ -12,13 +12,13 @@ public partial class DefLibrary : Node
     [Export]
     public Array<DataBlock> ShipParts = new Array<DataBlock>();
 
-    public List<ActionTargetInfo> ShipPartsInfo = new List<ActionTargetInfo>();
+    public List<DefBuildingWrapper> ShipPartsInfo = new List<DefBuildingWrapper>();
 
     public void _Ready_ShipParts()
     {
         for (int idx = 0; idx < ShipParts.Count; idx++)
         {
-            ShipPartsInfo.Add(new ActionTargetInfo(Buildings[idx]));
+            ShipPartsInfo.Add(new DefBuildingWrapper(Buildings[idx]));
         }
     }
 
@@ -34,7 +34,7 @@ public partial class DefLibrary : Node
         return null;
     }
 
-    public ActionTargetInfo GetShipPartInfo(string name)
+    public DefBuildingWrapper GetShipPartInfo(string name)
     {
         for (int idx = 0; idx < ShipPartsInfo.Count; idx++)
         {

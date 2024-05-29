@@ -1,16 +1,14 @@
-[gd_scene load_steps=27 format=3 uid="uid://d07nreiik6fo3"]
+[gd_scene load_steps=25 format=3 uid="uid://d07nreiik6fo3"]
 
 [ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="1_laq5a"]
-[ext_resource type="Script" path="res://Scripts/UI/System/Focus/UIFocusList.cs" id="1_oab1v"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="2_ongvp"]
-[ext_resource type="Script" path="res://Scripts/UI/System/Focus/UIFocusListItem.cs" id="4_t2ht3"]
 [ext_resource type="Texture2D" uid="uid://dndb4e5tua3s7" path="res://Assets/UI/Symbols/Decline.png" id="5_cvfr3"]
 [ext_resource type="Texture2D" uid="uid://okvyhvbf0rju" path="res://Assets/UI/Symbols/Pops.png" id="5_i0sw3"]
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="5_iljko"]
 [ext_resource type="Texture2D" uid="uid://cen58p831ysqp" path="res://Assets/UI/Symbols/Energy.png" id="7_r7bmy"]
 [ext_resource type="Texture2D" uid="uid://rvohf5tbwt7o" path="res://Assets/UI/Symbols/Minerals.png" id="8_l637r"]
 [ext_resource type="Texture2D" uid="uid://c54y278yatv8p" path="res://Assets/UI/Symbols/Prod.png" id="9_adou0"]
-[ext_resource type="Texture2D" uid="uid://cscremncpfis7" path="res://Assets/UI/Symbols/Shipyard.png" id="10_cw8ah"]
+[ext_resource type="Texture2D" uid="uid://cscremncpfis7" path="res://Assets/UI/Symbols/Shipbuilding.png" id="10_cw8ah"]
 [ext_resource type="Texture2D" uid="uid://glb8jqcasoms" path="res://Assets/UI/Symbols/Trade.png" id="11_ides4"]
 [ext_resource type="PackedScene" uid="uid://dq46g5i5ev83s" path="res://Scenes/ui__tooltip_trigger.tscn" id="11_jb6uc"]
 [ext_resource type="Texture2D" uid="uid://be1jjobxapwqy" path="res://Assets/UI/Symbols/Growth.png" id="12_6chy2"]
@@ -55,7 +53,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="UIFocus" type="Control" node_paths=PackedStringArray("TitleLabel", "Energy", "Minerals", "Production", "Shipbuilding", "Trade", "TechPoints", "CulturePoints", "Authority", "Influence", "BC", "All", "All_Energy", "All_Minerals", "All_Production", "All_Shipbuilding", "All_Trade", "All_TechPoints", "All_CulturePoints", "All_Authority", "All_Influence", "All_BC", "All_Pops_Tooltip")]
+[node name="UIFocus" type="Control"]
 custom_minimum_size = Vector2(288, 386)
 layout_mode = 3
 anchors_preset = 15
@@ -65,30 +63,6 @@ offset_right = -1632.0
 offset_bottom = -694.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_oab1v")
-TitleLabel = NodePath("Margins/TitleBg/Title")
-Energy = NodePath("Margins/VBoxContainer/Job_1")
-Minerals = NodePath("Margins/VBoxContainer/Job_2")
-Production = NodePath("Margins/VBoxContainer/Job_3")
-Shipbuilding = NodePath("Margins/VBoxContainer/Job_4")
-Trade = NodePath("Margins/VBoxContainer/Job_5")
-TechPoints = NodePath("Margins/VBoxContainer/Job_6")
-CulturePoints = NodePath("Margins/VBoxContainer/Job_7")
-Authority = NodePath("Margins/VBoxContainer/Job_8")
-Influence = NodePath("Margins/VBoxContainer/Job_9")
-BC = NodePath("Margins/VBoxContainer/Job_10")
-All = NodePath("Margins/VBoxContainer/All")
-All_Energy = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_1")
-All_Minerals = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_2")
-All_Production = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_3")
-All_Shipbuilding = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_4")
-All_Trade = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_5")
-All_TechPoints = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_6")
-All_CulturePoints = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_7")
-All_Authority = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_8")
-All_Influence = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_9")
-All_BC = NodePath("Margins/VBoxContainer/All/BG/Icons/Job_10")
-All_Pops_Tooltip = NodePath("Margins/VBoxContainer/All/BG/Row/TextureRect/UITooltipTrigger")
 
 [node name="Margins" type="Control" parent="."]
 layout_mode = 1
@@ -150,7 +124,6 @@ theme = ExtResource("1_laq5a")
 [node name="Job_1" type="Control" parent="Margins/VBoxContainer"]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-script = ExtResource("4_t2ht3")
 
 [node name="BG" type="Panel" parent="Margins/VBoxContainer/Job_1"]
 custom_minimum_size = Vector2(0, 36)
@@ -306,7 +279,6 @@ expand_mode = 1
 [node name="Job_2" type="Control" parent="Margins/VBoxContainer"]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-script = ExtResource("4_t2ht3")
 
 [node name="BG" type="Panel" parent="Margins/VBoxContainer/Job_2"]
 custom_minimum_size = Vector2(0, 36)
@@ -462,7 +434,6 @@ expand_mode = 1
 [node name="Job_3" type="Control" parent="Margins/VBoxContainer"]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-script = ExtResource("4_t2ht3")
 
 [node name="BG" type="Panel" parent="Margins/VBoxContainer/Job_3"]
 custom_minimum_size = Vector2(0, 36)
@@ -619,7 +590,6 @@ expand_mode = 1
 visible = false
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-script = ExtResource("4_t2ht3")
 
 [node name="BG" type="Panel" parent="Margins/VBoxContainer/Job_4"]
 custom_minimum_size = Vector2(0, 36)
@@ -775,7 +745,6 @@ expand_mode = 1
 [node name="Job_5" type="Control" parent="Margins/VBoxContainer"]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-script = ExtResource("4_t2ht3")
 
 [node name="BG" type="Panel" parent="Margins/VBoxContainer/Job_5"]
 custom_minimum_size = Vector2(0, 36)
@@ -931,7 +900,6 @@ expand_mode = 1
 [node name="Job_6" type="Control" parent="Margins/VBoxContainer"]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-script = ExtResource("4_t2ht3")
 
 [node name="BG" type="Panel" parent="Margins/VBoxContainer/Job_6"]
 custom_minimum_size = Vector2(0, 36)
@@ -1088,7 +1056,6 @@ expand_mode = 1
 visible = false
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-script = ExtResource("4_t2ht3")
 
 [node name="BG" type="Panel" parent="Margins/VBoxContainer/Job_7"]
 custom_minimum_size = Vector2(0, 36)
@@ -1245,7 +1212,6 @@ expand_mode = 1
 visible = false
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-script = ExtResource("4_t2ht3")
 
 [node name="BG" type="Panel" parent="Margins/VBoxContainer/Job_8"]
 custom_minimum_size = Vector2(0, 36)
@@ -1402,7 +1368,6 @@ expand_mode = 1
 visible = false
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-script = ExtResource("4_t2ht3")
 
 [node name="BG" type="Panel" parent="Margins/VBoxContainer/Job_9"]
 custom_minimum_size = Vector2(0, 36)
@@ -1559,7 +1524,6 @@ expand_mode = 1
 visible = false
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-script = ExtResource("4_t2ht3")
 
 [node name="BG" type="Panel" parent="Margins/VBoxContainer/Job_10"]
 custom_minimum_size = Vector2(0, 36)
@@ -1732,7 +1696,6 @@ theme_type_variation = &"PanelLine"
 [node name="All" type="Control" parent="Margins/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-script = ExtResource("4_t2ht3")
 
 [node name="BG" type="Panel" parent="Margins/VBoxContainer/All"]
 custom_minimum_size = Vector2(0, 36)

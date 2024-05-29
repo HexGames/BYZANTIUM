@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Godot.Collections;
 
 // Generated
 public partial class PlayerInput : Node
@@ -13,6 +13,8 @@ public partial class PlayerInput : Node
     public StarData SelectedStar = null;
     [Export]
     public PlanetData SelectedPlanet = null;
+    [Export]
+    public Array<FleetData> SelectedFleets = new Array<FleetData>();
 
     public override void _Ready()
     {
@@ -59,6 +61,8 @@ public partial class PlayerInput : Node
 
     public void SelectSector(SectorData newSelectedSector, bool refreshUI = true)
     {
+        DeselectFleetAll();
+
         if (SelectedSector == newSelectedSector)
         {
             // on reselect
@@ -81,7 +85,7 @@ public partial class PlayerInput : Node
             SystemData systemFromSector = SelectedSector.Systems[idx];
             if (systemFromSector.Star != SelectedStar)
             {
-                systemFromSector.Star._Node.GFX.Select(false, true);
+                systemFromSector.Star._Node.GFX.Select(false, true, false, false);
             }
         }
 
@@ -93,6 +97,8 @@ public partial class PlayerInput : Node
 
     public void SelectStar(StarData newSelectedStar, bool refreshUI = true)
     {
+        DeselectFleetAll();
+
         if (SelectedStar == newSelectedStar)
         {
             // on reselect
@@ -121,11 +127,11 @@ public partial class PlayerInput : Node
         if (system != null)
         {
             SelectSector(system._Sector, false);
-            SelectedStar._Node.GFX.Select(true, true);
+            SelectedStar._Node.GFX.Select(true, true, false, false);
         }
         else
         {
-            SelectedStar._Node.GFX.Select(true, false);
+            SelectedStar._Node.GFX.Select(true, false, false, false);
         }
 
         if (refreshUI) Game.GalaxyUI.Refresh();
@@ -133,14 +139,16 @@ public partial class PlayerInput : Node
         // on select
         if (SelectedStar != null) GD.Print("PlayerInput - selected " + SelectedStar.StarName);
     }
-    public void SelectPlanet(PlanetData newSelectedPlanet)
+    public void SelectPlanet(PlanetData newSelectedPlanet, bool buildingsTab, bool populationTab)
     {
+        DeselectFleetAll();
+
         if (SelectedPlanet == newSelectedPlanet)
         {
             // on reselect
             GD.Print("PlayerInput - reselecteed " + SelectedPlanet.PlanetName);
 
-            Game.GalaxyUI.Refresh();
+            Game.GalaxyUI.Refresh(buildingsTab, populationTab);
 
             return;
         }
@@ -153,10 +161,60 @@ public partial class PlayerInput : Node
 
         SelectStar(SelectedPlanet._Star, false);
 
-        Game.GalaxyUI.Refresh();
+        Game.GalaxyUI.Refresh(buildingsTab, populationTab);
 
         // on select
         if (SelectedPlanet != null) GD.Print("PlayerInput - selected " + SelectedPlanet.PlanetName);
+    }
+
+    public void SelectFleet(StarData atStar, bool friendlyToStar)
+    {
+        DeselectAll(false);
+
+        for (int idx = 0; idx < atStar.Fleets_PerTurn.Count; idx++)
+        {
+            if (atStar.System == null || atStar.System._Sector._Player == Game.HumanPlayer)
+            {
+                if (friendlyToStar)
+                {
+                    if (atStar.Fleets_PerTurn[idx]._Player == Game.HumanPlayer)
+                    {
+                        SelectedFleets.Add(atStar.Fleets_PerTurn[idx]);
+                    }
+                }
+                else
+                {
+                    if (atStar.Fleets_PerTurn[idx]._Player != Game.HumanPlayer)
+                    {
+                        SelectedFleets.Add(atStar.Fleets_PerTurn[idx]);
+                    }
+                }
+            }
+            else
+            {
+                if (friendlyToStar)
+                {
+                    if (atStar.Fleets_PerTurn[idx]._Player != Game.HumanPlayer)
+                    {
+                        SelectedFleets.Add(atStar.Fleets_PerTurn[idx]);
+                    }
+                }
+                else
+                {
+                    if (atStar.Fleets_PerTurn[idx]._Player == Game.HumanPlayer)
+                    {
+                        SelectedFleets.Add(atStar.Fleets_PerTurn[idx]);
+                    }
+                }
+            }
+        }
+
+        if (SelectedFleets.Count > 0)
+        {
+            SelectedFleets[0].AtStar_PerTurn._Node.GFX.Select(false, false, friendlyToStar, !friendlyToStar, SelectedFleets.Count == 1);
+        }
+
+        Game.GalaxyUI.Refresh();
     }
 
     public void DeselectOneStep()
@@ -171,7 +229,11 @@ public partial class PlayerInput : Node
             Game.GalaxyUI.ColonyBuildings.CloseUpgradingWindow();
             return;
         }
-        else if (SelectedPlanet != null)
+        else if (SelectedFleets.Count > 0)
+        {
+            DeselectFleetAll();
+        }
+        if (SelectedPlanet != null)
         {
             DeselectPlanet();
         }
@@ -187,19 +249,24 @@ public partial class PlayerInput : Node
         Game.GalaxyUI.Refresh();
     }
 
-    public void DeselectAll()
+    public void DeselectAll(bool refresh = true)
     {
+        Game.GalaxyUI.ColonyBuildings.CloseUpgradeWindow();
+        Game.GalaxyUI.ColonyBuildings.CloseUpgradingWindow();
+
         DeselectSector();
         DeselectStar();
         DeselectPlanet();
+        DeselectFleetAll();
 
-        Game.GalaxyUI.Refresh();
+        if (refresh)
+            Game.GalaxyUI.Refresh();
     }
     public void DeselectAllButSector()
     {
         DeselectStar();
-        DeselectPlanet();
-
+        DeselectPlanet(); 
+        
         Game.GalaxyUI.Refresh();
     }
 
@@ -232,7 +299,7 @@ public partial class PlayerInput : Node
         {
             if (SelectedSector != null)
             {
-                SelectedStar._Node.GFX.Select(false, true);
+                SelectedStar._Node.GFX.Select(false, true, false, false);
             }
             else
             {
@@ -251,5 +318,26 @@ public partial class PlayerInput : Node
         {
             SelectedPlanet = null;
         }
+    }
+
+    public void DeselectFleetAll()
+    {
+        if (SelectedFleets.Count > 0)
+        {
+            SelectedFleets[0].AtStar_PerTurn._Node.GFX.Deselect();
+        }
+
+        SelectedFleets.Clear();
+    }
+
+    public void DeselectFleet(FleetData fleet)
+    {
+        if (SelectedFleets.Count == 1)
+        {
+            SelectedFleets[0].AtStar_PerTurn._Node.GFX.Deselect();
+        }
+        SelectedFleets.Remove(fleet); 
+
+        Game.GalaxyUI.RefreshPawnsUI();
     }
 }

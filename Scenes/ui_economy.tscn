@@ -5,49 +5,579 @@
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="3_r0xue"]
 [ext_resource type="Script" path="res://Scripts/UI/Economy/UIEconomyInfoItem.cs" id="4_6plu3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_johyr"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0.25098)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kh0fa"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 1)
 skew = Vector2(0.32, 0)
 expand_margin_left = 8.0
 expand_margin_right = 8.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_johyr"]
-bg_color = Color(0.25098, 0.25098, 0.25098, 0.25098)
-
-[node name="Economy" type="Control" node_paths=PackedStringArray("Title", "Local", "Pops", "Growth", "Energy", "Minerals", "Production", "Shipbuilding", "Trade", "Research", "Culture", "Authority", "Influence", "BC")]
-custom_minimum_size = Vector2(0, 152)
+[node name="Economy" type="Control" node_paths=PackedStringArray("Title", "Energy", "Minerals", "Production", "Shipbuilding", "BC", "Research", "Culture", "Influence", "Local", "Pops", "Growth")]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1120.0
-offset_bottom = -936.0
+offset_top = -4.0
+offset_right = -1920.0
+offset_bottom = -1020.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2s0iy")
 Title = NodePath("TitleBox/Title")
-Local = NodePath("VBoxContainer/FirstRow/Local")
-Pops = NodePath("VBoxContainer/FirstRow/Local/Pops")
-Growth = NodePath("VBoxContainer/FirstRow/Local/Growth")
-Energy = NodePath("VBoxContainer/FirstRow/Energy")
-Minerals = NodePath("VBoxContainer/FirstRow/Minerals")
-Production = NodePath("VBoxContainer/FirstRow/Production")
-Shipbuilding = NodePath("VBoxContainer/FirstRow/Shipbuilding")
-Trade = NodePath("VBoxContainer/SecondRow/Trade")
-Research = NodePath("VBoxContainer/SecondRow/Research")
-Culture = NodePath("VBoxContainer/SecondRow/Culture")
-Authority = NodePath("VBoxContainer/SecondRow/Authority")
-Influence = NodePath("VBoxContainer/SecondRow/Influence")
-BC = NodePath("VBoxContainer/SecondRow/BC")
+Energy = NodePath("PanelContainer/MarginContainer/VBoxContainer/SectorRow/Energy")
+Minerals = NodePath("PanelContainer/MarginContainer/VBoxContainer/SectorRow/Minerals")
+Production = NodePath("PanelContainer/MarginContainer/VBoxContainer/SectorRow/Production")
+Shipbuilding = NodePath("PanelContainer/MarginContainer/VBoxContainer/SectorRow/Shipbuilding")
+BC = NodePath("PanelContainer/MarginContainer/VBoxContainer/EmpireRow/BC")
+Research = NodePath("PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Research")
+Culture = NodePath("PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Culture")
+Influence = NodePath("PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Influence")
+Local = NodePath("PanelContainer/MarginContainer/VBoxContainer/LocalRow")
+Pops = NodePath("PanelContainer/MarginContainer/VBoxContainer/LocalRow/Pops")
+Growth = NodePath("PanelContainer/MarginContainer/VBoxContainer/LocalRow/Growth")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -227.0
+offset_right = 227.0
+offset_bottom = 98.0
+grow_horizontal = 2
+theme = ExtResource("3_r0xue")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="NoFirstRow" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/NoFirstRow"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Not a Colony or Station[/center]"
+
+[node name="EmpireRow" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+alignment = 1
+
+[node name="Global" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
 theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Global"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]To Empire[/center]"
+
+[node name="BC" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/BC"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Treasury[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/BC"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/BC.png[/img][/b][/center]"
+
+[node name="Trade" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow"]
+visible = false
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Trade"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Trade[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Trade"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Trade.png[/img][/b][/center]"
+
+[node name="Research" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Research"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Research[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Research"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Research.png[/img][/b][/center]"
+
+[node name="Culture" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Culture"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Culture[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Culture"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Culture.png[/img][/b][/center]"
+
+[node name="Authority" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow"]
+visible = false
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Authority"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Authority[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Authority"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Authority.png[/img][/b][/center]"
+
+[node name="Influence" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Influence"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Influence[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/EmpireRow/Influence"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Influence.png[/img][/b][/center]"
+
+[node name="SectorRow" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+alignment = 1
+
+[node name="Sector" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow/Sector"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]To Sector[/center]"
+fit_content = true
+
+[node name="Energy" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow/Energy"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Energy[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow/Energy"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Energy.png[/img][/b][/center]"
+
+[node name="Minerals" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow/Minerals"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Minerals[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow/Minerals"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Minerals.png[/img][/b][/center]"
+
+[node name="Production" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow/Production"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Production[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow/Production"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Prod.png[/img][/b][/center]"
+
+[node name="Shipbuilding" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow/Shipbuilding"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Ships[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/SectorRow/Shipbuilding"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Shipyard.png[/img][/b][/center]"
+
+[node name="LocalRow" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+alignment = 1
+
+[node name="Local" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/LocalRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/LocalRow/Local"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Local[/center]"
+
+[node name="Pops" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/LocalRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/LocalRow/Pops"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Pops[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/LocalRow/Pops"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b][/center]"
+
+[node name="Growth" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/LocalRow"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme = ExtResource("3_r0xue")
+theme_type_variation = &"Black"
+theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
+script = ExtResource("4_6plu3")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/LocalRow/Growth"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center]Growth[/center]"
+
+[node name="Value" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/LocalRow/Growth"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ygdb")
+bbcode_enabled = true
+text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Growth.png[/img][/b][/center]"
 
 [node name="TitleBox" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -85,534 +615,3 @@ offset_right = 12.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.501961, 0.12549, 0, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -128.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 8
-alignment = 2
-
-[node name="NoFirstRow" type="Control" parent="VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 56)
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/NoFirstRow"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Not a Colony or Station[/center]"
-
-[node name="FirstRow" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 56)
-layout_mode = 2
-alignment = 1
-
-[node name="Local" type="HBoxContainer" parent="VBoxContainer/FirstRow"]
-visible = false
-layout_mode = 2
-
-[node name="Local" type="Panel" parent="VBoxContainer/FirstRow/Local"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Local/Local"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Local[/center]"
-
-[node name="Pops" type="Panel" parent="VBoxContainer/FirstRow/Local"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Local/Pops"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Pops[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/FirstRow/Local/Pops"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Pops.png[/img][/b][/center]"
-
-[node name="Growth" type="Panel" parent="VBoxContainer/FirstRow/Local"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Local/Growth"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Growth[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/FirstRow/Local/Growth"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Growth.png[/img][/b][/center]"
-
-[node name="Gap" type="Control" parent="VBoxContainer/FirstRow/Local"]
-custom_minimum_size = Vector2(16, 0)
-layout_mode = 2
-
-[node name="Sector" type="Panel" parent="VBoxContainer/FirstRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Sector"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Sector[/center]"
-fit_content = true
-
-[node name="Energy" type="Panel" parent="VBoxContainer/FirstRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Energy"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Energy[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/FirstRow/Energy"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Energy.png[/img][/b][/center]"
-
-[node name="Minerals" type="Panel" parent="VBoxContainer/FirstRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Minerals"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Minerals[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/FirstRow/Minerals"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Minerals.png[/img][/b][/center]"
-
-[node name="Production" type="Panel" parent="VBoxContainer/FirstRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Production"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Production[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/FirstRow/Production"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Prod.png[/img][/b][/center]"
-
-[node name="Shipbuilding" type="Panel" parent="VBoxContainer/FirstRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/FirstRow/Shipbuilding"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Ships[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/FirstRow/Shipbuilding"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Shipyard.png[/img][/b][/center]"
-
-[node name="SecondRow" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 56)
-layout_mode = 2
-alignment = 1
-
-[node name="Global" type="Panel" parent="VBoxContainer/SecondRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/Global"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Empire[/center]"
-
-[node name="Trade" type="Panel" parent="VBoxContainer/SecondRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/Trade"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Trade[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/SecondRow/Trade"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Trade.png[/img][/b][/center]"
-
-[node name="Research" type="Panel" parent="VBoxContainer/SecondRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/Research"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Research[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/SecondRow/Research"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Research.png[/img][/b][/center]"
-
-[node name="Culture" type="Panel" parent="VBoxContainer/SecondRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/Culture"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Culture[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/SecondRow/Culture"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Culture.png[/img][/b][/center]"
-
-[node name="Authority" type="Panel" parent="VBoxContainer/SecondRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/Authority"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Authority[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/SecondRow/Authority"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Authority.png[/img][/b][/center]"
-
-[node name="Influence" type="Panel" parent="VBoxContainer/SecondRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/Influence"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Influence[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/SecondRow/Influence"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/Influence.png[/img][/b][/center]"
-
-[node name="BC" type="Panel" parent="VBoxContainer/SecondRow"]
-custom_minimum_size = Vector2(84, 0)
-layout_mode = 2
-theme = ExtResource("3_r0xue")
-theme_type_variation = &"Black"
-theme_override_styles/panel = SubResource("StyleBoxFlat_johyr")
-script = ExtResource("4_6plu3")
-
-[node name="Name" type="RichTextLabel" parent="VBoxContainer/SecondRow/BC"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center]Treasury[/center]"
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/SecondRow/BC"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_0ygdb")
-bbcode_enabled = true
-text = "[center][b] $value[img=24x24]Assets/UI/Symbols/BC.png[/img][/b][/center]"

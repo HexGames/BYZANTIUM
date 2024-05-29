@@ -41,7 +41,7 @@ public partial class UIWindow : Control
         Description_Original = Description.Text;
     }
 
-    private List<ActionTargetInfo> targets = new List<ActionTargetInfo>();
+    private List<DefBuildingWrapper> targets = new List<DefBuildingWrapper>();
     public void Refresh(PlanetData _planet)
     {
         _Planet = _planet;
@@ -53,7 +53,7 @@ public partial class UIWindow : Control
             SectorData sector = Game.TurnLoop.CurrentHumanPlayerData.Sectors[idx];
             for (int buildIdx = 0; buildIdx < sector.AvailableBuildings_PerTurn.Count; buildIdx++)
             {
-                ActionTargetInfo info = sector.AvailableBuildings_PerTurn[buildIdx];
+                DefBuildingWrapper info = sector.AvailableBuildings_PerTurn[buildIdx];
                 if (info._Planet == _Planet)
                 {
                     targets.Add(info);

@@ -15,102 +15,17 @@ public partial class MapGenerator : Node
             Data.AddData(star, "Star_Type", "Main_Sequence", DefLibrary);
             Data.AddData(star, "Building", "Star_Orbit", DefLibrary);
         }
-
-        {
-            DataBlock planet = Data.AddData(planetList, "Planet", "Mercury", DefLibrary);
-            Data.AddData(planet, "Type", "Barren", DefLibrary);
-            Data.AddData(planet, "Size", 1, DefLibrary);
-            Data.AddData(planet, "Temperature", 5, DefLibrary);
-            Data.AddData(planet, "Building", "Possible_Outpost", DefLibrary);
-        }
-
-        {
-            DataBlock planet = Data.AddData(planetList, "Planet", "Venus", DefLibrary);
-            Data.AddData(planet, "Size", 2, DefLibrary);
-            Data.AddData(planet, "Type", "Toxic", DefLibrary);
-            Data.AddData(planet, "Temperature", 4, DefLibrary);
-            Data.AddData(planet, "Building", "Possible_Outpost", DefLibrary);
-            Data.AddData(planet, "MineralVeins", DefLibrary);
-            Data.AddData(planet, "Uninhabitable", DefLibrary);
-        }
-
-        {
-            DataBlock planet = Data.AddData(planetList, "Planet", "Terra", DefLibrary);
-            Data.AddData(planet, "Custom", DefLibrary);
-            Data.AddData(planet, "Size", 2, DefLibrary);
-            Data.AddData(planet, "Type", "Continental", DefLibrary);
-            Data.AddData(planet, "Temperature", 3, DefLibrary);
-            Data.AddData(planet, "Building", "Possible_Outpost", DefLibrary);
-            Data.AddData(planet, "Complex_Life", DefLibrary);
-            Data.AddData(planet, "Fertile", DefLibrary);
-        }
-
-        {
-            DataBlock planet = Data.AddData(planetList, "Planet", "Moon", DefLibrary);
-            Data.AddData(planet, "Size", 1, DefLibrary);
-            Data.AddData(planet, "Type", "Barren", DefLibrary);
-            Data.AddData(planet, "Temperature", 3, DefLibrary);
-            Data.AddData(planet, "Moon", DefLibrary);
-            Data.AddData(planet, "Building", "Possible_Outpost", DefLibrary);
-        }
-
-        {
-            DataBlock planet = Data.AddData(planetList, "Planet", "Mars", DefLibrary);
-            Data.AddData(planet, "Size", 1, DefLibrary);
-            Data.AddData(planet, "Type", "Desert", DefLibrary);
-            Data.AddData(planet, "Temperature", 2, DefLibrary);
-            Data.AddData(planet, "Building", "Possible_Outpost", DefLibrary);
-            Data.AddData(planet, "Trapped_Gasses", DefLibrary);
-            Data.AddData(planet, "Tiny_Moon", DefLibrary);
-        }
-
-        {
-            DataBlock planet = Data.AddData(planetList, "Planet", "Asteroid_Field", DefLibrary);
-            Data.AddData(planet, "Type", "Asteroid_Field", DefLibrary);
-            Data.AddData(planet, "Gold_Asteroid", DefLibrary);
-        }
-
-        {
-            DataBlock planet = Data.AddData(planetList, "Planet", "Jupiter", DefLibrary);
-            Data.AddData(planet, "Size", 6, DefLibrary);
-            Data.AddData(planet, "Type", "Gas_Giant", DefLibrary);
-            Data.AddData(planet, "Temperature", 1, DefLibrary);
-            Data.AddData(planet, "Building", "Stable_Orbit", DefLibrary);
-        }
-
-        {
-            DataBlock planet = Data.AddData(planetList, "Planet", "Ganymede", DefLibrary);
-            Data.AddData(planet, "Size", 1, DefLibrary);
-            Data.AddData(planet, "Type", "Frozen", DefLibrary);
-            Data.AddData(planet, "Temperature", 1, DefLibrary);
-            Data.AddData(planet, "Moon", DefLibrary);
-            Data.AddData(planet, "Building", "Possible_Outpost", DefLibrary);
-        }
-
-        {
-            DataBlock planet = Data.AddData(planetList, "Planet", "Saturn", DefLibrary);
-            Data.AddData(planet, "Size", 5, DefLibrary);
-            Data.AddData(planet, "Type", "Gas_Giant", DefLibrary);
-            Data.AddData(planet, "Temperature", 1, DefLibrary);
-            Data.AddData(planet, "Building", "Possible_Outpost", DefLibrary);
-            Data.AddData(planet, "Building", "Ring_Minerals", DefLibrary);
-            Data.AddData(planet, "Hidden_Rings", DefLibrary);
-            Data.AddData(planet, "Usefull_Gasses", DefLibrary);
-        }
-
-        {
-            DataBlock planet = Data.AddData(planetList, "Planet", "Titan", DefLibrary);
-            Data.AddData(planet, "Size", 1, DefLibrary);
-            Data.AddData(planet, "Type", "Frozen", DefLibrary);
-            Data.AddData(planet, "Temperature", 1, DefLibrary);
-            Data.AddData(planet, "Moon", DefLibrary);
-            Data.AddData(planet, "Building", "Possible_Outpost", DefLibrary);
-        }
-
-        {
-            DataBlock planet = Data.AddData(planetList, "Planet", "Outer_System", DefLibrary);
-            Data.AddData(planet, "Type", "Outer_System", DefLibrary);
-        }
+        
+        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Mercury");
+        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Venus");
+        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Terra");
+        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Moon");
+        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Mars");
+        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Asteroids");
+        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Jupiter");
+        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Ganymede");
+        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Saturn");
+        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Titan");
     }
 
     private List<DataBlock> Planets_VeryHot = null;
@@ -134,9 +49,9 @@ public partial class MapGenerator : Node
             GenerateNewMapSave_Stars_Planets_Random__AddFeatures(star, starFeatures);
         }
 
-        int minTemp = chosenStarData.GetSub("PlanetsHot") != null ? 2 : 1;
-        int maxTemp = chosenStarData.GetSub("PlanetsCold") != null ? 4 : 5;
-        bool gasFirst = chosenStarData.GetSub("GasGiantsFirst") != null;
+        int minTemp = chosenStarData.GetSub("PlanetsHot", false) != null ? 2 : 1;
+        int maxTemp = chosenStarData.GetSub("PlanetsCold", false) != null ? 4 : 5;
+        bool gasFirst = chosenStarData.GetSub("GasGiantsFirst", false) != null;
         int noOfPlanes = RNG.RandiRange(chosenStarData.GetSub("Planets:Min").ValueI, chosenStarData.GetSub("Planets:Max").ValueI);
         int gasPlanets = 0;
         if (RNG.RandiRange(0, 99) < 80) gasPlanets++;
@@ -147,14 +62,16 @@ public partial class MapGenerator : Node
 
         for (int n = 0; n < noOfPlanes; n++)
         {
-            int currentTemp = Mathf.RoundToInt( 1.0f * maxTemp + 0.25f - 0.85f * (maxTemp - minTemp + 1) * n / ( noOfPlanes - 1 ));
+            int currentTemp = RNG.RandiRange(1, 5);
+            if (noOfPlanes > 1)
+                Mathf.RoundToInt( 1.0f * maxTemp + 0.25f - 0.85f * (maxTemp - minTemp + 1) * n / ( noOfPlanes - 1 ));
 
-            if (n == noOfPlanes - 1)
-            {
-                DataBlock planet = Data.AddData(planetList, "Planet", "Outer_System", DefLibrary);
-                Data.AddData(planet, "Type", "Outer_System", DefLibrary);
-            }
-            else
+            //if (n == noOfPlanes - 1)
+            //{
+            //    DataBlock planet = Data.AddData(planetList, "Planet", "Outer_System", DefLibrary);
+            //    Data.AddData(planet, "Type", "Outer_System", DefLibrary);
+            //}
+            //else
             {
                 if (moons == 0 && ((gasFirst == true && n < gasPlanets) || (gasFirst == false && n > noOfPlanes - 1 - gasPlanets)))
                 {
@@ -177,7 +94,7 @@ public partial class MapGenerator : Node
                 }
                 else if ((gasFirst == true && n == gasPlanets) || (gasFirst == false && n == noOfPlanes - 1 - gasPlanets) && RNG.RandiRange(0, 99) < 80)
                 {
-                    GenerateNewMapSave_Stars_Planets_Random_Special(planetList, "Asteroid_Field", currentTemp);
+                    GenerateNewMapSave_Stars_Planets_Random_Special(planetList, "Asteroids", currentTemp);
                     maxPlanetSize = 3;
                 }
                 else
@@ -324,10 +241,53 @@ public partial class MapGenerator : Node
         Data.AddData(planet, "Temperature", currentTemp, DefLibrary);
 
         if (moon) Data.AddData(planet, "Moon", DefLibrary);
-        if (chosenPlanetData.GetSub("ExoticResourceFlag") != null) Data.AddData(planet, "ExoticResourceFlag", DefLibrary);
+        //if (chosenPlanetData.GetSub("ExoticResourceFlag") != null) Data.AddData(planet, "ExoticResourceFlag", DefLibrary);
 
-        if (currentTemp == 5) Data.AddData(planet, "High_Radiation", DefLibrary);
-        if (currentTemp == 4 && RNG.RandiRange(0, 99) < 50) Data.AddData(planet, "High_Radiation", DefLibrary);
+        if (currentTemp == 5 && currentTemp == 1) Data.AddData(planet, "Extreme_Temps", DefLibrary);
+        if (currentTemp == 5 && RNG.RandiRange(0, 99) < 140 - size * 40) Data.AddData(planet, "High_Radiation", DefLibrary);
+        if (currentTemp == 4 && RNG.RandiRange(0, 99) < 50 && RNG.RandiRange(0, 99) < 140 - size * 40) Data.AddData(planet, "High_Radiation", DefLibrary);
+        if (size == 1 && RNG.RandiRange(0, 99) < 50) Data.AddData(planet, "Low_Gravity", DefLibrary);
+        if (size == 3 && RNG.RandiRange(0, 99) < 50) Data.AddData(planet, "High_Gravity", DefLibrary);
+
+        DataBlock planetFeatures = chosenPlanetData.GetSub("Features");
+        if (planetFeatures != null)
+        {
+            GenerateNewMapSave_Stars_Planets_Random__AddFeatures(planet, planetFeatures);
+        }
+    }
+
+    private void GenerateNewMapSave_Stars_Planets_CustomPlanet(DataBlock planetList, string name)
+    {
+        DataBlock chosenPlanetData = DefLibrary.GetPlanetCustom(name);
+
+        bool custom = chosenPlanetData.GetSub("Custom", false) != null;
+        string type = chosenPlanetData.GetSub("Type").ValueS;
+        bool hasSize = chosenPlanetData.GetSub("Size", false) != null;
+        int size = 0;
+        if (hasSize)
+            size = chosenPlanetData.GetSub("Size").ValueI;
+        bool hasTemperature = chosenPlanetData.GetSub("Temperature", false) != null;
+        int temperature = 0;
+        if (hasTemperature)
+             temperature = chosenPlanetData.GetSub("Temperature").ValueI;
+        bool moon = chosenPlanetData.GetSub("Moon", false) != null;
+
+        DataBlock planet = Data.AddData(planetList, "Planet", name, DefLibrary);
+        if (custom) Data.AddData(planet, "Custom", DefLibrary);
+        Data.AddData(planet, "Type", type, DefLibrary);
+        if (hasSize) Data.AddData(planet, "Size", size, DefLibrary);
+
+        if (hasTemperature) Data.AddData(planet, "Temperature", temperature, DefLibrary);
+
+        if (moon) Data.AddData(planet, "Moon", DefLibrary);
+        //if (chosenPlanetData.GetSub("ExoticResourceFlag") != null) Data.AddData(planet, "ExoticResourceFlag", DefLibrary);
+
+        if (temperature == 5 && temperature == 1) Data.AddData(planet, "Extreme_Temps", DefLibrary);
+        if (temperature == 5 && RNG.RandiRange(0, 99) < 140 - size * 40) Data.AddData(planet, "High_Radiation", DefLibrary);
+        if (temperature == 4 && RNG.RandiRange(0, 99) < 50 && RNG.RandiRange(0, 99) < 140 - size * 40) Data.AddData(planet, "High_Radiation", DefLibrary);
+        if (size == 1 && RNG.RandiRange(0, 99) < 50) Data.AddData(planet, "Low_Gravity", DefLibrary);
+        if (size == 3 && RNG.RandiRange(0, 99) < 50) Data.AddData(planet, "High_Gravity", DefLibrary);
+
         DataBlock planetFeatures = chosenPlanetData.GetSub("Features");
         if (planetFeatures != null)
         {
@@ -353,10 +313,10 @@ public partial class MapGenerator : Node
                     Data.AddData(planet, Helper.Split_0(feature.Name), Helper.Split_1(feature.Name), DefLibrary);
                     
                     // add hidden features
-                    if (feature.Name.Contains("Ring_"))
-                    {
-                        Data.AddData(planet, "Hidden_Rings", DefLibrary);
-                    }
+                    //if (feature.Name == "Rings")
+                    //{
+                    //    Data.AddData(planet, "Hidden_Rings", DefLibrary);
+                    //}
                 }
                 else
                 {

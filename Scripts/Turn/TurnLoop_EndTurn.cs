@@ -13,6 +13,9 @@ public partial class TurnLoop : Node
         // update actions
         EndTurn_Actions();
 
+        // update fleets
+        StartTurn_Fleets();
+
         // update resources
         StartTurn_Resources();
 
@@ -39,30 +42,34 @@ public partial class TurnLoop : Node
             {
                 SectorData sector = player.Sectors[sectorIdx];
 
-                ActionBuild.Update(sector, Game); // --- !!! ---
+                ActionBuild.EndTurn(sector, Game); // --- !!! ---
+            }
+        }
+    }
+    // ----------------------------------------------------------------------------------------------
+    private void StartTurn_Fleets()
+    {
+        for (int starIdx = 0; starIdx < Game.Map.Data.Stars.Count; starIdx++)
+        {
+            StarData star = Game.Map.Data.Stars[starIdx];
+            star.Fleets_PerTurn.Clear();
+        }
+
+        for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.Map.Data.Players[playerIdx];
+            for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
+            {
+                FleetData fleet = player.Fleets[fleetIdx];
+                StarData star = Data.GetLinkStarData(fleet.Data, Game.Map.Data);
+
+                star.Fleets_PerTurn.Add(fleet);
+                fleet.AtStar_PerTurn = star;
             }
         }
     }
 
     // ----------------------------------------------------------------------------------------------
-    private class ResourceInfo
-    {
-        public enum Type
-        {
-            VALUE,
-            VALUE_INCOME,
-            INCOME,
-            TOTAL_USED
-        }
-
-        public Type ResType = Type.VALUE;
-
-        public int Value_1 = 0;
-        public int Value_2 = 0;
-
-        public string Name = "Res";
-    };
-
     private void StartTurn_Resources()
     {
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
@@ -81,25 +88,21 @@ public partial class TurnLoop : Node
                     SystemData system = sector.Systems[sectorIdx];
                     system.Resources_PerTurn.Refresh();
 
-                    for (int colonyIdx = 0; colonyIdx < sector.Systems.Count; colonyIdx++)
+                    for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
                     {
                         ColonyData colony = system.Colonies[colonyIdx];
                         colony.Resources_PerTurn.Refresh();
                         //colony.ActionsConPerTurn.Refresh();
+                        //colony.Resources_PerTurn.AddIncome(baseGrowth.Name, baseGrowth.ValueI);
 
-                        DataBlock baseGrowth = colony.Resources.GetSub("Growth*Income");
-                        colony.Resources_PerTurn.AddIncome(baseGrowth.Name, baseGrowth.ValueI);
+                        //DataBlock pops = colony.Resources.GetSub("Pops*Stockpile");
+                        //colony.Resources_PerTurn.AddTotal("BuildingSlots", pops.ValueI / 1000);
 
-                        DataBlock pops = colony.Resources.GetSub("Pops*Used");
-                        colony.Resources_PerTurn.AddTotal("BuildingSlots", pops.ValueI / 1000);
-
-                        colony.Jobs_PerTurn.Refresh(pops.ValueI);
-
-                        Array<DataBlock> buildings = colony.Buildings.GetSubs();
+                        Array<DataBlock> buildings = colony.Buildings.GetSubs("Building");
                         //int totalBuildings = 0;
                         for (int buildingIdx = 0; buildingIdx < buildings.Count; buildingIdx++)
                         {
-                            ActionTargetInfo buildingInfo =  Game.Def.GetBuildingInfo(buildings[buildingIdx].Name);
+                            DefBuildingWrapper buildingInfo =  Game.Def.GetBuildingInfo(buildings[buildingIdx].ValueS);
                             int buildingCount = buildings[buildingIdx].ValueI;
 
                             if (buildingInfo == null)
@@ -108,18 +111,34 @@ public partial class TurnLoop : Node
                                 continue;
                             }
 
-                            if (buildingInfo.Benefit != null) colony.Resources_PerTurn.Add(buildingInfo.Benefit, buildingCount);
+                            if (buildingInfo.Benefit != null) colony.Resources_PerTurn.Add(buildingInfo.Benefit);
                             //totalBuildings += buildingCount;
                         }
-                        colony.Resources_PerTurn.Add(colony.Jobs_PerTurn);
                         //colony.Resources_PerTurn.Use("BuildingSlots", totalBuildings);
 
+                        int popsControlled = 0;
+                        if (colony.Resources_PerTurn.GetPops() != null)
+                        {
+                            popsControlled = colony.Resources_PerTurn.GetPops().GetCPops();
+                            colony.Resources_PerTurn.ProcessGrowth();
+                        }
+
                         colony.Resources_PerTurn.ProcessIncome(); // --- !!! ---
-                        system.Resources_PerTurn.Add(colony.Resources_PerTurn);
+                        system.Resources_PerTurn.Add(colony.Resources_PerTurn, true);
                     }
                     system.Resources_PerTurn.ProcessIncome(); // --- !!! ---
                     sector.Resources_PerTurn.Add(system.Resources_PerTurn);
                 }
+
+                DataBlock queue = sector.ActionBuildQueue.GetSub("Queue");
+                if (queue.Subs.Count == 0)
+                {
+                    DataBlock overflow = sector.ActionBuildQueue.GetSub("Overflow");
+                    int production = sector.Resources_PerTurn.GetIncome("Production").GetIncomeTotal() + overflow.ValueI;
+
+                    sector._Player.Resources_PerTurn.GetIncome("BC").Income += production / 2;
+                }
+
                 sector.Resources_PerTurn.ProcessIncome(); // --- !!! ---
                 player.Resources_PerTurn.Add(sector.Resources_PerTurn);
             }

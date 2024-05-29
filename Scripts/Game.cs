@@ -9,6 +9,8 @@ public partial class Game : Node
     [Export]
     public DefLibrary Def;
     [Export]
+    public MapGenerator MapGen;
+    [Export]
     public MapCamera Camera;
     [Export]
 	public PlayerInput Input;
@@ -28,6 +30,8 @@ public partial class Game : Node
     public MapNode Map;
     [Export]
     public TurnLoop TurnLoop;
+    [Export]
+    public GameArgs Args;
 
     [ExportCategory("Runtime")]
     [Export]
@@ -35,18 +39,17 @@ public partial class Game : Node
 
     private bool FirstFrame = true;
 
+    public override void _Ready()
+    {
+        Args.ReadyArgs();
+    }
     public override void _Process(double delta)
     {
         if (FirstFrame)
         {
-            for (int idx = 0; idx < Map.Data.Players.Count; idx++)
+            if (HumanPlayer != null)
             {
-                if (Map.Data.Players[idx].Human)
-                {
-                    HumanPlayer = Map.Data.Players[idx];
-                    Camera.TargetPosition = HumanPlayer.Sectors[0].Systems[0].Star._Node.GFX.GlobalPosition;
-                    break;
-                }
+                Camera.TargetPosition = HumanPlayer.Sectors[0].Systems[0].Star._Node.GFX.GlobalPosition;
             }
 
             FirstFrame = false;

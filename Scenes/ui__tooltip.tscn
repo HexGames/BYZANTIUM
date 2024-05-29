@@ -1,11 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcujexjsspq5a"]
+[gd_scene load_steps=7 format=3 uid="uid://dcujexjsspq5a"]
 
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_o7c1n"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="2_wahaa"]
 [ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltip.cs" id="2_xdy0g"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10q71"]
+bg_color = Color(0, 0, 0, 0.878431)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ixe2"]
-bg_color = Color(0.12549, 0.12549, 0.12549, 0.752941)
+bg_color = Color(0.380392, 0.14902, 0.109804, 0.752941)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uoqy0"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 0.752941)
@@ -19,6 +22,7 @@ offset_right = -1664.0
 offset_bottom = -1044.0
 size_flags_vertical = 0
 theme = ExtResource("1_o7c1n")
+theme_override_styles/panel = SubResource("StyleBoxFlat_10q71")
 script = ExtResource("2_xdy0g")
 
 [node name="Container" type="VBoxContainer" parent="."]
@@ -33,28 +37,35 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4ixe2")
 
-[node name="Title" type="RichTextLabel" parent="Container/TitleBG"]
+[node name="MarginContainer" type="MarginContainer" parent="Container/TitleBG"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+
+[node name="Title" type="RichTextLabel" parent="Container/TitleBG/MarginContainer"]
+layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_wahaa")
 theme_type_variation = &"Title"
 bbcode_enabled = true
 text = "$value"
+fit_content = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Container"]
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
 
 [node name="Rows" type="VBoxContainer" parent="Container/MarginContainer"]
 layout_mode = 2
@@ -67,6 +78,7 @@ layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 1
 theme = ExtResource("2_wahaa")
+theme_override_constants/line_separation = 2
 bbcode_enabled = true
 text = "$value
 "
@@ -82,6 +94,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("2_wahaa")
+theme_override_constants/line_separation = 2
 bbcode_enabled = true
 text = "[right]$value[/right]"
 fit_content = true
@@ -96,14 +109,13 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uoqy0")
 
 [node name="Left_2" type="RichTextLabel" parent="Container/MarginContainer/Rows"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 1
 theme = ExtResource("2_wahaa")
+theme_override_constants/line_separation = 2
 bbcode_enabled = true
-text = "$value
-"
+text = "$value"
 fit_content = true
 scroll_active = false
 
@@ -117,6 +129,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("2_wahaa")
+theme_override_constants/line_separation = 2
 bbcode_enabled = true
 text = "[right]$value[/right]"
 fit_content = true
@@ -136,6 +149,7 @@ layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 1
 theme = ExtResource("2_wahaa")
+theme_override_constants/line_separation = 2
 bbcode_enabled = true
 text = "$value
 "
@@ -152,6 +166,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("2_wahaa")
+theme_override_constants/line_separation = 2
 bbcode_enabled = true
 text = "[right]$value[/right]"
 fit_content = true

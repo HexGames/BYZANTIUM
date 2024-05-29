@@ -19,19 +19,11 @@ public partial class ColonyData : Node
     public string ColonyName = "";
 
     [Export]
+    public DataBlock Type = null;
+    [Export]
     public DataBlock Resources = null;
     [Export]
-    public DataBlock Jobs = null;
-    [Export]
     public DataBlock Buildings = null;
-    [Export]
-    public DataBlock Support = null;
-
-    [ExportCategory("ColonyData-Actions")]
-    [Export]
-    public DataBlock ActionConstruction = null;
-    [Export]
-    public DataBlock ActionShipbuilding = null;
 
     [ExportCategory("ColonyData-Links")]
     [Export]
@@ -40,9 +32,8 @@ public partial class ColonyData : Node
     // resources
     public ResourcesWrapper Resources_PerTurn = null;
 
-    // jobs
-    public JobsWrapper Jobs_PerTurn = null;
-
-    // actions
-    public List<ActionColonyConBuildings> ActionsConBuildingsPossible = new List<ActionColonyConBuildings>();
+    public bool IsWorld()
+    {
+        return Type.ValueS == "World";
+    }
 }

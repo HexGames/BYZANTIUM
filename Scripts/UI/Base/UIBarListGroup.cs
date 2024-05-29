@@ -21,6 +21,7 @@ public partial class UIBarListGroup : Control
     private Control Sub_3 = null;
     private RichTextLabel Sub_3_Name = null;
     private string Sub_3_Name_Original = null;
+    private TextureRect Flag = null;
     private Panel Selected = null;
 
     //[ExportCategory("Runtime")]
@@ -59,6 +60,7 @@ public partial class UIBarListGroup : Control
             Sub_3 = GetNode<Control>("Mask/ListBackground_3");
             Sub_3_Name = GetNode<RichTextLabel>("Mask/ListBackground_3/Text");
             Sub_3_Name_Original = Sub_3_Name.Text;
+            Flag = GetNode<TextureRect>("Mask/Flag");
             Selected = GetNode<Panel>("Selected");
 
             Visible = false;
@@ -87,34 +89,37 @@ public partial class UIBarListGroup : Control
         Sub_1.Visible = false;
         Sub_2.Visible = false;
         Sub_3.Visible = false;
-        if (Parent == false)
-        {
-            for (int idx = 0; idx < orderedSystems.Count; idx++)
-            {
-                if (idx == 0)
-                {
-                    Sub_1.Visible = true;
-                    Sub_1_Name.Text = Sub_1_Name_Original.Replace("$name", orderedSystems[idx].SystemName);
-                }
-                else if (idx == 1)
-                {
-                    Sub_2.Visible = true;
-                    Sub_2_Name.Text = Sub_2_Name_Original.Replace("$name", orderedSystems[idx].SystemName);
-                }
-                else if (idx == 2)
-                {
-                    Sub_3.Visible = true;
-                    if (orderedSystems.Count == 3)
-                    {
-                        Sub_3_Name.Text = Sub_3_Name_Original.Replace("$name", orderedSystems[idx].SystemName);
-                    }
-                    else
-                    {
-                        Sub_3_Name.Text = Sub_3_Name_Original.Replace("$name", "+" + (orderedSystems.Count - 2).ToString());
-                    }
-                }
-            }
-        }
+        //if (Parent == false)
+        //{
+        //    for (int idx = 0; idx < orderedSystems.Count; idx++)
+        //    {
+        //        if (idx == 0)
+        //        {
+        //            Sub_1.Visible = true;
+        //            Sub_1_Name.Text = Sub_1_Name_Original.Replace("$name", orderedSystems[idx].SystemName);
+        //        }
+        //        else if (idx == 1)
+        //        {
+        //            Sub_2.Visible = true;
+        //            Sub_2_Name.Text = Sub_2_Name_Original.Replace("$name", orderedSystems[idx].SystemName);
+        //        }
+        //        else if (idx == 2)
+        //        {
+        //            Sub_3.Visible = true;
+        //            if (orderedSystems.Count == 3)
+        //            {
+        //                Sub_3_Name.Text = Sub_3_Name_Original.Replace("$name", orderedSystems[idx].SystemName);
+        //            }
+        //            else
+        //            {
+        //                Sub_3_Name.Text = Sub_3_Name_Original.Replace("$name", "+" + (orderedSystems.Count - 2).ToString());
+        //            }
+        //        }
+        //    }
+        //}
+
+        Flag.Texture = Game.Assets.GetTexture2D(_SectorData._Player.Empire.GetSub("Flag").ValueS);
+        Flag.Visible = true;
 
         Visible = true;
     }
@@ -141,34 +146,37 @@ public partial class UIBarListGroup : Control
         Sub_1.Visible = false;
         Sub_2.Visible = false;
         Sub_3.Visible = false;
-        if (Parent == false)
-        {
-            for (int idx = 0; idx < orderedColonies.Count; idx++)
-            {
-                if (idx == 0)
-                {
-                    Sub_1.Visible = true;
-                    Sub_1_Name.Text = Sub_1_Name_Original.Replace("$name", orderedColonies[idx].ColonyName);
-                }
-                else if (idx == 1)
-                {
-                    Sub_2.Visible = true;
-                    Sub_2_Name.Text = Sub_2_Name_Original.Replace("$name", orderedColonies[idx].ColonyName);
-                }
-                else if (idx == 2)
-                {
-                    Sub_3.Visible = true;
-                    if (orderedColonies.Count == 3)
-                    {
-                        Sub_3_Name.Text = Sub_3_Name_Original.Replace("$name", orderedColonies[idx].ColonyName);
-                    }
-                    else
-                    {
-                        Sub_3_Name.Text = Sub_3_Name_Original.Replace("$name", "+" + (orderedColonies.Count - 2).ToString());
-                    }
-                }
-            }
-        }
+        //if (Parent == false)
+        //{
+        //    for (int idx = 0; idx < orderedColonies.Count; idx++)
+        //    {
+        //        if (idx == 0)
+        //        {
+        //            Sub_1.Visible = true;
+        //            Sub_1_Name.Text = Sub_1_Name_Original.Replace("$name", orderedColonies[idx].ColonyName);
+        //        }
+        //        else if (idx == 1)
+        //        {
+        //            Sub_2.Visible = true;
+        //            Sub_2_Name.Text = Sub_2_Name_Original.Replace("$name", orderedColonies[idx].ColonyName);
+        //        }
+        //        else if (idx == 2)
+        //        {
+        //            Sub_3.Visible = true;
+        //            if (orderedColonies.Count == 3)
+        //            {
+        //                Sub_3_Name.Text = Sub_3_Name_Original.Replace("$name", orderedColonies[idx].ColonyName);
+        //            }
+        //            else
+        //            {
+        //                Sub_3_Name.Text = Sub_3_Name_Original.Replace("$name", "+" + (orderedColonies.Count - 2).ToString());
+        //            }
+        //        }
+        //    }
+        //}
+
+        Flag.Texture = Game.Assets.GetTexture2D(_SystemData._Sector._Player.Empire.GetSub("Flag").ValueS);
+        Flag.Visible = true;
 
         Visible = true;
     }

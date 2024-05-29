@@ -35,6 +35,11 @@ public partial class Data
         string name = "Link:Player:Sector:System:Colony";
         return AddData(parent, name, colony._System._Sector._Player.PlayerName + ":" + colony._System._Sector.SectorName + ":" + colony._System.SystemName + ":" + colony.ColonyName, df);
     }
+    static public DataBlock AddLink(DataBlock parent, FleetData fleet, DefLibrary df)
+    {
+        string name = "Link:Player:Fleet";
+        return AddData(parent, name, fleet._Player.PlayerName + ":" + fleet.FleetName, df);
+    }
 
     static public StarData GetLinkStarData(DataBlock parent, MapData map)
     {
@@ -69,5 +74,18 @@ public partial class Data
         DataBlock link = parent.GetLink("Link:Player:Sector:System:Colony");
         string[] split = link.ValueS.Split(":");
         return map.GetPlayer(split[0]).GetSector(split[1]).GetSystem(split[2]).GetColony(split[3]);
+    }
+
+    static public Array<FleetData> GetLinkFleetsData(DataBlock parent, MapData map)
+    {
+        Array<FleetData> fleets = new Array<FleetData>();
+        Array<DataBlock> links = parent.GetLinks("Link:Player:Fleet");
+        for (int idx = 0; idx < links.Count; idx++)
+        {
+            string[] split = links[idx].ValueS.Split(":");
+            fleets.Add(map.GetPlayer(split[0]).GetFleet(split[1]));
+        }
+
+        return fleets;
     }
 }

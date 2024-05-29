@@ -47,7 +47,7 @@ public partial class DefUIPlanets : Resource
         Textures.Add("Artic", (Texture2D)GD.Load("res://Assets/Planets/Artic.png"));
         Textures.Add("Frozen", (Texture2D)GD.Load("res://Assets/Planets/Frozen.png"));
         Textures.Add("Gas_Giant", (Texture2D)GD.Load("res://Assets/Planets/GasGiant.png"));
-        Textures.Add("Asteroid_Field", (Texture2D)GD.Load("res://Assets/Planets/AsteroidBelt.png"));
+        Textures.Add("Asteroids", (Texture2D)GD.Load("res://Assets/Planets/AsteroidBelt.png"));
         Textures.Add("Outer_System", (Texture2D)GD.Load("res://Assets/Planets/OuterSystem.png"));
 
         Textures.Add("Terra", (Texture2D)GD.Load("res://Assets/Planets/Terra.png"));

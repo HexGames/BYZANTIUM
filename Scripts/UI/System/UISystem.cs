@@ -7,16 +7,11 @@ public partial class UISystem : Control
     [Export]
     public UISystemBarList SystemBar = null;
     [Export]
-    public UIBudget Budget = null;
-    [Export]
     public UIConstruction SectorConstruction = null;
     [Export]
     public UIShipbuilding SectorShipbuilding = null;
     [Export]
     public UIEconomyInfo EconomyInfo = null;
-    [Export]
-    public UIFocusList FocusInfo = null;
-    [Export]
     public UIItemList PlanetInfo = null;
     [Export]
     public UIItemList BuildingInfo = null;
@@ -70,8 +65,6 @@ public partial class UISystem : Control
         {
             // deselect other planets
             SystemBar.Visible = false;
-
-            Budget.Visible = false;
             SectorConstruction.Visible = false;
             SectorShipbuilding.Visible = false;
             PlanetInfo.Visible = false;
@@ -91,8 +84,6 @@ public partial class UISystem : Control
 
         if (_StarData.System != null)
         {
-            Budget.Visible = false;
-
             SectorConstruction.Refresh(_StarData.System._Sector);
             SectorConstruction.Visible = true;
             SectorShipbuilding.Visible = false;
@@ -108,7 +99,6 @@ public partial class UISystem : Control
         }
         else
         {
-            Budget.Visible = false;
             SectorConstruction.Visible = false;
             SectorShipbuilding.Visible = false;
 
@@ -194,8 +184,6 @@ public partial class UISystem : Control
 
         BuildingInfo.Visible = false;
 
-        FocusInfo.Visible = false;
-
         EconomyInfo.Refresh(sector);
         EconomyInfo.Visible = true;
     }
@@ -205,8 +193,6 @@ public partial class UISystem : Control
         PlanetInfo.Visible = false;
 
         BuildingInfo.Visible = false;
-
-        FocusInfo.Visible = false;
 
         EconomyInfo.Refresh(system);
         EconomyInfo.Visible = true;
@@ -227,23 +213,19 @@ public partial class UISystem : Control
             EconomyInfo.Refresh(colony);
             EconomyInfo.Visible = true;
 
-            FocusInfo.Refresh(colony);
-            FocusInfo.Visible = true;
-
             //JobList.Refresh(colony);
             //JobList.Visible = true;
 
-            int production = colony.Resources_PerTurn.Get("Production").Value_2;
-            int shipbuilding = colony.Resources_PerTurn.Get("Shipbuilding").Value_1;
+            int production = colony.Resources_PerTurn.GetIncome("Production").GetIncomeTotal();
+            int shipbuilding = colony.Resources_PerTurn.GetIncome("Shipbuilding").GetIncomeTotal();
 
-            SectorShipbuilding.Refresh(colony.ColonyName, colony.ActionShipbuilding, shipbuilding);
-            SectorShipbuilding.Visible = true;
+            //SectorShipbuilding.Refresh(colony.ColonyName, colony.ActionShipbuilding, shipbuilding);
+            SectorShipbuilding.Visible = false;
         }
         else
         {
             BuildingInfo.Visible = false;
             EconomyInfo.Visible = false;
-            FocusInfo.Visible = false;
             SectorShipbuilding.Visible = false;
         }
     }
@@ -253,6 +235,5 @@ public partial class UISystem : Control
         PlanetInfo.Visible = false;
         BuildingInfo.Visible = false;
         EconomyInfo.Visible = false;
-        FocusInfo.Visible = false;
     }
 }

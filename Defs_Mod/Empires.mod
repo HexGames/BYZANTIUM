@@ -6,6 +6,7 @@ Empieres
 		Specie Human
 		StartingPlanet Terra
 		StartingPlanetType Temperate
+		Ethic Federalist
 	}
 	Empire Aeolan
 	{
@@ -13,6 +14,7 @@ Empieres
 		Specie Human
 		StartingPlanet Random
 		StartingPlanetType Temperate
+		Ethic Scientist
 	}
 	Empire Mining_Guild
 	{
@@ -20,6 +22,7 @@ Empieres
 		Specie Human
 		StartingPlanet Random
 		StartingPlanetType Temperate
+		Ethic Industrialist
 	}
 	Empire Raiding_Tribes
 	{
@@ -27,6 +30,7 @@ Empieres
 		Specie Orcs
 		StartingPlanet Random
 		StartingPlanetType Temperate
+		Ethic Militarist
 	}
 	Empire Mrrleau
 	{
@@ -34,6 +38,7 @@ Empieres
 		Specie Cats
 		StartingPlanet Random
 		StartingPlanetType Temperate
+		Ethic Communist
 	}
 	Empire Tentacle
 	{
@@ -41,6 +46,7 @@ Empieres
 		Specie Squids
 		StartingPlanet Random
 		StartingPlanetType Temperate
+		Ethic Religion
 	}
 	Empire Worker_Swarm
 	{
@@ -48,6 +54,7 @@ Empieres
 		Specie Ants
 		StartingPlanet Random
 		StartingPlanetType Temperate
+		Ethic Unity
 	}
 	Empire Water_Globes
 	{
@@ -55,6 +62,7 @@ Empieres
 		Specie Sharks
 		StartingPlanet Random
 		StartingPlanetType Temperate
+		Ethic Ecologist
 	}
 	Empire Mechanotron
 	{
@@ -62,6 +70,7 @@ Empieres
 		Specie Robots
 		StartingPlanet Random
 		StartingPlanetType Temperate
+		Ethic Capitalist
 	}
 	Empire Rouge_AI
 	{
@@ -69,5 +78,6 @@ Empieres
 		Specie AI_Drones
 		StartingPlanet Random
 		StartingPlanetType Temperate
+		Ethic Xenophobe
 	}
 }

@@ -1,6 +1,16 @@
 
+using System;
+
 public class Helper
 {
+    // https://www.desmos.com/calculator/j69axyulw7
+    // https://www.desmos.com/calculator/mkuwt9fpaf
+    public static float SoftLimit(float x)
+    {
+        x = MathF.Max(x, 0);
+        return x / (x + 1);
+    }
+
     public static string Tabs(int tabs)
     {
         string text = "";
@@ -57,6 +67,27 @@ public class Helper
         }
     }
 
+    public static string GetColorPrefix_Good()
+    {
+        return "[color=#ff8888]";
+    }
+    public static string GetColorPrefix_Bad()
+    {
+        return "[color=#88ff88]";
+    }
+    public static string GetColorPrefix_Waste()
+    {
+        return "[color=#ffff44]";
+    }
+    public static string GetColorPrefix_Neutral()
+    {
+        return "[color=#ffffff]";
+    }
+
+    public static string GetColorSufix()
+    {
+        return "[/color]";
+    }
     public static string GetOrdinal(int num)
     {
         if (num <= 0) return num.ToString();

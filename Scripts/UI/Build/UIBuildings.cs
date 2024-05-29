@@ -112,7 +112,7 @@ public partial class UIBuildings : Control
 
         ColonizeButton_Tooltip.Disabled = true;
 
-        Array<DataBlock> buildings = null;
+        Array<DataBlock> buildings;
         if (_Planet.Colony != null)
         {
             buildings = _Planet.Colony.Buildings.GetSubs("Building");
@@ -125,140 +125,46 @@ public partial class UIBuildings : Control
         int mainBuildingsIdx = 0;
         for (int idx = 0; idx < buildings.Count; idx++)
         {
-            DataBlock upgrade = buildings[idx].GetSub("NewBuilding");
-            if (upgrade == null)
+            DataBlock building = buildings[idx];
+            //DataBlock upgrade = building.GetSub("NewBuilding", false);
+            BuildingQueueWrapper.Info inConstructionInfo = null;
+            if (_Sector != null)
             {
-                DataBlock buildingDef = Game.Def.GetBuilding(buildings[idx].ValueS);
-                //if (buildingDef.GetSub("Slot").ValueS == "Star" || buildingDef.GetSub("Slot").ValueS == "Colony")
+                if (building.GetSub("InConstruction", false) != null)
                 {
-                    RefreshMainBuilding(idx, buildingDef);
-                    mainBuildingsIdx++;
+                    if (_Planet.Colony != null)
+                    {
+                        continue;
+                        //inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.Get(building.ValueS, _Planet);
+                    }
+                    else
+                    {
+                        inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.Get(building.ValueS, _Planet);
+                    }
                 }
+                else
+                {
+                    inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.GetUpgrade(building.ValueS, _Planet);
+                }
+            }
+
+            DataBlock buildingDef;
+            if (inConstructionInfo != null)
+            {
+                buildingDef = inConstructionInfo.BuildingDef;
             }
             else
             {
-                BuildingQueueWrapper.Info inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.Get(upgrade.ValueS, _Planet);
-                DataBlock buildingDef = Game.Def.GetBuilding(upgrade.ValueS);
-                //if (buildingDef.GetSub("Slot").ValueS == "Star" || buildingDef.GetSub("Slot").ValueS == "Colony")
-                {
-                    RefreshMainBuilding(idx, buildingDef, inConstructionInfo);
-                    mainBuildingsIdx++;
-                }
+                buildingDef = Game.Def.GetBuilding(buildings[idx].ValueS);
             }
+
+            RefreshMainBuilding(mainBuildingsIdx, buildingDef, inConstructionInfo);
+            mainBuildingsIdx++;
         }
 
         hasColonySection = mainBuildingsIdx > 0;
         Colonizing.Visible = false;
         Colonize.Visible = false;
-
-        /*if (_Planet.Colony == null)
-        {
-            if (_Planet._Star.System == null)
-            {
-                if (_Planet.Data.HasSub("Building", "Star_Orbit"))
-                {
-                    SectorData sector = null;
-                    int cost = PlayerHelper.GetNewStarbaseCost(Game, Game.HumanPlayer, _Planet, out sector);
-                    ColonizeCost.Text = ColonizeCost_Original.Replace("$value", cost.ToString());
-                    ColonizeTime.Text = ColonizeTime_Original.Replace("$time", PlayerHelper.GetBuildTime(Game, sector, cost).ToString());
-                    ColonizButton.Disabled = false;
-                    Colonize.Visible = true;
-                    hasColonySection = true;
-                }
-                else if (_Planet.Data.HasSub("Building", "Landing_Spot"))
-                {
-                    int cost = PlayerHelper.GetNewColonyCost(Game, null, _Planet);
-                    ColonizeCost.Text = ColonizeCost_Original.Replace("$value", cost.ToString());
-                    ColonizeTime.Text = ColonizeTime_Original.Replace("$time", "-");
-                    ColonizButton.Disabled = true;
-                    ColonizeButton_Tooltip.Row_1 = ColonizeButton_Tooltip_Original.Replace("$text", "You do not own the system.\n\n Construct a starbase arond the star.");
-                    ColonizeButton_Tooltip.Disabled = false;
-                    Colonize.Visible = true;
-                    hasColonySection = true;
-                }
-                else
-                {
-                    Colonize.Visible = false;
-                }
-            }
-            else
-            {
-                Colonize.Visible = false;
-                Array<DataBlock> planetBuildings = _Planet.Data.GetSubs("Building");
-                int mainBuildingsIdx = 0;
-                for (int idx = 0; idx < planetBuildings.Count; idx++)
-                {
-                    DataBlock upgrade = planetBuildings[idx].GetSub("NewBuilding");
-                    if (upgrade == null)
-                    {
-                        DataBlock buildingDef = Game.Def.GetBuilding(planetBuildings[idx].ValueS);
-                        //if (buildingDef.GetSub("Slot").ValueS == "Star" || buildingDef.GetSub("Slot").ValueS == "Colony")
-                        {
-                            RefreshMainBuilding(idx, buildingDef);
-                            mainBuildingsIdx++;
-                        }
-                    }
-                    else
-                    {
-                        BuildingQueueWrapper.Info inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.Get(upgrade.ValueS, _Planet);
-                        DataBlock buildingDef = Game.Def.GetBuilding(upgrade.ValueS);
-                        //if (buildingDef.GetSub("Slot").ValueS == "Star" || buildingDef.GetSub("Slot").ValueS == "Colony")
-                        {
-                            RefreshMainBuilding(idx, buildingDef, inConstructionInfo);
-                            mainBuildingsIdx++;
-                        }
-                    }
-                }
-
-                hasColonySection = mainBuildingsIdx > 0;
-                //if (_Planet.Data.HasSub("Building", "Landing_Spot"))
-                //{
-                //    int cost = PlayerHelper.GetNewColonyCost(Game, null, _Planet);
-                //    ColonizeCost.Text = ColonizeCost_Original.Replace("$value", cost.ToString());
-                //    ColonizeTime.Text = ColonizeTime_Original.Replace("$time", PlayerHelper.GetBuildTime(Game, _Sector, cost).ToString());
-                //    ColonizButton.Disabled = false;
-                //    Colonize.Visible = true;
-                //    hasColonySection = true;
-                //}
-                //else
-                //{
-                //    Colonize.Visible = false;
-                //}
-            }
-        }
-        else
-        {
-            Colonize.Visible = false;
-            ColonyData colony = _Planet.Colony;
-            Array<DataBlock> buildings = colony.Buildings.GetSubs("Building");
-            int mainBuildingsIdx = 0;
-            for (int idx = 0; idx < buildings.Count; idx++)
-            {
-                DataBlock upgrade = buildings[idx].GetSub("NewBuilding");
-                if (upgrade == null)
-                {
-                    DataBlock buildingDef = Game.Def.GetBuilding(buildings[idx].ValueS);
-                    //if (buildingDef.GetSub("Slot").ValueS == "Star" || buildingDef.GetSub("Slot").ValueS == "Colony")
-                    {
-                        RefreshMainBuilding(idx, buildingDef);
-                        mainBuildingsIdx++;
-                    }
-                }
-                else
-                {
-                    BuildingQueueWrapper.Info inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.Get(upgrade.ValueS, _Planet);
-                    DataBlock buildingDef = Game.Def.GetBuilding(upgrade.ValueS);
-                    //if (buildingDef.GetSub("Slot").ValueS == "Star" || buildingDef.GetSub("Slot").ValueS == "Colony")
-                    {
-                        RefreshMainBuilding(idx, buildingDef, inConstructionInfo);
-                        mainBuildingsIdx++;
-                    }
-                }
-            }
-
-            hasColonySection = mainBuildingsIdx > 0;
-        }*/
-        //Colonizing.Visible = false;
 
         // res
         bool hasResSection = false;
@@ -328,7 +234,10 @@ public partial class UIBuildings : Control
                     Array<DataBlock> upgrades = new Array<DataBlock>();
                     for (int upgradeIdx = 0; upgradeIdx < upgradeLinks.Count; upgradeIdx++)
                     {
-                        upgrades.Add(Game.Def.GetBuilding(upgradeLinks[upgradeIdx].ValueS));
+                        if (ActionBuild.GetAvailableBuilding(Game, _Sector, upgradeLinks[upgradeIdx].ValueS, _Planet) != null)
+                        {
+                            upgrades.Add(Game.Def.GetBuilding(upgradeLinks[upgradeIdx].ValueS));
+                        }
                     }
                     OpenUpgradeWindow(upgrades, building.GlobalPosition + building.Size / 2);
                     return;
@@ -339,7 +248,7 @@ public partial class UIBuildings : Control
         {
             if (Upgrades[idx] == building)
             {
-                ActionTargetInfo action = ActionBuild.GetAvailableBuildings(Game, _Sector, building._BuildingDef.ValueS, _Planet);
+                DefBuildingWrapper action = ActionBuild.GetAvailableBuilding(Game, _Sector, building._BuildingDef.ValueS, _Planet);
                 if (action != null)
                 {
                     ActionBuild.AddToQueue(Game, action);

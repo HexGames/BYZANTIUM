@@ -103,7 +103,7 @@ public partial class DataBlock : Resource
         return ret;
     }
 
-    public DataBlock GetSub(string type)
+    public DataBlock GetSub(string type, bool showWarning = true)
     {
         for (int idx = 0; idx < Subs.Count; idx++)
         {
@@ -112,6 +112,9 @@ public partial class DataBlock : Resource
                 return Subs[idx];
             }
         }
+        if (showWarning) 
+            GD.Print("sub not found Data : Type - " + Name + " : " + type);
+
         return null;
     }
 
@@ -165,5 +168,9 @@ public partial class DataBlock : Resource
         }
 
         return ret;
+    }
+    public Array<DataBlock> GetLinks(string link)
+    {
+        return GetSubs(link, true);
     }
 }

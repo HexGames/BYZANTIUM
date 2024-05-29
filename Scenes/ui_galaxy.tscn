@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bukr82o6e8rl3"]
+[gd_scene load_steps=14 format=3 uid="uid://bukr82o6e8rl3"]
 
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_cqepg"]
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
@@ -8,10 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://c8n0vxyr5nsyj" path="res://Scenes/ui_buildings.tscn" id="5_5o3b3"]
 [ext_resource type="PackedScene" uid="uid://py7tx1sn7xf2" path="res://Scenes/ui_economy.tscn" id="5_rp6hd"]
 [ext_resource type="PackedScene" uid="uid://dcmj5bohen8h7" path="res://Scenes/ui_construction.tscn" id="6_bdnbk"]
-[ext_resource type="PackedScene" uid="uid://d07nreiik6fo3" path="res://Scenes/ui_colony_focus.tscn" id="6_yjcl3"]
-[ext_resource type="PackedScene" uid="uid://btm8s0fh8xu5d" path="res://Scenes/ui_itemlist.tscn" id="9_htb26"]
+[ext_resource type="PackedScene" uid="uid://hys62jrhlt0i" path="res://Scenes/ui_pops_info.tscn" id="8_xwtg6"]
+[ext_resource type="PackedScene" uid="uid://bel8s4g6tiuv1" path="res://Scenes/ui_control_info.tscn" id="9_8ybwa"]
+[ext_resource type="PackedScene" uid="uid://bjnpkcy3hqibr" path="res://Scenes/ui_planet_info.tscn" id="9_82sdf"]
+[ext_resource type="PackedScene" uid="uid://cagh3vswhvysa" path="res://Scenes/ui_factions_info.tscn" id="10_vml6j"]
+[ext_resource type="PackedScene" uid="uid://b2a0hskimxnut" path="res://Scenes/ui_fleets.tscn" id="12_sv4sa"]
 
-[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("Systems", "Resources", "GalaxyBar", "ColonyBuildings", "EconomyInfo", "SectorConstruction", "ColonyFocus", "PlanetInfo", "CurrentTurn")]
+[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("Systems", "Resources", "GalaxyBar", "ColonyBuildings", "SectorConstruction", "PopsInfo", "PlanetInfo", "ControlInfo", "FactionsInfo", "FleetsSelected", "CurrentTurn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,10 +27,12 @@ Systems = [NodePath("SystemsHUD/System")]
 Resources = NodePath("Economy")
 GalaxyBar = NodePath("GameBar")
 ColonyBuildings = NodePath("ColonyBuildings")
-EconomyInfo = NodePath("EconomyInfo")
 SectorConstruction = NodePath("SectorConstruction")
-ColonyFocus = NodePath("ColonyFocus")
+PopsInfo = NodePath("PopsInfo")
 PlanetInfo = NodePath("PlanetInfo")
+ControlInfo = NodePath("ControlInfo")
+FactionsInfo = NodePath("FactionsInfo")
+FleetsSelected = NodePath("SelectedFleets")
 CurrentTurn = NodePath("Turn")
 
 [node name="SystemsHUD" type="Control" parent="."]
@@ -43,29 +48,28 @@ mouse_filter = 2
 
 [node name="Economy" parent="." instance=ExtResource("4_y8k0i")]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = -294.0
-offset_right = 294.0
-offset_bottom = 32.0
+offset_top = 8.0
+offset_right = 0.0
+offset_bottom = 8.0
 grow_vertical = 1
 
 [node name="GameBar" parent="." instance=ExtResource("4_5jqa5")]
 layout_mode = 1
 
 [node name="EconomyInfo" parent="." instance=ExtResource("5_rp6hd")]
-custom_minimum_size = Vector2(800, 152)
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = -320.0
 offset_top = 64.0
-offset_right = 320.0
-offset_bottom = 216.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_vertical = 1
 
 [node name="SectorConstruction" parent="." instance=ExtResource("6_bdnbk")]
@@ -82,37 +86,43 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -560.0
-offset_top = -288.0
-offset_right = 560.0
-offset_bottom = -168.0
+offset_top = -212.0
+offset_bottom = -212.0
 grow_vertical = 0
 
-[node name="ColonyFocus" parent="." instance=ExtResource("6_yjcl3")]
+[node name="PopsInfo" parent="." instance=ExtResource("8_xwtg6")]
+layout_mode = 1
+anchors_preset = -1
+offset_top = 8.0
+offset_bottom = 8.0
+
+[node name="PlanetInfo" parent="." instance=ExtResource("9_82sdf")]
 custom_minimum_size = Vector2(288, 320)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_bottom = 0.0
 offset_left = -16.0
-offset_top = 64.0
+offset_top = 320.0
 offset_right = -16.0
-offset_bottom = 64.0
+offset_bottom = 320.0
 grow_horizontal = 0
 grow_vertical = 1
 
-[node name="PlanetInfo" parent="." instance=ExtResource("9_htb26")]
-custom_minimum_size = Vector2(288, 320)
+[node name="ControlInfo" parent="." instance=ExtResource("9_8ybwa")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_left = -16.0
-offset_top = 400.0
-offset_right = -16.0
-offset_bottom = 400.0
-grow_horizontal = 0
-grow_vertical = 1
+offset_top = 360.0
+offset_bottom = 360.0
+
+[node name="FactionsInfo" parent="." instance=ExtResource("10_vml6j")]
+layout_mode = 1
+
+[node name="SelectedFleets" parent="." instance=ExtResource("12_sv4sa")]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 16.0
+offset_right = 16.0
 
 [node name="EndTurn" type="Control" parent="."]
 layout_mode = 1

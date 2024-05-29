@@ -4,7 +4,7 @@ Buildings
 	{
 		Upgrade Starport
 		Slot Star
-		Icon 0
+		Icon O
 		Idx 0
 	}
 	Building Starport
@@ -12,19 +12,16 @@ Buildings
 		Upgrade Gate
 		Cost 
 		{
-			Production 1500
+			Production 1000
 		}
 		Slot Star
 		Level I
 		Icon S
 		Idx 0
-		1 
-		{
-			Authority 1
-		}
 		Benefit 
 		{
 			SectorControl yes
+			Authority*Used 10
 		}
 	}
 	Building Gate
@@ -32,194 +29,93 @@ Buildings
 		Upgrade Supergate
 		Cost 
 		{
-			Production 10000
+			Production 5000
 		}
 		Slot Star
 		Level II
 		Icon G
 		Idx 0
-		1 
-		{
-			Authority 2
-		}
 		Benefit 
 		{
 			SectorControl yes
+			Authority*Used 10
 		}
 	}
 	Building Supergate
 	{
 		Cost 
 		{
-			Production 20000
+			Production 10000
 		}
 		Slot Star
 		Level III
 		Icon SG
 		Idx 0
-		1 
-		{
-			Authority 3
-		}
 		Benefit 
 		{
 			SectorControl yes
+			Authority*Used 10
 		}
 	}
-	Building Stable_Orbit
+	Building System_Infrastructure
 	{
-		Upgrade Energy_Capture_I
-		Slot Outpost
-		Icon E
+		Upgrade Mineral_Coordonation_Center
+		Upgrade Energy_Coordonation_Center
+		Upgrade Trade_Coordonation_Center
+		Slot System
+		Icon SI
 	}
-	Building Energy_Capture_I
+	Building Mineral_Coordonation_Center
 	{
-		Upgrade Energy_Capture_II
-		Cost 
-		{
-			Production 800
-		}
-		Slot Outpost
-		Level I
-		Icon E
-		Benefit 
-		{
-			Energy*Income 40
-		}
-	}
-	Building Energy_Capture_II
-	{
-		Upgrade Energy_Capture_III
-		Cost 
-		{
-			Production 1200
-		}
-		Slot Outpost
-		Level II
-		Icon E
-		Benefit 
-		{
-			Energy*Income 80
-		}
-	}
-	Building Energy_Capture_III
-	{
-		Upgrade Energy_Capture_IV
 		Cost 
 		{
 			Production 2500
 		}
-		Slot Outpost
-		Level III
-		Icon E
+		Slot System
+		Icon MCC
 		Benefit 
 		{
-			Energy*Income 150
+			Mineral*PerLevelSystem 10
+			Trade*Used 5
 		}
 	}
-	Building Energy_Capture_IV
-	{
-		Upgrade Energy_Capture_V
-		Cost 
-		{
-			Production 10000
-		}
-		Slot Outpost
-		Level IV
-		Icon E
-		Required Colony
-		Benefit 
-		{
-			Energy*Income 500
-		}
-	}
-	Building Energy_Capture_V
+	Building Energy_Coordonation_Center
 	{
 		Cost 
 		{
-			Production 40000
+			Production 2500
 		}
-		Slot Outpost
-		Level V
-		Icon E
-		Required Colony
+		Slot System
+		Icon ECC
 		Benefit 
 		{
-			Energy*Income 1200
+			Energy*PerLevelSystem 10
+			Trade*Used 5
 		}
 	}
-	Building Ring_Minerals
-	{
-		Upgrade Ring_Mine
-		Slot Outpost
-		Icon RM
-	}
-	Building Ring_Mine
+	Building Trade_Coordonation_Center
 	{
 		Cost 
 		{
-			Production 1200
+			Production 2500
 		}
-		Slot Outpost
-		Level I
-		Icon RM
+		Slot System
+		Icon TCC
 		Benefit 
 		{
-			Minerals*Income 100
-		}
-	}
-	Building Possible_Asteroid_Mines
-	{
-		Upgrade Asteroid_Mines_I
-		Slot Outpost
-	}
-	Building Asteroid_Mines_I
-	{
-		Upgrade Asteroid_Mines_II
-		Cost 
-		{
-			Production 2000
-		}
-		Slot Outpost
-		Level I
-		Benefit 
-		{
-			Minerals*Income 150
-		}
-	}
-	Building Asteroid_Mines_II
-	{
-		Upgrade Asteroid_Mines_III
-		Cost 
-		{
-			Production 5000
-		}
-		Slot Outpost
-		Level II
-		Benefit 
-		{
-			Minerals*Income 400
-		}
-	}
-	Building Asteroid_Mines_III
-	{
-		Cost 
-		{
-			Production 10000
-		}
-		Slot Outpost
-		Level III
-		Benefit 
-		{
-			Minerals*Income 800
+			BC*PerLevelSystem 10
+			Trade*Used 5
 		}
 	}
 	Building Possible_Outpost
 	{
+		Upgrade Energy_Capture_I
+		Upgrade Factory_I
 		Upgrade Mineral_Processers_I
-		Upgrade Research_Lab_I
+		Upgrade Shipyard_I
 		Upgrade Trade_Post_I
-		Upgrade Energy_Generators_I
+		Upgrade Research_Lab_I
+		Upgrade Cultural_Retreat_I
 		Slot Outpost
 		Icon O
 	}
@@ -233,10 +129,13 @@ Buildings
 		Slot Outpost
 		Level I
 		Icon M
-		AddSlot Possible_Colony
+		RequiredFeature Rocky|Rings
+		AddSlot World
 		Benefit 
 		{
-			Minerals*Income 50
+			Minerals*Income 20
+			Mineral*Level 1
+			Trade*Used 2
 		}
 	}
 	Building Mineral_Processers_II
@@ -251,7 +150,9 @@ Buildings
 		Icon M
 		Benefit 
 		{
-			Minerals*Income 100
+			Minerals*Income 40
+			Mineral*Level 2
+			Trade*Used 4
 		}
 	}
 	Building Mineral_Processers_III
@@ -259,14 +160,16 @@ Buildings
 		Upgrade Mineral_Processers_IV
 		Cost 
 		{
-			Production 2500
+			Production 3000
 		}
 		Slot Outpost
 		Level III
 		Icon M
 		Benefit 
 		{
-			Minerals*Income 200
+			Minerals*Income 80
+			Mineral*Level 3
+			Trade*Used 8
 		}
 	}
 	Building Mineral_Processers_IV
@@ -279,25 +182,27 @@ Buildings
 		Slot Outpost
 		Level IV
 		Icon M
-		Required Colony
 		Benefit 
 		{
-			Minerals*Income 500
+			Minerals*Income 200
+			Mineral*Level 4
+			Trade*Used 20
 		}
 	}
 	Building Mineral_Processers_V
 	{
 		Cost 
 		{
-			Production 40000
+			Production 25000
 		}
 		Slot Outpost
 		Level V
 		Icon M
-		Required Colony
 		Benefit 
 		{
-			Minerals*Income 1200
+			Minerals*Income 500
+			Mineral*Level 5
+			Trade*Used 50
 		}
 	}
 	Building Research_Lab_I
@@ -305,15 +210,16 @@ Buildings
 		Upgrade Research_Lab_II
 		Cost 
 		{
-			Production 1200
+			Production 800
 		}
 		Slot Outpost
 		Level I
 		Icon R
-		AddSlot Possible_Colony
+		AddSlot World
 		Benefit 
 		{
-			Research*Income 20
+			Research*Income 10
+			Trade*Used 1
 		}
 	}
 	Building Research_Lab_II
@@ -321,14 +227,15 @@ Buildings
 		Upgrade Research_Lab_III
 		Cost 
 		{
-			Production 3000
+			Production 1200
 		}
 		Slot Outpost
 		Level II
 		Icon R
 		Benefit 
 		{
-			Research*Income 50
+			Research*Income 20
+			Trade*Used 2
 		}
 	}
 	Building Research_Lab_III
@@ -336,14 +243,15 @@ Buildings
 		Upgrade Research_Lab_IV
 		Cost 
 		{
-			Production 5000
+			Production 3000
 		}
 		Slot Outpost
 		Level III
 		Icon R
 		Benefit 
 		{
-			Research*Income 100
+			Research*Income 40
+			Trade*Used 4
 		}
 	}
 	Building Research_Lab_IV
@@ -356,25 +264,25 @@ Buildings
 		Slot Outpost
 		Level IV
 		Icon R
-		Required Colony
 		Benefit 
 		{
-			Research*Income 300
+			Research*Income 100
+			Trade*Used 10
 		}
 	}
 	Building Research_Lab_V
 	{
 		Cost 
 		{
-			Production 30000
+			Production 25000
 		}
 		Slot Outpost
 		Level V
 		Icon R
-		Required Colony
 		Benefit 
 		{
-			Research*Income 1000
+			Research*Income 250
+			Trade*Used 25
 		}
 	}
 	Building Trade_Post_I
@@ -382,15 +290,16 @@ Buildings
 		Upgrade Trade_Post_II
 		Cost 
 		{
-			Production 2000
+			Production 800
 		}
 		Slot Outpost
 		Level I
 		Icon T
-		AddSlot Possible_Colony
+		AddSlot World
 		Benefit 
 		{
-			BC*Income 50
+			BC*Income 10
+			Trade*Used 1
 		}
 	}
 	Building Trade_Post_II
@@ -398,14 +307,15 @@ Buildings
 		Upgrade Trade_Post_III
 		Cost 
 		{
-			Production 5000
+			Production 1200
 		}
 		Slot Outpost
 		Level II
 		Icon T
 		Benefit 
 		{
-			BC*Income 150
+			BC*Income 20
+			Trade*Used 2
 		}
 	}
 	Building Trade_Post_III
@@ -413,14 +323,15 @@ Buildings
 		Upgrade Trade_Post_IV
 		Cost 
 		{
-			Production 10000
+			Production 3000
 		}
 		Slot Outpost
 		Level III
 		Icon T
 		Benefit 
 		{
-			BC*Income 300
+			BC*Income 40
+			Trade*Used 4
 		}
 	}
 	Building Trade_Post_IV
@@ -428,35 +339,35 @@ Buildings
 		Upgrade Trade_Post_V
 		Cost 
 		{
-			Production 20000
+			Production 10000
 		}
 		Slot Outpost
 		Level IV
 		Icon T
-		Required Colony
 		Benefit 
 		{
-			BC*Income 800
+			BC*Income 100
+			Trade*Used 10
 		}
 	}
 	Building Trade_Post_V
 	{
 		Cost 
 		{
-			Production 50000
+			Production 25000
 		}
 		Slot Outpost
 		Level V
 		Icon T
-		Required Colony
 		Benefit 
 		{
-			BC*Income 2000
+			BC*Income 250
+			Trade*Used 25
 		}
 	}
-	Building Energy_Generators_I
+	Building Energy_Capture_I
 	{
-		Upgrade Energy_Generators_II
+		Upgrade Energy_Capture_II
 		Cost 
 		{
 			Production 800
@@ -464,15 +375,18 @@ Buildings
 		Slot Outpost
 		Level I
 		Icon E
-		AddSlot Possible_Colony
+		RequiredFeature Gas_Giant
+		AddSlot World
 		Benefit 
 		{
-			Energy*Income 50
+			Energy*Income 20
+			Energy*Level 1
+			Trade*Used 1
 		}
 	}
-	Building Energy_Generators_II
+	Building Energy_Capture_II
 	{
-		Upgrade Energy_Generators_III
+		Upgrade Energy_Capture_III
 		Cost 
 		{
 			Production 1200
@@ -482,49 +396,77 @@ Buildings
 		Icon E
 		Benefit 
 		{
-			Energy*Income 80
+			Energy*Income 40
+			Energy*Level 2
+			Trade*Used 2
 		}
 	}
-	Building Energy_Generators_III
+	Building Energy_Capture_III
 	{
+		Upgrade Energy_Capture_IV
 		Cost 
 		{
-			Production 2500
+			Production 3000
 		}
 		Slot Outpost
 		Level III
 		Icon E
 		Benefit 
 		{
-			Energy*Income 120
+			Energy*Income 80
+			Energy*Level 3
+			Trade*Used 4
 		}
 	}
-	Building Possible_Colony
+	Building Energy_Capture_IV
 	{
-		Upgrade Factory_I
-		Upgrade Shipyard_I
-		Upgrade Cultural_Retreat_I
-		Slot Colony
-		Icon C
+		Upgrade Energy_Capture_V
+		Cost 
+		{
+			Production 10000
+		}
+		Slot Outpost
+		Level IV
+		Icon E
+		Benefit 
+		{
+			Energy*Income 200
+			Energy*Level 4
+			Trade*Used 10
+		}
+	}
+	Building Energy_Capture_V
+	{
+		Cost 
+		{
+			Production 25000
+		}
+		Slot Outpost
+		Level V
+		Icon E
+		Benefit 
+		{
+			Energy*Income 500
+			Energy*Level 5
+			Trade*Used 25
+		}
 	}
 	Building Factory_I
 	{
 		Upgrade Factory_II
 		Cost 
 		{
-			Production 5000
+			Production 2500
 		}
-		Slot Colony
+		Slot Outpost
 		Level I
 		Icon F
+		RequiredFeature Rocky|Rings
 		AddSlot World
-		1 
-		{
-			Authority 1
-		}
 		Benefit 
 		{
-			Production*Income 100
+			Production*Income 30
+			Trade*Used 3
 		}
 	}
 	Building Factory_II
@@ -532,36 +474,32 @@ Buildings
 		Upgrade Factory_III
 		Cost 
 		{
-			Production 10000
+			Production 8000
 		}
-		Slot Colony
+		Slot Outpost
 		Level II
 		Icon F
-		1 
-		{
-			Authority 1
-		}
 		Benefit 
 		{
-			Production*Income 300
+			Production*Income 150
+			Production*PerPop 1
+			Trade*Used 15
 		}
 	}
 	Building Factory_III
 	{
 		Cost 
 		{
-			Production 30000
+			Production 25000
 		}
-		Slot Colony
+		Slot Outpost
 		Level III
 		Icon F
-		1 
-		{
-			Authority 1
-		}
 		Benefit 
 		{
-			Production*Income 1000
+			Production*Income 500
+			Production*PerPop 2
+			Trade*Used 50
 		}
 	}
 	Building Shipyard_I
@@ -569,19 +507,16 @@ Buildings
 		Upgrade Shipyard_II
 		Cost 
 		{
-			Production 10000
+			Production 2500
 		}
-		Slot Colony
+		Slot Outpost
 		Level I
 		Icon S
 		AddSlot World
-		1 
-		{
-			Authority 1
-		}
 		Benefit 
 		{
-			Shipbuilding*Income 100
+			Shipbuilding*Income 30
+			Trade*Used 3
 		}
 	}
 	Building Shipyard_II
@@ -589,36 +524,32 @@ Buildings
 		Upgrade Shipyard_III
 		Cost 
 		{
-			Production 20000
+			Production 8000
 		}
-		Slot Colony
+		Slot Outpost
 		Level II
 		Icon S
-		1 
-		{
-			Authority 1
-		}
 		Benefit 
 		{
-			Shipbuilding*Income 300
+			Shipbuilding*Income 150
+			Shipbuilding*PerPop 1
+			Trade*Used 15
 		}
 	}
 	Building Shipyard_III
 	{
 		Cost 
 		{
-			Production 50000
+			Production 25000
 		}
-		Slot Colony
+		Slot Outpost
 		Level III
 		Icon S
-		1 
-		{
-			Authority 1
-		}
 		Benefit 
 		{
-			Shipbuilding*Income 1000
+			Shipbuilding*Income 500
+			Shipbuilding*PerPop 2
+			Trade*Used 50
 		}
 	}
 	Building Cultural_Retreat_I
@@ -626,19 +557,15 @@ Buildings
 		Upgrade Cultural_Retreat_II
 		Cost 
 		{
-			Production 3000
+			Production 2500
 		}
-		Slot Colony
+		Slot Outpost
 		Level I
 		Icon U
 		AddSlot World
-		1 
-		{
-			Authority 1
-		}
 		Benefit 
 		{
-			Culture*Income 50
+			Culture*Income 20
 		}
 	}
 	Building Cultural_Retreat_II
@@ -646,67 +573,115 @@ Buildings
 		Upgrade Cultural_Retreat_III
 		Cost 
 		{
-			Production 5000
+			Production 8000
 		}
-		Slot Colony
+		Slot Outpost
 		Level II
 		Icon U
-		1 
-		{
-			Authority 1
-		}
 		Benefit 
 		{
 			Culture*Income 100
+			Culture*PerPop 1
 		}
 	}
 	Building Cultural_Retreat_III
 	{
 		Cost 
 		{
-			Production 10000
+			Production 25000
 		}
-		Slot Colony
+		Slot Outpost
 		Level III
 		Icon U
-		1 
-		{
-			Authority 1
-		}
 		Benefit 
 		{
-			Culture*Income 200
+			Culture*Income 300
+			Culture*PerPop 2
 		}
 	}
-	Building World
+	Building Capital
+	{
+		Upgrade Grand_Capital
+		Slot Capital
+		Level I
+		Icon HQ
+		Benefit 
+		{
+			Production*Income 50
+			Shipbuilding*Income 50
+			Research*Income 50
+			Culture*Income 50
+			BC*Income 50
+			Authority*Max 300
+		}
+	}
+	Building Grand_Capital
+	{
+		Upgrade Galactic_Capital
+		Cost 
+		{
+			Production 50000
+		}
+		Slot Capital
+		Level II
+		Icon HQ
+		Benefit 
+		{
+			Production*Income 50
+			Shipbuilding*Income 50
+			Research*Income 50
+			Culture*Income 50
+			BC*Income 50
+			Authority*Max 400
+		}
+	}
+	Building Galactic_Capital
+	{
+		Cost 
+		{
+			Production 150000
+		}
+		Slot Capital
+		Level III
+		Icon HQ
+		RequiredBuilding Global_Centers
+		Benefit 
+		{
+			Production*Income 50
+			Shipbuilding*Income 50
+			Research*Income 50
+			Culture*Income 50
+			BC*Income 50
+			Authority*Max 500
+		}
+	}
+	Building Possible_Colony
 	{
 		Upgrade Cities
-		Slot Main
+		Slot World
 		Icon Y
+		RequiredFeature Colonizable
 	}
 	Building Cities
 	{
 		Upgrade Global_Centers
 		Cost 
 		{
-			Production 10000
+			Production 20000
 		}
-		Slot Main
+		Slot World
 		Level I
 		Icon Y
 		AddSlot District
-		1 
-		{
-			Authority 2
-		}
 		Benefit 
 		{
 			Districts 1
-			Energy*Income 20
-			Minerals*Income 20
-			Production*Income 20
-			Influence*Income 3
-			BC*PerPop 20
+			Energy*Income 100
+			Minerals*Income 100
+			Production*Income 50
+			Production*PerCPop 10
+			BC*PerPop 2
+			Authority*Used 30
 		}
 	}
 	Building Global_Centers
@@ -716,23 +691,20 @@ Buildings
 		{
 			Production 50000
 		}
-		Slot Main
+		Slot World
 		Level II
 		Icon Y
 		AddSlot District
-		1 
-		{
-			Authority 5
-		}
 		Benefit 
 		{
 			Districts 2
-			Energy*Income 40
-			Minerals*Income 40
-			Production*Income 40
-			Influence*Income 10
-			BC*PerPop 30
-			Bonus*MaxPop*Percent 100
+			Pops*MaxBonus 100
+			Energy*Income 100
+			Minerals*Income 100
+			Production*Income 50
+			Production*PerCPop 10
+			BC*PerPop 2
+			Authority*Used 30
 		}
 	}
 	Building Ecumenopolis
@@ -741,24 +713,110 @@ Buildings
 		{
 			Production 250000
 		}
-		Slot Main
+		Slot World
 		Level III
 		Icon Y
-		Required Controled_Enviroment_III
+		RequiredBuilding Controled_Enviroment_III
 		AddSlot District
-		1 
-		{
-			Authority 20
-		}
 		Benefit 
 		{
 			Districts 3
+			Pops*MaxBonus 300
 			Energy*Income 100
 			Minerals*Income 100
-			Production*Income 100
-			Influence*Income 50
-			BC*PerPop 50
-			Bonus*MaxPop*Percent 300
+			Production*Income 50
+			Production*PerCPop 10
+			BC*PerPop 2
+			Authority*Max 100
+			Authority*Used 30
+		}
+	}
+	Building Colonial_Oversight
+	{
+		Upgrade Minimal_Oversight
+		Upgrade Local_Goverment
+		Cost 
+		{
+			Production 1000
+			Culture 10000
+		}
+		Slot Control
+		Level II
+		Icon CC
+		Benefit 
+		{
+			Pops*Control 25
+			Authority*Used 10
+		}
+	}
+	Building Minimal_Oversight
+	{
+		Upgrade Colonial_Oversight
+		Cost 
+		{
+			Production 500
+			Culture 10000
+		}
+		Slot Control
+		Level I
+		Icon CC
+		Benefit 
+		{
+			Pops*Control 0
+			Authority*Used 0
+		}
+	}
+	Building Local_Goverment
+	{
+		Upgrade Colonial_Oversight
+		Upgrade Integrated_Economy
+		Cost 
+		{
+			Production 2000
+			Culture 10000
+		}
+		Slot Control
+		Level III
+		Icon CC
+		Benefit 
+		{
+			Pops*Control 50
+			Authority*Used 20
+		}
+	}
+	Building Integrated_Economy
+	{
+		Upgrade Local_Goverment
+		Upgrade Planned_Economy
+		Cost 
+		{
+			Production 6000
+			Culture 10000
+		}
+		Slot Control
+		Level IV
+		Icon CC
+		Benefit 
+		{
+			Pops*Control 75
+			Authority*Used 40
+		}
+	}
+	Building Planned_Economy
+	{
+		Upgrade Integrated_Economy
+		Cost 
+		{
+			Production 10000
+			Culture 10000
+		}
+		Slot Control
+		Level V
+		Icon CC
+		Benefit 
+		{
+			Pops*Control 100
+			Authority*Used 60
 		}
 	}
 	Building District
@@ -780,9 +838,10 @@ Buildings
 		Icon ED
 		Benefit 
 		{
-			BC*Income 500
-			Influence*Income 1
-			Bonus*Growth*Perc 100
+			Pops*GrowthBonus 100
+			BC*Income 200
+			BC*PerCPop 5
+			Authority*Max 20
 		}
 	}
 	Building Industrial_District
@@ -795,9 +854,8 @@ Buildings
 		Icon ID
 		Benefit 
 		{
-			Production*Income 200
-			BC*Income 500
-			Production*PerPop 40
+			Production*Income 100
+			Production*PerCPop 10
 		}
 	}
 	Building Science_District
@@ -810,8 +868,8 @@ Buildings
 		Icon SD
 		Benefit 
 		{
-			Research*Income 1000
-			Science*PerPop 40
+			Research*Income 100
+			Research*PerCPop 10
 		}
 	}
 	Building Culture_District
@@ -824,8 +882,7 @@ Buildings
 		Icon CD
 		Benefit 
 		{
-			Influence*Income 3
-			Culture*PerPop 40
+			Culture*PerCPop 20
 		}
 	}
 	Building Terraform

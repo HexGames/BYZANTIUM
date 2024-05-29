@@ -141,7 +141,176 @@ public partial class DataBlock : Resource
         return ValueS.Replace('_', ' ');
     }
 
-    public string ToToolTipString()
+    public string ToUIDescription()
+    {
+        switch (Name)
+        {
+            case "Type":
+                {
+                    return "Planet Type";
+                }
+            case "Temperature":
+                {
+                    return "Temperature of the planet";
+                }
+            case "Size":
+                {
+                    return "Planet Size";
+                }
+            case "Moon":
+                {
+                    return "This planet is a moon";
+                }
+            case "Rocky":
+                {
+                    return "This is rocky planet";
+                }
+            case "Cost*Penalty":
+                {
+                    return "[color=#ff8888]+" + ValueI + "%[img=24x24]Assets/UI/Symbols/Production.png[/img] Cost to all districts[/color]";
+                }
+            case "Cost*Bonus":
+                {
+                    return "-" + ValueI + "%[img=24x24]Assets/UI/Symbols/Production.png[/img] Cost reduction to all districts";
+                }
+            case "SectorControl":
+                {
+                    return "Gives control of the system.";
+                }
+            case "Districts":
+                {
+                    return ValueI.ToString() + " World Districts";
+                }
+            case "GeoLevel":
+                {
+                    return "Unlock population base size to level " + ValueI.ToString();
+                }
+            case "Pops*MaxBonus":
+                {
+                    return "+" + ValueI.ToString() + "% Max Population";
+                }
+            case "Pops*Control":
+                {
+                    return "+" + ValueI.ToString() + "% Population Control";
+                }
+            case "Pops*GrowthBonus":
+                {
+                    return "+" + ValueI.ToString() + "% Population Growth";
+                }
+            case "Pops*GrowthPenalty":
+                {
+                    return "[color=#ff8888]-" + ValueI.ToString() + "% Population Growth[/color]";
+                }
+            case "Authority*Max":
+                {
+                    return "+" + ValueI + " [img=24x24]Assets/UI/Symbols/Authority.png[/img]";
+                }
+            case "Trade*Penalty":
+                {
+                    return "[color=#ff8888]+" + ValueI + "%[img=24x24]Assets/UI/Symbols/Trade.png[/img] Used Trade from all districts[/color]";
+                }
+            case "Trade*Bonus":
+                {
+                    return "-" + ValueI + "%[img=24x24]Assets/UI/Symbols/Trade.png[/img] Used Trade from all districts";
+                }
+            case "Trade*Used":
+                {
+                    return "Trade Upkeep: [color=#ff8888]" + ValueI + "[/color]";
+                }
+            case "Authority*Used":
+                {
+                    return "Authority Upkeep: [color=#ff8888]" + ValueI + "[/color]";
+                }
+            case "Colonizable":
+                {
+                    return "The planet can be colonized beyond an outpost.";
+                }
+            case "Building":
+                {
+                    return "";
+                }
+            case "Custom":
+                {
+                    return "";
+                }
+            default:
+                {
+                    if (Name.EndsWith("*Income"))
+                    {
+                        return "+" + Helper.ResValueToString(ValueI) + " [img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img]";
+                    }
+                    else if (Name.EndsWith("*PerPop"))
+                    {
+                        return "+" + Helper.ResValueToString(ValueI) + " [img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img] for each [img=24x24]Assets/UI/Symbols/PopsWO.png[/img] Pop";
+                    }
+                    else if (Name.EndsWith("*PerCPop"))
+                    {
+                        return "+" + Helper.ResValueToString(ValueI) + " [img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img] for each [img=24x24]Assets/UI/Symbols/Pops.png[/img] controlled Pop";
+                    }
+                    else if (Name.EndsWith("*Upkeep"))
+                    {
+                        return "[color=#ff8888]-" + Helper.ResValueToString(ValueI) + "[/color] [img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img] Upkeep";
+                    }
+                    else if (Name.EndsWith("*PerLevel"))
+                    {
+                        return "+" + Helper.ResValueToString(ValueI) + " [img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img] for each outpost level";
+                    }
+                    else if (Name.EndsWith("*PerLevelSystem"))
+                    {
+                        return "+" + Helper.ResValueToString(ValueI) + " [img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img] for each outpost level\n     in this system";
+                    }
+                    else if (Name.EndsWith("*Bonus"))
+                    {
+                        return "+" + ValueI + "% [img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]";
+                    }
+                    else if (Name.EndsWith("*Level"))
+                    {
+                        return "";
+                    }
+                    else return "[color=#ff8888]-unknown- " + Name.Replace('_', ' ') + " " + (ValueS.Length > 0 ? ValueS.Replace('_', ' ') : ValueI.ToString()) + "[/color]";
+                }
+        }
+    }
+
+    /*public string ToToolTipLeft()
+    {
+        string text = "";
+        if (Subs.Count > 0)
+        {
+            text += ToUIName() + ":" + "\n";
+
+            for (int idx = 0; idx < Subs.Count; idx++)
+            {
+                text += "  " + Subs[idx].ToUIName() + "\n";
+            }
+        }
+        else
+        {
+            text += (ToUIName() + ":") + "\n";
+        }
+        return "[left]" + text + "[/left]";
+    }*/
+
+    /*public string ToToolTipRight()
+    {
+        string text = "";
+        if (Subs.Count > 0)
+        {
+            text += ToUIName() + ":" + "\n";
+
+            for (int idx = 0; idx < Subs.Count; idx++)
+            {
+                text += Subs[idx].ToUIValue() + "\n";
+            }
+        }
+        else
+        {
+            text += ToUIValue() + "\n";
+        }
+        return "[right]" + text + "[/right]";
+    }*/
+
+    public string ToToolTipString_Old()
     {
         string text = "";
         if (Subs.Count > 0)

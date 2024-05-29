@@ -12,44 +12,11 @@ public partial class MapGenerator : Node
     {
         DataBlock resources = Create_Colony_Resources(colony, DefLibrary);
 
-        Data.AddData(resources, "Wealth", 3000, DefLibrary);
+        //Data.AddData(resources, "Wealth*Stockpile", 3000, DefLibrary);
 
-        Data.AddData(resources, "Pops", 25000, DefLibrary);
-        Data.AddData(resources, "Pops*Used", 16000, DefLibrary);
-        Data.AddData(resources, "Growth*Income", 200, DefLibrary);
-    }
-
-    private void GenerateNewMapSave_Players_StartingColony_Jobs(DataBlock colony)
-    {
-        DataBlock jobs = Data.AddData(colony, "Jobs", DefLibrary);
-
-        Data.AddData(jobs, "ActionCooldown", 4, DefLibrary);
-        Data.AddData(jobs, "TotalFocus", 600, DefLibrary);
-        {
-            DataBlock job = Data.AddData(jobs, "Focus", "Energy", DefLibrary);
-            Data.AddData(job, "Value", 100, DefLibrary);
-        }
-        {
-            DataBlock job = Data.AddData(jobs, "Focus", "Minerals", DefLibrary);
-            Data.AddData(job, "Value", 100, DefLibrary);
-        }
-        {
-            DataBlock job = Data.AddData(jobs, "Focus", "Production", DefLibrary);
-            Data.AddData(job, "Value", 120, DefLibrary);
-            Data.AddData(job, "Change", 20, DefLibrary);
-        }
-        {
-            DataBlock job = Data.AddData(jobs, "Focus", "All", DefLibrary);
-            Data.AddData(job, "Value", 280, DefLibrary);
-            Data.AddData(job, "Change", -20, DefLibrary);
-            Data.AddData(job, "Job", "Shipbuilding", DefLibrary);
-            Data.AddData(job, "Job", "Trade", DefLibrary);
-            Data.AddData(job, "Job", "TechPoints", DefLibrary);
-            Data.AddData(job, "Job", "CulturePoints", DefLibrary);
-            Data.AddData(job, "Job", "Authority", DefLibrary);
-            Data.AddData(job, "Job", "Influence", DefLibrary);
-            Data.AddData(job, "Job", "BC", DefLibrary);
-        }
+        Data.AddData(resources, "Pops*Pops", 12000, DefLibrary);
+        Data.AddData(resources, "Pops*PopsMax", 16000, DefLibrary);
+        Data.AddData(resources, "Pops*Growth", 200, DefLibrary);
     }
 
     private void GenerateNewMapSave_Players_StartingColony_SpacePort(DataBlock colony)
@@ -65,9 +32,10 @@ public partial class MapGenerator : Node
 
         //Data.AddData(buildings, "Private_Business", 250, DefLibrary);
 
-        Data.AddData(buildings, "Building", "Research_Lab_I", DefLibrary);
-        Data.AddData(buildings, "Building", "Factory_I", DefLibrary);
-        Data.AddData(buildings, "Building", "Global_Centers", DefLibrary);
+        Data.AddData(buildings, "Building", "Capital", DefLibrary);
+        Data.AddData(buildings, "Building", "Shipyard_I", DefLibrary);
+        Data.AddData(buildings, "Building", "Cities", DefLibrary);
+        Data.AddData(buildings, "Building", "Colonial_Oversight", DefLibrary);
         Data.AddData(buildings, "Building", "District", DefLibrary);
         //Data.AddData(buildings, "Research_Labs", 2, DefLibrary);
         //Data.AddData(buildings, "Culture_Centers", 2, DefLibrary);

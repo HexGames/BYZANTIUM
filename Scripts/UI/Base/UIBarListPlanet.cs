@@ -20,21 +20,41 @@ public partial class UIBarListPlanet : Control
     private TextureRect ParentPlanetRings = null;
     private TextureRect Station = null;
     private TextureRect Flag = null;
-    private Control ActionAvailable = null;
-    private TextureRect BuildUnavailable = null;
-    private TextureRect BuildAvalilable = null;
-    private TextureRect AvailableColonize = null;
-    private TextureRect UnavailableColonize = null;
-    private Control ActionAvailable_Secondary = null;
-    private TextureRect BuildUnavailable_Secondary = null;
-    private TextureRect BuildAvalilable_Secondary = null;
-    private TextureRect AvailableColonize_Secondary = null;
-    private TextureRect UnavailableColonize_Secondary = null;
+    private Control Build = null;
+    private Control Pops = null;
+    private Control BuildUnavailable = null;
+    private Control PopsUnavailable = null;
     private Panel Selected = null;
+    private Control Colony = null;
+    private Control ColonyOwnerRow = null;
+    private RichTextLabel ColonyOwnerText = null;
+    private static string ColonyOwnerText_Original = "";
+    private Control ColonyAuthorityRow = null;
+    private RichTextLabel ColonyAuthorityText = null;
+    private static string ColonyAuthorityText_Original = "";
+    private Control ColonyPopsRow = null;
+    private Control ColonyPopsBg = null;
+    private RichTextLabel ColonyPopsText = null;
+    private static string ColonyPopsText_Original = "";
+    private Control ColonyPopsControlledBg = null;
+    private RichTextLabel ColonyPopsControlledText = null;
+    private static string ColonyPopsControlledText_Original = "";
+    private Control ColonyResRow = null;
+    private Control ColonyRes_1_Bg = null;
+    private RichTextLabel ColonyRes_1_Text = null;
+    private static string ColonyRes_1_Text_Original = "";
+    private Control ColonyRes_2_Bg = null;
+    private RichTextLabel ColonyRes_2_Text = null;
+    private static string ColonyRes_2_Text_Original = "";
+
 
     [ExportCategory("Runtime")]
     [Export]
     public bool IsSelected = false;
+    [Export]
+    public bool IsSelected_Buildings = false;
+    [Export]
+    public bool IsSelected_Population = false;
 
     [Export]
     public PlanetData _PlanetData = null;
@@ -64,22 +84,44 @@ public partial class UIBarListPlanet : Control
             Flag = GetNode<TextureRect>("Mask/Flag");
             Selected = GetNode<Panel>("Selected");
 
-            if (HasNode("Mask/AvailableAction"))
+            if (HasNode("Build"))
             {
-                ActionAvailable = GetNode<Control>("Mask/AvailableAction");
-                BuildAvalilable = GetNode<TextureRect>("Mask/AvailableAction/AvailableBuild");
-                BuildUnavailable = GetNode<TextureRect>("Mask/AvailableAction/UnavailableBuild");
-                AvailableColonize = GetNode<TextureRect>("Mask/AvailableAction/AvailableColonize");
-                UnavailableColonize = GetNode<TextureRect>("Mask/AvailableAction/UnavailableColonize");
+                Build = GetNode<Control>("Build");
+                BuildUnavailable = GetNode<Control>("Mask/UnavailableBuild");
+            }
+            if (HasNode("Pops"))
+            {
+                Pops = GetNode<Control>("Pops");
+                PopsUnavailable = GetNode<Control>("Mask/UnavailablePops");
             }
 
-            if (HasNode("Mask/AvailableActionSecondary"))
+            if (HasNode("Colony"))
             {
-                ActionAvailable_Secondary = GetNode<Control>("Mask/AvailableActionSecondary");
-                BuildAvalilable_Secondary = GetNode<TextureRect>("Mask/AvailableActionSecondary/AvailableBuild");
-                BuildUnavailable_Secondary = GetNode<TextureRect>("Mask/AvailableActionSecondary/UnavailableBuild");
-                AvailableColonize_Secondary = GetNode<TextureRect>("Mask/AvailableActionSecondary/AvailableColonize");
-                UnavailableColonize_Secondary = GetNode<TextureRect>("Mask/AvailableActionSecondary/UnavailableColonize");
+                Colony = GetNode<Control>("Colony");
+
+                ColonyOwnerRow = GetNode<Control>("Colony/VBoxContainer/OwnerRow");
+                ColonyOwnerText = GetNode<RichTextLabel>("Colony/VBoxContainer/OwnerRow/Owner/MarginContainer/RichTextLabel");
+                if (ColonyOwnerText_Original.Length == 0) ColonyOwnerText_Original = ColonyOwnerText.Text;
+
+                ColonyAuthorityRow = GetNode<Control>("Colony/VBoxContainer/Authority");
+                ColonyAuthorityText = GetNode<RichTextLabel>("Colony/VBoxContainer/Authority/Authority/MarginContainer/RichTextLabel");
+                if (ColonyAuthorityText_Original.Length == 0) ColonyAuthorityText_Original = ColonyAuthorityText.Text;
+
+                ColonyPopsRow = GetNode<Control>("Colony/VBoxContainer/PopsRow");
+                ColonyPopsBg = GetNode<Control>("Colony/VBoxContainer/PopsRow/Pops");
+                ColonyPopsText = GetNode<RichTextLabel>("Colony/VBoxContainer/PopsRow/Pops/MarginContainer/RichTextLabel");
+                if (ColonyPopsText_Original.Length == 0) ColonyPopsText_Original = ColonyPopsText.Text;
+                ColonyPopsControlledBg = GetNode<Control>("Colony/VBoxContainer/PopsRow/PopsControled");
+                ColonyPopsControlledText = GetNode<RichTextLabel>("Colony/VBoxContainer/PopsRow/PopsControled/MarginContainer/RichTextLabel");
+                if (ColonyPopsControlledText_Original.Length == 0) ColonyPopsControlledText_Original = ColonyPopsControlledText.Text;
+
+                ColonyResRow = GetNode<Control>("Colony/VBoxContainer/IncomeRow");
+                ColonyRes_1_Bg = GetNode<Control>("Colony/VBoxContainer/IncomeRow/Res_1");
+                ColonyRes_1_Text = GetNode<RichTextLabel>("Colony/VBoxContainer/IncomeRow/Res_1/MarginContainer/RichTextLabel");
+                if (ColonyRes_1_Text_Original.Length == 0) ColonyRes_1_Text_Original = ColonyRes_1_Text.Text;
+                ColonyRes_2_Bg = GetNode<Control>("Colony/VBoxContainer/IncomeRow/Res_2");
+                ColonyRes_2_Text = GetNode<RichTextLabel>("Colony/VBoxContainer/IncomeRow/Res_2/MarginContainer/RichTextLabel");
+                if (ColonyRes_2_Text_Original.Length == 0) ColonyRes_2_Text_Original = ColonyRes_2_Text.Text;
             }
 
             Visible = false;
@@ -91,25 +133,27 @@ public partial class UIBarListPlanet : Control
         _PlanetData = planetData;
         _ParentPlanetData = parentPlanetData;
         IsSelected = false;
+        IsSelected_Buildings = false;
+        IsSelected_Population = false;
         Name = _PlanetData.PlanetName + "_UI";
 
         //Planet.Texture = 
 
-        DataBlock typeData = _PlanetData.Data.GetSub("Type");
+        DataBlock typeData = _PlanetData.Data.GetSub("Type", false);
         //float sizeIncremnt = 0.035f;
         //if (typeData?.ValueS == "GasGiant") sizeIncremnt = 0.05f;
 
-        if (_PlanetData.Colony != null)
-        {
-            Flag.Texture = Game.Assets.GetTexture2D(_PlanetData.Colony._System._Sector._Player.Empire.GetSub("Flag").ValueS);
-            Flag.Visible = true;
-        }
-        else
+        //if (_PlanetData.Colony != null)
+        //{
+        //    Flag.Texture = Game.Assets.GetTexture2D(_PlanetData.Colony._System._Sector._Player.Empire.GetSub("Flag").ValueS);
+        //    Flag.Visible = true;
+        //}
+        //else
         {
             Flag.Visible = false;
         }
 
-        if (_PlanetData.Data.ValueS == "Star" || _PlanetData.Data.ValueS == "Outer_System" || _PlanetData.Data.ValueS == "Asteroid_Field")
+        if (_PlanetData.Data.ValueS == "Star" || _PlanetData.Data.ValueS == "Outer_System" || _PlanetData.Data.ValueS == "Asteroids")
         {
             Simple.Texture = Game.Def.UIPlanets.GetPlanetTexture(_PlanetData.Data.ValueS);
             Simple.Visible = true;
@@ -133,7 +177,7 @@ public partial class UIBarListPlanet : Control
 
             // refresh planet
             {
-                if (_PlanetData.Data.GetSub("Custom") != null)
+                if (_PlanetData.Data.GetSub("Custom", false) != null)
                 {
                     Planet.Texture = Game.Def.UIPlanets.GetPlanetTexture(_PlanetData.Data.ValueS);
 
@@ -166,7 +210,7 @@ public partial class UIBarListPlanet : Control
                     }
                 }
 
-                if (_PlanetData.Data.GetSub("Hidden_Rings") != null)
+                if (_PlanetData.Data.GetSub("Rings", false) != null)
                 {
                     PlanetRings.Visible = true;
                 }
@@ -181,7 +225,7 @@ public partial class UIBarListPlanet : Control
             if (_ParentPlanetData != null)
             {
                 DataBlock parentTypeData = _ParentPlanetData.Data.GetSub("Type");
-                if (_ParentPlanetData.Data.GetSub("Custom") != null)
+                if (_ParentPlanetData.Data.GetSub("Custom", false) != null)
                 {
                     ParentPlanet.Texture = Game.Def.UIPlanets.GetPlanetTexture(_ParentPlanetData.Data.ValueS);
                 }
@@ -202,7 +246,7 @@ public partial class UIBarListPlanet : Control
                     ParentPlanetRings.CustomMinimumSize = new Vector2(192, 64);
                 }
 
-                if (_ParentPlanetData.Data.GetSub("Rings") != null)
+                if (_ParentPlanetData.Data.GetSub("Rings", false) != null)
                 {
                     ParentPlanetRings.Visible = true;
                 }
@@ -226,7 +270,7 @@ public partial class UIBarListPlanet : Control
             SectorData sector = Game.TurnLoop.CurrentHumanPlayerData.Sectors[idx];
             for (int buildIdx = 0; buildIdx < sector.AvailableBuildings_PerTurn.Count; buildIdx++)
             {
-                ActionTargetInfo info = sector.AvailableBuildings_PerTurn[buildIdx];
+                DefBuildingWrapper info = sector.AvailableBuildings_PerTurn[buildIdx];
                 if (info._Planet == planetData)
                 {
                     LockBuildButton = sector.ActionBuildQueue.GetSubs("Building").Count == 0;
@@ -237,25 +281,137 @@ public partial class UIBarListPlanet : Control
             if (HasPossibleBuildings) break;
         }
 
-        if (ActionAvailable != null)
+        if (Build != null)
         {
-            if (HasPossibleBuildings)
-            {
-                BuildAvalilable.Visible = true;
-                BuildUnavailable.Visible = false;
-                AvailableColonize.Visible = false;
-                UnavailableColonize.Visible = false;
+            Build.Visible = LockBuildButton && HasPossibleBuildings == true; 
+            BuildUnavailable.Visible = LockBuildButton == false && HasPossibleBuildings == true;
 
-                ActionAvailable.Visible = true;
+            //if (HasPossibleBuildings)
+            //{
+            //    Build.Visible = true;
+            //    BuildUnavailable.Visible = false;
+            //}
+            //else
+            //{
+            //    Build.Visible = false;
+            //    BuildUnavailable.Visible = true;
+            //}
+        }
+
+        if (Pops != null)
+        {
+            //if (_PlanetData.Colony != null && _PlanetData.Colony.IsWorld())
+            //{
+            //    Pops.Visible = true;
+            //    PopsUnavailable.Visible = false;
+            //}
+            //else
+            //{
+            //    Pops.Visible = false;
+            //    PopsUnavailable.Visible = true;
+            //}
+            Pops.Visible = false;
+            PopsUnavailable.Visible = false;
+        }
+
+        PlanetName.Text = PlanetName_Original.Replace("$name", _PlanetData.PlanetName);
+
+        // --- Colony 
+        if (Colony != null)
+        {
+            if(_PlanetData.Colony != null)
+            {
+                if (_PlanetData.Colony.Type.ValueS == "Star")
+                {
+                    ColonyOwnerText.Text = ColonyOwnerText_Original.Replace("$player", _PlanetData.Colony._System._Sector._Player.PlayerName);
+                    ColonyOwnerRow.Visible = true;
+                }
+                else
+                {
+                    ColonyOwnerRow.Visible = false;
+                }
+
+                int authority = _PlanetData.Colony.Resources_PerTurn.GetLimit("Authority").GetUsedTotal();
+                if (authority > 0)
+                {
+                    ColonyAuthorityText.Text = ColonyAuthorityText_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.GetLimit("Authority").ToString_Used(true));
+                    ColonyAuthorityRow.Visible = true;
+                }
+                else
+                {
+                    ColonyAuthorityRow.Visible = false;
+                }
+
+                if (_PlanetData.Colony.Type.ValueS == "World")
+                {
+                    ColonyPopsText.Text = ColonyPopsText_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.GetPops().ToString_Pops());
+                    ColonyPopsBg.Visible = true;
+
+                    int controlledPops = _PlanetData.Colony.Resources_PerTurn.GetPops().GetCPops();
+                    if (controlledPops > 0)
+                    {
+                        ColonyPopsControlledText.Text = ColonyPopsControlledText_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.GetPops().ToString_CPops());
+                        ColonyPopsControlledBg.Visible = true;
+                    }
+                    else
+                    {
+                        ColonyPopsControlledBg.Visible = false;
+                    }
+
+                    ColonyPopsRow.Visible = true;
+                }
+                else
+                {
+                    ColonyPopsRow.Visible = false;
+                }
+
+                //private Control ColonyResRow = null;
+                //private Control ColonyRes_1_Bg = null;
+                //private RichTextLabel ColonyRes_1_Text = null;
+                //private static string ColonyRes_1_Text_Original = "";
+                //private Control ColonyRes_2_Bg = null;
+                //private RichTextLabel ColonyRes_2_Text = null;
+                //private static string ColonyRes_2_Text_Original = "";
+
+                if (_PlanetData.Colony.Type.ValueS == "Outpost" || _PlanetData.Colony.Type.ValueS == "Colony")
+                {
+                    ColonyRes_1_Bg.Visible = false;
+                    ColonyRes_2_Bg.Visible = false;
+                    for (int idx = 0; idx < _PlanetData.Colony.Resources_PerTurn.Incomes.Count; idx++)
+                    {
+                        if (_PlanetData.Colony.Resources_PerTurn.Incomes[idx].GetIncomeTotal() > 0)
+                        {
+                            if (ColonyRes_1_Bg.Visible == false)
+                            {
+                                ColonyRes_1_Text.Text = ColonyRes_1_Text_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].ToString_Income(true)).Replace("Turn", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].Name);
+                                ColonyRes_1_Bg.Visible = true;
+                            }
+                            else //if (ColonyRes_2_Bg.Visible == false)
+                            {
+                                ColonyRes_2_Text.Text = ColonyRes_2_Text_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].ToString_Income(true)).Replace("Turn", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].Name);
+                                ColonyRes_2_Bg.Visible = true;
+                                break;
+                            }
+                        }
+                    }
+                    ColonyResRow.Visible = ColonyRes_1_Bg.Visible;
+                }
+                else
+                {
+                    ColonyResRow.Visible = false;
+                }
+
+                Colony.Visible = true;
             }
             else
             {
-                ActionAvailable.Visible = false;
-            }            
+                Colony.Visible = false;
+            }
         }
-        ActionAvailable_Secondary.Visible = false;
-
-        PlanetName.Text = PlanetName_Original.Replace("$name", _PlanetData.PlanetName);
+        else
+        {
+            Colony.Visible = false;
+        }
 
         Visible = true;
     }
@@ -283,7 +439,47 @@ public partial class UIBarListPlanet : Control
 
         Selected.Visible = true;
 
-        Game.Input.SelectPlanet(_PlanetData);
+        Game.Input.SelectPlanet(_PlanetData, false, false);
+
+        //if (GalaxyList != null)
+        //{
+        //    //GalaxyList.Select(this);
+        //}
+        //else if (SystemList != null)
+        //{
+        //    SystemList.Select(this);
+        //}
+    }
+
+    public void OnSelectBuildings()
+    {
+        if (IsSelected_Buildings) return;
+        IsSelected_Buildings = true;
+        IsSelected_Population = false;
+
+        Selected.Visible = true;
+
+        Game.Input.SelectPlanet(_PlanetData, true, false);
+
+        //if (GalaxyList != null)
+        //{
+        //    //GalaxyList.Select(this);
+        //}
+        //else if (SystemList != null)
+        //{
+        //    SystemList.Select(this);
+        //}
+    }
+
+    public void OnSelectPopulation()
+    {
+        if (IsSelected_Population) return;
+        IsSelected_Buildings = false;
+        IsSelected_Population = true;
+
+        Selected.Visible = true;
+
+        Game.Input.SelectPlanet(_PlanetData, false, true);
 
         //if (GalaxyList != null)
         //{
@@ -300,5 +496,7 @@ public partial class UIBarListPlanet : Control
         Selected.Visible = false;
 
         IsSelected = false;
+        IsSelected_Buildings = false;
+        IsSelected_Population = false;
     }
 }

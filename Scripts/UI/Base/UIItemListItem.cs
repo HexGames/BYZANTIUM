@@ -28,7 +28,7 @@ public partial class UIItemListItem : Control
         Property.Text = data.ToUIName();
         Value.Text = data.ToUIValue();
 
-        string tooltip = data.ToToolTipString();
+        string tooltip = data.ToToolTipString_Old();
         BG.TooltipText = tooltip;
     }
 }

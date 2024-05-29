@@ -321,10 +321,10 @@ public partial class Data
                 {
                     if (tableHeadRow_3[colIdx] != "" && tableHeadRow_2[colIdx] != "" && tableHeadRow_1[colIdx] != "")
                     {
-                        DataBlock level1 = item.GetSub(tableHeadRow_1[colIdx]);
+                        DataBlock level1 = item.GetSub(tableHeadRow_1[colIdx], false);
                         if (level1 == null) level1 = AddData(item, tableHeadRow_1[colIdx], defLib);
 
-                        DataBlock level2 = level1.GetSub(tableHeadRow_2[colIdx]);
+                        DataBlock level2 = level1.GetSub(tableHeadRow_2[colIdx], false);
                         if (level2 == null) level2 = AddData(level1, tableHeadRow_2[colIdx], defLib);
 
                         if (System.Char.IsLetter(wordsOnRow[colIdx][0])) AddData(level2, tableHeadRow_3[colIdx], wordsOnRow[colIdx], defLib);
@@ -333,7 +333,7 @@ public partial class Data
                     }
                     else if (tableHeadRow_2[colIdx] != "" && tableHeadRow_1[colIdx] != "")
                     {
-                        DataBlock level1 = item.GetSub(tableHeadRow_1[colIdx]);
+                        DataBlock level1 = item.GetSub(tableHeadRow_1[colIdx], false);
                         if (level1 == null) level1 = AddData(item, tableHeadRow_1[colIdx], defLib);
 
                         if (System.Char.IsLetter(wordsOnRow[colIdx][0])) AddData(level1, tableHeadRow_2[colIdx], wordsOnRow[colIdx], defLib);

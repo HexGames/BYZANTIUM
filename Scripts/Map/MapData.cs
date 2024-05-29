@@ -51,6 +51,23 @@ public partial class MapData : Node
         }
     }
 
+    Game __Game;
+    Game Game
+    {
+        get
+        {
+            if (__Game != null)
+            {
+                return __Game;
+            }
+            else
+            {
+                __Game = GetNode<Game>("/root/Main/Game");
+                return __Game;
+            }
+        }
+    }
+
     private RandomNumberGenerator RNG = new RandomNumberGenerator();
 
     public void GetTurnData()
@@ -114,6 +131,16 @@ public partial class MapData : Node
         for (int idx = 0; idx < players.Count; idx++)
         {
             GenerateGameFromData_Player(players[idx], idx, defLib);
+        }
+
+        // Human player
+        for (int idx = 0; idx < Players.Count; idx++)
+        {
+            if (Players[idx].Human)
+            {
+                Game.HumanPlayer = Players[idx];
+                break;
+            }
         }
 
         // Refresh system GFX
@@ -267,6 +294,20 @@ public partial class MapData : Node
         {
             GenerateGameFromData_Player_Sector(sectors[idx], playerData);
         }
+
+        DataBlock shipDesignList = playerDataBlock.GetSub("Designs");
+        Array<DataBlock> designs = shipDesignList.GetSubs("Design");
+        for (int idx = 0; idx < designs.Count; idx++)
+        {
+            GenerateGameFromData_Player_Design(designs[idx], playerData);
+        }
+
+        DataBlock fleetsList = playerDataBlock.GetSub("Fleets");
+        Array<DataBlock> fleets = fleetsList.GetSubs("Fleet");
+        for (int idx = 0; idx < fleets.Count; idx++)
+        {
+            GenerateGameFromData_Player_Fleet(fleets[idx], playerData);
+        }
     }
 
     public void GenerateGameFromData_Player_Sector(DataBlock sectorDataBlock, PlayerData playerData)
@@ -300,13 +341,10 @@ public partial class MapData : Node
 
     public void GenerateGameFromData_Player_Sector_System(DataBlock systemDataBlock, SectorData sectorData)
     {
-
         // Data
         SystemData system = new SystemData();
         system.Name = systemDataBlock.ValueS + "_Data";
         system.Resources = systemDataBlock.GetSub("Resources");
-        system.Budget = systemDataBlock.GetSub("Budget");
-        system.Buildings = systemDataBlock.GetSub("Buildings");
 
         system.Data = systemDataBlock;
 
@@ -335,13 +373,9 @@ public partial class MapData : Node
         ColonyData colony = new ColonyData();
         colony.Name = colonyDataBlock.ValueS + "_Data";
         colony.ColonyName = colonyDataBlock.ValueS;
+        colony.Type = colonyDataBlock.GetSub("Type");
         colony.Resources = colonyDataBlock.GetSub("Resources");
-        colony.Jobs = colonyDataBlock.GetSub("Jobs");
         colony.Buildings = colonyDataBlock.GetSub("Buildings");
-        colony.Support = colonyDataBlock.GetSub("Support");
-
-        colony.ActionConstruction = colonyDataBlock.GetSub("ActionConstruction");
-        colony.ActionShipbuilding = colonyDataBlock.GetSub("ActionShipbuilding");
 
         colony.Data = colonyDataBlock;
 
@@ -354,6 +388,69 @@ public partial class MapData : Node
         colony.Owner = GetTree().EditedSceneRoot;
 
         return colony;
+    }
+
+    public void GenerateGameFromData_Player_Design(DataBlock designDataBlock, PlayerData playerData)
+    {
+        // Data
+        DesignData design = new DesignData();
+        design.Name = designDataBlock.ValueS + "_Data";
+        design.DesignName = designDataBlock.ValueS;
+        //design.Resources = sectorDataBlock.GetSub("Resources");
+        //design.ActionBuildQueue = sectorDataBlock.GetSub("ActionBuildQueue");
+
+        design.Data = designDataBlock;
+
+        design._Player = playerData;
+
+        playerData.AddChild(design);//, true, InternalMode.Back);
+        design.Owner = GetTree().EditedSceneRoot;
+
+        playerData.Designs.Add(design);
+    }
+
+    public void GenerateGameFromData_Player_Fleet(DataBlock fleetDataBlock, PlayerData playerData)
+    {
+        // Data
+        FleetData fleet = new FleetData();
+        fleet.Name = fleetDataBlock.ValueS + "_Data";
+        fleet.FleetName = fleetDataBlock.ValueS;
+        //fleet.ShipsData = fleetDataBlock.GetSub("Resources");
+        //design.ActionBuildQueue = sectorDataBlock.GetSub("ActionBuildQueue");
+
+        fleet.Data = fleetDataBlock;
+
+        fleet._Player = playerData;
+
+        playerData.AddChild(fleet);//, true, InternalMode.Back);
+        fleet.Owner = GetTree().EditedSceneRoot;
+
+        playerData.Fleets.Add(fleet);
+
+        Array<DataBlock> ships = fleetDataBlock.GetSubs("Ship");
+        for (int idx = 0; idx < ships.Count; idx++)
+        {
+            GenerateGameFromData_Player_Fleet_Ship(ships[idx], fleet);
+        }
+    }
+
+    public void GenerateGameFromData_Player_Fleet_Ship(DataBlock shipDataBlock, FleetData fleetData)
+    {
+        // Data
+        ShipData ship = new ShipData();
+        ship.Name = shipDataBlock.ValueS + "_Data";
+        ship.ShipName = shipDataBlock.ValueS;
+        //design.Resources = sectorDataBlock.GetSub("Resources");
+        //design.ActionBuildQueue = sectorDataBlock.GetSub("ActionBuildQueue");
+
+        ship.Data = shipDataBlock;
+
+        ship._Fleet = fleetData;
+
+        fleetData.AddChild(ship);//, true, InternalMode.Back);
+        ship.Owner = GetTree().EditedSceneRoot;
+
+        fleetData.Ships.Add(ship);
     }
 
     // --------------------------------------------------------------------------------------------
