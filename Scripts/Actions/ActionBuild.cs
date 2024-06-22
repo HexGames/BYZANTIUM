@@ -218,7 +218,7 @@ public class ActionBuild
         sector.BuildQueue_PerTurn_ActionChange.Refresh();
     }
 
-    static public void EndTurn(SectorData sector, Game game)
+    static public void EndTurn(Game game, SectorData sector)
     {
         DataBlock overflow = sector.ActionBuildQueue.GetSub("Overflow");
         int production = sector.Resources_PerTurn.GetIncome("Production").GetIncomeTotal() + overflow.ValueI;

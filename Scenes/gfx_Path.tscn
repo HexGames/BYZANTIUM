@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkaygjr3g2ous"]
+
+[ext_resource type="Texture2D" uid="uid://bmdsd7m282hsh" path="res://Assets/Galaxy/Pathway.png" id="1_d54li"]
+[ext_resource type="Script" path="res://Scripts/GFX/GFXPathsItem.cs" id="1_yfe5o"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_016yk"]
+size = Vector2(0.3, 1)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7x3r"]
+transparency = 1
+albedo_color = Color(0.886275, 0.878431, 0.854902, 1)
+albedo_texture = ExtResource("1_d54li")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.5
+
+[node name="GfxPath" type="Node3D"]
+visible = false
+script = ExtResource("1_yfe5o")
+
+[node name="Path" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.371087, 0)
+mesh = SubResource("QuadMesh_016yk")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_s7x3r")

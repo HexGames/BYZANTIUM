@@ -27,19 +27,19 @@ public partial class PlayerInput : Node
 
     public override void _Input(InputEvent inputEvent)
     {
-        if (inputEvent is InputEventMouseButton mouseButtonEvent)
-        {
-            if (!mouseButtonEvent.IsPressed())
-            {
-                // on mouse button release
-                if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
-                {
-                    //GD.Print("You clicked on " + Label.Text);
-                    //DeselectAll();
-                    DeselectOneStep();
-                }
-            }
-        }
+        //if (inputEvent is InputEventMouseButton mouseButtonEvent)
+        //{
+        //    if (!mouseButtonEvent.IsPressed())
+        //    {
+        //        // on mouse button release
+        //        if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
+        //        {
+        //            //GD.Print("You clicked on " + Label.Text);
+        //            //DeselectAll();
+        //            DeselectOneStep();
+        //        }
+        //    }
+        //}
 
         if (inputEvent is InputEventKey keyButtonEvent)
         {
@@ -339,5 +339,30 @@ public partial class PlayerInput : Node
         SelectedFleets.Remove(fleet); 
 
         Game.GalaxyUI.RefreshPawnsUI();
+    }
+
+    public void MoveTo(StarData toStar)
+    {
+        for (int idx = 0; idx < SelectedFleets.Count; idx++)
+        {
+            if (SelectedFleets[idx]._Player == Game.HumanPlayer)
+            {
+                if (ActionMove.HasAvailableMove(Game, SelectedFleets[idx], toStar))
+                {
+                    ActionMove.CancelMove(Game, SelectedFleets[idx]);
+                    ActionMove.AddMove(Game, SelectedFleets[idx], toStar);
+
+                    Game.Paths.AddPath(SelectedFleets[idx], toStar);
+                }
+                else if (SelectedFleets[idx].AtStar_PerTurn == toStar)
+                {
+                    ActionMove.CancelMove(Game, SelectedFleets[idx]);
+
+                    Game.Paths.ClearPathForFleet(SelectedFleets[idx]);
+                }
+
+                Game.GalaxyUI.FleetsSelected.Refresh(Game.Input.SelectedFleets);
+            }
+        }
     }
 }

@@ -121,6 +121,12 @@ public partial class MapNode : Node
                     //Game.Input.DeselectAll();
                     Game.Input.DeselectOneStep();
                 }
+                if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
+                {
+                    //GD.Print("You clicked on " + Label.Text);
+                    //DeselectAll();
+                    Game.Input.DeselectOneStep();
+                }
             }
         }
     }

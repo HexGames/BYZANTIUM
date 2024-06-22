@@ -390,7 +390,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w25me")
 
-[node name="Star" type="Node3D" node_paths=PackedStringArray("PlayerColor", "SystemSelected", "SectorSelected", "Hover", "HoverSector", "ShipFriendly", "ShipFriendly_Model", "ShipFriendly_Selected", "ShipFriendly_Hover", "ShipEnemy", "ShipEnemy_Model", "ShipEnemy_Selected", "ShipEnemy_Hover")]
+[node name="Star" type="Node3D" node_paths=PackedStringArray("PlayerColor", "SystemSelected", "SectorSelected", "Hover", "HoverSector", "ShipFriendly", "ShipFriendly_Model", "ShipFriendly_Hover", "ShipEnemy", "ShipEnemy_Model", "ShipEnemy_Hover")]
 script = ExtResource("1_oyjdi")
 PlayerColor = NodePath("Colors/PlayerColor")
 SystemSelected = NodePath("Colors/SystemSelected")
@@ -399,11 +399,9 @@ Hover = NodePath("Colors/Hover")
 HoverSector = NodePath("Colors/HoverSector")
 ShipFriendly = NodePath("Ship_Friendly")
 ShipFriendly_Model = NodePath("Ship_Friendly/Ship")
-ShipFriendly_Selected = NodePath("Ship_Friendly/SmallCenter")
 ShipFriendly_Hover = NodePath("Ship_Friendly/SmallHover")
 ShipEnemy = NodePath("Ship_Other")
 ShipEnemy_Model = NodePath("Ship_Other/Ship")
-ShipEnemy_Selected = NodePath("Ship_Other/SmallCenter")
 ShipEnemy_Hover = NodePath("Ship_Other/SmallHover")
 
 [node name="Light" type="OmniLight3D" parent="."]

@@ -51,5 +51,19 @@ public partial class MapGenerator : Node
         Data.AddData(ship, "Marines", 100, DefLibrary);
         Data.AddData(ship, "Fighters", 0, DefLibrary);
         Data.AddData(ship, "Supply", 300, DefLibrary);
+
+        // second fleet
+        fleet = Data.AddData(fleets, "Fleet", "Byblos Hammer", DefLibrary);
+
+        Data.AddData(fleet, "Link:Star", star.ValueS, DefLibrary); // no StarData yet
+        Data.AddData(star, "Link:Player:Fleet", player.ValueS + ":" + fleet.ValueS, DefLibrary); // no StarData yet
+
+        ship = Data.AddData(fleet, "Ship", "Babylon_II", DefLibrary);
+        Data.AddData(ship, "Design", "Babylon", DefLibrary);
+        Data.AddData(ship, "HP", 0, DefLibrary);
+        Data.AddData(ship, "XP", 0, DefLibrary);
+        Data.AddData(ship, "Marines", 100, DefLibrary);
+        Data.AddData(ship, "Fighters", 0, DefLibrary);
+        Data.AddData(ship, "Supply", 300, DefLibrary);
     }
 }

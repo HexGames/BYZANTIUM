@@ -42,7 +42,14 @@ public partial class TurnLoop : Node
             {
                 SectorData sector = player.Sectors[sectorIdx];
 
-                ActionBuild.EndTurn(sector, Game); // --- !!! ---
+                ActionBuild.EndTurn(Game, sector); // --- !!! ---
+            }
+
+            for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
+            {
+                FleetData fleet = player.Fleets[fleetIdx];
+
+                ActionMove.EndTurn(Game, fleet);
             }
         }
     }
@@ -159,6 +166,13 @@ public partial class TurnLoop : Node
                 ActionBuild.RefreshAvailableBuildings(Game, sector);
 
                 sector.BuildQueue_PerTurn_ActionChange.Refresh();
+            }
+
+            for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
+            {
+                FleetData fleet = player.Fleets[fleetIdx];
+
+                ActionMove.RefreshAvailableMoves(Game, fleet);
             }
         }
     }

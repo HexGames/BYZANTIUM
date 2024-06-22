@@ -12,6 +12,9 @@ public partial class UISelectedFleetsItem : Control
     private static string TotalShipsNumber_Original = "";
     private RichTextLabel TotalShipsPower = null;
     private static string TotalShipsPower_Original = "";
+    private Control ActionBG = null;
+    private RichTextLabel Action = null;
+    private static string Action_Original = "";
 
     [ExportCategory("Runtime")]
     [Export]
@@ -29,6 +32,9 @@ public partial class UISelectedFleetsItem : Control
         if (TotalShipsNumber_Original.Length == 0) TotalShipsNumber_Original = TotalShipsNumber.Text;
         TotalShipsPower = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/Faction/MarginContainer/TotalPower");
         if (TotalShipsPower_Original.Length == 0) TotalShipsPower_Original = TotalShipsPower.Text;
+        ActionBG = GetNode<Control>("MarginContainer/VBoxContainer/VBoxContainer/Action");
+        Action = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/VBoxContainer/Action/MarginContainer/Control/Name");
+        if (Action_Original.Length == 0) Action_Original = Action.Text;
 
         Ships.Clear();
         for (int i = 0; i < 4; i++)
@@ -41,15 +47,25 @@ public partial class UISelectedFleetsItem : Control
     {
         _Fleet = fleet;
 
-        FleetNameNumber.Text = FleetName_Original.Replace("$value", _Fleet.FleetName);
+        FleetNameNumber.Text = FleetName_Original.Replace("$name", _Fleet.FleetName);
         TotalShipsNumber.Text = TotalShipsNumber_Original.Replace("$value", _Fleet.Ships.Count.ToString());
         TotalShipsPower.Text = TotalShipsPower_Original.Replace("$value", (10 * _Fleet.Ships.Count).ToString());
-
 
         for (int idx = 0; idx < Ships.Count; idx++)
         {
             Ships[idx].Visible = false;
         }
+
+        if (fleet.MoveAction != null)
+        {
+            StarData star = Data.GetLinkStarData(fleet.MoveAction, Game.Map.Data);
+            Action.Text = Action_Original.Replace("$value", "Move to " + star.StarName);
+        }
+        else
+        {
+            Action.Text = Action_Original.Replace("$value", "Idle");
+        }
+        ActionBG.Visible = true;
     }
 
     public void OnDeselect()

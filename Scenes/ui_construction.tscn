@@ -364,6 +364,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="PrivateIndustry" type="TextureRect" parent="VBoxContainer/Bottom/Extra"]
+visible = false
 self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
@@ -378,6 +379,7 @@ texture = ExtResource("7_pctk4")
 expand_mode = 1
 
 [node name="BC" type="TextureRect" parent="VBoxContainer/Bottom/Extra"]
+visible = false
 self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2

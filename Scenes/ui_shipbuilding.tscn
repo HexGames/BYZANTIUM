@@ -1,0 +1,434 @@
+[gd_scene load_steps=19 format=3 uid="uid://dol6nmmdwlc52"]
+
+[ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_rk2rl"]
+[ext_resource type="Script" path="res://Scripts/UI/Progress/UIShipbuilding.cs" id="2_xog2t"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="3_lc4mh"]
+[ext_resource type="Texture2D" uid="uid://cen58p831ysqp" path="res://Assets/UI/Symbols/Energy.png" id="4_aqn3r"]
+[ext_resource type="Texture2D" uid="uid://u06aop6n783b" path="res://Assets/UI/Symbols/Ship.png" id="4_ir8n8"]
+[ext_resource type="Script" path="res://Scripts/UI/Progress/UIConstructionItem.cs" id="5_rtokv"]
+[ext_resource type="Texture2D" uid="uid://e0pkpwa427r0" path="res://Assets/UI/Symbols/BC.png" id="5_vlt1q"]
+[ext_resource type="Texture2D" uid="uid://qvxxtu5jlkbt" path="res://Assets/UI/left.png" id="6_63bv4"]
+[ext_resource type="Texture2D" uid="uid://ceyqr5puhfmn0" path="res://Assets/UI/right.png" id="7_051q6"]
+[ext_resource type="Texture2D" uid="uid://ckpikidebn0p8" path="res://Assets/UI/Symbols/PrivateIndustry.png" id="7_pctk4"]
+[ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="8_qm267"]
+[ext_resource type="Texture2D" uid="uid://rvohf5tbwt7o" path="res://Assets/UI/Symbols/Minerals.png" id="12_dj2li"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6w4y"]
+bg_color = Color(0.501961, 0.12549, 0, 1)
+draw_center = false
+border_width_bottom = 2
+border_color = Color(0.501961, 0.12549, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17foh"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub702"]
+bg_color = Color(0.27451, 0, 0, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7gws"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciw6u"]
+bg_color = Color(0.352941, 0, 0, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16hbo"]
+bg_color = Color(0.486275, 0, 0, 1)
+skew = Vector2(0.32, 0)
+
+[node name="ConstructionShipbuilding" type="Control" node_paths=PackedStringArray("TitleLabel", "ShipIcon", "ShipName", "Right", "Left", "Current", "ProgressLabel")]
+custom_minimum_size = Vector2(320, 256)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_rk2rl")
+script = ExtResource("2_xog2t")
+TitleLabel = NodePath("VBoxContainer/Title/TitleBg/HBoxContainer/TitleBg/HBoxContainer/Title")
+ShipIcon = NodePath("VBoxContainer/Working/Ship/TextureRect")
+ShipName = NodePath("VBoxContainer/Working/Ship/Name")
+Right = NodePath("VBoxContainer/Working/Ship/Right")
+Left = NodePath("VBoxContainer/Working/Ship/Left")
+Current = NodePath("VBoxContainer/Working/Item_Current")
+ProgressLabel = NodePath("VBoxContainer/Bottom/Value")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rk2rl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="Title" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleBg" type="PanelContainer" parent="VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n6w4y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Title/TitleBg"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Gap_1" type="Control" parent="VBoxContainer/Title/TitleBg/HBoxContainer"]
+layout_mode = 2
+
+[node name="TitleBg" type="PanelContainer" parent="VBoxContainer/Title/TitleBg/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_17foh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Title/TitleBg/HBoxContainer/TitleBg"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Gap_1" type="Control" parent="VBoxContainer/Title/TitleBg/HBoxContainer/TitleBg/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer/Title/TitleBg/HBoxContainer/TitleBg/HBoxContainer"]
+custom_minimum_size = Vector2(64, 20)
+layout_mode = 2
+theme = ExtResource("3_lc4mh")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]Sector Shipbuilding[/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Gap_2" type="Control" parent="VBoxContainer/Title/TitleBg/HBoxContainer/TitleBg/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="Gap_2" type="Control" parent="VBoxContainer/Title/TitleBg/HBoxContainer"]
+layout_mode = 2
+
+[node name="Gap_1" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Working" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Ship" type="Control" parent="VBoxContainer/Working"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Working/Ship"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ir8n8")
+expand_mode = 1
+
+[node name="Left" type="Button" parent="VBoxContainer/Working/Ship"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.5
+anchor_right = 0.25
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -20.0
+offset_right = 28.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_qm267")
+theme_type_variation = &"Small"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Working/Ship/Left"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_63bv4")
+expand_mode = 1
+
+[node name="Right" type="Button" parent="VBoxContainer/Working/Ship"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.5
+anchor_right = 0.75
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_qm267")
+theme_type_variation = &"Small"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Working/Ship/Right"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_051q6")
+expand_mode = 1
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/Working/Ship"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = -20.0
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("3_lc4mh")
+bbcode_enabled = true
+text = "[left][b]$name[/b][/left]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Gap_1" type="Control" parent="VBoxContainer/Working"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="RallyPoint" type="RichTextLabel" parent="VBoxContainer/Working"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_lc4mh")
+bbcode_enabled = true
+text = "[center][b]No Rally Point[/b][/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Gap_2" type="Control" parent="VBoxContainer/Working"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="Item_Current" type="Button" parent="VBoxContainer/Working"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("8_qm267")
+theme_type_variation = &"Dragable"
+script = ExtResource("5_rtokv")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Working/Item_Current"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Working/Item_Current/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ub702")
+
+[node name="NextTurn" type="ProgressBar" parent="VBoxContainer/Working/Item_Current/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_q7gws")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ciw6u")
+step = 1.0
+value = 55.0
+show_percentage = false
+
+[node name="Progress" type="ProgressBar" parent="VBoxContainer/Working/Item_Current/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_q7gws")
+theme_override_styles/fill = SubResource("StyleBoxFlat_16hbo")
+step = 1.0
+value = 45.0
+show_percentage = false
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/Working/Item_Current/MarginContainer/Panel"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_lc4mh")
+bbcode_enabled = true
+text = "[left][b]$name[/b] at $location[/left]"
+
+[node name="Turns" type="RichTextLabel" parent="VBoxContainer/Working/Item_Current/MarginContainer/Panel/Name"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_lc4mh")
+bbcode_enabled = true
+text = "[right][b]$value[img=24x24]Assets/UI/Symbols/Turn.png[/img][/b][/right]"
+
+[node name="Gap_4" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Bottom" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("1_rk2rl")
+theme_type_variation = &"Bottom"
+
+[node name="Value" type="RichTextLabel" parent="VBoxContainer/Bottom"]
+custom_minimum_size = Vector2(128, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_right = 16.0
+grow_vertical = 2
+theme = ExtResource("3_lc4mh")
+bbcode_enabled = true
+text = "[left][b] $value[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img][/b][/left]"
+
+[node name="Extra" type="HBoxContainer" parent="VBoxContainer/Bottom"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_right = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="PrivateIndustry" type="TextureRect" parent="VBoxContainer/Bottom/Extra"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("7_pctk4")
+expand_mode = 1
+
+[node name="PrivateIndustryOn" type="TextureRect" parent="VBoxContainer/Bottom/Extra/PrivateIndustry"]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 0
+texture = ExtResource("7_pctk4")
+expand_mode = 1
+
+[node name="BC" type="TextureRect" parent="VBoxContainer/Bottom/Extra"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("5_vlt1q")
+expand_mode = 1
+
+[node name="BCOn" type="TextureRect" parent="VBoxContainer/Bottom/Extra/BC"]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 0
+texture = ExtResource("5_vlt1q")
+expand_mode = 1
+
+[node name="Energy" type="TextureRect" parent="VBoxContainer/Bottom/Extra"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("4_aqn3r")
+expand_mode = 1
+
+[node name="EnergyOn" type="TextureRect" parent="VBoxContainer/Bottom/Extra/Energy"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 0
+texture = ExtResource("4_aqn3r")
+expand_mode = 1
+
+[node name="Minerals" type="TextureRect" parent="VBoxContainer/Bottom/Extra"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("12_dj2li")
+expand_mode = 1
+
+[node name="MineralsOn" type="TextureRect" parent="VBoxContainer/Bottom/Extra/Minerals"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 0
+texture = ExtResource("12_dj2li")
+expand_mode = 1

@@ -2,7 +2,7 @@ Map
 {
 	GameStats 
 	{
-		Turn 12
+		Turn 2
 		Human 0
 	}
 	GalaxySize 9
@@ -11,25 +11,24 @@ Map
 		Star Star_2
 		{
 			ID 1
-			GFX_RNG_1 60
-			GFX_RNG_2 26
+			GFX_RNG_1 94
+			GFX_RNG_2 18
 			X 2
 			Y 0
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Red_Dwarf
 					Building Stable_Orbit
 				}
-				Planet Swamp
+				Planet Gas_Giant
 				{
-					Type Swamp
-					Size 2
-					Temperature 3
-					Rocky 
-					Bacterial_Life 
-					Colonizable 
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -38,22 +37,35 @@ Map
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Gas_Giant
+				Planet Ocean
 				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
+					Type Ocean
+					Size 3
+					Temperature 3
+					Moon 
+					High_Gravity 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 3
+					Temperature 2
+					Moon 
+					Rocky 
+					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 5
-					Moon 
+					Temperature 4
 					High_Radiation 
-					Low_Gravity 
 					Barren 
 					Rocky 
 					Building Possible_Outpost
@@ -63,9 +75,42 @@ Map
 		Star Star_3
 		{
 			ID 2
-			GFX_RNG_1 41
-			GFX_RNG_2 3
+			GFX_RNG_1 15
+			GFX_RNG_2 67
 			X 3
+			Y 0
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Pulsar
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_5
+		{
+			ID 3
+			GFX_RNG_1 6
+			GFX_RNG_2 90
+			X 5
 			Y 0
 			Planet_List 
 			{
@@ -74,173 +119,60 @@ Map
 					Star_Type Main_Sequence
 					Building Stable_Orbit
 				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 2
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 5
-					High_Radiation 
-					Low_Gravity 
+					Temperature 3
+					Moon 
 					Barren 
 					Rocky 
 					Building Possible_Outpost
 				}
-				Planet Lava
+				Planet Swamp
 				{
-					Type Lava
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Extreme_Temps 
-					Rocky 
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Toxic
-				{
-					Type Toxic
+					Type Swamp
 					Size 1
 					Temperature 4
-					Low_Gravity 
-					Toxic 
-					Semi-Barren 
 					Rocky 
+					Tiny_Moon 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 3
+					Temperature 1
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 2
+					Rocky 
+					Tiny_Moon 
 					Useful_Minerals 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
 					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_5
-		{
-			ID 3
-			GFX_RNG_1 2
-			GFX_RNG_2 36
-			X 5
-			Y 0
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 3
-					Moon 
-					Toxic 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_6
-		{
-			ID 4
-			GFX_RNG_1 72
-			GFX_RNG_2 61
-			X 6
-			Y 0
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Blue_Giant
-					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_7
-		{
-			ID 5
-			GFX_RNG_1 84
-			GFX_RNG_2 74
-			X 7
-			Y 0
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -251,20 +183,134 @@ Map
 					Tiny_Moon 
 					Building Possible_Outpost
 				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					Barren 
+					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					Moon 
+					High_Radiation 
+					Rocky 
+					Oceans 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_6
+		{
+			ID 4
+			GFX_RNG_1 88
+			GFX_RNG_2 96
+			X 6
+			Y 0
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Rich_Gasses 
+					Building Possible_Outpost
+				}
 				Planet Asteroids
 				{
 					Type Asteroids
-					Useful_Minerals 
+					Rich_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Desert
+				Planet Swamp
 				{
-					Type Desert
-					Size 1
-					Temperature 4
-					Low_Gravity 
-					Semi-Barren 
+					Type Swamp
+					Size 2
+					Temperature 2
 					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_7
+		{
+			ID 5
+			GFX_RNG_1 41
+			GFX_RNG_2 26
+			X 7
+			Y 0
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 3
+					Moon 
+					Low_Gravity 
+					Rocky 
+					Oceans 
+					Bacterial_Life 
 					Colonizable 
 					Building Possible_Outpost
 				}
@@ -273,37 +319,37 @@ Map
 		Star Star_21
 		{
 			ID 6
-			GFX_RNG_1 59
-			GFX_RNG_2 30
+			GFX_RNG_1 44
+			GFX_RNG_2 54
 			X 2
 			Y 1
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Main_Sequence
 					Building Stable_Orbit
 				}
 				Planet Continents
 				{
 					Type Continents
-					Size 1
-					Temperature 4
-					High_Radiation 
+					Size 2
+					Temperature 2
 					Rocky 
 					Oceans 
-					Bacterial_Life 
 					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Swamp
+				Planet Barren
 				{
-					Type Swamp
-					Size 2
-					Temperature 4
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
 					Rocky 
-					Complex_Life 
-					Colonizable 
+					Tiny_Moon 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -315,18 +361,33 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
 					Size 6
 					Gas_Giant 
 					Tiny_Moon 
 					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					Extreme_Temps 
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 			}
@@ -334,8 +395,8 @@ Map
 		Star Sol
 		{
 			ID 7
-			GFX_RNG_1 43
-			GFX_RNG_2 14
+			GFX_RNG_1 87
+			GFX_RNG_2 34
 			X 3
 			Y 1
 			Planet_List 
@@ -351,8 +412,10 @@ Map
 					Size 1
 					Temperature 5
 					High_Radiation 
+					Low_Gravity 
 					Barren 
 					Rocky 
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Venus
@@ -372,7 +435,6 @@ Map
 					Temperature 3
 					Rocky 
 					Oceans 
-					Useful_Minerals 
 					Complex_Life 
 					Colonizable 
 					Building Possible_Outpost
@@ -384,19 +446,22 @@ Map
 					Size 1
 					Temperature 3
 					Moon 
+					Low_Gravity 
 					Barren 
 					Rocky 
+					Useful_Minerals 
 					Building Possible_Outpost
-					Link:Player:Sector:System:Colony Player_0:Core:Sol:Moon
 				}
 				Planet Mars
 				{
 					Type Desert
 					Size 1
 					Temperature 2
+					Low_Gravity 
 					Semi-Barren 
 					Rocky 
 					Tiny_Moon 
+					Useful_Minerals 
 					Colonizable 
 					Building Possible_Outpost
 				}
@@ -413,7 +478,7 @@ Map
 					Temperature 2
 					Gas_Giant 
 					Tiny_Moon 
-					Useful_Gasses 
+					Rich_Gasses 
 					Building Possible_Outpost
 				}
 				Planet Ganymede
@@ -441,6 +506,7 @@ Map
 					Size 1
 					Temperature 1
 					Moon 
+					Low_Gravity 
 					Extreme_Temps 
 					Barren 
 					Rocky 
@@ -449,20 +515,108 @@ Map
 			}
 			Link:Player:Sector:System Player_0:Core:Sol
 			Link:Player:Sector:System:Colony Player_0:Core:Sol:Star
+			Link:Player:Fleet Player_0:Babylon's_Eye
+			Link:Player:Fleet Player_0:Byblos Hammer
 		}
 		Star Star_23
 		{
 			ID 8
-			GFX_RNG_1 36
-			GFX_RNG_2 89
+			GFX_RNG_1 60
+			GFX_RNG_2 67
 			X 4
 			Y 1
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
+					Star_Type White_Dwarf
 					Building Stable_Orbit
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 3
+					Temperature 1
+					High_Gravity 
+					Extreme_Temps 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 4
+					Moon 
+					Low_Gravity 
+					Toxic 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 4
+					Moon 
+					Rocky 
+					Rich_Minerals 
+					Colonizable 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_24
+		{
+			ID 9
+			GFX_RNG_1 19
+			GFX_RNG_2 47
+			X 5
+			Y 1
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Low_Gravity 
+					Rocky 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
 				}
 				Planet Frozen
 				{
@@ -471,67 +625,18 @@ Map
 					Temperature 1
 					Extreme_Temps 
 					Barren 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Low_Gravity 
-					Barren 
 					Rocky 
 					Building Possible_Outpost
 				}
-				Planet Asteroids
+				Planet Arid
 				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_24
-		{
-			ID 9
-			GFX_RNG_1 81
-			GFX_RNG_2 64
-			X 5
-			Y 1
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Blue_Giant
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
+					Type Arid
+					Size 1
+					Temperature 4
+					Moon 
+					High_Radiation 
+					Rocky 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -539,92 +644,27 @@ Map
 		Star Star_25
 		{
 			ID 10
-			GFX_RNG_1 36
-			GFX_RNG_2 15
+			GFX_RNG_1 25
+			GFX_RNG_2 85
 			X 6
 			Y 1
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
+					Star_Type Pulsar
 					Building Stable_Orbit
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 3
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
+					Temperature 5
+					High_Radiation 
 					Low_Gravity 
 					Barren 
 					Rocky 
 					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 2
-					Temperature 2
-					Oceans 
-					Rich_Minerals 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Extreme_Temps 
-					Rocky 
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Barren 
-					Rocky 
-					Rings 
-					Rich_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -638,7 +678,8 @@ Map
 					Type Gas_Giant
 					Size 6
 					Gas_Giant 
-					Rings 
+					Tiny_Moon 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 			}
@@ -646,8 +687,8 @@ Map
 		Star Star_26
 		{
 			ID 11
-			GFX_RNG_1 71
-			GFX_RNG_2 45
+			GFX_RNG_1 65
+			GFX_RNG_2 80
 			X 7
 			Y 1
 			Planet_List 
@@ -660,17 +701,33 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
 					Gas_Giant 
 					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Extreme_Temps 
+					Barren 
 					Building Possible_Outpost
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 3
-					Moon 
+					Temperature 1
 					Low_Gravity 
 					Barren 
 					Rocky 
@@ -681,16 +738,58 @@ Map
 		Star Star_27
 		{
 			ID 12
-			GFX_RNG_1 86
-			GFX_RNG_2 34
+			GFX_RNG_1 85
+			GFX_RNG_2 61
 			X 8
 			Y 1
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type Red_Giant
 					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 4
+					Moon 
+					Low_Gravity 
+					Oceans 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Low_Gravity 
+					Rocky 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
@@ -698,36 +797,7 @@ Map
 					Size 6
 					Gas_Giant 
 					Rings 
-					Rich_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 2
-					Temperature 4
-					Moon 
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Rich_Minerals 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 			}
@@ -735,33 +805,25 @@ Map
 		Star Star_28
 		{
 			ID 13
-			GFX_RNG_1 90
-			GFX_RNG_2 44
+			GFX_RNG_1 25
+			GFX_RNG_2 39
 			X 9
 			Y 1
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type White_Dwarf
 					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Continents
 				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 2
-					Moon 
+					Type Continents
+					Size 3
+					Temperature 3
+					High_Gravity 
 					Rocky 
+					Oceans 
 					Bacterial_Life 
 					Colonizable 
 					Building Possible_Outpost
@@ -776,22 +838,11 @@ Map
 				{
 					Type Barren
 					Size 1
-					Temperature 1
+					Temperature 2
 					Moon 
-					Low_Gravity 
 					Barren 
 					Rocky 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 3
-					Temperature 1
-					High_Gravity 
-					Extreme_Temps 
-					Barren 
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 			}
@@ -799,36 +850,54 @@ Map
 		Star Star_39
 		{
 			ID 14
-			GFX_RNG_1 11
-			GFX_RNG_2 99
+			GFX_RNG_1 97
+			GFX_RNG_2 28
 			X 1
 			Y 2
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type White_Dwarf
 					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 2
+					Semi-Barren 
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
 					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 1
-					Temperature 3
-					Moon 
-					Low_Gravity 
-					Rocky 
 					Rings 
-					Bacterial_Life 
-					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -836,177 +905,9 @@ Map
 		Star Star_40
 		{
 			ID 15
-			GFX_RNG_1 51
-			GFX_RNG_2 73
+			GFX_RNG_1 72
+			GFX_RNG_2 69
 			X 2
-			Y 2
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 1
-					Temperature 2
-					Moon 
-					Low_Gravity 
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_41
-		{
-			ID 16
-			GFX_RNG_1 94
-			GFX_RNG_2 86
-			X 3
-			Y 2
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_44
-		{
-			ID 17
-			GFX_RNG_1 1
-			GFX_RNG_2 100
-			X 6
-			Y 2
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 2
-					Temperature 3
-					Oceans 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Barren 
-					Rocky 
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 1
-					Temperature 2
-					Moon 
-					Low_Gravity 
-					Rocky 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 1
-					Temperature 4
-					High_Radiation 
-					Oceans 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_46
-		{
-			ID 18
-			GFX_RNG_1 8
-			GFX_RNG_2 73
-			X 8
 			Y 2
 			Planet_List 
 			{
@@ -1015,110 +916,81 @@ Map
 					Star_Type Red_Giant
 					Building Stable_Orbit
 				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 4
+					Toxic 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
 				Planet Asteroids
 				{
 					Type Asteroids
 					Rich_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
 			}
 		}
-		Star Star_47
+		Star Star_41
 		{
-			ID 19
-			GFX_RNG_1 12
-			GFX_RNG_2 56
-			X 9
+			ID 16
+			GFX_RNG_1 90
+			GFX_RNG_2 83
+			X 3
 			Y 2
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type Main_Sequence
 					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
 				}
 				Planet Continents
 				{
 					Type Continents
-					Size 3
-					Temperature 3
+					Size 1
+					Temperature 2
 					Rocky 
 					Oceans 
 					Bacterial_Life 
 					Colonizable 
 					Building Possible_Outpost
 				}
-			}
-		}
-		Star Star_48
-		{
-			ID 20
-			GFX_RNG_1 28
-			GFX_RNG_2 36
-			X 10
-			Y 2
-			Planet_List 
-			{
-				Planet Star
+				Planet Barren
 				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Low_Gravity 
+					Rocky 
+					Tiny_Moon 
+					Colonizable 
+					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 6
 					Gas_Giant 
-					Rings 
-					Rich_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Moon 
-					Barren 
-					Rocky 
 					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 				Planet Barren
@@ -1133,25 +1005,264 @@ Map
 					Rocky 
 					Building Possible_Outpost
 				}
-				Planet Vulcanic
+			}
+		}
+		Star Star_44
+		{
+			ID 17
+			GFX_RNG_1 23
+			GFX_RNG_2 22
+			X 6
+			Y 2
+			Planet_List 
+			{
+				Planet Star
 				{
-					Type Vulcanic
-					Size 2
-					Temperature 3
+					Star_Type Pulsar
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Barren 
 					Rocky 
-					Tiny_Moon 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
 					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 3
+					Temperature 5
+					Moon 
+					Extreme_Temps 
+					Rocky 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_46
+		{
+			ID 18
+			GFX_RNG_1 13
+			GFX_RNG_2 37
+			X 8
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 3
+					Temperature 2
+					High_Gravity 
+					Rocky 
+					Rich_Minerals 
 					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
 					Building Possible_Outpost
 				}
 				Planet Arid
 				{
 					Type Arid
+					Size 1
+					Temperature 2
+					Moon 
+					Rocky 
+					Rings 
+					Colonizable 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_47
+		{
+			ID 19
+			GFX_RNG_1 79
+			GFX_RNG_2 60
+			X 9
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Continents
+				{
+					Type Continents
 					Size 2
 					Temperature 4
 					High_Radiation 
 					Rocky 
+					Oceans 
+					Rich_Minerals 
+					Complex_Life 
 					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Low_Gravity 
+					Rocky 
+					Oceans 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 3
+					Temperature 2
+					Rocky 
+					Rich_Minerals 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_48
+		{
+			ID 20
+			GFX_RNG_1 88
+			GFX_RNG_2 6
+			X 10
+			Y 2
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Rings 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Barren 
+					Rocky 
+					Tiny_Moon 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 3
+					Temperature 2
+					Barren 
+					Rocky 
+					Useful_Minerals 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					Low_Gravity 
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 			}
@@ -1159,8 +1270,8 @@ Map
 		Star Star_49
 		{
 			ID 21
-			GFX_RNG_1 79
-			GFX_RNG_2 77
+			GFX_RNG_1 87
+			GFX_RNG_2 15
 			X 11
 			Y 2
 			Planet_List 
@@ -1175,33 +1286,42 @@ Map
 					Type Gas_Giant
 					Size 5
 					Gas_Giant 
-					Tiny_Moon 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
-					Rich_Minerals 
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Barren
+				Planet Desert
 				{
-					Type Barren
-					Size 1
-					Temperature 3
-					Low_Gravity 
-					Barren 
+					Type Desert
+					Size 3
+					Temperature 4
+					Moon 
+					Semi-Barren 
 					Rocky 
-					Tiny_Moon 
+					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Frozen
+				Planet Arid
 				{
-					Type Frozen
+					Type Arid
 					Size 2
-					Temperature 1
-					Extreme_Temps 
-					Barren 
+					Temperature 4
+					Moon 
+					Rocky 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -1209,7 +1329,7 @@ Map
 		Star Star_58
 		{
 			ID 22
-			GFX_RNG_1 43
+			GFX_RNG_1 54
 			GFX_RNG_2 94
 			X 1
 			Y 3
@@ -1223,74 +1343,59 @@ Map
 				Planet Ocean
 				{
 					Type Ocean
-					Size 3
-					Temperature 2
-					High_Gravity 
+					Size 1
+					Temperature 4
 					Rings 
 					Oceans 
-					Complex_Life 
+					Bacterial_Life 
 					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Continents
+				Planet Ocean
 				{
-					Type Continents
+					Type Ocean
+					Size 2
+					Temperature 2
+					Rings 
+					Oceans 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
 					Size 1
 					Temperature 2
-					Moon 
-					Rocky 
-					Oceans 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
 					Low_Gravity 
-					Barren 
-					Rocky 
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Extreme_Temps 
-					Rocky 
-					Tiny_Moon 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					Barren 
-					Rocky 
-					Useful_Minerals 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
-					Rich_Minerals 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					Low_Gravity 
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
 					Gas_Giant 
 					Tiny_Moon 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 			}
@@ -1298,8 +1403,8 @@ Map
 		Star Star_59
 		{
 			ID 23
-			GFX_RNG_1 68
-			GFX_RNG_2 0
+			GFX_RNG_1 7
+			GFX_RNG_2 28
 			X 2
 			Y 3
 			Planet_List 
@@ -1315,7 +1420,27 @@ Map
 					Size 5
 					Gas_Giant 
 					Tiny_Moon 
-					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Moon 
+					Low_Gravity 
+					Toxic 
+					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -1324,27 +1449,26 @@ Map
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Frozen
+				Planet Artic
 				{
-					Type Frozen
-					Size 2
-					Temperature 1
-					Moon 
-					Extreme_Temps 
-					Barren 
+					Type Artic
+					Size 3
+					Temperature 2
+					High_Gravity 
 					Rocky 
+					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Barren
+				Planet Artic
 				{
-					Type Barren
+					Type Artic
 					Size 1
-					Temperature 5
+					Temperature 2
 					Moon 
-					High_Radiation 
-					Barren 
+					Low_Gravity 
 					Rocky 
-					Rich_Minerals 
+					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -1352,8 +1476,8 @@ Map
 		Star Star_60
 		{
 			ID 24
-			GFX_RNG_1 33
-			GFX_RNG_2 90
+			GFX_RNG_1 2
+			GFX_RNG_2 78
 			X 3
 			Y 3
 			Planet_List 
@@ -1363,29 +1487,30 @@ Map
 					Star_Type White_Dwarf
 					Building Stable_Orbit
 				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 3
-					Temperature 4
-					Rocky 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 2
+					Temperature 5
+					High_Radiation 
 					Barren 
 					Rocky 
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
 					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 			}
@@ -1393,16 +1518,22 @@ Map
 		Star Star_68
 		{
 			ID 25
-			GFX_RNG_1 12
-			GFX_RNG_2 16
+			GFX_RNG_1 89
+			GFX_RNG_2 67
 			X 11
 			Y 3
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type Red_Giant
 					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
@@ -1410,12 +1541,17 @@ Map
 					Size 5
 					Gas_Giant 
 					Tiny_Moon 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
-				Planet Asteroids
+				Planet Toxic
 				{
-					Type Asteroids
-					Useful_Minerals 
+					Type Toxic
+					Size 1
+					Temperature 3
+					Moon 
+					Toxic 
+					Rocky 
 					Building Possible_Outpost
 				}
 			}
@@ -1423,68 +1559,41 @@ Map
 		Star Star_69
 		{
 			ID 26
-			GFX_RNG_1 20
-			GFX_RNG_2 31
+			GFX_RNG_1 85
+			GFX_RNG_2 0
 			X 12
 			Y 3
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
+					Star_Type Red_Dwarf
 					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
 					Gas_Giant 
 					Tiny_Moon 
 					Building Possible_Outpost
 				}
-				Planet Swamp
+				Planet Asteroids
 				{
-					Type Swamp
-					Size 1
-					Temperature 4
-					Moon 
-					Rocky 
-					Tiny_Moon 
+					Type Asteroids
 					Rich_Minerals 
-					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Rings 
 					Building Possible_Outpost
 				}
 			}
@@ -1492,504 +1601,10 @@ Map
 		Star Star_78
 		{
 			ID 27
-			GFX_RNG_1 86
-			GFX_RNG_2 70
+			GFX_RNG_1 95
+			GFX_RNG_2 38
 			X 2
 			Y 4
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					Moon 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_79
-		{
-			ID 28
-			GFX_RNG_1 41
-			GFX_RNG_2 74
-			X 3
-			Y 4
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Blue_Giant
-					Building Stable_Orbit
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 2
-					Temperature 3
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Barren 
-					Rocky 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 3
-					Temperature 1
-					Extreme_Temps 
-					Barren 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Moon 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_89
-		{
-			ID 29
-			GFX_RNG_1 3
-			GFX_RNG_2 25
-			X 13
-			Y 4
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 3
-					Temperature 1
-					High_Gravity 
-					Extreme_Temps 
-					Barren 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					Moon 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_95
-		{
-			ID 30
-			GFX_RNG_1 47
-			GFX_RNG_2 30
-			X 0
-			Y 5
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type White_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 1
-					Temperature 1
-					Moon 
-					Low_Gravity 
-					Extreme_Temps 
-					Barren 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_98
-		{
-			ID 31
-			GFX_RNG_1 98
-			GFX_RNG_2 6
-			X 3
-			Y 5
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Blue_Giant
-					Building Stable_Orbit
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 3
-					Low_Gravity 
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Moon 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Barren 
-					Rocky 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_99
-		{
-			ID 32
-			GFX_RNG_1 78
-			GFX_RNG_2 85
-			X 4
-			Y 5
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type White_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_114
-		{
-			ID 33
-			GFX_RNG_1 58
-			GFX_RNG_2 64
-			X 0
-			Y 6
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 2
-					Temperature 3
-					Moon 
-					Rocky 
-					Oceans 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 2
-					Temperature 5
-					Moon 
-					Extreme_Temps 
-					Rocky 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 2
-					Temperature 4
-					Semi-Barren 
-					Rocky 
-					Rich_Minerals 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 3
-					Temperature 2
-					High_Gravity 
-					Rings 
-					Oceans 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_115
-		{
-			ID 34
-			GFX_RNG_1 77
-			GFX_RNG_2 59
-			X 1
-			Y 6
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					Moon 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 3
-					Toxic 
-					Semi-Barren 
-					Rocky 
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 2
-					Temperature 3
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					Moon 
-					Barren 
-					Rocky 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 3
-					Low_Gravity 
-					Toxic 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_118
-		{
-			ID 35
-			GFX_RNG_1 41
-			GFX_RNG_2 29
-			X 4
-			Y 6
 			Planet_List 
 			{
 				Planet Star
@@ -1997,13 +1612,238 @@ Map
 					Star_Type Pulsar
 					Building Stable_Orbit
 				}
-				Planet Vulcanic
+				Planet Barren
 				{
-					Type Vulcanic
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 3
+					High_Gravity 
+					Rocky 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_79
+		{
+			ID 28
+			GFX_RNG_1 11
+			GFX_RNG_2 15
+			X 3
+			Y 4
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_89
+		{
+			ID 29
+			GFX_RNG_1 59
+			GFX_RNG_2 44
+			X 13
+			Y 4
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
 					Size 2
 					Temperature 2
+					Moon 
 					Rocky 
-					Rich_Minerals 
+					Colonizable 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_95
+		{
+			ID 30
+			GFX_RNG_1 8
+			GFX_RNG_2 47
+			X 0
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 3
+					Semi-Barren 
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					Barren 
+					Rocky 
+					Rings 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_98
+		{
+			ID 31
+			GFX_RNG_1 57
+			GFX_RNG_2 98
+			X 3
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					Moon 
+					High_Radiation 
+					Low_Gravity 
+					Rocky 
+					Rings 
+					Oceans 
+					Useful_Minerals 
 					Bacterial_Life 
 					Colonizable 
 					Building Possible_Outpost
@@ -2014,17 +1854,252 @@ Map
 					Rich_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Lava
+				Planet Barren
 				{
-					Type Lava
+					Type Barren
 					Size 1
 					Temperature 5
 					Moon 
 					High_Radiation 
-					Extreme_Temps 
+					Barren 
 					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					Extreme_Temps 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_99
+		{
+			ID 32
+			GFX_RNG_1 53
+			GFX_RNG_2 95
+			X 4
+			Y 5
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_114
+		{
+			ID 33
+			GFX_RNG_1 99
+			GFX_RNG_2 13
+			X 0
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Rich_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 4
+					Moon 
+					High_Radiation 
+					Barren 
+					Rocky 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Barren 
+					Rocky 
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_115
+		{
+			ID 34
+			GFX_RNG_1 30
+			GFX_RNG_2 28
+			X 1
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 2
+					Temperature 2
+					Rocky 
+					Rings 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
 					Useful_Minerals 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_118
+		{
+			ID 35
+			GFX_RNG_1 72
+			GFX_RNG_2 44
+			X 4
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					Rocky 
+					Oceans 
 					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					Extreme_Temps 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Rich_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 2
+					Moon 
+					Toxic 
+					Rocky 
+					Rich_Minerals 
 					Building Possible_Outpost
 				}
 			}
@@ -2032,8 +2107,8 @@ Map
 		Star Star_119
 		{
 			ID 36
-			GFX_RNG_1 18
-			GFX_RNG_2 86
+			GFX_RNG_1 54
+			GFX_RNG_2 18
 			X 5
 			Y 6
 			Planet_List 
@@ -2046,20 +2121,17 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
 					Gas_Giant 
-					Rings 
-					Rich_Gasses 
+					Tiny_Moon 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Moon 
-					Barren 
-					Rocky 
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
 					Rings 
 					Building Possible_Outpost
 				}
@@ -2069,37 +2141,29 @@ Map
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Desert
+				Planet Barren
 				{
-					Type Desert
-					Size 2
-					Temperature 2
+					Type Barren
+					Size 1
+					Temperature 5
 					Moon 
+					High_Radiation 
 					Barren 
 					Rocky 
-					Bacterial_Life 
-					Colonizable 
+					Rings 
 					Building Possible_Outpost
 				}
-				Planet Arid
+				Planet Barren
 				{
-					Type Arid
+					Type Barren
 					Size 1
-					Temperature 3
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Low_Gravity 
+					Barren 
 					Rocky 
-					Tiny_Moon 
-					Useful_Minerals 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 2
-					Temperature 2
-					Rocky 
-					Rich_Minerals 
-					Colonizable 
+					Rings 
 					Building Possible_Outpost
 				}
 			}
@@ -2107,8 +2171,8 @@ Map
 		Star Star_120
 		{
 			ID 37
-			GFX_RNG_1 4
-			GFX_RNG_2 49
+			GFX_RNG_1 28
+			GFX_RNG_2 97
 			X 6
 			Y 6
 			Planet_List 
@@ -2118,24 +2182,30 @@ Map
 					Star_Type White_Dwarf
 					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Continents
 				{
-					Type Barren
+					Type Continents
 					Size 1
-					Temperature 2
-					Barren 
+					Temperature 3
+					Low_Gravity 
 					Rocky 
+					Oceans 
+					Complex_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Lava
+				Planet Asteroids
 				{
-					Type Lava
-					Size 3
-					Temperature 5
-					High_Gravity 
-					Extreme_Temps 
-					Rocky 
-					Useful_Minerals 
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -2143,19 +2213,7 @@ Map
 					Type Gas_Giant
 					Size 6
 					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 3
-					Moon 
-					Low_Gravity 
-					Toxic 
-					Barren 
-					Rocky 
+					Tiny_Moon 
 					Building Possible_Outpost
 				}
 			}
@@ -2163,16 +2221,64 @@ Map
 		Star Star_124
 		{
 			ID 38
-			GFX_RNG_1 20
-			GFX_RNG_2 3
+			GFX_RNG_1 28
+			GFX_RNG_2 2
 			X 10
 			Y 6
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type Red_Giant
 					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Barren 
+					Rocky 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 2
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
@@ -2180,7 +2286,42 @@ Map
 					Size 5
 					Gas_Giant 
 					Rings 
-					Useful_Gasses 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_125
+		{
+			ID 39
+			GFX_RNG_1 26
+			GFX_RNG_2 75
+			X 11
+			Y 6
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 2
+					Rocky 
+					Useful_Minerals 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -2189,81 +2330,25 @@ Map
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
-			}
-		}
-		Star Star_125
-		{
-			ID 39
-			GFX_RNG_1 76
-			GFX_RNG_2 10
-			X 11
-			Y 6
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Blue_Giant
-					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 4
-					Low_Gravity 
-					Toxic 
-					Rocky 
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 1
-					Temperature 1
-					Extreme_Temps 
-					Barren 
-					Building Possible_Outpost
-				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
 					Gas_Giant 
-					Rings 
+					Tiny_Moon 
 					Useful_Gasses 
 					Building Possible_Outpost
 				}
-				Planet Swamp
+				Planet Barren
 				{
-					Type Swamp
+					Type Barren
 					Size 1
-					Temperature 2
+					Temperature 1
 					Moon 
+					Low_Gravity 
+					Barren 
 					Rocky 
 					Tiny_Moon 
-					Bacterial_Life 
-					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -2271,31 +2356,21 @@ Map
 		Star Star_126
 		{
 			ID 40
-			GFX_RNG_1 86
-			GFX_RNG_2 67
+			GFX_RNG_1 11
+			GFX_RNG_2 45
 			X 12
 			Y 6
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
+					Star_Type Red_Giant
 					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
-					Rich_Minerals 
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -2303,8 +2378,7 @@ Map
 					Type Gas_Giant
 					Size 6
 					Gas_Giant 
-					Rings 
-					Useful_Gasses 
+					Tiny_Moon 
 					Building Possible_Outpost
 				}
 			}
@@ -2312,30 +2386,60 @@ Map
 		Star Star_133
 		{
 			ID 41
-			GFX_RNG_1 99
-			GFX_RNG_2 98
+			GFX_RNG_1 26
+			GFX_RNG_2 86
 			X 0
 			Y 7
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type White_Dwarf
 					Building Stable_Orbit
 				}
-				Planet Asteroids
+				Planet Toxic
 				{
-					Type Asteroids
-					Rich_Minerals 
+					Type Toxic
+					Size 2
+					Temperature 2
+					Toxic 
+					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 2
+					Temperature 1
+					Moon 
+					Low_Gravity 
 					Barren 
 					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
 					Building Possible_Outpost
 				}
 			}
@@ -2343,8 +2447,8 @@ Map
 		Star Star_134
 		{
 			ID 42
-			GFX_RNG_1 38
-			GFX_RNG_2 50
+			GFX_RNG_1 15
+			GFX_RNG_2 2
 			X 1
 			Y 7
 			Planet_List 
@@ -2354,45 +2458,30 @@ Map
 					Star_Type Red_Giant
 					Building Stable_Orbit
 				}
-				Planet Frozen
+				Planet Asteroids
 				{
-					Type Frozen
-					Size 3
-					Temperature 1
-					High_Gravity 
-					Extreme_Temps 
-					Barren 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 1
-					Temperature 1
-					Low_Gravity 
-					Extreme_Temps 
-					Barren 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Moon 
-					Low_Gravity 
-					Barren 
-					Rocky 
+					Type Asteroids
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
 					Gas_Giant 
-					Tiny_Moon 
-					Rich_Gasses 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 4
+					Moon 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -2401,53 +2490,42 @@ Map
 		{
 			ID 43
 			GFX_RNG_1 46
-			GFX_RNG_2 28
+			GFX_RNG_2 24
 			X 6
 			Y 7
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
+					Star_Type White_Dwarf
 					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
-					Useful_Minerals 
+					Rich_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Toxic
+				Planet Gas_Giant
 				{
-					Type Toxic
-					Size 2
-					Temperature 4
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 2
 					Moon 
-					High_Radiation 
-					Toxic 
-					Barren 
-					Rocky 
-					Useful_Minerals 
+					Low_Gravity 
+					Tiny_Moon 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -2456,102 +2534,34 @@ Map
 		{
 			ID 44
 			GFX_RNG_1 77
-			GFX_RNG_2 97
+			GFX_RNG_2 53
 			X 7
 			Y 7
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Red_Giant
 					Building Stable_Orbit
 				}
-				Planet Vulcanic
+				Planet Arid
 				{
-					Type Vulcanic
-					Size 1
+					Type Arid
+					Size 2
 					Temperature 4
-					High_Radiation 
 					Rocky 
-					Useful_Minerals 
 					Complex_Life 
 					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Barren
+				Planet Arid
 				{
-					Type Barren
+					Type Arid
 					Size 1
-					Temperature 1
-					Moon 
-					Barren 
-					Rocky 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 1
-					Temperature 1
-					Extreme_Temps 
-					Barren 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Extreme_Temps 
-					Rocky 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_141
-		{
-			ID 45
-			GFX_RNG_1 50
-			GFX_RNG_2 5
-			X 8
-			Y 7
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Blue_Giant
-					Building Stable_Orbit
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 3
 					Temperature 3
-					High_Gravity 
-					Rocky 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
 					Low_Gravity 
-					Barren 
 					Rocky 
-					Useful_Minerals 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -2563,98 +2573,35 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
 					Size 5
 					Gas_Giant 
 					Rings 
 					Building Possible_Outpost
 				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
 			}
 		}
-		Star Star_142
+		Star Star_141
 		{
-			ID 46
-			GFX_RNG_1 30
-			GFX_RNG_2 4
-			X 9
+			ID 45
+			GFX_RNG_1 32
+			GFX_RNG_2 63
+			X 8
 			Y 7
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Pulsar
 					Building Stable_Orbit
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 3
-					Temperature 4
-					Rocky 
-					Rings 
-					Oceans 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 3
-					Temperature 2
-					High_Gravity 
-					Toxic 
-					Semi-Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 2
-					Temperature 3
-					Rocky 
-					Oceans 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Rings 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 1
-					Temperature 1
-					Moon 
-					Low_Gravity 
-					Extreme_Temps 
-					Barren 
-					Rocky 
-					Rings 
-					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
@@ -2667,11 +2614,47 @@ Map
 				}
 			}
 		}
+		Star Star_142
+		{
+			ID 46
+			GFX_RNG_1 46
+			GFX_RNG_2 22
+			X 9
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 2
+					Moon 
+					Toxic 
+					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+			}
+		}
 		Star Star_143
 		{
 			ID 47
-			GFX_RNG_1 84
-			GFX_RNG_2 43
+			GFX_RNG_1 30
+			GFX_RNG_2 4
 			X 10
 			Y 7
 			Planet_List 
@@ -2681,44 +2664,184 @@ Map
 					Star_Type Main_Sequence
 					Building Stable_Orbit
 				}
-				Planet Barren
+				Planet Continents
 				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Barren 
+					Type Continents
+					Size 2
+					Temperature 3
 					Rocky 
+					Oceans 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 3
+					Temperature 4
+					High_Gravity 
+					Semi-Barren 
+					Rocky 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 4
+					Rocky 
+					Rings 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 1
+					Temperature 3
 					Low_Gravity 
 					Barren 
 					Rocky 
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Barren
+				Planet Swamp
 				{
-					Type Barren
+					Type Swamp
 					Size 1
 					Temperature 2
 					Low_Gravity 
-					Barren 
 					Rocky 
+					Tiny_Moon 
+					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 1
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Low_Gravity 
 					Barren 
 					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
 					Tiny_Moon 
+					Rich_Gasses 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_144
+		{
+			ID 48
+			GFX_RNG_1 79
+			GFX_RNG_2 8
+			X 11
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_145
+		{
+			ID 49
+			GFX_RNG_1 91
+			GFX_RNG_2 5
+			X 12
+			Y 7
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					Moon 
+					Extreme_Temps 
+					Barren 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
 					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 3
+					Moon 
+					Rocky 
+					Tiny_Moon 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Lava
@@ -2729,108 +2852,7 @@ Map
 					High_Radiation 
 					Extreme_Temps 
 					Rocky 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 4
-					High_Radiation 
-					Rocky 
-					Rings 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 1
-					Temperature 2
-					Rocky 
-					Tiny_Moon 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_144
-		{
-			ID 48
-			GFX_RNG_1 99
-			GFX_RNG_2 23
-			X 11
-			Y 7
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Pulsar
-					Building Stable_Orbit
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_145
-		{
-			ID 49
-			GFX_RNG_1 23
-			GFX_RNG_2 29
-			X 12
-			Y 7
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type White_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
 					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
 					Building Possible_Outpost
 				}
 			}
@@ -2838,8 +2860,8 @@ Map
 		Star Star_146
 		{
 			ID 50
-			GFX_RNG_1 13
-			GFX_RNG_2 67
+			GFX_RNG_1 33
+			GFX_RNG_2 98
 			X 13
 			Y 7
 			Planet_List 
@@ -2852,63 +2874,60 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
 					Gas_Giant 
-					Tiny_Moon 
+					Rings 
 					Rich_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 2
-					Temperature 4
-					Moon 
-					Rocky 
-					Useful_Minerals 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 1
-					Temperature 4
-					Moon 
-					High_Radiation 
-					Low_Gravity 
-					Rocky 
-					Oceans 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 2
-					Temperature 3
-					Rocky 
-					Bacterial_Life 
-					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 1
+					Temperature 5
 					Moon 
+					High_Radiation 
+					Low_Gravity 
 					Barren 
 					Rocky 
-					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					Low_Gravity 
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 			}
@@ -2916,74 +2935,31 @@ Map
 		Star Star_153
 		{
 			ID 51
-			GFX_RNG_1 64
-			GFX_RNG_2 15
+			GFX_RNG_1 69
+			GFX_RNG_2 55
 			X 1
 			Y 8
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type Blue_Giant
 					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Barren
 				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Rich_Gasses 
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 1
-					Temperature 4
-					Moon 
-					Low_Gravity 
-					Rocky 
-					Tiny_Moon 
-					Oceans 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
@@ -2992,9 +2968,83 @@ Map
 		Star Star_154
 		{
 			ID 52
-			GFX_RNG_1 19
-			GFX_RNG_2 42
+			GFX_RNG_1 69
+			GFX_RNG_2 68
 			X 2
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					Extreme_Temps 
+					Rocky 
+					Useful_Minerals 
+					Complex_Life 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Barren 
+					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Rich_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 3
+					Moon 
+					Rocky 
+					Tiny_Moon 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_159
+		{
+			ID 53
+			GFX_RNG_1 16
+			GFX_RNG_2 97
+			X 7
 			Y 8
 			Planet_List 
 			{
@@ -3009,106 +3059,20 @@ Map
 					Size 5
 					Gas_Giant 
 					Rings 
-					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
 					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 2
-					Temperature 1
-					Moon 
-					Extreme_Temps 
-					Barren 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_159
-		{
-			ID 53
-			GFX_RNG_1 90
-			GFX_RNG_2 50
-			X 7
-			Y 8
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 1
-					Temperature 1
-					Moon 
-					Low_Gravity 
-					Extreme_Temps 
-					Barren 
-					Rocky 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 1
-					Temperature 4
-					High_Radiation 
-					Low_Gravity 
-					Oceans 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
 					Building Possible_Outpost
 				}
 			}
@@ -3116,106 +3080,9 @@ Map
 		Star Star_160
 		{
 			ID 54
-			GFX_RNG_1 51
-			GFX_RNG_2 76
+			GFX_RNG_1 50
+			GFX_RNG_2 78
 			X 8
-			Y 8
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type White_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_161
-		{
-			ID 55
-			GFX_RNG_1 13
-			GFX_RNG_2 49
-			X 9
-			Y 8
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 2
-					Temperature 4
-					Rocky 
-					Oceans 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_162
-		{
-			ID 56
-			GFX_RNG_1 92
-			GFX_RNG_2 62
-			X 10
 			Y 8
 			Planet_List 
 			{
@@ -3224,25 +3091,146 @@ Map
 					Star_Type Red_Giant
 					Building Stable_Orbit
 				}
+				Planet Artic
+				{
+					Type Artic
+					Size 3
+					Temperature 2
+					High_Gravity 
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Moon 
+					Rocky 
+					Rings 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
 				Planet Arid
 				{
 					Type Arid
-					Size 2
-					Temperature 3
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Low_Gravity 
 					Rocky 
-					Rich_Minerals 
+					Colonizable 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_161
+		{
+			ID 55
+			GFX_RNG_1 93
+			GFX_RNG_2 37
+			X 9
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 3
+					Low_Gravity 
+					Rocky 
+					Oceans 
 					Complex_Life 
 					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Barren
+				Planet Asteroids
 				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Barren 
-					Rocky 
+					Type Asteroids
+					Rich_Minerals 
 					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 3
+					Moon 
+					Low_Gravity 
+					Rocky 
+					Oceans 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_162
+		{
+			ID 56
+			GFX_RNG_1 21
+			GFX_RNG_2 82
+			X 10
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 1
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Extreme_Temps 
+					Rocky 
+					Useful_Minerals 
+					Bacterial_Life 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_163
+		{
+			ID 57
+			GFX_RNG_1 66
+			GFX_RNG_2 7
+			X 11
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
 				}
 				Planet Asteroids
 				{
@@ -3261,83 +3249,11 @@ Map
 				}
 			}
 		}
-		Star Star_163
-		{
-			ID 57
-			GFX_RNG_1 69
-			GFX_RNG_2 97
-			X 11
-			Y 8
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Blue_Giant
-					Building Stable_Orbit
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 2
-					Temperature 3
-					Barren 
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 2
-					Temperature 3
-					Rocky 
-					Rich_Minerals 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 1
-					Temperature 2
-					Low_Gravity 
-					Oceans 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 2
-					Temperature 1
-					Moon 
-					Extreme_Temps 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-			}
-		}
 		Star Star_164
 		{
 			ID 58
-			GFX_RNG_1 9
-			GFX_RNG_2 46
+			GFX_RNG_1 25
+			GFX_RNG_2 40
 			X 12
 			Y 8
 			Planet_List 
@@ -3350,9 +3266,9 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
 					Gas_Giant 
-					Tiny_Moon 
+					Rings 
 					Useful_Gasses 
 					Building Possible_Outpost
 				}
@@ -3362,24 +3278,13 @@ Map
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Moon 
-					Barren 
-					Rocky 
-					Rings 
-					Building Possible_Outpost
-				}
 			}
 		}
 		Star Star_165
 		{
 			ID 59
-			GFX_RNG_1 66
-			GFX_RNG_2 4
+			GFX_RNG_1 14
+			GFX_RNG_2 37
 			X 13
 			Y 8
 			Planet_List 
@@ -3389,19 +3294,62 @@ Map
 					Star_Type Red_Dwarf
 					Building Stable_Orbit
 				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 3
+					Moon 
+					Low_Gravity 
+					Semi-Barren 
+					Rocky 
+					Rings 
+					Colonizable 
+					Building Possible_Outpost
+				}
 				Planet Asteroids
 				{
 					Type Asteroids
-					Useful_Minerals 
+					Rich_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 2
+					Temperature 1
+					Moon 
+					Low_Gravity 
 					Barren 
 					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 3
+					Oceans 
+					Complex_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -3409,127 +3357,50 @@ Map
 		Star Star_166
 		{
 			ID 60
-			GFX_RNG_1 89
-			GFX_RNG_2 45
+			GFX_RNG_1 64
+			GFX_RNG_2 98
 			X 14
 			Y 8
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type White_Dwarf
 					Building Stable_Orbit
 				}
-				Planet Asteroids
+				Planet Barren
 				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 2
+					Type Barren
+					Size 1
 					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
 					Extreme_Temps 
-					Barren 
+					Rocky 
+					Rich_Minerals 
 					Building Possible_Outpost
 				}
-			}
-		}
-		Star Star_167
-		{
-			ID 61
-			GFX_RNG_1 20
-			GFX_RNG_2 58
-			X 15
-			Y 8
-			Planet_List 
-			{
-				Planet Star
+				Planet Asteroids
 				{
-					Star_Type Pulsar
-					Building Stable_Orbit
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
 				}
-				Planet Barren
+				Planet Gas_Giant
 				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Barren 
-					Rocky 
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
 					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					Moon 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_173
-		{
-			ID 62
-			GFX_RNG_1 2
-			GFX_RNG_2 60
-			X 2
-			Y 9
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Blue_Giant
-					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 1
-					Temperature 2
-					Moon 
-					Rocky 
-					Useful_Minerals 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 4
-					Low_Gravity 
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
+					Rich_Gasses 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -3540,13 +3411,121 @@ Map
 					Tiny_Moon 
 					Building Possible_Outpost
 				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 3
+					Moon 
+					Low_Gravity 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_167
+		{
+			ID 61
+			GFX_RNG_1 74
+			GFX_RNG_2 17
+			X 15
+			Y 8
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Barren 
+					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 4
+					Semi-Barren 
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_173
+		{
+			ID 62
+			GFX_RNG_1 44
+			GFX_RNG_2 12
+			X 2
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
 			}
 		}
 		Star Star_174
 		{
 			ID 63
-			GFX_RNG_1 51
-			GFX_RNG_2 15
+			GFX_RNG_1 13
+			GFX_RNG_2 47
 			X 3
 			Y 9
 			Planet_List 
@@ -3556,18 +3535,34 @@ Map
 					Star_Type White_Dwarf
 					Building Stable_Orbit
 				}
-				Planet Asteroids
+				Planet Barren
 				{
-					Type Asteroids
-					Useful_Minerals 
+					Type Barren
+					Size 1
+					Temperature 2
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
-				Planet Gas_Giant
+				Planet Frozen
 				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
+					Type Frozen
+					Size 3
+					Temperature 1
+					High_Gravity 
+					Extreme_Temps 
+					Barren 
 					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 4
+					Semi-Barren 
+					Rocky 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -3578,20 +3573,41 @@ Map
 					Rings 
 					Building Possible_Outpost
 				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
 			}
 		}
 		Star Star_175
 		{
 			ID 64
-			GFX_RNG_1 12
-			GFX_RNG_2 47
+			GFX_RNG_1 98
+			GFX_RNG_2 26
 			X 4
 			Y 9
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Pulsar
+					Star_Type Red_Dwarf
 					Building Stable_Orbit
 				}
 				Planet Gas_Giant
@@ -3600,6 +3616,18 @@ Map
 					Size 5
 					Gas_Giant 
 					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Moon 
+					Toxic 
+					Semi-Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 			}
@@ -3607,8 +3635,8 @@ Map
 		Star Star_179
 		{
 			ID 65
-			GFX_RNG_1 49
-			GFX_RNG_2 81
+			GFX_RNG_1 59
+			GFX_RNG_2 47
 			X 8
 			Y 9
 			Planet_List 
@@ -3621,19 +3649,59 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
 					Gas_Giant 
 					Rings 
 					Rich_Gasses 
 					Building Possible_Outpost
 				}
-				Planet Gas_Giant
+				Planet Barren
 				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 4
+					Rocky 
+					Useful_Minerals 
+					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -3641,8 +3709,8 @@ Map
 		Star Star_181
 		{
 			ID 66
-			GFX_RNG_1 19
-			GFX_RNG_2 27
+			GFX_RNG_1 55
+			GFX_RNG_2 43
 			X 10
 			Y 9
 			Planet_List 
@@ -3655,27 +3723,50 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
 					Gas_Giant 
 					Rings 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Low_Gravity 
+					Barren 
+					Rocky 
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Lava
+				Planet Frozen
 				{
-					Type Lava
-					Size 2
-					Temperature 5
+					Type Frozen
+					Size 1
+					Temperature 1
 					Moon 
+					Low_Gravity 
 					Extreme_Temps 
+					Barren 
 					Rocky 
-					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Rocky 
+					Rings 
 					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -3683,97 +3774,9 @@ Map
 		Star Star_185
 		{
 			ID 67
-			GFX_RNG_1 43
-			GFX_RNG_2 47
+			GFX_RNG_1 44
+			GFX_RNG_2 68
 			X 14
-			Y 9
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 3
-					Temperature 4
-					Barren 
-					Rocky 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 2
-					Temperature 4
-					Toxic 
-					Rocky 
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 1
-					Temperature 3
-					Low_Gravity 
-					Rocky 
-					Tiny_Moon 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 1
-					Temperature 1
-					Moon 
-					Low_Gravity 
-					Extreme_Temps 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_186
-		{
-			ID 68
-			GFX_RNG_1 29
-			GFX_RNG_2 100
-			X 15
 			Y 9
 			Planet_List 
 			{
@@ -3787,25 +3790,83 @@ Map
 					Type Gas_Giant
 					Size 6
 					Gas_Giant 
-					Tiny_Moon 
+					Rings 
 					Rich_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 2
-					Moon 
-					Rocky 
-					Rich_Minerals 
-					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
 					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					Moon 
+					High_Radiation 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_186
+		{
+			ID 68
+			GFX_RNG_1 18
+			GFX_RNG_2 89
+			X 15
+			Y 9
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Pulsar
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Rich_Gasses 
 					Building Possible_Outpost
 				}
 			}
@@ -3813,41 +3874,76 @@ Map
 		Star Star_187
 		{
 			ID 69
-			GFX_RNG_1 46
-			GFX_RNG_2 40
+			GFX_RNG_1 87
+			GFX_RNG_2 25
 			X 16
 			Y 9
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
+					Star_Type White_Dwarf
 					Building Stable_Orbit
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 3
+					Temperature 2
+					Low_Gravity 
 					Barren 
 					Rocky 
 					Building Possible_Outpost
 				}
-				Planet Desert
+				Planet Lava
 				{
-					Type Desert
-					Size 1
-					Temperature 3
-					Low_Gravity 
-					Semi-Barren 
+					Type Lava
+					Size 3
+					Temperature 5
+					High_Radiation 
+					High_Gravity 
+					Extreme_Temps 
 					Rocky 
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 3
+					Temperature 3
+					Rocky 
+					Rings 
 					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Asteroids
+				Planet Gas_Giant
 				{
-					Type Asteroids
-					Rich_Minerals 
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					Low_Gravity 
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 			}
@@ -3855,49 +3951,36 @@ Map
 		Star Star_193
 		{
 			ID 70
-			GFX_RNG_1 12
-			GFX_RNG_2 36
+			GFX_RNG_1 22
+			GFX_RNG_2 93
 			X 3
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
+					Star_Type Blue_Giant
 					Building Stable_Orbit
 				}
 				Planet Artic
 				{
 					Type Artic
-					Size 1
+					Size 3
 					Temperature 2
-					Low_Gravity 
 					Rocky 
 					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Continents
+				Planet Barren
 				{
-					Type Continents
-					Size 2
-					Temperature 2
-					Rocky 
-					Oceans 
-					Rich_Minerals 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Ocean
-				{
-					Type Ocean
+					Type Barren
 					Size 1
-					Temperature 4
-					Moon 
+					Temperature 5
+					High_Radiation 
 					Low_Gravity 
-					Oceans 
-					Useful_Minerals 
-					Colonizable 
+					Barren 
+					Rocky 
+					Rings 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -3914,63 +3997,31 @@ Map
 					Rings 
 					Building Possible_Outpost
 				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Rich_Gasses 
-					Building Possible_Outpost
-				}
 			}
 		}
 		Star Star_194
 		{
 			ID 71
-			GFX_RNG_1 99
-			GFX_RNG_2 40
+			GFX_RNG_1 49
+			GFX_RNG_2 37
 			X 4
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type Main_Sequence
 					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Vulcanic
 				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					Moon 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
+					Type Vulcanic
 					Size 2
-					Temperature 1
-					Moon 
-					Extreme_Temps 
-					Barren 
+					Temperature 3
+					Rocky 
+					Rings 
+					Useful_Minerals 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Barren
@@ -3982,34 +4033,6 @@ Map
 					Low_Gravity 
 					Barren 
 					Rocky 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_195
-		{
-			ID 72
-			GFX_RNG_1 49
-			GFX_RNG_2 86
-			X 5
-			Y 10
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Giant
-					Building Stable_Orbit
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 2
-					Temperature 2
-					Rocky 
-					Oceans 
-					Complex_Life 
-					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Barren
@@ -4018,9 +4041,9 @@ Map
 					Size 1
 					Temperature 1
 					Moon 
+					Low_Gravity 
 					Barren 
 					Rocky 
-					Rings 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -4035,15 +4058,112 @@ Map
 					Size 6
 					Gas_Giant 
 					Tiny_Moon 
-					Useful_Gasses 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
 					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Rings 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_195
+		{
+			ID 72
+			GFX_RNG_1 90
+			GFX_RNG_2 28
+			X 5
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Extreme_Temps 
+					Barren 
+					Rocky 
 					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Barren 
+					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 3
+					Moon 
+					Low_Gravity 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Toxic 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Rich_Gasses 
 					Building Possible_Outpost
 				}
 			}
@@ -4051,8 +4171,8 @@ Map
 		Star Star_196
 		{
 			ID 73
-			GFX_RNG_1 5
-			GFX_RNG_2 82
+			GFX_RNG_1 1
+			GFX_RNG_2 61
 			X 6
 			Y 10
 			Planet_List 
@@ -4068,65 +4188,7 @@ Map
 					Size 5
 					Gas_Giant 
 					Rings 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 3
-					Temperature 2
-					Moon 
-					High_Gravity 
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Moon 
-					Barren 
-					Rocky 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 2
-					Temperature 1
-					Extreme_Temps 
-					Barren 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_197
-		{
-			ID 74
-			GFX_RNG_1 77
-			GFX_RNG_2 8
-			X 7
-			Y 10
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Pulsar
-					Building Stable_Orbit
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -4137,32 +4199,63 @@ Map
 					Tiny_Moon 
 					Building Possible_Outpost
 				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 4
+					Moon 
+					High_Radiation 
+					Oceans 
+					Useful_Minerals 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
 			}
 		}
-		Star Star_198
+		Star Star_197
 		{
-			ID 75
-			GFX_RNG_1 97
-			GFX_RNG_2 43
-			X 8
+			ID 74
+			GFX_RNG_1 77
+			GFX_RNG_2 10
+			X 7
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Pulsar
+					Star_Type Blue_Giant
 					Building Stable_Orbit
 				}
 				Planet Continents
 				{
 					Type Continents
-					Size 2
-					Temperature 4
-					High_Radiation 
+					Size 1
+					Temperature 2
+					Low_Gravity 
 					Rocky 
+					Rings 
 					Oceans 
-					Bacterial_Life 
+					Useful_Minerals 
+					Complex_Life 
 					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -4171,13 +4264,78 @@ Map
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					Moon 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_198
+		{
+			ID 75
+			GFX_RNG_1 80
+			GFX_RNG_2 23
+			X 8
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					Rocky 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
 					Size 5
 					Gas_Giant 
 					Tiny_Moon 
-					Rich_Gasses 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 			}
@@ -4185,23 +4343,24 @@ Map
 		Star Star_199
 		{
 			ID 76
-			GFX_RNG_1 16
-			GFX_RNG_2 75
+			GFX_RNG_1 89
+			GFX_RNG_2 94
 			X 9
 			Y 10
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type Red_Giant
 					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Barren
 				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
+					Type Barren
+					Size 1
+					Temperature 1
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Barren
@@ -4213,116 +4372,13 @@ Map
 					Low_Gravity 
 					Barren 
 					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
 					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Barren 
-					Rocky 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_200
-		{
-			ID 77
-			GFX_RNG_1 26
-			GFX_RNG_2 69
-			X 10
-			Y 10
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Barren 
-					Rocky 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Barren 
-					Rocky 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 1
-					Temperature 1
-					Moon 
-					Extreme_Temps 
-					Barren 
-					Building Possible_Outpost
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Extreme_Temps 
-					Rocky 
-					Tiny_Moon 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 2
-					Temperature 2
-					Rocky 
-					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
 					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -4335,11 +4391,116 @@ Map
 				}
 			}
 		}
+		Star Star_200
+		{
+			ID 77
+			GFX_RNG_1 68
+			GFX_RNG_2 71
+			X 10
+			Y 10
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 3
+					Rocky 
+					Useful_Minerals 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 3
+					Temperature 4
+					High_Radiation 
+					High_Gravity 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					Moon 
+					High_Radiation 
+					Rocky 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 2
+					Moon 
+					Toxic 
+					Rocky 
+					Building Possible_Outpost
+				}
+			}
+		}
 		Star Star_201
 		{
 			ID 78
-			GFX_RNG_1 28
-			GFX_RNG_2 24
+			GFX_RNG_1 2
+			GFX_RNG_2 6
 			X 11
 			Y 10
 			Planet_List 
@@ -4352,16 +4513,55 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
 					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
+					Rings 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
-					Useful_Minerals 
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Moon 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 3
+					Oceans 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 3
+					Barren 
+					Rocky 
+					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -4369,8 +4569,8 @@ Map
 		Star Star_206
 		{
 			ID 79
-			GFX_RNG_1 45
-			GFX_RNG_2 100
+			GFX_RNG_1 95
+			GFX_RNG_2 66
 			X 16
 			Y 10
 			Planet_List 
@@ -4386,56 +4586,23 @@ Map
 					Size 6
 					Gas_Giant 
 					Rings 
-					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					Moon 
+					Extreme_Temps 
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 2
-					Temperature 2
-					Rocky 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 2
-					Temperature 3
-					Barren 
-					Rocky 
-					Rings 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 1
-					Temperature 2
-					Rocky 
-					Tiny_Moon 
-					Bacterial_Life 
-					Colonizable 
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 			}
@@ -4443,8 +4610,8 @@ Map
 		Star Star_207
 		{
 			ID 80
-			GFX_RNG_1 82
-			GFX_RNG_2 24
+			GFX_RNG_1 86
+			GFX_RNG_2 80
 			X 17
 			Y 10
 			Planet_List 
@@ -4454,59 +4621,18 @@ Map
 					Star_Type Red_Dwarf
 					Building Stable_Orbit
 				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
 				Planet Asteroids
 				{
 					Type Asteroids
 					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 2
-					Temperature 2
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 4
-					High_Radiation 
-					Low_Gravity 
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 1
-					Temperature 3
-					Rocky 
-					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -4514,8 +4640,8 @@ Map
 		Star Star_214
 		{
 			ID 81
-			GFX_RNG_1 60
-			GFX_RNG_2 20
+			GFX_RNG_1 88
+			GFX_RNG_2 45
 			X 5
 			Y 11
 			Planet_List 
@@ -4528,21 +4654,58 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
 					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Rich_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 2
+					Moon 
+					Toxic 
+					Semi-Barren 
+					Rocky 
 					Tiny_Moon 
 					Building Possible_Outpost
 				}
-				Planet Swamp
+				Planet Barren
 				{
-					Type Swamp
+					Type Barren
 					Size 1
-					Temperature 4
+					Temperature 5
 					Moon 
+					High_Radiation 
 					Low_Gravity 
+					Barren 
 					Rocky 
-					Complex_Life 
-					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Low_Gravity 
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 			}
@@ -4550,8 +4713,8 @@ Map
 		Star Star_215
 		{
 			ID 82
-			GFX_RNG_1 100
-			GFX_RNG_2 46
+			GFX_RNG_1 4
+			GFX_RNG_2 63
 			X 6
 			Y 11
 			Planet_List 
@@ -4564,15 +4727,61 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
 					Gas_Giant 
-					Tiny_Moon 
+					Rings 
+					Rich_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					Extreme_Temps 
+					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
 					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 4
+					Moon 
+					Oceans 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 3
+					Temperature 4
+					High_Gravity 
+					Rocky 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 3
+					Moon 
+					Rocky 
+					Useful_Minerals 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -4580,30 +4789,16 @@ Map
 		Star Star_216
 		{
 			ID 83
-			GFX_RNG_1 32
-			GFX_RNG_2 41
+			GFX_RNG_1 26
+			GFX_RNG_2 16
 			X 7
 			Y 11
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type Blue_Giant
 					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
 				}
 				Planet Barren
 				{
@@ -4613,18 +4808,56 @@ Map
 					High_Radiation 
 					Barren 
 					Rocky 
-					Rings 
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Continents
+				Planet Barren
 				{
-					Type Continents
-					Size 2
-					Temperature 4
+					Type Barren
+					Size 1
+					Temperature 3
+					Moon 
+					Low_Gravity 
+					Barren 
 					Rocky 
-					Oceans 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
 					Useful_Minerals 
-					Complex_Life 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					Moon 
+					Extreme_Temps 
+					Barren 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 1
+					Temperature 4
+					Moon 
+					High_Radiation 
+					Rocky 
+					Useful_Minerals 
+					Bacterial_Life 
 					Colonizable 
 					Building Possible_Outpost
 				}
@@ -4633,37 +4866,25 @@ Map
 		Star Star_217
 		{
 			ID 84
-			GFX_RNG_1 77
-			GFX_RNG_2 74
+			GFX_RNG_1 34
+			GFX_RNG_2 41
 			X 8
 			Y 11
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Pulsar
+					Star_Type White_Dwarf
 					Building Stable_Orbit
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 1
+					Temperature 3
 					Low_Gravity 
 					Barren 
 					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Rings 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -4672,13 +4893,31 @@ Map
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
 			}
 		}
 		Star Star_218
 		{
 			ID 85
-			GFX_RNG_1 93
-			GFX_RNG_2 43
+			GFX_RNG_1 27
+			GFX_RNG_2 2
 			X 9
 			Y 11
 			Planet_List 
@@ -4691,17 +4930,9 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
 					Size 5
 					Gas_Giant 
-					Tiny_Moon 
+					Rings 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -4715,16 +4946,49 @@ Map
 		Star Star_219
 		{
 			ID 86
-			GFX_RNG_1 74
-			GFX_RNG_2 55
+			GFX_RNG_1 22
+			GFX_RNG_2 9
 			X 10
 			Y 11
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
+					Star_Type White_Dwarf
 					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
@@ -4737,7 +5001,8 @@ Map
 					Type Gas_Giant
 					Size 6
 					Gas_Giant 
-					Tiny_Moon 
+					Rings 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 			}
@@ -4745,53 +5010,9 @@ Map
 		Star Star_220
 		{
 			ID 87
-			GFX_RNG_1 46
-			GFX_RNG_2 70
+			GFX_RNG_1 83
+			GFX_RNG_2 10
 			X 11
-			Y 11
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type White_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 3
-					Low_Gravity 
-					Toxic 
-					Rocky 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Rich_Gasses 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_221
-		{
-			ID 88
-			GFX_RNG_1 81
-			GFX_RNG_2 16
-			X 12
 			Y 11
 			Planet_List 
 			{
@@ -4804,10 +5025,299 @@ Map
 				{
 					Type Barren
 					Size 1
-					Temperature 4
+					Temperature 1
+					Low_Gravity 
 					Barren 
 					Rocky 
 					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					Moon 
+					Semi-Barren 
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Low_Gravity 
+					Toxic 
+					Barren 
+					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 3
+					Semi-Barren 
+					Rocky 
+					Useful_Minerals 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 3
+					Temperature 3
+					High_Gravity 
+					Toxic 
+					Rocky 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_221
+		{
+			ID 88
+			GFX_RNG_1 26
+			GFX_RNG_2 13
+			X 12
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_226
+		{
+			ID 89
+			GFX_RNG_1 66
+			GFX_RNG_2 71
+			X 17
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 2
+					Rocky 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					High_Radiation 
+					Extreme_Temps 
+					Rocky 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 3
+					Temperature 1
+					Moon 
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_227
+		{
+			ID 90
+			GFX_RNG_1 58
+			GFX_RNG_2 88
+			X 18
+			Y 11
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_234
+		{
+			ID 91
+			GFX_RNG_1 54
+			GFX_RNG_2 5
+			X 6
+			Y 12
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_235
+		{
+			ID 92
+			GFX_RNG_1 79
+			GFX_RNG_2 27
+			X 7
+			Y 12
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
@@ -4831,266 +5341,14 @@ Map
 					Rocky 
 					Building Possible_Outpost
 				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 3
-					Temperature 4
-					High_Gravity 
-					Rocky 
-					Oceans 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
 			}
 		}
-		Star Star_226
+		Star Star_236
 		{
-			ID 89
-			GFX_RNG_1 3
-			GFX_RNG_2 8
-			X 17
-			Y 11
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Moon 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Moon 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_227
-		{
-			ID 90
-			GFX_RNG_1 4
-			GFX_RNG_2 26
-			X 18
-			Y 11
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Desert
-				{
-					Type Desert
-					Size 2
-					Temperature 3
-					Barren 
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 3
-					Temperature 2
-					High_Gravity 
-					Tiny_Moon 
-					Oceans 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 4
-					Low_Gravity 
-					Rocky 
-					Useful_Minerals 
-					Complex_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Rich_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 2
-					Moon 
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_234
-		{
-			ID 91
-			GFX_RNG_1 91
-			GFX_RNG_2 32
-			X 6
-			Y 12
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 3
-					Temperature 5
-					High_Gravity 
-					Extreme_Temps 
-					Rocky 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 3
-					Temperature 1
-					High_Gravity 
-					Extreme_Temps 
-					Barren 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_235
-		{
-			ID 92
-			GFX_RNG_1 29
-			GFX_RNG_2 37
-			X 7
+			ID 93
+			GFX_RNG_1 60
+			GFX_RNG_2 61
+			X 8
 			Y 12
 			Planet_List 
 			{
@@ -5099,10 +5357,45 @@ Map
 					Star_Type White_Dwarf
 					Building Stable_Orbit
 				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 3
+					Rocky 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
+					Temperature 3
+					Rocky 
+					Tiny_Moon 
+					Oceans 
+					Rich_Minerals 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 3
+					Rings 
+					Oceans 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
 				Planet Asteroids
 				{
 					Type Asteroids
-					Rich_Minerals 
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -5115,41 +5408,52 @@ Map
 				}
 			}
 		}
-		Star Star_236
+		Star Star_240
 		{
-			ID 93
-			GFX_RNG_1 38
-			GFX_RNG_2 33
-			X 8
+			ID 94
+			GFX_RNG_1 100
+			GFX_RNG_2 64
+			X 12
 			Y 12
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
+					Star_Type White_Dwarf
 					Building Stable_Orbit
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 3
-					Low_Gravity 
-					Rocky 
-					Rich_Minerals 
-					Colonizable 
-					Building Possible_Outpost
 				}
 				Planet Toxic
 				{
 					Type Toxic
-					Size 1
-					Temperature 4
-					High_Radiation 
-					Low_Gravity 
+					Size 3
+					Temperature 2
 					Toxic 
-					Semi-Barren 
+					Barren 
 					Rocky 
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Moon 
+					Low_Gravity 
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 2
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Barren
@@ -5157,31 +5461,9 @@ Map
 					Type Barren
 					Size 1
 					Temperature 1
-					Moon 
 					Low_Gravity 
 					Barren 
 					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 3
-					Rocky 
-					Useful_Minerals 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 3
-					Temperature 2
-					Rocky 
-					Oceans 
-					Bacterial_Life 
-					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -5193,86 +5475,9 @@ Map
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
 					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					Moon 
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_240
-		{
-			ID 94
-			GFX_RNG_1 87
-			GFX_RNG_2 100
-			X 12
-			Y 12
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Lava
-				{
-					Type Lava
-					Size 2
-					Temperature 5
-					Extreme_Temps 
-					Rocky 
-					Tiny_Moon 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 3
-					Moon 
-					Toxic 
-					Barren 
-					Rocky 
 					Rings 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 1
-					Temperature 3
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
 					Building Possible_Outpost
 				}
 			}
@@ -5280,8 +5485,8 @@ Map
 		Star Star_241
 		{
 			ID 95
-			GFX_RNG_1 36
-			GFX_RNG_2 70
+			GFX_RNG_1 38
+			GFX_RNG_2 77
 			X 13
 			Y 12
 			Planet_List 
@@ -5295,77 +5500,11 @@ Map
 				{
 					Type Barren
 					Size 1
-					Temperature 2
+					Temperature 5
+					High_Radiation 
 					Low_Gravity 
 					Barren 
 					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 3
-					Temperature 3
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 2
-					Moon 
-					Low_Gravity 
-					Rocky 
-					Tiny_Moon 
-					Useful_Minerals 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_242
-		{
-			ID 96
-			GFX_RNG_1 85
-			GFX_RNG_2 45
-			X 14
-			Y 12
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Barren
@@ -5373,37 +5512,35 @@ Map
 					Type Barren
 					Size 1
 					Temperature 2
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
 					Moon 
 					Barren 
 					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Frozen
+				Planet Gas_Giant
 				{
-					Type Frozen
-					Size 2
-					Temperature 1
-					Moon 
-					Extreme_Temps 
-					Barren 
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
 					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_245
-		{
-			ID 97
-			GFX_RNG_1 70
-			GFX_RNG_2 28
-			X 17
-			Y 12
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
 				}
 				Planet Gas_Giant
 				{
@@ -5418,89 +5555,107 @@ Map
 				{
 					Type Barren
 					Size 1
-					Temperature 1
+					Temperature 4
 					Moon 
 					Barren 
 					Rocky 
-					Useful_Minerals 
 					Building Possible_Outpost
 				}
 			}
 		}
-		Star Star_246
+		Star Star_242
 		{
-			ID 98
-			GFX_RNG_1 26
-			GFX_RNG_2 71
-			X 18
+			ID 96
+			GFX_RNG_1 92
+			GFX_RNG_2 39
+			X 14
 			Y 12
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Main_Sequence
+					Star_Type White_Dwarf
 					Building Stable_Orbit
 				}
-				Planet Frozen
+				Planet Asteroids
 				{
-					Type Frozen
-					Size 2
-					Temperature 1
-					Extreme_Temps 
-					Barren 
+					Type Asteroids
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Artic
+				Planet Gas_Giant
 				{
-					Type Artic
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_245
+		{
+			ID 97
+			GFX_RNG_1 99
+			GFX_RNG_2 21
+			X 17
+			Y 12
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Arid
+				{
+					Type Arid
 					Size 3
-					Temperature 2
-					High_Gravity 
+					Temperature 4
 					Rocky 
-					Complex_Life 
+					Rich_Minerals 
 					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Frozen
+				Planet Toxic
 				{
-					Type Frozen
-					Size 1
-					Temperature 1
-					Moon 
-					Extreme_Temps 
-					Barren 
+					Type Toxic
+					Size 3
+					Temperature 4
+					Toxic 
+					Semi-Barren 
+					Rocky 
 					Tiny_Moon 
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Barren
+				Planet Lava
 				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
+					Type Lava
 					Size 2
-					Temperature 1
+					Temperature 5
+					High_Radiation 
 					Extreme_Temps 
-					Barren 
 					Rocky 
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 2
+					Temperature 3
+					Semi-Barren 
+					Rocky 
+					Useful_Minerals 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -5508,29 +5663,18 @@ Map
 					Type Gas_Giant
 					Size 6
 					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Barren 
-					Rocky 
+					Rings 
 					Building Possible_Outpost
 				}
 			}
 		}
-		Star Star_261
+		Star Star_246
 		{
-			ID 99
-			GFX_RNG_1 41
-			GFX_RNG_2 4
-			X 14
-			Y 13
+			ID 98
+			GFX_RNG_1 66
+			GFX_RNG_2 19
+			X 18
+			Y 12
 			Planet_List 
 			{
 				Planet Star
@@ -5542,6 +5686,29 @@ Map
 				{
 					Type Continents
 					Size 3
+					Temperature 2
+					Rocky 
+					Rings 
+					Oceans 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					High_Radiation 
+					Extreme_Temps 
+					Rocky 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 2
 					Temperature 4
 					Rocky 
 					Oceans 
@@ -5549,54 +5716,246 @@ Map
 					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Frozen
+				Planet Barren
 				{
-					Type Frozen
-					Size 3
-					Temperature 1
-					High_Gravity 
-					Extreme_Temps 
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
 					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
-				Planet Vulcanic
+				Planet Swamp
 				{
-					Type Vulcanic
+					Type Swamp
 					Size 2
+					Temperature 4
+					High_Radiation 
+					Rocky 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Rich_Gasses 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_261
+		{
+			ID 99
+			GFX_RNG_1 89
+			GFX_RNG_2 62
+			X 14
+			Y 13
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Pulsar
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_262
+		{
+			ID 100
+			GFX_RNG_1 91
+			GFX_RNG_2 68
+			X 15
+			Y 13
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
 					Temperature 3
+					Barren 
 					Rocky 
 					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
 					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_265
+		{
+			ID 101
+			GFX_RNG_1 99
+			GFX_RNG_2 26
+			X 18
+			Y 13
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					Low_Gravity 
+					Rocky 
+					Rings 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 2
+					Moon 
+					Semi-Barren 
+					Rocky 
 					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Toxic
 				{
 					Type Toxic
-					Size 2
-					Temperature 4
-					High_Radiation 
+					Size 1
+					Temperature 3
+					Low_Gravity 
 					Toxic 
+					Semi-Barren 
 					Rocky 
 					Building Possible_Outpost
 				}
-				Planet Ocean
+				Planet Asteroids
 				{
-					Type Ocean
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
 					Size 2
 					Temperature 2
-					Oceans 
-					Bacterial_Life 
+					Moon 
+					Semi-Barren 
+					Rocky 
 					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Ocean
+				Planet Gas_Giant
 				{
-					Type Ocean
-					Size 1
-					Temperature 2
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
 					Rings 
-					Oceans 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_271
+		{
+			ID 102
+			GFX_RNG_1 53
+			GFX_RNG_2 57
+			X 5
+			Y 14
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 2
+					Rocky 
 					Complex_Life 
 					Colonizable 
 					Building Possible_Outpost
@@ -5607,322 +5966,7 @@ Map
 					Size 1
 					Temperature 5
 					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 1
-					Temperature 2
-					Moon 
-					Rocky 
-					Tiny_Moon 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_262
-		{
-			ID 100
-			GFX_RNG_1 64
-			GFX_RNG_2 75
-			X 15
-			Y 13
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
 					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 1
-					Temperature 1
-					Moon 
-					Extreme_Temps 
-					Barren 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_265
-		{
-			ID 101
-			GFX_RNG_1 85
-			GFX_RNG_2 24
-			X 18
-			Y 13
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Rich_Gasses 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_271
-		{
-			ID 102
-			GFX_RNG_1 63
-			GFX_RNG_2 38
-			X 5
-			Y 14
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type White_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 2
-					Temperature 4
-					High_Radiation 
-					Toxic 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Ocean
-				{
-					Type Ocean
-					Size 3
-					Temperature 4
-					High_Gravity 
-					Oceans 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Rich_Gasses 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_281
-		{
-			ID 103
-			GFX_RNG_1 52
-			GFX_RNG_2 12
-			X 15
-			Y 14
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 2
-					Temperature 1
-					Extreme_Temps 
-					Barren 
-					Rocky 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 2
-					Temperature 2
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Rich_Gasses 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_282
-		{
-			ID 104
-			GFX_RNG_1 77
-			GFX_RNG_2 12
-			X 16
-			Y 14
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_291
-		{
-			ID 105
-			GFX_RNG_1 24
-			GFX_RNG_2 95
-			X 6
-			Y 15
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Blue_Giant
-					Building Stable_Orbit
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_292
-		{
-			ID 106
-			GFX_RNG_1 80
-			GFX_RNG_2 49
-			X 7
-			Y 15
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type White_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
 					Barren 
 					Rocky 
 					Tiny_Moon 
@@ -5935,106 +5979,13 @@ Map
 					Temperature 3
 					Barren 
 					Rocky 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 2
-					Temperature 2
-					Toxic 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Barren 
-					Rocky 
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_300
-		{
-			ID 107
-			GFX_RNG_1 15
-			GFX_RNG_2 82
-			X 15
-			Y 15
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
 					Rings 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 3
-					Moon 
-					Barren 
-					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
 					Rich_Minerals 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_301
-		{
-			ID 108
-			GFX_RNG_1 11
-			GFX_RNG_2 92
-			X 16
-			Y 15
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 3
-					Temperature 2
-					High_Gravity 
-					Rocky 
-					Rich_Minerals 
-					Bacterial_Life 
-					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Arid
@@ -6042,30 +5993,33 @@ Map
 					Type Arid
 					Size 2
 					Temperature 4
-					High_Radiation 
+					Moon 
 					Rocky 
 					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Barren
+			}
+		}
+		Star Star_281
+		{
+			ID 103
+			GFX_RNG_1 67
+			GFX_RNG_2 62
+			X 15
+			Y 14
+			Planet_List 
+			{
+				Planet Star
 				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
 				}
-				Planet Toxic
+				Planet Gas_Giant
 				{
-					Type Toxic
-					Size 1
-					Temperature 4
-					Toxic 
-					Rocky 
-					Useful_Minerals 
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -6074,41 +6028,87 @@ Map
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Ocean
+				Planet Lava
 				{
-					Type Ocean
+					Type Lava
+					Size 3
+					Temperature 5
+					High_Gravity 
+					Extreme_Temps 
+					Rocky 
+					Tiny_Moon 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
 					Size 2
-					Temperature 2
-					Moon 
+					Temperature 4
+					Rocky 
+					Rings 
 					Oceans 
 					Bacterial_Life 
 					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Gas_Giant
+				Planet Continents
 				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
+					Type Continents
+					Size 2
+					Temperature 3
+					Rocky 
+					Oceans 
+					Complex_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
 		}
-		Star Star_302
+		Star Star_282
 		{
-			ID 109
-			GFX_RNG_1 73
-			GFX_RNG_2 91
-			X 17
-			Y 15
+			ID 104
+			GFX_RNG_1 10
+			GFX_RNG_2 18
+			X 16
+			Y 14
 			Planet_List 
 			{
 				Planet Star
 				{
 					Star_Type Main_Sequence
 					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 3
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Low_Gravity 
+					Rocky 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
 				}
 				Planet Desert
 				{
@@ -6124,20 +6124,21 @@ Map
 				{
 					Type Barren
 					Size 1
-					Temperature 2
+					Temperature 5
+					Moon 
+					High_Radiation 
+					Low_Gravity 
 					Barren 
 					Rocky 
 					Building Possible_Outpost
 				}
-				Planet Continents
+				Planet Swamp
 				{
-					Type Continents
-					Size 2
+					Type Swamp
+					Size 1
 					Temperature 3
 					Rocky 
-					Oceans 
-					Useful_Minerals 
-					Bacterial_Life 
+					Complex_Life 
 					Colonizable 
 					Building Possible_Outpost
 				}
@@ -6152,30 +6153,82 @@ Map
 					Rocky 
 					Building Possible_Outpost
 				}
-				Planet Toxic
+				Planet Asteroids
 				{
-					Type Toxic
-					Size 2
-					Temperature 3
-					Toxic 
-					Barren 
-					Rocky 
+					Type Asteroids
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Frozen
+				Planet Gas_Giant
 				{
-					Type Frozen
-					Size 1
-					Temperature 1
-					Low_Gravity 
-					Extreme_Temps 
-					Barren 
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_291
+		{
+			ID 105
+			GFX_RNG_1 37
+			GFX_RNG_2 27
+			X 6
+			Y 15
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 3
+					Oceans 
+					Complex_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
 					Type Asteroids
-					Rich_Minerals 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_292
+		{
+			ID 106
+			GFX_RNG_1 32
+			GFX_RNG_2 71
+			X 7
+			Y 15
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Barren
@@ -6185,9 +6238,73 @@ Map
 					Temperature 5
 					Moon 
 					High_Radiation 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_300
+		{
+			ID 107
+			GFX_RNG_1 36
+			GFX_RNG_2 90
+			X 15
+			Y 15
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					Low_Gravity 
+					Extreme_Temps 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
 					Low_Gravity 
 					Barren 
 					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Moon 
+					Rocky 
+					Rich_Minerals 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -6195,18 +6312,53 @@ Map
 					Type Gas_Giant
 					Size 6
 					Gas_Giant 
+					Rings 
+					Rich_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
 					Tiny_Moon 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 			}
 		}
-		Star Star_311
+		Star Star_301
 		{
-			ID 110
+			ID 108
 			GFX_RNG_1 8
-			GFX_RNG_2 14
-			X 7
-			Y 16
+			GFX_RNG_2 78
+			X 16
+			Y 15
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Pulsar
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_302
+		{
+			ID 109
+			GFX_RNG_1 32
+			GFX_RNG_2 16
+			X 17
+			Y 15
 			Planet_List 
 			{
 				Planet Star
@@ -6228,7 +6380,8 @@ Map
 				{
 					Type Barren
 					Size 1
-					Temperature 1
+					Temperature 5
+					High_Radiation 
 					Barren 
 					Rocky 
 					Building Possible_Outpost
@@ -6237,9 +6390,7 @@ Map
 				{
 					Type Barren
 					Size 1
-					Temperature 5
-					High_Radiation 
-					Low_Gravity 
+					Temperature 3
 					Barren 
 					Rocky 
 					Building Possible_Outpost
@@ -6247,43 +6398,140 @@ Map
 				Planet Frozen
 				{
 					Type Frozen
-					Size 1
+					Size 2
 					Temperature 1
-					Moon 
 					Extreme_Temps 
 					Barren 
 					Building Possible_Outpost
 				}
-				Planet Gas_Giant
+				Planet Lava
 				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
+					Type Lava
 					Size 1
 					Temperature 5
 					Moon 
 					High_Radiation 
 					Low_Gravity 
-					Barren 
+					Extreme_Temps 
 					Rocky 
+					Rich_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Barren
+				Planet Swamp
 				{
-					Type Barren
+					Type Swamp
 					Size 1
-					Temperature 4
+					Temperature 3
+					Rocky 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 3
+					Temperature 3
+					High_Gravity 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 3
+					Low_Gravity 
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 1
+					Temperature 5
 					Moon 
 					High_Radiation 
 					Low_Gravity 
+					Extreme_Temps 
+					Rocky 
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_311
+		{
+			ID 110
+			GFX_RNG_1 34
+			GFX_RNG_2 23
+			X 7
+			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 2
+					Low_Gravity 
+					Rocky 
+					Rings 
+					Oceans 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 3
+					Temperature 1
+					High_Gravity 
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 2
+					Temperature 1
+					Extreme_Temps 
 					Barren 
 					Rocky 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Low_Gravity 
+					Toxic 
+					Semi-Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
 					Tiny_Moon 
 					Building Possible_Outpost
 				}
@@ -6292,8 +6540,8 @@ Map
 		Star Star_312
 		{
 			ID 111
-			GFX_RNG_1 79
-			GFX_RNG_2 73
+			GFX_RNG_1 40
+			GFX_RNG_2 30
 			X 8
 			Y 16
 			Planet_List 
@@ -6303,79 +6551,28 @@ Map
 					Star_Type Red_Giant
 					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Barren
 				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
+					Type Barren
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Barren 
+					Rocky 
 					Rings 
+					Rich_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Gas_Giant
+				Planet Swamp
 				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Rings 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_313
-		{
-			ID 112
-			GFX_RNG_1 1
-			GFX_RNG_2 57
-			X 9
-			Y 16
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Ocean
-				{
-					Type Ocean
+					Type Swamp
 					Size 1
 					Temperature 2
 					Moon 
 					Low_Gravity 
-					Oceans 
-					Useful_Minerals 
-					Bacterial_Life 
+					Rocky 
+					Complex_Life 
 					Colonizable 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_314
-		{
-			ID 113
-			GFX_RNG_1 85
-			GFX_RNG_2 15
-			X 10
-			Y 16
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Giant
-					Building Stable_Orbit
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Rich_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -6387,33 +6584,138 @@ Map
 					Useful_Gasses 
 					Building Possible_Outpost
 				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 3
-					Moon 
-					Low_Gravity 
-					Rocky 
-					Useful_Minerals 
-					Colonizable 
-					Building Possible_Outpost
-				}
 			}
 		}
-		Star Star_316
+		Star Star_313
 		{
-			ID 114
-			GFX_RNG_1 21
-			GFX_RNG_2 6
-			X 12
+			ID 112
+			GFX_RNG_1 52
+			GFX_RNG_2 43
+			X 9
 			Y 16
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Red_Giant
 					Building Stable_Orbit
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 3
+					Temperature 2
+					High_Gravity 
+					Rocky 
+					Rich_Minerals 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 2
+					Moon 
+					Rocky 
+					Tiny_Moon 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Low_Gravity 
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Barren 
+					Rocky 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 3
+					Temperature 4
+					Moon 
+					High_Gravity 
+					Oceans 
+					Complex_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_314
+		{
+			ID 113
+			GFX_RNG_1 75
+			GFX_RNG_2 94
+			X 10
+			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Blue_Giant
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 4
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 3
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 2
+					Temperature 4
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 3
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
 				}
 				Planet Asteroids
 				{
@@ -6429,15 +6731,46 @@ Map
 					Tiny_Moon 
 					Building Possible_Outpost
 				}
-				Planet Barren
+			}
+		}
+		Star Star_316
+		{
+			ID 114
+			GFX_RNG_1 55
+			GFX_RNG_2 68
+			X 12
+			Y 16
+			Planet_List 
+			{
+				Planet Star
 				{
-					Type Barren
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Swamp
+				{
+					Type Swamp
 					Size 1
-					Temperature 5
+					Temperature 3
 					Moon 
-					High_Radiation 
-					Barren 
+					Low_Gravity 
 					Rocky 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 			}
@@ -6445,8 +6778,8 @@ Map
 		Star Star_319
 		{
 			ID 115
-			GFX_RNG_1 77
-			GFX_RNG_2 55
+			GFX_RNG_1 21
+			GFX_RNG_2 85
 			X 15
 			Y 16
 			Planet_List 
@@ -6459,15 +6792,15 @@ Map
 				Planet Asteroids
 				{
 					Type Asteroids
-					Rich_Minerals 
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 5
+					Size 6
 					Gas_Giant 
-					Tiny_Moon 
+					Rings 
 					Building Possible_Outpost
 				}
 			}
@@ -6475,10 +6808,105 @@ Map
 		Star Star_320
 		{
 			ID 116
-			GFX_RNG_1 41
-			GFX_RNG_2 31
+			GFX_RNG_1 78
+			GFX_RNG_2 93
 			X 16
 			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type White_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 1
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_321
+		{
+			ID 117
+			GFX_RNG_1 89
+			GFX_RNG_2 20
+			X 17
+			Y 16
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 1
+					Temperature 3
+					Low_Gravity 
+					Toxic 
+					Semi-Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Ocean
+				{
+					Type Ocean
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Low_Gravity 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_332
+		{
+			ID 118
+			GFX_RNG_1 84
+			GFX_RNG_2 30
+			X 9
+			Y 17
 			Planet_List 
 			{
 				Planet Star
@@ -6504,135 +6932,11 @@ Map
 				{
 					Type Barren
 					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_321
-		{
-			ID 117
-			GFX_RNG_1 76
-			GFX_RNG_2 55
-			X 17
-			Y 16
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 4
-					Low_Gravity 
-					Rocky 
-					Useful_Minerals 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Toxic
-				{
-					Type Toxic
-					Size 1
-					Temperature 4
-					Toxic 
-					Semi-Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Rich_Gasses 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 2
-					Moon 
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Tiny_Moon 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_332
-		{
-			ID 118
-			GFX_RNG_1 58
-			GFX_RNG_2 54
-			X 9
-			Y 17
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type White_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Vulcanic
-				{
-					Type Vulcanic
-					Size 1
-					Temperature 4
-					High_Radiation 
-					Low_Gravity 
-					Rocky 
-					Useful_Minerals 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
 					Temperature 1
 					Moon 
 					Low_Gravity 
 					Barren 
 					Rocky 
-					Useful_Minerals 
 					Building Possible_Outpost
 				}
 			}
@@ -6640,8 +6944,8 @@ Map
 		Star Star_333
 		{
 			ID 119
-			GFX_RNG_1 27
-			GFX_RNG_2 23
+			GFX_RNG_1 67
+			GFX_RNG_2 11
 			X 10
 			Y 17
 			Planet_List 
@@ -6651,140 +6955,35 @@ Map
 					Star_Type White_Dwarf
 					Building Stable_Orbit
 				}
-				Planet Arid
-				{
-					Type Arid
-					Size 3
-					Temperature 2
-					High_Gravity 
-					Rocky 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 2
-					Temperature 4
-					Moon 
-					High_Radiation 
-					Rocky 
-					Tiny_Moon 
-					Rich_Minerals 
-					Colonizable 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_334
-		{
-			ID 120
-			GFX_RNG_1 4
-			GFX_RNG_2 15
-			X 11
-			Y 17
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Main_Sequence
-					Building Stable_Orbit
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 2
-					Temperature 3
-					Rocky 
-					Rich_Minerals 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 2
-					Temperature 2
-					Rocky 
-					Tiny_Moon 
-					Useful_Minerals 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Artic
-				{
-					Type Artic
-					Size 1
-					Temperature 2
-					Moon 
-					Low_Gravity 
-					Rocky 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 1
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Frozen
-				{
-					Type Frozen
-					Size 3
-					Temperature 1
-					High_Gravity 
-					Extreme_Temps 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_335
-		{
-			ID 121
-			GFX_RNG_1 11
-			GFX_RNG_2 87
-			X 12
-			Y 17
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
 				Planet Ocean
 				{
 					Type Ocean
 					Size 1
+					Temperature 2
+					Low_Gravity 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 2
+					Temperature 3
+					Rocky 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
 					Temperature 3
 					Moon 
 					Low_Gravity 
-					Rings 
+					Rocky 
 					Oceans 
 					Bacterial_Life 
 					Colonizable 
@@ -6798,19 +6997,25 @@ Map
 				}
 			}
 		}
-		Star Star_336
+		Star Star_334
 		{
-			ID 122
-			GFX_RNG_1 4
-			GFX_RNG_2 14
-			X 13
+			ID 120
+			GFX_RNG_1 53
+			GFX_RNG_2 52
+			X 11
 			Y 17
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Dwarf
+					Star_Type White_Dwarf
 					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
@@ -6821,10 +7026,91 @@ Map
 					Useful_Gasses 
 					Building Possible_Outpost
 				}
+			}
+		}
+		Star Star_335
+		{
+			ID 121
+			GFX_RNG_1 80
+			GFX_RNG_2 74
+			X 12
+			Y 17
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
 				Planet Asteroids
 				{
 					Type Asteroids
 					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Continents
+				{
+					Type Continents
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Low_Gravity 
+					Rocky 
+					Tiny_Moon 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Vulcanic
+				{
+					Type Vulcanic
+					Size 2
+					Temperature 2
+					Rocky 
+					Rich_Minerals 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 2
+					Temperature 5
+					Extreme_Temps 
+					Rocky 
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_336
+		{
+			ID 122
+			GFX_RNG_1 100
+			GFX_RNG_2 33
+			X 13
+			Y 17
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Giant
+					Building Stable_Orbit
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Useful_Gasses 
 					Building Possible_Outpost
 				}
 			}
@@ -6832,60 +7118,15 @@ Map
 		Star Star_337
 		{
 			ID 123
-			GFX_RNG_1 86
-			GFX_RNG_2 95
+			GFX_RNG_1 28
+			GFX_RNG_2 62
 			X 14
 			Y 17
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Red_Giant
-					Building Stable_Orbit
-				}
-				Planet Swamp
-				{
-					Type Swamp
-					Size 2
-					Temperature 4
-					Rocky 
-					Rings 
-					Bacterial_Life 
-					Colonizable 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Arid
-				{
-					Type Arid
-					Size 2
-					Temperature 4
-					Moon 
-					High_Radiation 
-					Rocky 
-					Rings 
-					Colonizable 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_338
-		{
-			ID 124
-			GFX_RNG_1 23
-			GFX_RNG_2 0
-			X 15
-			Y 17
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Giant
+					Star_Type Red_Dwarf
 					Building Stable_Orbit
 				}
 				Planet Gas_Giant
@@ -6903,31 +7144,6 @@ Map
 					Size 5
 					Gas_Giant 
 					Tiny_Moon 
-					Useful_Gasses 
-					Building Possible_Outpost
-				}
-			}
-		}
-		Star Star_339
-		{
-			ID 125
-			GFX_RNG_1 79
-			GFX_RNG_2 84
-			X 16
-			Y 17
-			Planet_List 
-			{
-				Planet Star
-				{
-					Star_Type Red_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Gas_Giant
-				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Rings 
 					Rich_Gasses 
 					Building Possible_Outpost
 				}
@@ -6937,83 +7153,126 @@ Map
 					Useful_Minerals 
 					Building Possible_Outpost
 				}
-				Planet Barren
+				Planet Continents
 				{
-					Type Barren
-					Size 1
-					Temperature 3
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 5
+					Type Continents
+					Size 2
+					Temperature 4
 					Moon 
 					High_Radiation 
-					Low_Gravity 
-					Barren 
 					Rocky 
-					Building Possible_Outpost
-				}
-				Planet Barren
-				{
-					Type Barren
-					Size 1
-					Temperature 4
-					Low_Gravity 
-					Barren 
-					Rocky 
-					Tiny_Moon 
+					Oceans 
+					Bacterial_Life 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
 		}
-		Star Star_353
+		Star Star_338
 		{
-			ID 126
-			GFX_RNG_1 41
-			GFX_RNG_2 50
-			X 11
-			Y 18
+			ID 124
+			GFX_RNG_1 46
+			GFX_RNG_2 6
+			X 15
+			Y 17
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
+					Star_Type Red_Giant
 					Building Stable_Orbit
 				}
-				Planet Desert
+				Planet Vulcanic
 				{
-					Type Desert
-					Size 3
-					Temperature 4
-					High_Gravity 
-					Barren 
+					Type Vulcanic
+					Size 2
+					Temperature 3
 					Rocky 
+					Useful_Minerals 
 					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Continents
 				{
 					Type Continents
-					Size 2
-					Temperature 4
+					Size 3
+					Temperature 2
 					Rocky 
 					Oceans 
+					Bacterial_Life 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Frozen
+				{
+					Type Frozen
+					Size 1
+					Temperature 1
+					Moon 
+					Low_Gravity 
+					Extreme_Temps 
+					Barren 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_339
+		{
+			ID 125
+			GFX_RNG_1 92
+			GFX_RNG_2 14
+			X 16
+			Y 17
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Main_Sequence
+					Building Stable_Orbit
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 4
+					High_Radiation 
+					Barren 
+					Rocky 
 					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Frozen
 				{
 					Type Frozen
-					Size 2
+					Size 1
 					Temperature 1
+					Low_Gravity 
 					Extreme_Temps 
 					Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Asteroids
@@ -7028,46 +7287,51 @@ Map
 					Size 6
 					Gas_Giant 
 					Rings 
-					Useful_Gasses 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
 				{
 					Type Gas_Giant
-					Size 6
+					Size 5
 					Gas_Giant 
-					Rings 
+					Tiny_Moon 
 					Building Possible_Outpost
 				}
 			}
 		}
-		Star Star_354
+		Star Star_353
 		{
-			ID 127
-			GFX_RNG_1 19
-			GFX_RNG_2 84
-			X 12
+			ID 126
+			GFX_RNG_1 75
+			GFX_RNG_2 43
+			X 11
 			Y 18
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Blue_Giant
+					Star_Type Main_Sequence
 					Building Stable_Orbit
 				}
-				Planet Asteroids
+				Planet Artic
 				{
-					Type Asteroids
-					Rich_Minerals 
+					Type Artic
+					Size 3
+					Temperature 2
+					Rocky 
+					Tiny_Moon 
+					Colonizable 
 					Building Possible_Outpost
 				}
-				Planet Gas_Giant
+				Planet Artic
 				{
-					Type Gas_Giant
-					Size 6
-					Gas_Giant 
-					Tiny_Moon 
-					Useful_Gasses 
+					Type Artic
+					Size 3
+					Temperature 2
+					High_Gravity 
+					Rocky 
+					Rings 
+					Colonizable 
 					Building Possible_Outpost
 				}
 				Planet Arid
@@ -7076,7 +7340,125 @@ Map
 					Size 1
 					Temperature 2
 					Moon 
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 1
+					Temperature 3
 					Low_Gravity 
+					Rocky 
+					Rings 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Swamp
+				{
+					Type Swamp
+					Size 1
+					Temperature 4
+					Low_Gravity 
+					Rocky 
+					Colonizable 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Rings 
+					Useful_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Arid
+				{
+					Type Arid
+					Size 2
+					Temperature 4
+					Moon 
+					Rocky 
+					Rings 
+					Colonizable 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_354
+		{
+			ID 127
+			GFX_RNG_1 18
+			GFX_RNG_2 78
+			X 12
+			Y 18
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 6
+					Gas_Giant 
+					Tiny_Moon 
+					Rich_Gasses 
+					Building Possible_Outpost
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Rings 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 2
+					Moon 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Desert
+				{
+					Type Desert
+					Size 1
+					Temperature 2
+					Moon 
+					Low_Gravity 
+					Barren 
 					Rocky 
 					Colonizable 
 					Building Possible_Outpost
@@ -7086,62 +7468,52 @@ Map
 		Star Star_355
 		{
 			ID 128
-			GFX_RNG_1 18
-			GFX_RNG_2 76
+			GFX_RNG_1 48
+			GFX_RNG_2 32
 			X 13
 			Y 18
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type Pulsar
+					Star_Type Blue_Giant
 					Building Stable_Orbit
 				}
-				Planet Gas_Giant
+				Planet Lava
 				{
-					Type Gas_Giant
-					Size 5
-					Gas_Giant 
-					Tiny_Moon 
+					Type Lava
+					Size 3
+					Temperature 5
+					High_Gravity 
+					Extreme_Temps 
+					Rocky 
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Toxic
+				{
+					Type Toxic
+					Size 2
+					Temperature 2
+					Toxic 
+					Semi-Barren 
+					Rocky 
 					Building Possible_Outpost
 				}
 				Planet Barren
 				{
 					Type Barren
 					Size 1
-					Temperature 5
-					Moon 
-					High_Radiation 
+					Temperature 1
+					Low_Gravity 
 					Barren 
 					Rocky 
 					Building Possible_Outpost
 				}
-			}
-		}
-		Star Star_357
-		{
-			ID 129
-			GFX_RNG_1 73
-			GFX_RNG_2 94
-			X 15
-			Y 18
-			Planet_List 
-			{
-				Planet Star
+				Planet Asteroids
 				{
-					Star_Type White_Dwarf
-					Building Stable_Orbit
-				}
-				Planet Continents
-				{
-					Type Continents
-					Size 1
-					Temperature 4
-					Low_Gravity 
-					Rocky 
-					Oceans 
-					Bacterial_Life 
-					Colonizable 
+					Type Asteroids
+					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -7154,35 +7526,28 @@ Map
 				}
 			}
 		}
-		Star Star_358
+		Star Star_357
 		{
-			ID 130
-			GFX_RNG_1 27
-			GFX_RNG_2 63
-			X 16
+			ID 129
+			GFX_RNG_1 20
+			GFX_RNG_2 50
+			X 15
 			Y 18
 			Planet_List 
 			{
 				Planet Star
 				{
-					Star_Type White_Dwarf
+					Star_Type Pulsar
 					Building Stable_Orbit
 				}
-				Planet Lava
+				Planet Barren
 				{
-					Type Lava
-					Size 2
-					Temperature 5
-					High_Radiation 
-					Extreme_Temps 
+					Type Barren
+					Size 1
+					Temperature 3
+					Low_Gravity 
+					Barren 
 					Rocky 
-					Rich_Minerals 
-					Building Possible_Outpost
-				}
-				Planet Asteroids
-				{
-					Type Asteroids
-					Useful_Minerals 
 					Building Possible_Outpost
 				}
 				Planet Gas_Giant
@@ -7191,7 +7556,68 @@ Map
 					Size 6
 					Gas_Giant 
 					Tiny_Moon 
-					Useful_Gasses 
+					Building Possible_Outpost
+				}
+			}
+		}
+		Star Star_358
+		{
+			ID 130
+			GFX_RNG_1 20
+			GFX_RNG_2 57
+			X 16
+			Y 18
+			Planet_List 
+			{
+				Planet Star
+				{
+					Star_Type Red_Dwarf
+					Building Stable_Orbit
+				}
+				Planet Gas_Giant
+				{
+					Type Gas_Giant
+					Size 5
+					Gas_Giant 
+					Tiny_Moon 
+					Building Possible_Outpost
+				}
+				Planet Asteroids
+				{
+					Type Asteroids
+					Useful_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Lava
+				{
+					Type Lava
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Extreme_Temps 
+					Rocky 
+					Rich_Minerals 
+					Building Possible_Outpost
+				}
+				Planet Barren
+				{
+					Type Barren
+					Size 1
+					Temperature 5
+					High_Radiation 
+					Low_Gravity 
+					Barren 
+					Rocky 
+					Building Possible_Outpost
+				}
+				Planet Artic
+				{
+					Type Artic
+					Size 1
+					Temperature 2
+					Rocky 
+					Colonizable 
 					Building Possible_Outpost
 				}
 			}
@@ -7212,9 +7638,9 @@ Map
 				Minerals*Income 0
 				Production*Income 0
 				Shipbuilding*Income 0
-				Research*Stockpile 650
-				Culture*Stockpile 650
-				BC*Stockpile 1203
+				Research*Stockpile 150
+				Culture*Stockpile 150
+				BC*Stockpile 373
 				Authority*Used 0
 			}
 			Status 
@@ -7224,10 +7650,9 @@ Map
 			}
 			Civics 
 			Bonuses 
-			ShipDesigns 
+			Designs 
 			{
-				Slot_1 none
-				Slot_2 Babylon
+				Design Babylon
 				{
 					ShipType Medium
 					Modules 
@@ -7250,18 +7675,6 @@ Map
 						Special:2 Empty_Special_Slot
 					}
 				}
-				Slot_3 none
-				Slot_4 none
-				Slot_5 none
-				Slot_6 none
-				Slot_7 none
-				Slot_1_Obsolete none
-				Slot_2_Obsolete none
-				Slot_3_Obsolete none
-				Slot_4_Obsolete none
-				Slot_5_Obsolete none
-				Slot_6_Obsolete none
-				Slot_7_Obsolete none
 			}
 			Sector_List 
 			{
@@ -7283,11 +7696,11 @@ Map
 						Overflow 0
 						Queue 
 						{
-							Building Mineral_Processers_II
+							Building Shipyard_II
 							{
-								Link:Star:Planet Sol:Moon
-								Progress:Max 1200
-								OldBuilding Mineral_Processers_I
+								Link:Star:Planet Sol:Terra
+								Progress:Max 8000
+								OldBuilding Shipyard_I
 							}
 						}
 					}
@@ -7322,7 +7735,7 @@ Map
 										Culture*Income 0
 										BC*Income 0
 										Authority*Used 0
-										Pops*Pops 15516
+										Pops*Pops 12733
 										Pops*PopsMax 16000
 										Pops*Growth 200
 									}
@@ -7345,7 +7758,7 @@ Map
 										Culture*Income 0
 										BC*Income 0
 										Authority*Used 0
-										Pops*Pops 15516
+										Pops*Pops 12733
 										Pops*PopsMax 16000
 										Pops*Growth 200
 									}
@@ -7353,9 +7766,20 @@ Map
 									{
 										Building Capital
 										Building Shipyard_I
+										{
+											NewBuilding Shipyard_II
+										}
 										Building Cities
 										Building Colonial_Oversight
 										Building District
+										Building Shipyard_II
+										{
+											InConstruction 
+											{
+												Progress:Max 8000
+												Progress 200
+											}
+										}
 									}
 									Support 
 									{
@@ -7442,37 +7866,6 @@ Map
 									}
 									Link:Star:Planet Sol:Terra
 								}
-								Colony Moon
-								{
-									Type Outpost
-									Resources 
-									{
-										Energy*Income 0
-										Minerals*Income 0
-										Production*Income 0
-										Shipbuilding*Income 0
-										Research*Income 0
-										Culture*Income 0
-										BC*Income 0
-										Authority*Used 0
-									}
-									Buildings 
-									{
-										Building Mineral_Processers_I
-										{
-											NewBuilding Mineral_Processers_II
-										}
-										Building Mineral_Processers_II
-										{
-											InConstruction 
-											{
-												Progress:Max 1200
-												Progress 400
-											}
-										}
-									}
-									Link:Star:Planet Sol:Moon
-								}
 							}
 						}
 					}
@@ -7482,6 +7875,7 @@ Map
 			{
 				Fleet Babylon's_Eye
 				{
+					Link:Star Sol
 					Ship Babylon_I
 					{
 						Design Babylon
@@ -7490,6 +7884,31 @@ Map
 						Marines 100
 						Fighters 0
 						Supply 300
+					}
+					ActionMove 
+					{
+						Progress 1
+						ProgressMax 1
+						Link:Star Star_23
+					}
+				}
+				Fleet Byblos Hammer
+				{
+					Link:Star Sol
+					Ship Babylon_II
+					{
+						Design Babylon
+						HP 0
+						XP 0
+						Marines 100
+						Fighters 0
+						Supply 300
+					}
+					ActionMove 
+					{
+						Progress 1
+						ProgressMax 1
+						Link:Star Star_23
 					}
 				}
 			}

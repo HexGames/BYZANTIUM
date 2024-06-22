@@ -415,6 +415,7 @@ public partial class MapData : Node
         FleetData fleet = new FleetData();
         fleet.Name = fleetDataBlock.ValueS + "_Data";
         fleet.FleetName = fleetDataBlock.ValueS;
+        fleet.MoveAction = fleetDataBlock.GetSub("ActionMove");
         //fleet.ShipsData = fleetDataBlock.GetSub("Resources");
         //design.ActionBuildQueue = sectorDataBlock.GetSub("ActionBuildQueue");
 

@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System.IO;
 
 public partial class UIGalaxy : Control
 {
@@ -9,6 +10,12 @@ public partial class UIGalaxy : Control
     [Export]
     public Array<UIGalaxySystem> Systems = new Array<UIGalaxySystem>();
     [Export]
+    public Array<UIGalaxyPath> Paths = new Array<UIGalaxyPath>();
+
+    [Export]
+    public UIGeneral General = null;
+
+    [Export]
     public UIEconomyBar Resources = null;
     [Export]
     public UIGalaxyBarList GalaxyBar = null;
@@ -16,6 +23,8 @@ public partial class UIGalaxy : Control
     public UIBuildings ColonyBuildings = null;
     [Export]
     public UIConstruction SectorConstruction = null;
+    [Export]
+    public UIShipbuilding SectorShipbuilding = null;
     [Export]
     public UIPops PopsInfo = null;
     [Export]
@@ -28,6 +37,7 @@ public partial class UIGalaxy : Control
     public UISelectedFleets FleetsSelected = null;
     [Export]
     public Label CurrentTurn = null;
+
 
     [ExportCategory("Runtime")]
     [Export]
@@ -55,8 +65,11 @@ public partial class UIGalaxy : Control
 
         Init();
 
+        General.Visible = false;
+
         ColonyBuildings.Visible = false;
         SectorConstruction.Visible = false;
+        SectorShipbuilding.Visible = false;
         PopsInfo.Visible = false;
         PlanetInfo.Visible = false;
 
@@ -112,6 +125,7 @@ public partial class UIGalaxy : Control
 
         ColonyBuildings.Visible = true;
         SectorConstruction.Visible = true;
+        SectorShipbuilding.Visible = true;
         PopsInfo.Visible = SelectedColony != null;
         PlanetInfo.Visible = true;
 
@@ -128,6 +142,7 @@ public partial class UIGalaxy : Control
 
         ColonyBuildings.Visible = false;
         SectorConstruction.Visible = false;
+        SectorShipbuilding.Visible = false;
         PopsInfo.Visible = SelectedColony != null;
         PlanetInfo.Visible = false;
 
@@ -231,6 +246,7 @@ public partial class UIGalaxy : Control
             {
                 // deselect sector
                 SectorConstruction.Visible = false;
+                SectorShipbuilding.Visible = false;
                 if (SelectedSystem == null && SelectedColony == null) refreshEconomy = true;
                 if (SelectedColony == null) refreshPopInfo = true;
                 if (SelectedSystem == null && SelectedStar == null) refreshGameBar = true;
@@ -242,6 +258,8 @@ public partial class UIGalaxy : Control
                 // select sector
                 SectorConstruction.Refresh(SelectedSector);
                 SectorConstruction.Visible = GalaxyBar.Tabs_BuildingsSelected.Visible || SelectedPlanet == null;
+                SectorShipbuilding.Refresh(SelectedSector);
+                SectorShipbuilding.Visible = GalaxyBar.Tabs_BuildingsSelected.Visible || SelectedPlanet == null;
                 if (SelectedSystem == null && SelectedColony == null) refreshEconomy = true;
                 if (SelectedColony == null) refreshPopInfo = true;
                 if (SelectedSystem == null && SelectedStar == null) refreshGameBar = true;
@@ -318,34 +336,76 @@ public partial class UIGalaxy : Control
                 GalaxyBar.HideTabsSelector();
 
                 SectorConstruction.Visible = SelectedSector != null && (GalaxyBar.Tabs_BuildingsSelected.Visible || SelectedPlanet == null);
+                SectorShipbuilding.Visible = SelectedSector != null && (GalaxyBar.Tabs_BuildingsSelected.Visible || SelectedPlanet == null);
             }
         }
     }
-
 
     public void RefreshPawnsUI()
     {
         if (Game.Input.SelectedFleets.Count > 0)
         {
-            FleetsSelected.Refresh(Game.Input.SelectedFleets);
-            FleetsSelected.Visible = true;
+            //FleetsSelected.Refresh(Game.Input.SelectedFleets);
+            //FleetsSelected.Visible = true;
+
+            Array<DataBlock> datas = new Array<DataBlock>();
+            datas.Add(Game.Input.SelectedFleets[0].Data);
+            General.Refresh(datas);
+            General.Visible = true;
 
             GalaxyBar.Visible = false;
         }
         else
         {
             FleetsSelected.Visible = false;
+            General.Visible = false;
 
             GalaxyBar.Visible = true;
         }
     }
 
+    public void AddPathLabel(GFXPathsItem pathGFX)
+    {
+        UIGalaxyPath newPath = Paths[0].Duplicate(7) as UIGalaxyPath;
+        Paths[0].GetParent().AddChild(newPath);
+        Paths.Add(newPath);
+
+        newPath._PathGFX = pathGFX;
+        pathGFX.HUD = newPath;
+    }
+
     public void StartTurn()
     {
-        CurrentTurn.Text = "Current Turn: " + Game.Map.Data.Turn.ToString();
+
+        Game.Paths.ClearAllPaths();
+
+        // Refresh system GFX
+        for (int idx = 0; idx < Game.Map.Data.Stars.Count; idx++)
+        {
+            StarData star = Game.Map.Data.Stars[idx];
+            star._Node.GFX.RefreshPlayerColors();
+            star._Node.GFX.RefreshShips();
+        }
+
+        // refhresh paths GFX
+        for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.Map.Data.Players[playerIdx];
+            for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
+            {
+                FleetData fleet = player.Fleets[fleetIdx];
+                if (fleet.MoveAction != null)
+                {
+                    StarData toStar = Data.GetLinkStarData(fleet.MoveAction, Game.Map.Data);
+                    Game.Paths.AddPath(fleet, toStar);
+                }
+            }
+        }
 
         Resources.Refresh(Game.TurnLoop.CurrentHumanPlayerData);
         GalaxyBar.Refresh(Game.TurnLoop.CurrentHumanPlayerData);
+
+        CurrentTurn.Text = "Current Turn: " + Game.Map.Data.Turn.ToString();
     }
 
     public void OnEndTurn()

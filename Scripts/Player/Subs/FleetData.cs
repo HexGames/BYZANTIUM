@@ -17,7 +17,9 @@ public partial class FleetData : Node
     [ExportCategory("FleetData")]
     [Export]
     public string FleetName = "";
+    [Export]
 
+    public DataBlock MoveAction = null;
     //[Export]
     //public DataBlock ShipsData = null;
 
@@ -32,7 +34,7 @@ public partial class FleetData : Node
     public StarData AtStar_PerTurn = null;
 
     // actions
-    //public List<ActionSectorBuild> ActionsBuildPossible = new List<ActionSectorBuild>();
+    public List<StarData> AvailableMoves_PerTurn = new List<StarData>();
 
     // --------------------------------------------------------------------------------------------
     public ShipData GetShip(string ship)

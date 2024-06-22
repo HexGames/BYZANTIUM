@@ -15,6 +15,8 @@ public partial class Game : Node
     [Export]
 	public PlayerInput Input;
     [Export]
+    public GFXPaths Paths;
+    [Export]
     public UILibrary UILib;
     [Export]
     public UITooltipManager Tooltips;

@@ -16,6 +16,10 @@ public partial class StarData : Node
     public int X;
     [Export]
     public int Y;
+    public int Z
+    {
+        get { return -X - Y; }
+    }
 
     [Export]
     public Array<StarData> PathsTo = new Array<StarData>(); // not used yet
@@ -39,6 +43,11 @@ public partial class StarData : Node
         }
 
         return null;
+    }
+
+    public int DistanceTo(StarData otherStar)
+    {
+        return Mathf.Max(Mathf.Max(Mathf.Abs(X - otherStar.X), Mathf.Abs(Y - otherStar.Y)), Mathf.Abs(Z - otherStar.Z));
     }
 
     //[Export]

@@ -131,6 +131,15 @@ public partial class StarGFX : Node3D
                     StarNode parentLocationNode = GetParent<StarNode>();
                     parentLocationNode.Select();
                 }
+                // on mouse button release
+                if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
+                {
+                    //GD.Print("You clicked on " + Label.Text);
+                    if (Game.Input.SelectedFleets.Count > 0 && Game.Input.SelectedFleets[0]._Player == Game.HumanPlayer)
+                    {
+                        Game.Input.MoveTo(_Node.Data);
+                    }
+                }
             }
         }
     }
@@ -158,6 +167,15 @@ public partial class StarGFX : Node3D
                     StarNode parentLocationNode = GetParent<StarNode>();
                     parentLocationNode.SelectFleet(true);
                 }
+                // on mouse button release
+                if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
+                {
+                    //GD.Print("You clicked on " + Label.Text);
+                    if (Game.Input.SelectedFleets.Count > 0 && Game.Input.SelectedFleets[0]._Player == Game.HumanPlayer)
+                    {
+                        Game.Input.MoveTo(_Node.Data);
+                    }
+                }
             }
         }
     }
@@ -184,6 +202,15 @@ public partial class StarGFX : Node3D
                     //GD.Print("You clicked on " + Label.Text);
                     StarNode parentLocationNode = GetParent<StarNode>();
                     parentLocationNode.SelectFleet(false);
+                }
+                // on mouse button release
+                if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
+                {
+                    //GD.Print("You clicked on " + Label.Text);
+                    if (Game.Input.SelectedFleets.Count > 0 && Game.Input.SelectedFleets[0]._Player == Game.HumanPlayer)
+                    {
+                        Game.Input.MoveTo(_Node.Data);
+                    }
                 }
             }
         }

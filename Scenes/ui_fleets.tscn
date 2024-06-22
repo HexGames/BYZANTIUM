@@ -82,7 +82,7 @@ layout_mode = 2
 offset_right = 368.0
 offset_bottom = 24.0
 bbcode_enabled = true
-text = "[left]$fleet[/left]"
+text = "[left]$name[/left]"
 fit_content = true
 autowrap_mode = 0
 
@@ -564,6 +564,36 @@ expand_mode = 1
 layout_mode = 2
 bbcode_enabled = true
 text = "[right]$value[img=24x24]Assets/UI/Symbols/Power.png[/img][/right]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Action" type="Panel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(384, 32)
+layout_mode = 2
+theme = ExtResource("1_1f06l")
+theme_type_variation = &"GreyAlpha"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Action"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Control" type="Control" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Action/MarginContainer"]
+layout_mode = 2
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Action/MarginContainer/Control"]
+layout_mode = 2
+offset_right = 368.0
+offset_bottom = 24.0
+bbcode_enabled = true
+text = "[left]Status: $value[/left]"
 fit_content = true
 autowrap_mode = 0
 

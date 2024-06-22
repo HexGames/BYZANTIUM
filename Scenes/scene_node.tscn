@@ -1,4 +1,4 @@
-[gd_scene load_steps=7796 format=3 uid="uid://di030yy5pk68o"]
+[gd_scene load_steps=7801 format=3 uid="uid://di030yy5pk68o"]
 
 [ext_resource type="Script" path="res://Scripts/_Autorun.cs" id="1_oldh3"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="2_8jcv2"]
@@ -30,9 +30,12 @@
 [ext_resource type="Script" path="res://Scripts/Player/Subs/SystemData.cs" id="26_tcop0"]
 [ext_resource type="Script" path="res://Scripts/Player/Subs/ColonyData.cs" id="27_kxqd4"]
 [ext_resource type="PackedScene" uid="uid://bukr82o6e8rl3" path="res://Scenes/ui_galaxy.tscn" id="28_nsc1g"]
+[ext_resource type="Script" path="res://Scripts/GFX/GFXPaths.cs" id="29_xcfxq"]
+[ext_resource type="Script" path="res://Scripts/GFX/GFXPathsItem.cs" id="30_lnb8m"]
 [ext_resource type="Script" path="res://Scripts/UI/UIWindows.cs" id="30_m74m7"]
 [ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipManager.cs" id="30_y80os"]
 [ext_resource type="PackedScene" uid="uid://dcujexjsspq5a" path="res://Scenes/ui__tooltip.tscn" id="31_4a8tg"]
+[ext_resource type="Texture2D" uid="uid://bmdsd7m282hsh" path="res://Assets/Galaxy/Pathway.png" id="31_wk4qr"]
 [ext_resource type="PackedScene" uid="uid://xuydwgov7vak" path="res://Scenes/ui_build.tscn" id="31_wly8h"]
 
 [sub_resource type="Resource" id="Resource_lw7jh"]
@@ -62092,6 +62095,18 @@ albedo_texture = ExtResource("19_xx6li")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jkauf"]
 size = Vector3(1000, 1, 1000)
 
+[sub_resource type="QuadMesh" id="QuadMesh_016yk"]
+size = Vector2(0.3, 1)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7x3r"]
+transparency = 1
+albedo_color = Color(0.886275, 0.878431, 0.854902, 1)
+albedo_texture = ExtResource("31_wk4qr")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.5
+
 [sub_resource type="Environment" id="Environment_pfud3"]
 background_mode = 5
 glow_enabled = true
@@ -62102,13 +62117,14 @@ glow_blend_mode = 0
 [node name="Main" type="Node"]
 script = ExtResource("1_oldh3")
 
-[node name="Game" type="Node" parent="." node_paths=PackedStringArray("Assets", "Def", "MapGen", "Camera", "Input", "UILib", "Tooltips", "GalaxyUI", "WindowsUI", "Map", "TurnLoop", "Args")]
+[node name="Game" type="Node" parent="." node_paths=PackedStringArray("Assets", "Def", "MapGen", "Camera", "Input", "Paths", "UILib", "Tooltips", "GalaxyUI", "WindowsUI", "Map", "TurnLoop", "Args")]
 script = ExtResource("2_8jcv2")
 Assets = NodePath("../Library/AssetLibrary")
 Def = NodePath("../Library/DefLibrary")
 MapGen = NodePath("../Generators/MapGenerator")
 Camera = NodePath("../Camera3D")
 Input = NodePath("../PlayerInput")
+Paths = NodePath("../Map/MovePaths")
 UILib = NodePath("../Library/UILibrary")
 Tooltips = NodePath("../UI/UITooltips")
 GalaxyUI = NodePath("../UI/UIGalaxy")
@@ -78177,8 +78193,6 @@ surface_material_override/0 = null
 [node name="Secondary" parent="Map/Stars/Star_358/Star_358_GFX/Colors/SectorSelected" index="0"]
 surface_material_override/0 = null
 
-[node name="Paths" type="Node" parent="Map"]
-
 [node name="Players" type="Node" parent="Map"]
 
 [node name="Player_0" type="Node" parent="Map/Players" node_paths=PackedStringArray("Data")]
@@ -78237,6 +78251,20 @@ Buildings = SubResource("Resource_b5plh")
 Planet = NodePath("../../../../../../Stars/Sol/Sol_Data/Terra_Data")
 
 [node name="Flees" type="Node" parent="Map"]
+
+[node name="Paths" type="Node" parent="Map"]
+
+[node name="MovePaths" type="Node" parent="Map"]
+script = ExtResource("29_xcfxq")
+
+[node name="GfxPath" type="Node3D" parent="Map/MovePaths"]
+script = ExtResource("30_lnb8m")
+
+[node name="Path" type="MeshInstance3D" parent="Map/MovePaths/GfxPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.371087, 0)
+mesh = SubResource("QuadMesh_016yk")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_s7x3r")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

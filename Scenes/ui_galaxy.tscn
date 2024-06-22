@@ -1,20 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://bukr82o6e8rl3"]
+[gd_scene load_steps=17 format=3 uid="uid://bukr82o6e8rl3"]
 
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_cqepg"]
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
 [ext_resource type="PackedScene" uid="uid://boj51oy2r02dd" path="res://Scenes/ui_3d_system_label.tscn" id="2_o4d4i"]
+[ext_resource type="PackedScene" uid="uid://bkso2epk2tw8u" path="res://Scenes/ui_3d_path_label.tscn" id="3_vn2yg"]
 [ext_resource type="PackedScene" uid="uid://courpl83k858j" path="res://Scenes/ui_game_bar.tscn" id="4_5jqa5"]
 [ext_resource type="PackedScene" uid="uid://0svrlyhb7gcc" path="res://Scenes/ui_economy_bar.tscn" id="4_y8k0i"]
 [ext_resource type="PackedScene" uid="uid://c8n0vxyr5nsyj" path="res://Scenes/ui_buildings.tscn" id="5_5o3b3"]
 [ext_resource type="PackedScene" uid="uid://py7tx1sn7xf2" path="res://Scenes/ui_economy.tscn" id="5_rp6hd"]
 [ext_resource type="PackedScene" uid="uid://dcmj5bohen8h7" path="res://Scenes/ui_construction.tscn" id="6_bdnbk"]
+[ext_resource type="PackedScene" uid="uid://dol6nmmdwlc52" path="res://Scenes/ui_shipbuilding.tscn" id="8_n7m0l"]
 [ext_resource type="PackedScene" uid="uid://hys62jrhlt0i" path="res://Scenes/ui_pops_info.tscn" id="8_xwtg6"]
 [ext_resource type="PackedScene" uid="uid://bel8s4g6tiuv1" path="res://Scenes/ui_control_info.tscn" id="9_8ybwa"]
 [ext_resource type="PackedScene" uid="uid://bjnpkcy3hqibr" path="res://Scenes/ui_planet_info.tscn" id="9_82sdf"]
 [ext_resource type="PackedScene" uid="uid://cagh3vswhvysa" path="res://Scenes/ui_factions_info.tscn" id="10_vml6j"]
 [ext_resource type="PackedScene" uid="uid://b2a0hskimxnut" path="res://Scenes/ui_fleets.tscn" id="12_sv4sa"]
+[ext_resource type="PackedScene" uid="uid://c5x0k0s750tc4" path="res://Scenes/__ui_general.tscn" id="16_3p5nr"]
 
-[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("Systems", "Resources", "GalaxyBar", "ColonyBuildings", "SectorConstruction", "PopsInfo", "PlanetInfo", "ControlInfo", "FactionsInfo", "FleetsSelected", "CurrentTurn")]
+[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("Systems", "Paths", "General", "Resources", "GalaxyBar", "ColonyBuildings", "SectorConstruction", "SectorShipbuilding", "PopsInfo", "PlanetInfo", "ControlInfo", "FactionsInfo", "FleetsSelected", "CurrentTurn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,10 +27,13 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ieb0k")
 Systems = [NodePath("SystemsHUD/System")]
+Paths = [NodePath("PathsHUD/Path")]
+General = NodePath("GeneralUI")
 Resources = NodePath("Economy")
 GalaxyBar = NodePath("GameBar")
 ColonyBuildings = NodePath("ColonyBuildings")
 SectorConstruction = NodePath("SectorConstruction")
+SectorShipbuilding = NodePath("SectorShipbuilding")
 PopsInfo = NodePath("PopsInfo")
 PlanetInfo = NodePath("PlanetInfo")
 ControlInfo = NodePath("ControlInfo")
@@ -45,6 +51,14 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="System" parent="SystemsHUD" instance=ExtResource("2_o4d4i")]
+
+[node name="PathsHUD" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Path" parent="PathsHUD" instance=ExtResource("3_vn2yg")]
+visible = false
 
 [node name="Economy" parent="." instance=ExtResource("4_y8k0i")]
 layout_mode = 1
@@ -79,6 +93,14 @@ offset_left = 16.0
 offset_top = 64.0
 offset_right = 16.0
 offset_bottom = 64.0
+
+[node name="SectorShipbuilding" parent="." instance=ExtResource("8_n7m0l")]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 16.0
+offset_top = 360.0
+offset_right = 16.0
+offset_bottom = 360.0
 
 [node name="ColonyBuildings" parent="." instance=ExtResource("5_5o3b3")]
 custom_minimum_size = Vector2(1120, 120)
@@ -165,5 +187,7 @@ offset_bottom = -64.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Current Turn: 0"
+
+[node name="GeneralUI" parent="." instance=ExtResource("16_3p5nr")]
 
 [connection signal="pressed" from="EndTurn/Button" to="." method="OnEndTurn"]
