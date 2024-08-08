@@ -16,3 +16,8 @@ mono_crash.*.json
 
 # Big-files ignores
 .psd
+/Assets/Background/Clouds.psd
+/Assets/Background/Clouds2-gigapixel-low resolution v2-8x.psd
+/Assets/Background/Layer1.psd
+/Assets/Background/PlayerColor.psd
+/Assets/Background/Rings.psd
