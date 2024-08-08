@@ -4,121 +4,172 @@ Features
 	{
 		Benefit 
 		{
-			Cost*Penalty 100
-		}
-	}
-	Feature High_Radiation
-	{
-		Benefit 
-		{
-			Cost*Penalty 100
-			Pops*GrowthPenalty 20
-			Energy*PerLevel 10
+			Pops*GrowthPenalty 80
+			BC*Income -10
 		}
 	}
 	Feature Toxic
 	{
 		Benefit 
 		{
-			Cost*Penalty 100
-			Pops*GrowthPenalty 20
-		}
-	}
-	Feature Rings
-	{
-		Benefit 
-		{
-			Mineral*PerLevel 10
-		}
-	}
-	Feature Tiny_Moon
-	{
-		Benefit 
-		{
-			Shipbuilding*Bonus 20
+			Pops*GrowthPenalty 80
+			BC*Income -20
 		}
 	}
 	Feature Barren
 	{
 		Benefit 
 		{
-			Pops*GrowthPenalty 50
+			Pops*GrowthPenalty 80
 		}
 	}
 	Feature Semi-Barren
 	{
 		Benefit 
 		{
-			Pops*GrowthPenalty 25
-		}
-	}
-	Feature Useful_Gasses
-	{
-		Benefit 
-		{
-			Energy*PerLevel 10
-		}
-	}
-	Feature Rich_Gasses
-	{
-		Benefit 
-		{
-			Energy*PerLevel 20
-		}
-	}
-	Feature Useful_Minerals
-	{
-		Benefit 
-		{
-			Mineral*PerLevel 10
-		}
-	}
-	Feature Rich_Minerals
-	{
-		Benefit 
-		{
-			Mineral*PerLevel 20
+			Pops*GrowthPenalty 50
 		}
 	}
 	Feature Bacterial_Life
 	{
 		Benefit 
 		{
-			Cost*Bonus 20
-			Pops*GrowthBonus 50
-			Research*PerLevel 10
+			Research*Income 10
 		}
 	}
 	Feature Complex_Life
 	{
 		Benefit 
 		{
-			Cost*Bonus 20
-			Pops*GrowthBonus 100
-			Research*PerLevel 20
+			Research*Income 20
 		}
 	}
-	Feature Low_Gravity
+	Feature Jungle
 	{
 		Benefit 
 		{
-			Cost*Bonus 20
-			Trade*Bonus 50
+			Research*Income 30
 		}
 	}
-	Feature High_Gravity
+	Feature Rocky
 	{
 		Benefit 
 		{
-			Cost*Penalty 50
-			Trade*Penalty 100
+			Minerals*Income 10
+		}
+	}
+	Feature Rich_Minerals
+	{
+		Benefit 
+		{
+			Minerals*Income 20
+		}
+	}
+	Feature Vulcanic
+	{
+		Benefit 
+		{
+			Energy*Income 10
+			Minerals*Income 20
+		}
+	}
+	Feature Rings
+	{
+		Benefit 
+		{
+			Minerals*Income 10
+		}
+	}
+	Feature Tiny_Moon
+	{
+		Benefit 
+		{
+			Shipbuilding*PerPop 10
+		}
+	}
+	Feature Water
+	{
+		Benefit 
+		{
+			Pops*GrowthBonus 50
 		}
 	}
 	Feature Oceans
 	{
 		Benefit 
 		{
-			Pops*GrowthBonus 100
+			Pops*GrowthBonus 50
+			Happiness*Bonus 50
+		}
+	}
+	Feature Rich_Gasses
+	{
+		Benefit 
+		{
+			Energy*Income 20
+		}
+	}
+	Feature Low_Gravity
+	{
+		Benefit 
+		{
+			BC*Income 10
+		}
+	}
+	Feature High_Gravity
+	{
+		Benefit 
+		{
+			BC*Income -10
+		}
+	}
+	Feature High_Radiation
+	{
+		Benefit 
+		{
+			Energy*Income 10
+		}
+	}
+	Feature Old_Star
+	{
+		Benefit 
+		{
+			Energy*Income 10
+		}
+	}
+	Feature Giant_Star
+	{
+		Benefit 
+		{
+			Energy*Income 20
+		}
+	}
+	Feature Active_Star
+	{
+		Benefit 
+		{
+			Energy*Income 30
+		}
+	}
+	Feature Hyper_Active_Star
+	{
+		Benefit 
+		{
+			Energy*Income 40
+		}
+	}
+	Feature Gas_Giant
+	{
+		Benefit 
+		{
+			Energy*Income 20
+		}
+	}
+	Feature Asteroids
+	{
+		Benefit 
+		{
+			Minerals*Income 30
 		}
 	}
 }

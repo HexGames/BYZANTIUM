@@ -1,0 +1,22 @@
+System Sol
+{
+	Resources 
+	{
+		Energy*Income 0
+		Minerals*Income 0
+		Production*Income 0
+		Shipbuilding*Income 0
+		Research*Income 0
+		Culture*Income 0
+		BC*Income 0
+		Authority*Used 0
+	}
+	Link:Star Sol
+	Colony_List 
+	{
+		Colony Star
+		Colony Terra
+		Colony Mars
+		[...]
+	}
+}

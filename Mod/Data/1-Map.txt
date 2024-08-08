@@ -1,0 +1,23 @@
+Map 
+{
+	GameStats 
+	{
+		Turn 2
+		Human 0
+	}
+	GalaxySize 9
+	Star_List 
+	{
+		Star Star_1
+		Star Star_2
+		Star Star_3
+		[...]
+	}
+	Player_List 
+	{
+		Player Player_1
+		Player Player_2
+		Player Player_3
+		[...]
+	}
+}

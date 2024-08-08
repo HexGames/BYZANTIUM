@@ -7,8 +7,13 @@ Def_Planets
 		GasGiantsFirst 
 		Planets:Min 2
 		Planets:Max 6
+		Yields 
+		{
+			Energy 10
+		}
 		Features 
 		{
+			Old_Star 
 			Building:Stable_Orbit 
 		}
 	}
@@ -18,8 +23,13 @@ Def_Planets
 		PlanetsCold 
 		Planets:Min 2
 		Planets:Max 6
+		Yields 
+		{
+			Energy 10
+		}
 		Features 
 		{
+			Old_Star 
 			Building:Stable_Orbit 
 		}
 	}
@@ -28,8 +38,13 @@ Def_Planets
 		Weight 4
 		Planets:Min 5
 		Planets:Max 9
+		Yields 
+		{
+			Energy 30
+		}
 		Features 
 		{
+			Active_Star 
 			Building:Stable_Orbit 
 		}
 	}
@@ -39,8 +54,13 @@ Def_Planets
 		PlanetsHot 
 		Planets:Min 2
 		Planets:Max 6
+		Yields 
+		{
+			Energy 20
+		}
 		Features 
 		{
+			Giant_Star 
 			Building:Stable_Orbit 
 		}
 	}
@@ -50,8 +70,13 @@ Def_Planets
 		PlanetsHot 
 		Planets:Min 2
 		Planets:Max 6
+		Yields 
+		{
+			Energy 20
+		}
 		Features 
 		{
+			Giant_Star 
 			Building:Stable_Orbit 
 		}
 	}
@@ -61,13 +86,22 @@ Def_Planets
 		PlanetsHot 
 		Planets:Min 1
 		Planets:Max 3
+		Yields 
+		{
+			Energy 40
+		}
 		Features 
 		{
+			Hyper_Active_Star 
 			Building:Stable_Orbit 
 		}
 	}
 	Planet:Gas_Giant 
 	{
+		Yields 
+		{
+			Energy 20
+		}
 		Features 
 		{
 			Gas_Giant 
@@ -76,23 +110,20 @@ Def_Planets
 				Rings:Weight 1
 				Tiny_Moon:Weight 1
 			}
-			OR:Perc 50
-			{
-				Useful_Gasses:Weight 2
-				Rich_Gasses:Weight 1
-			}
+			Rich_Gasses:Perc 50
 			Building:Possible_Outpost 
 		}
 	}
 	Planet:Asteroids 
 	{
+		Yields 
+		{
+			Minerals 20
+		}
 		Features 
 		{
-			OR 
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
+			Asteroids 
+			Rich_Minerals:Perc 50
 			Building:Possible_Outpost 
 		}
 	}
@@ -103,7 +134,6 @@ Def_Planets
 		Temperature:Max 1
 		Features 
 		{
-			Extreme_Temps 
 			Barren 
 			Rocky:Perc 25
 			OR:Perc 20
@@ -122,16 +152,15 @@ Def_Planets
 		Features 
 		{
 			Barren 
-			Rocky 
+			OR:Perc 50
+			{
+				Rocky:Weight 4
+				Rich_Minerals:Weight 1
+			}
 			OR:Perc 20
 			{
 				Rings:Weight 1
 				Tiny_Moon:Weight 1
-			}
-			OR:Perc 15
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
 			}
 			Building:Possible_Outpost 
 		}
@@ -144,21 +173,16 @@ Def_Planets
 		Features 
 		{
 			Toxic 
-			OR:Perc 50
+			OR 
 			{
-				Semi-Barren:Weight 2
-				Barren:Weight 1
+				Rocky:Weight 7
+				Rich_Minerals:Weight 2
+				Vulcanic:Weight 1
 			}
-			Rocky 
 			OR:Perc 20
 			{
 				Rings:Weight 1
 				Tiny_Moon:Weight 1
-			}
-			OR:Perc 15
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
 			}
 			Building:Possible_Outpost 
 		}
@@ -170,28 +194,18 @@ Def_Planets
 		Temperature:Max 4
 		Features 
 		{
+			Semi-Barren 
 			OR 
 			{
-				Semi-Barren:Weight 2
-				Barren:Weight 1
+				Rocky:Weight 7
+				Rich_Minerals:Weight 2
+				Vulcanic:Weight 1
 			}
-			Rocky 
 			OR:Perc 20
 			{
 				Rings:Weight 1
 				Tiny_Moon:Weight 1
 			}
-			OR:Perc 15
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
-			OR:Perc 15
-			{
-				Bacterial_Life:Weight 2
-				Complex_Life:Weight 1
-			}
-			Colonizable 
 			Building:Possible_Outpost 
 		}
 	}
@@ -202,23 +216,17 @@ Def_Planets
 		Temperature:Max 4
 		Features 
 		{
-			Rocky 
+			OR 
+			{
+				Rocky:Weight 7
+				Rich_Minerals:Weight 2
+				Vulcanic:Weight 1
+			}
 			OR:Perc 20
 			{
 				Rings:Weight 1
 				Tiny_Moon:Weight 1
 			}
-			OR:Perc 15
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
-			OR:Perc 15
-			{
-				Bacterial_Life:Weight 2
-				Complex_Life:Weight 1
-			}
-			Colonizable 
 			Building:Possible_Outpost 
 		}
 	}
@@ -229,24 +237,23 @@ Def_Planets
 		Temperature:Max 4
 		Features 
 		{
-			Rocky 
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
 			Oceans 
-			OR:Perc 15
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
 			OR:Perc 75
 			{
 				Bacterial_Life:Weight 2
 				Complex_Life:Weight 1
 			}
-			Colonizable 
+			OR 
+			{
+				Rocky:Weight 7
+				Rich_Minerals:Weight 2
+				Vulcanic:Weight 1
+			}
+			OR:Perc 20
+			{
+				Rings:Weight 1
+				Tiny_Moon:Weight 1
+			}
 			Building:Possible_Outpost 
 		}
 	}
@@ -257,23 +264,22 @@ Def_Planets
 		Temperature:Max 4
 		Features 
 		{
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
 			Oceans 
-			OR:Perc 15
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
 			OR:Perc 75
 			{
 				Bacterial_Life:Weight 2
 				Complex_Life:Weight 1
 			}
-			Colonizable 
+			OR:Perc 30
+			{
+				Rich_Minerals:Weight 2
+				Vulcanic:Weight 1
+			}
+			OR:Perc 20
+			{
+				Rings:Weight 1
+				Tiny_Moon:Weight 1
+			}
 			Building:Possible_Outpost 
 		}
 	}
@@ -284,23 +290,24 @@ Def_Planets
 		Temperature:Max 4
 		Features 
 		{
-			Rocky 
+			Water 
+			OR 
+			{
+				Bacterial_Life:Weight 1
+				Complex_Life:Weight 1
+				Jungle:Weight 2
+			}
+			OR 
+			{
+				Rocky:Weight 7
+				Rich_Minerals:Weight 2
+				Vulcanic:Weight 1
+			}
 			OR:Perc 20
 			{
 				Rings:Weight 1
 				Tiny_Moon:Weight 1
 			}
-			OR:Perc 15
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
-			OR:Perc 75
-			{
-				Bacterial_Life:Weight 2
-				Complex_Life:Weight 1
-			}
-			Colonizable 
 			Building:Possible_Outpost 
 		}
 	}
@@ -311,23 +318,23 @@ Def_Planets
 		Temperature:Max 2
 		Features 
 		{
-			Rocky 
+			Water:Perc 50
+			OR:Perc 50
+			{
+				Bacterial_Life:Weight 4
+				Complex_Life:Weight 1
+			}
+			OR 
+			{
+				Rocky:Weight 7
+				Rich_Minerals:Weight 2
+				Vulcanic:Weight 1
+			}
 			OR:Perc 20
 			{
 				Rings:Weight 1
 				Tiny_Moon:Weight 1
 			}
-			OR:Perc 15
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
-			OR:Perc 30
-			{
-				Bacterial_Life:Weight 2
-				Complex_Life:Weight 1
-			}
-			Colonizable 
 			Building:Possible_Outpost 
 		}
 	}
@@ -338,23 +345,18 @@ Def_Planets
 		Temperature:Max 4
 		Features 
 		{
-			Rocky 
+			Water:Perc 20
+			OR:Perc 50
+			{
+				Bacterial_Life:Weight 4
+				Complex_Life:Weight 1
+			}
+			Vulcanic 
 			OR:Perc 20
 			{
 				Rings:Weight 1
 				Tiny_Moon:Weight 1
 			}
-			OR 
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
-			OR:Perc 15
-			{
-				Bacterial_Life:Weight 2
-				Complex_Life:Weight 1
-			}
-			Colonizable 
 			Building:Possible_Outpost 
 		}
 	}
@@ -365,22 +367,14 @@ Def_Planets
 		Temperature:Max 5
 		Features 
 		{
-			Extreme_Temps 
-			Rocky 
+			Barren 
+			Water:Perc 10
+			Bacterial_Life:Perc 25
+			Vulcanic 
 			OR:Perc 20
 			{
 				Rings:Weight 1
 				Tiny_Moon:Weight 1
-			}
-			OR 
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
-			OR:Perc 15
-			{
-				Bacterial_Life:Weight 2
-				Complex_Life:Weight 1
 			}
 			Building:Possible_Outpost 
 		}
@@ -393,10 +387,9 @@ Def_Planets
 		Features 
 		{
 			Barren 
-			Rocky 
-			OR:Perc 15
+			OR:Perc 50
 			{
-				Useful_Minerals:Weight 2
+				Rocky:Weight 4
 				Rich_Minerals:Weight 1
 			}
 			Building:Possible_Outpost 
@@ -410,11 +403,11 @@ Def_Planets
 		Features 
 		{
 			Toxic 
-			Rocky 
-			OR:Perc 15
+			OR 
 			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
+				Rocky:Weight 7
+				Rich_Minerals:Weight 2
+				Vulcanic:Weight 1
 			}
 			Building:Possible_Outpost 
 		}
@@ -429,13 +422,7 @@ Def_Planets
 		{
 			Rocky 
 			Oceans 
-			OR:Perc 15
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
 			Complex_Life 
-			Colonizable 
 			Building:Possible_Outpost 
 		}
 	}
@@ -444,18 +431,13 @@ Def_Planets
 		Type Barren
 		Size 1
 		Temperature 3
-		Moon 
 		Features 
 		{
 			Barren 
 			Rocky 
-			OR:Perc 15
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
 			Building:Possible_Outpost 
 		}
+		Moon 
 	}
 	Custom Mars
 	{
@@ -465,18 +447,13 @@ Def_Planets
 		Features 
 		{
 			Semi-Barren 
-			Rocky 
+			OR 
+			{
+				Rocky:Weight 7
+				Rich_Minerals:Weight 2
+				Vulcanic:Weight 1
+			}
 			Tiny_Moon 
-			OR:Perc 15
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
-			OR:Perc 10
-			{
-				Bacterial_Life:Weight 2
-			}
-			Colonizable 
 			Building:Possible_Outpost 
 		}
 	}
@@ -485,11 +462,8 @@ Def_Planets
 		Type Asteroids
 		Features 
 		{
-			OR 
-			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
-			}
+			Asteroids 
+			Rich_Minerals 
 			Building:Possible_Outpost 
 		}
 	}
@@ -502,11 +476,7 @@ Def_Planets
 		{
 			Gas_Giant 
 			Tiny_Moon 
-			OR:Perc 50
-			{
-				Useful_Gasses:Weight 2
-				Rich_Gasses:Weight 1
-			}
+			Rich_Gasses 
 			Building:Possible_Outpost 
 		}
 	}
@@ -519,11 +489,10 @@ Def_Planets
 		Features 
 		{
 			Barren 
-			Rocky 
-			OR:Perc 15
+			OR 
 			{
-				Useful_Minerals:Weight 2
-				Rich_Minerals:Weight 1
+				Rocky:Weight 7
+				Rich_Minerals:Weight 2
 			}
 			Building:Possible_Outpost 
 		}
@@ -537,11 +506,6 @@ Def_Planets
 		{
 			Gas_Giant 
 			Rings 
-			OR:Perc 50
-			{
-				Useful_Gasses:Weight 2
-				Rich_Gasses:Weight 1
-			}
 			Building:Possible_Outpost 
 		}
 	}
@@ -554,8 +518,11 @@ Def_Planets
 		Features 
 		{
 			Extreme_Temps 
-			Barren 
-			Rocky 
+			OR 
+			{
+				Rocky:Weight 7
+				Rich_Minerals:Weight 2
+			}
 			Building:Possible_Outpost 
 		}
 	}

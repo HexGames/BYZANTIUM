@@ -75,7 +75,7 @@ Buildings
 		Icon MCC
 		Benefit 
 		{
-			Mineral*PerLevelSystem 10
+			Minerals*PerLevelSystem 10
 			Trade*Used 5
 		}
 	}
@@ -134,7 +134,7 @@ Buildings
 		Benefit 
 		{
 			Minerals*Income 20
-			Mineral*Level 1
+			Minerals*Level 1
 			Trade*Used 2
 		}
 	}
@@ -151,7 +151,7 @@ Buildings
 		Benefit 
 		{
 			Minerals*Income 40
-			Mineral*Level 2
+			Minerals*Level 2
 			Trade*Used 4
 		}
 	}
@@ -168,7 +168,7 @@ Buildings
 		Benefit 
 		{
 			Minerals*Income 80
-			Mineral*Level 3
+			Minerals*Level 3
 			Trade*Used 8
 		}
 	}
@@ -185,7 +185,7 @@ Buildings
 		Benefit 
 		{
 			Minerals*Income 200
-			Mineral*Level 4
+			Minerals*Level 4
 			Trade*Used 20
 		}
 	}
@@ -201,7 +201,7 @@ Buildings
 		Benefit 
 		{
 			Minerals*Income 500
-			Mineral*Level 5
+			Minerals*Level 5
 			Trade*Used 50
 		}
 	}

@@ -1,0 +1,121 @@
+Colony Terra
+{
+	Type World
+	Resources 
+	{
+		Energy*Income 0
+		Minerals*Income 0
+		Production*Income 0
+		Shipbuilding*Income 0
+		Research*Income 0
+		Culture*Income 0
+		BC*Income 0
+		Authority*Used 0
+		Pops*Pops 12733
+		Pops*PopsMax 16000
+		Pops*Growth 200
+	}
+	Buildings 
+	{
+		Building Capital
+		Building Shipyard_I
+		{
+			NewBuilding Shipyard_II
+		}
+		Building Cities
+		Building Colonial_Oversight
+		Building District
+		Building Shipyard_II
+		{
+			InConstruction 
+			{
+				Progress:Max 8000
+				Progress 200
+			}
+		}
+	}
+	Support 
+	{
+		Democratic 
+		{
+			Facton_Size 30
+			Happiness 7
+		}
+		Industrialist 
+		{
+			Facton_Size 20
+			Happiness 7
+		}
+		Ecologist 
+		{
+			Facton_Size 5
+			Happiness 7
+		}
+		Religious 
+		{
+			Facton_Size 5
+			Happiness 7
+		}
+		Liberty 
+		{
+			Facton_Size 5
+			Happiness 7
+		}
+		Unity 
+		{
+			Facton_Size 5
+			Happiness 7
+		}
+		Pacifist 
+		{
+			Facton_Size 3
+			Happiness 7
+		}
+		Millitarist 
+		{
+			Facton_Size 3
+			Happiness 7
+		}
+		Scientist 
+		{
+			Facton_Size 3
+			Happiness 7
+		}
+		Bio-engineering 
+		{
+			Facton_Size 3
+			Happiness 7
+		}
+		Mechanist 
+		{
+			Facton_Size 3
+			Happiness 7
+		}
+		Autocratic 
+		{
+			Facton_Size 3
+			Happiness 7
+		}
+		Xenofile 
+		{
+			Facton_Size 3
+			Happiness 7
+		}
+		Xenofob 
+		{
+			Facton_Size 3
+			Happiness 7
+		}
+		Federation 
+		{
+			Facton_Size 3
+			Happiness 7
+		}
+		Empire 
+		{
+			Facton_Size 3
+			Happiness 7
+		}
+	}
+	Link:Star:Planet Sol:Terra
+}

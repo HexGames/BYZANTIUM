@@ -1,0 +1,34 @@
+Sector Core
+{
+	Resources 
+	{
+		Energy*Income 0
+		Minerals*Income 0
+		Production*Income 0
+		Shipbuilding*Income 0
+		Research*Income 0
+		Culture*Income 0
+		BC*Income 0
+		Authority*Used 0
+	}
+	ActionBuildQueue 
+	{
+		Overflow 0
+		Queue 
+		{
+			Building Shipyard_II
+			{
+				Link:Star:Planet Sol:Terra
+				Progress:Max 8000
+				OldBuilding Shipyard_I
+			}
+		}
+	}
+	System_List 
+	{
+		System Sol
+		System System_2
+		System System_3
+		[...]
+	}
+}

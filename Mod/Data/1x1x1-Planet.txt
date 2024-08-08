@@ -1,0 +1,14 @@
+Planet Ocean
+{
+	// always
+	Type Ocean
+	Size 3
+	Temperature 3
+	// features
+	Moon 
+	High_Gravity 
+	Oceans 
+	Bacterial_Life 
+	Colonizable 
+	Building Possible_Outpost
+}

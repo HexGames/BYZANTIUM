@@ -1,0 +1,19 @@
+Fleet Babylon's_Eye
+{
+	Link:Star Sol
+	Ship Babylon_I
+	{
+		Design Babylon
+		HP 0
+		XP 0
+		Marines 100
+		Fighters 0
+		Supply 300
+	}
+	ActionMove 
+	{
+		Progress 1
+		ProgressMax 1
+		Link:Star Star_23
+	}
+}
