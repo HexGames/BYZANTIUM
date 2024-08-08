@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qvxxtu5jlkbt"
-path.s3tc="res://.godot/imported/left.png-8f2ad48f3638cd35767864a4313ce072.s3tc.ctex"
+uid="uid://bt2lk7yqmsa8g"
+path.s3tc="res://.godot/imported/TerraTex.png-ac38f97fe799272ddc170bcb6ee481a4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/UI/left.png"
-dest_files=["res://.godot/imported/left.png-8f2ad48f3638cd35767864a4313ce072.s3tc.ctex"]
+source_file="res://Assets/Planets/TerraTex.png"
+dest_files=["res://.godot/imported/TerraTex.png-ac38f97fe799272ddc170bcb6ee481a4.s3tc.ctex"]
 
 [params]
 

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cgirqkx7wl226"]
+
+[ext_resource type="Texture2D" uid="uid://bocqf3krjb7m4" path="res://Assets/Planets/ToxicTex.png" id="1_mvsy0"]
+
+[resource]
+transparency = 1
+disable_ambient_light = true
+albedo_texture = ExtResource("1_mvsy0")
+backlight = Color(0.470588, 0.478431, 0.54902, 1)
+disable_receive_shadows = true

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qvxxtu5jlkbt"
-path.s3tc="res://.godot/imported/left.png-8f2ad48f3638cd35767864a4313ce072.s3tc.ctex"
+uid="uid://bocqf3krjb7m4"
+path.s3tc="res://.godot/imported/ToxicTex.png-dedc709b6b9c08e7cf5307f2cc603a07.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/UI/left.png"
-dest_files=["res://.godot/imported/left.png-8f2ad48f3638cd35767864a4313ce072.s3tc.ctex"]
+source_file="res://Assets/Planets/ToxicTex.png"
+dest_files=["res://.godot/imported/ToxicTex.png-dedc709b6b9c08e7cf5307f2cc603a07.s3tc.ctex"]
 
 [params]
 

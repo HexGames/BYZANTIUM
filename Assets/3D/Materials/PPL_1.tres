@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bb5q22xkv21g4"]
+
+[ext_resource type="Texture2D" uid="uid://8uopb46ug55p" path="res://Assets/Background/PPL1.png" id="1_bjksl"]
+
+[resource]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.698039, 0.756863, 0.25098)
+albedo_texture = ExtResource("1_bjksl")

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://0co4p34uqqkf"]
+
+[ext_resource type="Texture2D" uid="uid://cehn0qnjjbpl4" path="res://Assets/Planets/BarrenTex.png" id="1_3yn5g"]
+
+[resource]
+transparency = 1
+disable_ambient_light = true
+albedo_texture = ExtResource("1_3yn5g")
+backlight = Color(0.470588, 0.478431, 0.54902, 1)
+disable_receive_shadows = true
