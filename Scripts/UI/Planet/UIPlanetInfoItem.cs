@@ -5,8 +5,10 @@ public partial class UIPlanetInfoItem: Control
 {
     // is beeing duplicated
     private Panel BG = null;
-    private Label Property = null;
-    private Label Value = null;
+    private RichTextLabel Property = null;
+    private static string Property_Original = "";
+    private RichTextLabel Value = null;
+    private static string Value_Original = "";
     private UITooltipTrigger Tooltip = null;
 
     [Export]
@@ -20,19 +22,21 @@ public partial class UIPlanetInfoItem: Control
         Game = GetNode<Game>("/root/Main/Game");
 
         BG = GetNode<Panel>("BG");
-        Property = GetNode<Label>("BG/Name");
-        Value = GetNode<Label>("BG/Value");
+        Property = GetNode<RichTextLabel>("BG/Name");
+        if (Property_Original.Length == 0) Property_Original = Property.Text;
+        Value = GetNode<RichTextLabel>("BG/Value");
+        if (Value_Original.Length == 0) Value_Original = Value.Text;
         Tooltip = GetNode<UITooltipTrigger>("BG/Tooltip");
     }
 
     public void Refresh(DataBlock data)
     {
-        Property.Text = data.ToUIName();
-        Value.Text = data.ToUIValue();
+        Property.Text = Property_Original.Replace("$name", data.ToUIName());
+        Value.Text = Value_Original.Replace("$value", data.ToUIValue());
 
         DataBlock featureData = Game.Def.GetFeature(data.Name);
 
-        Tooltip.Row_2 = "";
+        Tooltip.Row_1 = "";
 
         if (featureData != null)
         {
@@ -45,18 +49,36 @@ public partial class UIPlanetInfoItem: Control
                 {
                     if (row.Length > 0)
                     {
-                        Tooltip.Row_2 += "\n";
-                        Tooltip.Row_2_Right += "\n";
+                        Tooltip.Row_1 += "\n";
+                        Tooltip.Row_1_Right += "\n";
                     }
                     row = benefit.Subs[idx].ToUIDescription();
-                    Tooltip.Row_2 += row;
+                    Tooltip.Row_1 += row;
                 }
             }
         }
         else
         {
             Tooltip.Title = data.Name;
-            Tooltip.Row_2 = data.ToUIDescription();
+            Tooltip.Row_1 = data.ToUIDescription();
         }
+    }
+
+    public void Refresh(string text, string tooltip, bool right)
+    {
+        if (right)
+        {
+            Property.Text = "";
+            Value.Text = Value_Original.Replace("$value", text);
+        }
+        else
+        {
+            Property.Text = Property_Original.Replace("$name", text);
+            Value.Text = "";
+        }
+
+        Tooltip.Title = "";
+        Tooltip.Row_1 = tooltip;
+        Tooltip.Row_2 = "";
     }
 }

@@ -122,8 +122,10 @@ public partial class MapCamera : Camera3D
     // calculated
     [ExportCategory("Runtime")]
     [Export]
+    public int LOD = 0;
+    [Export]
     public Vector3 TargetPosition; //camera position
-    private float TargetDistance;
+    private float TargetHeight;
     private float CurrentRotationX;
 
     private float RotationAngle = 0.0f;
@@ -135,21 +137,21 @@ public partial class MapCamera : Camera3D
     private float CurrentRotationDampening;
 
     [Export]
-    public float MoveLimitX = 80f; //x limit of map
+    public float MoveLimitX = 60f; //x limit of map
     [Export]
-    public float MoveLimitY = 45f; //z limit of map
+    public float MoveLimitY = 25f; //z limit of map
 
     private float MoveSpeed = 100f; //speed with keyboard movement
     private float MoveSpeedDampening = 7.5f;
 
     private float ZoomMaxHeight = 160f; //maximal height
-    private float ZoomMinHeight = 40f; //minimnal height
+    private float ZoomMinHeight = 8f; //minimnal height
     private float ZoomHeightDampening = 7.5f;
     private float ZoomRotationDampening = 7.5f;
     private float ZoomKeyboardSensitivity = -15f;
-    private float ZoomScrollWheelZSensitivity = -50f;
+    private float ZoomScrollWheelZSensitivity = -200f;
 
-    private float RotationXDefault = 65;
+    private float RotationXDefault = 55;
 
     private Vector3 GoToTarget; //target to go to
     private bool GoToTargetReached = true;
@@ -178,7 +180,7 @@ public partial class MapCamera : Camera3D
             return;
 
         TargetPosition = new Vector3(TransformNode.Position.X, 0f, TransformNode.Position.Z);
-        TargetDistance = ZoomMaxHeight;
+        TargetHeight = ZoomMaxHeight / 2;
         CurrentRotationX = RotationXDefault;
     }
 
@@ -187,6 +189,8 @@ public partial class MapCamera : Camera3D
         if (Engine.IsEditorHint())
             return;
         CameraUpdate((float) delta);
+
+        ProcessLOD((float)delta);
     }
 
     public bool IsPointerOverGUI()
@@ -216,8 +220,8 @@ public partial class MapCamera : Camera3D
 
         TransformNode.Rotation = new Vector3(-Mathf.DegToRad(CurrentRotationX), Mathf.DegToRad(CurrentRotationY), 0.0f);
         Quaternion q = Quaternion.FromEuler(TransformNode.Rotation);
-        TransformNode.Position = TargetPosition + Vector3.Right * LockedOffsetFromInputX + q * Vector3.Back * TargetDistance;
-
+        //TransformNode.Position = TargetPosition + Vector3.Right * LockedOffsetFromInputX + q * Vector3.Back * TargetDistance;
+        TransformNode.Position = TargetPosition + Vector3.Right * LockedOffsetFromInputX + Vector3.Up * TargetHeight;
     }
 
     private void Move(float deltaTime)
@@ -245,7 +249,7 @@ public partial class MapCamera : Camera3D
             Vector3 movement = keyboardInput + mouseInput;
             movement = movement.Normalized();
 
-            movement *= (0.5f + ZoomPos) * MoveSpeed * deltaTime;
+            movement *= (0.5f + ZoomPos) * MoveSpeed * deltaTime * (0.23f + 0.75f * ZoomPos);
             movement = Quaternion.FromEuler(new Vector3(0f, TransformNode.Rotation.Y, 0f)) * movement;
 
             TargetPosition += movement;
@@ -262,10 +266,19 @@ public partial class MapCamera : Camera3D
         else if (Input.IsActionJustPressed("Camera_Scroll_Up")) scrollInput += 0.1f; // Input.GetActionStrength("Camera_Scroll_Up");
         if (Input.IsActionPressed("Camera_Scroll_Down")) scrollInput -= 0.01f; // Input.GetActionStrength("Camera_Scroll_Down");
         else if (Input.IsActionJustPressed("Camera_Scroll_Down")) scrollInput -= 0.1f; // Input.GetActionStrength("Camera_Scroll_Down");
-        if (Locked == false && !IsPointerOverGUI() && ZoomAndScroll) ZoomPos += scrollInput * deltaTime * ZoomScrollWheelZSensitivity;
+        //if (Locked == false && !IsPointerOverGUI() && ZoomAndScroll) ZoomPos += scrollInput * deltaTime * ZoomScrollWheelZSensitivity * (0.25f + 0.75f * ZoomPos);
+
+        //var space_state = GetWorld3D().DirectSpaceState;
+        //var raycast = PhysicsRayQueryParameters3D.Create(Position, ProjectPosition(GetViewport().GetMousePosition(), 1000.0f), 2);
+        //var collision = space_state.IntersectPoint(raycast)
+
+        //Vector3 cameraPorojection = plane.Project(Position);
+        //Vector3 cameraMiddlePoint = plane.IntersectsRay(Position, ProjectPosition(GetViewport().GetVisibleRect().Size / 2, 1.0f) - Position).Value;
+        //Vector3 mousePoint = plane.IntersectsRay(Position, ProjectPosition(GetViewport().GetMousePosition(), 1.0f) - Position).Value;
+        //Vector3 moveVector = cameraPorojection - mousePoint;
 
         // Add Zoom Keyboard ?
-
+        /*
         ZoomPos = Mathf.Clamp(ZoomPos, 0.0f, 1.0f);
 
         float targetHeight = Mathf.Lerp(ZoomMinHeight, ZoomMaxHeight, ZoomPos);
@@ -276,7 +289,41 @@ public partial class MapCamera : Camera3D
 
         //m_Transform.position = Vector3.Lerp(m_Transform.position, new Vector3(m_Transform.position.x, targetHeight + difference, m_Transform.position.z), Time.deltaTime * heightDampening);
         CurrentHeightDampening = Mathf.Max(0.15f, deltaTime * ZoomHeightDampening);
+        float oldTD = TargetDistance;
         TargetDistance = Mathf.Lerp(TargetDistance, TargetDistance + difference, CurrentHeightDampening);
+        */
+
+        //TargetPosition += ((TargetDistance - oldTD) / ZoomMaxHeight) * moveVector;
+
+        if (Locked == false && !IsPointerOverGUI() && ZoomAndScroll) ZoomPos += scrollInput * deltaTime * ZoomScrollWheelZSensitivity * (0.25f + 0.75f * ZoomPos); 
+        
+        ZoomPos = Mathf.Clamp(ZoomPos, 0.0f, 1.0f);
+
+        float targetHeight = Mathf.Lerp(ZoomMinHeight, ZoomMaxHeight, ZoomPos);
+        if (Locked) targetHeight = LockedNew ? LockedHeight_new : LockedHeight;
+
+        float difference = 0;
+        if (TargetHeight != targetHeight) difference = targetHeight - TargetHeight;
+
+        CurrentHeightDampening = Mathf.Max(0.15f, deltaTime * ZoomHeightDampening);
+        float lerpedDifference = Mathf.Lerp(0, difference, CurrentHeightDampening);
+
+        float oldDistance = TargetHeight;
+        TargetHeight = Mathf.Clamp(TargetHeight + lerpedDifference, ZoomMinHeight, ZoomMaxHeight);
+
+        Plane plane = new Plane(Vector3.Up, TargetHeight);
+        if (lerpedDifference > 0)
+        {
+            Vector3 moveVector = plane.IntersectsRay(Position, Position  - ProjectPosition(GetViewport().GetMousePosition(), 1.0f)).Value - Position;
+            moveVector.Y = 0;
+            TargetPosition += moveVector;
+        }
+        else
+        {
+            Vector3 moveVector = plane.IntersectsRay(Position, ProjectPosition(GetViewport().GetMousePosition(), 1.0f) - Position).Value - Position;
+            moveVector.Y = 0;
+            TargetPosition += moveVector;
+        }
     }
 
     private void RotationCalculation(float deltaTime)
@@ -317,7 +364,7 @@ public partial class MapCamera : Camera3D
     {
         TargetPosition = new Vector3(Mathf.Clamp(TargetPosition.X, -0.5f * MoveLimitX, 0.5f * MoveLimitX),
             TargetPosition.Y,
-            Mathf.Clamp(TargetPosition.Z, -0.5f * MoveLimitY, 0.5f * MoveLimitY));
+            Mathf.Clamp(TargetPosition.Z, -0.5f * MoveLimitY + 0.5f * TargetHeight, 0.5f * MoveLimitY + 0.5f * TargetHeight));
     }
 
     private void MouseOffset()

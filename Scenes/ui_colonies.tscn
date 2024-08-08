@@ -1,0 +1,2481 @@
+[gd_scene load_steps=18 format=3 uid="uid://bwi6x7hcx8ckx"]
+
+[ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_y3yva"]
+[ext_resource type="Script" path="res://Scripts/UI/Build/UIBuildingsItem.cs" id="2_rkuxn"]
+[ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="3_wtat1"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="4_l02ck"]
+[ext_resource type="Texture2D" uid="uid://wd744unakx1k" path="res://Assets/Planets/Desert.png" id="5_v8ijy"]
+[ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="6_anj37"]
+[ext_resource type="Texture2D" uid="uid://b0hf203g0lcrk" path="res://Assets/UI/Buildings/Factory.png" id="7_aim7n"]
+[ext_resource type="Script" path="res://Scripts/UI/Progress/UIConstructionItem.cs" id="8_3ia8t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfytp"]
+bg_color = Color(0.301961, 0.2, 0, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1fvn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfbyb"]
+bg_color = Color(0.698039, 0.603922, 0, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7cqrv"]
+bg_color = Color(0.984314, 0.898039, 0.176471, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1g5n"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.752941, 0.188235, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuy6r"]
+bg_color = Color(0.188235, 0.109804, 0.027451, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hksd8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0030"]
+bg_color = Color(0.247059, 0.14902, 0.0470588, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxt7o"]
+bg_color = Color(0.341176, 0.215686, 0.0784314, 1)
+skew = Vector2(0.32, 0)
+
+[node name="Colonies" type="Control"]
+custom_minimum_size = Vector2(1408, 256)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -176.0
+offset_right = 512.0
+offset_bottom = -176.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(320, 128)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -687.0
+offset_top = -190.0
+offset_right = 687.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_y3yva")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Pops" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(160, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Gap" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Pops" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[right]$pops[img=20x20]Assets/UI/Symbols/Pops.png[/img][/right]"
+fit_content = true
+scroll_active = false
+
+[node name="PopsGrowths" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[right]+$g[img=20x20]Assets/UI/Symbols/Growth.png[/img]   +$m[img=20x20]Assets/UI/Symbols/GrowthJob.png[/img][/right]"
+fit_content = true
+scroll_active = false
+
+[node name="Item_Current" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Dragable"
+script = ExtResource("8_3ia8t")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer/Item_Current"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer/Item_Current/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pfytp")
+
+[node name="NextTurn" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer/Item_Current/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_f1fvn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dfbyb")
+step = 1.0
+value = 55.0
+show_percentage = false
+
+[node name="Progress" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer/Item_Current/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_f1fvn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7cqrv")
+step = 1.0
+value = 45.0
+show_percentage = false
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer/Item_Current/MarginContainer/Panel"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_l02ck")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+bbcode_enabled = true
+text = "[center][b]$lvl[/b][/center]"
+
+[node name="MigrationIncentives" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[right]M.I.: $v%[/right]"
+fit_content = true
+scroll_active = false
+
+[node name="Separator" type="ColorRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer"]
+custom_minimum_size = Vector2(96, 4)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[node name="Control" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[right]$cont%[img=20x20]Assets/UI/Symbols/Authority.png[/img][/right]"
+fit_content = true
+scroll_active = false
+
+[node name="ControlBreakdown" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Pops/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[right]+$g[img=20x20]Assets/UI/Symbols/Growth.png[/img]   +$m[img=20x20]Assets/UI/Symbols/GrowthJob.png[/img][/right]"
+fit_content = true
+scroll_active = false
+
+[node name="Planet" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 88)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Building_1" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="Gap" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_v8ijy")
+expand_mode = 1
+
+[node name="Level" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = -6.0
+offset_right = 16.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Level" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button/Level"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$I[/center]"
+fit_content = true
+
+[node name="Level2" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -14.0
+offset_right = 16.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Level" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button/Level2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$I[/center]"
+fit_content = true
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+
+[node name="Separator_1" type="ColorRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(4, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[node name="EnergyOutpost" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Income" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]+$inc[img=20x20]Assets/UI/Symbols/Energy.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button"]
+self_modulate = Color(0.678431, 0.831373, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aim7n")
+expand_mode = 1
+
+[node name="Level" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Level" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button/Level"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$I[/center]"
+fit_content = true
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="Pops" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button"]
+custom_minimum_size = Vector2(56, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -14.0
+offset_right = 28.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Pops" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button/Pops"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$pop[img=20x20]Assets/UI/Symbols/Pops.png[/img][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Levels" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$levels[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="MineralOutpost" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Income" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]+$inc[img=20x20]Assets/UI/Symbols/Minerals.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button"]
+self_modulate = Color(0.678431, 0.831373, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aim7n")
+expand_mode = 1
+
+[node name="Level" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Level" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button/Level"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$I[/center]"
+fit_content = true
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="Pops" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button"]
+custom_minimum_size = Vector2(56, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -14.0
+offset_right = 28.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Pops" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button/Pops"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$pop[img=20x20]Assets/UI/Symbols/Pops.png[/img][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Levels" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$levels[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="ResearchOutpost" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Income" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]+$inc[img=20x20]Assets/UI/Symbols/Research.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button"]
+self_modulate = Color(0, 0.776471, 0.713726, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aim7n")
+expand_mode = 1
+
+[node name="Level" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = -6.0
+offset_right = 16.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Level" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button/Level"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$I[/center]"
+fit_content = true
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Levels" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$levels[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="TradeOutpost" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Income" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]+$inc[img=20x20]Assets/UI/Symbols/BC.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aim7n")
+expand_mode = 1
+
+[node name="Level" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = -6.0
+offset_right = 16.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Level" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button/Level"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$I[/center]"
+fit_content = true
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Levels" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$levels[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Production" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Income" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]+$inc[img=20x20]Assets/UI/Symbols/Production.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button"]
+self_modulate = Color(0.686275, 0.431373, 0.156863, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aim7n")
+expand_mode = 1
+
+[node name="Pops" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button"]
+custom_minimum_size = Vector2(56, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Pops" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button/Pops"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$pop[img=20x20]Assets/UI/Symbols/Pops.png[/img][/center]"
+fit_content = true
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Levels" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$levels[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Shipbuilding" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Income" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]+$inc[img=20x20]Assets/UI/Symbols/Shipbuilding.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button"]
+self_modulate = Color(0.705882, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aim7n")
+expand_mode = 1
+
+[node name="Pops" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button"]
+custom_minimum_size = Vector2(56, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Pops" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button/Pops"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$pop[img=20x20]Assets/UI/Symbols/Pops.png[/img][/center]"
+fit_content = true
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Levels" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$levels[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Research" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Income" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]+$inc[img=20x20]Assets/UI/Symbols/Research.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button"]
+self_modulate = Color(0, 0.776471, 0.713726, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aim7n")
+expand_mode = 1
+
+[node name="Pops" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button"]
+custom_minimum_size = Vector2(56, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Pops" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button/Pops"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$pop[img=20x20]Assets/UI/Symbols/Pops.png[/img][/center]"
+fit_content = true
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Levels" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$levels[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Culture" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Income" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]+$inc[img=20x20]Assets/UI/Symbols/Culture.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button"]
+self_modulate = Color(0.619608, 0.164706, 0.615686, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aim7n")
+expand_mode = 1
+
+[node name="Pops" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button"]
+custom_minimum_size = Vector2(56, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Pops" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button/Pops"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$pop[img=20x20]Assets/UI/Symbols/Pops.png[/img][/center]"
+fit_content = true
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Levels" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[right]$pj/$mj[/right]"
+fit_content = true
+scroll_active = false
+
+[node name="Colony" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+
+[node name="Colonize" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony"]
+custom_minimum_size = Vector2(168, 88)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Colonize" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonize"]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("3_wtat1")
+
+[node name="Text" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonize/Colonize"]
+custom_minimum_size = Vector2(128, 20)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]Colonize[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonize/Colonize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Cost" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonize"]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -8.0
+offset_right = 10.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[left]$value[img=20x20]Assets/UI/Symbols/Prod.png[/img][/left]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Time" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonize"]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[right]$time[img=20x20]Assets/UI/Symbols/Turn.png[/img][/right]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Colonizing" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony"]
+custom_minimum_size = Vector2(168, 88)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonizing"]
+custom_minimum_size = Vector2(128, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -32.0
+offset_right = 2.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]Colonizing[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonizing"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fuy6r")
+
+[node name="NextTurn" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonizing/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_hksd8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h0030")
+step = 1.0
+value = 55.0
+show_percentage = false
+
+[node name="Progress" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonizing/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_hksd8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rxt7o")
+step = 1.0
+value = 45.0
+show_percentage = false
+
+[node name="Time" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonizing"]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -28.0
+offset_right = 42.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$time[img=20x20]Assets/UI/Symbols/Turn.png[/img][/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Separator_2" type="ColorRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(4, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[node name="PrivateIndustry" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Income" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]+$inc[img=20x20]Assets/UI/Symbols/BC.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aim7n")
+expand_mode = 1
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="Pops" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button"]
+custom_minimum_size = Vector2(56, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -14.0
+offset_right = 28.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Pops" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button/Pops"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$pop[img=20x20]Assets/UI/Symbols/Pops.png[/img][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Levels" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$levels[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Private" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(160, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Income" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[left]+$inc[img=20x20]Assets/UI/Symbols/BC.png[/img][/left]"
+fit_content = true
+scroll_active = false
+
+[node name="Pops" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[left]Private: $pop[img=20x20]Assets/UI/Symbols/Pops.png[/img][/left]"
+fit_content = true
+scroll_active = false
+
+[node name="Wealth" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[left]Wealth:[/left]"
+fit_content = true
+scroll_active = false
+
+[node name="Item_Current" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Dragable"
+script = ExtResource("8_3ia8t")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Item_Current"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Item_Current/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pfytp")
+
+[node name="NextTurn" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Item_Current/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_f1fvn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dfbyb")
+step = 1.0
+value = 55.0
+show_percentage = false
+
+[node name="Progress" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Item_Current/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_f1fvn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7cqrv")
+step = 1.0
+value = 45.0
+show_percentage = false
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Item_Current/MarginContainer/Panel"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_l02ck")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+bbcode_enabled = true
+text = "[center][b]$lvl[/b][/center]"
+
+[node name="Tax" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[left]Tax: $tax%[/left]"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button"]
+self_modulate = Color(0.619608, 0.164706, 0.615686, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aim7n")
+expand_mode = 1
+
+[node name="Pops" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button"]
+custom_minimum_size = Vector2(56, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Pops" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button/Pops"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$pop[img=20x20]Assets/UI/Symbols/Pops.png[/img][/center]"
+fit_content = true
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Levels" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$levels[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Resources" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+
+[node name="Building_1" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources"]
+custom_minimum_size = Vector2(88, 88)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_rkuxn")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wtat1")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1g5n")
+
+[node name="IconText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("4_l02ck")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aim7n")
+expand_mode = 1
+
+[node name="Level" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Level" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button/Level"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center]$I[/center]"
+
+[node name="InConstruction" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3yva")
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_l02ck")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_anj37")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Colony_1" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+theme = ExtResource("3_wtat1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Colony_1"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Faction[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Separator_1" type="ColorRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(4, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[node name="Colony_2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+theme = ExtResource("3_wtat1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Colony_2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Faction[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="NoBuildingsBg" type="VBoxContainer" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="NoBuildings" type="RichTextLabel" parent="PanelContainer/NoBuildingsBg"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]No buildings available at this location.[/center]"
+fit_content = true
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Planet/Building_1/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/EnergyOutpost/VBoxContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MineralOutpost/VBoxContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Production/VBoxContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Shipbuilding/VBoxContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Research/VBoxContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Culture/VBoxContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonize/Colonize/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonize/Colonize/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonize/Colonize/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Colony/Colonize/Colonize/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1" method="OnSelect"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button/ToolTip" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button/ToolTip" method="OnHoverExit"]

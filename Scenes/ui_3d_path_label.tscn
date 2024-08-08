@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkso2epk2tw8u"]
+[gd_scene load_steps=5 format=3 uid="uid://bkso2epk2tw8u"]
 
-[ext_resource type="Script" path="res://Scripts/UI/UIGalaxyPath.cs" id="1_1ehbf"]
+[ext_resource type="Script" path="res://Scripts/UI3D/UIGalaxyPath.cs" id="1_1ehbf"]
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="2_hdmgc"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="3_xyvqo"]
+[ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="4_6pogn"]
 
 [node name="System" type="Control"]
 layout_mode = 3
@@ -13,29 +14,134 @@ offset_right = 960.0
 offset_bottom = 540.0
 script = ExtResource("1_1ehbf")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Container" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -11.5
-offset_top = -10.0
-offset_right = 11.5
-offset_bottom = 10.0
+offset_left = -41.5
+offset_top = -65.0
+offset_right = 41.5
+offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBox" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="Container_Fleets" type="PanelContainer" parent="Container/VBox"]
+layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 theme = ExtResource("2_hdmgc")
 theme_type_variation = &"Title"
 
-[node name="Fleets" type="RichTextLabel" parent="PanelContainer"]
+[node name="Text" type="RichTextLabel" parent="Container/VBox/Container_Fleets"]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("3_xyvqo")
 bbcode_enabled = true
-text = "[b]$v[/b][img=20x20]Assets/UI/Symbols/Fleet.png[/img]"
+text = "[img=20x20]Assets/UI/Symbols/Fleet.png[/img] [color=RED][b]$v[/b][/color]"
 fit_content = true
 autowrap_mode = 0
+
+[node name="Container_Time" type="PanelContainer" parent="Container/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme = ExtResource("2_hdmgc")
+theme_type_variation = &"Title"
+
+[node name="Text" type="RichTextLabel" parent="Container/VBox/Container_Time"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_xyvqo")
+bbcode_enabled = true
+text = "[b]$t[/b][img=20x20]Assets/UI/Symbols/Turn.png[/img]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Container_1" type="PanelContainer" parent="Container/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme = ExtResource("2_hdmgc")
+theme_type_variation = &"Title"
+
+[node name="Fleet" type="RichTextLabel" parent="Container/VBox/Container_1"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_xyvqo")
+bbcode_enabled = true
+text = "[img=20x20]Assets/UI/Symbols/Fleet.png[/img] [color=RED][b]$v[/b][/color] [b]: $t[/b][img=20x20]Assets/UI/Symbols/Turn.png[/img]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Container_2" type="PanelContainer" parent="Container/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme = ExtResource("2_hdmgc")
+theme_type_variation = &"Title"
+
+[node name="Fleet" type="RichTextLabel" parent="Container/VBox/Container_2"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_xyvqo")
+bbcode_enabled = true
+text = "[img=20x20]Assets/UI/Symbols/Fleet.png[/img] [color=RED][b]$v[/b][/color] [b]: $t[/b][img=20x20]Assets/UI/Symbols/Turn.png[/img]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Container_3" type="PanelContainer" parent="Container/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme = ExtResource("2_hdmgc")
+theme_type_variation = &"Title"
+
+[node name="Fleet" type="RichTextLabel" parent="Container/VBox/Container_3"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_xyvqo")
+bbcode_enabled = true
+text = "[img=20x20]Assets/UI/Symbols/Fleet.png[/img] [color=RED][b]$v[/b][/color] [b]: $t[/b][img=20x20]Assets/UI/Symbols/Turn.png[/img]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Container_4" type="PanelContainer" parent="Container/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme = ExtResource("2_hdmgc")
+theme_type_variation = &"Title"
+
+[node name="Fleet" type="RichTextLabel" parent="Container/VBox/Container_4"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_xyvqo")
+bbcode_enabled = true
+text = "[img=20x20]Assets/UI/Symbols/Fleet.png[/img][b]...[/b]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="ToolTip" type="Control" parent="Container"]
+layout_mode = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("4_6pogn")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+
+[connection signal="mouse_entered" from="Container/ToolTip" to="Container/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Container/ToolTip" to="Container/ToolTip" method="OnHoverExit"]

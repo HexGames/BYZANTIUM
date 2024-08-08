@@ -12,7 +12,7 @@ public partial class UIPlanetInfo : Control
 
     [ExportCategory("Runtime")]
     [Export]
-    public DataBlock _Data = null;
+    public PlanetData _Planet = null;
     //[Export]
     //public DataBlock _Layout = null;
 
@@ -25,18 +25,20 @@ public partial class UIPlanetInfo : Control
         TitleLabel_Original = TitleLabel.Text;
     }
 
-    public void Refresh(DataBlock data, string forceTitle = "")
+    public void Refresh(PlanetData planet, string forceTitle = "")
     {
+        _Planet = planet;
+
         string name = forceTitle;
-        if (name == "") data.ValueToString();
-        if (name == "") name = data.ValueS;
+        if (name == "") _Planet.Data.ValueToString();
+        if (name == "") name = _Planet.Data.ValueS;
 
         TitleLabel.Text = TitleLabel_Original.Replace("$name", name);
 
-        Array<DataBlock> subs = data.GetSubs();
+        Array<DataBlock> subs = _Planet.Data.GetSubs();
 
         // grow
-        while (Properties.Count < subs.Count)
+        while (Properties.Count < subs.Count + 2)
         {
             UIPlanetInfoItem newItem = Properties[0].Duplicate(7) as UIPlanetInfoItem;
             Properties[0].GetParent().AddChild(newItem);
@@ -54,6 +56,16 @@ public partial class UIPlanetInfo : Control
                     Properties[idx].Visible = false;
                 }
             }
+            /*else if (idx == subs.Count)
+            {
+                Properties[idx].Refresh("Total yields:", "Total possible yields", false);
+                Properties[idx].Visible = true;
+            }
+            else if (idx == subs.Count + 1)
+            {
+                Properties[idx].Refresh(_Planet.BaseResources_PerTurn.GetTotalIncomeCondensed(), "Total possible yields", true);
+                Properties[idx].Visible = true;
+            }*/
             else
             {
                 Properties[idx].Visible = false;

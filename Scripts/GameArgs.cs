@@ -38,6 +38,14 @@ public partial class GameArgs : Node
 
     public void ReadyArgs()
     {
+        DefLibrary.self = Def;
+
+        Step_1_LoadAllDefs();
+        Step_2_RegenerateMap();
+    }
+
+    private void Step_1_LoadAllDefs()
+    {
         if (GameStartup_DetDefsFromDownloads)
         {
             string[] allFiles = Directory.GetFiles("C:\\Users\\Vlad\\Downloads");
@@ -82,7 +90,9 @@ public partial class GameArgs : Node
             Def.SaveFeaturesDef();
             Def.SaveShipPartsDef();
         }
-
+    }
+    private void Step_2_RegenerateMap()
+    {
         if (GameStartup_Regenerate)
         {
             MapGen.GenerateMapFunc();

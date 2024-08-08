@@ -1,12 +1,15 @@
 using Godot;
 using System;
+using static MEC.Timing;
 
 // Generated
 public partial class TurnLoop : Node
 {
     [ExportCategory("Runtime")]
     [Export]
-    public bool WaitingForHuman = false; 
+    public bool WaitingForHuman = false;
+    [Export]
+    public bool WaitingForEndTurn = false;
 
     [ExportCategory("Runtime - Player")]
     [Export]
@@ -45,11 +48,21 @@ public partial class TurnLoop : Node
         StartTurn_Fleets();
         StartTurn_Resources();
         StartTurn_NewActions();
-        Game.GalaxyUI.StartTurn();
+        //Game.GalaxyUI.StartTurn();//TEMP02
     }
 
     public void Init_Resources()
     {
+        for (int starIdx = 0; starIdx < Game.Map.Data.Stars.Count; starIdx++)
+        {
+            StarData star = Game.Map.Data.Stars[starIdx];
+            for (int planetIdx = 0; planetIdx < star.Planets.Count; planetIdx++)
+            {
+                PlanetData planet = star.Planets[planetIdx];
+                planet.BaseResources_PerTurn = new ResourcesWrapper(planet.Resources, ResourcesWrapper.ParentType.Planet);
+            }
+        }
+
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.Map.Data.Players[playerIdx];
@@ -70,7 +83,7 @@ public partial class TurnLoop : Node
                     for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
                     {
                         ColonyData colony = system.Colonies[colonyIdx];
-                        colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Planet);
+                        colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Colony);
                     }
                 }
             }
@@ -79,12 +92,17 @@ public partial class TurnLoop : Node
 
     public override void _Process(double delta)
     {
+        if (WaitingForEndTurn)
+        {
+            return;
+        }
+
         if (CurrentHumanPlayerData == null)
         {
             Init();
         }
 
-        if (WaitingForHuman == true)
+        if (WaitingForHuman)
         {
             return;
         }
@@ -96,7 +114,8 @@ public partial class TurnLoop : Node
 
         if (CurrentPlayerData == null)
         {
-            EndTurn();
+            WaitingForEndTurn = true;
+            RunCoroutine(EndTurn().CancelWith(this));
             return;
         }
 
@@ -110,22 +129,6 @@ public partial class TurnLoop : Node
             // AI
             CurrentPlayerData.TurnFinished = true;
         }
-
-        //CurrentColonyData = GetNextColony(CurrentPlayerData, out CurrentColonyIdx, out CurrentColonyLocation, out CurrentColonyAction);
-        //
-        //if (CurrentColonyData != null)
-        //{
-        //    if (CurrentPlayerData.Human == true)
-        //    {
-        //        // HUMAN
-        //        WaitingForHuman = true;
-        //    }
-        //    else
-        //    {
-        //        // AI
-        //        CurrentColonyAction.ValueS = "Infinite_AI";
-        //    }
-        //}
     }
 
     PlayerData GetNextPlayer(out int playeridx)

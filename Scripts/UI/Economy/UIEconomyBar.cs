@@ -95,12 +95,9 @@ public partial class UIEconomyBar : Control
     [Export]
     public PlanetData _Planet = null;
 
-    Game Game;
 
     public override void _Ready()
     {
-        Game = GetNode<Game>("/root/Main/Game");
-
         Empire_Authority_Original = Empire_Authority.Text;
         Sector_Authority_Original = Sector_Authority.Text;
         Selected_Authority_Original = Selected_Authority.Text;
@@ -182,9 +179,12 @@ public partial class UIEconomyBar : Control
 
     public void Refresh()
     {
+        if (Game.self == null)
+            return;
+
         if (_Player == null)
         {
-            _Player = Game.HumanPlayer;
+            _Player = Game.self.HumanPlayer;
         }
 
         Empire_BC.Refresh(_Player.Resources_PerTurn.GetStockpileString("BC"), _Player.Resources_PerTurn.GetStockpileTooltip("BC"));

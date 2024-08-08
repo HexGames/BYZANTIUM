@@ -44,17 +44,11 @@ public partial class GFXPaths : Node
         bool needNewPath = true;
         for (int idx = 0; idx < Paths.Count; idx++)
         {
-            if (Paths[idx].Star_From == fleet.AtStar_PerTurn && Paths[idx].Star_To == toStar)
+            if (Paths[idx].Star_From == fleet.AtStar_PerTurn && Paths[idx].Star_To == toStar) 
             {
-                if (Paths[idx]._Fleets.Count > 0)
+                if (Paths[idx]._Fleets.Count > 0) // there already is an arrow between these locations
                 {
                     Paths[idx].AddFleet(fleet);
-                    needNewPath = false;
-                    break;
-                }
-                else
-                {
-                    Paths[idx].Refresh(fleet.AtStar_PerTurn, toStar, fleet);
                     needNewPath = false;
                     break;
                 }
@@ -67,7 +61,7 @@ public partial class GFXPaths : Node
             {
                 if (Paths[idx]._Fleets.Count == 0)
                 {
-                    Paths[idx].Refresh(fleet.AtStar_PerTurn, toStar, fleet);
+                    Paths[idx].Refresh(fleet.AtStar_PerTurn, toStar, fleet); // reuse an unused arrow
                     needNewPath = false;
                     break;
                 }
@@ -76,7 +70,7 @@ public partial class GFXPaths : Node
 
         if (needNewPath) 
         {
-            GFXPathsItem newItem = Paths[0].Duplicate(7) as GFXPathsItem;
+            GFXPathsItem newItem = Paths[0].Duplicate(7) as GFXPathsItem; // create a new arrow
             Paths[0].GetParent().AddChild(newItem);
             Paths.Add(newItem);
 

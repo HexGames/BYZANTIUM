@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Threading;
 
 // Generated
 public partial class GFXPathsItem : Node3D
@@ -35,12 +36,13 @@ public partial class GFXPathsItem : Node3D
         Star_From = from;
         Star_To = to;
 
-        Vector3 offset = new Vector3(5.0f, 0.0f, 2.5f);
+        Vector3 offset_A = new Vector3(3.0f, 0.0f, 2.5f);
         if (linkedToFleet.AtStar_PerTurn.System != null && linkedToFleet.AtStar_PerTurn.System._Sector._Player != Game.HumanPlayer)
-            offset = new Vector3(5.0f, 0.0f, -2.5f);
+            offset_A = new Vector3(3.0f, 0.0f, -2.5f);
+        Vector3 offset_B = new Vector3(-2.0f, 0.0f, 0.0f);
 
-        Vector3 point_A = Star_From._Node.GFX.Position + offset;
-        Vector3 point_B = Star_To._Node.GFX.Position;
+        Vector3 point_A = Star_From._Node.GFX.Position + offset_A;
+        Vector3 point_B = Star_To._Node.GFX.Position + offset_B;
         Vector3 point_A_Offset = (point_B - point_A).Normalized() * 2.5f;
         Vector3 point_B_Offset = (point_A - point_B).Normalized() * 2.5f;
         Vector3 A = point_A + point_A_Offset;
@@ -52,7 +54,7 @@ public partial class GFXPathsItem : Node3D
 
         if (HUD == null)
         {
-            Game.GalaxyUI.AddPathLabel(this);
+            //Game.GalaxyUI.AddPathLabel(this);//TEMP02
         }
 
         HUD.Refresh();
@@ -71,6 +73,7 @@ public partial class GFXPathsItem : Node3D
     public void RemoveFleet(FleetData fleet)
     {
         _Fleets.Remove(fleet);
+
         if (HUD != null)
             HUD.Refresh();
 

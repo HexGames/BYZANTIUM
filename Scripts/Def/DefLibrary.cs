@@ -6,6 +6,11 @@ using System.Linq;
 [Tool]
 public partial class DefLibrary : Node
 {
+    [ExportCategory("Links")]
+    [Export]
+    public AssetLibrary AssetLib = null;
+
+    [ExportCategory("DefLibrary")]
     [Export]
     public Dictionary<int, string> DB_Types_S = new Dictionary<int, string>();
     [Export]
@@ -37,6 +42,27 @@ public partial class DefLibrary : Node
             }
         }
     }*/
+
+    static DefLibrary _self;
+    public static DefLibrary self
+    {
+        get
+        {
+            if (_self != null)
+            {
+                return _self;
+            }
+            else
+            {
+                _self = ((SceneTree)Engine.GetMainLoop()).Root.GetNode<DefLibrary>("/root/Main/Library/DefLibrary");
+                return _self;
+            }
+        }
+        set
+        {
+            _self = value;
+        }
+    }
 
     [ExportCategory("Def Loaders")]
     [Export]
@@ -163,6 +189,7 @@ public partial class DefLibrary : Node
     public override void _Ready()
     {
         _Ready_Buildings();
+        _Ready_Features();
     }
     //    DirAccess folder = null;
     //    string[] files = null;

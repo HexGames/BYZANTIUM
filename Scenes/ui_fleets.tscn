@@ -82,7 +82,7 @@ layout_mode = 2
 offset_right = 368.0
 offset_bottom = 24.0
 bbcode_enabled = true
-text = "[left]$name[/left]"
+text = "[left][img=20x20]Assets/UI/Symbols/Fleet.png[/img] [color=RED][b]$id[/b][/color] $name[/left]"
 fit_content = true
 autowrap_mode = 0
 

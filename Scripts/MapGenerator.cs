@@ -76,8 +76,8 @@ public partial class MapGenerator : Node
         {
             Camera = GetNode<MapCamera>("/root/Main/Camera3D");
         }
-        Camera.MoveLimitX = 8.6666f * 2.0f * 2 * FromFile_Size;
-        Camera.MoveLimitY = 15.0f * 2 * FromFile_Size;
+        Camera.MoveLimitX = 8.6666f * 3.8f * FromFile_Size;
+        Camera.MoveLimitY = 15.0f * 2.2f * FromFile_Size;
     }
 
     // --------------------------------------------------------------------------------------------------
@@ -123,7 +123,7 @@ public partial class MapGenerator : Node
             if (FromFile_Stars[idx][0] != PaddingCharacter && FromFile_Stars[idx][0] != EmptyCharacter)
             {
                 int x = idx % (1 + 2 * FromFile_Size);
-                int y = idx / (1 + 2 * FromFile_Size);
+                int y = - (idx / (1 + 2 * FromFile_Size));
 
                 string name = "Star_" + idx.ToString();
                 if (idx == 22) name = "Sol";

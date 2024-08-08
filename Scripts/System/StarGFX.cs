@@ -18,7 +18,7 @@ public partial class StarGFX : Node3D
     [Export]
     private MeshInstance3D HoverSector = null;
     [Export]
-    private Node3D ShipFriendly = null;
+    public Node3D ShipFriendly = null;
     [Export]
     private MeshInstance3D ShipFriendly_Model = null;
     [Export]
@@ -28,7 +28,7 @@ public partial class StarGFX : Node3D
     [Export]
     private MeshInstance3D ShipFriendly_Hover = null;
     [Export]
-    private Node3D ShipEnemy = null;
+    public Node3D ShipEnemy = null;
     [Export]
     private MeshInstance3D ShipEnemy_Model = null;
     [Export]
@@ -37,6 +37,7 @@ public partial class StarGFX : Node3D
     private MeshInstance3D ShipEnemy_SelectedTotal = null;
     [Export]
     private MeshInstance3D ShipEnemy_Hover = null;
+    [ExportCategory("Runtime")]
     [Export]
     public StarNode _Node = null;
     [Export]
@@ -437,5 +438,10 @@ public partial class StarGFX : Node3D
         ShipFriendly_SelectedTotal.Visible = false;
         ShipEnemy_SelectedPart.Visible = false;
         ShipEnemy_SelectedTotal.Visible = false;
+    }
+
+    public void AddIncomingShip(FleetData fleet)
+    {
+        //Incoming[0].Add
     }
 }

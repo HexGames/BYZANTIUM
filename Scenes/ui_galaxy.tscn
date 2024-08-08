@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bukr82o6e8rl3"]
+[gd_scene load_steps=20 format=3 uid="uid://bukr82o6e8rl3"]
 
 [ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_cqepg"]
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
-[ext_resource type="PackedScene" uid="uid://boj51oy2r02dd" path="res://Scenes/ui_3d_system_label.tscn" id="2_o4d4i"]
+[ext_resource type="PackedScene" uid="uid://dkomfigvec4wg" path="res://Scenes/ui_3d_star.tscn" id="2_iewv2"]
+[ext_resource type="Script" path="res://Scripts/UI3D/UI3DManager.cs" id="2_q01rn"]
 [ext_resource type="PackedScene" uid="uid://bkso2epk2tw8u" path="res://Scenes/ui_3d_path_label.tscn" id="3_vn2yg"]
 [ext_resource type="PackedScene" uid="uid://courpl83k858j" path="res://Scenes/ui_game_bar.tscn" id="4_5jqa5"]
 [ext_resource type="PackedScene" uid="uid://0svrlyhb7gcc" path="res://Scenes/ui_economy_bar.tscn" id="4_y8k0i"]
@@ -14,10 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://bel8s4g6tiuv1" path="res://Scenes/ui_control_info.tscn" id="9_8ybwa"]
 [ext_resource type="PackedScene" uid="uid://bjnpkcy3hqibr" path="res://Scenes/ui_planet_info.tscn" id="9_82sdf"]
 [ext_resource type="PackedScene" uid="uid://cagh3vswhvysa" path="res://Scenes/ui_factions_info.tscn" id="10_vml6j"]
+[ext_resource type="PackedScene" uid="uid://bwi6x7hcx8ckx" path="res://Scenes/ui_colonies.tscn" id="11_cqxyt"]
+[ext_resource type="PackedScene" uid="uid://2fd4wrs1ouh8" path="res://Scenes/ui_sector.tscn" id="12_hknwx"]
 [ext_resource type="PackedScene" uid="uid://b2a0hskimxnut" path="res://Scenes/ui_fleets.tscn" id="12_sv4sa"]
 [ext_resource type="PackedScene" uid="uid://c5x0k0s750tc4" path="res://Scenes/__ui_general.tscn" id="16_3p5nr"]
 
-[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("Systems", "Paths", "General", "Resources", "GalaxyBar", "ColonyBuildings", "SectorConstruction", "SectorShipbuilding", "PopsInfo", "PlanetInfo", "ControlInfo", "FactionsInfo", "FleetsSelected", "CurrentTurn")]
+[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("UI3DManager", "Incoming", "Paths", "General", "Resources", "GalaxyBar", "ColonyBuildings", "SectorConstruction", "SectorShipbuilding", "PopsInfo", "PlanetInfo", "ControlInfo", "FactionsInfo", "FleetsSelected", "CurrentTurn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,8 +29,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ieb0k")
-Systems = [NodePath("SystemsHUD/System")]
-Paths = [NodePath("PathsHUD/Path")]
+UI3DManager = NodePath("UI3D")
+Incoming = [NodePath("UI3D/IncomingHUD/Incoming")]
+Paths = [NodePath("UI3D/PathsHUD/Path")]
 General = NodePath("GeneralUI")
 Resources = NodePath("Economy")
 GalaxyBar = NodePath("GameBar")
@@ -41,7 +45,18 @@ FactionsInfo = NodePath("FactionsInfo")
 FleetsSelected = NodePath("SelectedFleets")
 CurrentTurn = NodePath("Turn")
 
-[node name="SystemsHUD" type="Control" parent="."]
+[node name="UI3D" type="Control" parent="." node_paths=PackedStringArray("UI3DStarPool")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_q01rn")
+UI3DStarPool = [NodePath("SystemsHUD/Star")]
+
+[node name="SystemsHUD" type="Control" parent="UI3D"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,14 +65,22 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="System" parent="SystemsHUD" instance=ExtResource("2_o4d4i")]
+[node name="Star" parent="UI3D/SystemsHUD" instance=ExtResource("2_iewv2")]
 
-[node name="PathsHUD" type="Control" parent="."]
+[node name="IncomingHUD" type="Control" parent="UI3D"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Path" parent="PathsHUD" instance=ExtResource("3_vn2yg")]
+[node name="Incoming" parent="UI3D/IncomingHUD" instance=ExtResource("3_vn2yg")]
+visible = false
+
+[node name="PathsHUD" type="Control" parent="UI3D"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Path" parent="UI3D/PathsHUD" instance=ExtResource("3_vn2yg")]
 visible = false
 
 [node name="Economy" parent="." instance=ExtResource("4_y8k0i")]
@@ -103,6 +126,7 @@ offset_right = 16.0
 offset_bottom = 360.0
 
 [node name="ColonyBuildings" parent="." instance=ExtResource("5_5o3b3")]
+visible = false
 custom_minimum_size = Vector2(1120, 120)
 layout_mode = 1
 anchors_preset = -1
@@ -112,7 +136,19 @@ offset_top = -212.0
 offset_bottom = -212.0
 grow_vertical = 0
 
+[node name="Colonies" parent="." instance=ExtResource("11_cqxyt")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_top = -178.0
+offset_bottom = -178.0
+
+[node name="Sector" parent="." instance=ExtResource("12_hknwx")]
+visible = false
+layout_mode = 1
+
 [node name="PopsInfo" parent="." instance=ExtResource("8_xwtg6")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_top = 8.0
@@ -132,12 +168,14 @@ grow_horizontal = 0
 grow_vertical = 1
 
 [node name="ControlInfo" parent="." instance=ExtResource("9_8ybwa")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_top = 360.0
 offset_bottom = 360.0
 
 [node name="FactionsInfo" parent="." instance=ExtResource("10_vml6j")]
+visible = false
 layout_mode = 1
 
 [node name="SelectedFleets" parent="." instance=ExtResource("12_sv4sa")]

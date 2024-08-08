@@ -93,6 +93,8 @@ public partial class DataBlock : Resource
 
     public bool ToUIShow()
     {
+        if (Name.StartsWith("Custom")) return false;
+        if (Name.StartsWith("Resources")) return false;
         if (Name.StartsWith("Link")) return false;
         return true;
     }
@@ -107,6 +109,7 @@ public partial class DataBlock : Resource
 
         return Name.Replace('_', ' ');
     }
+
     public string ToUIValue()
     {
         switch (Name)
@@ -136,6 +139,15 @@ public partial class DataBlock : Resource
                     }
                     break;
                 }
+        }
+
+        if (ValueS == "" && ValueI == 0)
+        {
+            DefFeatureWrapper feature = Game.self.Def.GetFeatureInfo(Name);
+            if (feature != null)
+            {
+                return feature.Benefit.ToStringCondensed();
+            }
         }
 
         return ValueS.Replace('_', ' ');

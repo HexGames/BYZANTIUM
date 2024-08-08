@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://boj51oy2r02dd"]
 
-[ext_resource type="Script" path="res://Scripts/UI/UIGalaxySystem.cs" id="1_t4ogb"]
+[ext_resource type="Script" path="res://Scripts/UI3D/UIGalaxySystem.cs" id="1_t4ogb"]
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="2_hdmgc"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="3_xyvqo"]
 

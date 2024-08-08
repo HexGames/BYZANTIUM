@@ -47,7 +47,7 @@ public partial class UISelectedFleetsItem : Control
     {
         _Fleet = fleet;
 
-        FleetNameNumber.Text = FleetName_Original.Replace("$name", _Fleet.FleetName);
+        FleetNameNumber.Text = FleetName_Original.Replace("$id", _Fleet.FleetName).Replace("$name", _Fleet.GetLongName());
         TotalShipsNumber.Text = TotalShipsNumber_Original.Replace("$value", _Fleet.Ships.Count.ToString());
         TotalShipsPower.Text = TotalShipsPower_Original.Replace("$value", (10 * _Fleet.Ships.Count).ToString());
 
@@ -59,7 +59,7 @@ public partial class UISelectedFleetsItem : Control
         if (fleet.MoveAction != null)
         {
             StarData star = Data.GetLinkStarData(fleet.MoveAction, Game.Map.Data);
-            Action.Text = Action_Original.Replace("$value", "Move to " + star.StarName);
+            Action.Text = Action_Original.Replace("$value", "Jump to " + star.StarName + " in " + fleet.GetMoveActionTurns() + Helper.GetIcon("Turn"));
         }
         else
         {

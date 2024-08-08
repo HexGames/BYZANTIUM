@@ -67,6 +67,11 @@ public class Helper
         }
     }
 
+    public static string GetIcon(string name)
+    {
+        return "[img=24x24]Assets/UI/Symbols/" + name + ".png[/img]";
+    }
+
     public static string GetColorPrefix_Good()
     {
         return "[color=#ff8888]";

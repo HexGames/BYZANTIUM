@@ -16,7 +16,6 @@ emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.5
 
 [node name="GfxPath" type="Node3D"]
-visible = false
 script = ExtResource("1_yfe5o")
 
 [node name="Path" type="MeshInstance3D" parent="."]

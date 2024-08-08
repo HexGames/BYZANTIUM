@@ -39,7 +39,8 @@ public partial class MapGenerator : Node
     {
         DataBlock fleets = Data.AddData(player, "Fleets", DefLibrary);
 
-        DataBlock fleet = Data.AddData(fleets, "Fleet", "Babylon's_Eye", DefLibrary);
+        DataBlock fleet = Data.AddData(fleets, "Fleet", "I", DefLibrary);
+        Data.AddData(fleet, "Name", "Babylon's_Fury", DefLibrary);
 
         Data.AddData(fleet, "Link:Star", star.ValueS, DefLibrary); // no StarData yet
         Data.AddData(star, "Link:Player:Fleet", player.ValueS + ":" + fleet.ValueS, DefLibrary); // no StarData yet
@@ -53,7 +54,8 @@ public partial class MapGenerator : Node
         Data.AddData(ship, "Supply", 300, DefLibrary);
 
         // second fleet
-        fleet = Data.AddData(fleets, "Fleet", "Byblos Hammer", DefLibrary);
+        fleet = Data.AddData(fleets, "Fleet", "II", DefLibrary);
+        Data.AddData(fleet, "Name", "Ur's_Hammer", DefLibrary);
 
         Data.AddData(fleet, "Link:Star", star.ValueS, DefLibrary); // no StarData yet
         Data.AddData(star, "Link:Player:Fleet", player.ValueS + ":" + fleet.ValueS, DefLibrary); // no StarData yet

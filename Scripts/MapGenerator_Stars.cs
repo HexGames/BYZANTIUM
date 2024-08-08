@@ -13,7 +13,10 @@ public partial class MapGenerator : Node
         {
             DataBlock star = Data.AddData(planetList, "Planet", "Star", DefLibrary);
             Data.AddData(star, "Star_Type", "Main_Sequence", DefLibrary);
+            Data.AddData(star, "Active_Star", DefLibrary);
             Data.AddData(star, "Building", "Star_Orbit", DefLibrary);
+
+            GenerateNewMapSave_Stars_Planets_AddResourcesData(star);
         }
         
         GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Mercury");
@@ -48,6 +51,8 @@ public partial class MapGenerator : Node
         {
             GenerateNewMapSave_Stars_Planets_Random__AddFeatures(star, starFeatures);
         }
+
+        GenerateNewMapSave_Stars_Planets_AddResourcesData(star);
 
         int minTemp = chosenStarData.GetSub("PlanetsHot", false) != null ? 2 : 1;
         int maxTemp = chosenStarData.GetSub("PlanetsCold", false) != null ? 4 : 5;
@@ -210,6 +215,8 @@ public partial class MapGenerator : Node
                 {
                     GenerateNewMapSave_Stars_Planets_Random__AddFeatures(planet, features);
                 }
+
+                GenerateNewMapSave_Stars_Planets_AddResourcesData(planet);
             }
         }
     }
@@ -240,10 +247,13 @@ public partial class MapGenerator : Node
         Data.AddData(planet, "Size", size, DefLibrary);
         Data.AddData(planet, "Temperature", currentTemp, DefLibrary);
 
-        if (moon) Data.AddData(planet, "Moon", DefLibrary);
         //if (chosenPlanetData.GetSub("ExoticResourceFlag") != null) Data.AddData(planet, "ExoticResourceFlag", DefLibrary);
 
-        if (currentTemp == 5 && currentTemp == 1) Data.AddData(planet, "Extreme_Temps", DefLibrary);
+        if (currentTemp == 5 && currentTemp == 1)
+        {
+            Data.RemoveData(planet, "Barren", DefLibrary);
+            Data.AddData(planet, "Extreme_Temps", DefLibrary);
+        }
         if (currentTemp == 5 && RNG.RandiRange(0, 99) < 140 - size * 40) Data.AddData(planet, "High_Radiation", DefLibrary);
         if (currentTemp == 4 && RNG.RandiRange(0, 99) < 50 && RNG.RandiRange(0, 99) < 140 - size * 40) Data.AddData(planet, "High_Radiation", DefLibrary);
         if (size == 1 && RNG.RandiRange(0, 99) < 50) Data.AddData(planet, "Low_Gravity", DefLibrary);
@@ -254,6 +264,10 @@ public partial class MapGenerator : Node
         {
             GenerateNewMapSave_Stars_Planets_Random__AddFeatures(planet, planetFeatures);
         }
+
+        if (moon) Data.AddData(planet, "Moon", DefLibrary);
+
+        GenerateNewMapSave_Stars_Planets_AddResourcesData(planet);
     }
 
     private void GenerateNewMapSave_Stars_Planets_CustomPlanet(DataBlock planetList, string name)
@@ -278,8 +292,6 @@ public partial class MapGenerator : Node
         if (hasSize) Data.AddData(planet, "Size", size, DefLibrary);
 
         if (hasTemperature) Data.AddData(planet, "Temperature", temperature, DefLibrary);
-
-        if (moon) Data.AddData(planet, "Moon", DefLibrary);
         //if (chosenPlanetData.GetSub("ExoticResourceFlag") != null) Data.AddData(planet, "ExoticResourceFlag", DefLibrary);
 
         if (temperature == 5 && temperature == 1) Data.AddData(planet, "Extreme_Temps", DefLibrary);
@@ -293,6 +305,10 @@ public partial class MapGenerator : Node
         {
             GenerateNewMapSave_Stars_Planets_Random__AddFeatures(planet, planetFeatures);
         }
+
+        if (moon) Data.AddData(planet, "Moon", DefLibrary);
+
+        GenerateNewMapSave_Stars_Planets_AddResourcesData(planet);
     }
 
     private void GenerateNewMapSave_Stars_Planets_Random__AddFeatures(DataBlock planet, DataBlock features)
@@ -338,5 +354,22 @@ public partial class MapGenerator : Node
             }
         }
         return weightList[RNG.RandiRange(0, weightList.Count - 1)];
+    }
+
+    private void GenerateNewMapSave_Stars_Planets_AddResourcesData(DataBlock planet)
+    {
+        DataBlock resources = Data.AddData(planet, "Resources", DefLibrary);
+
+        //Data.AddData(resources, "Energy*Income", 0, DefLibrary);
+        //Data.AddData(resources, "Minerals*Income", 0, DefLibrary);
+        //Data.AddData(resources, "Production*Income", 0, DefLibrary);
+        //Data.AddData(resources, "Shipbuilding*Income", 0, DefLibrary);
+        //
+        //Data.AddData(resources, "Research*Income", 0, DefLibrary);
+        //Data.AddData(resources, "Culture*Income", 0, DefLibrary);
+        //Data.AddData(resources, "BC*Income", 0, DefLibrary);
+        //Data.AddData(resources, "Authority*Used", 0, DefLibrary);
+        //
+        //Data.AddData(resources, "Pops*Growth", 0, DefLibrary);
     }
 }

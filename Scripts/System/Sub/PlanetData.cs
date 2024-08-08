@@ -17,6 +17,10 @@ public partial class PlanetData : Node
     [ExportCategory("PlanetData")]
     [Export]
     public string PlanetName = "";
+    [Export]
+    public int Angle;
+    [Export]
+    public DataBlock Resources = null;
 
     [Export]
     public DataBlock Empire = null;
@@ -24,4 +28,7 @@ public partial class PlanetData : Node
     [ExportCategory("PlanetData-Links")]
     [Export]
     public ColonyData Colony = null;
+
+    // resources
+    public ResourcesWrapper BaseResources_PerTurn = null;
 }

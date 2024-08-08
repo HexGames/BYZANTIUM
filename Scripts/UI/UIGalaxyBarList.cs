@@ -47,14 +47,13 @@ public partial class UIGalaxyBarList : Control
     [Export]
     public SectorData _SectorData = null;
     [Export]
-    public SystemData _SystemData = null;
-    [Export]
     public StarData _StarData = null;
+    [Export]
+    public SystemData _SystemData = null;
     [Export]
     public UIBarListPlanet PlanetSelected = null;
     //[Export]
     //public UIPawnListFleet FleetSelected = null;
-
 
     //[Export]
     //public bool AutoLink
@@ -298,6 +297,16 @@ public partial class UIGalaxyBarList : Control
         }
     }
 
+    public void Hover(UIBarListPlanet planet)
+    {
+        //Game.GalaxyUI.HoverPlanet(planet._PlanetData);//TEMP02
+    }
+
+    public void Unhover()
+    {
+        //Game.GalaxyUI.UnhoverPlanet();//TEMP02
+    }
+
     public void Select(PlanetData planet)
     {
         if (planet == null)
@@ -381,16 +390,6 @@ public partial class UIGalaxyBarList : Control
         PlanetSelected = null;
 
         Tabs.Visible = false;
-    }
-
-    public void OnBuildingsTabSelect()
-    {
-        Game.GalaxyUI.ShowBuildingsTab();
-    }
-
-    public void OnPopulationTabSelect()
-    {
-        Game.GalaxyUI.ShowPopulationTab();
     }
 
     public void ShowTabsSelector(bool buildingsAvailable, bool popsAvailable)

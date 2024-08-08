@@ -77,7 +77,7 @@ public class ActionShipbuilding
                 Data.AddLink(planet.Data, planet.Colony, game.Def);  // 3
 
                 system.Colonies.Add(colony);
-                colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Planet);
+                colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Colony);
             }
 
             DataBlock building = planet.Colony.Buildings.GetSub("Building", queue.Subs[0].ValueS);

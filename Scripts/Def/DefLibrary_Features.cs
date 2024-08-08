@@ -14,6 +14,14 @@ public partial class DefLibrary : Node
 
     public List<DefFeatureWrapper> FeaturesInfo = new List<DefFeatureWrapper>();
 
+    public void _Ready_Features()
+    {
+        for (int idx = 0; idx < Features.Count; idx++)
+        {
+            FeaturesInfo.Add(new DefFeatureWrapper(Features[idx]));
+        }
+    }
+
     public DataBlock GetFeature(string name)
     {
         for (int idx = 0; idx < Features.Count; idx++)
@@ -21,6 +29,18 @@ public partial class DefLibrary : Node
             if (Features[idx].ValueS == name)
             {
                 return Features[idx];
+            }
+        }
+        return null;
+    }
+
+    public DefFeatureWrapper GetFeatureInfo(string name)
+    {
+        for (int idx = 0; idx < FeaturesInfo.Count; idx++)
+        {
+            if (FeaturesInfo[idx]._Data.ValueS == name)
+            {
+                return FeaturesInfo[idx];
             }
         }
         return null;

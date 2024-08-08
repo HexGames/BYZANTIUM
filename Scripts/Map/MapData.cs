@@ -51,22 +51,22 @@ public partial class MapData : Node
         }
     }
 
-    Game __Game;
-    Game Game
-    {
-        get
-        {
-            if (__Game != null)
-            {
-                return __Game;
-            }
-            else
-            {
-                __Game = GetNode<Game>("/root/Main/Game");
-                return __Game;
-            }
-        }
-    }
+    //Game __Game;
+    //Game Game
+    //{
+    //    get
+    //    {
+    //        if (__Game != null)
+    //        {
+    //            return __Game;
+    //        }
+    //        else
+    //        {
+    //            __Game = GetNode<Game>("/root/Main/Game");
+    //            return __Game;
+    //        }
+    //    }
+    //}
 
     private RandomNumberGenerator RNG = new RandomNumberGenerator();
 
@@ -116,10 +116,17 @@ public partial class MapData : Node
 
         DataBlock starList = _Data.GetSub("Star_List");
         Array<DataBlock> stars = starList.GetSubs("Star");
+        //Node prefabGFX = gfxScene.Instantiate();
+        //prefabGFX.
+        //prefabGFX.Owner = GetTree().EditedSceneRoot;
+        //AddChild(prefabGFX);
+        //prefabGFX.GetParent().SetEditableInstance(prefabGFX, true);
+        //prefabGFX.SceneFilePath = "";
         for (int idx = 0; idx < stars.Count; idx++)
         {
-            GenerateGameFromData_Star(stars[idx], galaxySize, gfxScene);
+            GenerateGameFromData_Star(stars[idx], galaxySize, gfxScene); 
         }
+        //prefabGFX.QueueFree();
 
         // Link Stars Paths
         PackedScene gfxPathScene = GD.Load<PackedScene>("res://3DPrefabs/" + _Node.PathGFXName + ".tscn");
@@ -133,21 +140,11 @@ public partial class MapData : Node
             GenerateGameFromData_Player(players[idx], idx, defLib);
         }
 
-        // Human player
-        for (int idx = 0; idx < Players.Count; idx++)
-        {
-            if (Players[idx].Human)
-            {
-                Game.HumanPlayer = Players[idx];
-                break;
-            }
-        }
-
         // Refresh system GFX
         for (int idx = 0; idx < Stars.Count; idx++)
         {
-            Stars[idx]._Node.GFX.RefreshPlayerColors();
-            Stars[idx]._Node.GFX.RefreshShips();
+            //TEMP01 Stars[idx]._Node.GFX.RefreshPlayerColors();
+            //TEMP01 Stars[idx]._Node.GFX.RefreshShips();
         }
     }
 
@@ -157,7 +154,7 @@ public partial class MapData : Node
         StarNode starNode = new StarNode();
         starNode.Name = starDataBlock.ValueS;
 
-        _Node.StarNode.AddChild(starNode);//, true, InternalMode.Back);
+        _Node.StarsNode.AddChild(starNode);//, true, InternalMode.Back);
         starNode.Owner = GetTree().EditedSceneRoot;
 
         // Data
@@ -187,15 +184,19 @@ public partial class MapData : Node
         Node gfxNode = gfxScene.Instantiate();
         gfxNode.Name = starDataBlock.ValueS + "_GFX";
 
-        starNode.AddChild(gfxNode);//, true, InternalMode.Back);
+        _Node.StarsGFX.AddChild(gfxNode);//, true, InternalMode.Back);
         gfxNode.Owner = GetTree().EditedSceneRoot;
         gfxNode.GetParent().SetEditableInstance(gfxNode, true);
-        //gfxNode.
 
-        starNode.GFX = gfxNode as StarGFX; // because of this LocationGFX has to be a Tool
-        starNode.GFX._Node = starNode;
 
-        starNode.GFX.Position = new Vector3(8.6666f * (2.0f * starData.X - starData.Y), 0.0f, -starData.Y * 15.0f) - new Vector3(8.6666f * galaxySize, 0.0f, -galaxySize * 15.0f);
+        starNode.GFX = gfxNode as GFXStar; // because of this LocationGFX has to be a Tool
+        starNode.GFX.Init();
+        int angleSeed = starDataBlock.GetSub("GFX_RNG_1").ValueI + starDataBlock.GetSub("GFX_RNG_2").ValueI;
+        starNode.GFX.Refresh(starData, angleSeed); 
+        //TEMP01
+        //starNode.GFX._Node = starNode;
+
+        starNode.GFX.Position = new Vector3(8.6666f * (2.0f * starData.X + starData.Y), 0.0f, starData.Y * 15.0f) - new Vector3(8.6666f * galaxySize, 0.0f, -galaxySize * 15.0f);
         starNode.GFX.Position += (0.05f * starDataBlock.GetSub("GFX_RNG_1").ValueI) * Vector3.Right.Rotated(Vector3.Up, 0.01f * Mathf.Pi * starDataBlock.GetSub("GFX_RNG_2").ValueI);
     }
 
@@ -205,6 +206,7 @@ public partial class MapData : Node
         PlanetData planetData = new PlanetData();
         planetData.Name = planetDataBlock.ValueS + "_Data";
         planetData.PlanetName = planetDataBlock.ValueS;
+        planetData.Resources = planetDataBlock.GetSub("Resources");
 
         planetData.Data = planetDataBlock;
 

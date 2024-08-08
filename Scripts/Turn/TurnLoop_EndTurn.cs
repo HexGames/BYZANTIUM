@@ -1,17 +1,20 @@
 using Godot;
 using Godot.Collections;
+using MEC;
 using System;
+using System.Collections.Generic;
 
 // Generated
 public partial class TurnLoop : Node
 {
-    void EndTurn()
+    private IEnumerator<double> EndTurn()
     {
         // increment turn number
         Game.Map.Data.Turn = Game.Map.Data.Turn + 1;
 
         // update actions
-        EndTurn_Actions();
+        yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsBuild()));
+        yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsMove()));
 
         // update fleets
         StartTurn_Fleets();
@@ -23,17 +26,21 @@ public partial class TurnLoop : Node
         StartTurn_NewActions();
 
         // update UI
-        Game.GalaxyUI.StartTurn();
+        //Game.GalaxyUI.StartTurn();//TEMP02
 
         // reset players states
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
             Game.Map.Data.Players[playerIdx].TurnFinished = false;
         }
+
+        WaitingForEndTurn = false; 
+        
+        yield return Timing.WaitForOneFrame;
     }
 
     // ----------------------------------------------------------------------------------------------
-    private void EndTurn_Actions()
+    private IEnumerator<double> EndTurn_ActionsBuild()
     {
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
@@ -44,14 +51,34 @@ public partial class TurnLoop : Node
 
                 ActionBuild.EndTurn(Game, sector); // --- !!! ---
             }
+        }
+
+        yield return Timing.WaitForOneFrame;
+    }
+
+    private IEnumerator<double> EndTurn_ActionsMove()
+    {
+        for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.Map.Data.Players[playerIdx];
 
             for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
             {
                 FleetData fleet = player.Fleets[fleetIdx];
-
                 ActionMove.EndTurn(Game, fleet);
+
+                //Game.Paths.ClearPathForFleet(fleet);
+                //Game.Incomings.ClearIncomingForFleet(fleet);
+                //
+                //if (fleet.GetMoveActionTurns() >= 0)
+                //{
+                //    StarData star = Data.GetLinkStarData(fleet.MoveAction, Game.Map.Data);
+                //    Game.Incomings.AddIncoming(fleet, star);
+                //}
             }
         }
+
+        yield return Timing.WaitForOneFrame;
     }
     // ----------------------------------------------------------------------------------------------
     private void StartTurn_Fleets()
@@ -79,6 +106,24 @@ public partial class TurnLoop : Node
     // ----------------------------------------------------------------------------------------------
     private void StartTurn_Resources()
     {
+        for (int starIdx = 0; starIdx < Game.Map.Data.Stars.Count; starIdx++)
+        {
+            StarData star = Game.Map.Data.Stars[starIdx];
+            for (int planetIdx = 0; planetIdx < star.Planets.Count; planetIdx++)
+            {
+                PlanetData planet = star.Planets[planetIdx];
+                planet.BaseResources_PerTurn.Clear();
+                for (int featuresIdx = 0; featuresIdx < planet.Data.Subs.Count; featuresIdx++)
+                {
+                    DefFeatureWrapper featureInfo =  Game.Def.GetFeatureInfo(planet.Data.Subs[featuresIdx].Name);
+                    if (featureInfo != null)
+                    {
+                        planet.BaseResources_PerTurn.Add(featureInfo.Benefit, false, true);
+                    }
+                }
+            }
+        }
+
         for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.Map.Data.Players[playerIdx];

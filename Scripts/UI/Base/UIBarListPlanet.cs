@@ -422,6 +422,10 @@ public partial class UIBarListPlanet : Control
         {
             SystemList.Hover(this);
         }
+        if (GalaxyList != null)
+        {
+            GalaxyList.Hover(this);
+        }
     }
 
     public void OnDehover()
@@ -429,6 +433,10 @@ public partial class UIBarListPlanet : Control
         if (SystemList != null)
         {
             SystemList.Unhover();
+        }
+        if (GalaxyList != null)
+        {
+            GalaxyList.Unhover();
         }
     }
 

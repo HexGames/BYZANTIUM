@@ -17,6 +17,8 @@ public partial class Game : Node
     [Export]
     public GFXPaths Paths;
     [Export]
+    public GFXIncomings Incomings;
+    [Export]
     public UILibrary UILib;
     [Export]
     public UITooltipManager Tooltips;
@@ -41,10 +43,62 @@ public partial class Game : Node
 
     private bool FirstFrame = true;
 
+    static Game _self;
+    public static Game self
+    {
+        get
+        {
+            if (_self != null)
+            {
+                return _self;
+            }
+            else
+            {
+                _self = ((SceneTree)Engine.GetMainLoop()).Root.GetNode<Game>("/root/Main/Game");
+                /*if (_self == null)
+                {
+                    _self = ((SceneTree)Engine.GetMainLoop()).Root.GetNode<Game>("root/Main/Game");
+                }
+                if (_self == null)
+                {
+                    _self = EditorInterface.Singleton.GetEditedSceneRoot().GetNode<Game>("/root/Main/Game");
+                }
+                if (_self == null)
+                {
+                    _self = EditorInterface.Singleton.GetEditedSceneRoot().GetNode<Game>("root/Main/Game");
+                }
+                if (_self == null)
+                {
+                    _self = ((SceneTree)Engine.GetMainLoop()).Root.GetNode<Game>("Main/Game");
+                }
+                if (_self == null)
+                {
+                    _self = EditorInterface.Singleton.GetEditedSceneRoot().GetNode<Game>("Main/Game");
+                }*/
+                return _self;
+            }
+        }
+        set
+        {
+            _self = value;
+        }
+    }
+
     public override void _Ready()
     {
         Args.ReadyArgs();
+
+        // Human player
+        for (int idx = 0; idx < Map.Data.Players.Count; idx++)
+        {
+            if (Map.Data.Players[idx].Human)
+            {
+                HumanPlayer = Map.Data.Players[idx];
+                break;
+            }
+        }
     }
+
     public override void _Process(double delta)
     {
         if (FirstFrame)

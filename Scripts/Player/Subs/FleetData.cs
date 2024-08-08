@@ -6,7 +6,7 @@ using System.Collections.Generic;
 [Tool]
 public partial class FleetData : Node
 {
-    [ExportCategory("PlayerParnt")]
+    [ExportCategory("PlayerParent")]
     [Export]
     public PlayerData _Player = null;
 
@@ -18,8 +18,9 @@ public partial class FleetData : Node
     [Export]
     public string FleetName = "";
     [Export]
-
     public DataBlock MoveAction = null;
+
+
     //[Export]
     //public DataBlock ShipsData = null;
 
@@ -37,6 +38,11 @@ public partial class FleetData : Node
     public List<StarData> AvailableMoves_PerTurn = new List<StarData>();
 
     // --------------------------------------------------------------------------------------------
+    public string GetLongName()
+    {
+        return Data.GetSub("Name").ValueS.Replace("_", " ");
+    }
+
     public ShipData GetShip(string ship)
     {
         for (int idx = 0; idx < Ships.Count; idx++)
@@ -48,5 +54,17 @@ public partial class FleetData : Node
         }
 
         return null;
+    }
+
+    public int GetMoveActionTurns()
+    {
+        if (MoveAction != null)
+        {
+            return MoveAction.GetSub("ProgressMax").ValueI - MoveAction.GetSub("Progress").ValueI + 1;
+        }
+        else
+        {
+            return -1;
+        }
     }
 }

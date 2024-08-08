@@ -1,0 +1,337 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfgd75pgdtcw7"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Build/UIBuildings.cs" id="1_4ayer"]
+[ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="2_3pp7x"]
+[ext_resource type="Script" path="res://Scripts/UI/Build/UIBuildingsItem.cs" id="3_rdrie"]
+[ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="4_wpcc3"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="5_0lt76"]
+[ext_resource type="Texture2D" uid="uid://wd744unakx1k" path="res://Assets/Planets/Desert.png" id="6_8fs6g"]
+[ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="7_6r5pj"]
+[ext_resource type="Texture2D" uid="uid://dqhju10mfykde" path="res://Assets/UI/arrow.png" id="9_633eu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuutl"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.752941, 0.188235, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[node name="BuildingsInfo" type="Control" node_paths=PackedStringArray("Prefix", "Main", "Resources", "Upgrades")]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -72.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ayer")
+Prefix = []
+Main = []
+Resources = []
+Upgrades = []
+
+[node name="OutpostChoose" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(320, 128)
+layout_mode = 2
+offset_left = -333.0
+offset_top = -1.0
+offset_right = 333.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_3pp7x")
+
+[node name="MarginContainer" type="MarginContainer" parent="OutpostChoose"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OutpostChoose/MarginContainer"]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PossibleOutpost2" type="HBoxContainer" parent="OutpostChoose/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2"]
+layout_mode = 2
+
+[node name="Building_1" type="Control" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer"]
+custom_minimum_size = Vector2(88, 136)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("3_rdrie")
+
+[node name="Button" type="Button" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme = ExtResource("4_wpcc3")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iuutl")
+
+[node name="IconText" type="RichTextLabel" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+theme = ExtResource("5_0lt76")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_8fs6g")
+expand_mode = 1
+
+[node name="Level" type="Panel" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_3pp7x")
+theme_type_variation = &"SolidDarkGrey"
+
+[node name="Level" type="RichTextLabel" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button/Level"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_0lt76")
+bbcode_enabled = true
+text = "[center]$I[/center]"
+
+[node name="InConstruction" type="Panel" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_3pp7x")
+
+[node name="Turns" type="RichTextLabel" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button/InConstruction"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_0lt76")
+bbcode_enabled = true
+text = "[center][b] $turns[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+
+[node name="ToolTip" type="Control" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("7_6r5pj")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+
+[node name="Cost" type="RichTextLabel" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1"]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[center]$value[img=20x20]Assets/UI/Symbols/Prod.png[/img][/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Time" type="RichTextLabel" parent="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1"]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[center]$time[img=20x20]Assets/UI/Symbols/Turn.png[/img][/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MinSize" type="Control" parent="OutpostChoose/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(274, 0)
+layout_mode = 2
+
+[node name="NoBuildingsBg" type="VBoxContainer" parent="OutpostChoose"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="NoBuildings" type="RichTextLabel" parent="OutpostChoose/NoBuildingsBg"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]No buildings available at this location.[/center]"
+fit_content = true
+
+[node name="BuildBg" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -172.0
+offset_top = 64.0
+offset_right = -172.0
+offset_bottom = 64.0
+
+[node name="PanelContainer" type="PanelContainer" parent="BuildBg"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_3pp7x")
+
+[node name="MarginContainer" type="MarginContainer" parent="BuildBg/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="Colonize" type="Button" parent="BuildBg/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("4_wpcc3")
+
+[node name="Text" type="RichTextLabel" parent="BuildBg/PanelContainer/MarginContainer/Colonize"]
+custom_minimum_size = Vector2(128, 20)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_0lt76")
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]Build[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ToolTip" type="Control" parent="BuildBg/PanelContainer/MarginContainer/Colonize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("7_6r5pj")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="TextureRect" type="TextureRect" parent="BuildBg"]
+self_modulate = Color(0.501961, 0.12549, 0, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -60.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_633eu")
+expand_mode = 1
+flip_v = true
+
+[connection signal="pressed" from="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button" to="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1" method="OnSelect"]
+[connection signal="mouse_entered" from="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button/ToolTip" to="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button/ToolTip" to="OutpostChoose/MarginContainer/HBoxContainer/PossibleOutpost2/HBoxContainer/Building_1/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="BuildBg/PanelContainer/MarginContainer/Colonize/ToolTip" to="BuildBg/PanelContainer/MarginContainer/Colonize/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="BuildBg/PanelContainer/MarginContainer/Colonize/ToolTip" to="BuildBg/PanelContainer/MarginContainer/Colonize/ToolTip" method="OnHoverExit"]

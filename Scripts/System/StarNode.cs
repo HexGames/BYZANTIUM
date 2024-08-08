@@ -18,9 +18,11 @@ public partial class StarNode : Node
     //public LocationDef Def = null;
     [Export]
     public StarData Data = null;
+    //[Export]
+    //public StarGFX GFX = null;
     [Export]
-    public StarGFX GFX = null;
-
+    public GFXStar GFX = null;
+    
 
     public override void _Ready()
     {

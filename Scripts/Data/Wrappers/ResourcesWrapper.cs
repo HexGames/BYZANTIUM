@@ -1,14 +1,16 @@
 using Godot;
 using Godot.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 
 public class ResourcesWrapper
 {
     public enum ParentType
     {
         Feature,
-        Building,
         Planet,
+        Building,
+        Colony,
         System,
         Sector,
         Player
@@ -16,7 +18,7 @@ public class ResourcesWrapper
 
     public class IncomeInfo
     {
-        public ResourcesWrapper _Parent = null; 
+        public ResourcesWrapper _Parent = null;
         public string Name = "Res";
 
         public bool HasStockpile = false;
@@ -30,6 +32,28 @@ public class ResourcesWrapper
         public int PerLevel_FromSystem = 0;
         public int Bonus = 0;
         public int Stockpile = 0;
+
+        public IncomeInfo Copy()
+        {
+            IncomeInfo info = new IncomeInfo();
+
+            info._Parent = _Parent;
+            info.Name = Name;
+            
+            info.HasStockpile = HasStockpile;
+            
+            info.Income = Income;
+            info.Level = Level;
+            info.PerPop = PerPop;
+            info.PerCPop = PerCPop;
+            info.PerLevel = PerLevel;
+            info.PerLevel_System = PerLevel_System;
+            info.PerLevel_FromSystem = PerLevel_FromSystem;
+            info.Bonus = Bonus;
+            info.Stockpile = Stockpile;
+
+            return info;
+        }
 
         public int GetIncomeTotal()
         {
@@ -88,6 +112,21 @@ public class ResourcesWrapper
         public int Used = 0;
         public int UsedBonus = 0;
 
+        public LimitInfo Copy()
+        {
+            LimitInfo info = new LimitInfo();
+
+            info._Parent = _Parent;
+            info.Name = Name;
+
+            info.Max = Max;
+            info.MaxBonus = MaxBonus;
+            info.Used = Used;
+            info.UsedBonus = UsedBonus;
+
+            return info;
+        }
+
         public int GetMaxTotal()
         {
             return Max * (100 + MaxBonus) / 100;
@@ -127,6 +166,25 @@ public class ResourcesWrapper
         public int Growth = 0;
         public int GrowthBonus = 0;
         public int GrowthPenalty = 0;
+
+        public PopsInfo Copy()
+        {
+            PopsInfo info = new PopsInfo();
+
+            info._Parent = _Parent;
+            info.Name = Name;
+
+            info.CPops = CPops;
+            info.Pops = Pops;
+            info.PopsMax = PopsMax;
+            info.PopsMaxBonus = PopsMaxBonus;
+            info.Control = Control;
+            info.Growth = Growth;
+            info.GrowthBonus = GrowthBonus;
+            info.GrowthPenalty = GrowthPenalty;
+
+            return info;
+        }
 
         public int GetPopsMaxTotal() { return PopsMax * (100 + PopsMaxBonus) / 100; }
         public int GetCPops() { return CPops > 0 ? CPops : Pops * Control / 100; }
@@ -178,12 +236,16 @@ public class ResourcesWrapper
 
         //Refresh();
     }
-
-    public void Refresh()
+    public void Clear()
     {
         Incomes.Clear();
         Limits.Clear();
         Pops = null;
+    }
+
+    public void Refresh()
+    {
+        Clear();
 
         Array<DataBlock> resDataSubs = _Data.GetSubs();
         for (int idxData = 0; idxData < resDataSubs.Count; idxData++)
@@ -263,14 +325,16 @@ public class ResourcesWrapper
         }
     }
 
-    public void Add(ResourcesWrapper otherRes, bool totals = false)
+    public void Add(ResourcesWrapper otherRes, bool totals = false, bool addMissing = false)
     {
-        for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+        for (int otherIdx = 0; otherIdx < otherRes.Incomes.Count; otherIdx++)
         {
-            for (int otherIdx = 0; otherIdx < otherRes.Incomes.Count; otherIdx++)
+            bool found = false;
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
             {
                 if (Incomes[resIdx].Name == otherRes.Incomes[otherIdx].Name)
                 {
+                    found = true;
                     if (totals)
                     {
                         Incomes[resIdx].Income += otherRes.Incomes[otherIdx].GetIncomeTotal();
@@ -286,16 +350,24 @@ public class ResourcesWrapper
                         Incomes[resIdx].Bonus += otherRes.Incomes[otherIdx].Bonus;
                         // Incomes[resIdx].Stockpile += otherRes.Incomes[otherIdx].Stockpile;
                     }
-                }                                                        
+                }
+            }
+            
+            if (addMissing && found == false)
+            {
+                IncomeInfo otherInfo = otherRes.Incomes[otherIdx];
+                IncomeInfo info = otherInfo.Copy();
+                Incomes.Add(info);
             }
         }
-
-        for (int resIdx = 0; resIdx < Limits.Count; resIdx++)
+        for (int otherIdx = 0; otherIdx < otherRes.Limits.Count; otherIdx++)
         {
-            for (int otherIdx = 0; otherIdx < otherRes.Limits.Count; otherIdx++)
+            bool found = false;
+            for (int resIdx = 0; resIdx < Limits.Count; resIdx++)
             {
                 if (Limits[resIdx].Name == otherRes.Limits[otherIdx].Name)
                 {
+                    found = true;
                     if (totals)
                     {
                         Limits[resIdx].Max += otherRes.Limits[otherIdx].GetMaxTotal();
@@ -310,28 +382,44 @@ public class ResourcesWrapper
                     }
                 }
             }
+
+            if (addMissing && found == false)
+            {
+                LimitInfo otherInfo = otherRes.Limits[otherIdx];
+                LimitInfo info = otherInfo.Copy();
+                Limits.Add(info);
+            }
         }
 
-        if (Pops != null && otherRes.Pops != null)
+        if (otherRes.Pops != null)
         {
-            if (totals)
+            if (Pops != null)
             {
-                Pops.CPops += otherRes.Pops.GetCPops();
-                Pops.Pops += otherRes.Pops.Pops;
-                Pops.PopsMax += otherRes.Pops.GetPopsMaxTotal();
-                Pops.Growth += otherRes.Pops.GetGrowthTotal();
+                if (totals)
+                {
+                    Pops.CPops += otherRes.Pops.GetCPops();
+                    Pops.Pops += otherRes.Pops.Pops;
+                    Pops.PopsMax += otherRes.Pops.GetPopsMaxTotal();
+                    Pops.Growth += otherRes.Pops.GetGrowthTotal();
+                }
+                else
+                {
+                    Pops.Pops += otherRes.Pops.Pops;
+                    Pops.PopsMax += otherRes.Pops.PopsMax;
+                    Pops.PopsMaxBonus += otherRes.Pops.PopsMaxBonus;
+                    Pops.Control += otherRes.Pops.Control;
+                    Pops.Growth += otherRes.Pops.Growth;
+                    Pops.GrowthBonus += otherRes.Pops.GrowthBonus;
+                }
             }
-            else
+            else if (addMissing)
             {
-                Pops.Pops += otherRes.Pops.Pops;
-                Pops.PopsMax += otherRes.Pops.PopsMax;
-                Pops.PopsMaxBonus += otherRes.Pops.PopsMaxBonus;
-                Pops.Control += otherRes.Pops.Control;
-                Pops.Growth += otherRes.Pops.Growth;
-                Pops.GrowthBonus += otherRes.Pops.GrowthBonus;
+                PopsInfo otherInfo = otherRes.Pops;
+                Pops = otherInfo.Copy();
             }
         }
     }
+
     public void ProcessGrowth()
     {
         if (Pops != null)
@@ -464,4 +552,30 @@ public class ResourcesWrapper
         return "";
     }
 
+    public string ToStringCondensed()
+    {
+        string totalIncome = "";
+
+        for (int idx = 0; idx < Incomes.Count; idx++)
+        {
+            if (Incomes[idx].GetIncomeTotal() != 0)
+            {
+                totalIncome += " " + Incomes[idx].ToString_Income() + Helper.GetIcon(Incomes[idx].Name);
+            }
+        }
+
+        if (Pops != null)
+        {
+            if (Pops.GrowthBonus != 0)
+            {
+                totalIncome += Pops.ToString_GrowthBonus() + Helper.GetIcon("Growth");
+            }
+            if (Pops.GrowthPenalty != 0)
+            {
+                totalIncome += Pops.ToString_GrowthPenalty() + Helper.GetIcon("Growth");
+            }
+        }
+
+        return totalIncome;
+    }
 }
