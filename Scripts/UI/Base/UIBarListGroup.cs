@@ -212,22 +212,22 @@ public partial class UIBarListGroup : Control
         {
             if (Parent == false)
             {
-                Game.Input.SelectStar(_SystemData.Star);
+                //Game.Input.SelectStar(_SystemData.Star);
             }
             else
             {
-                Game.Input.DeselectAllButSector();
+                //Game.Input.DeselectAllButSector();
             }
         }
         else if (_SectorData != null)
         {
             if (Parent == false)
             {
-                Game.Input.SelectSector(_SectorData);
+                //Game.Input.SelectSector(_SectorData);
             }
             else
             {
-                Game.Input.DeselectAll();
+                //Game.Input.DeselectAll();
             }
         }
     }

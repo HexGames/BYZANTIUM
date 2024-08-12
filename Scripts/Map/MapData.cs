@@ -24,8 +24,6 @@ public partial class MapData : Node
     public Array<PlayerData> Players = new Array<PlayerData>();
     [Export]
     public Array<StarData> Stars = new Array<StarData>();
-    [Export]
-    public Array<PawnData> Fleets = new Array<PawnData>();
 
     // ---
     private DataBlock TurnData = null;
@@ -80,7 +78,6 @@ public partial class MapData : Node
     {
         Players.Clear();
         Stars.Clear();
-        Fleets.Clear();
     }
 
     // --------------------------------------------------------------------------------------------

@@ -157,19 +157,19 @@ public partial class AssetLibrary : Node
                 stdMat.AlbedoColor = new Color(1.0f, 0.7f, 0.75f, 0.25f * (1.0f - alpha));
             }
         }
-        // star hover
-        {
-            if (StarHover is StandardMaterial3D stdMat)
-            {
-                stdMat.AlbedoColor = new Color(1.0f, 1.0f, 1.0f, 1.0f - alpha);
-            }
-        }
-        // star selected
-        {
-            if (StarSelected is StandardMaterial3D stdMat)
-            {
-                stdMat.AlbedoColor = new Color(1.0f, 1.0f, 1.0f, 1.0f - alpha);
-            }
-        }
+        //// star hover
+        //{
+        //    if (StarHover is StandardMaterial3D stdMat)
+        //    {
+        //        stdMat.AlbedoColor = new Color(1.0f, 1.0f, 1.0f, 1.0f - alpha);
+        //    }
+        //}
+        //// star selected
+        //{
+        //    if (StarSelected is StandardMaterial3D stdMat)
+        //    {
+        //        stdMat.AlbedoColor = new Color(1.0f, 1.0f, 1.0f, 1.0f - alpha);
+        //    }
+        //}
     }
 }

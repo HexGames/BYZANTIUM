@@ -16,14 +16,6 @@ public partial class DefLibrary : Node
     [Export]
     public Dictionary<string, int> DB_Types_I = new Dictionary<string, int>();
 
-    public string LocationsDir = "res:///Def/Locations/";
-    //[Export]
-    //public Array<LocationDef> Locations = new Array<LocationDef>();
-
-    public string PawnsDir = "res:///Def/Pawns/";
-    [Export]
-    public Array<PawnDef> Pawns = new Array<PawnDef>();
-
     [Export]
     public DefUIPlanets UIPlanets = null;
     [Export]

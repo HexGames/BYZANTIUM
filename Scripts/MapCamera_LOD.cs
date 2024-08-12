@@ -49,10 +49,7 @@ public partial class MapCamera : Camera3D
         if (Game.self == null)
             return;
 
-        for (int idx = 0; idx < Game.self.Map.Data.Stars.Count; idx++)
-        {
-            Game.self.Map.Data.Stars[idx]._Node.GFX.LODClose();
-        }
+        Game.self.Input.ZoomIn();
     }
 
     private void LODFar()
@@ -60,10 +57,8 @@ public partial class MapCamera : Camera3D
         if (Game.self == null)
             return;
 
-        for (int idx = 0; idx < Game.self.Map.Data.Stars.Count; idx++)
-        {
-            Game.self.Map.Data.Stars[idx]._Node.GFX.LODFar();
-        }
+
+        Game.self.Input.ZoomOut();
     }
 
     private void LODAlpha(float alpha)
@@ -78,6 +73,6 @@ public partial class MapCamera : Camera3D
             Game.self.Map.Data.Stars[idx]._Node.GFX.LODAlpha(alpha);
         }
 
-        GD.Print("LOD ALPHA: " + alpha.ToString());
+        //GD.Print("LOD ALPHA: " + alpha.ToString());
     }
 }

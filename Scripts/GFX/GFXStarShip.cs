@@ -11,7 +11,9 @@ public partial class GFXStarShip : Node3D
     private Area3D Collision = null;
     public CollisionShape3D CollisionShape = null;
 
-    //private bool Enemy = false;
+    [ExportCategory("Runtime")]
+    [Export]
+    public Array<FleetData> _Fleets = new Array<FleetData>();
 
     public void Init()
     {
@@ -31,9 +33,22 @@ public partial class GFXStarShip : Node3D
         //Visible = false;
     }
 
-    public void RefreshShip(int size, bool rings, string type)
+    public void RefreshShip(Array<FleetData> fleets)
     {
-        
+        _Fleets.Clear();
+
+        if (fleets.Count > 0)
+        {
+            _Fleets.AddRange(fleets);
+
+            CollisionShape.Disabled = false;
+            Visible = true;
+        }
+        else
+        {
+            CollisionShape.Disabled = true;
+            Visible = false;
+        }
     }
 
     public void SignalInputEvent(Node camera, InputEvent inputEvent, Vector3 position, Vector3 normal, long shapeIdx)
@@ -45,10 +60,12 @@ public partial class GFXStarShip : Node3D
                 // on mouse button release
                 if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
                 {
+                    Game.self.Input.OnSelectFleets(new Array<FleetData>());
                 }
                 // on mouse button release
                 if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
                 {
+                    Game.self.Input.DeselectOneStep();
                 }
             }
         }
@@ -56,11 +73,19 @@ public partial class GFXStarShip : Node3D
 
     public void OnHover()
     {
-        Hover.Visible = true;
+        Game.self.Input.OnHoverFleets(new Array<FleetData>());
     }
 
     public void OnDehover()
     {
+        Game.self.Input.OnDehoverFleets();
+    }
+    public void GFXHover()
+    {
+        Hover.Visible = true;
+    }
+    public void GFXDehover()
+    {
         Hover.Visible = false;
-    } 
+    }
 }

@@ -9,7 +9,7 @@ public partial class StarGFXIncomingFleet : Node3D
 {
     private Node3D HUDPoint = null;
     [Export]
-    public StarGFX _Parent = null;
+    public GFXStar _Parent = null;
     [Export]
     public UIGalaxyPath HUD = null;
 

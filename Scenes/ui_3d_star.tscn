@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="2_87l03"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="3_20a5y"]
 
-[node name="Star" type="Control"]
+[node name="Star2" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 960.0

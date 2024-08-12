@@ -31,29 +31,29 @@ public partial class StarNode : Node
         PlayerInput = GetNode<PlayerInput>("/root/Main/PlayerInput");
     }
 
-    public void Select(bool sector = false)
-    {
-        if (sector && Data.System?._Sector != null)
-        {
-            PlayerInput.SelectSector(Data.System._Sector);
-        }
-        else
-        {
-            PlayerInput.SelectStar(Data);
-        }        
-    }
+    //public void Select(bool sector = false)
+    //{
+    //    if (sector && Data.System?._Sector != null)
+    //    {
+    //        PlayerInput.SelectSector(Data.System._Sector);
+    //    }
+    //    else
+    //    {
+    //        PlayerInput.SelectStar(Data);
+    //    }        
+    //}
 
-    public void SelectFleet(bool friendlyToStar)
-    {
-        PlayerInput.SelectFleet(Data, friendlyToStar);
-
-        //if ()
-        //{
-        //    PlayerInput.SelectSector(Data.System._Sector);
-        //}
-        //else
-        //{
-        //    PlayerInput.SelectStar(Data);
-        //}
-    }
+    //public void SelectFleet(bool friendlyToStar)
+    //{
+    //    PlayerInput.SelectFleet(Data, friendlyToStar);
+    //
+    //    //if ()
+    //    //{
+    //    //    PlayerInput.SelectSector(Data.System._Sector);
+    //    //}
+    //    //else
+    //    //{
+    //    //    PlayerInput.SelectStar(Data);
+    //    //}
+    //}
 }

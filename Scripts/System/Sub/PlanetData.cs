@@ -6,6 +6,9 @@ using System.Collections.Generic;
 [Tool]
 public partial class PlanetData : Node
 {
+    [ExportCategory("GFX")]
+    [Export]
+    public GFXStarOrbit GFX = null;
     [ExportCategory("PlanetParent")]
     [Export]
     public StarData _Star = null;

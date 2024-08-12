@@ -122,7 +122,7 @@ public partial class MapCamera : Camera3D
     // calculated
     [ExportCategory("Runtime")]
     [Export]
-    public int LOD = 0;
+    public int LOD = 2;
     [Export]
     public Vector3 TargetPosition; //camera position
     private float TargetHeight;

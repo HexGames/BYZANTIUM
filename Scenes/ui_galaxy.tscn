@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b2a0hskimxnut" path="res://Scenes/ui_fleets.tscn" id="12_sv4sa"]
 [ext_resource type="PackedScene" uid="uid://c5x0k0s750tc4" path="res://Scenes/__ui_general.tscn" id="16_3p5nr"]
 
-[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("UI3DManager", "Incoming", "Paths", "General", "Resources", "GalaxyBar", "ColonyBuildings", "SectorConstruction", "SectorShipbuilding", "PopsInfo", "PlanetInfo", "ControlInfo", "FactionsInfo", "FleetsSelected", "CurrentTurn")]
+[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("UI3DManager", "Incoming", "Paths", "General", "Resources", "GalaxyBar", "ColonyBuildings", "SectorConstruction", "SectorShipbuilding", "PopsInfo", "PlanetInfo", "ControlInfo", "FactionsInfo", "FleetsSelected", "CurrentTurn", "DEBUGText")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,6 +44,7 @@ ControlInfo = NodePath("ControlInfo")
 FactionsInfo = NodePath("FactionsInfo")
 FleetsSelected = NodePath("SelectedFleets")
 CurrentTurn = NodePath("Turn")
+DEBUGText = NodePath("DEBUG")
 
 [node name="UI3D" type="Control" parent="." node_paths=PackedStringArray("UI3DStarPool")]
 layout_mode = 1
@@ -227,5 +228,24 @@ grow_vertical = 0
 text = "Current Turn: 0"
 
 [node name="GeneralUI" parent="." instance=ExtResource("16_3p5nr")]
+
+[node name="DEBUG" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [connection signal="pressed" from="EndTurn/Button" to="." method="OnEndTurn"]

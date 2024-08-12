@@ -28,7 +28,9 @@ public partial class StarData : Node
     [Export]
     public SystemData System = null;
 
-    public List<FleetData> Fleets_PerTurn = new List<FleetData>();
+    [ExportCategory("Runtime")]
+    [Export]
+    public Array<FleetData> Fleets_PerTurn = new Array<FleetData>();
 
 
     // --------------------------------------------------------------------------------------------

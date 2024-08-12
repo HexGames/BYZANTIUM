@@ -20,6 +20,11 @@ public partial class GFXStarOrbit : Node3D
 
     private bool Moon = false;
 
+
+    [ExportCategory("Runtime")]
+    [Export]
+    public PlanetData _Planet = null;
+
     public void Init()
     {
         OrbitLine = GetNode<MeshInstance3D>("OrbitLine");
@@ -49,6 +54,7 @@ public partial class GFXStarOrbit : Node3D
 
         Selected.Visible = false;
         Hover.Visible = false;
+        CollisionShape.Disabled = true;
 
         Visible = false;
     }
@@ -79,8 +85,11 @@ public partial class GFXStarOrbit : Node3D
         RotationDegrees = new Vector3(0.0f, angle, 0.0f);
     }
 
-    public void RefreshPlanet(int size, bool rings, string type)
+    public void RefreshPlanet(PlanetData planet, int size, bool rings, string type)
     {
+        _Planet = planet;
+        _Planet.GFX = this;
+
         Planet.Scale = (0.4f + 0.2f * size) * Vector3.One;
         Hover.Scale = (0.12f + 0.03f * size) * Vector3.One;
         Selected.Scale = (0.12f + 0.03f * size) * Vector3.One;
@@ -101,8 +110,11 @@ public partial class GFXStarOrbit : Node3D
         }
     }
 
-    public void RefreshAsteroids()
+    public void RefreshAsteroids(PlanetData planet)
     {
+        _Planet = planet;
+        _Planet.GFX = this;
+
         Planet.Visible = false;
         Hover.Scale = 0.21f * Vector3.One;
         Selected.Scale = 0.21f * Vector3.One;
@@ -110,14 +122,14 @@ public partial class GFXStarOrbit : Node3D
         Visible = true;
     }
 
-    public void RefreshMoon1(int size, string type)
+    public void RefreshMoon1(PlanetData planet,int size, string type)
     {
-        Moon_1.RefreshPlanet(size, false, type);
+        Moon_1.RefreshPlanet(planet, size, false, type);
     }
 
-    public void RefreshMoon2(int size, string type)
+    public void RefreshMoon2(PlanetData planet, int size, string type)
     {
-        Moon_2.RefreshPlanet(size, false, type);
+        Moon_2.RefreshPlanet(planet, size, false, type);
     }
 
     public void Optimize()
@@ -138,10 +150,12 @@ public partial class GFXStarOrbit : Node3D
                 // on mouse button release
                 if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
                 {
+                    Game.self.Input.OnSelectPlanet(_Planet);
                 }
                 // on mouse button release
                 if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
                 {
+                    Game.self.Input.DeselectOneStep();
                 }
             }
         }
@@ -149,10 +163,19 @@ public partial class GFXStarOrbit : Node3D
 
     public void OnHover()
     {
+        //Hover.Visible = true;
+        Game.self.Input.OnHoverPlanet(_Planet);
+    }
+    public void OnDehover()
+    {
+        Game.self.Input.OnDehoverPlanet(_Planet);
+        //Hover.Visible = false;
+    }
+    public void GFXHover()
+    {
         Hover.Visible = true;
     }
-
-    public void OnDehover()
+    public void GFXDehover()
     {
         Hover.Visible = false;
     }

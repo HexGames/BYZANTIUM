@@ -133,6 +133,7 @@ public partial class MapNode : Node
                 {
                     //GD.Print("You clicked on " + Label.Text);
                     //DeselectAll();
+                    //Game.Input.DeselectOneStep();
                     Game.Input.DeselectOneStep();
                 }
             }

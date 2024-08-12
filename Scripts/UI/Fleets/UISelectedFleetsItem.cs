@@ -70,6 +70,6 @@ public partial class UISelectedFleetsItem : Control
 
     public void OnDeselect()
     {
-        Game.Input.DeselectFleet(_Fleet);
+        //Game.Input.DeselectFleet(_Fleet);
     }
 }

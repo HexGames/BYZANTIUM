@@ -447,7 +447,7 @@ public partial class UIBarListPlanet : Control
 
         Selected.Visible = true;
 
-        Game.Input.SelectPlanet(_PlanetData, false, false);
+        //Game.Input.SelectPlanet(_PlanetData, false, false);
 
         //if (GalaxyList != null)
         //{
@@ -467,7 +467,7 @@ public partial class UIBarListPlanet : Control
 
         Selected.Visible = true;
 
-        Game.Input.SelectPlanet(_PlanetData, true, false);
+        //Game.Input.SelectPlanet(_PlanetData, true, false);
 
         //if (GalaxyList != null)
         //{
@@ -487,7 +487,7 @@ public partial class UIBarListPlanet : Control
 
         Selected.Visible = true;
 
-        Game.Input.SelectPlanet(_PlanetData, false, true);
+        //Game.Input.SelectPlanet(_PlanetData, false, true);
 
         //if (GalaxyList != null)
         //{

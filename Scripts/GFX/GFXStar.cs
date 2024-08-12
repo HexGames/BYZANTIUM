@@ -21,7 +21,12 @@ public partial class GFXStar : Node3D
 
     [ExportCategory("Runtime")]
     [Export]
+    public StarData _Star = null;
+    [Export]
     public UI3DStar GUI3D = null;
+
+    private Array<FleetData> PlayerFleets = new Array<FleetData>();
+    private Array<FleetData> OtherFleets = new Array<FleetData>();
 
     public void Init()
     {
@@ -67,26 +72,28 @@ public partial class GFXStar : Node3D
         //planets.VisibilityParent = close.GetPath();
     }
 
-    public void Refresh(StarData system, int angleSeed)
+    public void Refresh(StarData star, int angleSeed)
     {
+        _Star = star;
+
         int angle = 180 + ((angleSeed * 13) % 18) * 10;
         int angleNoise = ((angleSeed * 3) % 18) * 4;
         int idxOffset = 1;
         for (int idx = 0; idx < Orbits.Count + 1; idx++)
         {
-            if (idx + idxOffset < system.Planets.Count)
+            if (idx + idxOffset < _Star.Planets.Count)
             {
-                if (system.Planets[idx + idxOffset].Data.HasSub("Moon"))
+                if (_Star.Planets[idx + idxOffset].Data.HasSub("Moon"))
                 {
-                    int size = system.Planets[idx + idxOffset].Data.GetSub("Size").ValueI;
-                    string type = system.Planets[idx + idxOffset].Data.GetSub("Type").ValueS;
-                    if (system.Planets[idx + idxOffset - 1].Data.HasSub("Rings") || system.Planets[idx + idxOffset - 1].Data.HasSub("Moon"))
+                    int size = _Star.Planets[idx + idxOffset].Data.GetSub("Size").ValueI;
+                    string type = _Star.Planets[idx + idxOffset].Data.GetSub("Type").ValueS;
+                    if (_Star.Planets[idx + idxOffset - 1].Data.HasSub("Rings") || _Star.Planets[idx + idxOffset - 1].Data.HasSub("Moon"))
                     {
-                        Orbits[idx - 1].RefreshMoon2(size, type);
+                        Orbits[idx - 1].RefreshMoon2(_Star.Planets[idx + idxOffset], size, type);
                     }
                     else
                     {
-                        Orbits[idx - 1].RefreshMoon1(size, type);
+                        Orbits[idx - 1].RefreshMoon1(_Star.Planets[idx + idxOffset], size, type);
                     }
                     idxOffset++;
                     idx--;
@@ -96,16 +103,16 @@ public partial class GFXStar : Node3D
                 {
                     //Orbits[idx].RefreshLocation(idx, angle + angleNoise);
                     Orbits[idx].RefreshAngle(angle + angleNoise);
-                    string type = system.Planets[idx + idxOffset].Data.GetSub("Type").ValueS;
+                    string type = _Star.Planets[idx + idxOffset].Data.GetSub("Type").ValueS;
                     if (type == "Asteroids")
                     {
-                        Orbits[idx].RefreshAsteroids();
+                        Orbits[idx].RefreshAsteroids(_Star.Planets[idx + idxOffset]);
                     }
                     else
                     {
-                        int size = system.Planets[idx + idxOffset].Data.GetSub("Size").ValueI;
-                        bool rings = system.Planets[idx + idxOffset].Data.HasSub("Rings");
-                        Orbits[idx].RefreshPlanet(size, rings, type);
+                        int size = _Star.Planets[idx + idxOffset].Data.GetSub("Size").ValueI;
+                        bool rings = _Star.Planets[idx + idxOffset].Data.HasSub("Rings");
+                        Orbits[idx].RefreshPlanet(_Star.Planets[idx + idxOffset], size, rings, type);
                     }
 
                     angle = (angle + 140) % 360;
@@ -117,6 +124,14 @@ public partial class GFXStar : Node3D
                 Orbits[idx].Visible = false;
             }
         }
+
+        PlayerFleets.Clear();
+        OtherFleets.Clear();
+
+        //for
+
+        //ShipFriendly.RefreshShip(_Star.FleetsFriendly_PerTurn);
+        //ShipEnemy.RefreshShip(_Star.FleetsOthers_PerTurn);
 
         Layer_1.RotationDegrees = new Vector3(0, (angleSeed * 7) % 18 * 20, 0); 
         Layer_2.RotationDegrees = new Vector3(0, (angleSeed * 9) % 24 * 15, 0);
@@ -132,10 +147,12 @@ public partial class GFXStar : Node3D
                 // on mouse button release
                 if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
                 {
+                    Game.self.Input.OnSelectStar(_Star);
                 }
                 // on mouse button release
                 if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
                 {
+                    Game.self.Input.DeselectOneStep();
                 }
             }
         }
@@ -143,10 +160,17 @@ public partial class GFXStar : Node3D
 
     public void OnHover()
     {
+        Game.self.Input.OnHoverStar(_Star);
+    }
+    public void OnDehover()
+    {
+        Game.self.Input.OnDehoverStar(_Star);
+    }
+    public void GFXHover()
+    {
         Hover.Visible = true;
     }
-
-    public void OnDehover()
+    public void GFXDehover()
     {
         Hover.Visible = false;
     }
@@ -189,7 +213,7 @@ public partial class GFXStar : Node3D
 
     public void LODClose()
     {
-        CollisionShape.Disabled = true;
+        //CollisionShape.Disabled = false;
         for (int idx = 0; idx < Orbits.Count; idx++)
         {
             Orbits[idx].LODClose();
@@ -198,7 +222,7 @@ public partial class GFXStar : Node3D
 
     public void LODFar()
     {
-        CollisionShape.Disabled = false;
+        //CollisionShape.Disabled = false;
         for (int idx = 0; idx < Orbits.Count; idx++)
         {
             Orbits[idx].LODFar();
@@ -207,7 +231,7 @@ public partial class GFXStar : Node3D
 
     public void LODAlpha(float alpha)
     {
-        if (alpha > 0.05)
+        if (alpha > 0.05 && alpha < 0.95)
             CollisionShape.Disabled = false;
 
         ShipFriendly.Position = new Vector3(1.5f + 4.5f * alpha, 0, 0.75f + 2.25f * alpha);
