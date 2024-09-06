@@ -42,7 +42,6 @@ Player > Fleets []
 + Player > Faction_List > Faction 
 + Player > Faction_List > Faction > Name Faction_Name
 + Player > Faction_List > Faction > Ethic_1 Lib_Ethic_Name
-+ Player > Faction_List > Faction > Ethic_2 Lib_Ethic_Name
 + Player > Faction_List > Faction > Pops []
 + Player > Faction_List > Faction > Pops > Link:Player:Sector:System:Colony:PopGroup
 

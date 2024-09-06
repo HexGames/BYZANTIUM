@@ -37,7 +37,7 @@ public partial class GFXPathsItem : Node3D
         Star_To = to;
 
         Vector3 offset_A = new Vector3(3.0f, 0.0f, 2.5f);
-        if (linkedToFleet.AtStar_PerTurn.System != null && linkedToFleet.AtStar_PerTurn.System._Sector._Player != Game.HumanPlayer)
+        if (linkedToFleet.Star_At_PerTurn.System != null && linkedToFleet.Star_At_PerTurn.System._Player != Game.HumanPlayer)
             offset_A = new Vector3(3.0f, 0.0f, -2.5f);
         Vector3 offset_B = new Vector3(-2.0f, 0.0f, 0.0f);
 

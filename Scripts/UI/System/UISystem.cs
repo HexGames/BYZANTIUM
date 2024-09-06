@@ -10,8 +10,6 @@ public partial class UISystem : Control
     public UIConstruction SectorConstruction = null;
     [Export]
     public UIShipbuilding SectorShipbuilding = null;
-    [Export]
-    public UIEconomyInfo EconomyInfo = null;
     public UIItemList PlanetInfo = null;
     [Export]
     public UIItemList BuildingInfo = null;
@@ -84,7 +82,7 @@ public partial class UISystem : Control
 
         if (_StarData.System != null)
         {
-            SectorConstruction.Refresh(_StarData.System._Sector);
+            //SectorConstruction.Refresh(_StarData.System);
             SectorConstruction.Visible = true;
             SectorShipbuilding.Visible = false;
 
@@ -92,7 +90,7 @@ public partial class UISystem : Control
             BuildingInfo.Visible = false;
 
             // autoselect biggest colony
-            if (_StarData.System._Sector._Player == Game.HumanPlayer)
+            if (_StarData.System._Player == Game.HumanPlayer)
             {
                 SystemBar.ForceSelect(_StarData.System.Colonies[0].Planet);
             }
@@ -123,13 +121,13 @@ public partial class UISystem : Control
         }
     }
 
-    public void HoverSector()
-    {
-        if (_StarData.System != null)
-        {
-            ShowSectorInfo(_StarData.System._Sector);
-        }
-    }
+    //public void HoverSector()
+    //{
+    //    if (_StarData.System != null)
+    //    {
+    //        ShowSectorInfo(_StarData.System._Sector);
+    //    }
+    //}
 
     public void Dehover()
     {
@@ -169,23 +167,20 @@ public partial class UISystem : Control
         ShowSystemInfo(SystemSelected);
     }
 
-    public void SelectSector()
-    {
-        PlanetSelected = null;
-        SystemSelected = null;
-        SectorSelected = _StarData.System._Sector;
-
-        ShowSectorInfo(SectorSelected);
-    }
+    //public void SelectSector()
+    //{
+    //    PlanetSelected = null;
+    //    SystemSelected = null;
+    //    SectorSelected = _StarData.System._Sector;
+    //
+    //    ShowSectorInfo(SectorSelected);
+    //}
 
     public void ShowSectorInfo(SectorData sector)
     {
         PlanetInfo.Visible = false;
 
         BuildingInfo.Visible = false;
-
-        EconomyInfo.Refresh(sector);
-        EconomyInfo.Visible = true;
     }
 
     public void ShowSystemInfo(SystemData system)
@@ -194,8 +189,6 @@ public partial class UISystem : Control
 
         BuildingInfo.Visible = false;
 
-        EconomyInfo.Refresh(system);
-        EconomyInfo.Visible = true;
     }
 
     public void ShowPlanetInfo(PlanetData planet)
@@ -203,37 +196,33 @@ public partial class UISystem : Control
         PlanetInfo.Refresh(planet.Data);
         PlanetInfo.Visible = true;
 
-        if (planet.Colony != null)
-        {
-            ColonyData colony = planet.Colony;
-
-            BuildingInfo.Refresh(colony.Buildings, "Buildings");
-            BuildingInfo.Visible = true;
-
-            EconomyInfo.Refresh(colony);
-            EconomyInfo.Visible = true;
-
-            //JobList.Refresh(colony);
-            //JobList.Visible = true;
-
-            int production = colony.Resources_PerTurn.GetIncome("Production").GetIncomeTotal();
-            int shipbuilding = colony.Resources_PerTurn.GetIncome("Shipbuilding").GetIncomeTotal();
-
-            //SectorShipbuilding.Refresh(colony.ColonyName, colony.ActionShipbuilding, shipbuilding);
-            SectorShipbuilding.Visible = false;
-        }
-        else
-        {
-            BuildingInfo.Visible = false;
-            EconomyInfo.Visible = false;
-            SectorShipbuilding.Visible = false;
-        }
+        //if (planet.Colony != null)
+        //{
+        //    ColonyData colony = planet.Colony;
+        //
+        //    BuildingInfo.Refresh(colony.Buildings, "Buildings");
+        //    BuildingInfo.Visible = true;
+        //
+        //
+        //    //JobList.Refresh(colony);
+        //    //JobList.Visible = true;
+        //
+        //    int production = colony.Resources_PerTurn.GetIncome("Production").GetIncomeTotal();
+        //    int shipbuilding = colony.Resources_PerTurn.GetIncome("Shipbuilding").GetIncomeTotal();
+        //
+        //    //SectorShipbuilding.Refresh(colony.ColonyName, colony.ActionShipbuilding, shipbuilding);
+        //    SectorShipbuilding.Visible = false;
+        //}
+        //else
+        //{
+        //    BuildingInfo.Visible = false;
+        //    SectorShipbuilding.Visible = false;
+        //}
     }
 
     public void HideInfo()
     {
         PlanetInfo.Visible = false;
         BuildingInfo.Visible = false;
-        EconomyInfo.Visible = false;
     }
 }

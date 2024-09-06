@@ -194,7 +194,7 @@ public partial class MapData : Node
         //starNode.GFX._Node = starNode;
 
         starNode.GFX.Position = new Vector3(8.6666f * (2.0f * starData.X + starData.Y), 0.0f, starData.Y * 15.0f) - new Vector3(8.6666f * galaxySize, 0.0f, -galaxySize * 15.0f);
-        starNode.GFX.Position += (0.05f * starDataBlock.GetSub("GFX_RNG_1").ValueI) * Vector3.Right.Rotated(Vector3.Up, 0.01f * Mathf.Pi * starDataBlock.GetSub("GFX_RNG_2").ValueI);
+        starNode.GFX.Position += (0.035f * starDataBlock.GetSub("GFX_RNG_1").ValueI) * Vector3.Right.Rotated(Vector3.Up, 0.01f * Mathf.Pi * starDataBlock.GetSub("GFX_RNG_2").ValueI);
     }
 
     public void GenerateGameFromData_Star_Planet(DataBlock planetDataBlock, StarData starData)
@@ -203,7 +203,7 @@ public partial class MapData : Node
         PlanetData planetData = new PlanetData();
         planetData.Name = planetDataBlock.ValueS + "_Data";
         planetData.PlanetName = planetDataBlock.ValueS;
-        planetData.Resources = planetDataBlock.GetSub("Resources");
+        //planetData.Resources = planetDataBlock.GetSub("Resources");
 
         planetData.Data = planetDataBlock;
 
@@ -276,7 +276,8 @@ public partial class MapData : Node
         playerData.Status = playerDataBlock.GetSub("Status");
         playerData.Civics = playerDataBlock.GetSub("Civics");
         playerData.Bonuses = playerDataBlock.GetSub("Bonuses");
-        playerData.Human = playerDataBlock.GetSub("Human") != null;
+        playerData.PlayerID = Players.Count;
+        playerData.Human = playerDataBlock.GetSub("Human", false) != null;
 
         playerData.Data = playerDataBlock;
 
@@ -287,11 +288,11 @@ public partial class MapData : Node
 
         Players.Add(playerData);
 
-        DataBlock sectorList = playerDataBlock.GetSub("Sector_List");
-        Array<DataBlock> sectors = sectorList.GetSubs("Sector");
-        for (int idx = 0; idx < sectors.Count; idx++)
+        DataBlock systemList = playerDataBlock.GetSub("Systems_List");
+        Array<DataBlock> systems = systemList.GetSubs("System");
+        for (int idx = 0; idx < systems.Count; idx++)
         {
-            GenerateGameFromData_Player_Sector(sectors[idx], playerData);
+            GenerateGameFromData_Player_System(systems[idx], playerData);
         }
 
         DataBlock shipDesignList = playerDataBlock.GetSub("Designs");
@@ -309,72 +310,44 @@ public partial class MapData : Node
         }
     }
 
-    public void GenerateGameFromData_Player_Sector(DataBlock sectorDataBlock, PlayerData playerData)
-    {
-        // Data
-        SectorData sector = new SectorData();
-        sector.Name = sectorDataBlock.ValueS + "_Data";
-        sector.SectorName = sectorDataBlock.ValueS;
-        sector.Resources = sectorDataBlock.GetSub("Resources");
-        sector.ActionBuildQueue = sectorDataBlock.GetSub("ActionBuildQueue");
-        //sectorData.Budget = sectorDataBlock.GetSub("Budget");
-        //sectorData.Buildings = sectorDataBlock.GetSub("Buildings");
-        //sectorData.ActionCampaign = sectorDataBlock.GetSub("Campaign");
-
-        sector.Data = sectorDataBlock;
-
-        sector._Player = playerData;
-
-        playerData.AddChild(sector);//, true, InternalMode.Back);
-        sector.Owner = GetTree().EditedSceneRoot;
-
-        playerData.Sectors.Add(sector);
-
-        DataBlock systemList = sectorDataBlock.GetSub("System_List");
-        Array<DataBlock> systems = systemList.GetSubs("System");
-        for (int idx = 0; idx < systems.Count; idx++)
-        {
-            GenerateGameFromData_Player_Sector_System(systems[idx], sector);
-        }
-    }
-
-    public void GenerateGameFromData_Player_Sector_System(DataBlock systemDataBlock, SectorData sectorData)
+    public void GenerateGameFromData_Player_System(DataBlock systemDataBlock, PlayerData playerData)
     {
         // Data
         SystemData system = new SystemData();
         system.Name = systemDataBlock.ValueS + "_Data";
+        system.Capital = systemDataBlock.HasSub("Capital");
         system.Resources = systemDataBlock.GetSub("Resources");
 
         system.Data = systemDataBlock;
 
-        system._Sector = sectorData;
+        system._Player = playerData;
 
         system.Star = Data.GetLinkStarData(systemDataBlock, this);
         system.Star.System = system;
 
-        sectorData.AddChild(system);//, true, InternalMode.Back);
+        playerData.AddChild(system);//, true, InternalMode.Back);
         system.Owner = GetTree().EditedSceneRoot;
 
-        sectorData.Systems.Add(system);
+        playerData.Systems.Add(system);
 
         DataBlock colonyList = systemDataBlock.GetSub("Colony_List");
         Array<DataBlock> colonies = colonyList.GetSubs("Colony");
         for (int idx = 0; idx < colonies.Count; idx++)
         {
-            ColonyData colony = GenerateGameFromData_Player_Sector_System_Colony(colonies[idx], system);
+            ColonyData colony = GenerateGameFromData_Player_System_Colony(colonies[idx], system);
             system.Colonies.Add(colony);
         }
     }
 
-    public ColonyData GenerateGameFromData_Player_Sector_System_Colony(DataBlock colonyDataBlock, SystemData systemData)
+    public ColonyData GenerateGameFromData_Player_System_Colony(DataBlock colonyDataBlock, SystemData systemData)
     {
         // Data
         ColonyData colony = new ColonyData();
         colony.Name = colonyDataBlock.ValueS + "_Data";
         colony.ColonyName = colonyDataBlock.ValueS;
         colony.Type = colonyDataBlock.GetSub("Type");
-        colony.Resources = colonyDataBlock.GetSub("Resources");
-        colony.Buildings = colonyDataBlock.GetSub("Buildings");
+        //colony.Resources = colonyDataBlock.GetSub("Resources");
+        //colony.Buildings = colonyDataBlock.GetSub("Buildings");
 
         colony.Data = colonyDataBlock;
 
@@ -414,7 +387,7 @@ public partial class MapData : Node
         FleetData fleet = new FleetData();
         fleet.Name = fleetDataBlock.ValueS + "_Data";
         fleet.FleetName = fleetDataBlock.ValueS;
-        fleet.MoveAction = fleetDataBlock.GetSub("ActionMove");
+        //fleet.MoveAction = fleetDataBlock.GetSub("ActionMove");
         //fleet.ShipsData = fleetDataBlock.GetSub("Resources");
         //design.ActionBuildQueue = sectorDataBlock.GetSub("ActionBuildQueue");
 

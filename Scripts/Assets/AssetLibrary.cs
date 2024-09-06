@@ -17,9 +17,11 @@ public partial class AssetLibrary : Node
     [Export]
     private Material FOG_1;
     [Export]
-    private Material StarHover;
+    public Material StarNormal;
     [Export]
-    private Material StarSelected;
+    public Material StarHover;
+    [Export]
+    public Material StarSelected;
 
     [ExportCategory("Loader")]
     [Export]

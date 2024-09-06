@@ -92,7 +92,6 @@ public partial class UIOutpost : Control
     public void Refresh(PlanetData planet)
     {
         _Planet = planet;
-        _Sector = planet._Star.System?._Sector;
 
         // terraform
         for ( int idx = 0; idx < Prefix.Count; idx++)
@@ -110,59 +109,59 @@ public partial class UIOutpost : Control
 
         ColonizeButton_Tooltip.Disabled = true;
 
-        Array<DataBlock> buildings;
-        if (_Planet.Colony != null)
-        {
-            buildings = _Planet.Colony.Buildings.GetSubs("Building");
-        }
-        else
-        {
-            buildings = _Planet.Data.GetSubs("Building");
-        }
+        //Array<DataBlock> buildings;
+        //if (_Planet.Colony != null)
+        //{
+        //    buildings = _Planet.Colony.Buildings.GetSubs("Building");
+        //}
+        //else
+        //{
+        //    buildings = _Planet.Data.GetSubs("Building");
+        //}
+        //
+        //int mainBuildingsIdx = 0;
+        //for (int idx = 0; idx < buildings.Count; idx++)
+        //{
+        //    DataBlock building = buildings[idx];
+        //    //DataBlock upgrade = building.GetSub("NewBuilding", false);
+        //    BuildingQueueWrapper.Info inConstructionInfo = null;
+        //    if (_Sector != null)
+        //    {
+        //        if (building.GetSub("InConstruction", false) != null)
+        //        {
+        //            if (_Planet.Colony != null)
+        //            {
+        //                continue;
+        //                //inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.Get(building.ValueS, _Planet);
+        //            }
+        //            else
+        //            {
+        //                inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.Get(building.ValueS, _Planet);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.GetUpgrade(building.ValueS, _Planet);
+        //        }
+        //    }
+        //
+        //    DataBlock buildingDef;
+        //    if (inConstructionInfo != null)
+        //    {
+        //        buildingDef = inConstructionInfo.BuildingDef;
+        //    }
+        //    else
+        //    {
+        //        buildingDef = Game.Def.GetBuilding(buildings[idx].ValueS);
+        //    }
+        //
+        //    RefreshMainBuilding(mainBuildingsIdx, buildingDef, inConstructionInfo);
+        //    mainBuildingsIdx++;
+        //}
 
-        int mainBuildingsIdx = 0;
-        for (int idx = 0; idx < buildings.Count; idx++)
-        {
-            DataBlock building = buildings[idx];
-            //DataBlock upgrade = building.GetSub("NewBuilding", false);
-            BuildingQueueWrapper.Info inConstructionInfo = null;
-            if (_Sector != null)
-            {
-                if (building.GetSub("InConstruction", false) != null)
-                {
-                    if (_Planet.Colony != null)
-                    {
-                        continue;
-                        //inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.Get(building.ValueS, _Planet);
-                    }
-                    else
-                    {
-                        inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.Get(building.ValueS, _Planet);
-                    }
-                }
-                else
-                {
-                    inConstructionInfo = _Sector.BuildQueue_PerTurn_ActionChange.GetUpgrade(building.ValueS, _Planet);
-                }
-            }
-
-            DataBlock buildingDef;
-            if (inConstructionInfo != null)
-            {
-                buildingDef = inConstructionInfo.BuildingDef;
-            }
-            else
-            {
-                buildingDef = Game.Def.GetBuilding(buildings[idx].ValueS);
-            }
-
-            RefreshMainBuilding(mainBuildingsIdx, buildingDef, inConstructionInfo);
-            mainBuildingsIdx++;
-        }
-
-        hasColonySection = mainBuildingsIdx > 0;
-        Colonizing.Visible = false;
-        Colonize.Visible = false;
+        //hasColonySection = mainBuildingsIdx > 0;
+        //Colonizing.Visible = false;
+        //Colonize.Visible = false;
 
         // res
         bool hasResSection = false;
@@ -212,15 +211,15 @@ public partial class UIOutpost : Control
                 BuildingSelected = building;
 
                 BuildingQueueWrapper.Info inConstructionInfo = null;
-                for (int sectorIdx = 0; sectorIdx < Game.HumanPlayer.Sectors.Count; sectorIdx++)
-                {
-                    var info = Game.HumanPlayer.Sectors[sectorIdx].BuildQueue_PerTurn_ActionChange.Get(building._BuildingDef.ValueS, _Planet);
-                    if (info != null)
-                    {
-                        inConstructionInfo = info;
-                        break;
-                    }
-                }
+                //for (int sectorIdx = 0; sectorIdx < Game.HumanPlayer.Sectors.Count; sectorIdx++)
+                //{
+                //    var info = Game.HumanPlayer.Sectors[sectorIdx].BuildQueue_PerTurn_ActionChange.Get(building._BuildingDef.ValueS, _Planet);
+                //    if (info != null)
+                //    {
+                //        inConstructionInfo = info;
+                //        break;
+                //    }
+                //}
 
                 if (inConstructionInfo != null)
                 {
@@ -250,7 +249,7 @@ public partial class UIOutpost : Control
                 if (action != null)
                 {
                     ActionBuild.AddToQueue(Game, action);
-                    Game.GalaxyUI.SectorConstruction.Refresh(_Sector);
+                    //Game.GalaxyUI.SectorConstruction.Refresh(_Sector);
                     //CloseUpgradeWindow();
                     Refresh(_Planet);
                 }

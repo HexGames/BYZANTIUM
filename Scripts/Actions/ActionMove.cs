@@ -13,7 +13,7 @@ public class ActionMove
         {
             StarData star = game.Map.Data.Stars[starIdx];
 
-            if (fleet.AtStar_PerTurn != star && fleet.AtStar_PerTurn.DistanceTo(star) < 4)
+            if (fleet.Star_At_PerTurn != star && fleet.Star_At_PerTurn.DistanceTo(star) < 4)
             {
                 fleet.AvailableMoves_PerTurn.Add(star);
             }
@@ -30,7 +30,7 @@ public class ActionMove
         fleet.MoveAction = Data.AddData(fleet.Data, "ActionMove", game.Def);
 
         Data.AddData(fleet.MoveAction, "Progress", 0, game.Def);
-        Data.AddData(fleet.MoveAction, "ProgressMax", fleet.AtStar_PerTurn.DistanceTo(star), game.Def);
+        Data.AddData(fleet.MoveAction, "ProgressMax", fleet.Star_At_PerTurn.DistanceTo(star), game.Def);
         Data.AddLink(fleet.MoveAction, star, game.Def);
     }
     static public bool CancelMove(Game game, FleetData fleet)

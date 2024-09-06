@@ -46,7 +46,7 @@ public partial class UIPopsControl : Control
         _Colony = colony;
         _Sector = null;
 
-        PlayerName.Text = PlayerName_Original.Replace("$player", _Colony._System._Sector._Player.PlayerName + "'s World");
+        PlayerName.Text = PlayerName_Original.Replace("$player", _Colony._System._Player.PlayerName + "'s World");
 
         Upkeep.Text = Upkeep_Original.Replace("$value", _Colony.Resources_PerTurn.GetLimit("Authority").ToString_Used(true));
 

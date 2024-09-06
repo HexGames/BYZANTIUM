@@ -27,6 +27,8 @@ public partial class UIBuildingsItem : Control
 
     public override void _Ready()
     {
+        return;
+
         Game = GetNode<Game>("/root/Main/Game");
 
         Icon = GetNode<TextureRect>("Button/Icon");
@@ -139,7 +141,7 @@ public partial class UIBuildingsItem : Control
 
     public void OnSelect()
     {
-        Game.GalaxyUI.ColonyBuildings.Select(this);
+        //Game.GalaxyUI.ColonyBuildings.Select(this);
 
         Selected.Visible = true;
     }

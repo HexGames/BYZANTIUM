@@ -21,6 +21,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 3
 alignment = 1
@@ -30,12 +31,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 theme = ExtResource("2_87l03")
-theme_type_variation = &"Title"
+theme_type_variation = &"ColorMod"
 
 [node name="System" type="RichTextLabel" parent="VBoxContainer/PanelContainer_1"]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("3_20a5y")
+bbcode_enabled = true
 text = "Sol"
 fit_content = true
 autowrap_mode = 0
@@ -45,12 +47,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 theme = ExtResource("2_87l03")
-theme_type_variation = &"Title"
+theme_type_variation = &"ColorMod"
 
 [node name="Colony" type="RichTextLabel" parent="VBoxContainer/PanelContainer_2"]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("3_20a5y")
+bbcode_enabled = true
 text = "Earth"
 fit_content = true
 autowrap_mode = 0
@@ -60,12 +63,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 theme = ExtResource("2_87l03")
-theme_type_variation = &"Title"
+theme_type_variation = &"ColorMod"
 
 [node name="Extra" type="RichTextLabel" parent="VBoxContainer/PanelContainer_3"]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("3_20a5y")
+bbcode_enabled = true
 text = "+3"
 fit_content = true
 autowrap_mode = 0

@@ -82,6 +82,18 @@ public partial class DefLibrary : Node
         }
     }
     [Export]
+    public bool LoadEmpireDef
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                LoadEmpiresDefFunc();
+            }
+        }
+    }
+    [Export]
     public bool LoadEthicsDef
     {
         get => false;
@@ -126,6 +138,18 @@ public partial class DefLibrary : Node
             if (value)
             {
                 LoadPlanetsDefFunc();
+            }
+        }
+    }
+    [Export]
+    public bool LoadPlanetsNames
+    {
+        get => false;
+        set
+        {
+            if (value)
+            {
+                LoadPlanetNamesFunc();
             }
         }
     }
@@ -181,6 +205,7 @@ public partial class DefLibrary : Node
     public override void _Ready()
     {
         _Ready_Buildings();
+        _Ready_Empires();
         _Ready_Features();
     }
     //    DirAccess folder = null;

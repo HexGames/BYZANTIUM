@@ -12,30 +12,31 @@ public partial class MapGenerator : Node
     {
         DataBlock empire = Data.AddData(player, "Empire", DefLibrary);
 
-        Data.AddData(empire, "Flag", empireInfo.GetSub("Flag").ValueS, DefLibrary);
+        Data.AddData(empire, "Flag", empireInfo.GetSub("FlagID").ValueI, DefLibrary);
     }
 
     private void GenerateNewMapSave_Players_Resources(DataBlock player)
     {
         DataBlock resources = Data.AddData(player, "Resources", DefLibrary);
 
-        Data.AddData(resources, "Energy*Income", 0, DefLibrary);
-        Data.AddData(resources, "Minerals*Income", 0, DefLibrary);
-        Data.AddData(resources, "Production*Income", 0, DefLibrary);
-        Data.AddData(resources, "Shipbuilding*Income", 0, DefLibrary);
+        Data.AddData(resources, "BC*Income", 0, DefLibrary);
+        Data.AddData(resources, "Influence*Income", 0, DefLibrary);
+        Data.AddData(resources, "Research*Income", 0, DefLibrary);
 
+        Data.AddData(resources, "BC*Stockpile", 0, DefLibrary);
+        Data.AddData(resources, "Influence*Stockpile", 0, DefLibrary);
         Data.AddData(resources, "Research*Stockpile", 0, DefLibrary);
-        Data.AddData(resources, "Culture*Stockpile", 0, DefLibrary);
-        Data.AddData(resources, "BC*Stockpile", 100, DefLibrary);
+
         Data.AddData(resources, "Authority*Used", 0, DefLibrary);
+        Data.AddData(resources, "Authority*Max", 0, DefLibrary);
     }
 
     private void GenerateNewMapSave_Players_Status(DataBlock player)
     {
         DataBlock status = Data.AddData(player, "Status", DefLibrary);
 
-        Data.AddData(status, "TechPoints_max", 0, DefLibrary);
-        Data.AddData(status, "TechPoints_tech", "None", DefLibrary);
+        //Data.AddData(status, "TechPoints_max", 0, DefLibrary);
+        //Data.AddData(status, "TechPoints_tech", "None", DefLibrary);
     }
 
     private void GenerateNewMapSave_Players_Civics(DataBlock player)

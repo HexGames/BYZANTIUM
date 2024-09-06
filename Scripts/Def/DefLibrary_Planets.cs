@@ -13,6 +13,8 @@ public partial class DefLibrary : Node
     public Array<DataBlock> Planets = new Array<DataBlock>();
     [Export]
     public Array<DataBlock> PlanetsCustom = new Array<DataBlock>();
+    [Export]
+    public Array<string> PlanetsNames = new Array<string>();
 
     //public List<ActionTargetInfo> BuildingsInfo = new List<ActionTargetInfo>();
 
@@ -101,5 +103,16 @@ public partial class DefLibrary : Node
         }
 
         SavePlanetsDef();
+    }
+
+    public void LoadPlanetNamesFunc()
+    {
+        PlanetsDefData = Data.LoadFile("Defs_Mod/PlanetsNames.mod", this);
+
+        PlanetsNames.Clear();
+        for ( int idx = 0; idx < PlanetsDefData.GetSubs().Count; idx++)
+        {
+            PlanetsNames.Add( PlanetsDefData.GetSubs()[idx].Name );
+        }
     }
 }

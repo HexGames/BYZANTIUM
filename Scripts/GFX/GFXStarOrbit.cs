@@ -5,13 +5,11 @@ using Godot.Collections;
 public partial class GFXStarOrbit : Node3D
 {
     // planets and moons
+    public MeshInstance3D Planet = null;
     private MeshInstance3D OrbitLine = null;
     private Node3D Offset = null;
     private Area3D Collision = null;
     private CollisionShape3D CollisionShape = null;
-    private MeshInstance3D Planet = null;
-    private Node3D Hover = null;
-    private Node3D Selected = null;
     // only for planets
     private MeshInstance3D AsteroidField = null;
     private MeshInstance3D Rings = null;
@@ -20,10 +18,13 @@ public partial class GFXStarOrbit : Node3D
 
     private bool Moon = false;
 
-
     [ExportCategory("Runtime")]
     [Export]
     public PlanetData _Planet = null;
+    [Export]
+    public UI3DPlanet GUI3D = null;
+    [Export]
+    public bool NeedsGUI3D = false;
 
     public void Init()
     {
@@ -32,8 +33,6 @@ public partial class GFXStarOrbit : Node3D
         Collision = GetNode<Area3D>("Offset/Area3D");
         CollisionShape = GetNode<CollisionShape3D>("Offset/Area3D/CollisionShape3D");
         Planet = GetNode<MeshInstance3D>("Offset/Planet");
-        Selected = GetNode<Node3D>("Offset/Selected");
-        Hover = GetNode<Node3D>("Offset/Hover");
         if (HasNode("Offset/Moon_1"))
         {
             AsteroidField = GetNode<MeshInstance3D>("Offset/AsteroidField");
@@ -52,8 +51,6 @@ public partial class GFXStarOrbit : Node3D
         Collision.MouseEntered += OnHover;
         Collision.MouseExited += OnDehover;
 
-        Selected.Visible = false;
-        Hover.Visible = false;
         CollisionShape.Disabled = true;
 
         Visible = false;
@@ -91,8 +88,6 @@ public partial class GFXStarOrbit : Node3D
         _Planet.GFX = this;
 
         Planet.Scale = (0.4f + 0.2f * size) * Vector3.One;
-        Hover.Scale = (0.12f + 0.03f * size) * Vector3.One;
-        Selected.Scale = (0.12f + 0.03f * size) * Vector3.One;
         if (Rings != null) Rings.Visible = rings;
         Visible = true;
 
@@ -116,8 +111,6 @@ public partial class GFXStarOrbit : Node3D
         _Planet.GFX = this;
 
         Planet.Visible = false;
-        Hover.Scale = 0.21f * Vector3.One;
-        Selected.Scale = 0.21f * Vector3.One;
         AsteroidField.Visible = true;
         Visible = true;
     }
@@ -171,22 +164,84 @@ public partial class GFXStarOrbit : Node3D
         Game.self.Input.OnDehoverPlanet(_Planet);
         //Hover.Visible = false;
     }
-    public void GFXHover()
-    {
-        Hover.Visible = true;
-    }
-    public void GFXDehover()
-    {
-        Hover.Visible = false;
-    }
 
     public void LODClose()
     {
         CollisionShape.Disabled = false;
+
+        if (Moon_1.Planet != null) Moon_1.CollisionShape.Disabled = false;
+        if (Moon_2.Planet != null) Moon_2.CollisionShape.Disabled = false;
     }
 
     public void LODFar()
     {
         CollisionShape.Disabled = true;
+
+        if (Moon_1.Planet != null) Moon_1.CollisionShape.Disabled = true;
+        if (Moon_2.Planet != null) Moon_2.CollisionShape.Disabled = true;
+    }
+
+    public void ShowGUI3D()
+    {
+        NeedsGUI3D = true;
+
+        if (Moon_1.Planet != null) Moon_1.NeedsGUI3D = true;
+        if (Moon_2.Planet != null) Moon_2.NeedsGUI3D = true;
+    }
+    public void HideGUI3D()
+    {
+        NeedsGUI3D = false;
+
+        if (Moon_1.Planet != null) Moon_1.NeedsGUI3D = false;
+        if (Moon_2.Planet != null) Moon_2.NeedsGUI3D = false;
+    }
+
+    public override void _Process(double delta)
+    {
+        if (Engine.IsEditorHint())
+            return;
+
+        if (NeedsGUI3D && Game.self.Camera.LOD < 2)
+        {
+            // update GUI instance from pool
+            Vector2 pos2D = Game.self.Camera.UnprojectPosition(Planet.GlobalPosition /*+ new Vector3(0.0f, 0.0f, 1.0f)*/);
+
+            bool inFOV = pos2D.X > -100 && pos2D.X < GetViewport().GetVisibleRect().Size.X + 100
+            && pos2D.Y > -100 && pos2D.Y < GetViewport().GetVisibleRect().Size.Y + 100;
+
+            if (inFOV)
+            {
+                if (_Planet != null)
+                {
+                    if (GUI3D == null)
+                    {
+                        GUI3D = Game.self.GalaxyUI.UI3DManager.Get_UI3DPlanet();
+                        GUI3D.GFX = this;
+                        GUI3D.Refresh();
+                        GUI3D.Visible = true;
+                    }
+
+                    GUI3D.Position = pos2D;
+                }
+            }
+            else
+            {
+                if (GUI3D != null)
+                {
+                    GUI3D.Visible = false;
+                    GUI3D.GFX = null;
+                    GUI3D = null;
+                }
+            }
+        }
+        else
+        {
+            if (GUI3D != null)
+            {
+                GUI3D.Visible = false;
+                GUI3D.GFX = null;
+                GUI3D = null;
+            }
+        }
     }
 }

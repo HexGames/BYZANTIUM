@@ -1,0 +1,17 @@
+Star Star_2
+{
+	ID 1
+	GFX_RNG_1 94
+	GFX_RNG_2 18
+	X 2
+	Y 0
+	Planet_List 
+	{
+		Planet Star
+		Planet Gas_Giant
+		Planet Asteroids
+		Planet Ocean
+		Planet Artic
+		[...]
+	}
+}

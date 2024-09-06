@@ -2,20 +2,23 @@ using Godot;
 
 public partial class MapCamera : Camera3D
 {
-    private float LODTransition = 0.0f;
+    private float LODTransition = 1.0f;
     public void ProcessLOD(float delta)
     {
-        bool isFar = Position.Y > 40;
+        float oldLODTransition = LODTransition;
+        int oldLOD = LOD;
+
+        bool isFar = Position.Y > 30;
         if (isFar)
         {
-            LODTransition += Mathf.Clamp(1.0f + (Position.Y - 40.0f) / 5.0f, 1.0f, 8.0f) * delta;
+            LODTransition += Mathf.Clamp(1.0f + (Position.Y - 30.0f) / 5.0f, 1.0f, 8.0f) * delta;
         }
         else
         {
-            LODTransition -= Mathf.Clamp(1.0f + (40.0f - Position.Y) / 2.5f, 1.0f, 8.0f) * delta;
+            LODTransition -= Mathf.Clamp(1.0f + (30.0f - Position.Y) / 2.5f, 1.0f, 8.0f) * delta;
         }
 
-        if (LODTransition <= 0.0f)
+        if (LODTransition < 0.0f)
         {
             LODTransition = 0.0f;
             if (LOD != 0)
@@ -26,7 +29,7 @@ public partial class MapCamera : Camera3D
             }
             // else do nothing - most of the cases
         }
-        else if (LODTransition >= 1.0f)
+        else if (LODTransition > 1.0f)
         {
             LODTransition = 1.0f;
             if (LOD != 2)
@@ -42,6 +45,9 @@ public partial class MapCamera : Camera3D
             LOD = 1;
             LODAlpha(LODTransition);
         }
+
+        oldLODTransition = 0.123f;
+        oldLOD = 0;
     }
 
     private void LODClose()
@@ -72,6 +78,8 @@ public partial class MapCamera : Camera3D
         {
             Game.self.Map.Data.Stars[idx]._Node.GFX.LODAlpha(alpha);
         }
+
+        Game.self.GalaxyUI.UI3DManager.LODAlpha(alpha);
 
         //GD.Print("LOD ALPHA: " + alpha.ToString());
     }

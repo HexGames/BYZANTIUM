@@ -1,0 +1,50 @@
+// A - first type of map - simple 4X  |  B - second type of map - fixed map
+// A: size padding_character no_star_character sectors_count groups_count core_0 sector_group_1 ...
+// Example: A 9 , . 20 9 0 abc def gh ij klm nop qr st
+// A: size padding_character no_star_character playerscount --- 'PlayerLetter'SystemLevel'SystemPotential'
+// Example: B 9 , . 20 
+// 20 * 6 + 12 = 132 systems
+B 9 , . 20
+
+,    ,    ,    ,    ,    ,    ,    ,    ,    .    P12  .    .    x1   x4   .    .    x3   x4
+
+  ,    ,    ,    ,    ,    ,    ,    ,    .    .    .    .    x3   B13c .    .    .    D13c x2 
+
+    ,    ,    ,    ,    ,    ,    ,    .    .    x2   P23c x2   .    .    x4   x1   .    .    .
+
+      ,    ,    ,    ,    ,    ,    x2   .    .    .    .    .    .    x1   .    .    .    .    .  
+
+        ,    ,    ,    ,    ,    O24c .    x2   .    P12  .    .    .    .    .    I13  J31  J11  .   
+
+          ,    ,    ,    ,    .    .    O13  .    .    .    .    x3   .    I13  I13  I23c .    J11  .   
+
+            ,    ,    ,    .    O13  x2   .    x3   .    P22  .    .    .    I12  H23  .    .    J11  J43c
+
+              ,    ,    .    x2   .    .    .    .    .    V53c .    .    H22  H23c H22  .    F31  .    J23
+
+                ,    .    .    x1   .    .    .    T24c T11  .    .    .    G21  E55c F21  F43c .    .    .  
+
+                  .    N21  N22c .    .    .    .    T22  .    .    .    G34c .    .    .    F31  .    .    K44c
+
+                    .    N14  .    .    .    .    .    R44c .    .    .    G21  .    .    .    K12  K11  .    ,   
+
+                      .    .    .    .    .    .    S13  S12  .    .    .    .    .    .    .    K14  K12  ,    ,   
+
+                        .    x2   .    x2   .    .    S15c .    S11 .     .    G31  .    .    .    .    ,    ,    ,   
+
+                          .    .    .    .    .    .    .    .    .    .    .    .    .    L33c L33  ,    ,    ,    ,   
+
+                            .    .    .    .    x3   .    .    x5   .    C14c x4   .    .    L33  ,    ,    ,    ,    ,
+
+                              .    .    .    .    .    .    .    .    .    .    .    x1   .    ,    ,    ,    ,    ,    ,   
+
+                                x1   x3   .    A14c .    .    .    .    M51  M52  .    x3   ,    ,    ,    ,    ,    ,    ,   
+
+                                  .    .    x3   x1   .    x3   .    M52  M53c M52  .    ,    ,    ,    ,    ,    ,    ,    ,
+
+                                    .    .    .    .    .    .    .    M51  M52  .    ,    ,    ,    ,    ,    ,    ,    ,    ,
+
+// A-Z player
+// 1-5 System Level
+// 1-5 System Potential
+

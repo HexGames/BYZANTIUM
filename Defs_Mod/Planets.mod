@@ -1,140 +1,109 @@
 Def_Planets
 {
 	// ----------------------------------------------- stars
+
+	// Bonus: Hyper_Active +5
+
 	Planet:Star Red_Dwarf
 	{
 		Weight 10
 		PlanetsCold
-		GasGiantsFirst
-		Planets:Min 2
-		Planets:Max 6
-		Yields
-		{
-			Energy 10
-		}
+		PlanetsFew
 		Features
 		{
-			Old_Star
-			Building:Stable_Orbit
+			Red_Dwarf
+			Building:Nonplanetary
 		}
 	}
 	Planet:Star White_Dwarf
 	{
 		Weight 4
 		PlanetsCold
-		Planets:Min 2
-		Planets:Max 6
-		Yields
-		{
-			Energy 10
-		}
+		PlanetsFew
 		Features
 		{
-			Old_Star
-			Building:Stable_Orbit
+			White_Dwarf
+			Building:Nonplanetary
 		}
 	}
 	Planet:Star Main_Sequence
 	{
 		Weight 4
-		Planets:Min 5
-		Planets:Max 9
-		Yields
-		{
-			Energy 30
-		}
 		Features
 		{
-			Active_Star
-			Building:Stable_Orbit
+			Main_Sequence
+			Building:Nonplanetary
 		}
 	}
 	Planet:Star Red_Giant
 	{
 		Weight 2
 		PlanetsHot
-		Planets:Min 2
-		Planets:Max 6
-		Yields
-		{
-			Energy 20
-		}
+		PlanetsFew
 		Features
 		{
-			Giant_Star
-			Building:Stable_Orbit
+			Red_Giant
+			Building:Nonplanetary
 		}
 	}
 	Planet:Star Blue_Giant
 	{
 		Weight 2
 		PlanetsHot
-		Planets:Min 2
-		Planets:Max 6
-		Yields
-		{
-			Energy 20
-		}
+		PlanetsFew
 		Features
 		{
-			Giant_Star
-			Building:Stable_Orbit
+			Blue_Giant
+			Building:Nonplanetary
 		}
 	}
 	Planet:Star Pulsar
 	{
 		Weight 1
 		PlanetsHot
-		Planets:Min 1
-		Planets:Max 3
-		Yields
-		{
-			Energy 40
-		}
+		PlanetsFew
 		Features
 		{
-			Hyper_Active_Star
-			Building:Stable_Orbit
+			Pulsar
+			Building:Nonplanetary
 		}
 	}
 	// ----------------------------------------------- specials
-	Planet:Gas_Giant
+
+	// Bonus: Rich_Gasses +5
+	// Bonus: Rings +5
+	// Bonus: Tiny_Moon +5
+
+	Planet Gas_Giant
 	{
-		Yields
-		{
-			Energy 20
-		}
 		Features
 		{
 			Gas_Giant
-			OR
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
-			Rich_Gasses:Perc 50
-			Building:Possible_Outpost
+			Bonus Rich_Gasses
+			Bonus Rings
+			Bonus Tiny_Moon
+			Building:Nonplanetary
 		}
 	}
-	Planet:Asteroids
+
+	// Bonus: Big_Asteroid +5
+	// Bonus: Rich_Minerals +5
+
+	Planet Asteroids
 	{
-		Yields
-		{
-			Minerals 20
-		}
 		Features
 		{
 			Asteroids
-			Rich_Minerals:Perc 50
-			Building:Possible_Outpost
+			Bonus Big_Asteroid
+			Bonus Rich_Minerals
+			Building:Asteroids
 		}
 	}
-	// ----------------------------------------------- planets
+	// ----------------------------------------------- Uninhabitable
 
-	// auto-feature Extreme_Temps
-	// auto-feature High_Radiation
-	// auto-feature Low_Gravity
-	// auto-feature High_Gravity
+	// Bonus: Rings +5
+	// Bonus: Tiny_Moon +5
+	// Bonus: Rich_Minerals +5
 
 	Planet Frozen
 	{
@@ -143,13 +112,10 @@ Def_Planets
 		Temperature:Max 1
 		Features
 		{
-			Barren
-			Rocky:Perc 25
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
+			Uninhabitable
+			Bonus Rich_Minerals
+			Bonus Rings
+			Bonus Tiny_Moon
 			Building:Possible_Outpost
 		}
 	}
@@ -160,17 +126,10 @@ Def_Planets
 		Temperature:Max 5
 		Features
 		{
-			Barren
-			OR:Perc 50
-			{
-				Rocky:Weight 4
-				Rich_Minerals:Weight 1
-			}
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
+			Uninhabitable
+			Bonus Rich_Minerals
+			Bonus Rings
+			Bonus Tiny_Moon
 			Building:Possible_Outpost
 		}
 	}
@@ -181,191 +140,10 @@ Def_Planets
 		Temperature:Max 4
 		Features
 		{
-			Toxic
-			OR
-			{
-				Rocky:Weight 7
-				Rich_Minerals:Weight 2
-				Vulcanic:Weight 1
-			}
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
-			Building:Possible_Outpost
-		}
-	}
-	Planet Desert
-	{
-		Weight 2
-		Temperature:Min 2
-		Temperature:Max 4
-		Features
-		{
-			Semi-Barren
-			OR
-			{
-				Rocky:Weight 7
-				Rich_Minerals:Weight 2
-				Vulcanic:Weight 1
-			}
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
-			Building:Possible_Outpost
-		}
-	}
-	Planet Arid
-	{
-		Weight 2
-		Temperature:Min 2
-		Temperature:Max 4
-		Features
-		{
-			OR
-			{
-				Rocky:Weight 7
-				Rich_Minerals:Weight 2
-				Vulcanic:Weight 1
-			}
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
-			Building:Possible_Outpost
-		}
-	}
-	Planet Continents
-	{
-		Weight 2
-		Temperature:Min 2
-		Temperature:Max 4
-		Features
-		{
-			Oceans
-			OR:Perc 75
-			{
-				Bacterial_Life:Weight 2
-				Complex_Life:Weight 1
-			}
-			OR
-			{
-				Rocky:Weight 7
-				Rich_Minerals:Weight 2
-				Vulcanic:Weight 1
-			}
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
-			Building:Possible_Outpost
-		}
-	}
-	Planet Ocean
-	{
-		Weight 2
-		Temperature:Min 2
-		Temperature:Max 4
-		Features
-		{
-			Oceans
-			OR:Perc 75
-			{
-				Bacterial_Life:Weight 2
-				Complex_Life:Weight 1
-			}
-			OR:Perc 30
-			{
-				Rich_Minerals:Weight 2
-				Vulcanic:Weight 1
-			}
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
-			Building:Possible_Outpost
-		}
-	}
-	Planet Swamp
-	{
-		Weight 2
-		Temperature:Min 2
-		Temperature:Max 4
-		Features
-		{
-			Water
-			OR
-			{
-				Bacterial_Life:Weight 1
-				Complex_Life:Weight 1
-				Jungle:Weight 2
-			}
-			OR
-			{
-				Rocky:Weight 7
-				Rich_Minerals:Weight 2
-				Vulcanic:Weight 1
-			}
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
-			Building:Possible_Outpost
-		}
-	}
-	Planet Artic
-	{	
-		Weight 4
-		Temperature:Min 2
-		Temperature:Max 2
-		Features
-		{
-			Water:Perc 50
-			OR:Perc 50
-			{
-				Bacterial_Life:Weight 4
-				Complex_Life:Weight 1
-			}
-			OR
-			{
-				Rocky:Weight 7
-				Rich_Minerals:Weight 2
-				Vulcanic:Weight 1
-			}
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
-			Building:Possible_Outpost
-		}
-	}
-	Planet Vulcanic
-	{
-		Weight 1
-		Temperature:Min 2
-		Temperature:Max 4
-		Features
-		{
-			Water:Perc 20
-			OR:Perc 50
-			{
-				Bacterial_Life:Weight 4
-				Complex_Life:Weight 1
-			}
-			Vulcanic
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
+			Uninhabitable
+			Bonus Rich_Minerals
+			Bonus Rings
+			Bonus Tiny_Moon
 			Building:Possible_Outpost
 		}
 	}
@@ -376,16 +154,124 @@ Def_Planets
 		Temperature:Max 5
 		Features
 		{
-			Barren
-			Water:Perc 10
-			Bacterial_Life:Perc 25
-			Vulcanic
-			OR:Perc 20
-			{
-				Rings:Weight 1
-				Tiny_Moon:Weight 1
-			}
+			Uninhabitable
+			Bonus Rich_Minerals
+			Bonus Rings
+			Bonus Tiny_Moon
 			Building:Possible_Outpost
+		}
+	}
+
+	// ----------------------------------------------- Habitable
+
+	// Bonus: Rings +5
+	// Bonus: Tiny_Moon +5
+	// Bonus: Rich_Minerals +5
+	// Bonus: Life +10
+
+	Planet Desert
+	{
+		Weight 2
+		Temperature:Min 2
+		Temperature:Max 3
+		Features
+		{
+			Habitable
+			PopMaxPerSize 10
+			Bonus Rich_Minerals
+			Bonus Rings
+			Bonus Tiny_Moon
+			Building:Possible_World
+		}
+	}
+	Planet Arid
+	{
+		Weight 2
+		Temperature:Min 2
+		Temperature:Max 3
+		Features
+		{
+			Habitable
+			PopMaxPerSize 15
+			Bonus Rich_Minerals
+			Bonus Rings
+			Bonus Tiny_Moon
+			Building:Possible_World
+		}
+	}
+	Planet Continents
+	{
+		Weight 2
+		Temperature:Min 2
+		Temperature:Max 4
+		Features
+		{
+			Habitable
+			PopMaxPerSize 40
+			Bonus Rich_Minerals
+			Bonus Rings
+			Bonus Tiny_Moon
+			Building:Possible_World
+		}
+	}
+	Planet Ocean
+	{
+		Weight 2
+		Temperature:Min 2
+		Temperature:Max 4
+		Features
+		{
+			Habitable
+			PopMaxPerSize 25
+			Bonus Rich_Minerals
+			Bonus Rings
+			Bonus Tiny_Moon
+			Building:Possible_World
+		}
+	}
+	Planet Swamp
+	{
+		Weight 2
+		Temperature:Min 2
+		Temperature:Max 4
+		Features
+		{
+			Habitable
+			PopMaxPerSize 30
+			Bonus Rich_Minerals
+			Bonus Rings
+			Bonus Tiny_Moon
+			Building:Possible_World
+		}
+	}
+	Planet Artic
+	{	
+		Weight 4
+		Temperature:Min 2
+		Temperature:Max 2
+		Features
+		{
+			Habitable
+			PopMaxPerSize 20
+			Bonus Rich_Minerals
+			Bonus Rings
+			Bonus Tiny_Moon
+			Building:Possible_World
+		}
+	}
+	Planet Vulcanic
+	{
+		Weight 1
+		Temperature:Min 2
+		Temperature:Max 4
+		Features
+		{
+			Habitable
+			PopMaxPerSize 10
+			Bonus Rich_Minerals
+			Bonus Rings
+			Bonus Tiny_Moon
+			Building:Possible_World
 		}
 	}
 	// ----------------------------------------------- custom

@@ -47,11 +47,62 @@ public partial class StarData : Node
         return null;
     }
 
+    // --------------------------------------------------------------------------------------------
     public int DistanceTo(StarData otherStar)
     {
         return Mathf.Max(Mathf.Max(Mathf.Abs(X - otherStar.X), Mathf.Abs(Y - otherStar.Y)), Mathf.Abs(Z - otherStar.Z));
     }
 
+    // --------------------------------------------------------------------------------------------
+    private Array<FleetData> Fleets_Friendly = new Array<FleetData>();
+    public Array<FleetData> GetFriendlyFleets(PlayerData currentPlayer)
+    {
+        Fleets_Friendly.Clear();
+
+        for (int idx = 0; idx < Fleets_PerTurn.Count; idx++)
+        {
+            if (Fleets_PerTurn[idx]._Player == currentPlayer)
+            {
+                Fleets_Friendly.Add(Fleets_PerTurn[idx]);
+            }
+        }
+
+        return Fleets_Friendly;
+    }
+
+    private Array<FleetData> Fleets_Neutral = new Array<FleetData>();
+    public Array<FleetData> GetNeutralFleets(PlayerData currentPlayer)
+    {
+        Fleets_Neutral.Clear();
+
+        for (int idx = 0; idx < Fleets_PerTurn.Count; idx++)
+        {
+            if (Fleets_PerTurn[idx]._Player != currentPlayer && Fleets_PerTurn[idx]._Player.IsAtWarWith(currentPlayer) == false)
+            {
+                Fleets_Neutral.Add(Fleets_PerTurn[idx]);
+            }
+        }
+
+        return Fleets_Neutral;
+    }
+
+    private Array<FleetData> Fleets_Enemy = new Array<FleetData>();
+    public Array<FleetData> GetEnemyFleets(PlayerData currentPlayer)
+    {
+        Fleets_Enemy.Clear();
+
+        for (int idx = 0; idx < Fleets_PerTurn.Count; idx++)
+        {
+            if (Fleets_PerTurn[idx]._Player != currentPlayer && Fleets_PerTurn[idx]._Player.IsAtWarWith(currentPlayer) == true)
+            {
+                Fleets_Enemy.Add(Fleets_PerTurn[idx]);
+            }
+        }
+
+        return Fleets_Enemy;
+    }
+
+    // --------------------------------------------------------------------------------------------
     //[Export]
     //public Array<PawnData> PawnsInLocation = new Array<PawnData>();
 

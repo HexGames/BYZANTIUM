@@ -82,6 +82,7 @@ public partial class GameArgs : Node
             Def.LoadFactionsDefFunc();
             Def.LoadFeaturesDefFunc();
             Def.LoadPlanetsDefFunc();
+            Def.LoadPlanetNamesFunc();
             Def.LoadShipPartsDefFunc();
             Def.LoadSpeciesDefFunc();
 

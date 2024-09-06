@@ -50,41 +50,41 @@ public class BuildingQueueWrapper
             Info info = new Info();
             info.Sector = _Sector;
             info.Planet = Data.GetLinkPlanetData(queue.Subs[idx], Game.Map.Data);
-            info.BuildingOld = queue.Subs[idx].GetSub("OldBuilding");
-            info.BuildingPlanet = queue.Subs[idx].GetSub("PlanetBuilding");
-            info.BuildingDef = buildingInfo._Data;
-            if (info.Planet.Colony != null)
-            {
-                info.BuildingReal = info.Planet.Colony.Buildings.GetSub("Building", info.BuildingDef.ValueS);
-            }
-            if (info.BuildingReal != null)
-            { 
-                DataBlock inConstruction = info.BuildingReal.GetSub("InConstruction");
-                info.Progress = inConstruction.GetSub("Progress").ValueI;
-                info.ProgressMax = inConstruction.GetSub("Progress:Max").ValueI;
-                int progressNextTurn = 0;
-                if (idx == 0) progressNextTurn = Mathf.Min(info.ProgressMax, info.Progress + production);
-
-                int remaining = info.ProgressMax - info.Progress;
-                int t = Mathf.CeilToInt(1.0f * (remaining - overflow) / production);
-                turns += t;
-                overflow = t * production - (remaining - overflow);
-            }
-            else
-            {
-                info.Progress = 0; 
-                info.ProgressMax = queue.Subs[idx].GetSub("Progress:Max").ValueI;
-                int progressNextTurn = 0;
-                if (idx == 0) progressNextTurn = Mathf.Min(info.ProgressMax, production);
-
-                int remaining = info.ProgressMax;
-                int t = Mathf.CeilToInt(1.0f * (remaining - overflow) / production);
-                turns += t;
-                overflow = t * production - (remaining - overflow);
-            }
-            info.Turns = turns;
-            info.Position = idx;
-            Buildings.Add(info);
+            //info.BuildingOld = queue.Subs[idx].GetSub("OldBuilding");
+            //info.BuildingPlanet = queue.Subs[idx].GetSub("PlanetBuilding");
+            //info.BuildingDef = buildingInfo._Data;
+            //if (info.Planet.Colony != null)
+            //{
+            //    info.BuildingReal = info.Planet.Colony.Buildings.GetSub("Building", info.BuildingDef.ValueS);
+            //}
+            //if (info.BuildingReal != null)
+            //{ 
+            //    DataBlock inConstruction = info.BuildingReal.GetSub("InConstruction");
+            //    info.Progress = inConstruction.GetSub("Progress").ValueI;
+            //    info.ProgressMax = inConstruction.GetSub("Progress:Max").ValueI;
+            //    int progressNextTurn = 0;
+            //    if (idx == 0) progressNextTurn = Mathf.Min(info.ProgressMax, info.Progress + production);
+            //
+            //    int remaining = info.ProgressMax - info.Progress;
+            //    int t = Mathf.CeilToInt(1.0f * (remaining - overflow) / production);
+            //    turns += t;
+            //    overflow = t * production - (remaining - overflow);
+            //}
+            //else
+            //{
+            //    info.Progress = 0; 
+            //    info.ProgressMax = queue.Subs[idx].GetSub("Progress:Max").ValueI;
+            //    int progressNextTurn = 0;
+            //    if (idx == 0) progressNextTurn = Mathf.Min(info.ProgressMax, production);
+            //
+            //    int remaining = info.ProgressMax;
+            //    int t = Mathf.CeilToInt(1.0f * (remaining - overflow) / production);
+            //    turns += t;
+            //    overflow = t * production - (remaining - overflow);
+            //}
+            //info.Turns = turns;
+            //info.Position = idx;
+            //Buildings.Add(info);
         }
     }
 

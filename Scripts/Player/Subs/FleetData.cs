@@ -32,7 +32,7 @@ public partial class FleetData : Node
     [Export]
     public Array<ShipData> Ships = new Array<ShipData>();
 
-    public StarData AtStar_PerTurn = null;
+    public StarData Star_At_PerTurn = null;
 
     // actions
     public List<StarData> AvailableMoves_PerTurn = new List<StarData>();

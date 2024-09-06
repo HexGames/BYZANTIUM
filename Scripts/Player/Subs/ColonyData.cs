@@ -20,10 +20,10 @@ public partial class ColonyData : Node
 
     [Export]
     public DataBlock Type = null;
-    [Export]
-    public DataBlock Resources = null;
-    [Export]
-    public DataBlock Buildings = null;
+    //[Export]
+    //public DataBlock Resources = null;
+    //[Export]
+    //public DataBlock Buildings = null;
 
     [ExportCategory("ColonyData-Links")]
     [Export]

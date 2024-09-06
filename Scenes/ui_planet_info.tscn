@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjnpkcy3hqibr"]
+[gd_scene load_steps=14 format=3 uid="uid://bjnpkcy3hqibr"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Planet/UIPlanetInfo.cs" id="1_10a60"]
 [ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="1_laq5a"]
@@ -6,9 +6,25 @@
 [ext_resource type="Script" path="res://Scripts/UI/Planet/UIPlanetInfoItem.cs" id="4_i8rt3"]
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="5_8aw70"]
 [ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="6_n6wct"]
+[ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="7_uodq0"]
+[ext_resource type="Script" path="res://Scripts/UI/Progress/UIConstructionItem.cs" id="8_povlc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g4td"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 0.376471)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dv1il"]
+bg_color = Color(0.188235, 0.109804, 0.027451, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnufx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ers5"]
+bg_color = Color(0.247059, 0.14902, 0.0470588, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qygkf"]
+bg_color = Color(0.341176, 0.215686, 0.0784314, 1)
 skew = Vector2(0.32, 0)
 
 [node name="UIPlanetInfo" type="Control" node_paths=PackedStringArray("TitleLabel", "Properties")]
@@ -21,10 +37,10 @@ offset_bottom = -760.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_10a60")
-TitleLabel = NodePath("Margins/TitleBg/Title")
-Properties = [NodePath("Margins/ScrollContainer/VBoxContainer/Property_1")]
+TitleLabel = NodePath("Margins/VBoxContainer2/TitleBg/Title")
+Properties = [NodePath("Margins/VBoxContainer2/VBoxContainer/Property_1")]
 
-[node name="Margins" type="Control" parent="."]
+[node name="Margins" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,18 +52,16 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TitleBg" type="Panel" parent="Margins"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_left = 4.0
-offset_right = -4.0
-offset_bottom = 26.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer2" type="VBoxContainer" parent="Margins"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TitleBg" type="Panel" parent="Margins/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1g4td")
 
-[node name="Title" type="RichTextLabel" parent="Margins/TitleBg"]
+[node name="Title" type="RichTextLabel" parent="Margins/VBoxContainer2/TitleBg"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,41 +70,31 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ongvp")
 theme_type_variation = &"Title"
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]$name[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
-[node name="Line" type="ColorRect" parent="Margins"]
+[node name="Line" type="ColorRect" parent="Margins/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 2)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_top = 26.0
-offset_bottom = 28.0
+layout_mode = 2
+size_flags_vertical = 4
 color = Color(1, 0.25098, 0, 0.501961)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Margins"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 28.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_laq5a")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Margins/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Margins/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme = ExtResource("1_laq5a")
 
-[node name="Property_1" type="Control" parent="Margins/ScrollContainer/VBoxContainer"]
+[node name="Property_1" type="Control" parent="Margins/VBoxContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 script = ExtResource("4_i8rt3")
 
-[node name="BG" type="Panel" parent="Margins/ScrollContainer/VBoxContainer/Property_1"]
+[node name="BG" type="Panel" parent="Margins/VBoxContainer2/VBoxContainer/Property_1"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 1
 anchors_preset = -1
@@ -103,7 +107,7 @@ grow_vertical = 2
 theme = ExtResource("5_8aw70")
 theme_type_variation = &"PanelLine"
 
-[node name="Name" type="RichTextLabel" parent="Margins/ScrollContainer/VBoxContainer/Property_1/BG"]
+[node name="Name" type="RichTextLabel" parent="Margins/VBoxContainer2/VBoxContainer/Property_1/BG"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -115,7 +119,7 @@ theme = ExtResource("1_laq5a")
 bbcode_enabled = true
 text = "[left]$name[/left]"
 
-[node name="Value" type="RichTextLabel" parent="Margins/ScrollContainer/VBoxContainer/Property_1/BG"]
+[node name="Value" type="RichTextLabel" parent="Margins/VBoxContainer2/VBoxContainer/Property_1/BG"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -129,7 +133,7 @@ theme_type_variation = &"LabelBold"
 bbcode_enabled = true
 text = "[right]$value[/right]"
 
-[node name="Tooltip" type="Control" parent="Margins/ScrollContainer/VBoxContainer/Property_1/BG"]
+[node name="Tooltip" type="Control" parent="Margins/VBoxContainer2/VBoxContainer/Property_1/BG"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -144,5 +148,97 @@ Direction = 4
 Width = 320
 Title = "Colonize"
 
-[connection signal="mouse_entered" from="Margins/ScrollContainer/VBoxContainer/Property_1/BG/Tooltip" to="Margins/ScrollContainer/VBoxContainer/Property_1/BG/Tooltip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Margins/ScrollContainer/VBoxContainer/Property_1/BG/Tooltip" to="Margins/ScrollContainer/VBoxContainer/Property_1/BG/Tooltip" method="OnHoverExit"]
+[node name="Gap" type="Control" parent="Margins/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Margins/VBoxContainer2"]
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Margins/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("5_8aw70")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margins/VBoxContainer2/VBoxContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Margins/VBoxContainer2/VBoxContainer2/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("2_ongvp")
+bbcode_enabled = true
+text = "[center][b]$value[img=24x24]Assets/UI/Symbols/PopsPrivate.png[/img][/b][/center]"
+
+[node name="Item_Current" type="Button" parent="Margins/VBoxContainer2/VBoxContainer2/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("7_uodq0")
+theme_type_variation = &"Dragable"
+script = ExtResource("8_povlc")
+
+[node name="MarginContainer" type="MarginContainer" parent="Margins/VBoxContainer2/VBoxContainer2/PanelContainer/VBoxContainer/Item_Current"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="Margins/VBoxContainer2/VBoxContainer2/PanelContainer/VBoxContainer/Item_Current/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dv1il")
+
+[node name="NextTurn" type="ProgressBar" parent="Margins/VBoxContainer2/VBoxContainer2/PanelContainer/VBoxContainer/Item_Current/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_lnufx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3ers5")
+step = 1.0
+value = 55.0
+show_percentage = false
+
+[node name="Progress" type="ProgressBar" parent="Margins/VBoxContainer2/VBoxContainer2/PanelContainer/VBoxContainer/Item_Current/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_lnufx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qygkf")
+step = 1.0
+value = 45.0
+show_percentage = false
+
+[node name="Turns" type="RichTextLabel" parent="Margins/VBoxContainer2/VBoxContainer2/PanelContainer/VBoxContainer/Item_Current/MarginContainer/Panel"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_ongvp")
+bbcode_enabled = true
+text = "[center][b]$value[img=24x24]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+
+[connection signal="mouse_entered" from="Margins/VBoxContainer2/VBoxContainer/Property_1/BG/Tooltip" to="Margins/VBoxContainer2/VBoxContainer/Property_1/BG/Tooltip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Margins/VBoxContainer2/VBoxContainer/Property_1/BG/Tooltip" to="Margins/VBoxContainer2/VBoxContainer/Property_1/BG/Tooltip" method="OnHoverExit"]

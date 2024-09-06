@@ -1,6 +1,6 @@
 // size padding_characer no_star_characher sectors_count groups_count core_0 sector_group_1 ...
 // 20 * 6 + 12 = 132 systems
-9 , . 20 9 0 abc def gh ij klm nop qr st
+A 9 , . 20 9 0 abc def gh ij klm nop qr st
 
 , , , , , , , , , . . b b c . c m . .
  , , , , , , , , . b b b c c c m m . .

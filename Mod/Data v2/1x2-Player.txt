@@ -1,0 +1,44 @@
+Player Player_0
+{
+	Human 
+	Empire 
+	{
+		Flag res://Assets/Flags/Earth_Round.png
+	}
+	Resources 
+	{
+		Research*Stockpile 150
+		Culture*Stockpile 150
+		BC*Stockpile 373
+		Authority*Used 0
+		Authority*Max 0
+	}
+	Status 
+	{
+		TechPoints_max 0
+		TechPoints_tech None
+	}
+	Civics 
+	Bonuses 
+	Designs // rename to Design_List ?
+	{
+		Design Design_1
+		Design Design_2
+		Design Design_3
+		[...]
+	}
+	Sector_List 
+	{
+		Sector Sector_1 // rename Core to Sector_1 and add Name variable if needed
+		Sector Sector_2
+		Sector Sector_3
+		[...]
+	}
+	Fleets 
+	{
+		Fleet Fleet_1 // rename fleets to Fleet_X and add Name variable
+		Fleet Fleet_2
+		Fleet Fleet_3
+		[...]
+	}
+}

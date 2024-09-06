@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://df8wf34wxlh2w"]
+
+[ext_resource type="Texture2D" uid="uid://d31o8if1ej4y0" path="res://Assets/Galaxy/System.png" id="1_cfwwn"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_cfwwn")

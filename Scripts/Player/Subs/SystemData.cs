@@ -6,9 +6,9 @@ using System.Collections.Generic;
 [Tool]
 public partial class SystemData : Node
 {
-    [ExportCategory("SystemParnt")]
+    [ExportCategory("SystemParent")]
     [Export]
-    public SectorData _Sector = null;
+    public PlayerData _Player = null;
 
     [ExportCategory("SystemRawData")]
     [Export]
@@ -16,6 +16,8 @@ public partial class SystemData : Node
 
     public string SystemName { get { return Star.StarName; } }
 
+    [Export]
+    public bool Capital = false;
     [Export]
     public DataBlock Resources = null;
 

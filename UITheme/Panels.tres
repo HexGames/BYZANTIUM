@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dwsejpps13na3"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://dwsejpps13na3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik0uy"]
 bg_color = Color(0, 0, 0, 0.752941)
@@ -10,6 +10,13 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cu5mi"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 0.752941)
+skew = Vector2(0.32, 0)
+border_color = Color(0.501961, 0.501961, 0.501961, 0.752941)
+expand_margin_left = 8.0
+expand_margin_right = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0v3t"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 0.752941)
@@ -90,6 +97,8 @@ Black/base_type = &"Panel"
 Black/styles/panel = SubResource("StyleBoxFlat_ik0uy")
 Bottom/base_type = &"Panel"
 Bottom/styles/panel = SubResource("StyleBoxFlat_re53n")
+ColorMod/base_type = &"PanelContainer"
+ColorMod/styles/panel = SubResource("StyleBoxFlat_cu5mi")
 Grey/base_type = &"Panel"
 Grey/styles/panel = SubResource("StyleBoxFlat_c0v3t")
 GreyAlpha/base_type = &"Panel"

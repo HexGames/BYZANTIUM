@@ -32,11 +32,13 @@ public partial class PlayerData : Node
     [Export]
     public DataBlock FleetsData = null;
     [Export]
+    public int PlayerID = 0;
+    [Export]
     public bool Human = false;
 
     [ExportCategory("PlayerData-Links")]
     [Export]
-    public Array<SectorData> Sectors = new Array<SectorData>();
+    public Array<SystemData> Systems = new Array<SystemData>();
 
     [ExportCategory("PlayerData-Links")]
     [Export]
@@ -55,13 +57,13 @@ public partial class PlayerData : Node
 
 
     // --------------------------------------------------------------------------------------------
-    public SectorData GetSector(string sector)
+    public SystemData GetSystem(string system)
     {
-        for (int idx = 0; idx < Sectors.Count; idx++)
+        for (int idx = 0; idx < Systems.Count; idx++)
         {
-            if (Sectors[idx].SectorName == sector)
+            if (Systems[idx].SystemName == system)
             {
-                return Sectors[idx];
+                return Systems[idx];
             }
         }
 
@@ -78,6 +80,11 @@ public partial class PlayerData : Node
         }
 
         return null;
+    }
+
+    public bool IsAtWarWith(PlayerData otherPlayer)
+    {
+        return false;
     }
 
     //public ColonyData GetColony(string colony)

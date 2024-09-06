@@ -1,9 +1,9 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cdrsm3ea7khgu"]
 
-[ext_resource type="Texture2D" uid="uid://bd4hg5k1bop5o" path="res://Assets/Background/PlayerColor.png" id="1_eayfm"]
+[ext_resource type="Texture2D" uid="uid://xqfom6tuu3h1" path="res://Assets/Galaxy/SystemPlayer.png" id="1_oaxrg"]
 
 [resource]
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0.211765, 0.258824, 0.686275, 1)
-albedo_texture = ExtResource("1_eayfm")
+albedo_texture = ExtResource("1_oaxrg")

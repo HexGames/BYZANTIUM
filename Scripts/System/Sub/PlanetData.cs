@@ -22,8 +22,8 @@ public partial class PlanetData : Node
     public string PlanetName = "";
     [Export]
     public int Angle;
-    [Export]
-    public DataBlock Resources = null;
+    //[Export]
+    //public DataBlock Resources = null;
 
     [Export]
     public DataBlock Empire = null;

@@ -1,0 +1,20 @@
+Sector Core
+{
+	Resources 
+	{
+		Production*Bonus*1 0
+		Production*Bonus*2 0
+		Shipbuilding*Bonus 0
+		Research*Bonus 0
+		Culture*Bonus 0
+		BC*Bonus 0
+		PopsGrowth*Bonus 0
+	}
+	System_List 
+	{
+		System Sol
+		System System_2
+		System System_3
+		[...]
+	}
+}

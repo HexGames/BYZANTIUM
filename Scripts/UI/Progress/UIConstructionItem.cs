@@ -23,6 +23,8 @@ public partial class UIConstructionItem : Control
 
     public override void _Ready()
     {
+        return;
+
         Game = GetNode<Game>("/root/Main/Game");
 
         TitleLabel = GetNode<RichTextLabel>("MarginContainer/Panel/Name");

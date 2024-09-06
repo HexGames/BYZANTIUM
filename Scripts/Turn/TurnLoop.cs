@@ -48,7 +48,20 @@ public partial class TurnLoop : Node
         StartTurn_Fleets();
         StartTurn_Resources();
         StartTurn_NewActions();
+
+        // update UI
         //Game.GalaxyUI.StartTurn();//TEMP02
+        for (int starIdx = 0; starIdx < Game.Map.Data.Stars.Count; starIdx++)
+        {
+            StarData star = Game.Map.Data.Stars[starIdx];
+            star._Node.GFX.RefreshPlayerColor();
+        }
+
+        for (int starIdx = 0; starIdx < Game.Map.Data.Stars.Count; starIdx++)
+        {
+            StarData star = Game.Map.Data.Stars[starIdx];
+            star._Node.GFX.RefreshShips();
+        }
     }
 
     public void Init_Resources()
@@ -59,7 +72,7 @@ public partial class TurnLoop : Node
             for (int planetIdx = 0; planetIdx < star.Planets.Count; planetIdx++)
             {
                 PlanetData planet = star.Planets[planetIdx];
-                planet.BaseResources_PerTurn = new ResourcesWrapper(planet.Resources, ResourcesWrapper.ParentType.Planet);
+                //planet.BaseResources_PerTurn = new ResourcesWrapper(planet.Resources, ResourcesWrapper.ParentType.Planet);
             }
         }
 
@@ -68,24 +81,24 @@ public partial class TurnLoop : Node
             PlayerData player = Game.Map.Data.Players[playerIdx];
             player.Resources_PerTurn = new ResourcesWrapper(player.Resources, ResourcesWrapper.ParentType.Player);
 
-            for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
+            for (int sectorIdx = 0; sectorIdx < player.Systems.Count; sectorIdx++)
             {
-                SectorData sector = player.Sectors[sectorIdx];
-                sector.Resources_PerTurn = new ResourcesWrapper(sector.Resources, ResourcesWrapper.ParentType.Sector);
-                sector.BuildQueue_PerTurn_ActionChange = new BuildingQueueWrapper(sector, Game);
+                SystemData system = player.Systems[sectorIdx];
+                system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.System);
+                //sector.BuildQueue_PerTurn_ActionChange = new BuildingQueueWrapper(sector, Game);
                 //sector.BudgetPerTurn = new BudgetWrapper(sector.Budget);
 
-                for (int systemIdx = 0; systemIdx < sector.Systems.Count; systemIdx++)
-                {
-                    SystemData system = sector.Systems[sectorIdx];
-                    system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.System);
+                //for (int systemIdx = 0; systemIdx < sector.Systems.Count; systemIdx++)
+                //{
+                //    SystemData system = sector.Systems[sectorIdx];
+                 //   system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.System);
 
                     for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
                     {
                         ColonyData colony = system.Colonies[colonyIdx];
-                        colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Colony);
+                        //colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Colony);
                     }
-                }
+                //}
             }
         }
     }

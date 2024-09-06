@@ -12,13 +12,13 @@ public partial class DefLibrary : Node
     [Export]
     public Array<DataBlock> Empires = new Array<DataBlock>();
 
-    public List<DefBuildingWrapper> EmpiresInfo = new List<DefBuildingWrapper>();
+    public List<DefEmpireWrapper> EmpiresInfo = new List<DefEmpireWrapper>();
 
     public void _Ready_Empires()
     {
         for (int idx = 0; idx < Empires.Count; idx++)
         {
-            EmpiresInfo.Add(new DefBuildingWrapper(Empires[idx]));
+            EmpiresInfo.Add(new DefEmpireWrapper(Empires[idx]));
         }
     }
 
@@ -34,7 +34,7 @@ public partial class DefLibrary : Node
         return null;
     }
 
-    public DefBuildingWrapper GetEmpireInfo(string name)
+    public DefEmpireWrapper GetEmpireInfo(string name)
     {
         for (int idx = 0; idx < EmpiresInfo.Count; idx++)
         {

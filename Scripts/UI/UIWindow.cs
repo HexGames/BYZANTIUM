@@ -48,18 +48,18 @@ public partial class UIWindow : Control
 
         targets.Clear();
 
-        for (int idx = 0; idx < Game.TurnLoop.CurrentHumanPlayerData.Sectors.Count; idx++)
-        {
-            SectorData sector = Game.TurnLoop.CurrentHumanPlayerData.Sectors[idx];
-            for (int buildIdx = 0; buildIdx < sector.AvailableBuildings_PerTurn.Count; buildIdx++)
-            {
-                DefBuildingWrapper info = sector.AvailableBuildings_PerTurn[buildIdx];
-                if (info._Planet == _Planet)
-                {
-                    targets.Add(info);
-                }
-            }
-        }
+        //for (int idx = 0; idx < Game.TurnLoop.CurrentHumanPlayerData.Sectors.Count; idx++)
+        //{
+        //    SectorData sector = Game.TurnLoop.CurrentHumanPlayerData.Sectors[idx];
+        //    for (int buildIdx = 0; buildIdx < sector.AvailableBuildings_PerTurn.Count; buildIdx++)
+        //    {
+        //        DefBuildingWrapper info = sector.AvailableBuildings_PerTurn[buildIdx];
+        //        if (info._Planet == _Planet)
+        //        {
+        //            targets.Add(info);
+        //        }
+        //    }
+        //}
 
         // grow
         //while (Buildings.Count < targets.Count)

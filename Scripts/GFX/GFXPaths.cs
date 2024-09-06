@@ -44,7 +44,7 @@ public partial class GFXPaths : Node
         bool needNewPath = true;
         for (int idx = 0; idx < Paths.Count; idx++)
         {
-            if (Paths[idx].Star_From == fleet.AtStar_PerTurn && Paths[idx].Star_To == toStar) 
+            if (Paths[idx].Star_From == fleet.Star_At_PerTurn && Paths[idx].Star_To == toStar) 
             {
                 if (Paths[idx]._Fleets.Count > 0) // there already is an arrow between these locations
                 {
@@ -61,7 +61,7 @@ public partial class GFXPaths : Node
             {
                 if (Paths[idx]._Fleets.Count == 0)
                 {
-                    Paths[idx].Refresh(fleet.AtStar_PerTurn, toStar, fleet); // reuse an unused arrow
+                    Paths[idx].Refresh(fleet.Star_At_PerTurn, toStar, fleet); // reuse an unused arrow
                     needNewPath = false;
                     break;
                 }
@@ -75,7 +75,7 @@ public partial class GFXPaths : Node
             Paths.Add(newItem);
 
             newItem.HUD = null; // this needs to be reset here so a new HUD object is created
-            newItem.Refresh(fleet.AtStar_PerTurn, toStar, fleet);
+            newItem.Refresh(fleet.Star_At_PerTurn, toStar, fleet);
             newItem.Visible = true;
         }
     }

@@ -195,6 +195,7 @@ public partial class Data
         BaseType baseType = BaseType.INT;
         if (words[1] == "{") baseType = BaseType.NONE;
         else if (System.Char.IsLetter(words[1][0])) baseType = BaseType.STRING;
+        else if (words[1][0] == '#') baseType = BaseType.STRING;
         else if (words[1].Contains(".")) baseType = BaseType.FLOAT;
 
         string prefix = "_";

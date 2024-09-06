@@ -41,7 +41,7 @@ public partial class UIPopsFactions : Control
             Factions[idx].Visible = false;
         }
 
-        PlayerName.Text = PlayerName_Original.Replace("$player", _Colony._System._Sector._Player.PlayerName);
+        PlayerName.Text = PlayerName_Original.Replace("$player", _Colony._System._Player.PlayerName);
         Value.Text = Value_Original.Replace("$perc", _Colony.Resources_PerTurn.GetLimit("Authority").ToString_Used(true));
     }
     public void RefreshFaction(int idx)

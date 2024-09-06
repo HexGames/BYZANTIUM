@@ -76,15 +76,15 @@ public partial class UISystemBarList : Control
     {
         _StarData = starData;
 
-        if (_StarData.System != null && _StarData.System._Sector._Player == Game.HumanPlayer)
+        if (_StarData.System != null && _StarData.System._Player == Game.HumanPlayer)
         {
             FirendlySystem.Visible = true;
             NoSystem.Visible = false;
 
-            SystemButton.Disabled = _StarData.System._Sector.Systems.Count == 1;
+            //SystemButton.Disabled = _StarData.System._Sector.Systems.Count == 1;
 
             SystemLabel.Text = SystemLabel_Original.Replace("$system", _StarData.StarName);
-            SectorLabel.Text = SectorLabel_Original.Replace("$sector", _StarData.System._Sector.SectorName);
+            //SectorLabel.Text = SectorLabel_Original.Replace("$sector", _StarData.System._Sector.SectorName);
 
             //SectorQuickInfoLabel.Text = SectorQuickInfoLabel_Original
             //    .Replace("$energy", _StarData.System._Sector.Resources_PerTurn.GetUsedPerTotalString("Energy"))
@@ -181,7 +181,7 @@ public partial class UISystemBarList : Control
 
     public void OnHoverSector()
     {
-        Game.SystemUI.HoverSector();
+        //Game.SystemUI.HoverSector();
     }
 
     public void ForceSelect(PlanetData planet)
@@ -212,7 +212,7 @@ public partial class UISystemBarList : Control
 
     public void OnSelectSystem()
     {
-        Game.SystemUI.SelectSector();
+        //Game.SystemUI.SelectSector();
 
         SectorSelected.Visible = false;
         SystemSelected.Visible = true;
@@ -221,7 +221,7 @@ public partial class UISystemBarList : Control
 
     public void OnSelectSector()
     {
-        Game.SystemUI.SelectSystem();
+       // Game.SystemUI.SelectSystem();
 
         SectorSelected.Visible = true;
         SystemSelected.Visible = false; 

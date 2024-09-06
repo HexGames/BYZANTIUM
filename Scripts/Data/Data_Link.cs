@@ -20,20 +20,15 @@ public partial class Data
         string name = "Link:Player";
         return AddData(parent, name, player.PlayerName, df);
     }
-    static public DataBlock AddLink(DataBlock parent, SectorData sector, DefLibrary df)
-    {
-        string name = "Link:Player:Sector";
-        return AddData(parent, name, sector._Player.PlayerName + ":" + sector.SectorName, df);
-    }
     static public DataBlock AddLink(DataBlock parent, SystemData system, DefLibrary df)
     {
         string name = "Link:Player:Sector:System";
-        return AddData(parent, name, system._Sector._Player.PlayerName + ":" + system._Sector.SectorName + ":" + system.SystemName, df);
+        return AddData(parent, name, system._Player.PlayerName + ":" + system.SystemName, df);
     }
     static public DataBlock AddLink(DataBlock parent, ColonyData colony, DefLibrary df)
     {
         string name = "Link:Player:Sector:System:Colony";
-        return AddData(parent, name, colony._System._Sector._Player.PlayerName + ":" + colony._System._Sector.SectorName + ":" + colony._System.SystemName + ":" + colony.ColonyName, df);
+        return AddData(parent, name, colony._System._Player.PlayerName + ":" + colony._System.SystemName + ":" + colony.ColonyName, df);
     }
     static public DataBlock AddLink(DataBlock parent, FleetData fleet, DefLibrary df)
     {
@@ -57,23 +52,17 @@ public partial class Data
         DataBlock link = parent.GetLink("Link:Player");
         return map.GetPlayer(link.ValueS);
     }
-    static public SectorData GetLinkSectorData(DataBlock parent, MapData map)
-    {
-        DataBlock link = parent.GetLink("Link:Player:Sector");
-        string[] split = link.ValueS.Split(":");
-        return map.GetPlayer(split[0]).GetSector(split[1]);
-    }
     static public SystemData GetLinkSystemData(DataBlock parent, MapData map)
     {
         DataBlock link = parent.GetLink("Link:Player:Sector:System");
         string[] split = link.ValueS.Split(":");
-        return map.GetPlayer(split[0]).GetSector(split[1]).GetSystem(split[2]);
+        return map.GetPlayer(split[0]).GetSystem(split[1]);
     }
     static public ColonyData GetLinkColonyData(DataBlock parent, MapData map)
     {
         DataBlock link = parent.GetLink("Link:Player:Sector:System:Colony");
         string[] split = link.ValueS.Split(":");
-        return map.GetPlayer(split[0]).GetSector(split[1]).GetSystem(split[2]).GetColony(split[3]);
+        return map.GetPlayer(split[0]).GetSystem(split[1]).GetColony(split[2]);
     }
 
     static public Array<FleetData> GetLinkFleetsData(DataBlock parent, MapData map)

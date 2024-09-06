@@ -1,0 +1,43 @@
+Colony Terra
+{
+	Type Rural_World
+	Popupation
+	{
+		Public
+		{
+			Group Terran_Ecologists
+			{
+				Pops 10;
+				Link*Player*Faction Terran_Ecologists;
+			}
+		}
+		Private
+		{
+			Group Terran_Ecologists
+			{
+				Pops 10;
+				Link*Player*Faction Terran_Ecologists;
+			}
+			Group Unaffiliated 
+			{
+				Pops 20;
+			}
+		}
+		Uncontrolled
+		{
+		}
+	}
+	Factories 30
+	Bases 12
+	//Resources 
+	//{
+	//	Production*Bonus*1 0
+	//	Production*Bonus*2 0
+	//	Shipbuilding*Bonus 0
+	//	Research*Bonus 0
+	//	Culture*Bonus 0
+	//	BC*Bonus 0
+	//	PopsGrowth*Bonus 0
+	//}
+	Link:Star:Planet Sol:Terra
+}

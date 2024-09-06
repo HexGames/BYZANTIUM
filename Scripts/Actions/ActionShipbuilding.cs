@@ -73,62 +73,62 @@ public class ActionShipbuilding
                 // ---
                 // order maters x3
                 Data.AddLink(colonyData, planet, game.Def); // 1
-                ColonyData colony = game.Map.Data.GenerateGameFromData_Player_Sector_System_Colony(colonyData, system); // 2
+                ColonyData colony = game.Map.Data.GenerateGameFromData_Player_System_Colony(colonyData, system); // 2
                 Data.AddLink(planet.Data, planet.Colony, game.Def);  // 3
 
                 system.Colonies.Add(colony);
-                colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Colony);
+                //colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Colony);
             }
 
-            DataBlock building = planet.Colony.Buildings.GetSub("Building", queue.Subs[0].ValueS);
-            bool completed = false;
-            if (building == null)
-            {
-                building = Data.AddData(planet.Colony.Buildings, "Building", queue.Subs[0].ValueS, game.Def);
+            //DataBlock building = planet.Colony.Buildings.GetSub("Building", queue.Subs[0].ValueS);
+            //bool completed = false;
+            //if (building == null)
+            //{
+            //    building = Data.AddData(planet.Colony.Buildings, "Building", queue.Subs[0].ValueS, game.Def);
+            //
+            //    int progressMax = queue.Subs[0].GetSub("Progress:Max").ValueI;
+            //    DataBlock inConstruction = Data.AddData(building, "InConstruction", game.Def);
+            //    Data.AddData(inConstruction, "Progress:Max", progressMax, game.Def);
+            //    if (production >= progressMax)
+            //    {
+            //        production -= progressMax;
+            //        completed = true;
+            //    }
+            //    else
+            //    {
+            //        Data.AddData(inConstruction, "Progress", production, game.Def);
+            //        production = 0;
+            //    }
+            //}
+            //else
+            //{
+            //    DataBlock inConstruction = building.GetSub("InConstruction");
+            //    DataBlock progressData = inConstruction.GetSub("Progress");
+            //    int progressCurrent = progressData.ValueI;
+            //    int progressMax = inConstruction.GetSub("Progress:Max").ValueI;
+            //    int remaining = progressMax - progressCurrent;
+            //    if (production >= remaining)
+            //    {
+            //        production -= remaining;
+            //        completed = true;
+            //    }
+            //    else
+            //    {
+            //        progressData.ValueI += production;
+            //        production = 0;
+            //    }
+            //}
 
-                int progressMax = queue.Subs[0].GetSub("Progress:Max").ValueI;
-                DataBlock inConstruction = Data.AddData(building, "InConstruction", game.Def);
-                Data.AddData(inConstruction, "Progress:Max", progressMax, game.Def);
-                if (production >= progressMax)
-                {
-                    production -= progressMax;
-                    completed = true;
-                }
-                else
-                {
-                    Data.AddData(inConstruction, "Progress", production, game.Def);
-                    production = 0;
-                }
-            }
-            else
-            {
-                DataBlock inConstruction = building.GetSub("InConstruction");
-                DataBlock progressData = inConstruction.GetSub("Progress");
-                int progressCurrent = progressData.ValueI;
-                int progressMax = inConstruction.GetSub("Progress:Max").ValueI;
-                int remaining = progressMax - progressCurrent;
-                if (production >= remaining)
-                {
-                    production -= remaining;
-                    completed = true;
-                }
-                else
-                {
-                    progressData.ValueI += production;
-                    production = 0;
-                }
-            }
-
-            if (completed)
-            {
-                if (queue.Subs[0].GetSub("OldBuilding") != null)
-                {
-                    Data.RemoveData(planet.Colony.Buildings, "Building", queue.Subs[0].GetSub("OldBuilding").ValueS, game.Def);
-                }
-                Data.RemoveData(building, "InConstruction", game.Def);
-                sector.ActionBuildQueue.Subs.Remove(queue.Subs[0]);
-                queue.Subs.RemoveAt(0);
-            }
+            //if (completed)
+            //{
+            //    if (queue.Subs[0].GetSub("OldBuilding") != null)
+            //    {
+            //        Data.RemoveData(planet.Colony.Buildings, "Building", queue.Subs[0].GetSub("OldBuilding").ValueS, game.Def);
+            //    }
+            //    Data.RemoveData(building, "InConstruction", game.Def);
+            //    sector.ActionBuildQueue.Subs.Remove(queue.Subs[0]);
+            //    queue.Subs.RemoveAt(0);
+            //}
         }
 
         overflow.ValueI = production;

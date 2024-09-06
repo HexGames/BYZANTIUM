@@ -122,7 +122,7 @@ public partial class MapCamera : Camera3D
     // calculated
     [ExportCategory("Runtime")]
     [Export]
-    public int LOD = 2;
+    public int LOD = 2; 
     [Export]
     public Vector3 TargetPosition; //camera position
     private float TargetHeight;
@@ -182,6 +182,8 @@ public partial class MapCamera : Camera3D
         TargetPosition = new Vector3(TransformNode.Position.X, 0f, TransformNode.Position.Z);
         TargetHeight = ZoomMaxHeight / 2;
         CurrentRotationX = RotationXDefault;
+
+        LOD = 2;
     }
 
     public override void _Process(double delta)
@@ -314,15 +316,23 @@ public partial class MapCamera : Camera3D
         Plane plane = new Plane(Vector3.Up, TargetHeight);
         if (lerpedDifference > 0)
         {
-            Vector3 moveVector = plane.IntersectsRay(Position, Position  - ProjectPosition(GetViewport().GetMousePosition(), 1.0f)).Value - Position;
-            moveVector.Y = 0;
-            TargetPosition += moveVector;
+            Vector3? intersect = plane.IntersectsRay(Position, Position  - ProjectPosition(GetViewport().GetMousePosition(), 1.0f));
+            if (intersect != null)
+            {
+                Vector3 moveVector = intersect.Value - Position;
+                moveVector.Y = 0;
+                TargetPosition += moveVector;
+            }
         }
         else
         {
-            Vector3 moveVector = plane.IntersectsRay(Position, ProjectPosition(GetViewport().GetMousePosition(), 1.0f) - Position).Value - Position;
-            moveVector.Y = 0;
-            TargetPosition += moveVector;
+            Vector3? intersect = plane.IntersectsRay(Position, ProjectPosition(GetViewport().GetMousePosition(), 1.0f) - Position);
+            if (intersect != null) 
+            {
+                Vector3 moveVector = intersect.Value - Position;
+                moveVector.Y = 0;
+                TargetPosition += moveVector;
+            }
         }
     }
 

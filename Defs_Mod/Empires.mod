@@ -1,83 +1,234 @@
 Empieres 
 {
-	Empire Unired_Earth
+	// ABCD
+	Empire Federation
 	{
-		Flag res://Assets/Flags/Earth_Round.png
+		FlagID 0
+		Color #bbbbff
+		ColorBg #00007e
 		Specie Human
-		StartingPlanet Terra
-		StartingPlanetType Temperate
+		StartingStarName Terra
+		StartingPlanetType Continents
+		StartingTemperature 3
 		Ethic Federalist
 	}
-	Empire Aeolan
+	Empire Directorate
 	{
-		Flag res://Assets/Flags/Elves_Round.png
-		Specie Human
-		StartingPlanet Random
-		StartingPlanetType Temperate
+		FlagID 1
+		Color #ffffff
+		ColorBg #980000
+		Specie Elf
+		StartingStarName The_Tower
+		StartingPlanetType Continents
+		StartingTemperature 3
 		Ethic Scientist
 	}
-	Empire Mining_Guild
+	Empire Guild
 	{
-		Flag res://Assets/Flags/Dwarves_Round.png
+		FlagID 2
+		Color #ffea00
+		ColorBg #fd9800
 		Specie Human
-		StartingPlanet Random
-		StartingPlanetType Temperate
+		StartingStarName Headquarter
+		StartingPlanetType Continents
+		StartingTemperature 3
 		Ethic Industrialist
 	}
-	Empire Raiding_Tribes
+	Empire Tribes
 	{
-		Flag res://Assets/Flags/Orcs_Round.png
+		FlagID 3
+		Color #ffaa00
+		ColorBg #01c100
 		Specie Orcs
-		StartingPlanet Random
-		StartingPlanetType Temperate
+		StartingStarName Bonfire
+		StartingPlanetType Continents
+		StartingTemperature 3
 		Ethic Militarist
 	}
-	Empire Mrrleau
+
+	// Cats Empire
+	Empire The_Empire
 	{
-		Flag res://Assets/Flags/Cats_Round.png
+		FlagID 4
+		Color #ffea00
+		ColorBg #8600a1
 		Specie Cats
-		StartingPlanet Random
-		StartingPlanetType Temperate
+		StartingStarName Byzantium
+		StartingPlanetType Arid
+		StartingTemperature 4
 		Ethic Communist
 	}
-	Empire Tentacle
+	Empire Scutum
 	{
-		Flag res://Assets/Flags/Squids_Round.png
+		FlagID 5
+		Color #ffea00
+		ColorBg #f030e8
+		Specie Cats
+		StartingStarName Trebizond
+		StartingPlanetType Arid
+		StartingTemperature 4
+		Ethic Communist
+	}
+	Empire Elisi
+	{
+		FlagID 6
+		Color #ffea00
+		ColorBg #ff0078
+		Specie Cats
+		StartingStarName Atena
+		StartingPlanetType Arid
+		StartingTemperature 4
+		Ethic Communist
+	}
+	Empire Grano
+	{
+		FlagID 7
+		Color #ffea00
+		ColorBg #e1befe
+		Specie Cats
+		StartingStarName Thessaloniki
+		StartingPlanetType Arid
+		StartingTemperature 4
+		Ethic Communist
+	}
+
+	// aliens
+	Empire Tentacles
+	{
+		FlagID 8
+		Color #ffffff
+		ColorBg #fad8b2
 		Specie Squids
-		StartingPlanet Random
-		StartingPlanetType Temperate
+		StartingStarName Ten_Ten
+		StartingPlanetType Ocean
+		StartingTemperature 3
 		Ethic Religion
 	}
-	Empire Worker_Swarm
+	Empire Formics
 	{
-		Flag res://Assets/Flags/Ants_Round.png
+		FlagID 9
+		Color #ffffff
+		ColorBg #808000
 		Specie Ants
-		StartingPlanet Random
-		StartingPlanetType Temperate
+		StartingStarName Klizzr
+		StartingPlanetType Continents
+		StartingTemperature 3
 		Ethic Unity
 	}
-	Empire Water_Globes
+	Empire Mechano
 	{
-		Flag res://Assets/Flags/Sharks_Round.png
-		Specie Sharks
-		StartingPlanet Random
-		StartingPlanetType Temperate
-		Ethic Ecologist
-	}
-	Empire Mechanotron
-	{
-		Flag res://Assets/Flags/Robots_Round.png
+		FlagID 10
+		Color #ffffff
+		ColorBg #a26d2b
 		Specie Robots
-		StartingPlanet Random
-		StartingPlanetType Temperate
+		StartingStarName Mecha
+		StartingPlanetType Artic
+		StartingTemperature 2
 		Ethic Capitalist
 	}
 	Empire Rouge_AI
 	{
-		Flag res://Assets/Flags/AI_Round.png
+		FlagID 11
+		Color #ffffff
+		ColorBg #045f00
 		Specie AI_Drones
-		StartingPlanet Random
-		StartingPlanetType Temperate
+		StartingStarName Zero
+		StartingPlanetType Artic
+		StartingTemperature 2
 		Ethic Xenophobe
+	}
+
+	// ancient
+	Empire Ancients
+	{
+		FlagID 12
+		Color #4455ff
+		ColorBg #ffffff
+		Specie Birds
+		StartingStarName Gaia
+		StartingPlanetType Continents
+		StartingTemperature 3
+		Ethic Ecologist
+	}
+
+	// bears
+	Empire Clan_Paw
+	{
+		FlagID 13
+		Color #ff2222
+		ColorBg #ffea00
+		Specie Bear
+		StartingStarName Paw
+		StartingPlanetType Swamp
+		StartingTemperature 3
+		Ethic Religion
+	}
+	Empire Clan_Tusk
+	{
+		FlagID 14
+		Color #ffffff
+		ColorBg #3c78d8
+		Specie Bear
+		StartingStarName Tusk
+		StartingPlanetType Swamp
+		StartingTemperature 3
+		Ethic Unity
+	}
+	Empire Clan_Smoke
+	{
+		FlagID 15
+		Color #ffeaaa
+		ColorBg #a5ffc2
+		Specie Bear
+		StartingStarName Smoke
+		StartingPlanetType Swamp
+		StartingTemperature 3
+		Ethic Capitalist
+	}
+
+	// lizards
+	Empire Saar_Sanctum
+	{
+		FlagID 16
+		Color #ffea00
+		ColorBg #6bffff
+		Specie Lizard
+		StartingStarName Saar
+		StartingPlanetType Arid
+		StartingTemperature 4
+		Ethic Capitalist
+	}
+	Empire Drakk_Bazzar
+	{
+		FlagID 17
+		Color #ddeeff
+		ColorBg #008284
+		Specie Lizard
+		StartingStarName Drakk
+		StartingPlanetType Arid
+		StartingTemperature 4
+		Ethic Capitalist
+	}
+	Empire Lyzar_Expanse
+	{
+		FlagID 18
+		Color #663822
+		ColorBg #f8f6d0
+		Specie Lizard
+		StartingStarName Lyzar
+		StartingPlanetType Arid
+		StartingTemperature 4
+		Ethic Capitalist
+	}
+	Empire Skarn_Enclave
+	{
+		FlagID 19
+		Color #ffea00
+		ColorBg #fe0000
+		Specie Lizard
+		StartingStarName Skarn
+		StartingPlanetType Arid
+		StartingTemperature 4
+		Ethic Capitalist
 	}
 }

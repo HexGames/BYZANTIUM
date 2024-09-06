@@ -1,0 +1,70 @@
+System Sol
+{
+	Resources 
+	{
+		Shipbuilding*Income 0
+		Research*Income 0
+		Culture*Income 0
+		BC*Income 0
+		Pops*Max 0
+		Authority*Used 0
+		Authority*Max 0
+	}
+	Pops
+	{
+		Public
+		{
+			Pops 12
+			{
+				Faction:Link Imperialists
+			}
+			Pops 5
+			{
+				Faction:Link Supremacists
+			}
+		}
+		Private
+		{
+			Pops 3
+			{
+				Faction:Link Imperialists
+			}
+			Pops 5
+			{
+				Faction:Link Republicans
+			}
+		}
+		Uncontrolled
+		{
+			Pops 3
+			{
+				Faction:Link Republicans
+			}
+			Pops 2
+			{
+				Faction:Link Religious
+			}
+		}
+	}
+	ActionBuildQueue 
+	{
+		Overflow 0
+		Queue 
+		{
+			Building Shipyard_II
+			{
+				Link:Star:Planet Sol:Terra
+				Progress:Max 8000
+				OldBuilding Shipyard_I
+			}
+		}
+	}
+	Link:Star Sol
+	Colony_List 
+	{
+		Colony Star
+		Colony Terra
+		Colony Mars
+		[...]
+	}
+}

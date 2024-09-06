@@ -28,6 +28,8 @@ public partial class Game : Node
     public UISystem SystemUI;
     [Export]
     public UIWindows WindowsUI;
+    [Export]
+    public UI3DSelectors SelectorsUI3D;
     //[Export]
     //public UIActionColony ActionColonyUI;
     [Export]
@@ -105,7 +107,7 @@ public partial class Game : Node
         {
             if (HumanPlayer != null)
             {
-                Camera.TargetPosition = HumanPlayer.Sectors[0].Systems[0].Star._Node.GFX.GlobalPosition;
+                Camera.TargetPosition = HumanPlayer.Systems[0].Star._Node.GFX.GlobalPosition;
             }
 
             FirstFrame = false;

@@ -88,16 +88,16 @@ public partial class UIGalaxyBarList : Control
     {
         _PlayerData = playerData;
 
-        ParentSector.Visible = false;
+        //ParentSector.Visible = false;
         ParentSystem.Visible = false;
 
         // hide all
         Refresh_HideAll();
 
-        for (int sectorIdx = 0; sectorIdx < _PlayerData.Sectors.Count; sectorIdx++)
-        {
-            RefreshGroup(sectorIdx, _PlayerData.Sectors[sectorIdx]);
-        }
+        //for (int sectorIdx = 0; sectorIdx < _PlayerData.Sectors.Count; sectorIdx++)
+        //{
+        //    RefreshGroup(sectorIdx, _PlayerData.Sectors[sectorIdx]);
+        //}
 
         Visible = true;
     }
@@ -106,7 +106,7 @@ public partial class UIGalaxyBarList : Control
     {
         _SectorData = sectorData;
 
-        ParentSector.Refresh(sectorData, true);
+        //ParentSector.Refresh(sectorData, true);
         ParentSystem.Visible = false;
 
         // hide all
@@ -127,7 +127,7 @@ public partial class UIGalaxyBarList : Control
     {
         _SystemData = systemData;
 
-        ParentSector.Refresh(systemData._Sector, true);
+        //ParentSector.Refresh(systemData._Sector, true);
         ParentSystem.Refresh(systemData, true);
 
         // hide all
@@ -358,8 +358,9 @@ public partial class UIGalaxyBarList : Control
     {
         if (group._SystemData != null)
         {
-            if (ret) Refresh(group._SystemData._Sector);
-            else Refresh(group._SystemData);
+            //if (ret) Refresh(group._SystemData._Sector);
+            //else
+            Refresh(group._SystemData);
         }
         else
         {

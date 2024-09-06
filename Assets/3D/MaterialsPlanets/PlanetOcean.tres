@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bfue4g56djbyb"]
+
+[ext_resource type="Texture2D" uid="uid://dag3ftlc6m8fn" path="res://Assets/Planets/OceanTex.png" id="1_otxj4"]
+
+[resource]
+disable_ambient_light = true
+albedo_texture = ExtResource("1_otxj4")
+backlight_enabled = true
+backlight = Color(0.12549, 0.12549, 0.188235, 1)
+disable_receive_shadows = true

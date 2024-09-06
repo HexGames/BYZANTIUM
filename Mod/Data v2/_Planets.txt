@@ -1,0 +1,87 @@
+Def_Planets
+{
+	// ----------------------------------------------- stars
+	Planet:Star Red_Dwarf
+	{
+		Weight 10
+		PlanetsCold
+		GasGiantsFirst
+		Planets:Min 2
+		Planets:Max 6
+		Yields
+		{
+			Energy 10
+		}
+		Features
+		{
+			Old_Star
+			Building:Stable_Orbit
+		}
+	}
+	// ----------------------------------------------- specials
+	Planet:Gas_Giant
+	{
+		Yields
+		{
+			Energy 20
+		}
+		Features
+		{
+			Gas_Giant
+			OR
+			{
+				Rings:Weight 1
+				Tiny_Moon:Weight 1
+			}
+			Rich_Gasses:Perc 50
+			Building:Possible_Outpost
+		}
+	}
+	[...]
+	// ----------------------------------------------- planets
+	// auto-feature Extreme_Temps
+	// auto-feature High_Radiation
+	// auto-feature Low_Gravity
+	// auto-feature High_Gravity
+	Planet Toxic
+	{
+		Weight 2
+		Temperature:Min 2
+		Temperature:Max 4
+		Features
+		{
+			Toxic
+			OR
+			{
+				Rocky:Weight 7
+				Rich_Minerals:Weight 2
+				Vulcanic:Weight 1
+			}
+			OR:Perc 20
+			{
+				Rings:Weight 1
+				Tiny_Moon:Weight 1
+			}
+			Building:Possible_Outpost
+		}
+	}
+	[...]	
+	// ----------------------------------------------- custom
+	Custom Mercury
+	{
+		Type Barren
+		Size 1
+		Temperature 5
+		Features
+		{
+			Barren
+			OR:Perc 50
+			{
+				Rocky:Weight 4
+				Rich_Minerals:Weight 1
+			}
+			Building:Possible_Outpost
+		}
+	}
+	[...]
+}

@@ -1,0 +1,45 @@
+// A - first type of map - simple 4X  |  B - second type of map - fixed map
+// A: size padding_character no_star_character sectors_count groups_count core_0 sector_group_1 ...
+// Example: A 9 , . 20 9 0 abc def gh ij klm nop qr st
+// A: size padding_character no_star_character playerscount 'PlayerLetter'SystemLevel'Defense'Fleet'
+// Example: B 9 ,, .. 20 9 0 abc def gh ij klm nop qr st
+// 20 * 6 + 12 = 132 systems
+B 9 , . 20 9 0 abc def gh ij klm nop qr st
+
+,    ,    ,    ,    ,    ,    ,    ,    ,    .    x    .    x   b404  x    .    x    x    . 
+
+  ,    ,    ,    ,    ,    ,    ,    ,    .    .   i315  .    .    x    .    .    x    .    x  
+
+    ,    ,    ,    ,    ,    ,    ,    .    x    .   i200  .    x    .    .   o200  x    x    x
+
+      ,    ,    ,    ,    ,    ,    .    .    x    x    .    .    .   p200  .   o212 p200 p200 p200
+
+        ,    ,    ,    ,    ,   h305 h215  x    .   i200 i315  .    .   o200 o404 o212  .   p200  .   
+
+          ,    ,    ,    ,   h100  .   h110  .    .    x    .    .    .   o212  .    .    .   p200 p500 
+
+            ,    ,    ,    x    h100 h200 .    .    .   j200  .   f200 f104 f104  .    .    .    .   p200
+
+              ,    ,    x    .    .    .    .   k213 j203 j425  .    .   f200 f100 f200  .    .    .   p200
+
+                ,    x    .    .    .    .   k200 k415  x    .    .    .    .   c200 c999 d100 d200  .   p226
+
+                 g100 g305 g205  .    .    x    .   l100 l105  .    .    .   e200 c100  .   d200 d304  .   r500
+
+                   g200 g200  .    .    .    .    .   l625 l100  .    .   e200 e208  .    .   d204 r224 r200  ,   
+
+                      .    .    .    .    .    .   m100 m100 m103  .    .   e100 e100  .    .   r224 r200  ,    ,   
+
+                        .    .    x    .    .    x   m525  .    x   .    e100  .    .    .    .   r224  ,    ,    ,   
+
+                          .    x    .    .    .    .    .    .    .    .    .    .    .   s442 s442  ,    ,    ,    ,   
+
+                            .    .    .    .    .    .    .    .    x    x    .    .    x   s442  ,    ,    ,    ,    ,
+
+                              x    .    .    .    .    x    .    .    .    .    x    .    x    ,    ,    ,    ,    ,    ,   
+
+                                x    x    .   a404  .    .    x    .   n350 n356  x    x    ,    ,    ,    ,    ,    ,    ,   
+
+                                  x    .    x    x    .    .    .   n350 n629 n356  .    ,    ,    ,    ,    ,    ,    ,    ,
+
+                                    x    .    .    .    .    .    .   n320 n320  .    ,    ,    ,    ,    ,    ,    ,    ,    ,
