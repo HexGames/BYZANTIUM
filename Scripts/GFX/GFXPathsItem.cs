@@ -36,15 +36,15 @@ public partial class GFXPathsItem : Node3D
         Star_From = from;
         Star_To = to;
 
-        Vector3 offset_A = new Vector3(3.0f, 0.0f, 2.5f);
-        if (linkedToFleet.Star_At_PerTurn.System != null && linkedToFleet.Star_At_PerTurn.System._Player != Game.HumanPlayer)
-            offset_A = new Vector3(3.0f, 0.0f, -2.5f);
-        Vector3 offset_B = new Vector3(-2.0f, 0.0f, 0.0f);
+        Vector3 offset_A = new Vector3(5.6f, 0.0f, 2f);
+        if (linkedToFleet.StarAt_PerTurn.System != null && linkedToFleet.StarAt_PerTurn.System._Player != Game.HumanPlayer)
+            offset_A = new Vector3(5.6f, 0.0f, -2f);
+        Vector3 offset_B = new Vector3(0.0f, 0.0f, 0.0f);
 
         Vector3 point_A = Star_From._Node.GFX.Position + offset_A;
         Vector3 point_B = Star_To._Node.GFX.Position + offset_B;
-        Vector3 point_A_Offset = (point_B - point_A).Normalized() * 2.5f;
-        Vector3 point_B_Offset = (point_A - point_B).Normalized() * 2.5f;
+        Vector3 point_A_Offset = (point_B - point_A).Normalized() * 2.0f;
+        Vector3 point_B_Offset = (point_A - point_B).Normalized() * 5.0f;
         Vector3 A = point_A + point_A_Offset;
         Vector3 B = point_B + point_B_Offset;
 
@@ -54,7 +54,7 @@ public partial class GFXPathsItem : Node3D
 
         if (HUD == null)
         {
-            //Game.GalaxyUI.AddPathLabel(this);//TEMP02
+            Game.self.GalaxyUI.AddPathLabel(this);
         }
 
         HUD.Refresh();

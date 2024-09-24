@@ -112,6 +112,34 @@ public partial class UIGalaxy : Control
         FleetsSelected.Visible = false;
     }
 
+    public void AddPathLabel(GFXPathsItem pathGFX)
+    {
+        UIGalaxyPath newPath = Paths[0].Duplicate(7) as UIGalaxyPath;
+        Paths[0].GetParent().AddChild(newPath);
+        Paths.Add(newPath);
+    
+        newPath._PathGFX = pathGFX;
+        pathGFX.HUD = newPath;
+    }
+
+    public void RefreshAllPathsLabels()
+    {
+        for (int idx = 0; idx < Paths.Count; idx++)
+        {
+            Paths[idx].Refresh();
+        }
+    }
+
+   //public void AddIncomingLabel(GFXIncomingsItem incomingGFX)
+   //{
+   //    UIGalaxyPath newIncoming = Incoming[0].Duplicate(7) as UIGalaxyPath;
+   //    Incoming[0].GetParent().AddChild(newIncoming);
+   //    Incoming.Add(newIncoming);
+   //
+   //    newIncoming._IncomingGFX = incomingGFX;
+   //    incomingGFX.HUD = newIncoming;
+   //}
+
     //public void Refresh(bool buildingsTab, bool populationTab)
     //{
     //    RefreshLocationUI();
@@ -343,16 +371,6 @@ public partial class UIGalaxy : Control
     //        PlanetInfo.Visible = false;
     //    }
     //}
-
-    //public void AddPathLabel(GFXPathsItem pathGFX)
-    //{
-    //    UIGalaxyPath newPath = Paths[0].Duplicate(7) as UIGalaxyPath;
-    //    Paths[0].GetParent().AddChild(newPath);
-    //    Paths.Add(newPath);
-    //
-    //    newPath._PathGFX = pathGFX;
-    //    pathGFX.HUD = newPath;
-    //}
     //
     //public void AddIncomingLabel(GFXIncomingsItem incomingGFX)
     //{
@@ -398,11 +416,11 @@ public partial class UIGalaxy : Control
     //    CurrentTurn.Text = "Current Turn: " + Game.Map.Data.Turn.ToString();
     //}
     //
-    //public void OnEndTurn()
-    //{
-    //    Game.Input.DeselectAll();
-    //
-    //    Game.TurnLoop.CurrentPlayerData.TurnFinished = true;
-    //    Game.TurnLoop.WaitingForHuman = false;
-    //}
+    public void OnEndTurn()
+    {
+        Game.self.Input.DeselectAll();
+    
+        Game.self.TurnLoop.CurrentPlayerData.TurnFinished = true;
+        Game.self.TurnLoop.WaitingForHuman = false;
+    }
 }

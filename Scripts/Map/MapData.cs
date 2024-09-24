@@ -91,6 +91,11 @@ public partial class MapData : Node
     {
         Data.SaveToFile(_Data, saveName, defLib);
     }
+    public void SaveMap_Progressive(string saveName, DefLibrary defLib)
+    {
+        Data.SaveToFile_Progressive(_Data, saveName, defLib);
+    }
+    
 
     // --------------------------------------------------------------------------------------------
     public void Clear()
@@ -334,8 +339,7 @@ public partial class MapData : Node
         Array<DataBlock> colonies = colonyList.GetSubs("Colony");
         for (int idx = 0; idx < colonies.Count; idx++)
         {
-            ColonyData colony = GenerateGameFromData_Player_System_Colony(colonies[idx], system);
-            system.Colonies.Add(colony);
+            GenerateGameFromData_Player_System_Colony(colonies[idx], system);
         }
     }
 
@@ -346,8 +350,9 @@ public partial class MapData : Node
         colony.Name = colonyDataBlock.ValueS + "_Data";
         colony.ColonyName = colonyDataBlock.ValueS;
         colony.Type = colonyDataBlock.GetSub("Type");
+        colony.Pops = colonyDataBlock.GetSub("Pops_List");
+        colony.Buildings = colonyDataBlock.GetSub("Buildings");
         //colony.Resources = colonyDataBlock.GetSub("Resources");
-        //colony.Buildings = colonyDataBlock.GetSub("Buildings");
 
         colony.Data = colonyDataBlock;
 
@@ -358,6 +363,8 @@ public partial class MapData : Node
 
         systemData.AddChild(colony);//, true, InternalMode.Back);
         colony.Owner = GetTree().EditedSceneRoot;
+
+        systemData.Colonies.Add(colony);
 
         return colony;
     }

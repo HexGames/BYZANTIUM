@@ -145,6 +145,30 @@ public partial class Data
     }
 
     // ----------------------------------------------------------------------------------------------------
+    static public bool DeleteData(DataBlock original, DataBlock dataToRemove)
+    {
+        for (int oriIdx = 0; oriIdx < original.Subs.Count; oriIdx++)
+        {
+            for (int otherIdx = 0; otherIdx < dataToRemove.Subs.Count; otherIdx++)
+            {
+                if (original.Subs[oriIdx].Name == dataToRemove.Subs[otherIdx].Name
+                    && original.Subs[oriIdx].ValueI == dataToRemove.Subs[otherIdx].ValueI
+                    && original.Subs[oriIdx].ValueS == dataToRemove.Subs[otherIdx].ValueS)
+                {
+                    bool deletedAllSubs = DeleteData(original.Subs[oriIdx], dataToRemove.Subs[otherIdx]);
+                    if (deletedAllSubs)
+                    {
+                        original.Subs.RemoveAt(oriIdx);
+                        oriIdx--;
+                        break;
+                    }
+                }
+            }
+        }
+        return original.Subs.Count == 0;
+    }
+
+    // ----------------------------------------------------------------------------------------------------
     static public DataBlock LoadFile(string fileName, DefLibrary defLib)
     {
         using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Read);
@@ -236,6 +260,50 @@ public partial class Data
         return data;
     }
 
+    // ----------------------------------------------------------------------------------------------------
+    static public int SessionSave = 0;
+    static public string LastSaveName = "";
+    static public void SaveToFile_Progressive(DataBlock data, string dirName, DefLibrary defLib)
+    {
+        if (SessionSave == 0)
+        {
+            string content = "";
+            content += Data.SaveData(data, 0, defLib);
+
+            string fileName = dirName + "Save.sav";
+            using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Write);
+            LastSaveName = fileName;
+            file.StoreString(content);
+            file.Close();
+
+            SessionSave++;
+        }
+        else
+        {
+            string content = "";
+            content += Data.SaveData(data, 0, defLib);
+
+            string fileName = dirName + "Save_" + SessionSave.ToString() + ".sav";
+            using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Write);
+            file.StoreString(content);
+            file.Close();
+
+            SessionSave++;
+
+            DataBlock lastSave = Data.LoadFile(LastSaveName, defLib);
+            DataBlock newSave = Data.LoadFile(fileName, defLib);
+            DeleteData(newSave, lastSave);
+            LastSaveName = fileName;
+
+            content = "";
+            content += Data.SaveData(newSave, 0, defLib);
+
+            string diffFileName = dirName + "Save_" + SessionSave.ToString() + "_diff.sav";
+            using var fileDiff = FileAccess.Open("res:///" + diffFileName, FileAccess.ModeFlags.Write);
+            fileDiff.StoreString(content);
+            fileDiff.Close();
+        }
+    }
 
     // ----------------------------------------------------------------------------------------------------
     static public void SaveToFile(DataBlock data, string fileName, DefLibrary defLib)
@@ -247,6 +315,7 @@ public partial class Data
 
         using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Write);
         file.StoreString(content);
+        file.Close();
     }
 
     static public string SaveData(DataBlock dataBlock, int currentTabs, DefLibrary df)

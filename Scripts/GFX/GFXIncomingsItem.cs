@@ -43,7 +43,7 @@ public partial class GFXIncomingsItem : Node3D
         Star = to;
 
         Vector3 offset_A = new Vector3(3.0f, 0.0f, 2.5f);
-        if (linkedToFleet.Star_At_PerTurn.System != null && linkedToFleet.Star_At_PerTurn.System._Player != Game.HumanPlayer)
+        if (linkedToFleet.StarAt_PerTurn.System != null && linkedToFleet.StarAt_PerTurn.System._Player != Game.HumanPlayer)
             offset_A = new Vector3(3.0f, 0.0f, -2.5f);
         Vector3 offset_B = new Vector3(-2.0f, 0.0f, 0.0f);
 
@@ -66,7 +66,7 @@ public partial class GFXIncomingsItem : Node3D
 
         if (HUD == null)
         {
-            //Game.GalaxyUI.AddIncomingLabel(this); //TEMP02
+            //Game.GalaxyUI.AddIncomingLabel(this);
         }
 
         HUD.Refresh();

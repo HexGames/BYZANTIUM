@@ -27,7 +27,7 @@ Player Player_0
 		Design Design_3
 		[...]
 	}
-	Sector_List 
+	System_List 
 	{
 		Sector Sector_1 // rename Core to Sector_1 and add Name variable if needed
 		Sector Sector_2

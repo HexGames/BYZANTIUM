@@ -31,8 +31,6 @@ public partial class PlayerInput : Node
 
     [ExportCategory("Runtime")]
     [Export]
-    public Game Game = null;
-    [Export]
     public InputState State = InputState.FAR_GALAXY;
 
     [Export]
@@ -56,14 +54,6 @@ public partial class PlayerInput : Node
     [Export]
     public ColonyData SelectedPlanetColony = null;
 
-    public override void _Ready()
-    {
-        if (!Engine.IsEditorHint())
-        {
-            Game = GetNode<Game>("/root/Main/Game");
-            //OnSelect += PlayerInput.SelectLocation;
-        }
-    }
 
     public override void _Input(InputEvent inputEvent)
     {
@@ -74,12 +64,12 @@ public partial class PlayerInput : Node
                 // on key button release
                 if (keyButtonEvent.Keycode == Key.S)
                 {
-                    Game.Map.SaveMap();
+                    Game.self.Map.SaveMap_Progressive();
                 }
                 if (keyButtonEvent.Keycode == Key.D)
                 {
-                    Game.Map.LoadMap();
-                    Game.Map.Data.GenerateGameFromData(Game.Def);
+                    Game.self.Map.LoadMap();
+                    Game.self.Map.Data.GenerateGameFromData(Game.self.Def);
                 }
                 if (keyButtonEvent.Keycode == Key.B)
                 {
@@ -234,6 +224,20 @@ public partial class PlayerInput : Node
                 CS_Select_from_CloseFleetsHoverFleets_to_CloseFleets(); break;
         }
     }
+
+    public void OnDeselectFleet(FleetData fleet)
+    {
+        SelectedFleets.Remove(fleet);
+        if (SelectedFleets.Count == 0)
+        {
+            OnDeselectFleets();
+        }
+        else
+        {
+            Game.self.GalaxyUI.FleetsSelected.Refresh(SelectedFleets);
+        }
+    }
+
     public void OnDeselectFleets()
     {
         switch (State)
@@ -241,9 +245,9 @@ public partial class PlayerInput : Node
             case InputState.FAR_FLEETS:
                 CS_Deselect_from_FarFleets_to_FarGalaxy(); break;
             case InputState.FAR_FLEETS_H_FLEETS:
-                CS_Deselect_from_FarFleetsHoverStar_to_FarGalaxyHoverStar(); break;
-            case InputState.FAR_FLEETS_H_STAR:
                 CS_Deselect_from_FarFleetsHoverFleet_to_FarGalaxyHoverFleet(); break;
+            case InputState.FAR_FLEETS_H_STAR:
+                CS_Deselect_from_FarFleetsHoverStar_to_FarGalaxyHoverStar(); break;
             case InputState.CLOSE_FLEETS:
                 CS_Deselect_from_CloseFleets_to_CloseStar(); break;
             case InputState.CLOSE_FLEETS_H_FLEETS:
@@ -322,6 +326,12 @@ public partial class PlayerInput : Node
         if (SelectedPlanet != null) OnDeselectPlanet();
         else if (SelectedFleets.Count > 0) OnDeselectFleets();
         else if (SelectedStar != null) OnDeselectStar();
+    }
+
+    public void DeselectAll()
+    {
+        DeselectOneStep();
+        DeselectOneStep();
     }
 
     // -------------------------------------
@@ -776,7 +786,7 @@ public partial class PlayerInput : Node
     }
     private void CS_Deselect_from_CloseFleets_to_CloseStar()
     {
-        SelectedStar = SelectedFleets[0].Star_At_PerTurn;
+        SelectedStar = SelectedFleets[0].StarAt_PerTurn;
         SelectedStar._Node.GFX.GFXSelect();
         SelectedStar._Node.GFX.ShowPlanets3DGUI();
         Game.self.GalaxyUI.HideFleetsInfo();
@@ -789,7 +799,7 @@ public partial class PlayerInput : Node
     }
     private void CS_Deselect_from_CloseFleetsHoverFleets_to_CloseStarHoverFleets()
     {
-        SelectedStar = SelectedFleets[0].Star_At_PerTurn;
+        SelectedStar = SelectedFleets[0].StarAt_PerTurn;
         SelectedStar._Node.GFX.GFXSelect();
         SelectedStar._Node.GFX.ShowPlanets3DGUI();
 
@@ -800,7 +810,7 @@ public partial class PlayerInput : Node
     }
     private void CS_Deselect_from_CloseFleetsHoverStar_to_CloseStarHoverStar()
     {
-        SelectedStar = SelectedFleets[0].Star_At_PerTurn;
+        SelectedStar = SelectedFleets[0].StarAt_PerTurn;
         SelectedStar._Node.GFX.GFXSelect();
         SelectedStar._Node.GFX.ShowPlanets3DGUI();
 
@@ -811,7 +821,7 @@ public partial class PlayerInput : Node
     }
     private void CS_Deselect_from_CloseFleetsHoverPlanet_to_CloseStarHoverPlanet()
     {
-        SelectedStar = SelectedFleets[0].Star_At_PerTurn;
+        SelectedStar = SelectedFleets[0].StarAt_PerTurn;
         SelectedStar._Node.GFX.GFXSelect();
         SelectedStar._Node.GFX.ShowPlanets3DGUI();
 
@@ -934,6 +944,7 @@ public partial class PlayerInput : Node
 
         SelectedPlanet = HoverPlanet;
         Game.self.SelectorsUI3D.PlanetSelect(SelectedPlanet);
+        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
 
         Game.self.SelectorsUI3D.PlanetDehover();
         HoverPlanet = null;
@@ -958,6 +969,7 @@ public partial class PlayerInput : Node
 
         SelectedPlanet = HoverPlanet;
         Game.self.SelectorsUI3D.PlanetSelect(SelectedPlanet);
+        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
 
         Game.self.SelectorsUI3D.PlanetDehover();
         HoverPlanet = null;
@@ -982,6 +994,7 @@ public partial class PlayerInput : Node
 
         SelectedPlanet = HoverPlanet;
         Game.self.SelectorsUI3D.PlanetSelect(SelectedPlanet);
+        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
 
         Game.self.SelectorsUI3D.PlanetDehover();
         HoverPlanet = null;
@@ -994,12 +1007,16 @@ public partial class PlayerInput : Node
         Game.self.SelectorsUI3D.PlanetDeselect();
         SelectedPlanet = null;
 
+        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
+
         State = InputState.CLOSE_STAR;
     }
     private void CS_Deselect_from_ClosePlanetHoverPlanet_to_CloseStarHoverPlanet()
     {
         Game.self.SelectorsUI3D.PlanetDeselect();
         SelectedPlanet = null;
+
+        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
 
         State = InputState.CLOSE_STAR_H_PLANET;
     }
@@ -1008,12 +1025,16 @@ public partial class PlayerInput : Node
         Game.self.SelectorsUI3D.PlanetDeselect();
         SelectedPlanet = null;
 
+        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
+
         State = InputState.CLOSE_STAR_H_STAR;
     }
     private void CS_Deselect_from_ClosePlanetHoverFleets_to_CloseStarHoverFleets()
     {
         Game.self.SelectorsUI3D.PlanetDeselect();
         SelectedPlanet = null;
+
+        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
 
         State = InputState.CLOSE_STAR_H_FLEETS;
     }
@@ -1037,7 +1058,7 @@ public partial class PlayerInput : Node
             Game.self.Map.Data.Stars[idx]._Node.GFX.LODClose();
         }
 
-        SelectedStar = SelectedFleets[0].Star_At_PerTurn;
+        SelectedStar = SelectedFleets[0].StarAt_PerTurn;
         SelectedStar._Node.GFX.ShowPlanets3DGUI();
 
         State = InputState.CLOSE_FLEETS;
@@ -1196,6 +1217,40 @@ public partial class PlayerInput : Node
         {
             OnHoverStar(hStar);
         }
+    }
+
+
+    // ---------------------------------------------------------------------------------
+    public bool TryFleetsMoveToStar(StarData targetStar)
+    {
+        if (State != InputState.CLOSE_FLEETS_H_STAR && State != InputState.CLOSE_FLEETS_H_PLANET && State != InputState.FAR_FLEETS_H_STAR)
+        {
+            return false;
+        }
+
+        for (int idx = 0; idx < SelectedFleets.Count; idx++)
+        {
+            if (SelectedFleets[idx]._Player == Game.self.HumanPlayer)
+            {
+                if (ActionMove.HasAvailableMove(Game.self, SelectedFleets[idx], targetStar))
+                {
+                    ActionMove.CancelMove(Game.self, SelectedFleets[idx]);
+                    ActionMove.AddMove(Game.self, SelectedFleets[idx], targetStar);
+
+                    Game.self.Paths.AddPath(SelectedFleets[idx], targetStar);
+                }
+                else if (SelectedFleets[idx].StarAt_PerTurn == targetStar)
+                {
+                    ActionMove.CancelMove(Game.self, SelectedFleets[idx]);
+
+                    Game.self.Paths.ClearPathForFleet(SelectedFleets[idx]);
+                }
+
+                Game.self.GalaxyUI.FleetsSelected.Refresh(SelectedFleets);
+            }
+        }
+
+        return true;
     }
 
     // ---------------------------------------------------------------------------------

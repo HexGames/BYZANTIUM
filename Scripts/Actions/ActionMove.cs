@@ -13,7 +13,7 @@ public class ActionMove
         {
             StarData star = game.Map.Data.Stars[starIdx];
 
-            if (fleet.Star_At_PerTurn != star && fleet.Star_At_PerTurn.DistanceTo(star) < 4)
+            if (fleet.StarAt_PerTurn != star && fleet.StarAt_PerTurn.DistanceTo(star) < 4)
             {
                 fleet.AvailableMoves_PerTurn.Add(star);
             }
@@ -27,56 +27,56 @@ public class ActionMove
 
     static public void AddMove(Game game, FleetData fleet, StarData star)
     {
-        fleet.MoveAction = Data.AddData(fleet.Data, "ActionMove", game.Def);
+        fleet.ActionData = Data.AddData(fleet.Data, "ActionMove", game.Def);
 
-        Data.AddData(fleet.MoveAction, "Progress", 0, game.Def);
-        Data.AddData(fleet.MoveAction, "ProgressMax", fleet.Star_At_PerTurn.DistanceTo(star), game.Def);
-        Data.AddLink(fleet.MoveAction, star, game.Def);
+        Data.AddData(fleet.ActionData, "Progress", 0, game.Def);
+        Data.AddData(fleet.ActionData, "ProgressMax", fleet.StarAt_PerTurn.DistanceTo(star), game.Def);
+        Data.AddLink(fleet.ActionData, star, game.Def);
     }
     static public bool CancelMove(Game game, FleetData fleet)
     {
-        if (fleet.MoveAction == null)
+        if (fleet.ActionData == null)
         {
             return false;
         }
 
-        int progress = fleet.MoveAction.GetSub("Progress").ValueI;
+        int progress = fleet.ActionData.GetSub("Progress").ValueI;
         if (progress > 0)
         {
             return false;
         }
 
         Data.RemoveData(fleet.Data, "ActionMove", game.Def);
-        fleet.MoveAction = null;
+        fleet.ActionData = null;
         return true;
     }
 
     static public void EndTurn(Game game, FleetData fleet)
     {
-        if (fleet.MoveAction == null)
+        if (fleet.ActionData == null)
         {
             return;
         }
 
-        StarData star = Data.GetLinkStarData(fleet.MoveAction, game.Map.Data);
-        int progress = fleet.MoveAction.GetSub("Progress").ValueI;
-        int progressMax = fleet.MoveAction.GetSub("ProgressMax").ValueI;
+        StarData star = Data.GetLinkStarData(fleet.ActionData, game.Map.Data);
+        int progress = fleet.ActionData.GetSub("Progress").ValueI;
+        int progressMax = fleet.ActionData.GetSub("ProgressMax").ValueI;
 
         if (progress < progressMax)
         {
             progress++;
-            fleet.MoveAction.GetSub("Progress").ValueI = progress;
+            fleet.ActionData.GetSub("Progress").ValueI = progress;
         }
         else
         {
             StarData oldStar = Data.GetLinkStarData(fleet.Data, game.Map.Data);
             Data.RemoveData(oldStar._Data, "Link:Player:Fleet", fleet._Player.PlayerName + ":" + fleet.FleetName, game.Def);
 
-            fleet.Data.GetSub("Link:Star").ValueS = fleet.MoveAction.GetSub("Link:Star").ValueS;
+            fleet.Data.GetSub("Link:Star").ValueS = fleet.ActionData.GetSub("Link:Star").ValueS;
             Data.AddLink(star._Data, fleet, game.Def);
 
             Data.RemoveData(fleet.Data, "ActionMove", game.Def);
-            fleet.MoveAction = null;
+            fleet.ActionData = null;
         }
     }
 }

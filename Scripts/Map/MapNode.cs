@@ -79,6 +79,11 @@ public partial class MapNode : Node
         Data.SaveMap("Saves/" + SaveName + ".sav", DefLibrary);
     }
 
+    public void SaveMap_Progressive()
+    {
+        Data.SaveMap_Progressive("Saves/" + SaveName + "/", DefLibrary);
+    }
+
     public void ClearContainers()
     {
         while (StarsNode.GetChildCount(true) > 0)

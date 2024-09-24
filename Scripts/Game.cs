@@ -42,6 +42,7 @@ public partial class Game : Node
     [ExportCategory("Runtime")]
     [Export]
     public PlayerData HumanPlayer = null;
+    public RandomNumberGenerator RNG = new RandomNumberGenerator();
 
     private bool FirstFrame = true;
 

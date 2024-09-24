@@ -331,32 +331,32 @@ public partial class UIBarListPlanet : Control
                     ColonyOwnerRow.Visible = false;
                 }
 
-                int authority = _PlanetData.Colony.Resources_PerTurn.GetLimit("Authority").GetUsedTotal();
-                if (authority > 0)
-                {
-                    ColonyAuthorityText.Text = ColonyAuthorityText_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.GetLimit("Authority").ToString_Used(true));
-                    ColonyAuthorityRow.Visible = true;
-                }
-                else
-                {
-                    ColonyAuthorityRow.Visible = false;
-                }
+                //int authority = _PlanetData.Colony.Resources_PerTurn.GetLimit("Authority").GetUsedTotal();
+                //if (authority > 0)
+                //{
+                //    ColonyAuthorityText.Text = ColonyAuthorityText_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.GetLimit("Authority").ToString_Used(true));
+                //    ColonyAuthorityRow.Visible = true;
+                //}
+                //else
+                //{
+                //    ColonyAuthorityRow.Visible = false;
+                //}
 
                 if (_PlanetData.Colony.Type.ValueS == "World")
                 {
-                    ColonyPopsText.Text = ColonyPopsText_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.GetPops().ToString_Pops());
+                    //ColonyPopsText.Text = ColonyPopsText_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.GetPops().ToString_Pops());
                     ColonyPopsBg.Visible = true;
 
-                    int controlledPops = _PlanetData.Colony.Resources_PerTurn.GetPops().GetCPops();
-                    if (controlledPops > 0)
-                    {
-                        ColonyPopsControlledText.Text = ColonyPopsControlledText_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.GetPops().ToString_CPops());
-                        ColonyPopsControlledBg.Visible = true;
-                    }
-                    else
-                    {
-                        ColonyPopsControlledBg.Visible = false;
-                    }
+                    //int controlledPops = _PlanetData.Colony.Resources_PerTurn.GetPops().GetCPops();
+                    //if (controlledPops > 0)
+                    //{
+                    //    ColonyPopsControlledText.Text = ColonyPopsControlledText_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.GetPops().ToString_CPops());
+                    //    ColonyPopsControlledBg.Visible = true;
+                    //}
+                    //else
+                    //{
+                    //    ColonyPopsControlledBg.Visible = false;
+                    //}
 
                     ColonyPopsRow.Visible = true;
                 }
@@ -377,20 +377,20 @@ public partial class UIBarListPlanet : Control
                 {
                     ColonyRes_1_Bg.Visible = false;
                     ColonyRes_2_Bg.Visible = false;
-                    for (int idx = 0; idx < _PlanetData.Colony.Resources_PerTurn.Incomes.Count; idx++)
+                    //for (int idx = 0; idx < _PlanetData.Colony.Resources_PerTurn.Incomes.Count; idx++)
                     {
-                        if (_PlanetData.Colony.Resources_PerTurn.Incomes[idx].GetIncomeTotal() > 0)
+                        //if (_PlanetData.Colony.Resources_PerTurn.Incomes[idx].GetIncomeTotal() > 0)
                         {
                             if (ColonyRes_1_Bg.Visible == false)
                             {
-                                ColonyRes_1_Text.Text = ColonyRes_1_Text_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].ToString_Income(true)).Replace("Turn", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].Name);
+                                //ColonyRes_1_Text.Text = ColonyRes_1_Text_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].ToString_Income(true)).Replace("Turn", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].Name);
                                 ColonyRes_1_Bg.Visible = true;
                             }
                             else //if (ColonyRes_2_Bg.Visible == false)
                             {
-                                ColonyRes_2_Text.Text = ColonyRes_2_Text_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].ToString_Income(true)).Replace("Turn", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].Name);
+                               // ColonyRes_2_Text.Text = ColonyRes_2_Text_Original.Replace("$val", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].ToString_Income(true)).Replace("Turn", _PlanetData.Colony.Resources_PerTurn.Incomes[idx].Name);
                                 ColonyRes_2_Bg.Visible = true;
-                                break;
+                                //break;
                             }
                         }
                     }

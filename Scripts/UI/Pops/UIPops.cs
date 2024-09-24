@@ -38,11 +38,11 @@ public partial class UIPops : Control
         _Colony = colony;
         _Sector = null;
 
-        Population.Text = Population_Original.Replace("$value", _Colony.Resources_PerTurn.GetPops().ToString_Pops());
+        //Population.Text = Population_Original.Replace("$value", _Colony.Resources_PerTurn.GetPops().ToString_Pops());
 
-        Growth.Text = Growth_Original.Replace("$value", _Colony.Resources_PerTurn.GetPops().ToString_TrueGrowth());
+        //Growth.Text = Growth_Original.Replace("$value", _Colony.Resources_PerTurn.GetPops().ToString_TrueGrowth());
 
-        Controlled.Text = Controlled_Original.Replace("$value", _Colony.Resources_PerTurn.GetPops().ToString_CPops());
+        //Controlled.Text = Controlled_Original.Replace("$value", _Colony.Resources_PerTurn.GetPops().ToString_CPops());
     }
 
     //public void Refresh(SectorData sector)

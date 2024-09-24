@@ -29,46 +29,47 @@ public partial class TurnLoop : Node
     //[Export]
     //public DataBlock CurrentColonyAction = null;
 
-    [ExportCategory("Runtime - Links")]
-    [Export]
-    public Game Game = null;
+    //[ExportCategory("Runtime - Links")]
+    //[Export]
+    //public Game Game = null;
 
-    public override void _Ready()
-    {
-        if (!Engine.IsEditorHint())
-        {
-            Game = GetNode<Game>("/root/Main/Game");
-        }
-    }
+    //public override void _Ready()
+    //{
+    //    if (!Engine.IsEditorHint())
+    //    {
+    //        Game = GetNode<Game>("/root/Main/Game");
+    //    }
+    //}
 
     public void Init()
     {
         CurrentHumanPlayerData = GetHumanPlayer();
         Init_Resources();
+        Init_Fleets();
         StartTurn_Fleets();
         StartTurn_Resources();
         StartTurn_NewActions();
 
         // update UI
         //Game.GalaxyUI.StartTurn();//TEMP02
-        for (int starIdx = 0; starIdx < Game.Map.Data.Stars.Count; starIdx++)
+        for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
         {
-            StarData star = Game.Map.Data.Stars[starIdx];
+            StarData star = Game.self.Map.Data.Stars[starIdx];
             star._Node.GFX.RefreshPlayerColor();
         }
 
-        for (int starIdx = 0; starIdx < Game.Map.Data.Stars.Count; starIdx++)
+        for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
         {
-            StarData star = Game.Map.Data.Stars[starIdx];
+            StarData star = Game.self.Map.Data.Stars[starIdx];
             star._Node.GFX.RefreshShips();
         }
     }
 
     public void Init_Resources()
     {
-        for (int starIdx = 0; starIdx < Game.Map.Data.Stars.Count; starIdx++)
+        for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
         {
-            StarData star = Game.Map.Data.Stars[starIdx];
+            StarData star = Game.self.Map.Data.Stars[starIdx];
             for (int planetIdx = 0; planetIdx < star.Planets.Count; planetIdx++)
             {
                 PlanetData planet = star.Planets[planetIdx];
@@ -76,29 +77,46 @@ public partial class TurnLoop : Node
             }
         }
 
-        for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
         {
-            PlayerData player = Game.Map.Data.Players[playerIdx];
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
             player.Resources_PerTurn = new ResourcesWrapper(player.Resources, ResourcesWrapper.ParentType.Player);
 
             for (int sectorIdx = 0; sectorIdx < player.Systems.Count; sectorIdx++)
             {
                 SystemData system = player.Systems[sectorIdx];
                 system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.System);
+                system.Pops_PerTurn = new PopsWrapper(system);
+                system.Buildings_PerTurn = new BuildingsWrapper(system);
                 //sector.BuildQueue_PerTurn_ActionChange = new BuildingQueueWrapper(sector, Game);
                 //sector.BudgetPerTurn = new BudgetWrapper(sector.Budget);
 
                 //for (int systemIdx = 0; systemIdx < sector.Systems.Count; systemIdx++)
                 //{
                 //    SystemData system = sector.Systems[sectorIdx];
-                 //   system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.System);
+                //   system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.System);
 
-                    for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
-                    {
-                        ColonyData colony = system.Colonies[colonyIdx];
-                        //colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Colony);
-                    }
+                for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
+                {
+                    ColonyData colony = system.Colonies[colonyIdx];
+                    //colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Colony);
+                    colony.Pops_PerTurn = new PopsWrapper(colony);
+                    colony.Buildings_PerTurn = new BuildingsWrapper(colony);
+                }
                 //}
+            }
+        }
+    }
+
+    public void Init_Fleets()
+    {
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
+            {
+                FleetData fleet = player.Fleets[fleetIdx];
+                fleet.Stats_PerTurn = new FleetStatsWrapper(fleet);
             }
         }
     }
@@ -146,12 +164,12 @@ public partial class TurnLoop : Node
 
     PlayerData GetNextPlayer(out int playeridx)
     {
-        for (int idx = 0; idx < Game.Map.Data.Players.Count; idx++)
+        for (int idx = 0; idx < Game.self.Map.Data.Players.Count; idx++)
         {
-            if (Game.Map.Data.Players[idx].TurnFinished == false)
+            if (Game.self.Map.Data.Players[idx].TurnFinished == false)
             {
                 playeridx = idx;
-                return Game.Map.Data.Players[idx];
+                return Game.self.Map.Data.Players[idx];
             }
         }
         playeridx = -1;
@@ -160,11 +178,11 @@ public partial class TurnLoop : Node
 
     PlayerData GetHumanPlayer()
     {
-        for (int idx = 0; idx < Game.Map.Data.Players.Count; idx++)
+        for (int idx = 0; idx < Game.self.Map.Data.Players.Count; idx++)
         {
-            if (Game.Map.Data.Players[idx].Human)
+            if (Game.self.Map.Data.Players[idx].Human)
             {
-                return Game.Map.Data.Players[idx];
+                return Game.self.Map.Data.Players[idx];
             }
         }
         return null;

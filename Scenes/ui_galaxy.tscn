@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://bukr82o6e8rl3"]
+[gd_scene load_steps=14 format=3 uid="uid://bukr82o6e8rl3"]
 
-[ext_resource type="Theme" uid="uid://h0pqg2crxlit" path="res://UITheme/GeneralUI.tres" id="1_cqepg"]
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
 [ext_resource type="PackedScene" uid="uid://dkomfigvec4wg" path="res://Scenes/ui_3d_star.tscn" id="2_iewv2"]
 [ext_resource type="Script" path="res://Scripts/UI3D/UI3DManager.cs" id="2_q01rn"]
@@ -10,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://vh0pcrygv61d" path="res://Scenes/ui_system.tscn" id="7_y5oqc"]
 [ext_resource type="PackedScene" uid="uid://bwi6x7hcx8ckx" path="res://Scenes/ui_colonies.tscn" id="9_2hb86"]
 [ext_resource type="PackedScene" uid="uid://bjnpkcy3hqibr" path="res://Scenes/ui_planet_info.tscn" id="9_82sdf"]
+[ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="11_72k2f"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="12_70fqi"]
 [ext_resource type="PackedScene" uid="uid://b2a0hskimxnut" path="res://Scenes/ui_fleets.tscn" id="12_sv4sa"]
 [ext_resource type="PackedScene" uid="uid://c5x0k0s750tc4" path="res://Scenes/__ui_general.tscn" id="16_3p5nr"]
 
@@ -70,6 +71,7 @@ mouse_filter = 2
 [node name="Planet" parent="UI3D/PlanetsHUD" instance=ExtResource("4_3psny")]
 
 [node name="IncomingHUD" type="Control" parent="UI3D"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -78,9 +80,13 @@ offset_bottom = 40.0
 visible = false
 
 [node name="PathsHUD" type="Control" parent="UI3D"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Path" parent="UI3D/PathsHUD" instance=ExtResource("3_vn2yg")]
 visible = false
@@ -119,7 +125,6 @@ offset_left = 16.0
 offset_right = 16.0
 
 [node name="EndTurn" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -143,8 +148,27 @@ offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
-theme = ExtResource("1_cqepg")
-text = "END TURN"
+theme = ExtResource("11_72k2f")
+
+[node name="Text" type="RichTextLabel" parent="EndTurn/Button"]
+self_modulate = Color(1, 0.501961, 0, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("12_70fqi")
+bbcode_enabled = true
+text = "[center]END TURN[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="Turn" type="Label" parent="."]
 visible = false

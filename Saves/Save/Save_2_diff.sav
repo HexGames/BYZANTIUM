@@ -1,0 +1,30 @@
+Map 
+{
+	Player_List 
+	{
+		Player Federation
+		{
+			Fleets 
+			{
+				Fleet I
+				{
+					ActionMove 
+					{
+						Progress 0
+						ProgressMax 2
+						Link:Star Mimosa
+					}
+				}
+				Fleet II
+				{
+					ActionMove 
+					{
+						Progress 0
+						ProgressMax 2
+						Link:Star Mimosa
+					}
+				}
+			}
+		}
+	}
+}

@@ -12,6 +12,9 @@ public partial class UISelectedFleetsItem : Control
     private static string TotalShipsNumber_Original = "";
     private RichTextLabel TotalShipsPower = null;
     private static string TotalShipsPower_Original = "";
+    private Control SupplyBG = null;
+    private RichTextLabel Supply = null;
+    private static string Supply_Original = "";
     private Control ActionBG = null;
     private RichTextLabel Action = null;
     private static string Action_Original = "";
@@ -20,18 +23,17 @@ public partial class UISelectedFleetsItem : Control
     [Export]
     public FleetData _Fleet = null;
 
-    Game Game;
-
     public override void _Ready()
     {
-        Game = GetNode<Game>("/root/Main/Game");
-
         FleetNameNumber = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/Title/MarginContainer/Control/Name");
         if (FleetName_Original.Length == 0) FleetName_Original = FleetNameNumber.Text;
         TotalShipsNumber = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/Faction/MarginContainer/TotalShips");
         if (TotalShipsNumber_Original.Length == 0) TotalShipsNumber_Original = TotalShipsNumber.Text;
         TotalShipsPower = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/Faction/MarginContainer/TotalPower");
         if (TotalShipsPower_Original.Length == 0) TotalShipsPower_Original = TotalShipsPower.Text;
+        SupplyBG = GetNode<Control>("MarginContainer/VBoxContainer/VBoxContainer/Supply");
+        Supply = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/VBoxContainer/Supply/MarginContainer/Supply");
+        if (Supply_Original.Length == 0) Supply_Original = Supply.Text;
         ActionBG = GetNode<Control>("MarginContainer/VBoxContainer/VBoxContainer/Action");
         Action = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/VBoxContainer/Action/MarginContainer/Control/Name");
         if (Action_Original.Length == 0) Action_Original = Action.Text;
@@ -56,9 +58,13 @@ public partial class UISelectedFleetsItem : Control
             Ships[idx].Visible = false;
         }
 
-        if (fleet.MoveAction != null)
+
+        Supply.Text = Supply_Original.Replace("$sup", fleet.Stats_PerTurn.Supply.ToString()).Replace("$max", fleet.Stats_PerTurn.SupplyMax.ToString());
+        SupplyBG.Visible = true;
+
+        if (fleet.ActionData != null)
         {
-            StarData star = Data.GetLinkStarData(fleet.MoveAction, Game.Map.Data);
+            StarData star = Data.GetLinkStarData(fleet.ActionData, Game.self.Map.Data);
             Action.Text = Action_Original.Replace("$value", "Jump to " + star.StarName + " in " + fleet.GetMoveActionTurns() + Helper.GetIcon("Turn"));
         }
         else
@@ -70,6 +76,6 @@ public partial class UISelectedFleetsItem : Control
 
     public void OnDeselect()
     {
-        //Game.Input.DeselectFleet(_Fleet);
+        Game.self.Input.OnDeselectFleet(_Fleet);
     }
 }

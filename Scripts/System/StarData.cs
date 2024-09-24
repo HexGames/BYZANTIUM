@@ -27,6 +27,8 @@ public partial class StarData : Node
     public Array<PlanetData> Planets = new Array<PlanetData>();
     [Export]
     public SystemData System = null;
+    [Export]
+    public DataBlock ActionData = null;
 
     [ExportCategory("Runtime")]
     [Export]
@@ -101,6 +103,51 @@ public partial class StarData : Node
 
         return Fleets_Enemy;
     }
+
+    // --------------------------------------------------------------------------------------------
+    //public int GetFirendlySupply(PlayerData currentPlayer)
+    //{
+    //    Array<FleetData> fleetsFriendly = GetFriendlyFleets(currentPlayer);
+    //
+    //    int supply = 0;
+    //    for (int idx = 0; idx < fleetsFriendly.Count; idx++)
+    //    {
+    //        supply += fleetsFriendly[idx].Stats_PerTurn.Supply;
+    //    }
+    //
+    //    return supply;
+    //}
+
+    //public void UseFirendlySupply(PlayerData currentPlayer, int value)
+    //{
+    //    Array<FleetData> fleetsFriendly = GetFriendlyFleets(currentPlayer);
+    //
+    //    if (fleetsFriendly.Count == 0)
+    //        return;
+    //
+    //    int supply = GetFirendlySupply(currentPlayer);
+    //
+    //    for (int idx = 0; idx < fleetsFriendly.Count; idx++)
+    //    {
+    //        int toSubstract = Mathf.Min(fleetsFriendly[idx].Stats_PerTurn.Supply, value * fleetsFriendly[idx].Stats_PerTurn.Supply / supply);
+    //        fleetsFriendly[idx].Stats_PerTurn.Supply -= toSubstract;
+    //        supply -= toSubstract;
+    //    }
+    //
+    //    int maxTrys = 1000;
+    //    while (supply > 0 && maxTrys > 0)
+    //    {
+    //        int randIdx = Game.self.RNG.RandiRange(0, fleetsFriendly.Count);
+    //        if (fleetsFriendly[randIdx].Stats_PerTurn.Supply > 0)
+    //        {
+    //            fleetsFriendly[randIdx].Stats_PerTurn.Supply--;
+    //            supply--;
+    //        }
+    //        maxTrys--;
+    //    }
+    //
+    //    if (maxTrys == 0) GD.PrintErr("Use supply overflow");
+    //}
 
     // --------------------------------------------------------------------------------------------
     //[Export]

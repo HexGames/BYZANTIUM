@@ -171,7 +171,10 @@ public partial class GFXStar : Node3D
                 // on mouse button release
                 if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
                 {
-                    Game.self.Input.DeselectOneStep();
+                    if (Game.self.Input.TryFleetsMoveToStar(_Star) == false)
+                    {
+                        Game.self.Input.DeselectOneStep();
+                    }
                 }
             }
         }

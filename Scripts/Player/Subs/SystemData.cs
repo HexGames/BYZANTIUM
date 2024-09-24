@@ -33,7 +33,10 @@ public partial class SystemData : Node
 
     // resources
     public ResourcesWrapper Resources_PerTurn = null;
-
+    // pops
+    public PopsWrapper Pops_PerTurn = null;
+    // buildings
+    public BuildingsWrapper Buildings_PerTurn = null;
     // actions
     //public List<ActionSectorBuild> ActionsBuildPossible = new List<ActionSectorBuild>();
 

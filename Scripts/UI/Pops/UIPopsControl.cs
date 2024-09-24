@@ -48,11 +48,11 @@ public partial class UIPopsControl : Control
 
         PlayerName.Text = PlayerName_Original.Replace("$player", _Colony._System._Player.PlayerName + "'s World");
 
-        Upkeep.Text = Upkeep_Original.Replace("$value", _Colony.Resources_PerTurn.GetLimit("Authority").ToString_Used(true));
+        //Upkeep.Text = Upkeep_Original.Replace("$value", _Colony.Resources_PerTurn.GetLimit("Authority").ToString_Used(true));
 
-        ControlledPops.Text = ControlledPops_Original.Replace("$value", _Colony.Resources_PerTurn.GetPops().ToString_CPops());
+        //ControlledPops.Text = ControlledPops_Original.Replace("$value", _Colony.Resources_PerTurn.GetPops().ToString_CPops());
 
-        IndependentPops.Text = IndependentPops_Original.Replace("$value", _Colony.Resources_PerTurn.GetPops().ToString_IPops());
+        //IndependentPops.Text = IndependentPops_Original.Replace("$value", _Colony.Resources_PerTurn.GetPops().ToString_IPops());
 
         HostilePops.Text = HostilePops_Original.Replace("$value", "0");
     }

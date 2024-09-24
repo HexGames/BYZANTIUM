@@ -4,6 +4,23 @@ using Godot.Collections;
 //[Tool]
 public partial class UISelectedFleets : Control
 {
+    /*
+    // was duplicated in the past...
+    [Export]
+    public Button Fleet_1;
+    [Export]
+    public Button Fleet_2;
+    [Export]
+    public Button Fleet_3;
+    [Export]
+    public Button Fleet_4;
+    [Export]
+    public Button Fleet_5;
+    [Export]
+    public Button MoreFleets;
+    [Export]
+    public RichTextLabel MoreFleetsText = null;
+    private static string MoreFleetsText_Original = "";*/
     // is beeing duplicated
     [Export]
     public Array<UISelectedFleetsItem> Fleets = new Array<UISelectedFleetsItem>();

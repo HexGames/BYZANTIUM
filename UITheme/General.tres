@@ -1,0 +1,82 @@
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://b0fufcgm2rhkc"]
+
+[ext_resource type="FontFile" uid="uid://4fq6gek34dpu" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="1_br14q"]
+[ext_resource type="FontFile" uid="uid://dljqs3c86eqp4" path="res://Fonts/Fredoka/Fredoka-Medium.ttf" id="2_fjopu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kt4v"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+border_width_bottom = 1
+border_color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4n147"]
+bg_color = Color(1, 0.501961, 0, 0.501961)
+border_width_bottom = 1
+border_color = Color(1, 0.501961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wwk1"]
+bg_color = Color(1, 0.501961, 0, 0.25098)
+border_width_bottom = 1
+border_color = Color(1, 0.501961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_if0h5"]
+bg_color = Color(1, 0.768627, 0, 0.501961)
+border_width_bottom = 1
+border_color = Color(1, 0.768627, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8gni"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+border_color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3exoy"]
+bg_color = Color(1, 0.501961, 0, 0.501961)
+border_color = Color(1, 0.501961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvl4j"]
+bg_color = Color(1, 0.501961, 0, 0.25098)
+border_color = Color(1, 0.501961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk7xt"]
+bg_color = Color(1, 0.768627, 0, 0.501961)
+border_color = Color(1, 0.768627, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8sfd"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 0.752941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08dsx"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 0.752941)
+border_color = Color(0.752941, 0.752941, 0.752941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6xom"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0.752941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knrsk"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 0.878431)
+border_width_left = 1
+border_width_right = 1
+border_color = Color(1, 0.501961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3nt6h"]
+bg_color = Color(0.188235, 0, 0, 0.752941)
+border_color = Color(0.752941, 0.752941, 0.752941, 1)
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxFlat_5kt4v")
+Button/styles/hover = SubResource("StyleBoxFlat_4n147")
+Button/styles/normal = SubResource("StyleBoxFlat_3wwk1")
+Button/styles/pressed = SubResource("StyleBoxFlat_if0h5")
+ButtonIcon/base_type = &"Button"
+ButtonIcon/styles/disabled = SubResource("StyleBoxFlat_d8gni")
+ButtonIcon/styles/hover = SubResource("StyleBoxFlat_3exoy")
+ButtonIcon/styles/normal = SubResource("StyleBoxFlat_yvl4j")
+ButtonIcon/styles/pressed = SubResource("StyleBoxFlat_fk7xt")
+Panel/styles/panel = SubResource("StyleBoxFlat_k8sfd")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_08dsx")
+PanelSmall/base_type = &"Panel"
+PanelSmall/styles/panel = SubResource("StyleBoxFlat_e6xom")
+PanelTitle/base_type = &"Panel"
+PanelTitle/styles/panel = SubResource("StyleBoxFlat_knrsk")
+RedPanel/base_type = &"PanelContainer"
+RedPanel/styles/panel = SubResource("StyleBoxFlat_3nt6h")
+RichTextLabel/fonts/bold_font = ExtResource("1_br14q")
+RichTextLabel/fonts/normal_font = ExtResource("2_fjopu")
+Title/base_type = &"RichTextLabel"

@@ -49,9 +49,10 @@ public partial class MapGenerator : Node
         Data.AddData(ship, "Design", "Babylon", DefLibrary);
         Data.AddData(ship, "HP", 0, DefLibrary);
         Data.AddData(ship, "XP", 0, DefLibrary);
-        Data.AddData(ship, "Marines", 100, DefLibrary);
+        Data.AddData(ship, "Marines", 10, DefLibrary);
         Data.AddData(ship, "Fighters", 0, DefLibrary);
-        Data.AddData(ship, "Supply", 300, DefLibrary);
+        Data.AddData(ship, "Supply", 100, DefLibrary);
+        Data.AddData(ship, "Supply*Max", 100, DefLibrary);
 
         // second fleet
         fleet = Data.AddData(fleets, "Fleet", "II", DefLibrary);
@@ -64,8 +65,23 @@ public partial class MapGenerator : Node
         Data.AddData(ship, "Design", "Babylon", DefLibrary);
         Data.AddData(ship, "HP", 0, DefLibrary);
         Data.AddData(ship, "XP", 0, DefLibrary);
-        Data.AddData(ship, "Marines", 100, DefLibrary);
+        Data.AddData(ship, "Marines", 10, DefLibrary);
         Data.AddData(ship, "Fighters", 0, DefLibrary);
-        Data.AddData(ship, "Supply", 300, DefLibrary);
+        Data.AddData(ship, "Supply", 50, DefLibrary);
+        Data.AddData(ship, "Supply*Max", 50, DefLibrary);
+
+        // third fleet
+        fleet = Data.AddData(fleets, "Fleet", "S-I", DefLibrary);
+        Data.AddData(fleet, "Name", "Colony_Ship", DefLibrary);
+
+        Data.AddData(fleet, "Link:Star", star.ValueS, DefLibrary); // no StarData yet
+        Data.AddData(star, "Link:Player:Fleet", player.ValueS + ":" + fleet.ValueS, DefLibrary); // no StarData yet
+
+        ship = Data.AddData(fleet, "Ship", "Colony_Ship", DefLibrary);
+        Data.AddData(ship, "Design", "Babylon", DefLibrary);
+        Data.AddData(ship, "HP", 10, DefLibrary);
+        Data.AddData(ship, "Supply", 50, DefLibrary);
+        Data.AddData(ship, "Supply*Max", 50, DefLibrary);
+        Data.AddData(ship, "CanColonize", 50, DefLibrary);
     }
 }

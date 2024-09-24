@@ -25,13 +25,13 @@ public partial class UI3DSelectors : Node
         if (fleets.Count == 0)
             return;
 
-        if (fleets[0].Star_At_PerTurn._Node.GFX.ShipFriendly._Fleets.Contains(fleets[0]))
+        if (fleets[0].StarAt_PerTurn._Node.GFX.ShipFriendly._Fleets.Contains(fleets[0]))
         {
-            Fleet_Hover.Position = fleets[0].Star_At_PerTurn._Node.GFX.ShipFriendly.GlobalPosition;
+            Fleet_Hover.Position = fleets[0].StarAt_PerTurn._Node.GFX.ShipFriendly.GlobalPosition;
         }
         else
         {
-            Fleet_Hover.Position = fleets[0].Star_At_PerTurn._Node.GFX.ShipOther.GlobalPosition;
+            Fleet_Hover.Position = fleets[0].StarAt_PerTurn._Node.GFX.ShipOther.GlobalPosition;
         }
         Fleet_Hover.Visible = true;
     }
@@ -46,13 +46,13 @@ public partial class UI3DSelectors : Node
         if (fleets.Count == 0)
             return;
 
-        if (fleets[0].Star_At_PerTurn._Node.GFX.ShipFriendly._Fleets.Contains(fleets[0]))
+        if (fleets[0].StarAt_PerTurn._Node.GFX.ShipFriendly._Fleets.Contains(fleets[0]))
         {
-            Fleet_Select.Position = fleets[0].Star_At_PerTurn._Node.GFX.ShipFriendly.GlobalPosition;
+            Fleet_Select.Position = fleets[0].StarAt_PerTurn._Node.GFX.ShipFriendly.GlobalPosition;
         }
         else
         {
-            Fleet_Select.Position = fleets[0].Star_At_PerTurn._Node.GFX.ShipOther.GlobalPosition;
+            Fleet_Select.Position = fleets[0].StarAt_PerTurn._Node.GFX.ShipOther.GlobalPosition;
         }
         Fleet_Select.Visible = true;
     }

@@ -18,8 +18,7 @@ public partial class FleetData : Node
     [Export]
     public string FleetName = "";
     [Export]
-    public DataBlock MoveAction = null;
-
+    public DataBlock ActionData = null;
 
     //[Export]
     //public DataBlock ShipsData = null;
@@ -32,7 +31,8 @@ public partial class FleetData : Node
     [Export]
     public Array<ShipData> Ships = new Array<ShipData>();
 
-    public StarData Star_At_PerTurn = null;
+    public FleetStatsWrapper Stats_PerTurn = null;
+    public StarData StarAt_PerTurn = null;
 
     // actions
     public List<StarData> AvailableMoves_PerTurn = new List<StarData>();
@@ -58,9 +58,9 @@ public partial class FleetData : Node
 
     public int GetMoveActionTurns()
     {
-        if (MoveAction != null)
+        if (ActionData != null)
         {
-            return MoveAction.GetSub("ProgressMax").ValueI - MoveAction.GetSub("Progress").ValueI + 1;
+            return ActionData.GetSub("ProgressMax").ValueI - ActionData.GetSub("Progress").ValueI + 1;
         }
         else
         {

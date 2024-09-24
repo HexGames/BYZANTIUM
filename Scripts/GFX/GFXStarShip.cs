@@ -6,6 +6,7 @@ public partial class GFXStarShip : Node3D
 {
     // planets and moons
     private MeshInstance3D Ship = null;
+    private MeshInstance3D ShipColor = null;
     private Area3D Collision = null;
     public CollisionShape3D CollisionShape = null;
 
@@ -20,6 +21,7 @@ public partial class GFXStarShip : Node3D
         Friendly = friendly;
 
         Ship = GetNode<MeshInstance3D>("Ship");
+        ShipColor = GetNode<MeshInstance3D>("Ship/Color");
         Collision = GetNode<Area3D>("Area3D");
         CollisionShape = GetNode<CollisionShape3D>("Area3D/CollisionShape3D");
 
@@ -37,6 +39,22 @@ public partial class GFXStarShip : Node3D
         if (fleets.Count > 0)
         {
             _Fleets.AddRange(fleets);
+
+            Color color = new Color(0.0f, 1.0f, 1.0f, 1.0f);
+            PlayerData playerWithTheBiggestFleet = fleets[0]._Player; // TODO it should be...
+            color = Game.self.UILib.GetPlayerColor(playerWithTheBiggestFleet.PlayerID);
+            for (int idx = 0; idx < fleets.Count; idx++)
+            {
+                if (fleets[idx]._Player == Game.self.HumanPlayer)
+                {
+                    color = Game.self.UILib.GetPlayerColor(fleets[idx]._Player.PlayerID);
+                    break;
+                }
+            }
+
+            StandardMaterial3D newMaterial = ShipColor.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
+            newMaterial.AlbedoColor = color;
+            ShipColor.SetSurfaceOverrideMaterial(0, newMaterial);
 
             CollisionShape.Disabled = false;
             Visible = true;

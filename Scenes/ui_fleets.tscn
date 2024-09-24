@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2a0hskimxnut"]
+[gd_scene load_steps=11 format=3 uid="uid://b2a0hskimxnut"]
 
-[ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_1f06l"]
 [ext_resource type="Script" path="res://Scripts/UI/Fleets/UISelectedFleets.cs" id="1_nwk5e"]
 [ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="2_21cbh"]
+[ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="2_sb2we"]
 [ext_resource type="Script" path="res://Scripts/UI/Fleets/UISelectedFleetsItem.cs" id="3_ufxat"]
-[ext_resource type="Texture2D" uid="uid://bydgao82thbxp" path="res://Assets/UI/Symbols/Cancel.png" id="3_yjime"]
+[ext_resource type="Texture2D" uid="uid://be6nytexs28ab" path="res://Assets/UI/Symbols/CancelW.png" id="4_xmr6r"]
 [ext_resource type="Texture2D" uid="uid://dydl5bhyt1p6e" path="res://Assets/UI/Symbols/Minus.png" id="5_8roeh"]
 [ext_resource type="Script" path="res://Scripts/UI/Fleets/UISelectedFleetsItemShips.cs" id="6_dmxfl"]
 [ext_resource type="Texture2D" uid="uid://qo1rwuii0hot" path="res://Assets/UI/Symbols/Plus.png" id="6_rtjo8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxm0v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3sji"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -39,9 +41,171 @@ offset_right = 402.0
 grow_vertical = 0
 alignment = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="FleetSelected_1" type="Panel" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_sb2we")
+theme_type_variation = &"PanelTitle"
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer/FleetSelected_1"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][img=20x20]Assets/UI/Symbols/Fleet.png[/img] [color=RED][b]$id[/b][/color][/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="FleetBtn_1" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_sb2we")
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer/FleetBtn_1"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][img=20x20]Assets/UI/Symbols/Fleet.png[/img] [color=RED][b]$id[/b][/color][/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="FleetBtn_2" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_sb2we")
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer/FleetBtn_2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][img=20x20]Assets/UI/Symbols/Fleet.png[/img] [color=RED][b]$id[/b][/color][/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="FleetBtn_3" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_sb2we")
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer/FleetBtn_3"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][img=20x20]Assets/UI/Symbols/Fleet.png[/img] [color=RED][b]$id[/b][/color][/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="FleetBtn_4" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_sb2we")
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer/FleetBtn_4"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][img=20x20]Assets/UI/Symbols/Fleet.png[/img] [color=RED][b]$id[/b][/color][/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="FleetBtn_5" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_sb2we")
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer/FleetBtn_5"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][img=20x20]Assets/UI/Symbols/Fleet.png[/img] [color=RED][b]$id[/b][/color][/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="More" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(46, 32)
+layout_mode = 2
+theme = ExtResource("2_sb2we")
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer/More"]
+self_modulate = Color(1, 0.501961, 0, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]2/5[/center]"
+fit_content = true
+autowrap_mode = 0
+
 [node name="Fleet_1" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_1f06l")
+theme = ExtResource("2_sb2we")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pxm0v")
 script = ExtResource("3_ufxat")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1"]
@@ -59,8 +223,7 @@ size_flags_vertical = 0
 [node name="Title" type="Panel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(384, 32)
 layout_mode = 2
-theme = ExtResource("1_1f06l")
-theme_type_variation = &"GreyAlpha"
+theme = ExtResource("2_sb2we")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Title"]
 layout_mode = 1
@@ -100,25 +263,24 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
 focus_mode = 0
-theme = ExtResource("2_21cbh")
-theme_type_variation = &"Small"
-theme_override_styles/normal = SubResource("StyleBoxFlat_c3sji")
+theme = ExtResource("2_sb2we")
+theme_type_variation = &"ButtonIcon"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Title/MarginContainer/Control/CloseBtn"]
+self_modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_yjime")
+texture = ExtResource("4_xmr6r")
 expand_mode = 1
 
 [node name="Faction" type="Panel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(384, 32)
 layout_mode = 2
-theme = ExtResource("1_1f06l")
-theme_type_variation = &"GreyAlpha"
+theme = ExtResource("2_sb2we")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/Faction"]
 layout_mode = 1
@@ -155,8 +317,7 @@ size_flags_horizontal = 4
 custom_minimum_size = Vector2(360, 32)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_1f06l")
-theme_type_variation = &"GreyAlpha"
+theme = ExtResource("2_sb2we")
 script = ExtResource("6_dmxfl")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_0"]
@@ -259,8 +420,7 @@ autowrap_mode = 0
 custom_minimum_size = Vector2(360, 32)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_1f06l")
-theme_type_variation = &"GreyAlpha"
+theme = ExtResource("2_sb2we")
 script = ExtResource("6_dmxfl")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_1"]
@@ -363,8 +523,7 @@ autowrap_mode = 0
 custom_minimum_size = Vector2(360, 32)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_1f06l")
-theme_type_variation = &"GreyAlpha"
+theme = ExtResource("2_sb2we")
 script = ExtResource("6_dmxfl")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_2"]
@@ -467,8 +626,7 @@ autowrap_mode = 0
 custom_minimum_size = Vector2(360, 32)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_1f06l")
-theme_type_variation = &"GreyAlpha"
+theme = ExtResource("2_sb2we")
 script = ExtResource("6_dmxfl")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Ship_3"]
@@ -567,11 +725,71 @@ text = "[right]$value[img=24x24]Assets/UI/Symbols/Power.png[/img][/right]"
 fit_content = true
 autowrap_mode = 0
 
+[node name="Supply" type="Panel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(384, 32)
+layout_mode = 2
+theme = ExtResource("2_sb2we")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Supply"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Supply/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[left]Supply:[/left]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Supply" type="RichTextLabel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Supply/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]$sup/$max[img=24x24]Assets/UI/Symbols/Prod.png[/img][/right]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="FleetBtn_1" type="Button" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Supply"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_right = 8.0
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("2_sb2we")
+theme_type_variation = &"ButtonIcon"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Supply/FleetBtn_1"]
+self_modulate = Color(1, 0.501961, 0, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_rtjo8")
+expand_mode = 1
+
 [node name="Action" type="Panel" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(384, 32)
 layout_mode = 2
-theme = ExtResource("1_1f06l")
-theme_type_variation = &"GreyAlpha"
+theme = ExtResource("2_sb2we")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Fleet_1/MarginContainer/VBoxContainer/VBoxContainer/Action"]
 layout_mode = 1

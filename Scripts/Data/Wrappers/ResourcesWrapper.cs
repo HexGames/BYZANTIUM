@@ -59,7 +59,7 @@ public class ResourcesWrapper
         {
             int popIncome = 0;
             if (_Parent.Pops != null)
-                popIncome = _Parent.Pops.Pops * PerPop / 1000 + _Parent.Pops.GetCPops() * PerCPop / 1000;
+                popIncome = _Parent.Pops.Pops * PerPop / 1000;
             return (Income + popIncome + (PerLevel + PerLevel_FromSystem) * Level) * (100 + Bonus) / 100;
         }
 
@@ -153,16 +153,70 @@ public class ResourcesWrapper
         }
     }
 
+    public class BuildingsInfo
+    {
+        public ResourcesWrapper _Parent = null;
+        public string Name = "Res";
+
+        public int Factories;
+        public int FactoriesMax;
+        public int PrivateBusinesses;
+        public int PrivateBusinessesMax;
+        public int MilitaryBases;
+        public int MilitaryBasesMax;
+
+        public BuildingsInfo Copy()
+        {
+            BuildingsInfo info = new BuildingsInfo();
+
+            info._Parent = _Parent;
+            info.Name = Name;
+
+            info.Factories = Factories;
+            info.FactoriesMax = FactoriesMax;
+            info.PrivateBusinesses = PrivateBusinesses;
+            info.PrivateBusinessesMax = PrivateBusinessesMax;
+            info.MilitaryBases = MilitaryBases;
+            info.MilitaryBasesMax = MilitaryBasesMax;
+
+            return info;
+        }
+
+        public string ToString_Factories() { return Helper.ResValueToString(Factories, 1); }
+        public string ToString_FactoriesMax() { return Helper.ResValueToString(FactoriesMax, 1); }
+        public string ToString_PrivateBusinesses() { return Helper.ResValueToString(PrivateBusinesses, 1); }
+        public string ToString_PrivateBusinessesMax() { return Helper.ResValueToString(PrivateBusinessesMax, 1); }
+        public string ToString_MilitaryBases() { return Helper.ResValueToString(MilitaryBases, 1); }
+        public string ToString_MilitaryBasesMax() { return Helper.ResValueToString(MilitaryBasesMax, 1); }
+
+        public void Set(string type, int value)
+        {
+            switch (type)
+            {
+                case "Factories": Factories = value; break;
+                case "FactoriesMax": FactoriesMax = value; break;
+                case "PrivateBusinesses": PrivateBusinesses = value; break;
+                case "PrivateBusinessesMax": PrivateBusinessesMax = value; break;
+                case "MilitaryBases": MilitaryBases = value; break;
+                case "MilitaryBasesMax": MilitaryBasesMax = value; break;
+            }
+        }
+
+        public void SavePops()
+        {
+            _Parent._Data.GetSub("Buildings*Factories").ValueI = Factories;
+            _Parent._Data.GetSub("Buildings*PrivateBusinesses").ValueI = PrivateBusinesses;
+            _Parent._Data.GetSub("Buildings*MilitaryBases").ValueI = MilitaryBases;
+        }
+    }
+
     public class PopsInfo
     {
         public ResourcesWrapper _Parent = null;
         public string Name = "Res";
 
-        public int CPops = 0;
         public int Pops = 0;
         public int PopsMax = 0;
-        public int PopsMaxBonus = 0;
-        public int Control = 0;
         public int Growth = 0;
         public int GrowthBonus = 0;
         public int GrowthPenalty = 0;
@@ -174,11 +228,8 @@ public class ResourcesWrapper
             info._Parent = _Parent;
             info.Name = Name;
 
-            info.CPops = CPops;
             info.Pops = Pops;
             info.PopsMax = PopsMax;
-            info.PopsMaxBonus = PopsMaxBonus;
-            info.Control = Control;
             info.Growth = Growth;
             info.GrowthBonus = GrowthBonus;
             info.GrowthPenalty = GrowthPenalty;
@@ -186,17 +237,14 @@ public class ResourcesWrapper
             return info;
         }
 
-        public int GetPopsMaxTotal() { return PopsMax * (100 + PopsMaxBonus) / 100; }
-        public int GetCPops() { return CPops > 0 ? CPops : Pops * Control / 100; }
         public int GetGrowthTotal() { return Growth * ((100 + GrowthBonus) / 100) * ((100 - GrowthPenalty) / 100); }
         public int GetTrueGrowth() { return Pops * GetGrowthTotal() / 10000; }
 
         public string ToString_Pops() { return Helper.ResValueToString(Pops, 1000); }
-        public string ToString_CPops() { return Helper.ResValueToString(GetCPops(), 1000); }
-        public string ToString_IPops() { return Helper.ResValueToString(Pops - GetCPops(), 1000); }
-        public string ToString_PopsMax(bool total = true) { return Helper.ResValueToString(total ? GetPopsMaxTotal() : PopsMax); }
-        public string ToString_PopsMaxBonus() { return (PopsMaxBonus >= 0 ? "+" : "") + PopsMaxBonus + "%"; }
-        public string ToString_Control() { return Control.ToString() + "%"; }
+        public string ToString_PopsPublic() { return Helper.ResValueToString(1 + Pops / 4, 1000); }
+        public string ToString_PopsPrivate() { return Helper.ResValueToString(Pops - 1 - Pops / 4, 1000); }
+        public string ToString_PopsUncontrolled() { return Helper.ResValueToString(0, 1000); }
+        public string ToString_PopsMax(bool total = true) { return Helper.ResValueToString(total ? PopsMax : PopsMax); }
         public string ToString_Growth(bool total = true) { return Helper.ResValueToString(total ? GetGrowthTotal() : Growth, 100) + "%"; }
         public string ToString_GrowthBonus() { return (GrowthBonus >= 0 ? "+" : "") + GrowthBonus + "%"; }
         public string ToString_GrowthPenalty() { return (GrowthPenalty >= 0 ? "-" : "") + GrowthPenalty + "%"; }
@@ -206,11 +254,8 @@ public class ResourcesWrapper
         {
             switch (type)
             {
-                case "CPops": Pops = value; break;
                 case "Pops": Pops = value; break;
                 case "PopsMax": PopsMax = value; break;
-                case "PopsMaxBonus": PopsMaxBonus = value; break;
-                case "Control": Control = value; break;
                 case "Growth": Growth = value; break;
                 case "GrowthBonus": GrowthBonus = value; break;
                 case "GrowthPenalty": GrowthPenalty = value; break;
@@ -227,6 +272,7 @@ public class ResourcesWrapper
     public List<IncomeInfo> Incomes = new List<IncomeInfo>();
     public List<LimitInfo> Limits = new List<LimitInfo>();
     public PopsInfo Pops = null;
+    public BuildingsInfo Buildings = null;
     public ParentType Type = ParentType.Player;
 
     public ResourcesWrapper(DataBlock resData, ParentType type)
@@ -241,6 +287,7 @@ public class ResourcesWrapper
         Incomes.Clear();
         Limits.Clear();
         Pops = null;
+        Buildings = null;
     }
 
     public void Refresh()
@@ -266,6 +313,20 @@ public class ResourcesWrapper
                     Pops._Parent = this;
                     Pops.Name = name;
                     Pops.Set(type, resDataSubs[idxData].ValueI);
+                }
+            }
+            else if (name == "Buildings")
+            {
+                if (Buildings != null)
+                {
+                    Buildings.Set(type, resDataSubs[idxData].ValueI);
+                }
+                else
+                {
+                    Buildings = new BuildingsInfo();
+                    Buildings._Parent = this;
+                    Buildings.Name = name;
+                    Buildings.Set(type, resDataSubs[idxData].ValueI);
                 }
             }
             else if (type == "Income" || type == "Level" || type == "PerPop" || type == "PerControlledPop" || type == "PerLevel" || type == "PerLevelSystem" || type == "Bonus" || type == "Stockpile")
@@ -397,17 +458,14 @@ public class ResourcesWrapper
             {
                 if (totals)
                 {
-                    Pops.CPops += otherRes.Pops.GetCPops();
                     Pops.Pops += otherRes.Pops.Pops;
-                    Pops.PopsMax += otherRes.Pops.GetPopsMaxTotal();
+                    Pops.PopsMax += otherRes.Pops.PopsMax;
                     Pops.Growth += otherRes.Pops.GetGrowthTotal();
                 }
                 else
                 {
                     Pops.Pops += otherRes.Pops.Pops;
                     Pops.PopsMax += otherRes.Pops.PopsMax;
-                    Pops.PopsMaxBonus += otherRes.Pops.PopsMaxBonus;
-                    Pops.Control += otherRes.Pops.Control;
                     Pops.Growth += otherRes.Pops.Growth;
                     Pops.GrowthBonus += otherRes.Pops.GrowthBonus;
                 }
@@ -424,7 +482,7 @@ public class ResourcesWrapper
     {
         if (Pops != null)
         {
-            Pops.Pops = Mathf.Min(Pops.Pops + Pops.GetTrueGrowth(), Pops.GetPopsMaxTotal());
+            Pops.Pops = Mathf.Min(Pops.Pops + Pops.GetTrueGrowth(), Pops.PopsMax);
             Pops.SavePops();
         }
     }
@@ -468,6 +526,11 @@ public class ResourcesWrapper
     public PopsInfo GetPops()
     {
         return Pops;
+    }
+
+    public BuildingsInfo GetBuildings()
+    {
+        return Buildings;
     }
 
     public string GetStockpileString(string name)

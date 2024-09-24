@@ -94,14 +94,15 @@ public partial class MapGenerator : Node
         // min points       0 10        1 20        2 15        3 40        4 45        5 10        6 10        7 20        8 30        9 25        10 40
         // max points       0 20        1 40        2 60        3 80        4 100       5 20        6 20        7 40        8 60        9 60        10 100
 
+        int gasGiants = 0;
         for (int o = 0; o < 7; o++) // the max 7 orbits
         {
             int type = -1;
             if (targetPoints >= 100)
             {
-                if (RNG.RandiRange(0, 99) < 5) type = 10; // 5
+                if (RNG.RandiRange(0, 99) < 5 - 2 * gasGiants) type = 10; // 5
                 else if (RNG.RandiRange(0, 99) < 10) type = 4; // 9.5
-                else if (RNG.RandiRange(0, 99) < 10) type = 9; // 8.5
+                else if (RNG.RandiRange(0, 99) < 10 - 4 * gasGiants) type = 9; // 8.5
                 else if (RNG.RandiRange(0, 99) < 20) type = 2; // 15
                 else type = 3; // 62
             }
@@ -109,20 +110,22 @@ public partial class MapGenerator : Node
             {
                 if (o == 0 || targetPoints >= 80)
                 {
-                    if (RNG.RandiRange(0, 99) < 10) type = 9;
+                    if (RNG.RandiRange(0, 99) < 10 - 4 * gasGiants) type = 9;
                     if (RNG.RandiRange(0, 99) < 20) type = 3;
                     else type = 2;
                 }
                 else
                 {
-                    if (RNG.RandiRange(0, 99) < 5 && targetPoints >= 60) type = 8; // 5
+                    if (RNG.RandiRange(0, 99) < 5 && targetPoints >= 60 - 25 * gasGiants) type = 8; // 5
                     else if (RNG.RandiRange(0, 99) < 10) type = 5; // 9.5
                     else if (RNG.RandiRange(0, 99) < 10) type = 1; // 8.5
-                    else if (RNG.RandiRange(0, 99) < 30) type = 7; // 24
-                    else if (RNG.RandiRange(0, 99) < 30) type = 0; // 14
+                    else if (RNG.RandiRange(0, 99) < 30 - 12 * gasGiants) type = 7; // 24
+                    else if (RNG.RandiRange(0, 99) < 30 + 30 * gasGiants) type = 0; // 14
                     else type = 6; // 33
                 }
             }
+
+            if (type > 5) gasGiants++;
 
             Orbit orbit = new Orbit();
             switch (type)
@@ -724,10 +727,19 @@ public partial class MapGenerator : Node
 
     private void GenerateNewMapSave_Stars_Planets__AddFeatures(DataBlock planet, DataBlock features)
     {
+        List<string> possibleBonuses = new List<string>();
         Array<DataBlock> subs = features.GetSubs();
         for (int idx = 0; idx < subs.Count; idx++)
         {
-            if (subs[idx].Name.EndsWith(":Perc") == false || RNG.RandiRange(0, 99) < subs[idx].ValueI)
+            if (subs[idx].Name == "PopMaxPerSize")
+            {
+                Data.AddData(planet, "PopMaxPerSize", subs[idx].ValueI, DefLibrary);
+            }
+            else if (subs[idx].Name == "Bonus")
+            {
+                possibleBonuses.Add(subs[idx].ValueS);
+            }
+            else if (subs[idx].Name.EndsWith(":Perc") == false || RNG.RandiRange(0, 99) < subs[idx].ValueI)
             {
                 DataBlock feature = subs[idx];
                 while (feature.Name.StartsWith("OR"))

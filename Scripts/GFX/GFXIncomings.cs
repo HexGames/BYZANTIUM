@@ -44,7 +44,7 @@ public partial class GFXIncomings : Node
         bool needNewIncoming = true;
         for (int idx = 0; idx < Paths.Count; idx++)
         {
-            Vector3 point_A = fleet.Star_At_PerTurn._Node.GFX.Position;
+            Vector3 point_A = fleet.StarAt_PerTurn._Node.GFX.Position;
             Vector3 point_B = toStar._Node.GFX.Position;
             if (Paths[idx].Star == toStar && Mathf.Abs(Paths[idx].Direction + (point_A - point_B).SignedAngleTo(Vector3.Forward, Vector3.Up)) < 45.0f)
             {
@@ -63,7 +63,7 @@ public partial class GFXIncomings : Node
             {
                 if (Paths[idx]._Fleets.Count == 0)
                 {
-                    Paths[idx].Refresh(fleet.Star_At_PerTurn, toStar, fleet); // reuse an unused arrow
+                    Paths[idx].Refresh(fleet.StarAt_PerTurn, toStar, fleet); // reuse an unused arrow
                     needNewIncoming = false;
                     break;
                 }
@@ -77,7 +77,7 @@ public partial class GFXIncomings : Node
             Paths.Add(newItem);
 
             newItem.HUD = null; // this needs to be reset here so a new HUD object is created
-            newItem.Refresh(fleet.Star_At_PerTurn, toStar, fleet);
+            newItem.Refresh(fleet.StarAt_PerTurn, toStar, fleet);
             newItem.Visible = true;
         }
     }
