@@ -7,273 +7,249 @@ public class ResourcesWrapper
 {
     public enum ParentType
     {
-        Feature,
-        Planet,
-        Building,
-        Colony,
-        System,
-        Sector,
-        Player
+        FEATURE,
+        DISTRICT,
+        COLONY,
+        SYSTEM
     };
 
     public class IncomeInfo
     {
-        public ResourcesWrapper _Parent = null;
+        public class FromOther
+        {
+            public ColonyData Colony;
+            public DistrictData District;
+            public int Value;
+
+            public FromOther(ColonyData colony, int value)
+            {
+                Colony = colony;
+                District = null;
+                Value = value;
+            }
+
+            public FromOther(DistrictData district, int value)
+            {
+                Colony = null;
+                District = district;
+                Value = value;
+            }
+
+            public string ToString_AsIncome() { return Helper.ResValueToString(Value); }
+            public string ToString_AsFocus() {  return Value.ToString(); }
+            public string ToString_AsBonus() { return Value.ToString(); }
+        };
+
+        //public ResourcesWrapper _Parent = null;
         public string Name = "Res";
 
-        public bool HasStockpile = false;
-
-        public int Income = 0;
-        public int Level = 0;
-        public int PerPop = 0;
-        public int PerCPop = 0;
-        public int PerLevel = 0;
-        public int PerLevel_System = 0;
-        public int PerLevel_FromSystem = 0;
+        public int IncomeFixed = 0;
+        //public int IncomeFromPops = 0;
+        public int IncomePerPop = 0;
+        //public int IncomeSystemFocus = 0;
+        public int SystemIncome = 0;
+        public int LocalIncome = 0;
+        public int LocalBonus = 0;
         public int Bonus = 0;
-        public int Stockpile = 0;
+        public int Focus = 0;
+        public int FocusBase = 0;
+        public int FocusChosen = 0;
+
+        public List<FromOther> IncomeFixedOther = new List<FromOther>();
+        public List<FromOther> IncomePerPopOther = new List<FromOther>();
+        public List<FromOther> FocusOther = new List<FromOther>();
+        public List<FromOther> BonusOther = new List<FromOther>();
 
         public IncomeInfo Copy()
         {
             IncomeInfo info = new IncomeInfo();
-
-            info._Parent = _Parent;
+        
+            //info._Parent = _Parent;
             info.Name = Name;
             
-            info.HasStockpile = HasStockpile;
-            
-            info.Income = Income;
-            info.Level = Level;
-            info.PerPop = PerPop;
-            info.PerCPop = PerCPop;
-            info.PerLevel = PerLevel;
-            info.PerLevel_System = PerLevel_System;
-            info.PerLevel_FromSystem = PerLevel_FromSystem;
+            info.IncomeFixed = IncomeFixed;
+            info.IncomePerPop = IncomePerPop;
+            //info.IncomeSystemFocus = IncomeSystemFocus;
+            info.SystemIncome = SystemIncome;
+            info.LocalIncome = LocalIncome;
+            info.LocalBonus = LocalBonus;
             info.Bonus = Bonus;
-            info.Stockpile = Stockpile;
-
+            info.Focus = Focus;
+            info.FocusBase = FocusBase;
+            info.FocusChosen = FocusChosen;
+        
             return info;
         }
 
-        public int GetIncomeTotal()
+        //public int GetIncomeTotal(int pops)
+        //{
+        //    int popIncome = pops * PerPop / 1000;
+        //    return (Income + popIncome) * (100 + Bonus) / 100;
+        //}
+
+        public int IncomeFixedTotal()
         {
-            int popIncome = 0;
-            if (_Parent.Pops != null)
-                popIncome = _Parent.Pops.Pops * PerPop / 1000;
-            return (Income + popIncome + (PerLevel + PerLevel_FromSystem) * Level) * (100 + Bonus) / 100;
+            int income = IncomeFixed;
+            for (int idx = 0; idx < IncomeFixedOther.Count; idx++)
+            {
+                income += (IncomeFixedOther[idx].Value + LocalIncome) * (100 + LocalBonus) / 100;
+            }
+            return income;
+        }
+        public int IncomePerPopTotal()
+        {
+            int income = IncomeFixed;
+            for (int idx = 0; idx < IncomePerPopOther.Count; idx++)
+            {
+                income += (IncomePerPopOther[idx].Value + LocalIncome) * (100 + LocalBonus) / 100;
+            }
+            return income;
         }
 
-        public int GetIncomeTotalSpecial(bool idleConstruction)
+        public int IncomeFromSystem(SystemData system)
         {
-            if (Name == "BC")
-                return GetIncomeTotal() + _Parent.GetIncome("Production").GetIncomeTotal() / 2;
-
-            return GetIncomeTotal();
+            return system.Resources_PerTurn.GetIncomeSystemFocus(Name) * GetSystemProduction(system) / 10000;
         }
 
-        public string ToString_Income(bool total = true) { return Helper.ResValueToString(total ? GetIncomeTotal() : Income); }
-        public string ToString_IncomeTotalSpecial() { return Helper.ResValueToString(GetIncomeTotalSpecial(true)); }
-        public string ToString_Level() { return Level.ToString(); }
-        public string ToString_PerPop() { return Helper.ResValueToString(PerPop); }
-        public string ToString_PerCPop() { return Helper.ResValueToString(PerCPop); }
-        public string ToString_PerLevel(bool total = true) { return Helper.ResValueToString(total ? PerLevel + PerLevel_FromSystem : PerLevel); }
-        public string ToString_PerLevelSystem() { return Helper.ResValueToString(PerLevel_System); }
-        public string ToString_Bonus() { return (Bonus >= 0 ? "+" : "") + Bonus + "%"; }
-        public string ToString_Stockpile() { return Helper.ResValueToString(Stockpile); }
+        public int IncomeAllTotal(SystemData system)
+        {
+            //int bonus = (100 + BonusTotal());
+            //int incomeFixed = IncomeFixedTotal();
+            //int incomeFromSystem = IncomeFromSystem(system);
+            //int incomeFromPops = IncomePerPop * system.Pops_PerTurn.GetPops() / 1000;
+            //int total = incomeFixed + incomeFromSystem + incomeFromPops;
+            //return bonus * total / 100;
+            return (100 + BonusTotal()) * (IncomeFixedTotal() + IncomeFromSystem(system) + IncomePerPop * system.Pops_PerTurn.GetPops() / 1000) / 100;
+        }
+
+        public int FocusTotal()
+        {
+            int focusFromOther = 0;
+            for (int idx = 0; idx < FocusOther.Count; idx++)
+                focusFromOther += FocusOther[idx].Value;
+            return FocusBase + Focus + focusFromOther + FocusChosen;
+        }
+
+        public int BonusTotal()
+        {
+            int bonusFromOther = 0;
+            for (int idx = 0; idx < BonusOther.Count; idx++)
+                bonusFromOther += BonusOther[idx].Value;
+            return Bonus + bonusFromOther;
+        }
+
+        //public string ToString_Income(bool total = true) { return Helper.ResValueToString(total ? GetIncomeTotal() : Income); }
+        public string ToString_Income() { return Helper.ResValueToString(IncomeFixed); }
+        public string ToString_IncomeFromSystem(SystemData system) { return Helper.ResValueToString(IncomeFromSystem(system)); }
+        public string ToString_IncomeTotal(SystemData system) { return Helper.ResValueToString(IncomeAllTotal(system)); }
+        //public string ToString_IncomeTotal() { return Helper.ResValueToString(IncomeTotal()); }
+        //public string ToString_PerPop() { return Helper.ResValueToString(PerPop); }
+        //public string ToString_SystemIncome() { return Helper.ResValueToString(SystemIncome); }
+        //public string ToString_LocalBonus() { return (LocalBonus >= 0 ? "+" : "") + LocalBonus.ToString() + "%"; }
+        //public string ToString_Bonus() { return (Bonus >= 0 ? "+" : "") + Bonus.ToString() + "%"; }
+        public string ToString_Focus() { return Focus.ToString(); }
+        public string ToString_FocusBase() { return FocusBase.ToString(); }
+        public string ToString_FocusChosen() { return FocusChosen.ToString(); }
+        public string ToString_FocusTotal() { return FocusTotal().ToString(); }
+        public string ToString_BonusTotal() { int bt = BonusTotal(); return (bt > 0 ? "+" : "") + bt.ToString(); }
 
         public void Set(string type, int value)
         {
             switch(type)
             {
-                case "Income": Income = value; break;
-                case "Level": Level = value; break;
-                case "PerPop": PerPop = value; break;
-                case "PerControlledPop": PerCPop = value; break;
-                case "PerLevel": PerLevel = value; break;
-                case "PerLevelSystem": PerLevel_System = value; break;
+                case "Income": IncomeFixed = value; break;
+                case "PerPop": IncomePerPop = value; break;
+                // IncomeSystemFocus
+                case "SystemIncome": SystemIncome = value; break;
+                case "LocalBonus": LocalBonus = value; break;
                 case "Bonus": Bonus = value; break;
-                case "Stockpile": Stockpile = value; HasStockpile = true; break;
+                case "Focus": Focus = value; break;
+                case "FocusBase": FocusBase = value; break;
+                case "FocusChosen": FocusChosen = value; break;
             }
         }
 
-        public void SaveStockpile()
-        {
-            _Parent._Data.GetSub(Name + "*Stockpile").ValueI = Stockpile;
-        }
+        //public void SaveStockpile()
+        //{
+        //    //_Parent._Data.GetSub(Name + "*Stockpile").ValueI = Stockpile;
+        //}
     }
-
-    public class LimitInfo
+    public class SpecialInfo
     {
-        public ResourcesWrapper _Parent = null;
-        public string Name = "Res";
+        //public ResourcesWrapper _Parent = null
 
-        public int Max = 0;
-        public int MaxBonus = 0;
-        public int Used = 0;
-        public int UsedBonus = 0;
-
-        public LimitInfo Copy()
-        {
-            LimitInfo info = new LimitInfo();
-
-            info._Parent = _Parent;
-            info.Name = Name;
-
-            info.Max = Max;
-            info.MaxBonus = MaxBonus;
-            info.Used = Used;
-            info.UsedBonus = UsedBonus;
-
-            return info;
-        }
-
-        public int GetMaxTotal()
-        {
-            return Max * (100 + MaxBonus) / 100;
-        }
-        public int GetUsedTotal()
-        {
-            return Used * (100 + UsedBonus) / 100;
-        }
-
-        public string ToString_Max(bool total = true) { return Helper.ResValueToString(total ? GetMaxTotal() : Max); }
-        public string ToString_MaxBonus() { return (MaxBonus >= 0 ? "+" : "") + MaxBonus + "%"; }
-        public string ToString_Used(bool total = true) { return Helper.ResValueToString(total ? GetUsedTotal() : Used); }
-        public string ToString_UsedBonus() { return (UsedBonus >= 0 ? "+" : "") + UsedBonus + "%"; }
-
-        public void Set(string type, int value)
-        {
-            switch (type)
-            {
-                case "Max": Max = value; break;
-                case "MaxBonus": MaxBonus = value; break;
-                case "Used": Used = value; break;
-                case "UsedBonus": UsedBonus = value; break;
-            }
-        }
-    }
-
-    public class BuildingsInfo
-    {
-        public ResourcesWrapper _Parent = null;
-        public string Name = "Res";
-
-        public int Factories;
-        public int FactoriesMax;
-        public int PrivateBusinesses;
-        public int PrivateBusinessesMax;
-        public int MilitaryBases;
-        public int MilitaryBasesMax;
-
-        public BuildingsInfo Copy()
-        {
-            BuildingsInfo info = new BuildingsInfo();
-
-            info._Parent = _Parent;
-            info.Name = Name;
-
-            info.Factories = Factories;
-            info.FactoriesMax = FactoriesMax;
-            info.PrivateBusinesses = PrivateBusinesses;
-            info.PrivateBusinessesMax = PrivateBusinessesMax;
-            info.MilitaryBases = MilitaryBases;
-            info.MilitaryBasesMax = MilitaryBasesMax;
-
-            return info;
-        }
-
-        public string ToString_Factories() { return Helper.ResValueToString(Factories, 1); }
-        public string ToString_FactoriesMax() { return Helper.ResValueToString(FactoriesMax, 1); }
-        public string ToString_PrivateBusinesses() { return Helper.ResValueToString(PrivateBusinesses, 1); }
-        public string ToString_PrivateBusinessesMax() { return Helper.ResValueToString(PrivateBusinessesMax, 1); }
-        public string ToString_MilitaryBases() { return Helper.ResValueToString(MilitaryBases, 1); }
-        public string ToString_MilitaryBasesMax() { return Helper.ResValueToString(MilitaryBasesMax, 1); }
-
-        public void Set(string type, int value)
-        {
-            switch (type)
-            {
-                case "Factories": Factories = value; break;
-                case "FactoriesMax": FactoriesMax = value; break;
-                case "PrivateBusinesses": PrivateBusinesses = value; break;
-                case "PrivateBusinessesMax": PrivateBusinessesMax = value; break;
-                case "MilitaryBases": MilitaryBases = value; break;
-                case "MilitaryBasesMax": MilitaryBasesMax = value; break;
-            }
-        }
-
-        public void SavePops()
-        {
-            _Parent._Data.GetSub("Buildings*Factories").ValueI = Factories;
-            _Parent._Data.GetSub("Buildings*PrivateBusinesses").ValueI = PrivateBusinesses;
-            _Parent._Data.GetSub("Buildings*MilitaryBases").ValueI = MilitaryBases;
-        }
-    }
-
-    public class PopsInfo
-    {
-        public ResourcesWrapper _Parent = null;
-        public string Name = "Res";
-
-        public int Pops = 0;
-        public int PopsMax = 0;
         public int Growth = 0;
-        public int GrowthBonus = 0;
-        public int GrowthPenalty = 0;
+        public int GrowthLocalBonus = 0;
+        public int PopMax = 0;
+        public int PopMaxPenalty = 0;
+        public int FactoryCost = 0;
+        public int FactoryBonus = 0;
 
-        public PopsInfo Copy()
+        public void Reset()
+        { 
+            Growth = 0;
+            GrowthLocalBonus = 0;
+            PopMax = 0;
+            PopMaxPenalty = 0;
+            FactoryCost = 0;
+            FactoryBonus = 0;
+        }
+
+        public SpecialInfo Copy()
         {
-            PopsInfo info = new PopsInfo();
+            SpecialInfo info = new SpecialInfo();
 
-            info._Parent = _Parent;
-            info.Name = Name;
+            //info._Parent = _Parent;
 
-            info.Pops = Pops;
-            info.PopsMax = PopsMax;
             info.Growth = Growth;
-            info.GrowthBonus = GrowthBonus;
-            info.GrowthPenalty = GrowthPenalty;
+            info.GrowthLocalBonus = GrowthLocalBonus;
+            info.PopMax = PopMax;
+            info.PopMaxPenalty = PopMaxPenalty;
+            info.FactoryCost = FactoryCost;
+            info.FactoryBonus = FactoryBonus;
 
             return info;
         }
 
-        public int GetGrowthTotal() { return Growth * ((100 + GrowthBonus) / 100) * ((100 - GrowthPenalty) / 100); }
-        public int GetTrueGrowth() { return Pops * GetGrowthTotal() / 10000; }
+        //public int GetIncomeTotal(int pops)
+        //{
+        //    int popIncome = pops * PerPop / 1000;
+        //    return (Income + popIncome) * (100 + Bonus) / 100;
+        //}
 
-        public string ToString_Pops() { return Helper.ResValueToString(Pops, 1000); }
-        public string ToString_PopsPublic() { return Helper.ResValueToString(1 + Pops / 4, 1000); }
-        public string ToString_PopsPrivate() { return Helper.ResValueToString(Pops - 1 - Pops / 4, 1000); }
-        public string ToString_PopsUncontrolled() { return Helper.ResValueToString(0, 1000); }
-        public string ToString_PopsMax(bool total = true) { return Helper.ResValueToString(total ? PopsMax : PopsMax); }
-        public string ToString_Growth(bool total = true) { return Helper.ResValueToString(total ? GetGrowthTotal() : Growth, 100) + "%"; }
-        public string ToString_GrowthBonus() { return (GrowthBonus >= 0 ? "+" : "") + GrowthBonus + "%"; }
-        public string ToString_GrowthPenalty() { return (GrowthPenalty >= 0 ? "-" : "") + GrowthPenalty + "%"; }
-        public string ToString_TrueGrowth() { return Helper.ResValueToString(GetTrueGrowth(), 100); }
+        //public string ToString_Income(bool total = true) { return Helper.ResValueToString(total ? GetIncomeTotal() : Income); }
+        //public string ToString_Income() { return Helper.ResValueToString(Income); }
+        //public string ToString_PerPop() { return Helper.ResValueToString(PerPop); }
+        //public string ToString_SystemIncome() { return Helper.ResValueToString(SystemIncome); }
+        //public string ToString_LocalBonus() { return (LocalBonus >= 0 ? "+" : "") + LocalBonus.ToString() + "%"; }
+        //public string ToString_Bonus() { return (Bonus >= 0 ? "+" : "") + Bonus.ToString() + "%"; }
+        //public string ToString_Focus() { return Focus.ToString(); 
 
         public void Set(string type, int value)
         {
             switch (type)
             {
-                case "Pops": Pops = value; break;
-                case "PopsMax": PopsMax = value; break;
                 case "Growth": Growth = value; break;
-                case "GrowthBonus": GrowthBonus = value; break;
-                case "GrowthPenalty": GrowthPenalty = value; break;
+                case "GrowthLocalBonus": GrowthLocalBonus = value; break;
+                case "PopMax": PopMax = value; break;
+                case "PopMaxPenalty": PopMaxPenalty = value; break;
+                case "FactoryCost": FactoryCost = value; break;
+                case "FactoryBonus": FactoryBonus = value; break;
             }
         }
 
-        public void SavePops()
-        {
-            _Parent._Data.GetSub("Pops*Pops").ValueI = Pops;
-        }
+        //public void SaveStockpile()
+        //{
+        //    //_Parent._Data.GetSub(Name + "*Stockpile").ValueI = Stockpile;
+        //}
     }
 
     public DataBlock _Data = null;
     public List<IncomeInfo> Incomes = new List<IncomeInfo>();
-    public List<LimitInfo> Limits = new List<LimitInfo>();
-    public PopsInfo Pops = null;
-    public BuildingsInfo Buildings = null;
-    public ParentType Type = ParentType.Player;
+    public SpecialInfo SpecialIncome = new SpecialInfo();
+    public ParentType Type = ParentType.SYSTEM;
+
+    static IncomeInfo Default = new IncomeInfo();
 
     public ResourcesWrapper(DataBlock resData, ParentType type)
     {
@@ -285,14 +261,15 @@ public class ResourcesWrapper
     public void Clear()
     {
         Incomes.Clear();
-        Limits.Clear();
-        Pops = null;
-        Buildings = null;
+        SpecialIncome.Reset();
     }
 
     public void Refresh()
     {
         Clear();
+
+        if (_Data == null)
+            return;
 
         Array<DataBlock> resDataSubs = _Data.GetSubs();
         for (int idxData = 0; idxData < resDataSubs.Count; idxData++)
@@ -301,35 +278,7 @@ public class ResourcesWrapper
             string name = Helper.Split_0(resDataSubs[idxData].Name, '*');
             string type = Helper.Split_1(resDataSubs[idxData].Name, '*');
 
-            if (name == "Pops")
-            {
-                if (Pops != null)
-                {
-                    Pops.Set(type, resDataSubs[idxData].ValueI);
-                }
-                else
-                {
-                    Pops = new PopsInfo();
-                    Pops._Parent = this;
-                    Pops.Name = name;
-                    Pops.Set(type, resDataSubs[idxData].ValueI);
-                }
-            }
-            else if (name == "Buildings")
-            {
-                if (Buildings != null)
-                {
-                    Buildings.Set(type, resDataSubs[idxData].ValueI);
-                }
-                else
-                {
-                    Buildings = new BuildingsInfo();
-                    Buildings._Parent = this;
-                    Buildings.Name = name;
-                    Buildings.Set(type, resDataSubs[idxData].ValueI);
-                }
-            }
-            else if (type == "Income" || type == "Level" || type == "PerPop" || type == "PerControlledPop" || type == "PerLevel" || type == "PerLevelSystem" || type == "Bonus" || type == "Stockpile")
+            if (type == "Income" || type == "PerPop" || type == "SystemIncome" || type == "LocalBonus" || type == "Bonus" || type == "Focus" || type == "FocusBase" || type == "FocusChosen")
             {
                 for (int idxRes = 0; idxRes < Incomes.Count; idxRes++)
                 {
@@ -343,50 +292,58 @@ public class ResourcesWrapper
                 if (found == false)
                 {
                     IncomeInfo newIncome = new IncomeInfo();
-                    newIncome._Parent = this;
+                    //newIncome._Parent = this;
                     newIncome.Name = name;
                     newIncome.Set(type, resDataSubs[idxData].ValueI);
                     Incomes.Add(newIncome);
                 }
             }
-            else if (type == "Max" || type == "MaxBonus" || type == "Used" || type == "UsedBonus")
+            else
             {
-                for (int idxRes = 0; idxRes < Limits.Count; idxRes++)
-                {
-                    if (Limits[idxRes].Name == name)
-                    {
-                        Limits[idxRes].Set(type, resDataSubs[idxData].ValueI);
-                        found = true;
-                        break;
-                    }
-                }
-                if (found == false)
-                {
-                    LimitInfo newLimit = new LimitInfo();
-                    newLimit._Parent = this;
-                    newLimit.Name = name;
-                    newLimit.Set(type, resDataSubs[idxData].ValueI);
-                    Limits.Add(newLimit);
-                }
+                SpecialIncome.Set(name, resDataSubs[idxData].ValueI);
             }
         }
     }
+    //public void AddResourcesFromFeatures(ResourcesWrapper otherRes)
+    //{
+    //    for (int otherIdx = 0; otherIdx < otherRes.Incomes.Count; otherIdx++)
+    //    {
+    //        bool found = false;
+    //        for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+    //        {
+    //            if (Incomes[resIdx].Name == otherRes.Incomes[otherIdx].Name)
+    //            {
+    //                found = true;
+    //                //Incomes[resIdx].IncomeTotal += otherRes.Incomes[otherIdx].IncomeTotal;
+    //                Incomes[resIdx].IncomePerPop += otherRes.Incomes[otherIdx].IncomePerPop;
+    //                //Incomes[resIdx].IncomeSystemFocus += otherRes.Incomes[otherIdx].IncomeSystemFocus;
+    //                Incomes[resIdx].SystemIncome += otherRes.Incomes[otherIdx].SystemIncome;
+    //                Incomes[resIdx].LocalIncome += otherRes.Incomes[otherIdx].LocalIncome;
+    //                Incomes[resIdx].LocalBonus += otherRes.Incomes[otherIdx].LocalBonus;
+    //                Incomes[resIdx].Bonus += otherRes.Incomes[otherIdx].Bonus;
+    //                Incomes[resIdx].Focus += otherRes.Incomes[otherIdx].Focus;
+    //                Incomes[resIdx].FocusBase += otherRes.Incomes[otherIdx].FocusBase;
+    //                Incomes[resIdx].FocusChosen += otherRes.Incomes[otherIdx].FocusChosen;
+    //            }
+    //        }
+    //
+    //        if (addMissing && found == false)
+    //        {
+    //            IncomeInfo otherInfo = otherRes.Incomes[otherIdx];
+    //            IncomeInfo info = otherInfo.Copy();
+    //            Incomes.Add(info);
+    //        }
+    //    }
+    //
+    //    SpecialIncome.Growth += otherRes.SpecialIncome.Growth;
+    //    SpecialIncome.GrowthLocalBonus += otherRes.SpecialIncome.GrowthLocalBonus;
+    //    SpecialIncome.PopMax += otherRes.SpecialIncome.PopMax;
+    //    SpecialIncome.PopMaxPenalty += otherRes.SpecialIncome.PopMaxPenalty;
+    //    SpecialIncome.FactoryCost += otherRes.SpecialIncome.FactoryCost;
+    //    SpecialIncome.FactoryBonus += otherRes.SpecialIncome.FactoryBonus;
+    //}
 
-    public void PropagateSystemBonuses(ResourcesWrapper systemRes)
-    {
-        for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
-        {
-            for (int otherIdx = 0; otherIdx < systemRes.Incomes.Count; otherIdx++)
-            {
-                if (Incomes[resIdx].Name == systemRes.Incomes[otherIdx].Name)
-                {
-                    Incomes[resIdx].PerLevel_FromSystem += systemRes.Incomes[otherIdx].PerLevel_System;
-                }
-            }
-        }
-    }
-
-    public void Add(ResourcesWrapper otherRes, bool totals = false, bool addMissing = false)
+    public void AddResources_Features(ResourcesWrapper otherRes)
     {
         for (int otherIdx = 0; otherIdx < otherRes.Incomes.Count; otherIdx++)
         {
@@ -396,110 +353,174 @@ public class ResourcesWrapper
                 if (Incomes[resIdx].Name == otherRes.Incomes[otherIdx].Name)
                 {
                     found = true;
-                    if (totals)
-                    {
-                        Incomes[resIdx].Income += otherRes.Incomes[otherIdx].GetIncomeTotal();
-                    }
-                    else
-                    {
-                        Incomes[resIdx].Income += otherRes.Incomes[otherIdx].Income;
-                        Incomes[resIdx].Level += otherRes.Incomes[otherIdx].Level;
-                        Incomes[resIdx].PerPop += otherRes.Incomes[otherIdx].PerPop;
-                        Incomes[resIdx].PerCPop += otherRes.Incomes[otherIdx].PerCPop;
-                        Incomes[resIdx].PerLevel += otherRes.Incomes[otherIdx].PerLevel;
-                        Incomes[resIdx].PerLevel_System += otherRes.Incomes[otherIdx].PerLevel_System;
-                        Incomes[resIdx].Bonus += otherRes.Incomes[otherIdx].Bonus;
-                        // Incomes[resIdx].Stockpile += otherRes.Incomes[otherIdx].Stockpile;
-                    }
                 }
             }
-            
+
+            if (found == false)
+            {
+                IncomeInfo info = new IncomeInfo();
+                info.Name = otherRes.Incomes[otherIdx].Name;
+                Incomes.Add(info);
+            }
+
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+            {
+                if (Incomes[resIdx].Name == otherRes.Incomes[otherIdx].Name)
+                {
+                    Incomes[resIdx].IncomePerPop += otherRes.Incomes[otherIdx].IncomePerPop;
+                    //Incomes[resIdx].IncomeSystemFocus += otherRes.Incomes[otherIdx].IncomeSystemFocus;
+                    Incomes[resIdx].SystemIncome += otherRes.Incomes[otherIdx].SystemIncome;
+                    //Incomes[resIdx].LocalIncome += otherRes.Incomes[otherIdx].LocalIncome;
+                    Incomes[resIdx].LocalBonus += otherRes.Incomes[otherIdx].LocalBonus;
+                    Incomes[resIdx].Bonus += otherRes.Incomes[otherIdx].Bonus;
+                    Incomes[resIdx].Focus += otherRes.Incomes[otherIdx].Focus;
+                    //Incomes[resIdx].FocusBase += otherRes.Incomes[otherIdx].FocusBase;
+                    //Incomes[resIdx].FocusChosen += otherRes.Incomes[otherIdx].FocusChosen;
+                }
+            }
+        }
+    
+        SpecialIncome.Growth += otherRes.SpecialIncome.Growth;
+        SpecialIncome.GrowthLocalBonus += otherRes.SpecialIncome.GrowthLocalBonus;
+        SpecialIncome.PopMax += otherRes.SpecialIncome.PopMax;
+        SpecialIncome.PopMaxPenalty += otherRes.SpecialIncome.PopMaxPenalty;
+        SpecialIncome.FactoryCost += otherRes.SpecialIncome.FactoryCost;
+        SpecialIncome.FactoryBonus += otherRes.SpecialIncome.FactoryBonus;
+    }
+    public void AddResources_Districts(DistrictData district, ResourcesWrapper otherRes)
+    {
+        for (int otherIdx = 0; otherIdx < otherRes.Incomes.Count; otherIdx++)
+        {
+            bool found = false;
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+            {
+                if (Incomes[resIdx].Name == otherRes.Incomes[otherIdx].Name)
+                {
+                    found = true;
+                }
+            }
+
+            if (found == false)
+            {
+                IncomeInfo info = new IncomeInfo();
+                info.Name = otherRes.Incomes[otherIdx].Name;
+                Incomes.Add(info);
+            }
+
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+            {
+                if (Incomes[resIdx].Name == otherRes.Incomes[otherIdx].Name)
+                {
+                    //Incomes[resIdx].IncomePerPop += otherRes.Incomes[otherIdx].IncomePerPop;
+                    //Incomes[resIdx].IncomeSystemFocus += otherRes.Incomes[otherIdx].IncomeSystemFocus;
+                    Incomes[resIdx].SystemIncome += otherRes.Incomes[otherIdx].SystemIncome;
+                    //Incomes[resIdx].LocalIncome += otherRes.Incomes[otherIdx].LocalIncome;
+                    Incomes[resIdx].LocalBonus += otherRes.Incomes[otherIdx].LocalBonus;
+                    Incomes[resIdx].Bonus += otherRes.Incomes[otherIdx].Bonus;
+                    Incomes[resIdx].Focus += otherRes.Incomes[otherIdx].Focus;
+                    //Incomes[resIdx].FocusBase += otherRes.Incomes[otherIdx].FocusBase;
+                    //Incomes[resIdx].FocusChosen += otherRes.Incomes[otherIdx].FocusChosen;
+
+                    Incomes[resIdx].IncomeFixedOther.Add(new IncomeInfo.FromOther(district, otherRes.Incomes[otherIdx].IncomeFixed));
+                    Incomes[resIdx].IncomePerPopOther.Add(new IncomeInfo.FromOther(district, otherRes.Incomes[otherIdx].IncomePerPop));
+                }
+            }
+        }
+
+        SpecialIncome.Growth += otherRes.SpecialIncome.Growth;
+        SpecialIncome.GrowthLocalBonus += otherRes.SpecialIncome.GrowthLocalBonus;
+        SpecialIncome.PopMax += otherRes.SpecialIncome.PopMax;
+        SpecialIncome.PopMaxPenalty += otherRes.SpecialIncome.PopMaxPenalty;
+        SpecialIncome.FactoryCost += otherRes.SpecialIncome.FactoryCost;
+        SpecialIncome.FactoryBonus += otherRes.SpecialIncome.FactoryBonus;
+    }
+
+    public void AddSystemIncome(ResourcesWrapper colonyRes, bool addMissing = false)
+    {
+        for(int otherIdx = 0; otherIdx < colonyRes.Incomes.Count; otherIdx++)
+        {
+            bool found = false;
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+            {
+                if (Incomes[resIdx].Name == colonyRes.Incomes[otherIdx].Name)
+                {
+                    found = true;
+                    Incomes[resIdx].SystemIncome += colonyRes.Incomes[otherIdx].SystemIncome;
+                }
+            }
+
             if (addMissing && found == false)
             {
-                IncomeInfo otherInfo = otherRes.Incomes[otherIdx];
-                IncomeInfo info = otherInfo.Copy();
+                IncomeInfo info = new IncomeInfo();
+                info.SystemIncome += colonyRes.Incomes[otherIdx].SystemIncome;
                 Incomes.Add(info);
             }
         }
-        for (int otherIdx = 0; otherIdx < otherRes.Limits.Count; otherIdx++)
+    }
+
+    public void AddSystemIncomeToColonies(ResourcesWrapper systemRes)
+    {
+        for (int otherIdx = 0; otherIdx < systemRes.Incomes.Count; otherIdx++)
+        {
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+            {
+                if (Incomes[resIdx].Name == systemRes.Incomes[otherIdx].Name)
+                {
+                    Incomes[resIdx].LocalIncome += systemRes.Incomes[otherIdx].SystemIncome;
+                }
+            }
+        }
+    }
+
+    public void AddColonyResources(ColonyData colony)
+    {
+        if (Type != ParentType.SYSTEM)
+            return;
+
+        ResourcesWrapper colonyRes = colony.Resources_PerTurn;
+        for (int otherIdx = 0; otherIdx < colonyRes.Incomes.Count; otherIdx++)
         {
             bool found = false;
-            for (int resIdx = 0; resIdx < Limits.Count; resIdx++)
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
             {
-                if (Limits[resIdx].Name == otherRes.Limits[otherIdx].Name)
+                if (Incomes[resIdx].Name == colonyRes.Incomes[otherIdx].Name)
                 {
                     found = true;
-                    if (totals)
-                    {
-                        Limits[resIdx].Max += otherRes.Limits[otherIdx].GetMaxTotal();
-                        Limits[resIdx].Used += otherRes.Limits[otherIdx].GetUsedTotal();
-                    }
-                    else
-                    {
-                        Limits[resIdx].Max += otherRes.Limits[otherIdx].Max;
-                        Limits[resIdx].MaxBonus += otherRes.Limits[otherIdx].MaxBonus;
-                        Limits[resIdx].Used += otherRes.Limits[otherIdx].Used;
-                        Limits[resIdx].UsedBonus += otherRes.Limits[otherIdx].UsedBonus;
-                    }
                 }
             }
 
-            if (addMissing && found == false)
+            if (found == false)
             {
-                LimitInfo otherInfo = otherRes.Limits[otherIdx];
-                LimitInfo info = otherInfo.Copy();
-                Limits.Add(info);
+                IncomeInfo info = new IncomeInfo();
+                info.Name = colonyRes.Incomes[otherIdx].Name;
+                Incomes.Add(info);
             }
-        }
 
-        if (otherRes.Pops != null)
-        {
-            if (Pops != null)
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
             {
-                if (totals)
+                if (Incomes[resIdx].Name == colonyRes.Incomes[otherIdx].Name)
                 {
-                    Pops.Pops += otherRes.Pops.Pops;
-                    Pops.PopsMax += otherRes.Pops.PopsMax;
-                    Pops.Growth += otherRes.Pops.GetGrowthTotal();
-                }
-                else
-                {
-                    Pops.Pops += otherRes.Pops.Pops;
-                    Pops.PopsMax += otherRes.Pops.PopsMax;
-                    Pops.Growth += otherRes.Pops.Growth;
-                    Pops.GrowthBonus += otherRes.Pops.GrowthBonus;
+                    Incomes[resIdx].IncomePerPop += colonyRes.Incomes[otherIdx].IncomePerPop;
+
+                    int incomeFixedTotal = colonyRes.Incomes[otherIdx].IncomeFixedTotal();
+                    if (incomeFixedTotal != 0) Incomes[resIdx].IncomeFixedOther.Add(new IncomeInfo.FromOther(colony, incomeFixedTotal));
+                    int incomePerPopTotal = colonyRes.Incomes[otherIdx].IncomeFixedTotal();
+                    if (incomePerPopTotal != 0) Incomes[resIdx].IncomePerPopOther.Add(new IncomeInfo.FromOther(colony, incomePerPopTotal));
+                    if (colonyRes.Incomes[otherIdx].Focus != 0) Incomes[resIdx].FocusOther.Add(new IncomeInfo.FromOther(colony, colonyRes.Incomes[otherIdx].Focus));
+                    if (colonyRes.Incomes[otherIdx].Bonus != 0) Incomes[resIdx].BonusOther.Add(new IncomeInfo.FromOther(colony, colonyRes.Incomes[otherIdx].Bonus));
                 }
             }
-            else if (addMissing)
-            {
-                PopsInfo otherInfo = otherRes.Pops;
-                Pops = otherInfo.Copy();
-            }
         }
+
+        SpecialIncome.Growth += colonyRes.SpecialIncome.Growth;
+        //SpecialIncome.GrowthLocalBonus += otherRes.SpecialIncome.GrowthLocalBonus; // already added
+        SpecialIncome.PopMax += colonyRes.SpecialIncome.PopMax;
+        SpecialIncome.PopMaxPenalty += colonyRes.SpecialIncome.PopMaxPenalty;
+        SpecialIncome.FactoryCost += colonyRes.SpecialIncome.FactoryCost;
+        SpecialIncome.FactoryBonus += colonyRes.SpecialIncome.FactoryBonus;
     }
 
-    public void ProcessGrowth()
-    {
-        if (Pops != null)
-        {
-            Pops.Pops = Mathf.Min(Pops.Pops + Pops.GetTrueGrowth(), Pops.PopsMax);
-            Pops.SavePops();
-        }
-    }
-
-    public void ProcessIncome()
-    {
-        for (int idx = 0; idx < Incomes.Count; idx++)
-        {
-            if (Incomes[idx].HasStockpile)
-            {
-                Incomes[idx].Stockpile += Incomes[idx].GetIncomeTotal();
-                Incomes[idx].SaveStockpile();
-            }
-        }
-    }
-
-    public IncomeInfo GetIncome(string name)
+    public IncomeInfo GetIncome(string name, bool returnDefault = true)
     {
         for (int idx = 0; idx < Incomes.Count; idx++)
         {
@@ -508,137 +529,188 @@ public class ResourcesWrapper
                 return Incomes[idx];
             }
         }
-        return null;
+        return returnDefault ? Default : null;
     }
 
-    public LimitInfo GetLimit(string name)
+    public int GetIncomeSystemFocus(string name) 
     {
-        for (int idx = 0; idx < Limits.Count; idx++)
-        {
-            if (Limits[idx].Name == name)
-            {
-                return Limits[idx];
-            }
-        }
-        return null;
-    }
-
-    public PopsInfo GetPops()
-    {
-        return Pops;
-    }
-
-    public BuildingsInfo GetBuildings()
-    {
-        return Buildings;
-    }
-
-    public string GetStockpileString(string name)
-    {
+        int focus = 0;
+        int focusTotal = 0;
         for (int idx = 0; idx < Incomes.Count; idx++)
         {
+            focusTotal += Incomes[idx].FocusTotal();
+
             if (Incomes[idx].Name == name)
             {
-                int value = Incomes[idx].GetIncomeTotal();
-                return Helper.ResValueToString(Incomes[idx].Stockpile) + "(" + (value >= 0 ? "+" + Helper.ResValueToString(value) : "[color=#ff8888]" + Helper.ResValueToString(value) + "[/color]") + ")";
-                //int value = Incomes[idx].Value_1 - Incomes[idx].Value_2;
-                //return Helper.ResValueToString(Resources[idx].Value_3) + "(" + (value >= 0 ? "+" + Helper.ResValueToString(value) : "[color=#ff8888]" + Helper.ResValueToString(value) + "[/color]") + ")";
-                //return Helper.ResValueToString(Resources[idx].Value_3) + "(+" + Helper.ResValueToString(Resources[idx].Value_1) + (Resources[idx].Value_2 > 0 ? "[color=#ff8888]-" + Helper.ResValueToString(Resources[idx].Value_2) + "[/color])" : ")");
+                focus = Incomes[idx].FocusTotal();
             }
         }
-        return "";
+        if (focusTotal == 0) return 0;
+        else return 10000 * focus / focusTotal;
     }
 
-    public string GetStockpileTooltip(string name)
+    public static int GetSystemProduction(SystemData system)
     {
-        for (int idx = 0; idx < Incomes.Count; idx++)
-        {
-            if (Incomes[idx].Name == name)
-            {
-                string tooltip = "temp";
-                //tooltip += Helper.ResValueToString(Resources[idx].Value_1) + "[img=24x24]Assets/UI/Symbols/" + Resources[idx].Name + ".png[/img] Income";
-                //if (Resources[idx].ResType == Info.Type.INCOME_UPKEEP_PERPOP)
-                //{
-                //    tooltip = Helper.ResValueToString(Resources[idx].Value_2) + "[img=24x24]Assets/UI/Symbols/" + Resources[idx].Name + ".png[/img] Income";
-                //}
+        int pops = system.Pops_PerTurn.GetPops() / 1000;
+        int workingFactories = Mathf.Min(system.Pops_PerTurn.GetPops(), system.Buildings_PerTurn.Factories) / 1000;
+        int emptyFactories = system.Buildings_PerTurn.Factories / 1000 - workingFactories;
 
-
-                //int value = Resources[idx].Value_1 - Resources[idx].Value_2;
-                //return Helper.ResValueToString(Resources[idx].Value_3) + "(" + (value >= 0 ? "+" + Helper.ResValueToString(value) : "[color=#ff8888]" + Helper.ResValueToString(value) + "[/color]") + ")";
-                //return Helper.ResValueToString(Resources[idx].Value_3) + "(+" + Helper.ResValueToString(Resources[idx].Value_1) + (Resources[idx].Value_2 > 0 ? "[color=#ff8888]-" + Helper.ResValueToString(Resources[idx].Value_2) + "[/color])" : ")");
-            }
-        }
-        return "";
+        return (pops + workingFactories * 4) * 10 + emptyFactories * 5;
     }
-
-    public string GetIncomeString(string name)
+    public static int GetSystemBC(SystemData system)
     {
-        for (int idx = 0; idx < Incomes.Count; idx++)
-        {
-            if (Incomes[idx].Name == name)
-            {
-                int value = Incomes[idx].GetIncomeTotal();
-                return (value >= 0 ? Helper.ResValueToString(value) : "[color=#ff8888]" + Helper.ResValueToString(value) + "[/color]");
-            }
-        }
-        return "";
+        int pops = system.Pops_PerTurn.GetPops() / 1000;
+        int workingFactories = Mathf.Min(system.Pops_PerTurn.GetPops(), system.Buildings_PerTurn.Factories) / 1000;
+        int emptyFactories = system.Buildings_PerTurn.Factories / 1000 - workingFactories;
+
+        return (pops + workingFactories) * 10;
     }
 
-    public string GetIncomeString(string name, int value)
-    {
-        for (int idx = 0; idx < Incomes.Count; idx++)
-        {
-            if (Incomes[idx].Name == name)
-            {
-                return (value >= 0 ? Helper.ResValueToString(value) : "[color=#ff8888]" + Helper.ResValueToString(value) + "[/color]");
-            }
-        }
-        return "";
-    }
+    //public void PropagateSystemBonuses(ResourcesWrapper systemRes)
+    //{
+    //    for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+    //    {
+    //        for (int otherIdx = 0; otherIdx < systemRes.Incomes.Count; otherIdx++)
+    //        {
+    //            if (Incomes[resIdx].Name == systemRes.Incomes[otherIdx].Name)
+    //            {
+    //                Incomes[resIdx].PerLevel_FromSystem += systemRes.Incomes[otherIdx].PerLevel_System;
+    //            }
+    //        }
+    //    }
+    //}
 
-    public string GetLimitString(string name)
-    {
-        for (int idx = 0; idx < Limits.Count; idx++)
-        {
-            if (Limits[idx].Name == name)
-            {
-                string colorStart = "";
-                string colorEnd = "";
-                if (Type == ParentType.Player && Limits[idx].GetUsedTotal() > Limits[idx].GetMaxTotal())
-                {
-                    colorStart = "[color=#ff8888]";
-                    colorEnd = "[/color]";
-                }
-                return colorStart + Helper.ResValueToString(Limits[idx].GetUsedTotal()) + "/" + Helper.ResValueToString(Limits[idx].GetMaxTotal()) + colorEnd;
-            }
-        }
-        return "";
-    }
+    //public void Add(ResourcesWrapper otherRes, bool totals = false, bool addMissing = false)
+    //{
+    //    for (int otherIdx = 0; otherIdx < otherRes.Incomes.Count; otherIdx++)
+    //    {
+    //        bool found = false;
+    //        for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+    //        {
+    //            if (Incomes[resIdx].Name == otherRes.Incomes[otherIdx].Name)
+    //            {
+    //                found = true;
+    //                if (totals)
+    //                {
+    //                    Incomes[resIdx].Income += otherRes.Incomes[otherIdx].GetIncomeTotal();
+    //                }
+    //                else
+    //                {
+    //                    Incomes[resIdx].Income += otherRes.Incomes[otherIdx].Income;
+    //                    Incomes[resIdx].Level += otherRes.Incomes[otherIdx].Level;
+    //                    Incomes[resIdx].PerPop += otherRes.Incomes[otherIdx].PerPop;
+    //                    Incomes[resIdx].PerCPop += otherRes.Incomes[otherIdx].PerCPop;
+    //                    Incomes[resIdx].PerLevel += otherRes.Incomes[otherIdx].PerLevel;
+    //                    Incomes[resIdx].PerLevel_System += otherRes.Incomes[otherIdx].PerLevel_System;
+    //                    Incomes[resIdx].Bonus += otherRes.Incomes[otherIdx].Bonus;
+    //                    // Incomes[resIdx].Stockpile += otherRes.Incomes[otherIdx].Stockpile;
+    //                }
+    //            }
+    //        }
+    //
+    //        if (addMissing && found == false)
+    //        {
+    //            IncomeInfo otherInfo = otherRes.Incomes[otherIdx];
+    //            IncomeInfo info = otherInfo.Copy();
+    //            Incomes.Add(info);
+    //        }
+    //    }
+    //}
 
-    public string ToStringCondensed()
-    {
-        string totalIncome = "";
+    //public void ProcessGrowth()
+    //{
+    //    if (Pops != null)
+    //    {
+    //        Pops.Pops = Mathf.Min(Pops.Pops + Pops.GetTrueGrowth(), Pops.PopsMax);
+    //        Pops.SavePops();
+    //    }
+    //}
 
-        for (int idx = 0; idx < Incomes.Count; idx++)
-        {
-            if (Incomes[idx].GetIncomeTotal() != 0)
-            {
-                totalIncome += " " + Incomes[idx].ToString_Income() + Helper.GetIcon(Incomes[idx].Name);
-            }
-        }
+    //public void ProcessIncome()
+    //{
+    //    for (int idx = 0; idx < Incomes.Count; idx++)
+    //    {
+    //        if (Incomes[idx].HasStockpile)
+    //        {
+    //            Incomes[idx].Stockpile += Incomes[idx].GetIncomeTotal();
+    //            Incomes[idx].SaveStockpile();
+    //        }
+    //    }
+    //}
 
-        if (Pops != null)
-        {
-            if (Pops.GrowthBonus != 0)
-            {
-                totalIncome += Pops.ToString_GrowthBonus() + Helper.GetIcon("Growth");
-            }
-            if (Pops.GrowthPenalty != 0)
-            {
-                totalIncome += Pops.ToString_GrowthPenalty() + Helper.GetIcon("Growth");
-            }
-        }
+    //public IncomeInfo GetIncome(string name)
+    //{
+    //    for (int idx = 0; idx < Incomes.Count; idx++)
+    //    {
+    //        if (Incomes[idx].Name == name)
+    //        {
+    //            return Incomes[idx];
+    //        }
+    //    }
+    //    return null;
+    //}
 
-        return totalIncome;
-    }
+    //public LimitInfo GetLimit(string name)
+    //{
+    //    for (int idx = 0; idx < Limits.Count; idx++)
+    //    {
+    //        if (Limits[idx].Name == name)
+    //        {
+    //            return Limits[idx];
+    //        }
+    //    }
+    //    return null;
+    //
+
+    //public string GetIncomeString(string name)
+    //{
+    //    for (int idx = 0; idx < Incomes.Count; idx++)
+    //    {
+    //        if (Incomes[idx].Name == name)
+    //        {
+    //            int value = Incomes[idx].GetIncomeTotal();
+    //            return (value >= 0 ? Helper.ResValueToString(value) : "[color=#ff8888]" + Helper.ResValueToString(value) + "[/color]");
+    //        }
+    //    }
+    //    return "";
+    //}
+
+    //public string GetIncomeString(string name, int value)
+    //{
+    //    for (int idx = 0; idx < Incomes.Count; idx++)
+    //    {
+    //        if (Incomes[idx].Name == name)
+    //        {
+    //            return (value >= 0 ? Helper.ResValueToString(value) : "[color=#ff8888]" + Helper.ResValueToString(value) + "[/color]");
+    //        }
+    //    }
+    //    return "";
+    //}
+
+    //public string ToStringCondensed()
+    //{
+    //    string totalIncome = "";
+    //
+    //    for (int idx = 0; idx < Incomes.Count; idx++)
+    //    {
+    //        if (Incomes[idx].GetIncomeTotal() != 0)
+    //        {
+    //            totalIncome += " " + Incomes[idx].ToString_Income() + Helper.GetIcon(Incomes[idx].Name);
+    //        }
+    //    }
+    //
+    //    if (Pops != null)
+    //    {
+    //        if (Pops.GrowthBonus != 0)
+    //        {
+    //            totalIncome += Pops.ToString_GrowthBonus() + Helper.GetIcon("Growth");
+    //        }
+    //        if (Pops.GrowthPenalty != 0)
+    //        {
+    //            totalIncome += Pops.ToString_GrowthPenalty() + Helper.GetIcon("Growth");
+    //        }
+    //    }
+    //
+    //    return totalIncome;
+    //}
 }

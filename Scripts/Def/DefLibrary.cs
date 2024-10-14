@@ -65,7 +65,7 @@ public partial class DefLibrary : Node
         {
             if (value)
             {
-                LoadBuildingsDefFunc();
+                LoadDistrictsDefFunc();
             }
         }
     }
@@ -77,7 +77,7 @@ public partial class DefLibrary : Node
         {
             if (value)
             {
-                SaveBuildingsDef();
+                SaveDistrictsDef();
             }
         }
     }
@@ -204,7 +204,7 @@ public partial class DefLibrary : Node
 
     public override void _Ready()
     {
-        _Ready_Buildings();
+        _Ready_Districts();
         _Ready_Empires();
         _Ready_Features();
     }

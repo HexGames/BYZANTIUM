@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public partial class StarData : Node
 {
     [Export]
-    public DataBlock _Data = null;
+    public DataBlock Data = null;
     [Export]
     public StarNode _Node = null;
     [Export]

@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 using static MEC.Timing;
 
@@ -43,6 +44,10 @@ public partial class TurnLoop : Node
 
     public void Init()
     {
+        // session
+        Init_FeatureData();
+        Init_DistrictData();
+
         CurrentHumanPlayerData = GetHumanPlayer();
         Init_Resources();
         Init_Fleets();
@@ -64,6 +69,45 @@ public partial class TurnLoop : Node
             star._Node.GFX.RefreshShips();
         }
     }
+    public void Init_FeatureData()
+    {
+        for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
+        {
+            StarData star = Game.self.Map.Data.Stars[starIdx];
+            for (int planetIdx = 0; planetIdx < star.Planets.Count; planetIdx++)
+            {
+                PlanetData planet = star.Planets[planetIdx];
+                planet.Features.Clear();
+                Array<DataBlock> features = planet.Data.GetSub("Features").GetSubs();
+                for (int featureIdx = 0; featureIdx < features.Count; featureIdx++)
+                {
+                    planet.Features.Add(new FeatureData(features[featureIdx], planet));
+                }
+            }
+        }
+    }
+
+    public void Init_DistrictData()
+    {
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            {
+                SystemData system = player.Systems[systemIdx];
+                for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
+                {
+                    ColonyData colony = system.Colonies[colonyIdx];
+                    colony.Districts.Clear();
+                    Array<DataBlock> districts = colony.Data.GetSub("Districts").GetSubs("District");
+                    for (int districtIdx = 0; districtIdx < districts.Count; districtIdx++)
+                    {
+                        colony.Districts.Add(new DistrictData(districts[districtIdx], colony));
+                    }
+                }
+            }
+        }
+    }
 
     public void Init_Resources()
     {
@@ -80,30 +124,24 @@ public partial class TurnLoop : Node
         for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.self.Map.Data.Players[playerIdx];
-            player.Resources_PerTurn = new ResourcesWrapper(player.Resources, ResourcesWrapper.ParentType.Player);
+            //player.Resources_PerTurn = new ResourcesWrapper(player.Resources, ResourcesWrapper.ParentType.Player);
 
             for (int sectorIdx = 0; sectorIdx < player.Systems.Count; sectorIdx++)
             {
                 SystemData system = player.Systems[sectorIdx];
-                system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.System);
+                system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.SYSTEM);
                 system.Pops_PerTurn = new PopsWrapper(system);
                 system.Buildings_PerTurn = new BuildingsWrapper(system);
+                system.QueueDistricts_PerTurn = new DistrictQueueWrapper(system);
                 //sector.BuildQueue_PerTurn_ActionChange = new BuildingQueueWrapper(sector, Game);
                 //sector.BudgetPerTurn = new BudgetWrapper(sector.Budget);
-
-                //for (int systemIdx = 0; systemIdx < sector.Systems.Count; systemIdx++)
-                //{
-                //    SystemData system = sector.Systems[sectorIdx];
-                //   system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.System);
-
                 for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
                 {
                     ColonyData colony = system.Colonies[colonyIdx];
-                    //colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.Colony);
+                    colony.Resources_PerTurn = new ResourcesWrapper(colony.Resources, ResourcesWrapper.ParentType.COLONY);
                     colony.Pops_PerTurn = new PopsWrapper(colony);
                     colony.Buildings_PerTurn = new BuildingsWrapper(colony);
                 }
-                //}
             }
         }
     }

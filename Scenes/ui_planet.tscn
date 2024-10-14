@@ -1,0 +1,1257 @@
+[gd_scene load_steps=17 format=3 uid="uid://cmde3jxsickdj"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Planet/UISelectedPlanet.cs" id="1_xbmfe"]
+[ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="3_2x56l"]
+[ext_resource type="Script" path="res://Scripts/UI/Planet/UISelectedPlanetItem.cs" id="4_dsxdt"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="7_swumr"]
+[ext_resource type="Texture2D" uid="uid://wd744unakx1k" path="res://Assets/Planets/UI/Desert.png" id="7_yrdjo"]
+[ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="8_oc75w"]
+[ext_resource type="Texture2D" uid="uid://b0hf203g0lcrk" path="res://Assets/UI/Districts/Factory.png" id="9_kbx8q"]
+[ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="9_s3uik"]
+[ext_resource type="Texture2D" uid="uid://bwb7yatk3sl06" path="res://Assets/UI/gradiaentRightWhite.png" id="12_ggpc0"]
+[ext_resource type="Texture2D" uid="uid://be6nytexs28ab" path="res://Assets/UI/Symbols/CancelW.png" id="12_punmh"]
+[ext_resource type="Texture2D" uid="uid://qvxxtu5jlkbt" path="res://Assets/UI/left.png" id="17_00imd"]
+[ext_resource type="Texture2D" uid="uid://ceyqr5puhfmn0" path="res://Assets/UI/right.png" id="19_4fo3r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aj42a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atwls"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.752941, 0.188235, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wown7"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 0.752941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0idv6"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.752941, 0.188235, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[node name="Planet" type="Control" node_paths=PackedStringArray("PlanetName", "Uncolonized", "Colonized", "ColonyInfo", "Pops", "Control", "Factory", "Bases", "Planet", "Features", "Districts", "BuildDistrictSelector", "QueueControl", "IncreasePriority", "DecreasePriority", "CancelDistrict", "PositionInQueue", "PossibleDistrictsBg", "PossibleDistrictsScrollBg", "PossibleDistricts")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+script = ExtResource("1_xbmfe")
+PlanetName = NodePath("InfoList/TitleBg/Title")
+Uncolonized = NodePath("InfoList/System/Uncolonized")
+Colonized = NodePath("InfoList/System/Colonized")
+ColonyInfo = NodePath("InfoList/System/ColonyInfo")
+Pops = NodePath("InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops/Panel/Pops")
+Control = NodePath("InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops/Panel2/Control")
+Factory = NodePath("InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings/Panel/Factories")
+Bases = NodePath("InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings/Panel3/Bases")
+Planet = NodePath("InfoList/System/Planet")
+Features = [NodePath("InfoList/System/Features/Feature_0")]
+Districts = [NodePath("InfoList/System/Districts/District_0")]
+BuildDistrictSelector = NodePath("PopUp")
+QueueControl = NodePath("PopUp/InConstruction")
+IncreasePriority = NodePath("PopUp/InConstruction/QueueControl/Working/Ship/LeftBg/Left")
+DecreasePriority = NodePath("PopUp/InConstruction/QueueControl/Working/Ship/RightBg/Right")
+CancelDistrict = NodePath("PopUp/InConstruction/QueueControl/Working/Ship/Cancel/Cancel")
+PositionInQueue = NodePath("PopUp/InConstruction/QueueControl/Working/Ship/Text")
+PossibleDistrictsBg = NodePath("PopUp/PossibleDistricts")
+PossibleDistrictsScrollBg = NodePath("PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer")
+PossibleDistricts = [NodePath("PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0")]
+
+[node name="InfoList" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_bottom = 902.0
+grow_horizontal = 0
+theme_override_constants/separation = 8
+
+[node name="TitleBg" type="Panel" parent="InfoList"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"PanelTitle"
+
+[node name="Title" type="RichTextLabel" parent="InfoList/TitleBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_s3uik")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+bbcode_enabled = true
+text = "[center]$name[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="System" type="VBoxContainer" parent="InfoList"]
+layout_mode = 2
+
+[node name="Uncolonized" type="PanelContainer" parent="InfoList/System"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("9_s3uik")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/Uncolonized"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[center]Uncolonized Planet[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Colonized" type="Panel" parent="InfoList/System"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("9_s3uik")
+
+[node name="TextureRect" type="TextureRect" parent="InfoList/System/Colonized"]
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_ggpc0")
+expand_mode = 1
+
+[node name="Owner" type="RichTextLabel" parent="InfoList/System/Colonized"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[center]owned by $name[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ColonyInfo" type="PanelContainer" parent="InfoList/System"]
+custom_minimum_size = Vector2(320, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("9_s3uik")
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoList/System/ColonyInfo"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/ColonyInfo/MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+alignment = 1
+
+[node name="Pops" type="VBoxContainer" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops"]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
+
+[node name="Pops" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[right]$pops[img=24x24]Assets/UI/Symbols/Pops.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Line1" type="ColorRect" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops"]
+custom_minimum_size = Vector2(80, 2)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 0.501961)
+
+[node name="Panel2" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops"]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
+
+[node name="Control" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[right]$val%[img=24x24]Assets/UI/Symbols/Control.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Line2" type="ColorRect" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops"]
+visible = false
+custom_minimum_size = Vector2(80, 2)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 0.501961)
+
+[node name="Panel3" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops"]
+visible = false
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
+
+[node name="Pops" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[right]$pops[img=24x24]Assets/UI/Symbols/PopsUnc.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Line1" type="ColorRect" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(2, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 0.501961)
+
+[node name="Buildings" type="VBoxContainer" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings"]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
+
+[node name="Factories" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[right]$val/$max[img=32x32]Assets/UI/Symbols/ProdCap.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Line1" type="ColorRect" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings"]
+visible = false
+custom_minimum_size = Vector2(80, 2)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 0.501961)
+
+[node name="Panel2" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings"]
+visible = false
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
+
+[node name="Private" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[right]$val/$max[img=32x32]Assets/UI/Symbols/PrivateIndustry.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Line2" type="ColorRect" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings"]
+custom_minimum_size = Vector2(80, 2)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 0.501961)
+
+[node name="Panel3" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings"]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
+
+[node name="Bases" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[right]$val/$max[img=32x32]Assets/UI/Symbols/Power.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Planet" type="PanelContainer" parent="InfoList/System"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("9_s3uik")
+script = ExtResource("4_dsxdt")
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoList/System/Planet"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/Planet/MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="Control" parent="InfoList/System/Planet/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+theme = ExtResource("3_2x56l")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_atwls")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+
+[node name="IconText" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -29.5
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_yrdjo")
+expand_mode = 1
+
+[node name="TextBox" type="Panel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon"]
+visible = false
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wown7")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/TextBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[center]Terraform[/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/Planet/MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[left]$name[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Description" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[left]$description[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Turns" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[right]$t[img=32x32]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Queued" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[right]$q[/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Features" type="VBoxContainer" parent="InfoList/System"]
+layout_mode = 2
+
+[node name="Feature_0" type="PanelContainer" parent="InfoList/System/Features"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("9_s3uik")
+script = ExtResource("4_dsxdt")
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoList/System/Features/Feature_0"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/Features/Feature_0/MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="Control" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_2x56l")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_atwls")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+
+[node name="IconText" type="RichTextLabel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -29.5
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_kbx8q")
+expand_mode = 1
+
+[node name="TextBox" type="Panel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon"]
+visible = false
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wown7")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/TextBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[center]Explore[/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[left]$name[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Description" type="RichTextLabel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[left]$description[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Turns" type="RichTextLabel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[right]$t[img=32x32]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Districts" type="VBoxContainer" parent="InfoList/System"]
+layout_mode = 2
+
+[node name="District_0" type="PanelContainer" parent="InfoList/System/Districts"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("9_s3uik")
+script = ExtResource("4_dsxdt")
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoList/System/Districts/District_0"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/Districts/District_0/MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="Control" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_2x56l")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0idv6")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="IconText" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -29.5
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_kbx8q")
+expand_mode = 1
+
+[node name="TextBox" type="Panel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon"]
+visible = false
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wown7")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/TextBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[center]In Queue[/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[left]$name[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Description" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[left]$description[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Turns" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[right]$t[img=32x32]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Queued" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[right]$q[/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="PopUp" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 1
+anchors_preset = -1
+offset_left = -336.0
+offset_top = 272.0
+offset_right = -336.0
+offset_bottom = 272.0
+grow_horizontal = 0
+
+[node name="InConstruction" type="VBoxContainer" parent="PopUp"]
+layout_mode = 2
+
+[node name="InConstruction" type="Panel" parent="PopUp/InConstruction"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"PanelTitle"
+
+[node name="Title" type="RichTextLabel" parent="PopUp/InConstruction/InConstruction"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_s3uik")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+bbcode_enabled = true
+text = "[center]In Construction[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="QueueControl" type="PanelContainer" parent="PopUp/InConstruction"]
+layout_mode = 2
+theme = ExtResource("9_s3uik")
+
+[node name="Working" type="VBoxContainer" parent="PopUp/InConstruction/QueueControl"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Ship" type="HBoxContainer" parent="PopUp/InConstruction/QueueControl/Working"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+alignment = 1
+
+[node name="LeftBg" type="Control" parent="PopUp/InConstruction/QueueControl/Working/Ship"]
+custom_minimum_size = Vector2(32, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Left" type="Button" parent="PopUp/InConstruction/QueueControl/Working/Ship/LeftBg"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("3_2x56l")
+theme_type_variation = &"Small"
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/InConstruction/QueueControl/Working/Ship/LeftBg/Left"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_00imd")
+expand_mode = 1
+
+[node name="Text" type="RichTextLabel" parent="PopUp/InConstruction/QueueControl/Working/Ship"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[center]$rd in Queue[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RightBg" type="Control" parent="PopUp/InConstruction/QueueControl/Working/Ship"]
+custom_minimum_size = Vector2(32, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Right" type="Button" parent="PopUp/InConstruction/QueueControl/Working/Ship/RightBg"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("3_2x56l")
+theme_type_variation = &"Small"
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/InConstruction/QueueControl/Working/Ship/RightBg/Right"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_4fo3r")
+expand_mode = 1
+
+[node name="Gap" type="Control" parent="PopUp/InConstruction/QueueControl/Working/Ship"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Cancel" type="Control" parent="PopUp/InConstruction/QueueControl/Working/Ship"]
+custom_minimum_size = Vector2(32, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Cancel" type="Button" parent="PopUp/InConstruction/QueueControl/Working/Ship/Cancel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("3_2x56l")
+theme_type_variation = &"Small"
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/InConstruction/QueueControl/Working/Ship/Cancel/Cancel"]
+self_modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_punmh")
+expand_mode = 1
+
+[node name="PossibleDistricts" type="VBoxContainer" parent="PopUp"]
+layout_mode = 2
+
+[node name="TitleBg" type="Panel" parent="PopUp/PossibleDistricts"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"PanelTitle"
+
+[node name="Title" type="RichTextLabel" parent="PopUp/PossibleDistricts/TitleBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_s3uik")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+bbcode_enabled = true
+text = "[center]Choose a Building[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ScrollContainerBg" type="Control" parent="PopUp/PossibleDistricts"]
+custom_minimum_size = Vector2(320, 90)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 422.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer"]
+layout_mode = 2
+
+[node name="District_0" type="PanelContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("9_s3uik")
+script = ExtResource("4_dsxdt")
+
+[node name="MarginContainer" type="MarginContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="Control" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_2x56l")
+theme_type_variation = &"Build"
+
+[node name="Selected" type="Panel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0idv6")
+
+[node name="ToolTip" type="Control" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="IconText" type="RichTextLabel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -29.5
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995349, 1)
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center][b]$$[/b][/center]"
+fit_content = true
+
+[node name="Icon" type="TextureRect" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_kbx8q")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[left]$name[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Description" type="RichTextLabel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[left]$description[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Turns" type="RichTextLabel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[right]$t[img=32x32]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Queued" type="RichTextLabel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[right]$q[/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[connection signal="pressed" from="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button" to="InfoList/System/Planet" method="OnSelect"]
+[connection signal="mouse_entered" from="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button" to="InfoList/System/Features/Feature_0" method="OnSelect"]
+[connection signal="mouse_entered" from="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button" to="InfoList/System/Districts/District_0" method="OnSelect"]
+[connection signal="mouse_entered" from="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button" to="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0" method="OnSelect"]
+[connection signal="mouse_entered" from="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]

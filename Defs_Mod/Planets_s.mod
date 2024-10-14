@@ -8,7 +8,6 @@ Def_Planets
 		Features 
 		{
 			Red_Dwarf 
-			Building:Nonplanetary 
 		}
 	}
 	Planet:Star White_Dwarf
@@ -19,7 +18,6 @@ Def_Planets
 		Features 
 		{
 			White_Dwarf 
-			Building:Nonplanetary 
 		}
 	}
 	Planet:Star Main_Sequence
@@ -28,7 +26,6 @@ Def_Planets
 		Features 
 		{
 			Main_Sequence 
-			Building:Nonplanetary 
 		}
 	}
 	Planet:Star Red_Giant
@@ -39,7 +36,6 @@ Def_Planets
 		Features 
 		{
 			Red_Giant 
-			Building:Nonplanetary 
 		}
 	}
 	Planet:Star Blue_Giant
@@ -50,7 +46,6 @@ Def_Planets
 		Features 
 		{
 			Blue_Giant 
-			Building:Nonplanetary 
 		}
 	}
 	Planet:Star Pulsar
@@ -61,28 +56,26 @@ Def_Planets
 		Features 
 		{
 			Pulsar 
-			Building:Nonplanetary 
 		}
 	}
 	Planet Gas_Giant
 	{
+		SlotType Space_Station
 		Features 
 		{
-			Gas_Giant 
-			Bonus Rich_Gasses
-			Bonus Rings
-			Bonus Tiny_Moon
-			Building:Nonplanetary 
+			Bonus High_Enegy_Particles
+			Bonus Beautiful
+			Bonus Refueling_Gasses
 		}
 	}
 	Planet Asteroids
 	{
+		SlotType Asteroid_Base
 		Features 
 		{
-			Asteroids 
-			Bonus Big_Asteroid
 			Bonus Rich_Minerals
-			Building:Asteroids 
+			Bonus Beautiful
+			Bonus Refueling_Gasses
 		}
 	}
 	Planet Frozen
@@ -90,13 +83,12 @@ Def_Planets
 		Weight 4
 		Temperature:Min 1
 		Temperature:Max 1
+		Uninhabitable 
+		SlotType Outpost
 		Features 
 		{
-			Uninhabitable 
-			Bonus Rich_Minerals
-			Bonus Rings
-			Bonus Tiny_Moon
-			Building:Possible_Outpost 
+			Bonus High_Enegy_Particles
+			Bonus Refueling_Gasses
 		}
 	}
 	Planet Barren
@@ -104,13 +96,13 @@ Def_Planets
 		Weight 4
 		Temperature:Min 1
 		Temperature:Max 5
+		Uninhabitable 
+		SlotType Outpost
 		Features 
 		{
-			Uninhabitable 
-			Bonus Rich_Minerals
-			Bonus Rings
-			Bonus Tiny_Moon
-			Building:Possible_Outpost 
+			Bonus High_Enegy_Particles
+			Bonus Refueling_Gasses
+			Bonus Rich_Soil
 		}
 	}
 	Planet Toxic
@@ -118,13 +110,13 @@ Def_Planets
 		Weight 2
 		Temperature:Min 2
 		Temperature:Max 4
+		Uninhabitable 
+		SlotType Outpost
 		Features 
 		{
-			Uninhabitable 
 			Bonus Rich_Minerals
-			Bonus Rings
-			Bonus Tiny_Moon
-			Building:Possible_Outpost 
+			Bonus High_Enegy_Particles
+			Bonus Refueling_Gasses
 		}
 	}
 	Planet Lava
@@ -132,13 +124,14 @@ Def_Planets
 		Weight 1
 		Temperature:Min 5
 		Temperature:Max 5
+		Uninhabitable 
+		SlotType Outpost
 		Features 
 		{
-			Uninhabitable 
 			Bonus Rich_Minerals
-			Bonus Rings
-			Bonus Tiny_Moon
-			Building:Possible_Outpost 
+			Bonus High_Enegy_Particles
+			Bonus Refueling_Gasses
+			Bonus Rich_Soil
 		}
 	}
 	Planet Desert
@@ -146,14 +139,13 @@ Def_Planets
 		Weight 2
 		Temperature:Min 2
 		Temperature:Max 3
+		Habitable 
+		SlotType District
 		Features 
 		{
-			Habitable 
-			PopMaxPerSize 10
-			Bonus Rich_Minerals
-			Bonus Rings
+			Desert 
 			Bonus Tiny_Moon
-			Building:Possible_World 
+			Bonus Alien_Life
 		}
 	}
 	Planet Arid
@@ -161,14 +153,13 @@ Def_Planets
 		Weight 2
 		Temperature:Min 2
 		Temperature:Max 3
+		Habitable 
+		SlotType District
 		Features 
 		{
-			Habitable 
-			PopMaxPerSize 15
-			Bonus Rich_Minerals
-			Bonus Rings
+			Arid 
 			Bonus Tiny_Moon
-			Building:Possible_World 
+			Bonus Alien_Life
 		}
 	}
 	Planet Continents
@@ -176,14 +167,18 @@ Def_Planets
 		Weight 2
 		Temperature:Min 2
 		Temperature:Max 4
+		Habitable 
+		SlotType District
 		Features 
 		{
-			Habitable 
-			PopMaxPerSize 40
-			Bonus Rich_Minerals
-			Bonus Rings
+			OR 
+			{
+				Wet:Weight 9
+				Fertile:Weight 3
+				Gaia:Weight 1
+			}
 			Bonus Tiny_Moon
-			Building:Possible_World 
+			Bonus Alien_Life
 		}
 	}
 	Planet Ocean
@@ -191,14 +186,14 @@ Def_Planets
 		Weight 2
 		Temperature:Min 2
 		Temperature:Max 4
+		Habitable 
+		SlotType District
 		Features 
 		{
-			Habitable 
-			PopMaxPerSize 25
-			Bonus Rich_Minerals
-			Bonus Rings
+			Fertile 
+			Ocean 
 			Bonus Tiny_Moon
-			Building:Possible_World 
+			Bonus Alien_Life
 		}
 	}
 	Planet Swamp
@@ -206,14 +201,17 @@ Def_Planets
 		Weight 2
 		Temperature:Min 2
 		Temperature:Max 4
+		Habitable 
+		SlotType District
 		Features 
 		{
-			Habitable 
-			PopMaxPerSize 30
-			Bonus Rich_Minerals
-			Bonus Rings
+			OR 
+			{
+				Wet:Weight 1
+				Fertile:Weight 1
+			}
 			Bonus Tiny_Moon
-			Building:Possible_World 
+			Bonus Alien_Life
 		}
 	}
 	Planet Artic
@@ -221,14 +219,17 @@ Def_Planets
 		Weight 4
 		Temperature:Min 2
 		Temperature:Max 2
+		Habitable 
+		SlotType District
 		Features 
 		{
-			Habitable 
-			PopMaxPerSize 20
-			Bonus Rich_Minerals
-			Bonus Rings
+			OR 
+			{
+				Arid:Weight 1
+				Wet:Weight 1
+			}
 			Bonus Tiny_Moon
-			Building:Possible_World 
+			Bonus Alien_Life
 		}
 	}
 	Planet Vulcanic
@@ -236,14 +237,14 @@ Def_Planets
 		Weight 1
 		Temperature:Min 2
 		Temperature:Max 4
+		Habitable 
+		SlotType District
 		Features 
 		{
-			Habitable 
-			PopMaxPerSize 10
-			Bonus Rich_Minerals
-			Bonus Rings
+			Vulcanic 
+			Arid 
 			Bonus Tiny_Moon
-			Building:Possible_World 
+			Bonus Alien_Life
 		}
 	}
 	Custom Mercury

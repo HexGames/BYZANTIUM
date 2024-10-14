@@ -12,13 +12,13 @@ public partial class DefLibrary : Node
     [Export]
     public Array<DataBlock> Factions = new Array<DataBlock>();
 
-    public List<DefBuildingWrapper> FactionsInfo = new List<DefBuildingWrapper>();
+    public List<DefDistrictWrapper> FactionsInfo = new List<DefDistrictWrapper>();
 
     public void _Ready_Factions()
     {
         for (int idx = 0; idx < Factions.Count; idx++)
         {
-            FactionsInfo.Add(new DefBuildingWrapper(Factions[idx]));
+            FactionsInfo.Add(new DefDistrictWrapper(Factions[idx]));
         }
     }
 
@@ -34,7 +34,7 @@ public partial class DefLibrary : Node
         return null;
     }
 
-    public DefBuildingWrapper GetFactionInfo(string name)
+    public DefDistrictWrapper GetFactionInfo(string name)
     {
         for (int idx = 0; idx < FactionsInfo.Count; idx++)
         {

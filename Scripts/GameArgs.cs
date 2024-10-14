@@ -76,7 +76,7 @@ public partial class GameArgs : Node
 
         if (GameStartup_ReimportDefs)
         {
-            Def.LoadBuildingsDefFunc();
+            Def.LoadDistrictsDefFunc();
             Def.LoadEmpiresDefFunc();
             Def.LoadEthicsDefFunc();
             Def.LoadFactionsDefFunc();
@@ -86,7 +86,7 @@ public partial class GameArgs : Node
             Def.LoadShipPartsDefFunc();
             Def.LoadSpeciesDefFunc();
 
-            Def.SaveBuildingsDef();
+            Def.SaveDistrictsDef();
             Def.SaveFactionsDef();
             Def.SaveFeaturesDef();
             Def.SaveShipPartsDef();

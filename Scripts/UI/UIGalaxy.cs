@@ -34,7 +34,9 @@ public partial class UIGalaxy : Control
     [Export]
     public UISelectedStar SystemInfo = null;
     [Export]
-    public UIPlanetInfo PlanetInfo = null;
+    public UISelectedPlanet PlanetInfo = null;
+    //[Export]
+    //public UIPlanetInfo PlanetInfo = null;
     //[Export]
     //public UIPopsControl ControlInfo = null;
     //[Export]
@@ -110,6 +112,17 @@ public partial class UIGalaxy : Control
     public void HideFleetsInfo()
     {
         FleetsSelected.Visible = false;
+    }
+
+    public void ShowPlanetInfo(PlanetData selectedPlanet)
+    {
+        PlanetInfo.Visible = true;
+        PlanetInfo.Refresh(selectedPlanet);
+    }
+
+    public void HidePlanetInfo()
+    {
+        PlanetInfo.Visible = false;
     }
 
     public void AddPathLabel(GFXPathsItem pathGFX)

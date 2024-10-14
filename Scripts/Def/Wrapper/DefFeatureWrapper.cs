@@ -6,20 +6,22 @@
     public DataBlock _FeatureOld;
 
     public string Name = "";
-    public ResourcesWrapper Benefit = null;
+    public string Icon = "";
+    public ResourcesWrapper Res_PerSession = null;
 
     public DefFeatureWrapper(DataBlock targetData)
     {
         _Data = targetData;
 
         Name = _Data.ValueS;
+        Icon = _Data.GetSubValueS("Icon");
 
         DataBlock benefitData = _Data.GetSub("Benefit", false);
 
         if (benefitData != null)
         {
-            Benefit = new ResourcesWrapper(benefitData, ResourcesWrapper.ParentType.Feature);
-            Benefit.Refresh();
+            Res_PerSession = new ResourcesWrapper(benefitData, ResourcesWrapper.ParentType.FEATURE);
+            Res_PerSession.Refresh();
         }
     }
 }

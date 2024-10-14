@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://4kwmb20dx12x" path="res://Scenes/ui_3d_planet.tscn" id="4_3psny"]
 [ext_resource type="PackedScene" uid="uid://0svrlyhb7gcc" path="res://Scenes/ui_economy_bar.tscn" id="4_y8k0i"]
 [ext_resource type="PackedScene" uid="uid://vh0pcrygv61d" path="res://Scenes/ui_system.tscn" id="7_y5oqc"]
-[ext_resource type="PackedScene" uid="uid://bwi6x7hcx8ckx" path="res://Scenes/ui_colonies.tscn" id="9_2hb86"]
+[ext_resource type="PackedScene" uid="uid://cmde3jxsickdj" path="res://Scenes/ui_planet.tscn" id="8_67ifr"]
 [ext_resource type="PackedScene" uid="uid://bjnpkcy3hqibr" path="res://Scenes/ui_planet_info.tscn" id="9_82sdf"]
 [ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="11_72k2f"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="12_70fqi"]
@@ -29,7 +29,7 @@ Paths = [NodePath("UI3D/PathsHUD/Path")]
 General = NodePath("GeneralUI")
 Resources = NodePath("Economy")
 SystemInfo = NodePath("System")
-PlanetInfo = NodePath("PlanetInfo")
+PlanetInfo = NodePath("Planet")
 FleetsSelected = NodePath("SelectedFleets")
 CurrentTurn = NodePath("Turn")
 DEBUGText = NodePath("DEBUG")
@@ -99,6 +99,10 @@ anchors_preset = -1
 layout_mode = 1
 anchors_preset = -1
 
+[node name="Planet" parent="." instance=ExtResource("8_67ifr")]
+layout_mode = 1
+anchors_preset = -1
+
 [node name="PlanetInfo" parent="." instance=ExtResource("9_82sdf")]
 visible = false
 custom_minimum_size = Vector2(288, 320)
@@ -112,10 +116,6 @@ offset_right = -16.0
 offset_bottom = 320.0
 grow_horizontal = 0
 grow_vertical = 1
-
-[node name="Colonies" parent="." instance=ExtResource("9_2hb86")]
-visible = false
-layout_mode = 1
 
 [node name="SelectedFleets" parent="." instance=ExtResource("12_sv4sa")]
 visible = false

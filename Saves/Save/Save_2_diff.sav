@@ -1,27 +1,50 @@
 Map 
 {
+	Star_List 
+	{
+		Star Spica
+		{
+			Planet_List 
+			{
+				1 
+				{
+					Link:Player:System:Colony Federation:Spica:Spica_1
+				}
+			}
+		}
+	}
 	Player_List 
 	{
 		Player Federation
 		{
-			Fleets 
+			Systems_List 
 			{
-				Fleet I
+				System Spica
 				{
-					ActionMove 
+					ActionBuildDistrict 
 					{
-						Progress 0
-						ProgressMax 2
-						Link:Star Mimosa
+						Queue 
+						{
+							District Hydroponic_Farms
+							{
+								Link:Star:Planet Spica:Spica_1
+								Progress 0
+							}
+						}
 					}
-				}
-				Fleet II
-				{
-					ActionMove 
+					Colony_List 
 					{
-						Progress 0
-						ProgressMax 2
-						Link:Star Mimosa
+						Colony Spica_1
+						{
+							Districts 
+							{
+								1 
+								{
+									InQueue 1
+								}
+							}
+							Link:Star:Planet Spica:Spica_1
+						}
 					}
 				}
 			}

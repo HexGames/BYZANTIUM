@@ -28,6 +28,8 @@ public partial class UITooltip : Control
     private bool IsTargetHovered = false;
     private bool IsTooltipHovered = false;
 
+    private float TimeVisible = 0.0f;
+
     public override void _Ready()
     {
         if (Engine.IsEditorHint()) return;
@@ -191,11 +193,19 @@ public partial class UITooltip : Control
     }
     public override void _Process(double delta)
     {
-        Visible = IsTargetHovered || IsTooltipHovered;
+        if (IsTargetHovered || IsTooltipHovered)
+        {
+            TimeVisible += (float)delta;
+        }
+        else
+        {
+            TimeVisible = 0.0f;
+        }
+        Visible = TimeVisible >= 0.35f;
     }
 
-    public void SetVisible()
-    {
-        Visible = true;
-    }
+    //public void SetVisible()
+    //{
+    //    Visible = true;
+    //}
 }

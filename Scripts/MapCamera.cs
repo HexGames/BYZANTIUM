@@ -8,116 +8,6 @@ public partial class MapCamera : Camera3D
     private Camera3D Camera;
     [Export]
     private Node3D TransformNode;
-    //[Export]
-    //public float MapClamping = 9.0f;
-    //[Export]
-    //public float InitSpeed = 5.32f;
-    //[Export]
-    //public float SpeedRatio = 0.016f;
-    //[Export]
-    //public float ZoomRatio = 12.0f;
-    //private float Speed;
-    //private int Border = 30;
-    //private Vector2 MarginLimit;
-    //private Vector2 MiddleScreen;
-    //private Vector2 Move;
-    //private float Trim = 2.55f;
-    //
-    //private float SizeCamera;
-    //private float AverageZoom = 12;
-    //
-    //public override void _Ready()
-    //{
-    //    MarginLimit = new Vector2(GetViewport().GetVisibleRect().Size.X - Border, GetViewport().GetVisibleRect().Size.Y - Border);
-    //    MiddleScreen = new Vector2(GetViewport().GetVisibleRect().Size.X / 2, GetViewport().GetVisibleRect().Size.Y / 2);
-    //    SizeCamera = AverageZoom;
-    //}
-    //
-    //public override void _Process(double delta)
-    //{
-    //    float deltaTIme = (float)delta;
-    //
-    //
-    //
-    //    Move = GetViewport().GetMousePosition() - MiddleScreen;
-    //    Move.Normalized();
-    //
-    //    /*------------------------- -
-    //        - Move Mouse Controller -
-    //        ----------------------- -*/
-    //    if ((GetViewport().GetMousePosition().X < Border * 2) && (GetViewport().GetMousePosition().Y < Border * 2) || (GetViewport().GetMousePosition().X < Border * 2) && (GetViewport().GetMousePosition().Y > MarginLimit.Y)
-    //    || (GetViewport().GetMousePosition().Y < Border * 2) && (GetViewport().GetMousePosition().X > MarginLimit.X) || (GetViewport().GetMousePosition().Y > MarginLimit.Y) && (GetViewport().GetMousePosition().X > MarginLimit.X))
-    //    {
-    //        Speed = Mathf.Lerp(Speed, SpeedRatio, deltaTIme * InitSpeed + 0.1f);
-    //        if (((GetViewport().GetMousePosition().X < Border * 2) && (GetViewport().GetMousePosition().Y < Border * 2) && (Go.Position.Z > -MapClamping / 1.1)) || ((GetViewport().GetMousePosition().X > MarginLimit.X) && (GetViewport().GetMousePosition().Y > MarginLimit.Y) && (Go.Position.Z < MapClamping / 1.1)))
-    //        {
-    //            Go.Position += new Vector3((Move.Y / 1.95f) * deltaTIme * Speed, .0f, (Move.Y / 1.95f) * deltaTIme * Speed); // Top Corner Left [ \ ] Bottom Corner Right
-    //        }
-    //        else if (((GetViewport().GetMousePosition().X > MarginLimit.X) && (GetViewport().GetMousePosition().Y < Border * 2) && (Go.Position.Z > -MapClamping / 1.1)) || ((GetViewport().GetMousePosition().Y > MarginLimit.Y) && (GetViewport().GetMousePosition().X < Border * 2) && (Go.Position.Z < MapClamping / 1.1)))
-    //        {
-    //            Go.Position += new Vector3((-Move.Y / 1.95f) * deltaTIme * Speed, .0f, (Move.Y / 1.95f) * deltaTIme * Speed); // Top Corner Right [ / ] Bottom Corner Left
-    //        }
-    //        else
-    //        {
-    //            Speed = 0;
-    //        }
-    //    }
-    //    else if (((GetViewport().GetMousePosition().X < Border) && (Go.Position.X > -MapClamping)) || ((GetViewport().GetMousePosition().X > MarginLimit.X) && (Go.Position.X < MapClamping)))
-    //    {
-    //        Speed = Mathf.Lerp(Speed, SpeedRatio, deltaTIme * InitSpeed);
-    //        Go.Position += new Vector3((Move.X / Trim) * deltaTIme * Speed, .0f, .0f);
-    //    }
-    //    else if (((GetViewport().GetMousePosition().Y < Border) && (Go.Position.X > -MapClamping)) || ((GetViewport().GetMousePosition().Y > MarginLimit.Y) && (Go.Position.Z < MapClamping)))
-    //    {
-    //        Speed = Mathf.Lerp(Speed, SpeedRatio, deltaTIme * InitSpeed);
-    //        Go.Position += new Vector3(.0f, .0f, Move.Y * deltaTIme * Speed);
-    //    }
-    //    else
-    //    {
-    //        Speed = 0;
-    //    }
-    //
-    //    /*------------------------- -
-    //        - Zoom Mouse Controller -
-    //        ----------------------- -*/
-    //    if (Input.IsActionJustReleased("Camera_Scroll_Down")) // Zoom decrement (-)
-    //    {
-    //        if (SizeCamera == AverageZoom)
-    //        {
-    //            SizeCamera = AverageZoom * 1.75f; // - : Camera[]Zoom x3
-    //        }
-    //        else if (SizeCamera == AverageZoom / 2)
-    //        {
-    //            SizeCamera = AverageZoom; // Normal : Camera[]Zoom x1
-    //            InitSpeed *= 2; SpeedRatio *= 2;
-    //        }
-    //    }
-    //    else if (Input.IsActionJustReleased("Camera_Scroll_Up")) // Zoom increment (+)
-    //    {
-    //        if (SizeCamera == AverageZoom)
-    //        {
-    //            SizeCamera = AverageZoom / 2; // + : Camera[]Zoom x2
-    //            InitSpeed /= 2; SpeedRatio /= 2;
-    //        }
-    //        else if ((SizeCamera < AverageZoom) && (SizeCamera > AverageZoom / 2))
-    //        {
-    //            SizeCamera = AverageZoom; // - : Camera[]Zoom x1
-    //        }
-    //        else if (SizeCamera == AverageZoom * 1.75f)
-    //        {
-    //            SizeCamera = AverageZoom; // + : Camera[]Zoom x1
-    //        }
-    //    }
-    //    else
-    //    {
-    //        RTSCamera.Size = Mathf.Lerp(RTSCamera.Size, SizeCamera, (ZoomRatio * deltaTIme) / 3);
-    //    }
-    //}
-
-
-    // local link
-    //public Camera CameraInfo; //camera tranform
-    //public Transform CameraTransform; //camera tranform
 
     // calculated
     [ExportCategory("Runtime")]
@@ -190,9 +80,31 @@ public partial class MapCamera : Camera3D
     {
         if (Engine.IsEditorHint())
             return;
+
         CameraUpdate((float) delta);
 
         ProcessLOD((float)delta);
+    }
+
+
+    public Vector3 Input_Keyboard = Vector3.Zero;
+    public float Input_Scroll = 0.0f;
+    public override void _UnhandledInput(InputEvent inputEvent)
+    {
+        if (Engine.IsEditorHint())
+            return;
+
+        // Keyboard Input
+        if (Input.IsActionPressed("Camera_Up")) Input_Keyboard += Vector3.Forward;
+        if (Input.IsActionPressed("Camera_Down")) Input_Keyboard += Vector3.Back;
+        if (Input.IsActionPressed("Camera_Right")) Input_Keyboard += Vector3.Right;
+        if (Input.IsActionPressed("Camera_Left")) Input_Keyboard += Vector3.Left;
+
+        // Zoom Scrool Wheel
+        if (Input.IsActionPressed("Camera_Scroll_Up")) Input_Scroll += 0.01f; // Input.GetActionStrength("Camera_Scroll_Up");
+        else if (Input.IsActionJustPressed("Camera_Scroll_Up")) Input_Scroll += 0.1f; // Input.GetActionStrength("Camera_Scroll_Up");
+        if (Input.IsActionPressed("Camera_Scroll_Down")) Input_Scroll -= 0.01f; // Input.GetActionStrength("Camera_Scroll_Down");
+        else if (Input.IsActionJustPressed("Camera_Scroll_Down")) Input_Scroll -= 0.1f; // Input.GetActionStrength("Camera_Scroll_Down");
     }
 
     public bool IsPointerOverGUI()
@@ -232,13 +144,6 @@ public partial class MapCamera : Camera3D
 
         if (Locked == false && !IsPointerOverGUI() && ZoomAndScroll)
         {
-            // Keyboard Input
-            Vector3 keyboardInput = new Vector3();
-
-            if (Input.IsActionPressed("Camera_Up")) keyboardInput += Vector3.Forward;
-            if (Input.IsActionPressed("Camera_Down")) keyboardInput += Vector3.Back;
-            if (Input.IsActionPressed("Camera_Right")) keyboardInput += Vector3.Right;
-            if (Input.IsActionPressed("Camera_Left")) keyboardInput += Vector3.Left;
 
             // mouse Input
             Vector3 mouseInput = new Vector3();
@@ -248,7 +153,7 @@ public partial class MapCamera : Camera3D
             if (GetViewport().GetMousePosition().X > GetViewport().GetVisibleRect().Size.X - ScreenEdgeBorder) mouseInput += Vector3.Right;
             if (GetViewport().GetMousePosition().X < ScreenEdgeBorder) mouseInput += Vector3.Left;
 
-            Vector3 movement = keyboardInput + mouseInput;
+            Vector3 movement = Input_Keyboard + mouseInput;
             movement = movement.Normalized();
 
             movement *= (0.5f + ZoomPos) * MoveSpeed * deltaTime * (0.23f + 0.75f * ZoomPos);
@@ -256,48 +161,13 @@ public partial class MapCamera : Camera3D
 
             TargetPosition += movement;
         }
+
+        Input_Keyboard = Vector3.Zero;
     }
 
     private void HeightCalculation(float deltaTime)
     {
-        //float distanceToGround = DistanceToGround(); // ---
-
-        // Zoom Scrool Wheel
-        float scrollInput = 0.0f; // Input.GetAxis("Camera_Scroll_Down", "Camera_Scroll_Up");
-        if (Input.IsActionPressed("Camera_Scroll_Up")) scrollInput += 0.01f; // Input.GetActionStrength("Camera_Scroll_Up");
-        else if (Input.IsActionJustPressed("Camera_Scroll_Up")) scrollInput += 0.1f; // Input.GetActionStrength("Camera_Scroll_Up");
-        if (Input.IsActionPressed("Camera_Scroll_Down")) scrollInput -= 0.01f; // Input.GetActionStrength("Camera_Scroll_Down");
-        else if (Input.IsActionJustPressed("Camera_Scroll_Down")) scrollInput -= 0.1f; // Input.GetActionStrength("Camera_Scroll_Down");
-        //if (Locked == false && !IsPointerOverGUI() && ZoomAndScroll) ZoomPos += scrollInput * deltaTime * ZoomScrollWheelZSensitivity * (0.25f + 0.75f * ZoomPos);
-
-        //var space_state = GetWorld3D().DirectSpaceState;
-        //var raycast = PhysicsRayQueryParameters3D.Create(Position, ProjectPosition(GetViewport().GetMousePosition(), 1000.0f), 2);
-        //var collision = space_state.IntersectPoint(raycast)
-
-        //Vector3 cameraPorojection = plane.Project(Position);
-        //Vector3 cameraMiddlePoint = plane.IntersectsRay(Position, ProjectPosition(GetViewport().GetVisibleRect().Size / 2, 1.0f) - Position).Value;
-        //Vector3 mousePoint = plane.IntersectsRay(Position, ProjectPosition(GetViewport().GetMousePosition(), 1.0f) - Position).Value;
-        //Vector3 moveVector = cameraPorojection - mousePoint;
-
-        // Add Zoom Keyboard ?
-        /*
-        ZoomPos = Mathf.Clamp(ZoomPos, 0.0f, 1.0f);
-
-        float targetHeight = Mathf.Lerp(ZoomMinHeight, ZoomMaxHeight, ZoomPos);
-        if (Locked) targetHeight = LockedNew ? LockedHeight_new : LockedHeight;
-
-        float difference = 0;
-        if (TargetDistance != targetHeight) difference = targetHeight - TargetDistance;
-
-        //m_Transform.position = Vector3.Lerp(m_Transform.position, new Vector3(m_Transform.position.x, targetHeight + difference, m_Transform.position.z), Time.deltaTime * heightDampening);
-        CurrentHeightDampening = Mathf.Max(0.15f, deltaTime * ZoomHeightDampening);
-        float oldTD = TargetDistance;
-        TargetDistance = Mathf.Lerp(TargetDistance, TargetDistance + difference, CurrentHeightDampening);
-        */
-
-        //TargetPosition += ((TargetDistance - oldTD) / ZoomMaxHeight) * moveVector;
-
-        if (Locked == false && !IsPointerOverGUI() && ZoomAndScroll) ZoomPos += scrollInput * deltaTime * ZoomScrollWheelZSensitivity * (0.25f + 0.75f * ZoomPos); 
+        if (Locked == false && !IsPointerOverGUI() && ZoomAndScroll) ZoomPos += Input_Scroll * deltaTime * ZoomScrollWheelZSensitivity * (0.25f + 0.75f * ZoomPos); 
         
         ZoomPos = Mathf.Clamp(ZoomPos, 0.0f, 1.0f);
 
@@ -334,6 +204,8 @@ public partial class MapCamera : Camera3D
                 TargetPosition += moveVector;
             }
         }
+
+        Input_Scroll = 0.0f;
     }
 
     private void RotationCalculation(float deltaTime)

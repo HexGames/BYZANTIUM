@@ -26,7 +26,7 @@ public partial class Data
     {
         DataBlock data = new DataBlock();
 
-        data.Type = df.GetDBType("i_" + name, BaseType.NONE);
+        data.Type = df.GetDBType("i_" + name, BaseType.INT);
         data.Name = name;
         data.ValueI = value;
 
@@ -87,7 +87,7 @@ public partial class Data
 
     static public void RemoveData(DataBlock parent, string name, DefLibrary df)
     {
-        int type = df.GetDBType("_" + name, BaseType.STRING);
+        int type = df.GetDBType("_" + name, BaseType.NONE);
 
         for (int idx = 0; idx < parent.Subs.Count; idx++)
         {
@@ -102,7 +102,7 @@ public partial class Data
 
     static public void RemoveData(DataBlock parent, string name, int value, DefLibrary df)
     {
-        int type = df.GetDBType("i_" + name, BaseType.STRING);
+        int type = df.GetDBType("i_" + name, BaseType.INT);
 
         for (int idx = 0; idx < parent.Subs.Count; idx++)
         {
@@ -131,7 +131,7 @@ public partial class Data
     }
 
     // ----------------------------------------------------------------------------------------------------
-    static public void ChangeDataType(DataBlock data, string name, DefLibrary df)
+    /*static public void ChangeDataType(DataBlock data, string name, DefLibrary df)
     {
         Data.BaseType baseType = (Data.BaseType)(data.Type/10000);
         switch (baseType)
@@ -142,9 +142,28 @@ public partial class Data
         }
 
         data.Name = name;
-    }
+    }*/
 
     // ----------------------------------------------------------------------------------------------------
+    static public void DeleteDataSub(DataBlock parent, string subName)
+    {
+        //bool found = false;
+        for (int idx = 0; idx < parent.Subs.Count; idx++)
+        {
+            if (parent.Subs[idx].Name == subName)
+            {
+                parent.Subs.RemoveAt(idx);
+                idx--;
+                //found = true;
+            }
+        }
+        //return found;
+    }
+    //static public bool DeleteData(DataBlock data)
+    //{
+    //    if (data != null) DeleteData(data, data);
+    //    else return true;
+    //}
     static public bool DeleteData(DataBlock original, DataBlock dataToRemove)
     {
         for (int oriIdx = 0; oriIdx < original.Subs.Count; oriIdx++)

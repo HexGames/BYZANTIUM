@@ -118,6 +118,36 @@ public partial class DataBlock : Resource
         return null;
     }
 
+    public string GetSubValueS(string type, bool showWarning = false)
+    {
+        for (int idx = 0; idx < Subs.Count; idx++)
+        {
+            if (Subs[idx].Name == type)
+            {
+                return Subs[idx].ValueS;
+            }
+        }
+        if (showWarning)
+            GD.Print("sub not found Data : Type - " + Name + " : " + type);
+
+        return "";
+    }
+
+    public int GetSubValueI(string type, bool showWarning = false)
+    {
+        for (int idx = 0; idx < Subs.Count; idx++)
+        {
+            if (Subs[idx].Name == type)
+            {
+                return Subs[idx].ValueI;
+            }
+        }
+        if (showWarning)
+            GD.Print("sub not found Data : Type - " + Name + " : " + type);
+
+        return 0;
+    }
+
     public DataBlock GetSub(string type, string name)
     {
         for (int idx = 0; idx < Subs.Count; idx++)
@@ -172,5 +202,19 @@ public partial class DataBlock : Resource
     public Array<DataBlock> GetLinks(string link)
     {
         return GetSubs(link, true);
+    }
+
+    public void SetValueI(int value, DefLibrary def)
+    {
+        Type = def.GetDBType("i_" + Name, Data.BaseType.INT);
+        ValueI = value;
+        ValueS = "";
+    }
+
+    public void SetValueS(string value, DefLibrary def)
+    {
+        Type = def.GetDBType("s_" + Name, Data.BaseType.STRING);
+        ValueI = 0;
+        ValueS = value;
     }
 }

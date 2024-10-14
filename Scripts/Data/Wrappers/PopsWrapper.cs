@@ -71,7 +71,7 @@ public class PopsWrapper
                     Pops.Add(newPops);
                 }
 
-                PopsMax = _Colony.Planet.Data.GetSub("Size").ValueI * _Colony.Planet.Data.GetSub("PopMaxPerSize").ValueI * 1000;
+                PopsMax = _Colony.Planet.Data.GetSub("Size").ValueI * 30 * 1000;
             }
         }
         else if (_System != null) 
@@ -112,7 +112,7 @@ public class PopsWrapper
                         }
                     }
 
-                    PopsMax += _System.Colonies[colonyIdx].Planet.Data.GetSub("Size").ValueI * _System.Colonies[colonyIdx].Planet.Data.GetSub("PopMaxPerSize").ValueI * 1000;
+                    PopsMax += _System.Colonies[colonyIdx].Planet.Data.GetSub("Size").ValueI * 30 * 1000;
                 }
             }
         }

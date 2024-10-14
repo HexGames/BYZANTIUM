@@ -12,6 +12,22 @@ public partial class MapGenerator : Node
     {
         DataBlock Designs = Data.AddData(player, "Designs", DefLibrary);
 
+        DataBlock design_1 = Data.AddData(Designs, "Design", "Babylon", DefLibrary);
+        {
+            Data.AddData(design_1, "ShipType", "Colony_Ship", DefLibrary);
+            DataBlock modules = Data.AddData(design_1, "Modules", DefLibrary);
+            {
+                Data.AddData(modules, "Computer", "No_Computer", DefLibrary);
+                Data.AddData(modules, "Armor", "Alloy", DefLibrary);
+                Data.AddData(modules, "ECM", "No_ECM", DefLibrary);
+                Data.AddData(modules, "Shield", "No_Shield", DefLibrary);
+                Data.AddData(modules, "Warp_Drive", "Warp_Drive", DefLibrary);
+                Data.AddData(modules, "Thrusters", "No_Thrusters", DefLibrary);
+                Data.AddData(modules, "Special:1", "Colony_Module", DefLibrary);
+                Data.AddData(modules, "Special:2", "Empty_Special_Slot", DefLibrary);
+            }
+        }
+
         DataBlock design_2 = Data.AddData(Designs, "Design", "Babylon", DefLibrary);
         {
             Data.AddData(design_2, "ShipType", "Medium", DefLibrary);

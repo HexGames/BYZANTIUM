@@ -141,14 +141,14 @@ public partial class DataBlock : Resource
                 }
         }
 
-        if (ValueS == "" && ValueI == 0)
-        {
-            DefFeatureWrapper feature = Game.self.Def.GetFeatureInfo(Name);
-            if (feature != null)
-            {
-                return feature.Benefit.ToStringCondensed();
-            }
-        }
+        //if (ValueS == "" && ValueI == 0)
+        //{
+        //    DefFeatureWrapper feature = Game.self.Def.GetFeatureInfo(Name);
+        //    if (feature != null)
+        //    {
+        //        return feature.Benefit.ToStringCondensed();
+        //    }
+        //}
 
         return ValueS.Replace('_', ' ');
     }
@@ -280,6 +280,77 @@ public partial class DataBlock : Resource
                         return "";
                     }
                     else return "[color=#ff8888]-unknown- " + Name.Replace('_', ' ') + " " + (ValueS.Length > 0 ? ValueS.Replace('_', ' ') : ValueI.ToString()) + "[/color]";
+                }
+        }
+    }
+
+    public string ToUIDscriptionShort()
+    {
+        switch (Name)
+        {
+            case "Benefit":
+                {
+                    string desc = "";
+                    for (int idx = 0; idx < Subs.Count; idx++)
+                    {
+                        if (idx >= 5 && Subs.Count > 6)
+                        {
+                            desc += " ...";
+                            break;
+                        }
+                        string descShort = Subs[idx].ToUIDscriptionShort();
+                        if (descShort != "")
+                        {
+                            if (idx == 3) desc += "\n";
+                            else if (idx > 0) desc += " ";
+                            desc += descShort;
+                        }
+                    }
+                    return desc;
+                }
+            case "Pop*Max":
+                {
+                    return "+" + Helper.ResValueToString(ValueI, 1000) + "[img=24x24]Assets/UI/Symbols/Pops.png[/img]Max";
+                }
+            case "Pop*MaxPenalty":
+                {
+                    return "[color=#ff8888]-" + Helper.ResValueToString(ValueI, 1000) + "[/color][img=24x24]Assets/UI/Symbols/Pops.png[/img]Max";
+                }
+            case "FactoryCost":
+                {
+                    return "-" + Helper.ResValueToString(ValueI) + "[img=24x24]Assets/UI/Symbols/Prod.png[/img] [img=24x24]Assets/UI/Symbols/ProdCap.png[/img]Cost";
+                }
+            case "FactoryBonus":
+                {
+                    return "+" + Helper.ResValueToString(ValueI) + "[img=24x24]Assets/UI/Symbols/Prod.png[/img] in each [img=24x24]Assets/UI/Symbols/ProdCap.png[/img]";
+                }
+            default:
+                {
+                    if (Name.EndsWith("*Income"))
+                    {
+                        return "+" + Helper.ResValueToString(ValueI) + "[img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]";
+                    }
+                    else if (Name.EndsWith("*LocalBonus"))
+                    {
+                        return "[img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]" + "x" + (1 + ValueI/100).ToString() + (ValueI%100 != 0 ? (ValueI % 100).ToString() : "");
+                    }
+                    else if (Name.EndsWith("*IncomeBonus"))
+                    {
+                        return "+" + ValueI.ToString() + "%[img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]+[img=24x24]Assets/UI/Symbols/Building.png[/img]";
+                    }
+                    else if (Name.EndsWith("*Bonus"))
+                    {
+                        return "+" + ValueI.ToString() + "%[img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]";
+                    }
+                    else if (Name.EndsWith("*Focus"))
+                    {
+                        return "+" + Helper.ResValueToString(ValueI,1) + "[img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]F";
+                    }
+                    else if (Name.EndsWith("*PerPop"))
+                    {
+                        return "+" + Helper.ResValueToString(ValueI) + "[img=24x24]Assets/UI/Symbols/" + Helper.Split_0(Name, '*') + ".png[/img]/[img=24x24]Assets/UI/Symbols/Pops.png[/img]";
+                    }
+                    else return "";
                 }
         }
     }

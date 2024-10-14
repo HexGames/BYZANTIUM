@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Scripts/UI/Build/UIBuildingsItem.cs" id="2_rkuxn"]
 [ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="3_wtat1"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="4_l02ck"]
-[ext_resource type="Texture2D" uid="uid://wd744unakx1k" path="res://Assets/Planets/Desert.png" id="5_v8ijy"]
+[ext_resource type="Texture2D" uid="uid://wd744unakx1k" path="res://Assets/Planets/UI/Desert.png" id="5_v8ijy"]
 [ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="6_anj37"]
-[ext_resource type="Texture2D" uid="uid://b0hf203g0lcrk" path="res://Assets/UI/Buildings/Factory.png" id="7_aim7n"]
 [ext_resource type="Script" path="res://Scripts/UI/Progress/UIConstructionItem.cs" id="8_3ia8t"]
+[ext_resource type="Texture2D" uid="uid://b0hf203g0lcrk" path="res://Assets/UI/Districts/Factory.png" id="8_fbfaj"]
 [ext_resource type="Texture2D" uid="uid://ceyqr5puhfmn0" path="res://Assets/UI/right.png" id="9_f4ujj"]
 [ext_resource type="Texture2D" uid="uid://li72gx42y7s1" path="res://Assets/UI/return.png" id="10_hphh4"]
 
@@ -464,7 +464,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Level" type="Panel" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResidentialOutpost/VBoxContainer/Button"]
@@ -574,6 +574,7 @@ fit_content = true
 scroll_active = false
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
@@ -647,7 +648,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Level" type="Panel" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AgriculturalOutpost/VBoxContainer/Button"]
@@ -824,7 +825,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Pops" type="Panel" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ProductionOutpost/VBoxContainer/Button"]
@@ -973,7 +974,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Level" type="Panel" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ShipyardOutpost/VBoxContainer/Button"]
@@ -1123,7 +1124,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Level" type="Panel" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button"]
@@ -1273,7 +1274,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Pops" type="Panel" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button"]
@@ -1422,7 +1423,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Pops" type="Panel" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MilitaryOutpost/VBoxContainer/Button"]
@@ -1571,7 +1572,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Pops" type="Panel" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ResortOutpost/VBoxContainer/Button"]
@@ -1724,7 +1725,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="InConstruction" type="Panel" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrivateIndustry/VBoxContainer/Button"]
@@ -1978,7 +1979,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Pops" type="Panel" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Private/VBoxContainer/Button"]
@@ -2121,7 +2122,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Level" type="Panel" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Resources/Building_1/Button"]
@@ -2331,7 +2332,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Level" type="Panel" parent="HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/ResidentialOutpost/VBoxContainer/Button"]
@@ -2507,7 +2508,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Level" type="Panel" parent="HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/AgriculturalOutpost/VBoxContainer/Button"]
@@ -2683,7 +2684,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Pops" type="Panel" parent="HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/ProductionOutpost/VBoxContainer/Button"]
@@ -2831,7 +2832,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Level" type="Panel" parent="HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/ShipyardOutpost/VBoxContainer/Button"]
@@ -2980,7 +2981,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Level" type="Panel" parent="HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/TradeOutpost/VBoxContainer/Button"]
@@ -3129,7 +3130,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Pops" type="Panel" parent="HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/ResearchOutpost/VBoxContainer/Button"]
@@ -3277,7 +3278,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Pops" type="Panel" parent="HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/MilitaryOutpost/VBoxContainer/Button"]
@@ -3425,7 +3426,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_aim7n")
+texture = ExtResource("8_fbfaj")
 expand_mode = 1
 
 [node name="Pops" type="Panel" parent="HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/ResortOutpost/VBoxContainer/Button"]

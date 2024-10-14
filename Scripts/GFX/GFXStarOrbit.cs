@@ -91,7 +91,7 @@ public partial class GFXStarOrbit : Node3D
         if (Rings != null) Rings.Visible = rings;
         Visible = true;
 
-        Material mat = DefLibrary.self.AssetLib.GetMaterialPlanet("Planet" + type + ".tres");
+        Material mat = DefLibrary.self.AssetLib.GetMaterial_Planet("Planet" + type + ".tres");
 
         if (mat != null)
         {
@@ -100,7 +100,7 @@ public partial class GFXStarOrbit : Node3D
         }
         else
         {
-            Planet.SetSurfaceOverrideMaterial(0, DefLibrary.self.AssetLib.GetMaterialPlanet("PlanetBarren.tres"));
+            Planet.SetSurfaceOverrideMaterial(0, DefLibrary.self.AssetLib.GetMaterial_Planet("PlanetBarren.tres"));
             //Planet.MaterialOverlay = DefLibrary.self.AssetLib.GetMaterialPlanet("PlanetBarren.tres");
         }
     }

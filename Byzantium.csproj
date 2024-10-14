@@ -4,6 +4,14 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Scripts\___Trash\**" />
+    <EmbeddedResource Remove="Scripts\___Trash\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\AI\" />
+    <Folder Include="Scripts\System\Subs_Temp\" />
     <Folder Include="Scripts\System\Sub\" />
+    <Folder Include="Scripts\UI\Build\" />
+    <Folder Include="Scripts\UI\Progress\" />
   </ItemGroup>
 </Project>

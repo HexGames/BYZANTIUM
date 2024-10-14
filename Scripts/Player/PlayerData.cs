@@ -52,8 +52,8 @@ public partial class PlayerData : Node
     [Export]
     public bool TurnFinished = false;
 
-    // resources
-    public ResourcesWrapper Resources_PerTurn = null;
+    // stockpiles
+    //public ResourcesWrapper Resources_PerTurn = null;
 
 
     // --------------------------------------------------------------------------------------------

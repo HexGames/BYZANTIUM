@@ -11,6 +11,10 @@ Empieres
 		StartingPlanetType Continents
 		StartingTemperature 3
 		Ethic Federalist
+		Factions
+		{
+			Faction 
+		}
 	}
 	Empire Directorate
 	{
@@ -28,7 +32,7 @@ Empieres
 		FlagID 2
 		Color #ffea00
 		ColorBg #fd9800
-		Specie Human
+		Specie Gnome
 		StartingStarName Headquarter
 		StartingPlanetType Continents
 		StartingTemperature 3

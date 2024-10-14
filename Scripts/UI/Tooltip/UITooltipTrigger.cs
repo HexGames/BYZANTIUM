@@ -4,42 +4,48 @@ public partial class UITooltipTrigger : Control
 {
     public enum Orientation
     {
-        Auto,
-        RightUp,
-        LeftUp,
-        RightDown,
-        LeftDown,
-        UpRight,
-        UpLeft,
-        DownRight,
-        DownLeft,
+        AUTO,
+        RIGHT_UP,
+        LEFT_UP,
+        RIGHT_DOWN,
+        LEFT_DOWN,
+        UP_RIGHT,
+        UP_LEFT,
+        DOWN_RIGHT,
+        DOWN_LEFT,
     };
 
     [ExportCategory("Setup")]
     [Export]
     public bool CanBeHovered = true;
     [Export]
-    public Orientation Direction = Orientation.Auto;
+    public Orientation Direction = Orientation.AUTO;
     [Export]
     public int Width = 128;
 
     [ExportCategory("Runtime Texts")]
     [Export(PropertyHint.MultilineText)]
     public string Title = "";
+    public string Title_Original = "";
     [Export(PropertyHint.MultilineText)]
     public string Row_1 = "";
+    public string Row_1_Original = "";
     [Export(PropertyHint.MultilineText)]
     public string Row_1_Right = "";
+    public string Row_1_Right_Original = "";
     [Export(PropertyHint.MultilineText)]
     public string Row_2 = "";
+    public string Row_2_Original = "";
     [Export(PropertyHint.MultilineText)]
     public string Row_2_Right = "";
+    public string Row_2_Right_Original = "";
     [Export(PropertyHint.MultilineText)]
     public string Row_3 = "";
+    public string Row_3_Original = "";
     [Export(PropertyHint.MultilineText)]
     public string Row_3_Right = "";
+    public string Row_3_Right_Original = "";
 
-    Game Game;
 
     [ExportCategory("Runtime Hover")]
     [Export]
@@ -50,7 +56,14 @@ public partial class UITooltipTrigger : Control
     public override void _Ready()
     {
         if (Engine.IsEditorHint()) return;
-        Game = GetNode<Game>("/root/Main/Game");
+
+        Title_Original = Title;
+        Row_1_Original = Row_1;
+        Row_1_Right_Original = Row_1_Right;
+        Row_2_Original = Row_2;
+        Row_2_Right_Original = Row_2_Right;
+        Row_3_Original = Row_3;
+        Row_3_Right_Original = Row_3_Right;
     }
 
     public void OnHoverEnter()
@@ -59,30 +72,30 @@ public partial class UITooltipTrigger : Control
             return;
 
         // just the first time
-        if (Direction == Orientation.Auto)
+        if (Direction == Orientation.AUTO)
         {
             Vector2 center = GetGlobalRect().Position + GetGlobalRect().GetCenter();
             Vector2 screenSize = GetViewport().GetVisibleRect().Size;
             if (center.X > screenSize.X / 2 && center.Y > screenSize.Y / 2)
             {
-                Direction = Orientation.LeftUp;
+                Direction = Orientation.LEFT_UP;
             }
             else if (center.X <= screenSize.X / 2 && center.Y > screenSize.Y / 2)
             {
-                Direction = Orientation.RightUp;
+                Direction = Orientation.RIGHT_UP;
             }
             else if (center.X > screenSize.X / 2 && center.Y <= screenSize.Y / 2)
             {
-                Direction = Orientation.LeftDown;
+                Direction = Orientation.LEFT_DOWN;
             }
             else
             {
-                Direction = Orientation.RightDown;
+                Direction = Orientation.RIGHT_DOWN;
             }
         }
 
         // ---
-        _Tooltip = Game.Tooltips.GetTooltip();
+        _Tooltip = Game.self.Tooltips.GetTooltip();
         _Tooltip.Refresh(Title, Row_1, Row_1_Right, Row_2, Row_2_Right, Row_3, Row_3_Right);
         _Tooltip.CanBeHovered = CanBeHovered;
         _Tooltip.CustomMinimumSize = new Vector2(Width, 0);
@@ -90,42 +103,42 @@ public partial class UITooltipTrigger : Control
 
         switch (Direction)
         {
-            case Orientation.LeftUp:
+            case Orientation.LEFT_UP:
                 {
                     _Tooltip.Position = new Vector2(GetGlobalRect().Position.X - _Tooltip.Size.X, GetGlobalRect().Position.Y + Size.Y - _Tooltip.Size.Y);
                     break;
                 }
-            case Orientation.RightUp:
+            case Orientation.RIGHT_UP:
                 {
                     _Tooltip.Position = new Vector2(GetGlobalRect().Position.X + Size.X, GetGlobalRect().Position.Y + Size.Y - _Tooltip.Size.Y);
                     break;
                 }
-            case Orientation.LeftDown:
+            case Orientation.LEFT_DOWN:
                 {
                     _Tooltip.Position = new Vector2(GetGlobalRect().Position.X - _Tooltip.Size.X, GetGlobalRect().Position.Y);
                     break;
                 }
-            case Orientation.RightDown:
+            case Orientation.RIGHT_DOWN:
                 {
                     _Tooltip.Position = new Vector2(GetGlobalRect().Position.X + Size.X, GetGlobalRect().Position.Y);
                     break;
                 }
-            case Orientation.UpLeft:
+            case Orientation.UP_LEFT:
                 {
                     _Tooltip.Position = new Vector2(GetGlobalRect().Position.X + Size.X - _Tooltip.Size.X, GetGlobalRect().Position.Y - _Tooltip.Size.Y);
                     break;
                 }
-            case Orientation.UpRight:
+            case Orientation.UP_RIGHT:
                 {
                     _Tooltip.Position = new Vector2(GetGlobalRect().Position.X, GetGlobalRect().Position.Y - _Tooltip.Size.Y);
                     break;
                 }
-            case Orientation.DownLeft:
+            case Orientation.DOWN_LEFT:
                 {
                     _Tooltip.Position = new Vector2(GetGlobalRect().Position.X + Size.X - _Tooltip.Size.X, GetGlobalRect().Position.Y + Size.Y);
                     break;
                 }
-            case Orientation.DownRight:
+            case Orientation.DOWN_RIGHT:
                 {
                     _Tooltip.Position = new Vector2(GetGlobalRect().Position.X, GetGlobalRect().Position.Y + Size.Y);
                     break;

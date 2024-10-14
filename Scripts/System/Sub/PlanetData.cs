@@ -32,6 +32,7 @@ public partial class PlanetData : Node
     [Export]
     public ColonyData Colony = null;
 
-    // resources
-    public ResourcesWrapper BaseResources_PerTurn = null;
+    // [--- ("PlanetData-Session") ---]
+    // features
+    public List<FeatureData> Features = new List<FeatureData>();
 }

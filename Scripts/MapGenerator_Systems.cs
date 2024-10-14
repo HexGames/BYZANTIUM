@@ -12,40 +12,29 @@ public partial class MapGenerator : Node
 
 
     // generator
-    public void GenerateNewMapSave_Players_StartingColony_SystemResources(DataBlock system, int level)
+    public void GenerateNewMapSave_Players_StartingColony_SystemResources(DataBlock system, int level, bool capital)
     {
         DataBlock resources = Data.AddData(system, "Resources", DefLibrary);
 
-        int popMax = 80;
-        int pops = Mathf.Max(popMax * 5 / level, 1);
+        Data.AddData(resources, "FactoryCost", 200, DefLibrary);
 
-        Data.AddData(resources, "Pops*Pops", pops * 1000, DefLibrary);
-        Data.AddData(resources, "Pops*PopsMax", popMax * 1000, DefLibrary);
-        Data.AddData(resources, "Pops*Growth", 200, DefLibrary);
-        Data.AddData(resources, "Pops*GrowthBonus", 0, DefLibrary);
-        Data.AddData(resources, "Pops*GrowthPenalty", 0, DefLibrary);
+        Data.AddData(resources, "Districts*FocusBase", 10, DefLibrary);
+        Data.AddData(resources, "Factories*FocusBase", 10, DefLibrary);
+        Data.AddData(resources, "Research*FocusBase", 5, DefLibrary);
+        Data.AddData(resources, "Shipbuilding*FocusBase", 0, DefLibrary);
 
-        Data.AddData(resources, "Buildings*Factories", popMax * 5 / level, DefLibrary);
-        Data.AddData(resources, "Buildings*FactoriesMax", popMax, DefLibrary);
-        Data.AddData(resources, "Buildings*PrivateBusinesses", 0, DefLibrary);
-        Data.AddData(resources, "Buildings*PrivateBusinessesMax", 0, DefLibrary);
-        Data.AddData(resources, "Buildings*MilitaryBases", level, DefLibrary);
-        Data.AddData(resources, "Buildings*MilitaryBasesMax", 5, DefLibrary);
-
-        Data.AddData(resources, "Focus*Buildings", 10, DefLibrary);
-        Data.AddData(resources, "Focus*Factories", 10, DefLibrary);
-        Data.AddData(resources, "Focus*Research", 5, DefLibrary);
-        Data.AddData(resources, "Focus*Influence", 5, DefLibrary);
-        Data.AddData(resources, "Focus*Ships", 0, DefLibrary);
-
-        Data.AddData(resources, "Energy*Income", 0, DefLibrary);
-        Data.AddData(resources, "Minerals*Income", 0, DefLibrary);
-        Data.AddData(resources, "Production*Income", 0, DefLibrary);
-        Data.AddData(resources, "Shipbuilding*Income", 0, DefLibrary);
-
-        Data.AddData(resources, "Research*Income", 0, DefLibrary);
-        Data.AddData(resources, "Culture*Income", 0, DefLibrary);
-        Data.AddData(resources, "BC*Income", 0, DefLibrary);
-        Data.AddData(resources, "Authority*Used", 0, DefLibrary);
+        if (capital)
+        {
+            Data.AddData(resources, "Shipbuilding*FocusChosen", 25, DefLibrary);
+        }
+        else
+        {
+            switch(RNG.RandiRange(0,2))
+            {
+                case 0: Data.AddData(resources, "Districts*FocusChosen", 25, DefLibrary); break;
+                case 1: Data.AddData(resources, "Factories*FocusChosen", 25, DefLibrary); break;
+                case 2: Data.AddData(resources, "Research*FocusChosen", 25, DefLibrary); break;
+            }
+        }
     }
 }

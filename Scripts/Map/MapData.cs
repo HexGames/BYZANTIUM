@@ -161,7 +161,7 @@ public partial class MapData : Node
 
         // Data
         StarData starData = new StarData();
-        starData._Data = starDataBlock;
+        starData.Data = starDataBlock;
         starData.Name = starDataBlock.ValueS + "_Data";
         starData.StarName = starDataBlock.ValueS;
         starData.X = starDataBlock.GetSub("X").ValueI;
@@ -224,12 +224,12 @@ public partial class MapData : Node
     {
         for (int fromIdx = 0; fromIdx < Stars.Count; fromIdx++)
         {
-            Array<DataBlock> paths = Stars[fromIdx]._Data.GetSubs("PathTo");
+            Array<DataBlock> paths = Stars[fromIdx].Data.GetSubs("PathTo");
             for (int pathIdx = 0; pathIdx < paths.Count; pathIdx++)
             {
                 for (int toIdx = 0; toIdx < Stars.Count; toIdx++)
                 {
-                    if (Stars[toIdx]._Data.GetSub("ID").ValueI == paths[pathIdx].ValueI)
+                    if (Stars[toIdx].Data.GetSub("ID").ValueI == paths[pathIdx].ValueI)
                     {
                         Stars[fromIdx].PathsTo.Add(Stars[toIdx]);
                         break;
@@ -243,7 +243,7 @@ public partial class MapData : Node
         {
             for (int toIdx = 0; toIdx < Stars[fromIdx].PathsTo.Count; toIdx++)
             {
-                if (Stars[fromIdx]._Data.GetSub("ID").ValueI < Stars[fromIdx].PathsTo[toIdx]._Data.GetSub("ID").ValueI)
+                if (Stars[fromIdx].Data.GetSub("ID").ValueI < Stars[fromIdx].PathsTo[toIdx].Data.GetSub("ID").ValueI)
                 {
                     Node gfxNode = gfxScene.Instantiate();
                     gfxNode.Name = "Path_" + Stars[fromIdx].StarName + "_" + Stars[fromIdx].PathsTo[toIdx].StarName;
@@ -352,7 +352,7 @@ public partial class MapData : Node
         colony.Type = colonyDataBlock.GetSub("Type");
         colony.Pops = colonyDataBlock.GetSub("Pops_List");
         colony.Buildings = colonyDataBlock.GetSub("Buildings");
-        //colony.Resources = colonyDataBlock.GetSub("Resources");
+        colony.Resources = colonyDataBlock.GetSub("Resources");
 
         colony.Data = colonyDataBlock;
 

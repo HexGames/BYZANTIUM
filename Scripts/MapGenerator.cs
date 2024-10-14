@@ -469,7 +469,7 @@ public partial class MapGenerator : Node
             GenerateNewMapSave_Players_A_GetStartingPlanet(map/*, startingStarName*/, startingPlanetType, out startingPlanet, out startingStar, out startingStarPlanet);
             if (startingPlanet == null || startingStar == null) continue;
 
-            startingStar.GetSub("Name").ValueS = startingStarName;
+            startingStar.GetSub("Name").SetValueS(startingStarName, DefLibrary);
 
             DataBlock playerData = Data.AddData(playerList, "Player", "Player_" + n.ToString(), DefLibrary);
             if (human) Data.AddData(playerData, "Human", DefLibrary);
@@ -635,7 +635,17 @@ public partial class MapGenerator : Node
         int development = star.GetSub("Init_Development").ValueI;
 
         DataBlock system = Data.AddData(systemsList, "System", star.ValueS, DefLibrary);
-        GenerateNewMapSave_Players_StartingColony_SystemResources(system, development);
+
+        DataBlock actionBuildDistrict = Data.AddData(system, "ActionBuildDistrict", DefLibrary);
+        Data.AddData(actionBuildDistrict, "Overflow", 0, DefLibrary);
+        Data.AddData(actionBuildDistrict, "Queue", DefLibrary);
+
+        DataBlock actionBuildShip = Data.AddData(system, "ActionBuildShip", DefLibrary);
+        Data.AddData(actionBuildShip, "Design", "Babylon", DefLibrary);
+        Data.AddData(actionBuildShip, "Progress", 0, DefLibrary);
+        Data.AddData(actionBuildDistrict, "Overflow", 0, DefLibrary);
+
+        GenerateNewMapSave_Players_StartingColony_SystemResources(system, development, star.HasSub("Init_Capital"));
 
         Data.AddData(system, "Link:Star", star.ValueS, DefLibrary); // no StarData yet
         Data.AddData(star, "Link:Player:Sector:System", playerData.ValueS + ":" + system.ValueS, DefLibrary); // no SystemData yet
@@ -650,28 +660,28 @@ public partial class MapGenerator : Node
             case 1:
                 {
                     DataBlock biggestHabitablePlanet = GetHabitablePlanet(planetList);
-                    if (biggestHabitablePlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, biggestHabitablePlanet, playerData, system, 1);
+                    if (biggestHabitablePlanet != null) GenerateNewMapSave_Players_Colony(star, biggestHabitablePlanet, playerData, system, 1, true);
                     break;
                 }
             case 2:
                 {
                     DataBlock biggestHabitablePlanet = GetHabitablePlanet(planetList);
-                    if (biggestHabitablePlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, biggestHabitablePlanet, playerData, system, 2);
+                    if (biggestHabitablePlanet != null) GenerateNewMapSave_Players_Colony(star, biggestHabitablePlanet, playerData, system, 2, true);
 
                     DataBlock asteroids = GetAsteroidsPlanet(planetList);
-                    if (asteroids != null) GenerateNewMapSave_Players_Colony(colonyList, star, asteroids, playerData, system, 1);
+                    if (asteroids != null) GenerateNewMapSave_Players_Colony(star, asteroids, playerData, system, 1);
                     break;
                 }
             case 3:
                 {
                     DataBlock biggestHabitablePlanet = GetHabitablePlanet(planetList);
-                    if (biggestHabitablePlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, biggestHabitablePlanet, playerData, system, 3);
+                    if (biggestHabitablePlanet != null) GenerateNewMapSave_Players_Colony(star, biggestHabitablePlanet, playerData, system, 3, true);
 
                     DataBlock firstGasGiant = GetGasGiantPlanet(planetList);
-                    if (firstGasGiant != null) GenerateNewMapSave_Players_Colony(colonyList, star, firstGasGiant, playerData, system, 1);
+                    if (firstGasGiant != null) GenerateNewMapSave_Players_Colony(star, firstGasGiant, playerData, system, 1);
 
                     DataBlock asteroids = GetAsteroidsPlanet(planetList);
-                    if (asteroids != null) GenerateNewMapSave_Players_Colony(colonyList, star, asteroids, playerData, system, 1);
+                    if (asteroids != null) GenerateNewMapSave_Players_Colony(star, asteroids, playerData, system, 1);
                     break;
                 }
             case 4:
@@ -679,20 +689,20 @@ public partial class MapGenerator : Node
                     DataBlock biggestHabitablePlanet = GetHabitablePlanet(planetList);
                     DataBlock secondHabitablePlanet = GetHabitablePlanet(planetList, biggestHabitablePlanet);
                     DataBlock thirdHabitablePlanet = GetHabitablePlanet(planetList, biggestHabitablePlanet, secondHabitablePlanet);
-                    if (biggestHabitablePlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, biggestHabitablePlanet, playerData, system, 4);
-                    if (secondHabitablePlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, secondHabitablePlanet, playerData, system, 3);
-                    if (thirdHabitablePlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, thirdHabitablePlanet, playerData, system, 2);
+                    if (biggestHabitablePlanet != null) GenerateNewMapSave_Players_Colony(star, biggestHabitablePlanet, playerData, system, 4, true);
+                    if (secondHabitablePlanet != null) GenerateNewMapSave_Players_Colony(star, secondHabitablePlanet, playerData, system, 3);
+                    if (thirdHabitablePlanet != null) GenerateNewMapSave_Players_Colony(star, thirdHabitablePlanet, playerData, system, 2);
 
                     DataBlock firstGasGiant = GetGasGiantPlanet(planetList);
                     DataBlock secondGasGiant = GetGasGiantPlanet(planetList, firstGasGiant);
-                    if (firstGasGiant != null) GenerateNewMapSave_Players_Colony(colonyList, star, firstGasGiant, playerData, system, 1);
-                    if (secondGasGiant != null) GenerateNewMapSave_Players_Colony(colonyList, star, secondGasGiant, playerData, system, 1);
+                    if (firstGasGiant != null) GenerateNewMapSave_Players_Colony(star, firstGasGiant, playerData, system, 1);
+                    if (secondGasGiant != null) GenerateNewMapSave_Players_Colony(star, secondGasGiant, playerData, system, 1);
 
                     DataBlock asteroids = GetAsteroidsPlanet(planetList);
-                    if (asteroids != null) GenerateNewMapSave_Players_Colony(colonyList, star, asteroids, playerData, system, 1);
+                    if (asteroids != null) GenerateNewMapSave_Players_Colony(star, asteroids, playerData, system, 1);
 
-                    DataBlock firstOutpostPlanet = GetGasGiantPlanet(planetList);
-                    if (firstOutpostPlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, firstOutpostPlanet, playerData, system, 1);
+                    DataBlock firstOutpostPlanet = GetUninhabitablePlanet(planetList);
+                    if (firstOutpostPlanet != null) GenerateNewMapSave_Players_Colony(star, firstOutpostPlanet, playerData, system, 1);
                     break;
                 }
             case 5:
@@ -700,26 +710,26 @@ public partial class MapGenerator : Node
                     DataBlock biggestHabitablePlanet = GetHabitablePlanet(planetList);
                     DataBlock secondHabitablePlanet = GetHabitablePlanet(planetList, biggestHabitablePlanet);
                     DataBlock thirdHabitablePlanet = GetHabitablePlanet(planetList, biggestHabitablePlanet, secondHabitablePlanet);
-                    if (biggestHabitablePlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, biggestHabitablePlanet, playerData, system, 5);
-                    if (secondHabitablePlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, secondHabitablePlanet, playerData, system, 5);
-                    if (thirdHabitablePlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, thirdHabitablePlanet, playerData, system, 5);
+                    if (biggestHabitablePlanet != null) GenerateNewMapSave_Players_Colony(star, biggestHabitablePlanet, playerData, system, 5, true);
+                    if (secondHabitablePlanet != null) GenerateNewMapSave_Players_Colony(star, secondHabitablePlanet, playerData, system, 5);
+                    if (thirdHabitablePlanet != null) GenerateNewMapSave_Players_Colony(star, thirdHabitablePlanet, playerData, system, 5);
 
                     DataBlock firstGasGiant = GetGasGiantPlanet(planetList);
                     DataBlock secondGasGiant = GetGasGiantPlanet(planetList, firstGasGiant);
                     DataBlock thirdGasGiant = GetGasGiantPlanet(planetList, firstGasGiant, secondGasGiant);
-                    if (firstGasGiant != null) GenerateNewMapSave_Players_Colony(colonyList, star, firstGasGiant, playerData, system, 1);
-                    if (secondGasGiant != null) GenerateNewMapSave_Players_Colony(colonyList, star, secondGasGiant, playerData, system, 1);
-                    if (thirdGasGiant != null) GenerateNewMapSave_Players_Colony(colonyList, star, thirdGasGiant, playerData, system, 1);
+                    if (firstGasGiant != null) GenerateNewMapSave_Players_Colony(star, firstGasGiant, playerData, system, 1);
+                    if (secondGasGiant != null) GenerateNewMapSave_Players_Colony(star, secondGasGiant, playerData, system, 1);
+                    if (thirdGasGiant != null) GenerateNewMapSave_Players_Colony(star, thirdGasGiant, playerData, system, 1);
 
                     DataBlock asteroids = GetAsteroidsPlanet(planetList);
-                    if (asteroids != null) GenerateNewMapSave_Players_Colony(colonyList, star, asteroids, playerData, system, 1);
+                    if (asteroids != null) GenerateNewMapSave_Players_Colony(star, asteroids, playerData, system, 1);
 
-                    DataBlock firstOutpostPlanet = GetGasGiantPlanet(planetList);
-                    DataBlock secondOutpostPlanet = GetGasGiantPlanet(planetList, firstOutpostPlanet);
-                    DataBlock thirdOutpostPlanet = GetGasGiantPlanet(planetList, firstOutpostPlanet, secondOutpostPlanet);
-                    if (firstOutpostPlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, firstOutpostPlanet, playerData, system, 1);
-                    if (secondOutpostPlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, secondOutpostPlanet, playerData, system, 1);
-                    if (thirdOutpostPlanet != null) GenerateNewMapSave_Players_Colony(colonyList, star, thirdOutpostPlanet, playerData, system, 1);
+                    DataBlock firstOutpostPlanet = GetUninhabitablePlanet(planetList);
+                    DataBlock secondOutpostPlanet = GetUninhabitablePlanet(planetList, firstOutpostPlanet);
+                    DataBlock thirdOutpostPlanet = GetUninhabitablePlanet(planetList, firstOutpostPlanet, secondOutpostPlanet);
+                    if (firstOutpostPlanet != null) GenerateNewMapSave_Players_Colony(star, firstOutpostPlanet, playerData, system, 1);
+                    if (secondOutpostPlanet != null) GenerateNewMapSave_Players_Colony(star, secondOutpostPlanet, playerData, system, 1);
+                    if (thirdOutpostPlanet != null) GenerateNewMapSave_Players_Colony(star, thirdOutpostPlanet, playerData, system, 1);
                     break;
                 }
         }
@@ -769,11 +779,11 @@ public partial class MapGenerator : Node
         {
             if (planetList.Subs[idx] == exception_1) continue;
             if (planetList.Subs[idx] == exception_2) continue;
-            if (planetList.Subs[idx].HasSub("Uninhabitable") && (planet == null || (planetList.Subs[idx].HasSub("Bonus") && hasBonus == false)))
-                {
-                    planet = planetList.Subs[idx];
-                    hasBonus = planetList.Subs[idx].HasSub("Bonus");
-                }
+            if (planetList.Subs[idx].HasSub("SlotType") && planetList.Subs[idx].GetSub("SlotType").ValueS == "Outpost" && (planet == null || (planetList.Subs[idx].HasSub("Bonus") && hasBonus == false)))
+            {
+                planet = planetList.Subs[idx];
+                hasBonus = planetList.Subs[idx].HasSub("Bonus");
+            }
         }
         return planet;
     }
@@ -786,7 +796,7 @@ public partial class MapGenerator : Node
         {
             if (planetList.Subs[idx] == exception_1) continue;
             if (planetList.Subs[idx] == exception_2) continue;
-            if (planetList.Subs[idx].HasSub("Gas_Giant") && (planet == null || (planetList.Subs[idx].HasSub("Bonus") && hasBonus == false)))
+            if (planetList.Subs[idx].HasSub("SlotType") && planetList.Subs[idx].GetSub("SlotType").ValueS == "Space_Station" && (planet == null || (planetList.Subs[idx].HasSub("Bonus") && hasBonus == false)))
             {
                 planet = planetList.Subs[idx];
                 hasBonus = planetList.Subs[idx].HasSub("Bonus");
@@ -799,7 +809,7 @@ public partial class MapGenerator : Node
     {
         for (int idx = 0; idx < planetList.GetSubs().Count; idx++)
         {
-            if (planetList.Subs[idx].HasSub("Asteroids"))
+            if (planetList.Subs[idx].HasSub("SlotType") && planetList.Subs[idx].GetSub("SlotType").ValueS == "Asteroid_Base")
             {
                 return planetList.Subs[idx];
             }

@@ -48,8 +48,6 @@ public partial class PlayerInput : Node
     public Array<FleetData> SelectedFleets = new Array<FleetData>();
 
     [Export]
-    public SectorData SelectedSector = null;
-    [Export]
     public SystemData SelectedStarSystem = null;
     [Export]
     public ColonyData SelectedPlanetColony = null;
@@ -836,6 +834,7 @@ public partial class PlayerInput : Node
     {
         HoverPlanet = planet;
         Game.self.SelectorsUI3D.PlanetHover(HoverPlanet);
+        Game.self.GalaxyUI.ShowPlanetInfo(HoverPlanet);
 
         if (planet._Star != SelectedStar)
         {
@@ -852,6 +851,7 @@ public partial class PlayerInput : Node
     {
         HoverPlanet = planet;
         Game.self.SelectorsUI3D.PlanetHover(HoverPlanet);
+        Game.self.GalaxyUI.ShowPlanetInfo(HoverPlanet);
 
         if (planet._Star != SelectedStar)
         {
@@ -868,6 +868,7 @@ public partial class PlayerInput : Node
     {
         HoverPlanet = planet;
         Game.self.SelectorsUI3D.PlanetHover(HoverPlanet);
+        Game.self.GalaxyUI.ShowPlanetInfo(HoverPlanet);
 
         if (planet._Star != SelectedStar)
         {
@@ -890,7 +891,8 @@ public partial class PlayerInput : Node
             if (HoverStar != SelectedStar) Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
             HoverStar = null;
         }
-        
+
+        Game.self.GalaxyUI.HidePlanetInfo();
         Game.self.SelectorsUI3D.PlanetDehover();
         HoverPlanet = null;
 
@@ -906,6 +908,7 @@ public partial class PlayerInput : Node
             HoverStar = null;
         }
 
+        Game.self.GalaxyUI.ShowPlanetInfo(SelectedPlanet);
         Game.self.SelectorsUI3D.PlanetDehover();
         HoverPlanet = null;
 
@@ -922,6 +925,7 @@ public partial class PlayerInput : Node
             HoverStar = null;
         }
 
+        Game.self.GalaxyUI.HidePlanetInfo();
         Game.self.SelectorsUI3D.PlanetDehover();
         HoverPlanet = null;
 
@@ -1004,6 +1008,7 @@ public partial class PlayerInput : Node
     // -------------------------------------
     private void CS_Deselect_from_ClosePlanet_to_CloseStar()
     {
+        Game.self.GalaxyUI.HidePlanetInfo();
         Game.self.SelectorsUI3D.PlanetDeselect();
         SelectedPlanet = null;
 

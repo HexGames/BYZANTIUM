@@ -65,15 +65,15 @@ public class ActionMove
         if (progress < progressMax)
         {
             progress++;
-            fleet.ActionData.GetSub("Progress").ValueI = progress;
+            fleet.ActionData.GetSub("Progress").SetValueI(progress, game.Def);
         }
         else
         {
             StarData oldStar = Data.GetLinkStarData(fleet.Data, game.Map.Data);
-            Data.RemoveData(oldStar._Data, "Link:Player:Fleet", fleet._Player.PlayerName + ":" + fleet.FleetName, game.Def);
+            Data.RemoveData(oldStar.Data, "Link:Player:Fleet", fleet._Player.PlayerName + ":" + fleet.FleetName, game.Def);
 
             fleet.Data.GetSub("Link:Star").ValueS = fleet.ActionData.GetSub("Link:Star").ValueS;
-            Data.AddLink(star._Data, fleet, game.Def);
+            Data.AddLink(star.Data, fleet, game.Def);
 
             Data.RemoveData(fleet.Data, "ActionMove", game.Def);
             fleet.ActionData = null;

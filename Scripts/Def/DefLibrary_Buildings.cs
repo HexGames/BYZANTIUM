@@ -8,55 +8,60 @@ public partial class DefLibrary : Node
 {
     [ExportCategory("Def Buildings")]
     [Export]
-    public DataBlock BuildingsList = null;
+    public DataBlock DistrictsList = null;
     [Export]
-    public Array<DataBlock> Buildings = new Array<DataBlock>();
+    public Array<DataBlock> Districts = new Array<DataBlock>();
 
-    public List<DefBuildingWrapper> BuildingsInfo = new List<DefBuildingWrapper>();
+    public List<DefDistrictWrapper> DistrictsInfo = new List<DefDistrictWrapper>();
 
-    public void _Ready_Buildings()
+    public void _Ready_Districts()
     {
-        for (int idx = 0; idx < Buildings.Count; idx++)
+        for (int idx = 0; idx < Districts.Count; idx++)
         {
-            BuildingsInfo.Add(new DefBuildingWrapper(Buildings[idx]));
+            DistrictsInfo.Add(new DefDistrictWrapper(Districts[idx]));
         }
     }
 
-    public DataBlock GetBuilding(string name)
+    public DataBlock GetDistrict(string name)
     {
-        for (int idx = 0; idx < Buildings.Count; idx++)
+        for (int idx = 0; idx < Districts.Count; idx++)
         {
-            if (Buildings[idx].ValueS == name)
+            if (Districts[idx].ValueS == name)
             {
-                return Buildings[idx];
+                return Districts[idx];
             }
         }
         return null;
     }
 
-    public DefBuildingWrapper GetBuildingInfo(string name)
+    public DefDistrictWrapper GetDistrictInfo(string name)
     {
-        for (int idx = 0; idx < BuildingsInfo.Count; idx++)
+        for (int idx = 0; idx < DistrictsInfo.Count; idx++)
         {
-            if (BuildingsInfo[idx]._Data.ValueS == name)
+            if (DistrictsInfo[idx]._Data.ValueS == name)
             {
-                return BuildingsInfo[idx];
+                return DistrictsInfo[idx];
             }
         }
         return null;
     }
 
-    public void SaveBuildingsDef()
+    //public DataBlock SuggestDistrictForPlanet(DataBlock planet)
+    //{
+    //
+    //}
+
+    public void SaveDistrictsDef()
     {
-        Data.SaveToFile(BuildingsList, "Defs_Mod/Buildings.mod", this);
+        Data.SaveToFile(DistrictsList, "Defs_Mod/Buildings.mod", this);
     }
 
-    public void LoadBuildingsDefFunc()
+    public void LoadDistrictsDefFunc()
     {
         //BuildingsList = Data.LoadFile("Defs_Mod/Buildings.mod", this);
-        BuildingsList = Data.LoadCSV("Defs_Mod/Buildings.table", this);
+        DistrictsList = Data.LoadCSV("Defs_Mod/Buildings.table", this);
 
-        Buildings.Clear();
-        Buildings = BuildingsList.GetSubs("Building");
+        Districts.Clear();
+        Districts = DistrictsList.GetSubs("Building");
     }
 }

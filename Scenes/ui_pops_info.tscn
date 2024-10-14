@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://hys62jrhlt0i"]
+[gd_scene load_steps=3 format=3 uid="uid://b24ly8f5d4c2m"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Pops/UIPops.cs" id="1_eoiql"]
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_lkeqk"]

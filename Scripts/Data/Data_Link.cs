@@ -22,12 +22,12 @@ public partial class Data
     }
     static public DataBlock AddLink(DataBlock parent, SystemData system, DefLibrary df)
     {
-        string name = "Link:Player:Sector:System";
+        string name = "Link:Player:System";
         return AddData(parent, name, system._Player.PlayerName + ":" + system.SystemName, df);
     }
     static public DataBlock AddLink(DataBlock parent, ColonyData colony, DefLibrary df)
     {
-        string name = "Link:Player:Sector:System:Colony";
+        string name = "Link:Player:System:Colony";
         return AddData(parent, name, colony._System._Player.PlayerName + ":" + colony._System.SystemName + ":" + colony.ColonyName, df);
     }
     static public DataBlock AddLink(DataBlock parent, FleetData fleet, DefLibrary df)
@@ -54,13 +54,13 @@ public partial class Data
     }
     static public SystemData GetLinkSystemData(DataBlock parent, MapData map)
     {
-        DataBlock link = parent.GetLink("Link:Player:Sector:System");
+        DataBlock link = parent.GetLink("Link:Player:System");
         string[] split = link.ValueS.Split(":");
         return map.GetPlayer(split[0]).GetSystem(split[1]);
     }
     static public ColonyData GetLinkColonyData(DataBlock parent, MapData map)
     {
-        DataBlock link = parent.GetLink("Link:Player:Sector:System:Colony");
+        DataBlock link = parent.GetLink("Link:Player:System:Colony");
         string[] split = link.ValueS.Split(":");
         return map.GetPlayer(split[0]).GetSystem(split[1]).GetColony(split[2]);
     }

@@ -44,7 +44,7 @@ public class BuildingsWrapper
             if (_Colony.Buildings != null)
             {
                 Factories = _Colony.Buildings.GetSub("Factories").ValueI;
-                FactoriesMax = _Colony.Planet.Data.GetSub("Size").ValueI * _Colony.Planet.Data.GetSub("PopMaxPerSize").ValueI * 1000;
+                FactoriesMax = _Colony.Planet.Data.GetSub("Size").ValueI * 30 * 1000;
                 Bases = _Colony.Buildings.GetSub("Bases").ValueI;
             }
             if (_Colony.Planet.Data.HasSub("Size"))
@@ -59,7 +59,7 @@ public class BuildingsWrapper
                 if (_System.Colonies[colonyIdx].Buildings != null)
                 {
                     Factories += _System.Colonies[colonyIdx].Buildings.GetSub("Factories").ValueI;
-                    FactoriesMax += _System.Colonies[colonyIdx].Planet.Data.GetSub("Size").ValueI * _System.Colonies[colonyIdx].Planet.Data.GetSub("PopMaxPerSize").ValueI * 1000;
+                    FactoriesMax += _System.Colonies[colonyIdx].Planet.Data.GetSub("Size").ValueI * 30 * 1000;
                     Bases += _System.Colonies[colonyIdx].Buildings.GetSub("Bases").ValueI;
                 }
                 if (_System.Colonies[colonyIdx].Planet.Data.HasSub("Size"))

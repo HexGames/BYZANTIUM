@@ -9,46 +9,89 @@ using System.Transactions;
 public partial class MapGenerator : Node
 {
     // generator
-    public DataBlock GenerateNewMapSave_Players_Colony(DataBlock colonyList, DataBlock star, DataBlock planet, DataBlock player, DataBlock system, int level)
+    public DataBlock GenerateNewMapSave_Players_Colony(DataBlock star, DataBlock planet, DataBlock player, DataBlock system, int level, bool capital = false)
     {
-        DataBlock empireData = DefLibrary.GetEmpire(player.ValueS);
+        DataBlock colony = MapGenerator.CreateNewColony(star, planet, player, system, level, DefLibrary, capital);
+        return colony;
+    }
 
-        DataBlock colony = Data.AddData(colonyList, "Colony", planet.ValueS, DefLibrary);
+    public static DataBlock CreateNewColony(DataBlock star, DataBlock planet, DataBlock player, DataBlock system, int level, DefLibrary def, bool capital)
+    {
+        DataBlock empireData = def.GetEmpire(player.ValueS);
 
+        DataBlock colonyList = system.GetSub("Colony_List");
+        DataBlock colony = Data.AddData(colonyList, "Colony", planet.ValueS, def);
+
+        int popsLevel = 0;
         if (planet.HasSub("Habitable"))
         {
-            int popsMax = planet.GetSub("Size").ValueI * planet.GetSub("PopMaxPerSize").ValueI * 200 * level;
+            popsLevel = planet.GetSub("Size").ValueI * 30 * 200 * level;
+            Data.AddData(colony, "Type", "Urban_World", def);
 
-            Data.AddData(colony, "Type", "Urban_World", DefLibrary);
+            DataBlock popsList = Data.AddData(colony, "Pops_List", def);
+            DataBlock pops = Data.AddData(popsList, "Pops", "Pops_1", def);
+            Data.AddData(pops, "Pops", Mathf.Max(1000, popsLevel), def);
+            Data.AddData(pops, "Specie", empireData.GetSub("Specie").ValueS, def);
+            Data.AddData(pops, "Ethic", empireData.GetSub("Ethic").ValueS, def);
+            Data.AddData(pops, "LoyalTo", player.Name, def);
 
-            DataBlock popsList = Data.AddData(colony, "Pops_List", DefLibrary);
-            DataBlock pops = Data.AddData(popsList, "Pops", "Pops_1", DefLibrary);
-            Data.AddData(pops, "Pops", Mathf.Max(1000, popsMax), DefLibrary);
-            Data.AddData(pops, "Specie", empireData.GetSub("Specie").ValueS, DefLibrary);
-            Data.AddData(pops, "Ethic", empireData.GetSub("Ethic").ValueS, DefLibrary);
-            Data.AddData(pops, "LoyalTo", player.Name, DefLibrary);
-
-            DataBlock structures = Data.AddData(colony, "Buildings", DefLibrary);
-            Data.AddData(structures, "Factories", popsMax, DefLibrary);
-            Data.AddData(structures, "Bases", 1000 * level, DefLibrary);
+            DataBlock structures = Data.AddData(colony, "Buildings", def);
+            Data.AddData(structures, "Factories", popsLevel, def);
+            Data.AddData(structures, "Bases", 1000 * level, def);
 
             //GenerateNewMapSave_Players_StartingColony_Resources(colony);
         }
-        else if (planet.HasSub("Uninhabitable"))
+        //else if (planet.HasSub("Uninhabitable"))
+        //{
+        //    Data.AddData(colony, "Type", "Mining_Outposts", DefLibrary);
+        //}
+        //else if (planet.HasSub("Asteroids"))
+        //{
+        //    Data.AddData(colony, "Type", "Asteroid_Mines", DefLibrary);
+        //}
+        //else if (planet.HasSub("Gas_Giant"))
+        //{
+        //    Data.AddData(colony, "Type", "Reserch_Stations", DefLibrary);
+        //}
+
+        DataBlock districts = Data.AddData(colony, "Districts", def);
+        if (planet.HasSub("Habitable"))
         {
-            Data.AddData(colony, "Type", "Mining_Outposts", DefLibrary);
+            for (int n = 0; n < planet.GetSub("Size").ValueI; n++)
+            {
+                DataBlock slot = Data.AddData(districts, "District", def);
+                if (n == 0 && capital)
+                {
+                    slot.SetValueS("Capital", def);
+                }
+                else if (popsLevel >= 30000 * n && level >= 0)
+                {
+                    slot.SetValueS(AI_District.SuggestDistrictForPlanet(planet, def).ValueS, def);
+                }
+                else
+                {
+                    Data.AddData(slot, "RequiredPops", 30 * n, def);
+                }
+            }
         }
-        else if (planet.HasSub("Asteroids"))
+        else if (level >= 0)
         {
-            Data.AddData(colony, "Type", "Asteroid_Mines", DefLibrary);
+            Data.AddData(districts, "District", AI_District.SuggestDistrictForPlanet(planet, def).ValueS, def);
         }
-        else if (planet.HasSub("Gas_Giant"))
+        else
         {
-            Data.AddData(colony, "Type", "Reserch_Stations", DefLibrary);
+            Data.AddData(districts, "District", def);
         }
 
-        Data.AddData(colony, "Link:Star:Planet", star.ValueS + ":" + planet.ValueS, DefLibrary); // no PlanetData yet
-        Data.AddData(planet, "Link:Player:System:Colony", player.ValueS + ":" + system.ValueS + ":" + colony.ValueS, DefLibrary); // no ColonyData yet
+        //DataBlock resources = Data.AddData(colony, "Resources", def);
+        //Data.AddData(resources, "Shipbuilding*Income", 0, def);
+        //Data.AddData(resources, "Research*Income", 0, def);
+        //Data.AddData(resources, "Influence*Income", 0, def);
+        //Data.AddData(resources, "BC*Income", 0, def);
+
+
+        Data.AddData(colony, "Link:Star:Planet", star.ValueS + ":" + planet.ValueS, def); // no PlanetData yet
+        Data.AddData(planet, "Link:Player:System:Colony", player.ValueS + ":" + system.ValueS + ":" + colony.ValueS, def); // no ColonyData yet
 
         return colony;
     }

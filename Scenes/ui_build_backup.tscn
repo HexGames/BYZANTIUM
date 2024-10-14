@@ -1,0 +1,825 @@
+[gd_scene load_steps=17 format=3 uid="uid://xuydwgov7vak"]
+
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_rihns"]
+[ext_resource type="Texture2D" uid="uid://cet6pwryuqcts" path="res://Assets/UI/white.png" id="2_15utd"]
+[ext_resource type="Theme" uid="uid://dlj1asuerdg5h" path="res://UITheme/ItemList.tres" id="3_nc8ym"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="4_4xdln"]
+[ext_resource type="Theme" uid="uid://31g04ftbqfmt" path="res://UITheme/BuildUI.tres" id="4_en77o"]
+[ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="4_fpoqf"]
+[ext_resource type="Texture2D" uid="uid://b0hf203g0lcrk" path="res://Assets/UI/Districts/Factory.png" id="5_wwsvj"]
+[ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="9_g6yrd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uqbc"]
+bg_color = Color(0, 0, 0, 0.501961)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spu3m"]
+shader = ExtResource("1_rihns")
+shader_parameter/amount = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsk48"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+skew = Vector2(0.32, 0)
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uenyh"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0.752941)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.752941, 0.188235, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fta2"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.752941)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="Gradient" id="Gradient_e1uc4"]
+colors = PackedColorArray(0.0901961, 0.0901961, 0.0901961, 1, 0.313726, 0.313726, 0.313726, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0vtgy"]
+gradient = SubResource("Gradient_e1uc4")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afwpv"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="UiBuild" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TransparentBg" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8uqbc")
+
+[node name="TransparentBlur" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_spu3m")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_15utd")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = -438.0
+offset_right = 390.0
+offset_bottom = 438.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_fpoqf")
+
+[node name="Vertical" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Top" type="Control" parent="PanelContainer/Vertical"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/Vertical/Top"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.5
+offset_top = -15.0
+offset_right = 111.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_nc8ym")
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_bsk48")
+text = "Build At Sol System"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Gap" type="Control" parent="PanelContainer/Vertical"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Vertical"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+alignment = 2
+
+[node name="BuildingList" type="Control" parent="PanelContainer/Vertical/HBoxContainer"]
+custom_minimum_size = Vector2(448, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Available" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Building_1" type="HBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available"]
+layout_mode = 2
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"Grey"
+
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"GreyC"
+
+[node name="Button" type="Button" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container"]
+layout_mode = 2
+theme = ExtResource("9_g6yrd")
+theme_type_variation = &"Build"
+
+[node name="Panel" type="Panel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uenyh")
+
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Benefit" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[right]$value[/right]"
+fit_content = true
+
+[node name="Title" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Container/VBoxContainer/Benefit"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[left]$name[/left]"
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]$turns Turns[/center]"
+
+[node name="Gap" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Unavailable" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.501961, 0.501961, 0.501961, 1)
+bbcode_enabled = true
+text = "[center]Unavailable:[/center]"
+fit_content = true
+
+[node name="Unavailable_1" type="HBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable"]
+layout_mode = 2
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"Grey"
+
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"GreyC"
+
+[node name="Panel" type="Panel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5fta2")
+
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Benefit" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container/Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+theme_override_colors/default_color = Color(0.501961, 0.501961, 0.501961, 1)
+bbcode_enabled = true
+text = "[right]$value[/right]"
+fit_content = true
+
+[node name="Title" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container/Container/VBoxContainer/Benefit"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+theme_override_colors/default_color = Color(0.501961, 0.501961, 0.501961, 1)
+bbcode_enabled = true
+text = "[left]$name[/left]"
+
+[node name="Turns" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1/Container/Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+theme_override_colors/default_color = Color(0.501961, 0.501961, 0.501961, 1)
+bbcode_enabled = true
+text = "[center]$turns Turns[/center]"
+
+[node name="Gap" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Unavailable/Unavailable_1"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="PlanetList" type="Control" parent="PanelContainer/Vertical/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/PlanetList"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_4xdln")
+theme_override_colors/default_color = Color(0.501961, 0.501961, 0.501961, 1)
+bbcode_enabled = true
+text = "[center]Select a project first...[/center]"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Location_1" type="HBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"Grey"
+
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_fpoqf")
+theme_type_variation = &"GreyC"
+
+[node name="Button" type="Button" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container"]
+layout_mode = 2
+theme = ExtResource("9_g6yrd")
+theme_type_variation = &"Build"
+
+[node name="Panel" type="Panel" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uenyh")
+
+[node name="Container" type="MarginContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Location" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container/Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]$location[/center]"
+fit_content = true
+
+[node name="Gap" type="Control" parent="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Gap_2" type="Control" parent="PanelContainer/Vertical/HBoxContainer"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="BuildingInfo" type="Control" parent="PanelContainer/Vertical/HBoxContainer"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="BuildingNone" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo"]
+custom_minimum_size = Vector2(304, 180)
+layout_mode = 1
+anchors_preset = 0
+offset_left = 8.0
+offset_right = 8.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingNone"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0vtgy")
+
+[node name="Title" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingNone"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+bbcode_enabled = true
+text = "[center]NO BUILDING SELECTED[/center]"
+fit_content = true
+
+[node name="BuildingSelected" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Picture" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+custom_minimum_size = Vector2(280, 180)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Picture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0vtgy")
+
+[node name="Title" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Picture"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme = ExtResource("4_en77o")
+theme_type_variation = &"Title"
+text = "Factories"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Picture"]
+visible = false
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wwsvj")
+expand_mode = 1
+
+[node name="Title2" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Picture"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+theme_type_variation = &"Title"
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]$name[/center]"
+fit_content = true
+
+[node name="Gap_1" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="CostSubtitle" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_nc8ym")
+text = "Cost:
+"
+vertical_alignment = 1
+
+[node name="Line_1" type="ColorRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(1, 0.25098, 0, 0.25098)
+
+[node name="GapSmall_1" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Cost" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+layout_mode = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[right]$value[img=24x24]Assets/UI/Symbols/Prod.png[/img][/right]"
+fit_content = true
+
+[node name="Line_2" type="ColorRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+
+[node name="Gap_2" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="BonusesSubtitle" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_nc8ym")
+text = "Effect:"
+vertical_alignment = 1
+
+[node name="Line_3" type="ColorRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(1, 0.25098, 0, 0.25098)
+
+[node name="GapSmall_2" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Benefits" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+layout_mode = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[right]$effects[/right]"
+fit_content = true
+
+[node name="Line_4" type="ColorRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+
+[node name="Gap_3" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Description" type="RichTextLabel" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+layout_mode = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[left]$description[/left]"
+fit_content = true
+
+[node name="Bottom" type="VBoxContainer" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Line_1" type="ColorRect" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+
+[node name="ProjectSizeTitle" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_nc8ym")
+text = "Project size"
+vertical_alignment = 1
+
+[node name="ProjectSizeTurns" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom/ProjectSizeTitle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "7 turns"
+horizontal_alignment = 2
+
+[node name="ProjectSizeSliderBg" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="ProjectSizeSlider" type="HSlider" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom/ProjectSizeSliderBg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_en77o")
+min_value = 4.0
+max_value = 10.0
+step = 3.0
+value = 7.0
+rounded = true
+scrollable = false
+tick_count = 3
+ticks_on_borders = true
+
+[node name="Quantity" type="Label" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom"]
+layout_mode = 2
+theme = ExtResource("4_en77o")
+theme_override_font_sizes/font_size = 20
+text = "x200"
+horizontal_alignment = 1
+
+[node name="GapSmall_2" type="Control" parent="PanelContainer/Vertical/HBoxContainer/BuildingInfo/BuildingSelected/Bottom"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Bottom" type="Control" parent="PanelContainer/Vertical"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PanelContainer/Vertical/Bottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_afwpv")
+
+[node name="Line_2" type="ColorRect" parent="PanelContainer/Vertical/Bottom"]
+visible = false
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+offset_right = 1136.0
+offset_bottom = 2.0
+color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Vertical/Bottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Line_1" type="ColorRect" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+
+[node name="ProjectSizeTitle" type="Label" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_nc8ym")
+text = "Project size"
+vertical_alignment = 1
+
+[node name="ProjectSizeTurns" type="Label" parent="PanelContainer/Vertical/Bottom/VBoxContainer/ProjectSizeTitle"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "7 turns"
+horizontal_alignment = 2
+
+[node name="ProjectSizeSliderBg" type="Control" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="ProjectSizeSlider" type="HSlider" parent="PanelContainer/Vertical/Bottom/VBoxContainer/ProjectSizeSliderBg"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_en77o")
+min_value = 4.0
+max_value = 10.0
+step = 3.0
+value = 7.0
+rounded = true
+scrollable = false
+tick_count = 3
+ticks_on_borders = true
+
+[node name="Quantity" type="Label" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_en77o")
+theme_override_font_sizes/font_size = 20
+text = "x200"
+horizontal_alignment = 1
+
+[node name="GapSmall_2" type="Control" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Buttons" type="Control" parent="PanelContainer/Vertical/Bottom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="BuildBtn" type="Button" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.5
+anchor_right = 0.75
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_g6yrd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/BuildBtn"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]BUILD[/center]"
+fit_content = true
+
+[node name="QueueBtn" type="Button" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_g6yrd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/QueueBtn"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]ADD TO QUEUE[/center]"
+fit_content = true
+
+[node name="CancelBtn" type="Button" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.5
+anchor_right = 0.25
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_g6yrd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Vertical/Bottom/VBoxContainer/Buttons/CancelBtn"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4xdln")
+bbcode_enabled = true
+text = "[center]CANCEL[/center]"
+fit_content = true
+
+[connection signal="pressed" from="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1/Container/Button" to="PanelContainer/Vertical/HBoxContainer/BuildingList/ScrollContainer/VBoxContainer/Available/Building_1" method="OnSelect"]
+[connection signal="pressed" from="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1/Container/Button" to="PanelContainer/Vertical/HBoxContainer/PlanetList/ScrollContainer/VBoxContainer/Location_1" method="OnSelect"]

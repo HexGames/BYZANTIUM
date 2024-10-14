@@ -92,7 +92,7 @@ public partial class UISelectedStarSystem : Control
         OwnerColor.SelfModulate = Game.self.UILib.GetPlayerColor(_System._Player.PlayerID);
 
         Pops.Text = Pops_Original.Replace("$pops", _System.Pops_PerTurn.ToString_Pops());
-        Control.Text = Control_Original.Replace("$val", _System.Resources_PerTurn.GetPops().ToString_PopsUncontrolled());
+        //Control.Text = Control_Original.Replace("$val", _System.Resources_PerTurn.GetPops().ToString_PopsUncontrolled());
 
         //PopsPub.Text = PopsPub_Original.Replace("$pops", _System.Resources_PerTurn.GetPops().ToString_PopsPublic());
         //PopsPrv.Text = PopsPrv_Original.Replace("$pops", _System.Resources_PerTurn.GetPops().ToString_PopsPrivate());
@@ -116,8 +116,8 @@ public partial class UISelectedStarSystem : Control
 
         TaxResults.Text = TaxResults_Original;
 
-        Income.Text = Income_Original.Replace("$val", "999");
-        Production.Text = Production_Original.Replace("$prod", "999");
+        Income.Text = Income_Original.Replace("$val", Helper.ResValueToString(ResourcesWrapper.GetSystemBC(_System)));
+        Production.Text = Production_Original.Replace("$prod", Helper.ResValueToString(ResourcesWrapper.GetSystemProduction(_System)));
     }
 
     public void OnControl_1()

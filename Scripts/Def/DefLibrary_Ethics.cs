@@ -12,13 +12,13 @@ public partial class DefLibrary : Node
     [Export]
     public Array<DataBlock> Ethics = new Array<DataBlock>();
 
-    public List<DefBuildingWrapper> EthicsInfo = new List<DefBuildingWrapper>();
+    public List<DefDistrictWrapper> EthicsInfo = new List<DefDistrictWrapper>();
 
     public void _Ready_Ethics()
     {
         for (int idx = 0; idx < Ethics.Count; idx++)
         {
-            EthicsInfo.Add(new DefBuildingWrapper(Ethics[idx]));
+            EthicsInfo.Add(new DefDistrictWrapper(Ethics[idx]));
         }
     }
 
@@ -34,7 +34,7 @@ public partial class DefLibrary : Node
         return null;
     }
 
-    public DefBuildingWrapper GetEthicInfo(string name)
+    public DefDistrictWrapper GetEthicInfo(string name)
     {
         for (int idx = 0; idx < EthicsInfo.Count; idx++)
         {

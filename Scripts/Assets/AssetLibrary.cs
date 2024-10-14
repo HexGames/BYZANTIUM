@@ -6,7 +6,13 @@ using System.Linq;
 public partial class AssetLibrary : Node
 {
     [Export]
-    private Dictionary<string, Texture2D> Textures = new Dictionary<string, Texture2D>();
+    private Dictionary<string, Texture2D> TexturesSymbols = new Dictionary<string, Texture2D>();
+    [Export]
+    private Dictionary<string, Texture2D> TexturesFlags = new Dictionary<string, Texture2D>();
+    [Export]
+    private Dictionary<string, Texture2D> TexturesDistricts = new Dictionary<string, Texture2D>();
+    [Export]
+    private Dictionary<string, Texture2D> TexturesPlanets = new Dictionary<string, Texture2D>();
     [Export]
     private Dictionary<string, Material> Materials = new Dictionary<string, Material>();
     [Export]
@@ -42,33 +48,64 @@ public partial class AssetLibrary : Node
 
     private void LoadAll()
     {
-        Load2DTextures("res://Assets/Flags/");
+        Load2DTextures(TexturesSymbols, "res://Assets/UI/Symbols/");
+        Load2DTextures(TexturesFlags, "res://Assets/Flags/");
+        Load2DTextures(TexturesDistricts, "res://Assets/UI/Districts/");
+        Load2DTextures(TexturesPlanets, "res://Assets/Planets/UI/");
         LoadMaterials(Materials, "res://Assets//3D/Materials/");
         LoadMaterials(MaterialsPlanets, "res://Assets//3D/MaterialsPlanets/");
         LoadMaterials(MaterialsPlanetsAlpha, "res://Assets//3D/MaterialsPlanetsAlpha/");
     }
 
-    private void Load2DTextures(string dirPath)
+    private void Load2DTextures(Dictionary<string, Texture2D> textures, string dirPath)
     {
-        Textures.Clear();
+        textures.Clear();
         string[] filePaths = DirAccess.GetFilesAt(dirPath);
         for (int idx = 0; idx < filePaths.Length; idx++)
         {
             if (filePaths[idx].EndsWith("png"))
             {
-                Textures.Add(filePaths[idx], GD.Load<Texture2D>(dirPath + filePaths[idx]));
+                textures.Add(filePaths[idx], GD.Load<Texture2D>(dirPath + filePaths[idx]));
             }
-        } 
+        }
     }
 
-    public Texture2D GetTexture2D(string path)
+    public Texture2D GetTexture2D_Symbols(string path)
     {
-        if (Textures.ContainsKey(path) == false)
+        if (TexturesSymbols.ContainsKey(path) == false)
         {
             GD.PrintErr("Unable to find texture2D " + path);
             return null;
         }
-        return Textures[path];
+        return TexturesSymbols[path];
+    }
+    public Texture2D GetTexture2D_Flag(string path)
+    {
+        if (TexturesFlags.ContainsKey(path) == false)
+        {
+            GD.PrintErr("Unable to find texture2D " + path);
+            return null;
+        }
+        return TexturesFlags[path];
+    }
+    public Texture2D GetTexture2D_District(string path)
+    {
+        if (TexturesDistricts.ContainsKey(path) == false)
+        {
+            GD.PrintErr("Unable to find texture2D " + path);
+            return null;
+        }
+        return TexturesDistricts[path];
+    }
+
+    public Texture2D GetTexture2D_Planet(string path)
+    {
+        if (TexturesPlanets.ContainsKey(path) == false)
+        {
+            GD.PrintErr("Unable to find texture2D " + path);
+            return null;
+        }
+        return TexturesPlanets[path];
     }
 
     private void LoadMaterials(Dictionary<string, Material> materials, string dirPath)
@@ -94,7 +131,7 @@ public partial class AssetLibrary : Node
         return Materials[path];
     }
 
-    public Material GetMaterialPlanet(string path)
+    public Material GetMaterial_Planet(string path)
     {
         if (MaterialsPlanets.ContainsKey(path) == false)
         {

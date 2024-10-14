@@ -25,8 +25,6 @@ public partial class Game : Node
     [Export]
     public UIGalaxy GalaxyUI;
     [Export]
-    public UISystem SystemUI;
-    [Export]
     public UIWindows WindowsUI;
     [Export]
     public UI3DSelectors SelectorsUI3D;

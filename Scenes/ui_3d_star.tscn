@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkomfigvec4wg"]
+[gd_scene load_steps=5 format=3 uid="uid://dkomfigvec4wg"]
 
 [ext_resource type="Script" path="res://Scripts/UI3D/UI3DStar.cs" id="1_3en2y"]
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="2_87l03"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="3_20a5y"]
+[ext_resource type="Texture2D" uid="uid://dtnhwwxk4q0hr" path="res://Assets/UI/Districts/Planet_3.png" id="4_ajlwr"]
 
 [node name="Star2" type="Control"]
 layout_mode = 3
@@ -42,34 +43,30 @@ text = "Sol"
 fit_content = true
 autowrap_mode = 0
 
-[node name="PanelContainer_2" type="PanelContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-mouse_filter = 2
-theme = ExtResource("2_87l03")
-theme_type_variation = &"ColorMod"
+alignment = 1
 
-[node name="Colony" type="RichTextLabel" parent="VBoxContainer/PanelContainer_2"]
+[node name="Icon_1" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.501961, 0.501961, 0.501961, 1)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("3_20a5y")
-bbcode_enabled = true
-text = "Earth"
-fit_content = true
-autowrap_mode = 0
+texture = ExtResource("4_ajlwr")
+expand_mode = 1
 
-[node name="PanelContainer_3" type="PanelContainer" parent="VBoxContainer"]
+[node name="Icon_2" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.501961, 0.501961, 0.501961, 1)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-size_flags_horizontal = 4
 mouse_filter = 2
-theme = ExtResource("2_87l03")
-theme_type_variation = &"ColorMod"
+texture = ExtResource("4_ajlwr")
+expand_mode = 1
 
-[node name="Extra" type="RichTextLabel" parent="VBoxContainer/PanelContainer_3"]
+[node name="Icon_3" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.501961, 0.501961, 0.501961, 1)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("3_20a5y")
-bbcode_enabled = true
-text = "+3"
-fit_content = true
-autowrap_mode = 0
+texture = ExtResource("4_ajlwr")
+expand_mode = 1

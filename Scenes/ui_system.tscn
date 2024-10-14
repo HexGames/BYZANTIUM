@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://vh0pcrygv61d"]
+[gd_scene load_steps=32 format=3 uid="uid://vh0pcrygv61d"]
 
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_da3wx"]
 [ext_resource type="Script" path="res://Scripts/UI/Star/UISelectedStar.cs" id="1_y20ct"]
@@ -8,11 +8,10 @@
 [ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="5_57s8b"]
 [ext_resource type="Texture2D" uid="uid://okvyhvbf0rju" path="res://Assets/UI/Symbols/Pops.png" id="5_msjkl"]
 [ext_resource type="Texture2D" uid="uid://bbagni3jxhnj7" path="res://Assets/UI/Round.png" id="6_5ol1l"]
-[ext_resource type="Texture2D" uid="uid://bkwxg68uku243" path="res://Assets/Planets/Terra.png" id="7_pns0i"]
+[ext_resource type="Texture2D" uid="uid://bkwxg68uku243" path="res://Assets/Planets/UI/Terra.png" id="7_pns0i"]
 [ext_resource type="Texture2D" uid="uid://cyc8pd0nsttod" path="res://Assets/UI/Symbols/PopsPrv.png" id="7_rmt7o"]
 [ext_resource type="Texture2D" uid="uid://e0pkpwa427r0" path="res://Assets/UI/Symbols/BC.png" id="8_h3yha"]
 [ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="9_n4gub"]
-[ext_resource type="Script" path="res://Scripts/UI/Progress/UIConstructionItem.cs" id="9_piiky"]
 [ext_resource type="Texture2D" uid="uid://bwb7yatk3sl06" path="res://Assets/UI/gradiaentRightWhite.png" id="10_eisl6"]
 [ext_resource type="Script" path="res://Scripts/UI/Star/UISelectedStarColonize.cs" id="10_ls2yp"]
 [ext_resource type="Script" path="res://Scripts/UI/Star/UISelectedStarSystem.cs" id="11_2kiiq"]
@@ -20,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://u06aop6n783b" path="res://Assets/UI/Symbols/Ship.png" id="15_85fgq"]
 [ext_resource type="Texture2D" uid="uid://d3ox4qo5b5ylv" path="res://Assets/UI/alert.png" id="16_5568u"]
 [ext_resource type="Texture2D" uid="uid://qvxxtu5jlkbt" path="res://Assets/UI/left.png" id="16_r5r1u"]
+[ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="17_f6tdb"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="18_ercnh"]
+[ext_resource type="Script" path="res://Scripts/UI/Progress/UIProgressBar.cs" id="20_7qxtm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aj42a"]
 
@@ -1244,6 +1246,21 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Income"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+
 [node name="Line1" type="ColorRect" parent="VBoxContainer/System/Income/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(2, 32)
 layout_mode = 2
@@ -1263,54 +1280,76 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Production" type="VBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("ColonizeBg", "ColonizeFocus", "ColonizeProject", "ColonizePlanetTex", "ColonizePlanetName", "ColonizeBuildingTex", "ColonizeBuildingName", "ColonizeProgressCurrent", "ColonizeProgressNextTurn", "ColonizeProgressValue", "ColonizeAlert", "ColonizeAlertPlanet", "ColonizeAlertProject", "ColonizeBonusBg", "ColonizeBonus", "FactoriesBg", "FactoriesFocus", "FactoriesResults", "FactoriesBonusBg", "FactoriesBonus", "ResearchBg", "ResearchFocus", "ResearchResults", "ResearchBonusBg", "ResearchBonus", "CultureBg", "CultureFocus", "CultureResults", "CultureBonusBg", "CultureBonus", "ShipsBg", "ShipsFocus", "ShipsTex", "ShipsName", "ShipsProgressCurrent", "ShipsProgressNextTurn", "ShipsProgressValue", "ShipsBonusBg", "ShipsBonus", "BasesBg", "BasesFocus", "BasesResults", "BasesBonusBg", "BasesBonus")]
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Production"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+
+[node name="Production" type="VBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("ColonizeBg", "ColonizeFocus", "ColonizeFocusPip", "ColonizeFocusToolTip", "DistrictsProject", "DistrictsPlanetTex", "DistrictsBuildingTex", "DistrictsBuildingName", "DistrictsProgressCurrent", "DistrictsProgressNextTurn", "DistrictsProgressValue", "DistrictsToolTip", "DistrictsAlert", "DistrictsAlertPlanet", "DistrictsAlertProject", "ColonizeBonusBg", "ColonizeBonus", "ColonizeBonusToolTip", "FactoriesBg", "FactoriesFocusBtn", "FactoriesFocus", "FactoriesFocusPip", "FactoriesFocusToolTip", "FactoriesResults", "FactoriesMax", "FactoriesToolTip", "FactoriesBonusBg", "FactoriesBonus", "FactoriesBonusToolTip", "ResearchBg", "ResearchFocus", "ResearchFocusPip", "ResearchFocusToolTip", "ResearchResults", "ResearchToolTip", "ResearchBonusBg", "ResearchBonus", "ResearchBonusToolTip", "ShipsBg", "ShipsFocus", "ShipsFocusPip", "ShipsFocusToolTip", "ShipsTex", "ShipsName", "ShipsProgressCurrent", "ShipsProgressNextTurn", "ShipsProgressValue", "ShipsToolTip", "ShipsBonusBg", "ShipsBonus", "ShipsBonusToolTip")]
 layout_mode = 2
 theme_override_constants/separation = 8
 script = ExtResource("13_xqmav")
 ColonizeBg = NodePath("Develoopment")
-ColonizeFocus = NodePath("Develoopment/ButtonBg/Button/Value")
-ColonizeProject = NodePath("Develoopment/Project")
-ColonizePlanetTex = NodePath("Develoopment/Project/Working/HBoxContainer/PlanetTexture")
-ColonizePlanetName = NodePath("Develoopment/Project/Working/HBoxContainer/PlanetName")
-ColonizeBuildingTex = NodePath("Develoopment/Project/Working/HBoxContainer/BuildingTexture")
-ColonizeBuildingName = NodePath("Develoopment/Project/Working/HBoxContainer/BuildingName")
-ColonizeProgressCurrent = NodePath("Develoopment/Project/Working/Item_Current/MarginContainer/Panel/Progress")
-ColonizeProgressNextTurn = NodePath("Develoopment/Project/Working/Item_Current/MarginContainer/Panel/NextTurn")
-ColonizeProgressValue = NodePath("Develoopment/Project/Working/Item_Current/MarginContainer/Panel/Turns")
-ColonizeAlert = NodePath("Develoopment/Alert")
-ColonizeAlertPlanet = NodePath("Develoopment/SelectPlanet")
-ColonizeAlertProject = NodePath("Develoopment/SelectProject")
-ColonizeBonusBg = NodePath("Develoopment/Top")
-ColonizeBonus = NodePath("Develoopment/Top/Bonus")
+ColonizeFocus = NodePath("Develoopment/Focus/Button/Value")
+ColonizeFocusPip = NodePath("Develoopment/Focus/Button/Pip")
+ColonizeFocusToolTip = NodePath("Develoopment/Focus/Button/ToolTip")
+DistrictsProject = NodePath("Develoopment/Project")
+DistrictsPlanetTex = NodePath("Develoopment/Project/Working/HBoxContainer/PlanetTexture")
+DistrictsBuildingTex = NodePath("Develoopment/Project/Working/HBoxContainer/BuildingTexture")
+DistrictsBuildingName = NodePath("Develoopment/Project/Working/HBoxContainer/BuildingName")
+DistrictsProgressCurrent = NodePath("Develoopment/Project/Working/Item_Current/MarginContainer/Panel/Progress")
+DistrictsProgressNextTurn = NodePath("Develoopment/Project/Working/Item_Current/MarginContainer/Panel/NextTurn")
+DistrictsProgressValue = NodePath("Develoopment/Project/Working/Item_Current/MarginContainer/Panel/Turns")
+DistrictsToolTip = NodePath("Develoopment/Project/Working/Item_Current/ToolTip")
+DistrictsAlert = NodePath("Develoopment/Alert")
+DistrictsAlertPlanet = NodePath("Develoopment/SelectPlanet")
+DistrictsAlertProject = NodePath("Develoopment/SelectProject")
+ColonizeBonusBg = NodePath("Develoopment/Bonus")
+ColonizeBonus = NodePath("Develoopment/Bonus/Bonus")
+ColonizeBonusToolTip = NodePath("Develoopment/Bonus/Bonus/ToolTip")
 FactoriesBg = NodePath("Factories")
-FactoriesFocus = NodePath("Factories/ButtonBg/Button/Value")
+FactoriesFocusBtn = NodePath("Factories/Focus/Button")
+FactoriesFocus = NodePath("Factories/Focus/Button/Value")
+FactoriesFocusPip = NodePath("Factories/Focus/Button/Pip")
+FactoriesFocusToolTip = NodePath("Factories/Focus/Button/ToolTip")
 FactoriesResults = NodePath("Factories/VBoxContainer/Results")
-FactoriesBonusBg = NodePath("Factories/Top")
-FactoriesBonus = NodePath("Factories/Top/Bonus")
+FactoriesMax = NodePath("Factories/VBoxContainer/Max")
+FactoriesToolTip = NodePath("Factories/VBoxContainer/Results/ToolTip")
+FactoriesBonusBg = NodePath("Factories/Bonus")
+FactoriesBonus = NodePath("Factories/Bonus/Bonus")
+FactoriesBonusToolTip = NodePath("Factories/Bonus/Bonus/ToolTip")
 ResearchBg = NodePath("Research")
-ResearchFocus = NodePath("Research/ButtonBg/Button/Value")
+ResearchFocus = NodePath("Research/Focus/Button/Value")
+ResearchFocusPip = NodePath("Research/Focus/Button/Pip")
+ResearchFocusToolTip = NodePath("Research/Focus/Button/ToolTip")
 ResearchResults = NodePath("Research/VBoxContainer/Results")
-ResearchBonusBg = NodePath("Research/Top")
-ResearchBonus = NodePath("Research/Top/Bonus")
-CultureBg = NodePath("Culture")
-CultureFocus = NodePath("Culture/ButtonBg/Button/Value")
-CultureResults = NodePath("Culture/VBoxContainer/Results")
-CultureBonusBg = NodePath("Culture/Top")
-CultureBonus = NodePath("Culture/Top/Bonus")
+ResearchToolTip = NodePath("Research/VBoxContainer/Results/ToolTip")
+ResearchBonusBg = NodePath("Research/Bonus")
+ResearchBonus = NodePath("Research/Bonus/Bonus")
+ResearchBonusToolTip = NodePath("Research/Bonus/Bonus/ToolTip")
 ShipsBg = NodePath("Shipbuilding")
-ShipsFocus = NodePath("Shipbuilding/ButtonBg/Button/Value")
+ShipsFocus = NodePath("Shipbuilding/Focus/Button/Value")
+ShipsFocusPip = NodePath("Shipbuilding/Focus/Button/Pip")
+ShipsFocusToolTip = NodePath("Shipbuilding/Focus/Button/ToolTip")
 ShipsTex = NodePath("Shipbuilding/VBoxContainer/Working/Ship/HBoxContainer/TextureRect")
 ShipsName = NodePath("Shipbuilding/VBoxContainer/Working/Ship/HBoxContainer/Name")
 ShipsProgressCurrent = NodePath("Shipbuilding/VBoxContainer/Working/Item_Current/MarginContainer/Panel/Progress")
 ShipsProgressNextTurn = NodePath("Shipbuilding/VBoxContainer/Working/Item_Current/MarginContainer/Panel/NextTurn")
 ShipsProgressValue = NodePath("Shipbuilding/VBoxContainer/Working/Item_Current/MarginContainer/Panel/Turns")
-ShipsBonusBg = NodePath("Shipbuilding/Top")
-ShipsBonus = NodePath("Shipbuilding/Top/Bonus")
-BasesBg = NodePath("Bases")
-BasesFocus = NodePath("Bases/ButtonBg/Button/Value")
-BasesResults = NodePath("Bases/VBoxContainer/Reults")
-BasesBonusBg = NodePath("Bases/Top")
-BasesBonus = NodePath("Bases/Top/Bonus")
+ShipsToolTip = NodePath("Shipbuilding/VBoxContainer/Working/Item_Current/ToolTip")
+ShipsBonusBg = NodePath("Shipbuilding/Bonus")
+ShipsBonus = NodePath("Shipbuilding/Bonus/Bonus")
+ShipsBonusToolTip = NodePath("Shipbuilding/Bonus/Bonus/ToolTip")
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/Production"]
 custom_minimum_size = Vector2(0, 2)
@@ -1322,47 +1361,117 @@ custom_minimum_size = Vector2(0, 84)
 layout_mode = 2
 theme = ExtResource("9_n4gub")
 
-[node name="Top" type="Panel" parent="VBoxContainer/Production/Develoopment"]
-custom_minimum_size = Vector2(80, 24)
+[node name="Focus" type="Control" parent="VBoxContainer/Production/Develoopment"]
+custom_minimum_size = Vector2(40, 60)
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme = ExtResource("9_n4gub")
-theme_type_variation = &"PanelSmall"
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
 
-[node name="Bonus" type="RichTextLabel" parent="VBoxContainer/Production/Develoopment/Top"]
-custom_minimum_size = Vector2(0, 24)
+[node name="Button" type="Button" parent="VBoxContainer/Production/Develoopment/Focus"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("5_57s8b")
+theme_type_variation = &"RoundGrey"
+
+[node name="Pip" type="TextureRect" parent="VBoxContainer/Production/Develoopment/Focus/Button"]
+visible = false
+self_modulate = Color(0.686275, 0.431373, 0.156863, 1)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_a1thb")
+texture = ExtResource("6_5ol1l")
+expand_mode = 1
+
+[node name="Value" type="RichTextLabel" parent="VBoxContainer/Production/Develoopment/Focus/Button"]
+custom_minimum_size = Vector2(26, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = -4.0
+offset_bottom = -2.0
+grow_vertical = 2
+theme = ExtResource("9_n4gub")
+theme_override_colors/default_color = Color(0.686275, 0.431373, 0.156863, 1)
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
-text = "[right][b]$b%[img=24x24]Assets/UI/Symbols/Building.png[/img][/b][/right]"
+text = "$v"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
 
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Develoopment/Focus/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Focus on Colonization"
+Row_1 = "Focus on creating new Districts and Colonies."
+Row_2 = "Current focus:"
+Row_2_Right = "$v"
+Row_3 = "Base focus:
+From Colonies:
+From Chosen Focus:"
+Row_3_Right = "$b
+$c
+$f"
+
 [node name="Project" type="VBoxContainer" parent="VBoxContainer/Production/Develoopment"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 2
 
 [node name="Gap_1" type="Control" parent="VBoxContainer/Production/Develoopment/Project"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Working" type="VBoxContainer" parent="VBoxContainer/Production/Develoopment/Project"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Production/Develoopment/Project/Working"]
 layout_mode = 2
-alignment = 2
+mouse_filter = 2
+
+[node name="Gap_3" type="Control" parent="VBoxContainer/Production/Develoopment/Project/Working/HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+mouse_filter = 2
 
 [node name="PlanetTexture" type="TextureRect" parent="VBoxContainer/Production/Develoopment/Project/Working/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
@@ -1373,6 +1482,7 @@ texture = ExtResource("7_pns0i")
 expand_mode = 1
 
 [node name="PlanetName" type="RichTextLabel" parent="VBoxContainer/Production/Develoopment/Project/Working/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(64, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1385,6 +1495,7 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="Gap_2" type="Control" parent="VBoxContainer/Production/Develoopment/Project/Working/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
@@ -1397,7 +1508,7 @@ texture = ExtResource("8_h3yha")
 expand_mode = 1
 
 [node name="BuildingName" type="RichTextLabel" parent="VBoxContainer/Production/Develoopment/Project/Working/HBoxContainer"]
-custom_minimum_size = Vector2(84, 20)
+custom_minimum_size = Vector2(176, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -1405,7 +1516,7 @@ mouse_filter = 2
 theme = ExtResource("2_a1thb")
 bbcode_enabled = true
 text = "[left][b]$name[/b][/left]"
-fit_content = true
+scroll_active = false
 autowrap_mode = 0
 
 [node name="Item_Current" type="Button" parent="VBoxContainer/Production/Develoopment/Project/Working"]
@@ -1443,7 +1554,7 @@ mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_q7gws")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0xqbp")
 step = 1.0
-value = 55.0
+value = 75.0
 show_percentage = false
 
 [node name="Progress" type="ProgressBar" parent="VBoxContainer/Production/Develoopment/Project/Working/Item_Current/MarginContainer/Panel"]
@@ -1478,69 +1589,76 @@ theme = ExtResource("2_a1thb")
 bbcode_enabled = true
 text = "[center][b]$value[img=24x24]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
 
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Develoopment/Project/Working/Item_Current"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonization Progress"
+Row_1 = "Progress:"
+Row_1_Right = "$v[img=24x24]Assets/UI/Symbols/Prod.png[/img]/$t[img=24x24]Assets/UI/Symbols/Prod.png[/img]"
+Row_2 = "Progress per turn:"
+Row_2_Right = "$v[img=24x24]Assets/UI/Symbols/Prod.png[/img]"
+Row_3 = "From System Focus
+$p% of Total [img=24x24]Assets/UI/Symbols/Prod.png[/img]
+From Colonies
+Bonus"
+Row_3_Right = "
+$f[img=24x24]Assets/UI/Symbols/Prod.png[/img]
+$c[img=24x24]Assets/UI/Symbols/Prod.png[/img]
+$b%"
+
 [node name="Gap_4" type="Control" parent="VBoxContainer/Production/Develoopment/Project"]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="ButtonBg" type="Control" parent="VBoxContainer/Production/Develoopment"]
-custom_minimum_size = Vector2(40, 60)
+[node name="Bonus" type="Panel" parent="VBoxContainer/Production/Develoopment"]
+custom_minimum_size = Vector2(80, 24)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("9_n4gub")
+theme_type_variation = &"PanelSmall"
 
-[node name="Button" type="Button" parent="VBoxContainer/Production/Develoopment/ButtonBg"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Bonus" type="RichTextLabel" parent="VBoxContainer/Production/Develoopment/Bonus"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -32.0
-offset_bottom = 32.0
-grow_horizontal = 0
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme = ExtResource("5_57s8b")
-theme_type_variation = &"RoundGrey"
-
-[node name="Pip" type="TextureRect" parent="VBoxContainer/Production/Develoopment/ButtonBg/Button"]
-self_modulate = Color(0.686275, 0.431373, 0.156863, 1)
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_5ol1l")
-expand_mode = 1
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/Production/Develoopment/ButtonBg/Button"]
-custom_minimum_size = Vector2(26, 16)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -2.0
-offset_right = -4.0
-offset_bottom = -2.0
+grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("9_n4gub")
-theme_override_colors/default_color = Color(0.686275, 0.431373, 0.156863, 1)
-theme_override_font_sizes/normal_font_size = 14
+theme = ExtResource("2_a1thb")
 bbcode_enabled = true
-text = "$v"
+text = "[right][b]$b%[img=24x24]Assets/UI/Symbols/Building.png[/img][/b][/right]"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Develoopment/Bonus/Bonus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize Bonus"
+Row_1 = "From Colony"
+Row_1_Right = "+$c%"
 
 [node name="Button" type="Button" parent="VBoxContainer/Production/Develoopment"]
 visible = false
@@ -1578,6 +1696,7 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme = ExtResource("2_a1thb")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Select a Planet[/center]"
 fit_content = true
@@ -1591,8 +1710,9 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme = ExtResource("2_a1thb")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center]Select a Project[/center]"
+text = "[center]Add a new District[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -1621,7 +1741,174 @@ custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = ExtResource("9_n4gub")
 
-[node name="Top" type="Panel" parent="VBoxContainer/Production/Factories"]
+[node name="Focus" type="Control" parent="VBoxContainer/Production/Factories"]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Production/Factories/Focus"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("5_57s8b")
+theme_type_variation = &"RoundGrey"
+
+[node name="Pip" type="TextureRect" parent="VBoxContainer/Production/Factories/Focus/Button"]
+visible = false
+self_modulate = Color(0.686275, 0.431373, 0.156863, 1)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_5ol1l")
+expand_mode = 1
+
+[node name="Value" type="RichTextLabel" parent="VBoxContainer/Production/Factories/Focus/Button"]
+custom_minimum_size = Vector2(26, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = -4.0
+offset_bottom = -2.0
+grow_vertical = 2
+theme = ExtResource("9_n4gub")
+theme_override_colors/default_color = Color(0.686275, 0.431373, 0.156863, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "$v"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Factories/Focus/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Focus on Factories"
+Row_1 = "Focus on creating new Factorie."
+Row_2 = "Current focus:"
+Row_2_Right = "$v"
+Row_3 = "Base focus:
+From Colonies:
+From Chosen Focus:"
+Row_3_Right = "$b
+$c
+$f"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Production/Factories"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Results" type="RichTextLabel" parent="VBoxContainer/Production/Factories/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("9_n4gub")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center]+$v[img=32x32]Assets/UI/Symbols/ProdCap.png[/img]/[img=32x32]Assets/UI/Symbols/Turn.png[/img][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Factories/VBoxContainer/Results"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Build Factories"
+Row_1 = "Progress per turn:"
+Row_1_Right = "$v[img=24x24]Assets/UI/Symbols/Prod.png[/img]"
+Row_2 = "From System Focus
+$p% of Total [img=24x24]Assets/UI/Symbols/Prod.png[/img]
+From Colonies
+Bonus"
+Row_2_Right = "
+$f[img=24x24]Assets/UI/Symbols/Prod.png[/img]
+$c[img=24x24]Assets/UI/Symbols/Prod.png[/img]
+$b%"
+
+[node name="Max" type="RichTextLabel" parent="VBoxContainer/Production/Factories/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("9_n4gub")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][img=32x32]Assets/UI/Symbols/ProdCap.png[/img]Max[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("18_ercnh")
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Factories/VBoxContainer/Max"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Max Factories"
+Row_1 = "Cannot build any more factories in this system."
+
+[node name="Bonus" type="Panel" parent="VBoxContainer/Production/Factories"]
 custom_minimum_size = Vector2(80, 24)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -1629,13 +1916,12 @@ size_flags_vertical = 0
 theme = ExtResource("9_n4gub")
 theme_type_variation = &"PanelSmall"
 
-[node name="Bonus" type="RichTextLabel" parent="VBoxContainer/Production/Factories/Top"]
+[node name="Bonus" type="RichTextLabel" parent="VBoxContainer/Production/Factories/Bonus"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_a1thb")
@@ -1644,139 +1930,36 @@ text = "[right][b]$b%[img=24x24]Assets/UI/Symbols/ProdCap.png[/img][/b][/right]
 "
 scroll_active = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Production/Factories"]
-layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Results" type="RichTextLabel" parent="VBoxContainer/Production/Factories/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("9_n4gub")
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-bbcode_enabled = true
-text = "[center]+$v[img=32x32]Assets/UI/Symbols/ProdCap.png[/img] in $t[img=32x32]Assets/UI/Symbols/Turn.png[/img][/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="ButtonBg" type="Control" parent="VBoxContainer/Production/Factories"]
-custom_minimum_size = Vector2(40, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="Button" type="Button" parent="VBoxContainer/Production/Factories/ButtonBg"]
-custom_minimum_size = Vector2(32, 32)
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Factories/Bonus/Bonus"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -16.0
-offset_bottom = 16.0
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme = ExtResource("5_57s8b")
-theme_type_variation = &"RoundGrey"
-
-[node name="Pip" type="TextureRect" parent="VBoxContainer/Production/Factories/ButtonBg/Button"]
-self_modulate = Color(0.686275, 0.431373, 0.156863, 1)
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_5ol1l")
-expand_mode = 1
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/Production/Factories/ButtonBg/Button"]
-custom_minimum_size = Vector2(26, 16)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -2.0
-offset_right = -4.0
-offset_bottom = -2.0
+grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("9_n4gub")
-theme_override_colors/default_color = Color(0.686275, 0.431373, 0.156863, 1)
-theme_override_font_sizes/normal_font_size = 14
-bbcode_enabled = true
-text = "$v"
-scroll_active = false
-autowrap_mode = 0
-shortcut_keys_enabled = false
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Build Factories Bonus"
+Row_1 = "From Colony"
+Row_1_Right = "+$c%"
 
 [node name="Research" type="PanelContainer" parent="VBoxContainer/Production"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = ExtResource("9_n4gub")
 
-[node name="Top" type="Panel" parent="VBoxContainer/Production/Research"]
-custom_minimum_size = Vector2(80, 24)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme = ExtResource("9_n4gub")
-theme_type_variation = &"PanelSmall"
-
-[node name="Bonus" type="RichTextLabel" parent="VBoxContainer/Production/Research/Top"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_a1thb")
-bbcode_enabled = true
-text = "[right][b]$b%[img=24x24]Assets/UI/Symbols/Research.png[/img][/b][/right]"
-scroll_active = false
-autowrap_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Production/Research"]
-layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Results" type="RichTextLabel" parent="VBoxContainer/Production/Research/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("9_n4gub")
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-bbcode_enabled = true
-text = "[center]+$val[img=32x32]Assets/UI/Symbols/Research.png[/img][/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="ButtonBg" type="Control" parent="VBoxContainer/Production/Research"]
+[node name="Focus" type="Control" parent="VBoxContainer/Production/Research"]
 custom_minimum_size = Vector2(40, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+mouse_filter = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/Production/Research/ButtonBg"]
+[node name="Button" type="Button" parent="VBoxContainer/Production/Research/Focus"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 6
@@ -1794,7 +1977,8 @@ size_flags_vertical = 4
 theme = ExtResource("5_57s8b")
 theme_type_variation = &"RoundGrey"
 
-[node name="Pip" type="TextureRect" parent="VBoxContainer/Production/Research/ButtonBg/Button"]
+[node name="Pip" type="TextureRect" parent="VBoxContainer/Production/Research/Focus/Button"]
+visible = false
 self_modulate = Color(0.686275, 0.431373, 0.156863, 1)
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
@@ -1812,7 +1996,7 @@ grow_vertical = 2
 texture = ExtResource("6_5ol1l")
 expand_mode = 1
 
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/Production/Research/ButtonBg/Button"]
+[node name="Value" type="RichTextLabel" parent="VBoxContainer/Production/Research/Focus/Button"]
 custom_minimum_size = Vector2(26, 16)
 layout_mode = 1
 anchors_preset = -1
@@ -1834,7 +2018,117 @@ scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
 
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Research/Focus/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Focus on Research"
+Row_1 = "Focus on creating Research."
+Row_2 = "Current focus:"
+Row_2_Right = "$v"
+Row_3 = "Base focus:
+From Colonies:
+From Chosen Focus:"
+Row_3_Right = "$b
+$c
+$f"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Production/Research"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Results" type="RichTextLabel" parent="VBoxContainer/Production/Research/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("9_n4gub")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center]+$v[img=32x32]Assets/UI/Symbols/Research.png[/img][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Research/VBoxContainer/Results"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Research"
+Row_1 = "Research per turn:"
+Row_1_Right = "$v[img=24x24]Assets/UI/Symbols/Research.png[/img]"
+Row_2 = "From System Focus
+$p% of Total [img=24x24]Assets/UI/Symbols/Research.png[/img]
+From Colonies
+Bonus"
+Row_2_Right = "
+$f[img=24x24]Assets/UI/Symbols/Research.png[/img]
+$c[img=24x24]Assets/UI/Symbols/Research.png[/img]
+$b%"
+
+[node name="Bonus" type="Panel" parent="VBoxContainer/Production/Research"]
+custom_minimum_size = Vector2(80, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+theme = ExtResource("9_n4gub")
+theme_type_variation = &"PanelSmall"
+
+[node name="Bonus" type="RichTextLabel" parent="VBoxContainer/Production/Research/Bonus"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("2_a1thb")
+bbcode_enabled = true
+text = "[right][b]$b%[img=24x24]Assets/UI/Symbols/Research.png[/img][/b][/right]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Research/Bonus/Bonus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Research Bonus"
+Row_1 = "From Colony"
+Row_1_Right = "+$c%"
+
 [node name="Culture" type="PanelContainer" parent="VBoxContainer/Production"]
+visible = false
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = ExtResource("9_n4gub")
@@ -1948,31 +2242,95 @@ shortcut_keys_enabled = false
 layout_mode = 2
 theme = ExtResource("9_n4gub")
 
-[node name="Top" type="Panel" parent="VBoxContainer/Production/Shipbuilding"]
-custom_minimum_size = Vector2(80, 24)
+[node name="Focus" type="Control" parent="VBoxContainer/Production/Shipbuilding"]
+custom_minimum_size = Vector2(40, 52)
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme = ExtResource("9_n4gub")
-theme_type_variation = &"PanelSmall"
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
 
-[node name="Bonus" type="RichTextLabel" parent="VBoxContainer/Production/Shipbuilding/Top"]
+[node name="Button" type="Button" parent="VBoxContainer/Production/Shipbuilding/Focus"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("5_57s8b")
+theme_type_variation = &"RoundGrey"
+
+[node name="Pip" type="TextureRect" parent="VBoxContainer/Production/Shipbuilding/Focus/Button"]
+visible = false
+self_modulate = Color(0.686275, 0.431373, 0.156863, 1)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_a1thb")
+texture = ExtResource("6_5ol1l")
+expand_mode = 1
+
+[node name="Value" type="RichTextLabel" parent="VBoxContainer/Production/Shipbuilding/Focus/Button"]
+custom_minimum_size = Vector2(26, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = -4.0
+offset_bottom = -2.0
+grow_vertical = 2
+theme = ExtResource("9_n4gub")
+theme_override_colors/default_color = Color(0.686275, 0.431373, 0.156863, 1)
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
-text = "[right][b]$b%[img=24x24]Assets/UI/Symbols/Ship.png[/img][/b][/right]"
-fit_content = true
+text = "$v"
 scroll_active = false
 autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Shipbuilding/Focus/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Focus on Shipbuilding"
+Row_1 = "Focus on creating Ships."
+Row_2 = "Current focus:"
+Row_2_Right = "$v"
+Row_3 = "Base focus:
+From Colonies:
+From Chosen Focus:"
+Row_3_Right = "$b
+$c
+$f"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Production/Shipbuilding"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 2
 
@@ -1984,11 +2342,13 @@ layout_mode = 2
 [node name="Working" type="VBoxContainer" parent="VBoxContainer/Production/Shipbuilding/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Ship" type="HBoxContainer" parent="VBoxContainer/Production/Shipbuilding/VBoxContainer/Working"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="LeftBg" type="Control" parent="VBoxContainer/Production/Shipbuilding/VBoxContainer/Working/Ship"]
@@ -2098,7 +2458,7 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("5_57s8b")
 theme_type_variation = &"Dragable"
-script = ExtResource("9_piiky")
+script = ExtResource("20_7qxtm")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Production/Shipbuilding/VBoxContainer/Working/Item_Current"]
 layout_mode = 1
@@ -2164,69 +2524,75 @@ theme = ExtResource("2_a1thb")
 bbcode_enabled = true
 text = "[center][b]$value[img=24x24]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
 
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Shipbuilding/VBoxContainer/Working/Item_Current"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Shipbuilding Progress"
+Row_1 = "Progress:"
+Row_1_Right = "$v[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]/$t[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]"
+Row_2 = "Progress per turn:"
+Row_2_Right = "$v[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]"
+Row_3 = "From System Focus
+$p% of Total [img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+From Colonies
+Bonus"
+Row_3_Right = "
+$f[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+$c[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+$b%"
+
 [node name="Gap_4" type="Control" parent="VBoxContainer/Production/Shipbuilding/VBoxContainer"]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="ButtonBg" type="Control" parent="VBoxContainer/Production/Shipbuilding"]
-custom_minimum_size = Vector2(40, 52)
+[node name="Bonus" type="Panel" parent="VBoxContainer/Production/Shipbuilding"]
+custom_minimum_size = Vector2(80, 24)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("9_n4gub")
+theme_type_variation = &"PanelSmall"
 
-[node name="Button" type="Button" parent="VBoxContainer/Production/Shipbuilding/ButtonBg"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Bonus" type="RichTextLabel" parent="VBoxContainer/Production/Shipbuilding/Bonus"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -32.0
-offset_bottom = 32.0
-grow_horizontal = 0
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme = ExtResource("5_57s8b")
-theme_type_variation = &"RoundGrey"
-
-[node name="Pip" type="TextureRect" parent="VBoxContainer/Production/Shipbuilding/ButtonBg/Button"]
-self_modulate = Color(0.686275, 0.431373, 0.156863, 1)
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_5ol1l")
-expand_mode = 1
-
-[node name="Value" type="RichTextLabel" parent="VBoxContainer/Production/Shipbuilding/ButtonBg/Button"]
-custom_minimum_size = Vector2(26, 16)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -2.0
-offset_right = -4.0
-offset_bottom = -2.0
+grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("9_n4gub")
-theme_override_colors/default_color = Color(0.686275, 0.431373, 0.156863, 1)
-theme_override_font_sizes/normal_font_size = 14
+theme = ExtResource("2_a1thb")
 bbcode_enabled = true
-text = "$v"
+text = "[right][b]$b%[img=24x24]Assets/UI/Symbols/Ship.png[/img][/b][/right]"
+fit_content = true
 scroll_active = false
 autowrap_mode = 0
-shortcut_keys_enabled = false
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Production/Shipbuilding/Bonus/Bonus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize Bonus"
+Row_1 = "From Colony"
+Row_1_Right = "+$c%"
 
 [node name="Bases" type="PanelContainer" parent="VBoxContainer/Production"]
 visible = false
@@ -2341,3 +2707,37 @@ autowrap_mode = 0
 shortcut_keys_enabled = false
 
 [connection signal="pressed" from="VBoxContainer/UncolonizedStar/Colonize/ColonizeBtn" to="VBoxContainer/UncolonizedStar" method="OnColonize"]
+[connection signal="mouse_entered" from="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Income/ToolTip" to="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Income/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Income/ToolTip" to="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Income/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Production/ToolTip" to="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Production/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Production/ToolTip" to="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Production/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/Production/Develoopment/Focus/Button" to="VBoxContainer/Production" method="OnFocusColonize"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Develoopment/Focus/Button/ToolTip" to="VBoxContainer/Production/Develoopment/Focus/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Develoopment/Focus/Button/ToolTip" to="VBoxContainer/Production/Develoopment/Focus/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Develoopment/Project/Working/Item_Current/ToolTip" to="VBoxContainer/Production/Develoopment/Project/Working/Item_Current/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Develoopment/Project/Working/Item_Current/ToolTip" to="VBoxContainer/Production/Develoopment/Project/Working/Item_Current/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Develoopment/Bonus/Bonus/ToolTip" to="VBoxContainer/Production/Develoopment/Bonus/Bonus/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Develoopment/Bonus/Bonus/ToolTip" to="VBoxContainer/Production/Develoopment/Bonus/Bonus/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/Production/Factories/Focus/Button" to="VBoxContainer/Production" method="OnFocusFactories"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Factories/Focus/Button/ToolTip" to="VBoxContainer/Production/Factories/Focus/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Factories/Focus/Button/ToolTip" to="VBoxContainer/Production/Factories/Focus/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Factories/VBoxContainer/Results/ToolTip" to="VBoxContainer/Production/Factories/VBoxContainer/Results/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Factories/VBoxContainer/Results/ToolTip" to="VBoxContainer/Production/Factories/VBoxContainer/Results/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Factories/VBoxContainer/Max/ToolTip" to="VBoxContainer/Production/Factories/VBoxContainer/Max/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Factories/VBoxContainer/Max/ToolTip" to="VBoxContainer/Production/Factories/VBoxContainer/Max/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Factories/Bonus/Bonus/ToolTip" to="VBoxContainer/Production/Factories/Bonus/Bonus/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Factories/Bonus/Bonus/ToolTip" to="VBoxContainer/Production/Factories/Bonus/Bonus/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/Production/Research/Focus/Button" to="VBoxContainer/Production" method="OnFocusResearch"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Research/Focus/Button/ToolTip" to="VBoxContainer/Production/Research/Focus/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Research/Focus/Button/ToolTip" to="VBoxContainer/Production/Research/Focus/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Research/VBoxContainer/Results/ToolTip" to="VBoxContainer/Production/Research/VBoxContainer/Results/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Research/VBoxContainer/Results/ToolTip" to="VBoxContainer/Production/Research/VBoxContainer/Results/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Research/Bonus/Bonus/ToolTip" to="VBoxContainer/Production/Research/Bonus/Bonus/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Research/Bonus/Bonus/ToolTip" to="VBoxContainer/Production/Research/Bonus/Bonus/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/Production/Shipbuilding/Focus/Button" to="VBoxContainer/Production" method="OnFocusShips"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Shipbuilding/Focus/Button/ToolTip" to="VBoxContainer/Production/Shipbuilding/Focus/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Shipbuilding/Focus/Button/ToolTip" to="VBoxContainer/Production/Shipbuilding/Focus/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Shipbuilding/VBoxContainer/Working/Item_Current/ToolTip" to="VBoxContainer/Production/Shipbuilding/VBoxContainer/Working/Item_Current/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Shipbuilding/VBoxContainer/Working/Item_Current/ToolTip" to="VBoxContainer/Production/Shipbuilding/VBoxContainer/Working/Item_Current/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Production/Shipbuilding/Bonus/Bonus/ToolTip" to="VBoxContainer/Production/Shipbuilding/Bonus/Bonus/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Production/Shipbuilding/Bonus/Bonus/ToolTip" to="VBoxContainer/Production/Shipbuilding/Bonus/Bonus/ToolTip" method="OnHoverExit"]

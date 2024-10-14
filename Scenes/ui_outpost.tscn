@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/Build/UIBuildingsItem.cs" id="3_rdrie"]
 [ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="4_wpcc3"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="5_0lt76"]
-[ext_resource type="Texture2D" uid="uid://wd744unakx1k" path="res://Assets/Planets/Desert.png" id="6_8fs6g"]
+[ext_resource type="Texture2D" uid="uid://wd744unakx1k" path="res://Assets/Planets/UI/Desert.png" id="6_8fs6g"]
 [ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="7_6r5pj"]
 [ext_resource type="Texture2D" uid="uid://dqhju10mfykde" path="res://Assets/UI/arrow.png" id="9_633eu"]
 

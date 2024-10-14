@@ -55,16 +55,16 @@ public partial class TurnLoop : Node
     // ----------------------------------------------------------------------------------------------
     private IEnumerator<double> EndTurn_ActionsBuild()
     {
-        //for (int playerIdx = 0; playerIdx < Game.Map.Data.Players.Count; playerIdx++)
-        //{
-        //    PlayerData player = Game.Map.Data.Players[playerIdx];
-        //    for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
-        //    {
-        //        SectorData sector = player.Sectors[sectorIdx];
-        //
-        //        ActionBuild.EndTurn(Game, sector); // --- !!! ---
-        //    }
-        //}
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            {
+                SystemData system = player.Systems[systemIdx];
+        
+                ActionBuildDistrict.EndTurn(Game.self, system); // --- !!! ---
+            }
+        }
 
         yield return Timing.WaitForOneFrame;
     }
@@ -138,28 +138,10 @@ public partial class TurnLoop : Node
     // ----------------------------------------------------------------------------------------------
     private void StartTurn_Resources()
     {
-        for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
-        {
-            StarData star = Game.self.Map.Data.Stars[starIdx];
-            for (int planetIdx = 0; planetIdx < star.Planets.Count; planetIdx++)
-            {
-                PlanetData planet = star.Planets[planetIdx];
-                //planet.BaseResources_PerTurn.Clear();
-                for (int featuresIdx = 0; featuresIdx < planet.Data.Subs.Count; featuresIdx++)
-                {
-                    DefFeatureWrapper featureInfo =  Game.self.Def.GetFeatureInfo(planet.Data.Subs[featuresIdx].Name);
-                    if (featureInfo != null)
-                    {
-                        //planet.BaseResources_PerTurn.Add(featureInfo.Benefit, false, true);
-                    }
-                }
-            }
-        }
-
         for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.self.Map.Data.Players[playerIdx];
-            player.Resources_PerTurn.Refresh();
+            //player.Resources_PerTurn.Refresh();
 
             //for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
             //{
@@ -173,49 +155,91 @@ public partial class TurnLoop : Node
                 system.Resources_PerTurn.Refresh();
                 system.Pops_PerTurn.Refresh();
                 system.Buildings_PerTurn.Refresh();
+                system.QueueDistricts_PerTurn.Refresh();
 
                 for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
                 {
                     ColonyData colony = system.Colonies[colonyIdx];
-                    //colony.Resources_PerTurn.Refresh();
+                    colony.Resources_PerTurn.Refresh();
                     colony.Pops_PerTurn.Refresh();
                     colony.Buildings_PerTurn.Refresh();
                     //colony.ActionsConPerTurn.Refresh();
-                    //colony.Resources_PerTurn.AddIncome(baseGrowth.Name, baseGrowth.ValueI);
 
-                    //DataBlock pops = colony.Resources.GetSub("Pops*Stockpile");
-                    //colony.Resources_PerTurn.AddTotal("BuildingSlots", pops.ValueI / 1000);
+                    // Add Features
+                    PlanetData planet = colony.Planet;
+                    for (int featureIdx = 0; featureIdx < planet.Features.Count; featureIdx++)
+                    {
+                        colony.Resources_PerTurn.AddResources_Features(planet.Features[featureIdx].FeatureDef.Res_PerSession);
+                    }
 
-                    //Array<DataBlock> buildings = colony.Buildings.GetSubs("Building");
-                    //int totalBuildings = 0;
-                    //for (int buildingIdx = 0; buildingIdx < buildings.Count; buildingIdx++)
-                    //{
-                    //    DefBuildingWrapper buildingInfo =  Game.Def.GetBuildingInfo(buildings[buildingIdx].ValueS);
-                    //    int buildingCount = buildings[buildingIdx].ValueI;
-                    //
-                    //    if (buildingInfo == null)
-                    //    {
-                    //        GD.Print("BUILDING NOT FOUND! - " + buildings[buildingIdx].Name);
-                    //        continue;
-                    //    }
-                    //
-                    //    if (buildingInfo.Benefit != null) colony.Resources_PerTurn.Add(buildingInfo.Benefit);
-                    //    //totalBuildings += buildingCount;
-                    //}
-                    //colony.Resources_PerTurn.Use("BuildingSlots", totalBuildings);
-
-                    //int popsControlled = 0;
-                    //if (colony.Resources_PerTurn.GetPops() != null)
-                    //{
-                    //    popsControlled = colony.Resources_PerTurn.GetPops().GetCPops();
-                    //    colony.Resources_PerTurn.ProcessGrowth();
-                    //}
-                    //
-                    //colony.Resources_PerTurn.ProcessIncome(); // --- !!! ---
-                    //system.Resources_PerTurn.Add(colony.Resources_PerTurn, true);
+                    // Add Districts
+                    for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
+                    {
+                        if (colony.Districts[districtIdx].IsFinishedDistrict())
+                        {
+                            colony.Resources_PerTurn.AddResources_Districts(colony.Districts[districtIdx], colony.Districts[districtIdx].DistrictDef.Res_PerSession);
+                        }
+                    }
                 }
-                system.Resources_PerTurn.ProcessIncome(); // --- !!! ---
-                player.Resources_PerTurn.Add(system.Resources_PerTurn);
+
+                // system income propagation
+                {
+                    // add up system income
+                    for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
+                    {
+                        ColonyData colony = system.Colonies[colonyIdx];
+                        system.Resources_PerTurn.AddSystemIncome(colony.Resources_PerTurn);
+                    }
+
+                    // add system income to each colony income
+                    for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
+                    {
+                        ColonyData colony = system.Colonies[colonyIdx];
+                        colony.Resources_PerTurn.AddSystemIncomeToColonies(system.Resources_PerTurn);
+                    }
+                }
+
+                // add colonies to system
+                for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
+                {
+                    ColonyData colony = system.Colonies[colonyIdx];
+                    system.Resources_PerTurn.AddColonyResources(colony);
+                }
+
+                //{
+                //DataBlock pops = colony.Resources.GetSub("Pops*Stockpile");
+                //colony.Resources_PerTurn.AddTotal("BuildingSlots", pops.ValueI / 1000);
+
+                //Array<DataBlock> buildings = colony.Buildings.GetSubs("Building");
+                //int totalBuildings = 0;
+                //for (int buildingIdx = 0; buildingIdx < buildings.Count; buildingIdx++)
+                //{
+                //    DefBuildingWrapper buildingInfo =  Game.Def.GetBuildingInfo(buildings[buildingIdx].ValueS);
+                //    int buildingCount = buildings[buildingIdx].ValueI;
+                //
+                //    if (buildingInfo == null)
+                //    {
+                //        GD.Print("BUILDING NOT FOUND! - " + buildings[buildingIdx].Name);
+                //        continue;
+                //    }
+                //
+                //    if (buildingInfo.Benefit != null) colony.Resources_PerTurn.Add(buildingInfo.Benefit);
+                //    //totalBuildings += buildingCount;
+                //}
+                //colony.Resources_PerTurn.Use("BuildingSlots", totalBuildings);
+
+                //int popsControlled = 0;
+                //if (colony.Resources_PerTurn.GetPops() != null)
+                //{
+                //    popsControlled = colony.Resources_PerTurn.GetPops().GetCPops();
+                //    colony.Resources_PerTurn.ProcessGrowth();
+                //}
+                //
+                //colony.Resources_PerTurn.ProcessIncome(); // --- !!! ---
+                //system.Resources_PerTurn.Add(colony.Resources_PerTurn, true);
+                //}
+                //system.Resources_PerTurn.ProcessIncome(); // --- !!! ---
+                //player.Resources_PerTurn.Add(system.Resources_PerTurn);
             }
 
             //DataBlock queue = sector.ActionBuildQueue.GetSub("Queue");
@@ -230,7 +254,7 @@ public partial class TurnLoop : Node
             //sector.Resources_PerTurn.ProcessIncome(); // --- !!! ---
             //player.Resources_PerTurn.Add(System.Resources_PerTurn);
             //}
-            player.Resources_PerTurn.ProcessIncome(); // --- !!! ---
+            //player.Resources_PerTurn.ProcessIncome(); // --- !!! ---
         }
     }
 
@@ -240,14 +264,11 @@ public partial class TurnLoop : Node
         {
             PlayerData player = Game.self.Map.Data.Players[playerIdx];
 
-            //for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
-            //{
-            //    SectorData sector = player.Sectors[sectorIdx];
-            //
-            //    ActionBuild.RefreshAvailableBuildings(Game, sector);
-            //
-            //    sector.BuildQueue_PerTurn_ActionChange.Refresh();
-            //}
+            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            {
+                SystemData system = player.Systems[systemIdx];
+                ActionBuildDistrict.RefreshAvailableDistricts(Game.self, system);
+            }
 
             for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
             {

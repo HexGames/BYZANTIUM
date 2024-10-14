@@ -67,9 +67,9 @@ public class Helper
         }
     }
 
-    public static string GetIcon(string name)
+    public static string GetIcon(string name, int size = 24)
     {
-        return "[img=24x24]Assets/UI/Symbols/" + name + ".png[/img]";
+        return "[img=" + size.ToString() + "x" + size.ToString() + "]Assets/UI/Symbols/" + name + ".png[/img]";
     }
 
     public static string GetColorPrefix_Good()

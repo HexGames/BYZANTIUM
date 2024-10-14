@@ -1,175 +1,155 @@
 Features 
 {
-	Feature Extreme_Temps
-	{
-		Benefit 
-		{
-			Pops*GrowthPenalty 80
-			BC*Income -10
-		}
-	}
-	Feature Toxic
-	{
-		Benefit 
-		{
-			Pops*GrowthPenalty 80
-			BC*Income -20
-		}
-	}
-	Feature Barren
-	{
-		Benefit 
-		{
-			Pops*GrowthPenalty 80
-		}
-	}
-	Feature Semi-Barren
-	{
-		Benefit 
-		{
-			Pops*GrowthPenalty 50
-		}
-	}
-	Feature Bacterial_Life
-	{
-		Benefit 
-		{
-			Research*Income 10
-		}
-	}
-	Feature Complex_Life
-	{
-		Benefit 
-		{
-			Research*Income 20
-		}
-	}
-	Feature Jungle
-	{
-		Benefit 
-		{
-			Research*Income 30
-		}
-	}
-	Feature Rocky
-	{
-		Benefit 
-		{
-			Minerals*Income 10
-		}
-	}
 	Feature Rich_Minerals
 	{
+		SuggestedFocus Shipbuilding
+		Icon Shipbuilding
 		Benefit 
 		{
-			Minerals*Income 20
+			Shipbuilding*LocalBonus 100
 		}
 	}
-	Feature Vulcanic
+	Feature High_Enegy_Particles
 	{
+		SuggestedFocus Research
+		Icon Research
 		Benefit 
 		{
-			Energy*Income 10
-			Minerals*Income 20
+			Research*LocalBonus 100
 		}
 	}
-	Feature Rings
+	Feature Beautiful
 	{
+		SuggestedFocus Influence
+		Icon Influence
 		Benefit 
 		{
-			Minerals*Income 10
+			Influence*LocalBonus 100
+		}
+	}
+	Feature Refueling_Gasses
+	{
+		SuggestedFocus BC
+		Icon BC
+		Benefit 
+		{
+			BC*LocalBonus 100
+		}
+	}
+	Feature Rich_Soil
+	{
+		SuggestedFocus Growth
+		Icon Growth
+		Benefit 
+		{
+			GrowthLocalBonus 100
+		}
+	}
+	Feature Desert
+	{
+		SuggestedFocus none
+		Benefit 
+		{
+			Growth 25
+		}
+	}
+	Feature Arid
+	{
+		SuggestedFocus none
+		Benefit 
+		{
+			Growth 50
+		}
+	}
+	Feature Wet
+	{
+		SuggestedFocus none
+		Benefit 
+		{
+			Growth 100
+		}
+	}
+	Feature Fertile
+	{
+		SuggestedFocus none
+		Benefit 
+		{
+			Growth 150
+		}
+	}
+	Feature Gaia
+	{
+		SuggestedFocus none
+		Benefit 
+		{
+			Growth 200
+		}
+	}
+	Feature Small
+	{
+		SuggestedFocus none
+		Benefit 
+		{
+			PopMax 30000
+			FactoryCost -20
+		}
+	}
+	Feature Medium
+	{
+		SuggestedFocus none
+		Benefit 
+		{
+			PopMax 60000
+		}
+	}
+	Feature Large
+	{
+		SuggestedFocus none
+		Benefit 
+		{
+			PopMax 90000
+			FactoryCost 20
 		}
 	}
 	Feature Tiny_Moon
 	{
+		SuggestedFocus Shipbuilding
 		Benefit 
 		{
-			Shipbuilding*PerPop 10
+			Shipbuilding*Bonus 50
 		}
 	}
-	Feature Water
+	Feature Alien_Life
 	{
+		SuggestedFocus Research
 		Benefit 
 		{
-			Pops*GrowthBonus 50
+			Research*Bonus 50
 		}
 	}
-	Feature Oceans
+	Feature Rings
 	{
+		SuggestedFocus Influence
 		Benefit 
 		{
-			Pops*GrowthBonus 50
-			Happiness*Bonus 50
+			Influence*PerPop 20
 		}
 	}
-	Feature Rich_Gasses
+	Feature Ocean
 	{
+		SuggestedFocus Growth
 		Benefit 
 		{
-			Energy*Income 20
+			PopMaxPenalty 50
 		}
 	}
-	Feature Low_Gravity
+	Feature Vulcanic
 	{
+		SuggestedFocus Shipbuilding
 		Benefit 
 		{
-			BC*Income 10
-		}
-	}
-	Feature High_Gravity
-	{
-		Benefit 
-		{
-			BC*Income -10
-		}
-	}
-	Feature High_Radiation
-	{
-		Benefit 
-		{
-			Energy*Income 10
-		}
-	}
-	Feature Old_Star
-	{
-		Benefit 
-		{
-			Energy*Income 10
-		}
-	}
-	Feature Giant_Star
-	{
-		Benefit 
-		{
-			Energy*Income 20
-		}
-	}
-	Feature Active_Star
-	{
-		Benefit 
-		{
-			Energy*Income 30
-		}
-	}
-	Feature Hyper_Active_Star
-	{
-		Benefit 
-		{
-			Energy*Income 40
-		}
-	}
-	Feature Gas_Giant
-	{
-		Benefit 
-		{
-			Energy*Income 20
-		}
-	}
-	Feature Asteroids
-	{
-		Benefit 
-		{
-			Minerals*Income 30
+			PopMaxPenalty 50
+			FactoryBonus 10
 		}
 	}
 }

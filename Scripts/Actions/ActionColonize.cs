@@ -37,10 +37,10 @@ public class ActionColonize
         if (star.System == null)
         {
             systemData = Data.AddData(player.Data.GetSub("Systems_List"), "System", star.StarName, Game.self.Def);
-            Game.self.MapGen.GenerateNewMapSave_Players_StartingColony_SystemResources(systemData, 0);
+            Game.self.MapGen.GenerateNewMapSave_Players_StartingColony_SystemResources(systemData, 0, false);
 
             Data.AddData(systemData, "Link:Star", star.StarName, Game.self.Def);
-            Data.AddData(star._Data, "Link:Player:System", player.PlayerName + ":" + star.StarName, Game.self.Def);
+            Data.AddData(star.Data, "Link:Player:System", player.PlayerName + ":" + star.StarName, Game.self.Def);
 
             colonyList = Data.AddData(systemData, "Colony_List", Game.self.Def);
 
@@ -52,7 +52,7 @@ public class ActionColonize
             colonyList = systemData.GetSub("Colony_List");
         }
 
-        DataBlock colonyData = Game.self.MapGen.GenerateNewMapSave_Players_Colony(colonyList, star._Data, planet.Data, player.Data, systemData, 0);
+        DataBlock colonyData = Game.self.MapGen.GenerateNewMapSave_Players_Colony(star.Data, planet.Data, player.Data, systemData, 0);
         Game.self.Map.Data.GenerateGameFromData_Player_System_Colony(colonyData, star.System);
 
         for (int idx = 0; idx < star.Fleets_PerTurn.Count; idx++)

@@ -24,8 +24,8 @@ public partial class UIWindow : Control
     public Control BuildingNone;
 
     [ExportCategory("Runtime")]
-    [Export]
-    public SectorData _Sector = null;
+    //[Export]
+    //public SectorData _Sector = null;
     [Export]
     public PlanetData _Planet = null;
 
@@ -41,7 +41,7 @@ public partial class UIWindow : Control
         Description_Original = Description.Text;
     }
 
-    private List<DefBuildingWrapper> targets = new List<DefBuildingWrapper>();
+    private List<DefDistrictWrapper> targets = new List<DefDistrictWrapper>();
     public void Refresh(PlanetData _planet)
     {
         _Planet = _planet;

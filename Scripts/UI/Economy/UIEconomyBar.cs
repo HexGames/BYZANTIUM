@@ -44,17 +44,17 @@ public partial class UIEconomyBar : Control
             _Player = Game.self.HumanPlayer;
         }
 
-        Empire_BC.Refresh(_Player.Resources_PerTurn.GetStockpileString("BC"), _Player.Resources_PerTurn.GetStockpileTooltip("BC"));
-        Empire_BC.Visible = true;
-
-        Empire_Research.Refresh(_Player.Resources_PerTurn.GetIncomeString("Research"));
-        Empire_Research.Visible = true;
-
-        Empire_Culture.Refresh(_Player.Resources_PerTurn.GetIncomeString("Culture"));
-        Empire_Culture.Visible = true;
-
-        Empire_Influence.Refresh(_Player.Resources_PerTurn.GetLimitString("Authority"));
-        //Empire_Authority.Text = Empire_Authority_Original.Replace("$value", _Player.Resources_PerTurn.GetLimitString("Influence"));
-        Empire_Influence.Visible = true;
+        //Empire_BC.Refresh(_Player.Resources_PerTurn.GetStockpileString("BC"), _Player.Resources_PerTurn.GetStockpileTooltip("BC"));
+        //Empire_BC.Visible = true;
+        //
+        //Empire_Research.Refresh(_Player.Resources_PerTurn.GetIncomeString("Research"));
+        //Empire_Research.Visible = true;
+        //
+        //Empire_Culture.Refresh(_Player.Resources_PerTurn.GetIncomeString("Culture"));
+        //Empire_Culture.Visible = true;
+        //
+        //Empire_Influence.Refresh(_Player.Resources_PerTurn.GetLimitString("Authority"));
+        ////Empire_Authority.Text = Empire_Authority_Original.Replace("$value", _Player.Resources_PerTurn.GetLimitString("Influence"));
+        //Empire_Influence.Visible = true;
     }
 }
