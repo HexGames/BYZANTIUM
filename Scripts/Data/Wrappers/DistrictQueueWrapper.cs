@@ -68,7 +68,7 @@ public class DistrictQueueWrapper
             int remaining = maxProgress - info.Progress;
             info.EstimatedProgressNextTurn = Mathf.Min(maxProgress, info.Progress + production + overflow);
 
-            int t = Mathf.CeilToInt(1.0f * (remaining - overflow) / production);
+            int t = Helper.TurnsToComplete(remaining - overflow, production);
             turns += t;
             overflow = t * production - (remaining - overflow);
 

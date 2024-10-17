@@ -16,6 +16,7 @@ public partial class TurnLoop : Node
 
         // update actions
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsBuild()));
+        yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsShipbuilding()));
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsMove()));
 
         // update fleets
@@ -61,8 +62,25 @@ public partial class TurnLoop : Node
             for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
             {
                 SystemData system = player.Systems[systemIdx];
-        
+
                 ActionBuildDistrict.EndTurn(Game.self, system); // --- !!! ---
+            }
+        }
+
+        yield return Timing.WaitForOneFrame;
+    }
+
+    // ----------------------------------------------------------------------------------------------
+    private IEnumerator<double> EndTurn_ActionsShipbuilding()
+    {
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            {
+                SystemData system = player.Systems[systemIdx];
+
+                ActionShipbuilding.EndTurn(Game.self, system); // --- !!! ---
             }
         }
 
@@ -155,7 +173,8 @@ public partial class TurnLoop : Node
                 system.Resources_PerTurn.Refresh();
                 system.Pops_PerTurn.Refresh();
                 system.Buildings_PerTurn.Refresh();
-                system.QueueDistricts_PerTurn.Refresh();
+                system.DistrictsQueue_PerTurn.Refresh();
+                system.Shipbuilding_PerTurn.Refresh();
 
                 for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
                 {

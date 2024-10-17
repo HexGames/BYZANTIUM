@@ -38,6 +38,10 @@ public class ActionFocus
             }
         }
 
+        system.Resources_PerTurn.Refresh();
+        system.DistrictsQueue_PerTurn.Refresh();
+        system.Shipbuilding_PerTurn.Refresh();
+
         if (Game.self.GalaxyUI.SystemInfo.ProductionInfo._System == system)
         {
             Game.self.GalaxyUI.SystemInfo.ProductionInfo.Refresh(system);

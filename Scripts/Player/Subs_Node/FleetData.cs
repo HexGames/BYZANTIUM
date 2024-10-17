@@ -26,10 +26,10 @@ public partial class FleetData : Node
     //[ExportCategory("SystemData-Actions")]
     //[Export]
     //public DataBlock ActionBuild = null;
-
-    [ExportCategory("SystemData-Links")]
-    [Export]
-    public Array<ShipData> Ships = new Array<ShipData>();
+    
+    //[ExportCategory("SystemData-Links")]
+    //[Export]
+    public List<ShipData> Ships = new List<ShipData>();
 
     public FleetStatsWrapper Stats_PerTurn = null;
     public StarData StarAt_PerTurn = null;

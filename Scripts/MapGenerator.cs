@@ -642,8 +642,9 @@ public partial class MapGenerator : Node
 
         DataBlock actionBuildShip = Data.AddData(system, "ActionBuildShip", DefLibrary);
         Data.AddData(actionBuildShip, "Design", "Babylon", DefLibrary);
+        Data.AddData(actionBuildShip, "LastDesign", "Babylon", DefLibrary);
         Data.AddData(actionBuildShip, "Progress", 0, DefLibrary);
-        Data.AddData(actionBuildDistrict, "Overflow", 0, DefLibrary);
+        Data.AddData(actionBuildShip, "Overflow", 0, DefLibrary);
 
         GenerateNewMapSave_Players_StartingColony_SystemResources(system, development, star.HasSub("Init_Capital"));
 

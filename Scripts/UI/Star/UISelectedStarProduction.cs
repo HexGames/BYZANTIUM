@@ -233,7 +233,7 @@ public partial class UISelectedStarProduction : Control
             ColonizeFocusToolTip.Row_3_Right += "\n" + ColonizeFocusToolTip.Row_3_Right_Original.Split('\n')[2].Replace("$f", districtsIncome.ToString_FocusChosen());
         }
 
-        DistrictQueueWrapper queue = _System.QueueDistricts_PerTurn;
+        DistrictQueueWrapper queue = _System.DistrictsQueue_PerTurn;
         if (queue.DistrictsInQueue.Count > 0)
         {
             DistrictsProject.Visible = true;
@@ -470,8 +470,16 @@ public partial class UISelectedStarProduction : Control
             ShipsFocusToolTip.Row_3_Right += "\n" + ShipsFocusToolTip.Row_3_Right_Original.Split('\n')[2].Replace("$f", shipsIncome.ToString_FocusChosen());
         }
 
+        //ShipsTex.Texture = ;
+        ShipsName.Text = ShipsName_Original.Replace("$name", _System.Shipbuilding_PerTurn.Design.DesignName);
+        ShipsProgressCurrent.MaxValue = _System.Shipbuilding_PerTurn.Design.Cost;
+        ShipsProgressCurrent.Value = _System.Shipbuilding_PerTurn.Progress;
+        ShipsProgressNextTurn.MaxValue = _System.Shipbuilding_PerTurn.Design.Cost;
+        ShipsProgressNextTurn.Value = _System.Shipbuilding_PerTurn.EstimatedProgressNextTurn;
+        ShipsProgressValue.Text = ShipsProgressValue_Original.Replace("$value", _System.Shipbuilding_PerTurn.EstimatedTurns.ToString());
+
         ShipsToolTip.Row_1 = ShipsToolTip.Row_1_Original.Split('\n')[0];
-        ShipsToolTip.Row_1_Right = ShipsToolTip.Row_1_Right_Original.Replace("$t", "99").Replace("$v", "2000");
+        ShipsToolTip.Row_1_Right = ShipsToolTip.Row_1_Right_Original.Replace("$t", Helper.ResValueToString(_System.Shipbuilding_PerTurn.Design.Cost)).Replace("$v", Helper.ResValueToString(_System.Shipbuilding_PerTurn.Progress));
         ShipsToolTip.Row_2 = ShipsToolTip.Row_2_Original.Split('\n')[0];
         ShipsToolTip.Row_2_Right = ShipsToolTip.Row_2_Right_Original.Replace("$v", shipsIncome.ToString_IncomeTotal(_System));
         ShipsToolTip.Row_3 = ShipsToolTip.Row_3_Original.Split('\n')[0];

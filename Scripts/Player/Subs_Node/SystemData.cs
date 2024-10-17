@@ -40,7 +40,9 @@ public partial class SystemData : Node
     // actions
     public List<DistrictData> ActionsBuildPossible_PerTurn = new List<DistrictData>();
     // district queue
-    public DistrictQueueWrapper QueueDistricts_PerTurn = null;
+    public DistrictQueueWrapper DistrictsQueue_PerTurn = null;
+    // shipbuilding
+    public ShipbuildingWrapper Shipbuilding_PerTurn = null;
 
     // --------------------------------------------------------------------------------------------
     public ColonyData GetColony(string colony)

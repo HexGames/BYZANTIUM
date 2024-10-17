@@ -1,5 +1,7 @@
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Helper
 {
@@ -55,15 +57,15 @@ public class Helper
     //    return text.Split(separator)[0];
     //}
 
-    public static string ResValueToString(int value, int precision = 10)
+    public static string ResValueToString(int value, int precision = 10, bool alwaysShowSign = false)
     {
         if (value >= 10 * precision)
         {
-            return (value / precision).ToString();
+            return (alwaysShowSign && value > 0 ? "+" : "") + (value / precision).ToString();
         }
         else
         {
-            return (value / precision).ToString() + ((value * 10 / precision) % 10 != 0 ? "." + ((value * 10 / precision) % 10).ToString() : "");
+            return (alwaysShowSign && value > 0 ? "+" : "") + (value / precision).ToString() + ((value * 10 / precision) % 10 != 0 ? "." + ((value * 10 / precision) % 10).ToString() : "");
         }
     }
 
@@ -116,5 +118,40 @@ public class Helper
             default:
                 return num + "th";
         }
+    }
+
+    static Dictionary<string, int> RomanNumbersMap = new Dictionary<string, int>
+    {
+        {"M", 1000 },
+        {"CM", 900},
+        {"D", 500},
+        {"CD", 400},
+        {"C", 100},
+        {"XC", 90},
+        {"L", 50},
+        {"XL", 40},
+        {"X", 10},
+        {"IX", 9},
+        {"V", 5},
+        {"IV", 4},
+        {"I", 1}
+    };
+
+    public static string IntToRoman(int num)
+    {
+        var result = string.Empty;
+        
+        foreach (var pair in RomanNumbersMap)
+        {
+            result += string.Join(string.Empty, Enumerable.Repeat(pair.Key, num / pair.Value));
+            num %= pair.Value;
+        }
+        return result;
+    }
+
+    public static int TurnsToComplete(int progressToGo, int production)
+    {
+        if (production <= 0) return 999;
+        return (progressToGo + production - 1) / production;
     }
 }

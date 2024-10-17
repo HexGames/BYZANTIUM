@@ -561,9 +561,14 @@ public class ResourcesWrapper
     {
         int pops = system.Pops_PerTurn.GetPops() / 1000;
         int workingFactories = Mathf.Min(system.Pops_PerTurn.GetPops(), system.Buildings_PerTurn.Factories) / 1000;
-        int emptyFactories = system.Buildings_PerTurn.Factories / 1000 - workingFactories;
 
         return (pops + workingFactories) * 10;
+    }
+    public static int GetSystemInfluence(SystemData system)
+    {
+        int pops = system.Pops_PerTurn.GetPops() / 1000;
+
+        return pops * 10;
     }
 
     //public void PropagateSystemBonuses(ResourcesWrapper systemRes)

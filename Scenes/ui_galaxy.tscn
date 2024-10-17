@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bukr82o6e8rl3"]
+[gd_scene load_steps=13 format=3 uid="uid://bukr82o6e8rl3"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
 [ext_resource type="PackedScene" uid="uid://dkomfigvec4wg" path="res://Scenes/ui_3d_star.tscn" id="2_iewv2"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://0svrlyhb7gcc" path="res://Scenes/ui_economy_bar.tscn" id="4_y8k0i"]
 [ext_resource type="PackedScene" uid="uid://vh0pcrygv61d" path="res://Scenes/ui_system.tscn" id="7_y5oqc"]
 [ext_resource type="PackedScene" uid="uid://cmde3jxsickdj" path="res://Scenes/ui_planet.tscn" id="8_67ifr"]
-[ext_resource type="PackedScene" uid="uid://bjnpkcy3hqibr" path="res://Scenes/ui_planet_info.tscn" id="9_82sdf"]
 [ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="11_72k2f"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="12_70fqi"]
 [ext_resource type="PackedScene" uid="uid://b2a0hskimxnut" path="res://Scenes/ui_fleets.tscn" id="12_sv4sa"]
@@ -30,7 +29,7 @@ General = NodePath("GeneralUI")
 Resources = NodePath("Economy")
 SystemInfo = NodePath("System")
 PlanetInfo = NodePath("Planet")
-FleetsSelected = NodePath("SelectedFleets")
+FleetsSelected = NodePath("Fleets")
 CurrentTurn = NodePath("Turn")
 DEBUGText = NodePath("DEBUG")
 
@@ -103,21 +102,7 @@ anchors_preset = -1
 layout_mode = 1
 anchors_preset = -1
 
-[node name="PlanetInfo" parent="." instance=ExtResource("9_82sdf")]
-visible = false
-custom_minimum_size = Vector2(288, 320)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_left = -16.0
-offset_top = 320.0
-offset_right = -16.0
-offset_bottom = 320.0
-grow_horizontal = 0
-grow_vertical = 1
-
-[node name="SelectedFleets" parent="." instance=ExtResource("12_sv4sa")]
+[node name="Fleets" parent="." instance=ExtResource("12_sv4sa")]
 visible = false
 layout_mode = 1
 anchors_preset = -1

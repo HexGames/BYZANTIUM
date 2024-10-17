@@ -104,7 +104,7 @@ public class ActionBuildDistrict
         Data.AddData(colonyDistrict.Data, "InQueue", placeInQueue, game.Def);
         Data.DeleteDataSub(colonyDistrict.Data, "RequiredPops");
 
-        system.QueueDistricts_PerTurn.Refresh();
+        system.DistrictsQueue_PerTurn.Refresh();
 
         planet.GFX.GUI3D.Refresh();
         Game.self.GalaxyUI.SystemInfo.ProductionInfo.Refresh(system);

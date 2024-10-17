@@ -14,6 +14,14 @@ public partial class MapGenerator : Node
     // generator
     public void GenerateNewMapSave_Players_StartingColony_SystemResources(DataBlock system, int level, bool capital)
     {
+        DataBlock control = Data.AddData(system, "Control", DefLibrary);
+
+        Data.AddData(control, "Control", 800, DefLibrary);
+        Data.AddData(control, "Corruption", 100, DefLibrary);
+        Data.AddData(control, "Happiness", 800, DefLibrary);
+        Data.AddData(control, "Wealth", 10000 * level, DefLibrary);
+        Data.AddData(control, "Inequality", 500, DefLibrary);
+
         DataBlock resources = Data.AddData(system, "Resources", DefLibrary);
 
         Data.AddData(resources, "FactoryCost", 200, DefLibrary);
@@ -26,6 +34,7 @@ public partial class MapGenerator : Node
         if (capital)
         {
             Data.AddData(resources, "Shipbuilding*FocusChosen", 25, DefLibrary);
+            //Data.AddData(resources, "Research*FocusChosen", 25, DefLibrary);
         }
         else
         {

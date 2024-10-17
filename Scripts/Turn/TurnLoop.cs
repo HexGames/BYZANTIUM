@@ -47,6 +47,8 @@ public partial class TurnLoop : Node
         // session
         Init_FeatureData();
         Init_DistrictData();
+        Init_DesignData();
+        Init_ShipData(); // must be after design
 
         CurrentHumanPlayerData = GetHumanPlayer();
         Init_Resources();
@@ -109,6 +111,37 @@ public partial class TurnLoop : Node
         }
     }
 
+    public void Init_DesignData()
+    {
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            player.Designs.Clear();
+            Array<DataBlock> designs = player.Data.GetSub("Designs").GetSubs("Design");
+            for (int designIdx = 0; designIdx < designs.Count; designIdx++)
+            {
+                player.Designs.Add(new DesignData(designs[designIdx], player));
+            }
+        }
+    }
+    public void Init_ShipData()
+    {
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
+            {
+                FleetData fleet = player.Fleets[fleetIdx];
+                fleet.Ships.Clear();
+                Array<DataBlock> ships = fleet.Data.GetSubs("Ship");
+                for (int shipIdx = 0; shipIdx < ships.Count; shipIdx++)
+                {
+                    fleet.Ships.Add(new ShipData(ships[shipIdx], fleet));
+                }
+            }
+        }
+    }
+
     public void Init_Resources()
     {
         for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
@@ -132,7 +165,8 @@ public partial class TurnLoop : Node
                 system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.SYSTEM);
                 system.Pops_PerTurn = new PopsWrapper(system);
                 system.Buildings_PerTurn = new BuildingsWrapper(system);
-                system.QueueDistricts_PerTurn = new DistrictQueueWrapper(system);
+                system.DistrictsQueue_PerTurn = new DistrictQueueWrapper(system);
+                system.Shipbuilding_PerTurn = new ShipbuildingWrapper(system);
                 //sector.BuildQueue_PerTurn_ActionChange = new BuildingQueueWrapper(sector, Game);
                 //sector.BudgetPerTurn = new BudgetWrapper(sector.Budget);
                 for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)

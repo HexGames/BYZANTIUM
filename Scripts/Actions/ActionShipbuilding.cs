@@ -7,47 +7,64 @@ public class ActionShipbuilding
 {
     static public void EndTurn(Game game, SystemData system)
     {
-        /*string designName = system.Data.GetSub("ActionBuildShip").GetSub("Queue");
-        int overflow = system.Data.GetSub("ActionBuildShip").GetSub("Overflow").ValueI;
-        int production = system.Resources_PerTurn.GetIncome("Districts").IncomeAllTotal(system);
+        DesignData design = system._Player.GetDesign(system.Data.GetSub("ActionBuildShip").GetSub("Design").ValueS);
+        DataBlock actionBuildShip = system.Data.GetSub("ActionBuildShip");
+        int progress = actionBuildShip.GetSub("Progress").ValueI;
+        int overflow = actionBuildShip.GetSub("Overflow").ValueI;
+        actionBuildShip.GetSub("Overflow").ValueI = 0;
+        int production = system.Resources_PerTurn.GetIncome("Shipbuilding").IncomeAllTotal(system);
 
-        Array<DataBlock> districtsInQueue = queue.Subs; // GetSubs("District");
-        if (production > 0 && districtsInQueue.Count > 0)
+        if (design != null)
         {
-            PlanetData planet = Data.GetLinkPlanetData(queue.Subs[0], game.Map.Data);
-            ColonyData colony = planet.Colony;
-            if (colony == null)
+            int maxProgress = 1000; // design.DistrictDef.Cost;
+            int totalProgress = progress + production + overflow;
+            int trys = 1000;
+            while (totalProgress >= maxProgress && trys > 0)
             {
-                GD.PrintErr("NO COLONY FOR QUEUE ?!?");
-                return;
-            }
-
-            DistrictData district = null;
-            for (int colDisIdx = 0; colDisIdx < colony.Districts.Count; colDisIdx++)
-            {
-                if (colony.Districts[colDisIdx].Data.HasSub("InQueue") && colony.Districts[colDisIdx].Data.GetSub("InQueue").ValueI == 0)
+                FleetData ownedFleeet = null;
+                FleetData bestFleeet = null;
+                for (int fleetIdx = 0; fleetIdx < system.Star.Fleets_PerTurn.Count; fleetIdx++)
                 {
-                    district = colony.Districts[colDisIdx];
-                    break;
+                    if (system.Star.Fleets_PerTurn[fleetIdx]._Player == system._Player)
+                    {
+                        ownedFleeet = system.Star.Fleets_PerTurn[fleetIdx];
+                        for (int shipIdx = 0; shipIdx < ownedFleeet.Ships.Count; shipIdx++)
+                        {
+                            if (ownedFleeet.Ships[shipIdx].Design == design)
+                            {
+                                bestFleeet = ownedFleeet;
+                                break;
+                            }
+                        }
+                    }
                 }
+                if (bestFleeet == null) bestFleeet = ownedFleeet;
+                if (bestFleeet == null)
+                {
+                    // new fleet
+                    DataBlock fleetData = Data.AddData(system._Player.Data.GetSub("Fleets"), "Fleet", Helper.IntToRoman(system._Player.Fleets.Count + 1), game.Def);
+                    Data.AddData(fleetData, "Name", "Fury_" + Helper.IntToRoman(system._Player.Fleets.Count + 1), game.Def);
+
+                    Data.AddData(fleetData, "Link:Star", system.Star.StarName, game.Def); // no StarData yet
+                    Data.AddData(system.Star.Data, "Link:Player:Fleet", system._Player.PlayerName + ":" + fleetData.ValueS, game.Def); // no StarData yet
+
+                    // ---
+                    bestFleeet = game.Map.Data.GenerateGameFromData_Player_Fleet(fleetData, system._Player);
+                    bestFleeet.Ships.Clear();
+
+                    bestFleeet.Stats_PerTurn = new FleetStatsWrapper(bestFleeet);
+                    bestFleeet.StarAt_PerTurn = system.Star;
+                }
+
+                DataBlock shipData = MapGenerator.CreateNewShip(bestFleeet.Data, "ShipName", design.DesignName, game.Def);
+                bestFleeet.Ships.Add(new ShipData(shipData, bestFleeet));
+
+                totalProgress = totalProgress - maxProgress;
+                trys--;
             }
 
-            int progress = districtsInQueue[0].GetSub("Progress").ValueI;
-            int maxProgress = district.DistrictDef.Cost;
-
-            if (progress + production + overflow >= maxProgress)
-            {
-                queue.Subs.RemoveAt(0);
-                Data.DeleteDataSub(district.Data, "InQueue");
-
-                system.Data.GetSub("ActionBuildDistrict").GetSub("Overflow").SetValueI(progress + production + overflow - maxProgress, game.Def);
-            }
-            else
-            {
-                districtsInQueue[0].GetSub("Progress").SetValueI(progress + production + overflow, game.Def); // <-- add production to progress
-                system.Data.GetSub("ActionBuildDistrict").GetSub("Overflow").SetValueI(0, game.Def);
-            }
-        }*/
+            actionBuildShip.GetSub("Progress").SetValueI(totalProgress, game.Def); // <-- add production to progress
+        }
     }
 
     //static public void RefreshAvailableDesigns(Game game, SectorData sector)

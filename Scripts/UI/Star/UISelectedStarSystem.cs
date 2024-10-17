@@ -12,31 +12,23 @@ public partial class UISelectedStarSystem : Control
     public TextureRect OwnerColor;
 
     [Export]
-    public RichTextLabel Pops;
-    private static string Pops_Original = "";
+    public UIText Pops;
     [Export]
-    public RichTextLabel Control;
-    private static string Control_Original = "";
-
-    //[Export]
-    //public RichTextLabel PopsPub;
-    //private static string PopsPub_Original = "";
-    //[Export]
-    //public RichTextLabel PopsPrv;
-    //private static string PopsPrv_Original = "";
-    //[Export]
-    //public RichTextLabel PopsUnc;
-    //private static string PopsUnc_Original = "";
+    public UIText Factories;
+    [Export]
+    public UIText DefenceBases;
 
     [Export]
-    public RichTextLabel Factories;
-    private static string Factories_Original = "";
-    //[Export]
-    //public RichTextLabel PrivateBusiness;
-    //private static string PrivateBusiness_Original = "";
+    public UIText Control;
     [Export]
-    public RichTextLabel DefenceBases;
-    private static string DefenceBases_Original = "";
+    public UIText Corruption;
+    [Export]
+    public UIText Happiness;
+
+    [Export]
+    public UIText Wealth;
+    [Export]
+    public UIText Inquality;
 
     [Export]
     public RichTextLabel ControlResults;
@@ -51,11 +43,14 @@ public partial class UISelectedStarSystem : Control
     private static string TaxResults_Original = "";
 
     [Export]
-    public RichTextLabel Income;
-    private static string Income_Original = "";
+    public RichTextLabel IncomeBC;
+    private static string IncomeBC_Original = "";
     [Export]
-    public RichTextLabel Production;
-    private static string Production_Original = "";
+    public RichTextLabel IncomeInfluence;
+    private static string IncomeInfluence_Original = "";
+    [Export]
+    public RichTextLabel IncomeProduction;
+    private static string IncomeProduction_Original = "";
 
     [ExportCategory("Runtime")]
     [Export]
@@ -65,23 +60,13 @@ public partial class UISelectedStarSystem : Control
     {
         if (OwnerName_Original.Length == 0) OwnerName_Original = OwnerName.Text;
 
-        if (Pops_Original.Length == 0) Pops_Original = Pops.Text;
-        if (Control_Original.Length == 0) Control_Original = Control.Text;
-
-        //if (PopsPub_Original.Length == 0) PopsPub_Original = PopsPub.Text;
-        //if (PopsPrv_Original.Length == 0) PopsPrv_Original = PopsPrv.Text;
-        //if (PopsUnc_Original.Length == 0) PopsUnc_Original = PopsUnc.Text;
-
-        if (Factories_Original.Length == 0) Factories_Original = Factories.Text;
-        //if (PrivateBusiness_Original.Length == 0) PrivateBusiness_Original = PrivateBusiness.Text;
-        if (DefenceBases_Original.Length == 0) DefenceBases_Original = DefenceBases.Text;
-
         if (ControlResults_Original.Length == 0) ControlResults_Original = ControlResults.Text;
         if (MigrationResults_Original.Length == 0) MigrationResults_Original = MigrationResults.Text;
         if (TaxResults_Original.Length == 0) TaxResults_Original = TaxResults.Text;
 
-        if (Income_Original.Length == 0) Income_Original = Income.Text;
-        if (Production_Original.Length == 0) Production_Original = Production.Text;
+        if (IncomeBC_Original.Length == 0) IncomeBC_Original = IncomeBC.Text;
+        if (IncomeInfluence_Original.Length == 0) IncomeInfluence_Original = IncomeInfluence.Text;
+        if (IncomeProduction_Original.Length == 0) IncomeProduction_Original = IncomeProduction.Text;
     }
 
     public void Refresh(SystemData system)
@@ -91,16 +76,18 @@ public partial class UISelectedStarSystem : Control
         OwnerName.Text = OwnerName_Original.Replace("$name", _System._Player.PlayerName);
         OwnerColor.SelfModulate = Game.self.UILib.GetPlayerColor(_System._Player.PlayerID);
 
-        Pops.Text = Pops_Original.Replace("$pops", _System.Pops_PerTurn.ToString_Pops());
-        //Control.Text = Control_Original.Replace("$val", _System.Resources_PerTurn.GetPops().ToString_PopsUncontrolled());
+        Pops.Text = Pops.Original.Replace("$pops", _System.Pops_PerTurn.ToString_Pops());
+        Factories.Text = Factories.Original.Replace("$val", _System.Buildings_PerTurn.ToString_Factories()).Replace("$max", _System.Buildings_PerTurn.ToString_FactoriesMax());
+        DefenceBases.Text = DefenceBases.Original.Replace("$val", _System.Buildings_PerTurn.ToString_Bases()).Replace("$max", _System.Buildings_PerTurn.ToString_BasesMax());
 
-        //PopsPub.Text = PopsPub_Original.Replace("$pops", _System.Resources_PerTurn.GetPops().ToString_PopsPublic());
-        //PopsPrv.Text = PopsPrv_Original.Replace("$pops", _System.Resources_PerTurn.GetPops().ToString_PopsPrivate());
-        //PopsUnc.Text = PopsUnc_Original.Replace("$pops", _System.Resources_PerTurn.GetPops().ToString_PopsUncontrolled());
+        Control.Text = Control.Original.Replace("$val", _System.Pops_PerTurn.ToString_Pops());
+        Corruption.Text = Corruption.Original.Replace("$val", _System.Pops_PerTurn.ToString_Pops());
+        Happiness.Text = Happiness.Original.Replace("$val", _System.Pops_PerTurn.ToString_Pops());
 
-        Factories.Text = Factories_Original.Replace("$val", _System.Buildings_PerTurn.ToString_Factories()).Replace("$max", _System.Buildings_PerTurn.ToString_FactoriesMax());
+        Wealth.Text = Wealth.Original.Replace("$val", _System.Pops_PerTurn.ToString_Pops());
+        Inquality.Text = Inquality.Original.Replace("$val", _System.Pops_PerTurn.ToString_Pops());
+
         //PrivateBusiness.Text = PrivateBusiness_Original.Replace("$val", _System.Resources_PerTurn.GetBuildings().ToString_PrivateBusinesses()).Replace("$max", _System.Resources_PerTurn.GetBuildings().ToString_PrivateBusinessesMax());
-        DefenceBases.Text = DefenceBases_Original.Replace("$val", _System.Buildings_PerTurn.ToString_Bases()).Replace("$max", _System.Buildings_PerTurn.ToString_BasesMax());
 
         ControlResults.Text = ControlResults_Original;
 
@@ -116,8 +103,9 @@ public partial class UISelectedStarSystem : Control
 
         TaxResults.Text = TaxResults_Original;
 
-        Income.Text = Income_Original.Replace("$val", Helper.ResValueToString(ResourcesWrapper.GetSystemBC(_System)));
-        Production.Text = Production_Original.Replace("$prod", Helper.ResValueToString(ResourcesWrapper.GetSystemProduction(_System)));
+        IncomeBC.Text = IncomeBC_Original.Replace("$val", Helper.ResValueToString(ResourcesWrapper.GetSystemBC(_System), 10, true));
+        IncomeInfluence.Text = IncomeBC_Original.Replace("$val", Helper.ResValueToString(ResourcesWrapper.GetSystemInfluence(_System), 10, true));
+        IncomeProduction.Text = IncomeProduction_Original.Replace("$val", Helper.ResValueToString(ResourcesWrapper.GetSystemProduction(_System), 10, true));
     }
 
     public void OnControl_1()

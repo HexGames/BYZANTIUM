@@ -52,6 +52,12 @@ public partial class Data
         DataBlock link = parent.GetLink("Link:Player");
         return map.GetPlayer(link.ValueS);
     }
+    //static public DesignData GetLinkDesignData(DataBlock parent, MapData map)
+    //{
+    //    DataBlock link = parent.GetLink("Link:Player:Design");
+    //    string[] split = link.ValueS.Split(":");
+    //    return map.GetPlayer(split[0]).GetDesign(split[1]);
+    //}
     static public SystemData GetLinkSystemData(DataBlock parent, MapData map)
     {
         DataBlock link = parent.GetLink("Link:Player:System");

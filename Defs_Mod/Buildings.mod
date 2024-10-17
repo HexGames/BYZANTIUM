@@ -3,7 +3,7 @@ Buildings
 	Building Research_Station
 	{
 		Type Space_Station
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Research
 		Icon Research
 		Benefit 
@@ -14,7 +14,7 @@ Buildings
 	Building Research_Nexus
 	{
 		Type Space_Station
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Research
 		Icon ResearchPerc
 		Benefit 
@@ -25,7 +25,7 @@ Buildings
 	Building Orbital_Forum
 	{
 		Type Space_Station
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Influence
 		Icon Influence
 		Benefit 
@@ -36,7 +36,7 @@ Buildings
 	Building Trade_Station
 	{
 		Type Space_Station
-		Cost 1000
+		Cost 10000
 		SuggestedFocus BC
 		Icon BC
 		Benefit 
@@ -47,7 +47,7 @@ Buildings
 	Building Asteroid_Shipyard
 	{
 		Type Asteroid_Base
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Shipbuilding
 		Icon Shipbuilding
 		Benefit 
@@ -58,7 +58,7 @@ Buildings
 	Building Alloy_Foundry
 	{
 		Type Asteroid_Base
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Shipbuilding
 		Icon ShipbuildingPerc
 		Benefit 
@@ -69,7 +69,7 @@ Buildings
 	Building Asteroid_Forum
 	{
 		Type Asteroid_Base
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Influence
 		Icon Influence
 		Benefit 
@@ -80,7 +80,7 @@ Buildings
 	Building Asteroid_Bazzar
 	{
 		Type Asteroid_Base
-		Cost 1000
+		Cost 10000
 		SuggestedFocus BC
 		Icon BC
 		Benefit 
@@ -91,7 +91,7 @@ Buildings
 	Building Ships_Factory
 	{
 		Type Outpost
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Shipbuilding
 		Icon Shipbuilding
 		Benefit 
@@ -102,7 +102,7 @@ Buildings
 	Building Research_Labs
 	{
 		Type Outpost
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Research
 		Icon Research
 		Benefit 
@@ -113,7 +113,7 @@ Buildings
 	Building Trade_Outpost
 	{
 		Type Outpost
-		Cost 1000
+		Cost 10000
 		SuggestedFocus BC
 		Icon BC
 		Benefit 
@@ -124,7 +124,7 @@ Buildings
 	Building Hydroponic_Farms
 	{
 		Type Outpost
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Growth
 		Icon Growth
 		Benefit 
@@ -135,7 +135,7 @@ Buildings
 	Building Automated_Shipyards
 	{
 		Type District
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Shipbuilding
 		Icon Shipbuilding
 		Benefit 
@@ -146,7 +146,7 @@ Buildings
 	Building Shipbuilding_District
 	{
 		Type District
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Shipbuilding
 		Icon ShipbuildingPerc
 		Benefit 
@@ -158,7 +158,7 @@ Buildings
 	Building Automated_Labs
 	{
 		Type District
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Research
 		Icon Research
 		Benefit 
@@ -169,7 +169,7 @@ Buildings
 	Building Research_District
 	{
 		Type District
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Research
 		Icon ResearchPerc
 		Benefit 
@@ -181,7 +181,7 @@ Buildings
 	Building Culture_District
 	{
 		Type District
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Influence
 		Icon Influence
 		Benefit 
@@ -192,7 +192,7 @@ Buildings
 	Building Trade_District
 	{
 		Type District
-		Cost 1000
+		Cost 10000
 		SuggestedFocus BC
 		Icon BC
 		Benefit 
@@ -203,7 +203,7 @@ Buildings
 	Building Rural_District
 	{
 		Type District
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Growth
 		Icon Growth
 		Benefit 
@@ -215,7 +215,7 @@ Buildings
 	Building Dense_Urbanization
 	{
 		Type District
-		Cost 1000
+		Cost 10000
 		SuggestedFocus Pops
 		Icon Pops
 		Benefit 

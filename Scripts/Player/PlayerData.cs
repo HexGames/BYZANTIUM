@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System.Collections.Generic;
 
 // Generated
 [Tool]
@@ -42,15 +43,14 @@ public partial class PlayerData : Node
 
     [ExportCategory("PlayerData-Links")]
     [Export]
-    public Array<DesignData> Designs = new Array<DesignData>();
-
-    [ExportCategory("PlayerData-Links")]
-    [Export]
     public Array<FleetData> Fleets = new Array<FleetData>();
 
     [ExportCategory("PlayerData-Runtime")]
     [Export]
     public bool TurnFinished = false;
+
+    // designs
+    public List<DesignData> Designs = new List<DesignData>();
 
     // stockpiles
     //public ResourcesWrapper Resources_PerTurn = null;
@@ -76,6 +76,20 @@ public partial class PlayerData : Node
             if (Fleets[idx].FleetName == fleet)
             {
                 return Fleets[idx];
+            }
+        }
+
+        return null;
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public DesignData GetDesign(string design)
+    {
+        for (int idx = 0; idx < Designs.Count; idx++)
+        {
+            if (Designs[idx].DesignName == design)
+            {
+                return Designs[idx];
             }
         }
 

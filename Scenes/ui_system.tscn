@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://vh0pcrygv61d"]
+[gd_scene load_steps=31 format=3 uid="uid://vh0pcrygv61d"]
 
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_da3wx"]
 [ext_resource type="Script" path="res://Scripts/UI/Star/UISelectedStar.cs" id="1_y20ct"]
@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://qvxxtu5jlkbt" path="res://Assets/UI/left.png" id="16_r5r1u"]
 [ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="17_f6tdb"]
 [ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="18_ercnh"]
-[ext_resource type="Script" path="res://Scripts/UI/Progress/UIProgressBar.cs" id="20_7qxtm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aj42a"]
 
@@ -424,21 +423,26 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="System" type="VBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("OwnerName", "OwnerColor", "Pops", "Control", "Factories", "DefenceBases", "ControlResults", "MigrationBg", "MigrationResults", "TaxResults", "Income", "Production")]
+[node name="System" type="VBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("OwnerName", "OwnerColor", "Pops", "Factories", "DefenceBases", "Control", "Corruption", "Happiness", "Wealth", "Inquality", "ControlResults", "MigrationBg", "MigrationResults", "TaxResults", "IncomeBC", "IncomeInfluence", "IncomeProduction")]
 layout_mode = 2
 script = ExtResource("11_2kiiq")
 OwnerName = NodePath("OwnerBg/Owner")
 OwnerColor = NodePath("OwnerBg/TextureRect")
-Pops = NodePath("SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel/Pops")
-Control = NodePath("SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel2/Control")
-Factories = NodePath("SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel/Factories")
-DefenceBases = NodePath("SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel3/Bases")
+Pops = NodePath("SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1/Pops")
+Factories = NodePath("SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel2/Factories")
+DefenceBases = NodePath("SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel3/Bases")
+Control = NodePath("SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1/Control")
+Corruption = NodePath("SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel2/Corruption")
+Happiness = NodePath("SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel3/Happiness")
+Wealth = NodePath("WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1/Wealth")
+Inquality = NodePath("WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1/Inequality")
 ControlResults = NodePath("Control/MarginContainer/VBoxContainer/Result")
 MigrationBg = NodePath("Migration")
 MigrationResults = NodePath("Migration/MarginContainer/VBoxContainer/Result")
 TaxResults = NodePath("Tax/MarginContainer/VBoxContainer/Result")
-Income = NodePath("Income/MarginContainer/HBoxContainer/Income")
-Production = NodePath("Income/MarginContainer/HBoxContainer/Production")
+IncomeBC = NodePath("Income/MarginContainer/VBoxContainer/HBoxContainer/Income")
+IncomeInfluence = NodePath("Income/MarginContainer/VBoxContainer/HBoxContainer/Influence")
+IncomeProduction = NodePath("Income/MarginContainer/VBoxContainer/Production")
 
 [node name="OwnerBg" type="Panel" parent="VBoxContainer/System"]
 custom_minimum_size = Vector2(0, 32)
@@ -498,15 +502,16 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
+alignment = 1
 
-[node name="Panel" type="Panel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops"]
+[node name="Panel1" type="Panel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops"]
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
 
-[node name="Pops" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel"]
+[node name="Pops" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -521,6 +526,25 @@ text = "[right]$pops[img=24x24]Assets/UI/Symbols/Pops.png[/img][/right]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("18_ercnh")
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Population"
+Row_1 = "Population of the system."
+Row_2 = "From Colony"
+Row_2_Right = "$val[img=24x24]Assets/UI/Symbols/Pops.png[/img]"
 
 [node name="Line1" type="ColorRect" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops"]
 custom_minimum_size = Vector2(80, 2)
@@ -536,74 +560,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
 
-[node name="Control" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("9_n4gub")
-bbcode_enabled = true
-text = "[right]$val%[img=24x24]Assets/UI/Symbols/Control.png[/img][/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Line2" type="ColorRect" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops"]
-visible = false
-custom_minimum_size = Vector2(80, 2)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.501961, 0.501961, 0.501961, 0.501961)
-
-[node name="Panel3" type="Panel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops"]
-visible = false
-custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
-
-[node name="Pops" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("9_n4gub")
-bbcode_enabled = true
-text = "[right]$pops[img=24x24]Assets/UI/Symbols/PopsUnc.png[/img][/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Line1" type="ColorRect" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(2, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.501961, 0.501961, 0.501961, 0.501961)
-
-[node name="Buildings" type="VBoxContainer" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Panel" type="Panel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings"]
-custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
-
-[node name="Factories" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel"]
+[node name="Factories" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -618,24 +575,41 @@ text = "[right]$val/$max[img=32x32]Assets/UI/Symbols/ProdCap.png[/img][/right]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("18_ercnh")
 
-[node name="Line1" type="ColorRect" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings"]
-visible = false
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Factories"
+Row_1 = "Factories greatly improve the productivity of you population."
+Row_2 = "From Colony"
+Row_2_Right = "$val[img=24x24]Assets/UI/Symbols/ProdCap.png[/img]"
+
+[node name="Line2" type="ColorRect" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops"]
 custom_minimum_size = Vector2(80, 2)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.501961, 0.501961, 0.501961, 0.501961)
 
-[node name="Panel2" type="Panel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings"]
-visible = false
+[node name="Panel3" type="Panel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops"]
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
 
-[node name="Private" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel2"]
+[node name="Bases" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -646,10 +620,131 @@ grow_vertical = 2
 size_flags_vertical = 4
 theme = ExtResource("9_n4gub")
 bbcode_enabled = true
-text = "[right]$val/$max[img=32x32]Assets/UI/Symbols/PrivateIndustry.png[/img][/right]"
+text = "[right]$val/$max[img=32x32]Assets/UI/Symbols/Power.png[/img][/right]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("18_ercnh")
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Military Bases"
+Row_1 = "They defend this system."
+
+[node name="Line1" type="ColorRect" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(2, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 0.501961)
+
+[node name="Buildings" type="VBoxContainer" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Panel1" type="Panel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings"]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
+
+[node name="Control" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("9_n4gub")
+bbcode_enabled = true
+text = "[right]$val%[img=24x24]Assets/UI/Symbols/Control.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("18_ercnh")
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Control"
+Row_1 = "Control determines how much of system works for you or pays taxes. (formal economy)"
+
+[node name="Line1" type="ColorRect" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings"]
+custom_minimum_size = Vector2(80, 2)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 0.501961)
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings"]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
+
+[node name="Corruption" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("9_n4gub")
+bbcode_enabled = true
+text = "[right]$val%[img=24x24]Assets/UI/Symbols/Corruption.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("18_ercnh")
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Corruption"
+Row_1 = "How much of the taxes and production is lost to wealth and ineqality."
+Row_2 = "Tax Penalty
+Production Penalty"
+Row_2_Right = "[color=#88ff88]$t%[/color]
+[color=#88ff88]$p%[/color]"
 
 [node name="Line2" type="ColorRect" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings"]
 custom_minimum_size = Vector2(80, 2)
@@ -665,7 +760,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
 
-[node name="Bases" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel3"]
+[node name="Happiness" type="RichTextLabel" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -676,10 +771,149 @@ grow_vertical = 2
 size_flags_vertical = 4
 theme = ExtResource("9_n4gub")
 bbcode_enabled = true
-text = "[right]$val/$max[img=32x32]Assets/UI/Symbols/Power.png[/img][/right]"
+text = "[right]$val%[img=24x24]Assets/UI/Symbols/Happiness.png[/img][/right]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("18_ercnh")
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Hapiness"
+Row_1 = "Happiness of your people does not matter. Until you have a rebellion."
+
+[node name="WealthInfo" type="PanelContainer" parent="VBoxContainer/System"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("9_n4gub")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/System/WealthInfo"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/System/WealthInfo/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+alignment = 1
+
+[node name="Pops" type="VBoxContainer" parent="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Panel1" type="Panel" parent="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops"]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
+
+[node name="Wealth" type="RichTextLabel" parent="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("9_n4gub")
+bbcode_enabled = true
+text = "[right]$val[img=24x24]Assets/UI/Symbols/Wealth.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("18_ercnh")
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Population"
+Row_1 = "Population of the system."
+Row_2 = "From Colony"
+Row_2_Right = "$val[img=24x24]Assets/UI/Symbols/Pops.png[/img]"
+
+[node name="Line1" type="ColorRect" parent="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(2, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.501961, 0.501961, 0.501961, 0.501961)
+
+[node name="Buildings" type="VBoxContainer" parent="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Panel1" type="Panel" parent="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings"]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
+
+[node name="Inequality" type="RichTextLabel" parent="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("9_n4gub")
+bbcode_enabled = true
+text = "[right]$val%[img=24x24]Assets/UI/Symbols/Inequality.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("18_ercnh")
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Control"
+Row_1 = "Control determines how much of system works for you or pays taxes. (formal economy)"
 
 [node name="Control" type="PanelContainer" parent="VBoxContainer/System"]
 custom_minimum_size = Vector2(320, 32)
@@ -1229,12 +1463,16 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/System/Income/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/System/Income/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/System/Income/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Income" type="RichTextLabel" parent="VBoxContainer/System/Income/MarginContainer/HBoxContainer"]
+[node name="Income" type="RichTextLabel" parent="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("2_a1thb")
@@ -1246,7 +1484,7 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Income"]
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer/Income"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1261,26 +1499,53 @@ Direction = 1
 Width = 320
 Title = "Colonize"
 
-[node name="Line1" type="ColorRect" parent="VBoxContainer/System/Income/MarginContainer/HBoxContainer"]
+[node name="Line1" type="ColorRect" parent="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(2, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.501961, 0.501961, 0.501961, 0.501961)
 
-[node name="Production" type="RichTextLabel" parent="VBoxContainer/System/Income/MarginContainer/HBoxContainer"]
+[node name="Influence" type="RichTextLabel" parent="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("2_a1thb")
 theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[right][img=32x32]Assets/UI/Symbols/Prod.png[/img]$prod[/right]"
+text = "[right]$val[img=32x32]Assets/UI/Symbols/Influence.png[/img][/right]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Production"]
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer/Influence"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("17_f6tdb")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+
+[node name="Production" type="RichTextLabel" parent="VBoxContainer/System/Income/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_a1thb")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][img=32x32]Assets/UI/Symbols/Prod.png[/img]$val[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/System/Income/MarginContainer/VBoxContainer/Production"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1379,6 +1644,7 @@ offset_bottom = 32.0
 grow_horizontal = 0
 size_flags_horizontal = 0
 size_flags_vertical = 4
+focus_mode = 0
 theme = ExtResource("5_57s8b")
 theme_type_variation = &"RoundGrey"
 
@@ -1763,6 +2029,7 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+focus_mode = 0
 theme = ExtResource("5_57s8b")
 theme_type_variation = &"RoundGrey"
 
@@ -1974,6 +2241,7 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+focus_mode = 0
 theme = ExtResource("5_57s8b")
 theme_type_variation = &"RoundGrey"
 
@@ -2260,6 +2528,7 @@ offset_bottom = 32.0
 grow_horizontal = 0
 size_flags_horizontal = 0
 size_flags_vertical = 4
+focus_mode = 0
 theme = ExtResource("5_57s8b")
 theme_type_variation = &"RoundGrey"
 
@@ -2458,7 +2727,6 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("5_57s8b")
 theme_type_variation = &"Dragable"
-script = ExtResource("20_7qxtm")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Production/Shipbuilding/VBoxContainer/Working/Item_Current"]
 layout_mode = 1
@@ -2707,10 +2975,28 @@ autowrap_mode = 0
 shortcut_keys_enabled = false
 
 [connection signal="pressed" from="VBoxContainer/UncolonizedStar/Colonize/ColonizeBtn" to="VBoxContainer/UncolonizedStar" method="OnColonize"]
-[connection signal="mouse_entered" from="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Income/ToolTip" to="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Income/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Income/ToolTip" to="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Income/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Production/ToolTip" to="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Production/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Production/ToolTip" to="VBoxContainer/System/Income/MarginContainer/HBoxContainer/Production/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel2/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel2/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel2/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel2/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel3/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel3/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel3/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel3/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel2/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel2/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel2/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel2/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel3/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel3/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel3/ToolTip" to="VBoxContainer/System/SystemInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel3/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1/ToolTip" to="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1/ToolTip" to="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Pops/Panel1/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1/ToolTip" to="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1/ToolTip" to="VBoxContainer/System/WealthInfo/MarginContainer/VBoxContainer/HBoxContainer/Buildings/Panel1/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer/Income/ToolTip" to="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer/Income/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer/Income/ToolTip" to="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer/Income/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer/Influence/ToolTip" to="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer/Influence/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer/Influence/ToolTip" to="VBoxContainer/System/Income/MarginContainer/VBoxContainer/HBoxContainer/Influence/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/System/Income/MarginContainer/VBoxContainer/Production/ToolTip" to="VBoxContainer/System/Income/MarginContainer/VBoxContainer/Production/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/System/Income/MarginContainer/VBoxContainer/Production/ToolTip" to="VBoxContainer/System/Income/MarginContainer/VBoxContainer/Production/ToolTip" method="OnHoverExit"]
 [connection signal="pressed" from="VBoxContainer/Production/Develoopment/Focus/Button" to="VBoxContainer/Production" method="OnFocusColonize"]
 [connection signal="mouse_entered" from="VBoxContainer/Production/Develoopment/Focus/Button/ToolTip" to="VBoxContainer/Production/Develoopment/Focus/Button/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="VBoxContainer/Production/Develoopment/Focus/Button/ToolTip" to="VBoxContainer/Production/Develoopment/Focus/Button/ToolTip" method="OnHoverExit"]

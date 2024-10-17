@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="5_8aw70"]
 [ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="6_n6wct"]
 [ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="7_uodq0"]
-[ext_resource type="Script" path="res://Scripts/UI/Progress/UIConstructionItem.cs" id="8_povlc"]
+[ext_resource type="Script" path="res://Scripts/__Trash/UIConstructionItem.cs" id="8_povlc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g4td"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 0.376471)

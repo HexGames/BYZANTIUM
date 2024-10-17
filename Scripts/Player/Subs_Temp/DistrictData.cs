@@ -1,7 +1,7 @@
 
-// Session || Per Turn
 using Godot;
 
+// Session || Per Turn
 public partial class DistrictData
 {
     public PlanetData _Planet = null;

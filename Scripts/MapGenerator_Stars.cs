@@ -503,8 +503,8 @@ public partial class MapGenerator : Node
         int x = RNG.RandiRange(0, 2);
         int habitableSize = level + x; // 1-7
         int habitablePlanets = RNG.RandiRange(1, level);
-        if (habitablePlanets >= 4 && habitablePlanets < 2) habitablePlanets = 2;
-        if (habitablePlanets >= 7 && habitablePlanets < 3) habitablePlanets = 3;
+        if (habitableSize >= 4 && habitablePlanets < 2) habitablePlanets = 2;
+        if (habitableSize >= 7 && habitablePlanets < 3) habitablePlanets = 3;
         if (habitablePlanets > 3) habitablePlanets = 3;
         if (habitablePlanets > habitableSize) habitablePlanets = habitableSize; // 1-3
         int otherPlanets = 3 + level + 2 - x; // 4 - 10
@@ -580,6 +580,19 @@ public partial class MapGenerator : Node
         if (asteroids > 1)
         {
             Generate_Orbits_v2_AddNewOrbit(orbits, PlanetType.ASTEROIDS, !gasFirst);
+        }
+
+        if (level == 5)
+        {
+            GD.Print("HabSize: " + habitableSize.ToString());
+            string orbitStr = "S";
+            for (int i = 0; i < orbits.Count; i++)
+            {
+                orbitStr += " " + orbits[i].PlanetSize + orbits[i].Planet.ToString().Substring(0, 1);
+                if (orbits[i].Moon_1 != PlanetType.NONE) orbitStr += " " + orbits[i].Moon_1_Size + orbits[i].Moon_1.ToString().Substring(0, 1);
+                if (orbits[i].Moon_2 != PlanetType.NONE) orbitStr += " " + orbits[i].Moon_2_Size + orbits[i].Moon_2.ToString().Substring(0, 1);
+            }
+            GD.Print("::: " + orbitStr);
         }
 
         return orbits;
