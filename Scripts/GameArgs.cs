@@ -64,6 +64,9 @@ public partial class GameArgs : Node
             // buildings table
             MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "Building"), path + "Buildings.table");
 
+            // effects table
+            MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "Effects"), path + "Effects.table");
+
             // factions table
             MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "Factions"), path + "Factions.table");
 
@@ -77,6 +80,7 @@ public partial class GameArgs : Node
         if (GameStartup_ReimportDefs)
         {
             Def.LoadDistrictsDefFunc();
+            Def.LoadEffectsDefFunc();
             Def.LoadEmpiresDefFunc();
             Def.LoadEthicsDefFunc();
             Def.LoadFactionsDefFunc();
@@ -88,6 +92,7 @@ public partial class GameArgs : Node
 
             Def.SaveDistrictsDef();
             Def.SaveFactionsDef();
+            Def.SaveEffectsDef();
             Def.SaveFeaturesDef();
             Def.SaveShipPartsDef();
         }

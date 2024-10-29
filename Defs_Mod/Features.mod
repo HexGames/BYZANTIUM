@@ -90,8 +90,8 @@ Features
 		SuggestedFocus none
 		Benefit 
 		{
-			PopMax 30000
 			FactoryCost -20
+			PopMax 30000
 		}
 	}
 	Feature Medium
@@ -107,8 +107,8 @@ Features
 		SuggestedFocus none
 		Benefit 
 		{
-			PopMax 90000
 			FactoryCost 20
+			PopMax 90000
 		}
 	}
 	Feature Tiny_Moon
@@ -149,7 +149,7 @@ Features
 		Benefit 
 		{
 			PopMaxPenalty 50
-			FactoryBonus 10
+			Production*PerPop 10
 		}
 	}
 }

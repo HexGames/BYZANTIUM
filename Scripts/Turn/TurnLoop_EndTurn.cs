@@ -18,6 +18,7 @@ public partial class TurnLoop : Node
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsBuild()));
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsShipbuilding()));
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsMove()));
+        yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_Control())); 
 
         // update fleets
         StartTurn_Fleets();
@@ -80,7 +81,7 @@ public partial class TurnLoop : Node
             {
                 SystemData system = player.Systems[systemIdx];
 
-                ActionShipbuilding.EndTurn(Game.self, system); // --- !!! ---
+                ActionShipbuilding.EndTurn(system); // --- !!! ---
             }
         }
 
@@ -118,6 +119,31 @@ public partial class TurnLoop : Node
 
         yield return Timing.WaitForOneFrame;
     }
+
+
+    private IEnumerator<double> EndTurn_Control()
+    {
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            {
+                SystemData system = player.Systems[systemIdx];
+                DataBlock controlData = system.Data.GetSub("Control");
+
+                controlData.GetSub("Control").SetValueI(Mathf.Clamp(system.Control_PerTurn.Control + system.Resources_PerTurn.SpecialIncome.Control, 10, 1000), Game.self.Def); // --- !!! ---
+                controlData.GetSub("Corruption").SetValueI(Mathf.Clamp(system.Control_PerTurn.Corruption + system.Resources_PerTurn.SpecialIncome.Corruption, 10, 1000), Game.self.Def); // --- !!! ---
+                controlData.GetSub("Happiness").SetValueI(Mathf.Clamp(system.Control_PerTurn.Happiness + system.Resources_PerTurn.SpecialIncome.Happiness, 10, 1000), Game.self.Def); // --- !!! ---
+                controlData.GetSub("Wealth").SetValueI(Mathf.Clamp(system.Control_PerTurn.Wealth + system.Resources_PerTurn.SpecialIncome.Wealth, 10, 1000), Game.self.Def); // --- !!! ---
+                controlData.GetSub("Inequality").SetValueI(Mathf.Clamp(system.Control_PerTurn.Inequality + system.Resources_PerTurn.SpecialIncome.Inequality, 10, 1000), Game.self.Def); // --- !!! ---
+            }
+        }
+
+        Game.self.GalaxyUI.RefreshAllPathsLabels();
+
+        yield return Timing.WaitForOneFrame;
+    }
+
     // ----------------------------------------------------------------------------------------------
     private void StartTurn_Fleets()
     {
@@ -172,9 +198,21 @@ public partial class TurnLoop : Node
                 SystemData system = player.Systems[systemIdx];
                 system.Resources_PerTurn.Refresh();
                 system.Pops_PerTurn.Refresh();
+                system.Control_PerTurn.Refresh();
                 system.Buildings_PerTurn.Refresh();
                 system.DistrictsQueue_PerTurn.Refresh();
                 system.Shipbuilding_PerTurn.Refresh();
+
+                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetEconomyEffect().Res_PerSession);
+                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetStateEffect().Res_PerSession);
+                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetSocialEffect().Res_PerSession);
+                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetMigrationEffect().Res_PerSession);
+
+                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetControlEffect().Res_PerSession);
+                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetCorruptionEffect().Res_PerSession);
+                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetHappinessEffect().Res_PerSession);
+                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetWealthEffect().Res_PerSession);
+                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetInequalityEffect().Res_PerSession);
 
                 for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
                 {
@@ -286,7 +324,7 @@ public partial class TurnLoop : Node
             for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
             {
                 SystemData system = player.Systems[systemIdx];
-                ActionBuildDistrict.RefreshAvailableDistricts(Game.self, system);
+                ActionBuildDistrict.RefreshAvailableDistricts(system);
             }
 
             for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)

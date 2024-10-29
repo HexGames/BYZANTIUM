@@ -9,6 +9,7 @@ public class ResourcesWrapper
     {
         FEATURE,
         DISTRICT,
+        EFFECT,
         COLONY,
         SYSTEM
     };
@@ -36,7 +37,7 @@ public class ResourcesWrapper
             }
 
             public string ToString_AsIncome() { return Helper.ResValueToString(Value); }
-            public string ToString_AsFocus() {  return Value.ToString(); }
+            public string ToString_AsFocus() { return Value.ToString(); }
             public string ToString_AsBonus() { return Value.ToString(); }
         };
 
@@ -51,6 +52,7 @@ public class ResourcesWrapper
         public int LocalIncome = 0;
         public int LocalBonus = 0;
         public int Bonus = 0;
+        public int Penalty = 0;
         public int Focus = 0;
         public int FocusBase = 0;
         public int FocusChosen = 0;
@@ -63,10 +65,10 @@ public class ResourcesWrapper
         public IncomeInfo Copy()
         {
             IncomeInfo info = new IncomeInfo();
-        
+
             //info._Parent = _Parent;
             info.Name = Name;
-            
+
             info.IncomeFixed = IncomeFixed;
             info.IncomePerPop = IncomePerPop;
             //info.IncomeSystemFocus = IncomeSystemFocus;
@@ -74,10 +76,11 @@ public class ResourcesWrapper
             info.LocalIncome = LocalIncome;
             info.LocalBonus = LocalBonus;
             info.Bonus = Bonus;
+            info.Penalty = Penalty;
             info.Focus = Focus;
             info.FocusBase = FocusBase;
             info.FocusChosen = FocusChosen;
-        
+
             return info;
         }
 
@@ -140,6 +143,7 @@ public class ResourcesWrapper
 
         //public string ToString_Income(bool total = true) { return Helper.ResValueToString(total ? GetIncomeTotal() : Income); }
         public string ToString_Income() { return Helper.ResValueToString(IncomeFixed); }
+        public string ToString_PerPop() { return Helper.ResValueToString(IncomePerPop); }
         public string ToString_IncomeFromSystem(SystemData system) { return Helper.ResValueToString(IncomeFromSystem(system)); }
         public string ToString_IncomeTotal(SystemData system) { return Helper.ResValueToString(IncomeAllTotal(system)); }
         //public string ToString_IncomeTotal() { return Helper.ResValueToString(IncomeTotal()); }
@@ -152,10 +156,11 @@ public class ResourcesWrapper
         public string ToString_FocusChosen() { return FocusChosen.ToString(); }
         public string ToString_FocusTotal() { return FocusTotal().ToString(); }
         public string ToString_BonusTotal() { int bt = BonusTotal(); return (bt > 0 ? "+" : "") + bt.ToString(); }
+        public string ToString_Penalty() { return Penalty.ToString(); }
 
         public void Set(string type, int value)
         {
-            switch(type)
+            switch (type)
             {
                 case "Income": IncomeFixed = value; break;
                 case "PerPop": IncomePerPop = value; break;
@@ -163,6 +168,7 @@ public class ResourcesWrapper
                 case "SystemIncome": SystemIncome = value; break;
                 case "LocalBonus": LocalBonus = value; break;
                 case "Bonus": Bonus = value; break;
+                case "Penalty": Penalty = value; break;
                 case "Focus": Focus = value; break;
                 case "FocusBase": FocusBase = value; break;
                 case "FocusChosen": FocusChosen = value; break;
@@ -182,17 +188,29 @@ public class ResourcesWrapper
         public int GrowthLocalBonus = 0;
         public int PopMax = 0;
         public int PopMaxPenalty = 0;
+        public int Migration = 0;
         public int FactoryCost = 0;
-        public int FactoryBonus = 0;
+
+        public int Control = 0;
+        public int Corruption = 0;
+        public int Happiness = 0;
+        public int Wealth = 0;
+        public int Inequality = 0;
 
         public void Reset()
-        { 
+        {
             Growth = 0;
             GrowthLocalBonus = 0;
             PopMax = 0;
             PopMaxPenalty = 0;
+            Migration = 0;
             FactoryCost = 0;
-            FactoryBonus = 0;
+
+            Control = 0;
+            Corruption = 0;
+            Happiness = 0;
+            Wealth = 0;
+            Inequality = 0;
         }
 
         public SpecialInfo Copy()
@@ -205,8 +223,14 @@ public class ResourcesWrapper
             info.GrowthLocalBonus = GrowthLocalBonus;
             info.PopMax = PopMax;
             info.PopMaxPenalty = PopMaxPenalty;
+            info.Migration = Migration;
             info.FactoryCost = FactoryCost;
-            info.FactoryBonus = FactoryBonus;
+
+            info.Control = Control;
+            info.Corruption = Corruption;
+            info.Happiness = Happiness;
+            info.Wealth = Wealth;
+            info.Inequality = Inequality;
 
             return info;
         }
@@ -223,7 +247,18 @@ public class ResourcesWrapper
         //public string ToString_SystemIncome() { return Helper.ResValueToString(SystemIncome); }
         //public string ToString_LocalBonus() { return (LocalBonus >= 0 ? "+" : "") + LocalBonus.ToString() + "%"; }
         //public string ToString_Bonus() { return (Bonus >= 0 ? "+" : "") + Bonus.ToString() + "%"; }
-        //public string ToString_Focus() { return Focus.ToString(); 
+        public string ToString_Growth() { return (Growth > 0 ? "+" : "") + Growth.ToString(); }
+        public string ToString_GrowthLocalBonus() { return (GrowthLocalBonus > 0 ? "+" : "") + GrowthLocalBonus.ToString(); }
+        public string ToString_PopMax() { return (PopMax > 0 ? "+" : "") + PopMax.ToString(); }
+        public string ToString_PopMaxPenalty() { return (PopMaxPenalty > 0 ? "+" : "") + PopMaxPenalty.ToString(); }
+        public string ToString_Migration() { return (Migration > 0 ? "+" : "") + Migration.ToString(); }
+        public string ToString_FactoryCost() { return (FactoryCost > 0 ? "+" : "") + FactoryCost.ToString(); }
+
+        public string ToString_Control() { return Helper.ResValueToString(Control, 10, true); }
+        public string ToString_Corruption() { return Helper.ResValueToString(Corruption, 10, true); }
+        public string ToString_Happiness() { return Helper.ResValueToString(Happiness, 10, true); }
+        public string ToString_Wealth() { return Helper.ResValueToString(Wealth, 10, true); }
+        public string ToString_Inequality() { return Helper.ResValueToString(Inequality, 10, true); }
 
         public void Set(string type, int value)
         {
@@ -233,8 +268,13 @@ public class ResourcesWrapper
                 case "GrowthLocalBonus": GrowthLocalBonus = value; break;
                 case "PopMax": PopMax = value; break;
                 case "PopMaxPenalty": PopMaxPenalty = value; break;
+                case "Migration": Migration = value; break;
                 case "FactoryCost": FactoryCost = value; break;
-                case "FactoryBonus": FactoryBonus = value; break;
+                case "Control": Control = value; break;
+                case "Corruption": Corruption = value; break;
+                case "Happiness": Happiness = value; break;
+                case "Wealth": Wealth = value; break;
+                case "Inequality": Inequality = value; break;
             }
         }
 
@@ -278,7 +318,7 @@ public class ResourcesWrapper
             string name = Helper.Split_0(resDataSubs[idxData].Name, '*');
             string type = Helper.Split_1(resDataSubs[idxData].Name, '*');
 
-            if (type == "Income" || type == "PerPop" || type == "SystemIncome" || type == "LocalBonus" || type == "Bonus" || type == "Focus" || type == "FocusBase" || type == "FocusChosen")
+            if (type == "Income" || type == "PerPop" || type == "SystemIncome" || type == "LocalBonus" || type == "Bonus" || type == "Focus" || type == "FocusBase" || type == "FocusChosen" || type == "Penalty")
             {
                 for (int idxRes = 0; idxRes < Incomes.Count; idxRes++)
                 {
@@ -379,14 +419,21 @@ public class ResourcesWrapper
                 }
             }
         }
-    
+
         SpecialIncome.Growth += otherRes.SpecialIncome.Growth;
         SpecialIncome.GrowthLocalBonus += otherRes.SpecialIncome.GrowthLocalBonus;
         SpecialIncome.PopMax += otherRes.SpecialIncome.PopMax;
         SpecialIncome.PopMaxPenalty += otherRes.SpecialIncome.PopMaxPenalty;
+        SpecialIncome.Migration += otherRes.SpecialIncome.Migration;
         SpecialIncome.FactoryCost += otherRes.SpecialIncome.FactoryCost;
-        SpecialIncome.FactoryBonus += otherRes.SpecialIncome.FactoryBonus;
+
+        //SpecialIncome.Control += otherRes.SpecialIncome.Control;
+        //SpecialIncome.Corruption += otherRes.SpecialIncome.Corruption;
+        //SpecialIncome.Happiness += otherRes.SpecialIncome.Happiness;
+        //SpecialIncome.Wealth  += otherRes.SpecialIncome.Wealth;
+        //SpecialIncome.Inequality += otherRes.SpecialIncome.Inequality;
     }
+
     public void AddResources_Districts(DistrictData district, ResourcesWrapper otherRes)
     {
         for (int otherIdx = 0; otherIdx < otherRes.Incomes.Count; otherIdx++)
@@ -431,8 +478,118 @@ public class ResourcesWrapper
         SpecialIncome.GrowthLocalBonus += otherRes.SpecialIncome.GrowthLocalBonus;
         SpecialIncome.PopMax += otherRes.SpecialIncome.PopMax;
         SpecialIncome.PopMaxPenalty += otherRes.SpecialIncome.PopMaxPenalty;
+        SpecialIncome.Migration += otherRes.SpecialIncome.Migration;
         SpecialIncome.FactoryCost += otherRes.SpecialIncome.FactoryCost;
-        SpecialIncome.FactoryBonus += otherRes.SpecialIncome.FactoryBonus;
+
+        SpecialIncome.Control += otherRes.SpecialIncome.Control;
+        SpecialIncome.Corruption += otherRes.SpecialIncome.Corruption;
+        SpecialIncome.Happiness += otherRes.SpecialIncome.Happiness;
+        SpecialIncome.Wealth += otherRes.SpecialIncome.Wealth;
+        SpecialIncome.Inequality += otherRes.SpecialIncome.Inequality;
+    }
+
+    public void AddResources_Effect(ResourcesWrapper otherRes)
+    {
+        for (int otherIdx = 0; otherIdx < otherRes.Incomes.Count; otherIdx++)
+        {
+            bool found = false;
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+            {
+                if (Incomes[resIdx].Name == otherRes.Incomes[otherIdx].Name)
+                {
+                    found = true;
+                }
+            }
+
+            if (found == false)
+            {
+                IncomeInfo info = new IncomeInfo();
+                info.Name = otherRes.Incomes[otherIdx].Name;
+                Incomes.Add(info);
+            }
+
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+            {
+                if (Incomes[resIdx].Name == otherRes.Incomes[otherIdx].Name)
+                {
+                    Incomes[resIdx].IncomePerPop += otherRes.Incomes[otherIdx].IncomePerPop;
+                    //Incomes[resIdx].IncomeSystemFocus += otherRes.Incomes[otherIdx].IncomeSystemFocus;
+                    //Incomes[resIdx].SystemIncome += otherRes.Incomes[otherIdx].SystemIncome;
+                    //Incomes[resIdx].LocalIncome += otherRes.Incomes[otherIdx].LocalIncome;
+                    //Incomes[resIdx].LocalBonus += otherRes.Incomes[otherIdx].LocalBonus;
+                    //Incomes[resIdx].Bonus += otherRes.Incomes[otherIdx].Bonus;
+                    Incomes[resIdx].Penalty += otherRes.Incomes[otherIdx].Penalty;
+                    //Incomes[resIdx].Focus += otherRes.Incomes[otherIdx].Focus;
+                    //Incomes[resIdx].FocusBase += otherRes.Incomes[otherIdx].FocusBase;
+                    //Incomes[resIdx].FocusChosen += otherRes.Incomes[otherIdx].FocusChosen;
+                }
+            }
+        }
+
+        //SpecialIncome.Growth += otherRes.SpecialIncome.Growth;
+        //SpecialIncome.GrowthLocalBonus += otherRes.SpecialIncome.GrowthLocalBonus;
+        //SpecialIncome.PopMax += otherRes.SpecialIncome.PopMax;
+        //SpecialIncome.PopMaxPenalty += otherRes.SpecialIncome.PopMaxPenalty;
+        SpecialIncome.Migration += otherRes.SpecialIncome.Migration;
+        //SpecialIncome.FactoryCost += otherRes.SpecialIncome.FactoryCost;
+
+        SpecialIncome.Control += otherRes.SpecialIncome.Control;
+        SpecialIncome.Corruption += otherRes.SpecialIncome.Corruption;
+        SpecialIncome.Happiness += otherRes.SpecialIncome.Happiness;
+        SpecialIncome.Wealth += otherRes.SpecialIncome.Wealth;
+        SpecialIncome.Inequality += otherRes.SpecialIncome.Inequality;
+    }
+
+    public void RemoveResources_Effect(ResourcesWrapper otherRes)
+    {
+        for (int otherIdx = 0; otherIdx < otherRes.Incomes.Count; otherIdx++)
+        {
+            bool found = false;
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+            {
+                if (Incomes[resIdx].Name == otherRes.Incomes[otherIdx].Name)
+                {
+                    found = true;
+                }
+            }
+
+            if (found == false)
+            {
+                IncomeInfo info = new IncomeInfo();
+                info.Name = otherRes.Incomes[otherIdx].Name;
+                Incomes.Add(info);
+            }
+
+            for (int resIdx = 0; resIdx < Incomes.Count; resIdx++)
+            {
+                if (Incomes[resIdx].Name == otherRes.Incomes[otherIdx].Name)
+                {
+                    Incomes[resIdx].IncomePerPop -= otherRes.Incomes[otherIdx].IncomePerPop;
+                    //Incomes[resIdx].IncomeSystemFocus += otherRes.Incomes[otherIdx].IncomeSystemFocus;
+                    //Incomes[resIdx].SystemIncome += otherRes.Incomes[otherIdx].SystemIncome;
+                    //Incomes[resIdx].LocalIncome += otherRes.Incomes[otherIdx].LocalIncome;
+                    //Incomes[resIdx].LocalBonus += otherRes.Incomes[otherIdx].LocalBonus;
+                    //Incomes[resIdx].Bonus += otherRes.Incomes[otherIdx].Bonus;
+                    Incomes[resIdx].Penalty -= otherRes.Incomes[otherIdx].Penalty;
+                    //Incomes[resIdx].Focus += otherRes.Incomes[otherIdx].Focus;
+                    //Incomes[resIdx].FocusBase += otherRes.Incomes[otherIdx].FocusBase;
+                    //Incomes[resIdx].FocusChosen += otherRes.Incomes[otherIdx].FocusChosen;
+                }
+            }
+        }
+
+        //SpecialIncome.Growth += otherRes.SpecialIncome.Growth;
+        //SpecialIncome.GrowthLocalBonus += otherRes.SpecialIncome.GrowthLocalBonus;
+        //SpecialIncome.PopMax += otherRes.SpecialIncome.PopMax;
+        //SpecialIncome.PopMaxPenalty += otherRes.SpecialIncome.PopMaxPenalty;
+        SpecialIncome.Migration -= otherRes.SpecialIncome.Migration;
+        //SpecialIncome.FactoryCost += otherRes.SpecialIncome.FactoryCost;
+
+        SpecialIncome.Control -= otherRes.SpecialIncome.Control;
+        SpecialIncome.Corruption -= otherRes.SpecialIncome.Corruption;
+        SpecialIncome.Happiness -= otherRes.SpecialIncome.Happiness;
+        SpecialIncome.Wealth -= otherRes.SpecialIncome.Wealth;
+        SpecialIncome.Inequality -= otherRes.SpecialIncome.Inequality;
     }
 
     public void AddSystemIncome(ResourcesWrapper colonyRes, bool addMissing = false)
@@ -516,8 +673,8 @@ public class ResourcesWrapper
         //SpecialIncome.GrowthLocalBonus += otherRes.SpecialIncome.GrowthLocalBonus; // already added
         SpecialIncome.PopMax += colonyRes.SpecialIncome.PopMax;
         SpecialIncome.PopMaxPenalty += colonyRes.SpecialIncome.PopMaxPenalty;
+        SpecialIncome.Migration += colonyRes.SpecialIncome.Migration;
         SpecialIncome.FactoryCost += colonyRes.SpecialIncome.FactoryCost;
-        SpecialIncome.FactoryBonus += colonyRes.SpecialIncome.FactoryBonus;
     }
 
     public IncomeInfo GetIncome(string name, bool returnDefault = true)
@@ -555,20 +712,53 @@ public class ResourcesWrapper
         int workingFactories = Mathf.Min(system.Pops_PerTurn.GetPops(), system.Buildings_PerTurn.Factories) / 1000;
         int emptyFactories = system.Buildings_PerTurn.Factories / 1000 - workingFactories;
 
-        return (pops + workingFactories * 4) * 10 + emptyFactories * 5;
+        int pureProduction = (pops + workingFactories * 4) * 10 + emptyFactories * 5;
+
+        int production = (pureProduction * system.Control_PerTurn.Control / 1000) * (system.Control_PerTurn.Corruption + 1000) / 2000;
+        return production;
     }
     public static int GetSystemBC(SystemData system)
     {
         int pops = system.Pops_PerTurn.GetPops() / 1000;
         int workingFactories = Mathf.Min(system.Pops_PerTurn.GetPops(), system.Buildings_PerTurn.Factories) / 1000;
 
-        return (pops + workingFactories) * 10;
+        int pureBC = (pops + workingFactories) * 10;
+
+        int bc = (pureBC * system.Control_PerTurn.Control / 1000) * system.Control_PerTurn.Corruption / 1000;
+        return bc;
     }
     public static int GetSystemInfluence(SystemData system)
     {
         int pops = system.Pops_PerTurn.GetPops() / 1000;
 
         return pops * 10;
+    }
+
+    public string ToString_Long()
+    {
+        string text = "";
+
+        for (int idx = 0; idx < Incomes.Count; idx++)
+        {
+            if (Incomes[idx].IncomeFixed != 0) text += (text.Length > 0 ? "\n" : "") + Incomes[idx].ToString_Income() + Helper.GetIcon(Incomes[idx].Name) + " " + Incomes[idx].Name;
+            if (Incomes[idx].IncomePerPop != 0) text += (text.Length > 0 ? "\n" : "") + Incomes[idx].ToString_PerPop() + Helper.GetIcon(Incomes[idx].Name) + " " + Incomes[idx].Name;
+            if (Incomes[idx].Penalty != 0) text += (text.Length > 0 ? "\n" : "") + Incomes[idx].ToString_Penalty() + Helper.GetIcon(Incomes[idx].Name) + "% " + Incomes[idx].Name + " Penalty";
+        }
+
+        if (SpecialIncome.Growth != 0) text += (text.Length > 0 ? "\n" : "") + SpecialIncome.ToString_Growth() + Helper.GetIcon("Growth") + " Growth";
+        if (SpecialIncome.GrowthLocalBonus != 0) text += (text.Length > 0 ? "\n" : "") + SpecialIncome.ToString_GrowthLocalBonus() + Helper.GetIcon("Growth") + " Local Growth";
+        if (SpecialIncome.PopMax != 0) text += (text.Length > 0 ? "\n" : "") + SpecialIncome.ToString_PopMax() + Helper.GetIcon("Pops") + " Max Pop";
+        if (SpecialIncome.PopMaxPenalty != 0) text += (text.Length > 0 ? "\n" : "") + SpecialIncome.ToString_PopMaxPenalty() + Helper.GetIcon("Pops") + " Max Pop";
+        if (SpecialIncome.Migration != 0) text += (text.Length > 0 ? "\n" : "") + SpecialIncome.ToString_Migration() + Helper.GetIcon("Pops") + " Migration";
+        if (SpecialIncome.FactoryCost != 0) text += (text.Length > 0 ? "\n" : "") + SpecialIncome.ToString_FactoryCost() + Helper.GetIcon("ProdCap") + " Factory Cost";
+
+        if (SpecialIncome.Control != 0) text += (text.Length > 0 ? "\n" : "") + SpecialIncome.ToString_Control() + Helper.GetIcon("Control") + " Control";
+        if (SpecialIncome.Corruption != 0) text += (text.Length > 0 ? "\n" : "") + SpecialIncome.ToString_Corruption() + Helper.GetIcon("Corruption") + " Corruption";
+        if (SpecialIncome.Happiness != 0) text += (text.Length > 0 ? "\n" : "") + SpecialIncome.ToString_Happiness() + Helper.GetIcon("Happiness") + " Happiness";
+        if (SpecialIncome.Wealth != 0) text += (text.Length > 0 ? "\n" : "") + SpecialIncome.ToString_Wealth() + Helper.GetIcon("Wealth") + " Wealth";
+        if (SpecialIncome.Inequality != 0) text += (text.Length > 0 ? "\n" : "") + SpecialIncome.ToString_Inequality() + Helper.GetIcon("Inequality") + " Inequality";
+
+        return text;
     }
 
     //public void PropagateSystemBonuses(ResourcesWrapper systemRes)

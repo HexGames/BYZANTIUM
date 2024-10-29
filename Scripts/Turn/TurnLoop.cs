@@ -164,6 +164,7 @@ public partial class TurnLoop : Node
                 SystemData system = player.Systems[sectorIdx];
                 system.Resources_PerTurn = new ResourcesWrapper(system.Resources, ResourcesWrapper.ParentType.SYSTEM);
                 system.Pops_PerTurn = new PopsWrapper(system);
+                system.Control_PerTurn = new ControlWrapper(system);
                 system.Buildings_PerTurn = new BuildingsWrapper(system);
                 system.DistrictsQueue_PerTurn = new DistrictQueueWrapper(system);
                 system.Shipbuilding_PerTurn = new ShipbuildingWrapper(system);

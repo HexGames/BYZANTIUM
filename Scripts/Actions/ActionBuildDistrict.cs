@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class ActionBuildDistrict
 {
-    static public void RefreshAvailableDistricts(Game game, SystemData system)
+    static public void RefreshAvailableDistricts(SystemData system)
     {
         system.ActionsBuildPossible_PerTurn.Clear();
 
@@ -29,11 +29,11 @@ public class ActionBuildDistrict
                             }
                             if (hasPops)
                             {
-                                for (int defIdx = 0; defIdx < game.Def.DistrictsInfo.Count; defIdx++)
+                                for (int defIdx = 0; defIdx < Game.self.Def.DistrictsInfo.Count; defIdx++)
                                 {
-                                    if (game.Def.DistrictsInfo[defIdx].Type == districtType)
+                                    if (Game.self.Def.DistrictsInfo[defIdx].Type == districtType)
                                     {
-                                        system.ActionsBuildPossible_PerTurn.Add(new DistrictData(game.Def.DistrictsInfo[defIdx], districtSlots[districtIdx], planet));
+                                        system.ActionsBuildPossible_PerTurn.Add(new DistrictData(Game.self.Def.DistrictsInfo[defIdx], districtSlots[districtIdx], planet));
                                     }
                                 }
                             }
@@ -42,11 +42,11 @@ public class ActionBuildDistrict
                 }
                 else if (planet.Data.HasSub("SlotType"))
                 {
-                    for (int defIdx = 0; defIdx < game.Def.DistrictsInfo.Count; defIdx++)
+                    for (int defIdx = 0; defIdx < Game.self.Def.DistrictsInfo.Count; defIdx++)
                     {
-                        if (game.Def.DistrictsInfo[defIdx].Type == districtType)
+                        if (Game.self.Def.DistrictsInfo[defIdx].Type == districtType)
                         {
-                            system.ActionsBuildPossible_PerTurn.Add(new DistrictData(game.Def.DistrictsInfo[defIdx], planet));
+                            system.ActionsBuildPossible_PerTurn.Add(new DistrictData(Game.self.Def.DistrictsInfo[defIdx], planet));
                         }
                     }
                 }
@@ -54,7 +54,7 @@ public class ActionBuildDistrict
         }
     }
 
-    static public void AddToQueue(Game game, DistrictData chosenDistrict)
+    static public void AddToQueue(DistrictData chosenDistrict)
     {
         PlanetData planet = chosenDistrict._Planet;
         SystemData system = planet._Star.System;
@@ -63,9 +63,9 @@ public class ActionBuildDistrict
 
         DataBlock queue = system.Data.GetSub("ActionBuildDistrict").GetSub("Queue");
         int placeInQueue = queue.Subs.Count; // GetSubs("District").Count;
-        DataBlock district = Data.AddData(queue, "District", chosenDistrict.DistrictDef.Name, game.Def);
-        Data.AddLink(district, chosenDistrict._Planet, game.Def);
-        Data.AddData(district, "Progress", 0, game.Def);
+        DataBlock district = Data.AddData(queue, "District", chosenDistrict.DistrictDef.Name, Game.self.Def);
+        Data.AddLink(district, chosenDistrict._Planet, Game.self.Def);
+        Data.AddData(district, "Progress", 0, Game.self.Def);
 
         if (planet.Colony == null)
         {
@@ -73,7 +73,7 @@ public class ActionBuildDistrict
             DataBlock colonyData = MapGenerator.CreateNewColony(planet._Star.Data, planet.Data, system._Player.Data, system.Data, -1, Game.self.Def, false);
 
             // ---
-            ColonyData colony = game.Map.Data.GenerateGameFromData_Player_System_Colony(colonyData, system);
+            ColonyData colony = Game.self.Map.Data.GenerateGameFromData_Player_System_Colony(colonyData, system);
 
             colony.Districts.Clear();
             Array<DataBlock> districts = colony.Data.GetSub("Districts").GetSubs("District");
@@ -99,9 +99,9 @@ public class ActionBuildDistrict
             }
         }
 
-        colonyDistrict.Data.SetValueS(chosenDistrict.DistrictDef.Name, game.Def);
+        colonyDistrict.Data.SetValueS(chosenDistrict.DistrictDef.Name, Game.self.Def);
         colonyDistrict.DistrictDef = chosenDistrict.DistrictDef;
-        Data.AddData(colonyDistrict.Data, "InQueue", placeInQueue, game.Def);
+        Data.AddData(colonyDistrict.Data, "InQueue", placeInQueue, Game.self.Def);
         Data.DeleteDataSub(colonyDistrict.Data, "RequiredPops");
 
         system.DistrictsQueue_PerTurn.Refresh();

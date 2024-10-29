@@ -16,10 +16,19 @@ public partial class MapGenerator : Node
     {
         DataBlock control = Data.AddData(system, "Control", DefLibrary);
 
+        Data.AddData(control, "Economy_Level", 2, DefLibrary);
+        Data.AddData(control, "Economy_Lock_Timer", 0, DefLibrary);
+        Data.AddData(control, "State_Level", 2, DefLibrary);
+        Data.AddData(control, "State_Lock_Timer", 0, DefLibrary);
+        Data.AddData(control, "Social_Level", 2, DefLibrary);
+        Data.AddData(control, "Social_Lock_Timer", 0, DefLibrary);
+        Data.AddData(control, "Migration_Level", 1, DefLibrary);
+        Data.AddData(control, "Migration_Lock_Timer", 0, DefLibrary);
+
         Data.AddData(control, "Control", 800, DefLibrary);
         Data.AddData(control, "Corruption", 100, DefLibrary);
         Data.AddData(control, "Happiness", 800, DefLibrary);
-        Data.AddData(control, "Wealth", 10000 * level, DefLibrary);
+        Data.AddData(control, "Wealth", 100 + 150 * level, DefLibrary);
         Data.AddData(control, "Inequality", 500, DefLibrary);
 
         DataBlock resources = Data.AddData(system, "Resources", DefLibrary);

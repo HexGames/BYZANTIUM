@@ -263,7 +263,7 @@ public partial class UISelectedPlanetItem : Control
             // possible district
             Game.self.GalaxyUI.PlanetInfo.HideBuildDistrictSelector();
 
-            ActionBuildDistrict.AddToQueue(Game.self, _PossibleDistrict);
+            ActionBuildDistrict.AddToQueue(_PossibleDistrict);
 
             Game.self.GalaxyUI.PlanetInfo.Refresh(_PossibleDistrict._Planet);
         }

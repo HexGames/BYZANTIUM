@@ -205,6 +205,7 @@ public partial class DefLibrary : Node
     public override void _Ready()
     {
         _Ready_Districts();
+        _Ready_Effects();
         _Ready_Empires();
         _Ready_Features();
     }

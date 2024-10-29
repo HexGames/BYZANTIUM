@@ -558,10 +558,81 @@ public partial class UISelectedStarProduction : Control
 
     public void OnChangeShipLeft()
     {
+        /*string designName = _System.Data.GetSub("ActionBuildShip").GetSub("Design").ValueS;
+        for (int idx = 0; idx < _System._Player.Designs.Count; idx++)
+        {
+            if (_System._Player.Designs[idx].DesignName == designName)
+            {
+                if (idx > 0)
+                {
+                    ActionShipbuilding.ChangeShipTo(_System._Player.Designs[idx - 1].DesignName);
+                }
+            }
+        }
+
+        DesignData design = _System._Player.GetDesign();
+        DataBlock actionBuildShip = _System.Data.GetSub("ActionBuildShip");
+        int progress = actionBuildShip.GetSub("Progress").ValueI;
+        int overflow = actionBuildShip.GetSub("Overflow").ValueI;
+        actionBuildShip.GetSub("Overflow").ValueI = 0;
+        int production = _System.Resources_PerTurn.GetIncome("Shipbuilding").IncomeAllTotal(system);
+
+        if (design != null)
+        {
+            int maxProgress = 1000; // design.DistrictDef.Cost;
+            int totalProgress = progress + production + overflow;
+            int trys = 1000;
+            while (totalProgress >= maxProgress && trys > 0)
+            {
+                FleetData ownedFleeet = null;
+                FleetData bestFleeet = null;
+                for (int fleetIdx = 0; fleetIdx < system.Star.Fleets_PerTurn.Count; fleetIdx++)
+                {
+                    if (system.Star.Fleets_PerTurn[fleetIdx]._Player == system._Player)
+                    {
+                        ownedFleeet = system.Star.Fleets_PerTurn[fleetIdx];
+                        for (int shipIdx = 0; shipIdx < ownedFleeet.Ships.Count; shipIdx++)
+                        {
+                            if (ownedFleeet.Ships[shipIdx].Design == design)
+                            {
+                                bestFleeet = ownedFleeet;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (bestFleeet == null) bestFleeet = ownedFleeet;
+                if (bestFleeet == null)
+                {
+                    // new fleet
+                    DataBlock fleetData = Data.AddData(system._Player.Data.GetSub("Fleets"), "Fleet", Helper.IntToRoman(system._Player.Fleets.Count + 1), game.Def);
+                    Data.AddData(fleetData, "Name", "Fury_" + Helper.IntToRoman(system._Player.Fleets.Count + 1), game.Def);
+
+                    Data.AddData(fleetData, "Link:Star", system.Star.StarName, game.Def); // no StarData yet
+                    Data.AddData(system.Star.Data, "Link:Player:Fleet", system._Player.PlayerName + ":" + fleetData.ValueS, game.Def); // no StarData yet
+
+                    // ---
+                    bestFleeet = game.Map.Data.GenerateGameFromData_Player_Fleet(fleetData, system._Player);
+                    bestFleeet.Ships.Clear();
+
+                    bestFleeet.Stats_PerTurn = new FleetStatsWrapper(bestFleeet);
+                    bestFleeet.StarAt_PerTurn = system.Star;
+                }
+
+                DataBlock shipData = MapGenerator.CreateNewShip(bestFleeet.Data, "ShipName", design.DesignName, game.Def);
+                bestFleeet.Ships.Add(new ShipData(shipData, bestFleeet));
+
+                totalProgress = totalProgress - maxProgress;
+                trys--;
+            }
+
+            actionBuildShip.GetSub("Progress").SetValueI(totalProgress, game.Def); // <-- add production to progress
+        }*/
     }
 
     public void OnChangeShipRight()
     {
+
     }
 
     public void OnFocusBases()

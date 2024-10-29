@@ -35,6 +35,8 @@ public partial class SystemData : Node
     public ResourcesWrapper Resources_PerTurn = null;
     // pops
     public PopsWrapper Pops_PerTurn = null;
+    // control
+    public ControlWrapper Control_PerTurn = null;
     // buildings
     public BuildingsWrapper Buildings_PerTurn = null;
     // actions

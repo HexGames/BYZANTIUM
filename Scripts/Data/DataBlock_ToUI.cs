@@ -175,7 +175,7 @@ public partial class DataBlock : Resource
                 }
             case "Rocky":
                 {
-                    return "This is rocky planet";
+                    return "This is a rocky planet";
                 }
             case "Cost*Penalty":
                 {

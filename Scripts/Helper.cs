@@ -76,11 +76,11 @@ public class Helper
 
     public static string GetColorPrefix_Good()
     {
-        return "[color=#ff8888]";
+        return "[color=#88ff88]";
     }
     public static string GetColorPrefix_Bad()
     {
-        return "[color=#88ff88]";
+        return "[color=#ff8888]";
     }
     public static string GetColorPrefix_Waste()
     {
