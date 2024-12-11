@@ -15,20 +15,13 @@ public partial class MapGenerator : Node
         Data.AddData(empire, "Flag", empireInfo.GetSub("FlagID").ValueI, DefLibrary);
     }
 
-    private void GenerateNewMapSave_Players_Resources(DataBlock player)
+    private void GenerateNewMapSave_Players_Stockpiles(DataBlock player)
     {
-        DataBlock resources = Data.AddData(player, "Resources", DefLibrary);
+        DataBlock stockpiles = Data.AddData(player, "Stockpiles", DefLibrary);
 
-        Data.AddData(resources, "BC*Income", 0, DefLibrary);
-        Data.AddData(resources, "Influence*Income", 0, DefLibrary);
-        Data.AddData(resources, "Research*Income", 0, DefLibrary);
-
-        Data.AddData(resources, "BC*Stockpile", 0, DefLibrary);
-        Data.AddData(resources, "Influence*Stockpile", 0, DefLibrary);
-        Data.AddData(resources, "Research*Stockpile", 0, DefLibrary);
-
-        Data.AddData(resources, "Authority*Used", 0, DefLibrary);
-        Data.AddData(resources, "Authority*Max", 0, DefLibrary);
+        Data.AddData(stockpiles, "BC", 200, DefLibrary);
+        Data.AddData(stockpiles, "Influence", 100, DefLibrary);
+        Data.AddData(stockpiles, "Research", 0, DefLibrary);
     }
 
     private void GenerateNewMapSave_Players_Status(DataBlock player)

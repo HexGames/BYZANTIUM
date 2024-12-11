@@ -51,13 +51,25 @@ public partial class DataBlock : Resource
         return false;
     }
 
-    public bool HasSub(string type, int value)
+    public bool HasSub(string path, int value)
     {
-        for (int idx = 0; idx < Subs.Count; idx++)
+        int splitIdx = path.Find("/");
+        if (splitIdx > 0)
         {
-            if (Subs[idx].Name == type && Subs[idx].ValueI == value)
+            DataBlock sub = GetSub(path.Substring(0, splitIdx));
+            if (sub != null)
             {
-                return true;
+                sub.HasSub(path.Substring(splitIdx + 1), value);
+            }
+        }
+        else
+        {
+            for (int idx = 0; idx < Subs.Count; idx++)
+            {
+                if (Subs[idx].Name == path && Subs[idx].ValueI == value)
+                {
+                    return true;
+                }
             }
         }
         return false;
@@ -112,38 +124,64 @@ public partial class DataBlock : Resource
                 return Subs[idx];
             }
         }
-        if (showWarning) 
-            GD.Print("sub not found Data : Type - " + Name + " : " + type);
+        //if (showWarning) 
+        //    GD.Print("sub not found Data : Type - " + Name + " : " + type);
 
         return null;
     }
 
-    public string GetSubValueS(string type, bool showWarning = false)
+    public string GetSubValueS(string path, bool showWarning = false)
     {
-        for (int idx = 0; idx < Subs.Count; idx++)
+        int splitIdx = path.Find("/");
+        if (splitIdx > 0)
         {
-            if (Subs[idx].Name == type)
+            DataBlock sub = GetSub(path.Substring(0, splitIdx));
+            if (sub != null)
             {
-                return Subs[idx].ValueS;
+                return sub.GetSubValueS(path.Substring(splitIdx + 1), showWarning);
             }
         }
-        if (showWarning)
-            GD.Print("sub not found Data : Type - " + Name + " : " + type);
+        else
+        {
+            for (int idx = 0; idx < Subs.Count; idx++)
+            {
+                if (Subs[idx].Name == path)
+                {
+                    return Subs[idx].ValueS;
+                }
+            }
+        }
+
+        //if (showWarning)
+        //    GD.Print("sub not found Data : Type - " + Name + " : " + path);
 
         return "";
     }
 
-    public int GetSubValueI(string type, bool showWarning = false)
+    public int GetSubValueI(string path, bool showWarning = false)
     {
-        for (int idx = 0; idx < Subs.Count; idx++)
+        int splitIdx = path.Find("/");
+        if (splitIdx > 0)
         {
-            if (Subs[idx].Name == type)
+            DataBlock sub = GetSub(path.Substring(0, splitIdx));
+            if (sub != null)
             {
-                return Subs[idx].ValueI;
+                return sub.GetSubValueI(path.Substring(splitIdx + 1), showWarning);
             }
         }
-        if (showWarning)
-            GD.Print("sub not found Data : Type - " + Name + " : " + type);
+        else
+        {
+            for (int idx = 0; idx < Subs.Count; idx++)
+            {
+                if (Subs[idx].Name == path)
+                {
+                    return Subs[idx].ValueI;
+                }
+            }
+        }
+
+        //if (showWarning)
+        //    GD.Print("sub not found Data : Type - " + Name + " : " + path);
 
         return 0;
     }
@@ -211,10 +249,50 @@ public partial class DataBlock : Resource
         ValueS = "";
     }
 
+    public void SetSubValueI(string path, int value, DefLibrary def)
+    {
+        int splitIdx = path.Find("/");
+        if (splitIdx > 0)
+        {
+            DataBlock sub = GetSub(path.Substring(0, splitIdx));
+            if (sub != null)
+            {
+                sub.SetSubValueI(path.Substring(splitIdx + 1), value, def);
+            }
+        }
+        else 
+        {
+            if (HasSub(path))
+            {
+                GetSub(path).SetValueI(value, def);
+            }
+        }
+    }
+
     public void SetValueS(string value, DefLibrary def)
     {
         Type = def.GetDBType("s_" + Name, Data.BaseType.STRING);
         ValueI = 0;
         ValueS = value;
+    }
+
+    public void SetSubValueS(string path, string value, DefLibrary def)
+    {
+        int splitIdx = path.Find("/");
+        if (splitIdx > 0)
+        {
+            DataBlock sub = GetSub(path.Substring(0, splitIdx));
+            if (sub != null)
+            {
+                sub.SetSubValueS(path.Substring(splitIdx + 1), value, def);
+            }
+        }
+        else
+        {
+            if (HasSub(path))
+            {
+                GetSub(path).SetValueS(value, def);
+            }
+        }
     }
 }

@@ -1,48 +1,162 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmde3jxsickdj"]
+[gd_scene load_steps=42 format=3 uid="uid://cmde3jxsickdj"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Planet/UISelectedPlanet.cs" id="1_xbmfe"]
+[ext_resource type="Script" path="res://Scripts/UI/Planet/UIPlanetInfo.cs" id="1_746r7"]
 [ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="3_2x56l"]
-[ext_resource type="Script" path="res://Scripts/UI/Planet/UISelectedPlanetItem.cs" id="4_dsxdt"]
+[ext_resource type="Script" path="res://Scripts/UI/Planet/UIPlanetInfoPlanet.cs" id="5_mqecl"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="7_swumr"]
-[ext_resource type="Texture2D" uid="uid://wd744unakx1k" path="res://Assets/Planets/UI/Desert.png" id="7_yrdjo"]
 [ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="8_oc75w"]
+[ext_resource type="Texture2D" uid="uid://dfa60olxvroar" path="res://Assets/Planets/UI/Arid.png" id="8_uj63c"]
 [ext_resource type="Texture2D" uid="uid://b0hf203g0lcrk" path="res://Assets/UI/Districts/Factory.png" id="9_kbx8q"]
+[ext_resource type="Texture2D" uid="uid://okvyhvbf0rju" path="res://Assets/UI/Symbols/Pops.png" id="9_p5rcl"]
 [ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="9_s3uik"]
+[ext_resource type="Script" path="res://Scripts/UI/Planet/UIPlanetInfoFeature.cs" id="10_y2vg3"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="11_4f0od"]
+[ext_resource type="Texture2D" uid="uid://e4swdu4quqw4" path="res://Assets/UI/Symbols/ProdCap.png" id="11_mb5ek"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIPanel.cs" id="12_dj81v"]
 [ext_resource type="Texture2D" uid="uid://bwb7yatk3sl06" path="res://Assets/UI/gradiaentRightWhite.png" id="12_ggpc0"]
+[ext_resource type="Texture2D" uid="uid://dv82k18adgft4" path="res://Assets/UI/Symbols/BudgetGrow.png" id="12_o4ukp"]
 [ext_resource type="Texture2D" uid="uid://be6nytexs28ab" path="res://Assets/UI/Symbols/CancelW.png" id="12_punmh"]
+[ext_resource type="Script" path="res://Scripts/UI/Planet/UIPlanetInfoDistrict.cs" id="13_siis2"]
+[ext_resource type="Texture2D" uid="uid://cf23sk48qgrxg" path="res://Assets/UI/Symbols/FlagW.png" id="14_g4chn"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIButton.cs" id="15_kp8cp"]
+[ext_resource type="Texture2D" uid="uid://pqot6fak3hku" path="res://Assets/UI/Symbols/Flag.png" id="15_x4h8h"]
 [ext_resource type="Texture2D" uid="uid://qvxxtu5jlkbt" path="res://Assets/UI/left.png" id="17_00imd"]
 [ext_resource type="Texture2D" uid="uid://ceyqr5puhfmn0" path="res://Assets/UI/right.png" id="19_4fo3r"]
+[ext_resource type="Texture2D" uid="uid://bydgao82thbxp" path="res://Assets/UI/Symbols/Cancel.png" id="21_xd840"]
+[ext_resource type="Script" path="res://Scripts/UI/Planet/UIPlanetInfoOtherDistrict.cs" id="24_h413d"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aj42a"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ntj2v"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atwls"]
-bg_color = Color(0.25098, 0.25098, 0.25098, 0)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrf6c"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 0.752941)
 border_color = Color(0.752941, 0.188235, 0, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 8
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wown7"]
-bg_color = Color(0.188235, 0.188235, 0.188235, 0.752941)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3ivy"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.372549, 0.290196, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0idv6"]
-bg_color = Color(0.25098, 0.25098, 0.25098, 0)
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.752941, 0.188235, 0, 1)
+border_color = Color(1, 0.8, 0, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 8
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 8
 
-[node name="Planet" type="Control" node_paths=PackedStringArray("PlanetName", "Uncolonized", "Colonized", "ColonyInfo", "Pops", "Control", "Factory", "Bases", "Planet", "Features", "Districts", "BuildDistrictSelector", "QueueControl", "IncreasePriority", "DecreasePriority", "CancelDistrict", "PositionInQueue", "PossibleDistrictsBg", "PossibleDistrictsScrollBg", "PossibleDistricts")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eg7ug"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.8, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibar3"]
+bg_color = Color(0.113725, 0.113725, 0.113725, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.278431, 0.00784314, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nef42"]
+bg_color = Color(0.686275, 0.431373, 0.156863, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fwci"]
+bg_color = Color(0.270588, 0.156863, 0.0352941, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n8p4"]
+bg_color = Color(0.270588, 0.156863, 0.0352941, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.270588, 0.156863, 0.0352941, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78cgt"]
+bg_color = Color(0.984314, 0.898039, 0.176471, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4vkn"]
+bg_color = Color(0.270588, 0.156863, 0.0352941, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.454902, 0.411765, 0.0117647, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vit60"]
+bg_color = Color(0, 0.188235, 0, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gu4q2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71450"]
+bg_color = Color(0, 0.352941, 0, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pwwq"]
+bg_color = Color(0, 0.501961, 0, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0nrf1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_se686"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.501961, 0.12549, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="Planet" type="Control" node_paths=PackedStringArray("TitleLabel", "Planet", "Features", "Districts", "ChooseDistrictWindow", "ChooseDistrictKeepText", "ChooseDistrictItem", "PopInfo")]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -52,27 +166,15 @@ offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 16.0
 grow_horizontal = 0
-script = ExtResource("1_xbmfe")
-PlanetName = NodePath("InfoList/TitleBg/Title")
-Uncolonized = NodePath("InfoList/System/Uncolonized")
-Colonized = NodePath("InfoList/System/Colonized")
-ColonyInfo = NodePath("InfoList/System/ColonyInfo")
-Pops = NodePath("InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops/Panel/Pops")
-Control = NodePath("InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops/Panel2/Control")
-Factory = NodePath("InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings/Panel/Factories")
-Bases = NodePath("InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings/Panel3/Bases")
+script = ExtResource("1_746r7")
+TitleLabel = NodePath("InfoList/TitleBg/Title")
 Planet = NodePath("InfoList/System/Planet")
-Features = [NodePath("InfoList/System/Features/Feature_0")]
-Districts = [NodePath("InfoList/System/Districts/District_0")]
-BuildDistrictSelector = NodePath("PopUp")
-QueueControl = NodePath("PopUp/InConstruction")
-IncreasePriority = NodePath("PopUp/InConstruction/QueueControl/Working/Ship/LeftBg/Left")
-DecreasePriority = NodePath("PopUp/InConstruction/QueueControl/Working/Ship/RightBg/Right")
-CancelDistrict = NodePath("PopUp/InConstruction/QueueControl/Working/Ship/Cancel/Cancel")
-PositionInQueue = NodePath("PopUp/InConstruction/QueueControl/Working/Ship/Text")
-PossibleDistrictsBg = NodePath("PopUp/PossibleDistricts")
-PossibleDistrictsScrollBg = NodePath("PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer")
-PossibleDistricts = [NodePath("PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0")]
+Features = [NodePath("InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0")]
+Districts = [NodePath("InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0")]
+ChooseDistrictWindow = NodePath("ChooseDistrict")
+ChooseDistrictKeepText = NodePath("ChooseDistrict/PossibleDistricts/KeepDistrict/Button/Name")
+ChooseDistrictItem = [NodePath("ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0")]
+PopInfo = NodePath("PopInfo")
 
 [node name="InfoList" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -82,7 +184,6 @@ anchor_right = 1.0
 offset_left = -320.0
 offset_bottom = 902.0
 grow_horizontal = 0
-theme_override_constants/separation = 8
 
 [node name="TitleBg" type="Panel" parent="InfoList"]
 custom_minimum_size = Vector2(0, 32)
@@ -97,19 +198,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("9_s3uik")
+theme = ExtResource("7_swumr")
 theme_override_font_sizes/normal_font_size = 22
 theme_override_font_sizes/bold_font_size = 22
 bbcode_enabled = true
-text = "[center]$name[/center]"
+text = "[center][b]$name[/b][/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("11_4f0od")
 
 [node name="System" type="VBoxContainer" parent="InfoList"]
 layout_mode = 2
 
 [node name="Uncolonized" type="PanelContainer" parent="InfoList/System"]
+visible = false
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("9_s3uik")
@@ -125,6 +228,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Colonized" type="Panel" parent="InfoList/System"]
+visible = false
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("9_s3uik")
@@ -157,573 +261,52 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="ColonyInfo" type="PanelContainer" parent="InfoList/System"]
-custom_minimum_size = Vector2(320, 96)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("9_s3uik")
-
-[node name="MarginContainer" type="MarginContainer" parent="InfoList/System/ColonyInfo"]
-layout_mode = 2
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/ColonyInfo/MarginContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-alignment = 1
-
-[node name="Pops" type="VBoxContainer" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Panel" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops"]
-custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
-
-[node name="Pops" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[right]$pops[img=24x24]Assets/UI/Symbols/Pops.png[/img][/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Line1" type="ColorRect" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops"]
-custom_minimum_size = Vector2(80, 2)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.501961, 0.501961, 0.501961, 0.501961)
-
-[node name="Panel2" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops"]
-custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
-
-[node name="Control" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops/Panel2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[right]$val%[img=24x24]Assets/UI/Symbols/Control.png[/img][/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Line2" type="ColorRect" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops"]
-visible = false
-custom_minimum_size = Vector2(80, 2)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.501961, 0.501961, 0.501961, 0.501961)
-
-[node name="Panel3" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops"]
-visible = false
-custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
-
-[node name="Pops" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Pops/Panel3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[right]$pops[img=24x24]Assets/UI/Symbols/PopsUnc.png[/img][/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Line1" type="ColorRect" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(2, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.501961, 0.501961, 0.501961, 0.501961)
-
-[node name="Buildings" type="VBoxContainer" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Panel" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings"]
-custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
-
-[node name="Factories" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[right]$val/$max[img=32x32]Assets/UI/Symbols/ProdCap.png[/img][/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Line1" type="ColorRect" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings"]
-visible = false
-custom_minimum_size = Vector2(80, 2)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.501961, 0.501961, 0.501961, 0.501961)
-
-[node name="Panel2" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings"]
-visible = false
-custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
-
-[node name="Private" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings/Panel2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[right]$val/$max[img=32x32]Assets/UI/Symbols/PrivateIndustry.png[/img][/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Line2" type="ColorRect" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings"]
-custom_minimum_size = Vector2(80, 2)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.501961, 0.501961, 0.501961, 0.501961)
-
-[node name="Panel3" type="Panel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings"]
-custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_aj42a")
-
-[node name="Bases" type="RichTextLabel" parent="InfoList/System/ColonyInfo/MarginContainer/HBoxContainer/Buildings/Panel3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[right]$val/$max[img=32x32]Assets/UI/Symbols/Power.png[/img][/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
 [node name="Planet" type="PanelContainer" parent="InfoList/System"]
-custom_minimum_size = Vector2(320, 32)
+custom_minimum_size = Vector2(316, 32)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("9_s3uik")
-script = ExtResource("4_dsxdt")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ntj2v")
+script = ExtResource("5_mqecl")
+
+[node name="PanelBg" type="Panel" parent="InfoList/System/Planet"]
+custom_minimum_size = Vector2(296, 88)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vrf6c")
+
+[node name="SelectedBG" type="Panel" parent="InfoList/System/Planet"]
+visible = false
+custom_minimum_size = Vector2(296, 88)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3ivy")
 
 [node name="MarginContainer" type="MarginContainer" parent="InfoList/System/Planet"]
+custom_minimum_size = Vector2(296, 0)
 layout_mode = 2
+size_flags_horizontal = 8
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/Planet/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/Planet/MarginContainer"]
 layout_mode = 2
 
-[node name="Icon" type="Control" parent="InfoList/System/Planet/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Button" type="Button" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-offset_right = 80.0
-offset_bottom = 80.0
-size_flags_horizontal = 4
-theme = ExtResource("3_2x56l")
-theme_type_variation = &"Build"
-
-[node name="Selected" type="Panel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_atwls")
-
-[node name="ToolTip" type="Control" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("8_oc75w")
-CanBeHovered = false
-Direction = 2
-Width = 320
-Title = "Colonize"
-
-[node name="IconText" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon"]
-visible = false
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -29.5
-offset_bottom = 29.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.995349, 1)
-mouse_filter = 2
-theme = ExtResource("7_swumr")
-theme_override_font_sizes/normal_font_size = 48
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center][b]$$[/b][/center]"
-fit_content = true
-
-[node name="Icon" type="TextureRect" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("7_yrdjo")
-expand_mode = 1
-
-[node name="TextBox" type="Panel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon"]
-visible = false
-custom_minimum_size = Vector2(0, 22)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 4.0
-offset_right = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wown7")
-
-[node name="Text" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/TextBox"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[center]Terraform[/center]"
-scroll_active = false
-autowrap_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/Planet/MarginContainer/HBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Name" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[left]$name[/left]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Description" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[left]$description[/left]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Turns" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-theme_override_font_sizes/normal_font_size = 22
-bbcode_enabled = true
-text = "[right]$t[img=32x32]Assets/UI/Symbols/Turn.png[/img][/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Queued" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-theme_override_font_sizes/normal_font_size = 22
-bbcode_enabled = true
-text = "[right]$q[/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Features" type="VBoxContainer" parent="InfoList/System"]
+[node name="Gap_0" type="Control" parent="InfoList/System/Planet/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Feature_0" type="PanelContainer" parent="InfoList/System/Features"]
-custom_minimum_size = Vector2(320, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("9_s3uik")
-script = ExtResource("4_dsxdt")
-
-[node name="MarginContainer" type="MarginContainer" parent="InfoList/System/Features/Feature_0"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/Features/Feature_0/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/Planet/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Icon" type="Control" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer"]
+[node name="Icon" type="Control" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme = ExtResource("3_2x56l")
-theme_type_variation = &"Build"
-
-[node name="Selected" type="Panel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_atwls")
-
-[node name="ToolTip" type="Control" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("8_oc75w")
-CanBeHovered = false
-Direction = 2
-Width = 320
-Title = "Colonize"
-
-[node name="IconText" type="RichTextLabel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon"]
-visible = false
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -29.5
-offset_bottom = 29.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.995349, 1)
-mouse_filter = 2
-theme = ExtResource("7_swumr")
-theme_override_font_sizes/normal_font_size = 48
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center][b]$$[/b][/center]"
-fit_content = true
-
-[node name="Icon" type="TextureRect" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("9_kbx8q")
-expand_mode = 1
-
-[node name="TextBox" type="Panel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon"]
-visible = false
-custom_minimum_size = Vector2(0, 22)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 4.0
-offset_right = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wown7")
-
-[node name="Text" type="RichTextLabel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/TextBox"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[center]Explore[/center]"
-scroll_active = false
-autowrap_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Name" type="RichTextLabel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[left]$name[/left]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Description" type="RichTextLabel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[left]$description[/left]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Turns" type="RichTextLabel" parent="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-theme_override_font_sizes/normal_font_size = 22
-bbcode_enabled = true
-text = "[right]$t[img=32x32]Assets/UI/Symbols/Turn.png[/img][/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Districts" type="VBoxContainer" parent="InfoList/System"]
-layout_mode = 2
-
-[node name="District_0" type="PanelContainer" parent="InfoList/System/Districts"]
-custom_minimum_size = Vector2(320, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("9_s3uik")
-script = ExtResource("4_dsxdt")
-
-[node name="MarginContainer" type="MarginContainer" parent="InfoList/System/Districts/District_0"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/Districts/District_0/MarginContainer"]
-layout_mode = 2
-
-[node name="Icon" type="Control" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="Button" type="Button" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon"]
+[node name="Button" type="Button" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 offset_right = 80.0
@@ -733,18 +316,7 @@ size_flags_vertical = 4
 theme = ExtResource("3_2x56l")
 theme_type_variation = &"Build"
 
-[node name="Selected" type="Panel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0idv6")
-
-[node name="ToolTip" type="Control" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button"]
+[node name="ToolTip" type="Control" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -760,116 +332,1810 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="IconText" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon"]
+[node name="Selected" type="Panel" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0idv6")
+
+[node name="Icon" type="TextureRect" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_uj63c")
+expand_mode = 1
+
+[node name="Gap" type="Control" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(164, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[left][b]$name[/b][/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Description" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(164, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[left]$description[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+script = ExtResource("11_4f0od")
+
+[node name="Gap_1" type="Control" parent="InfoList/System/Planet/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Actions" type="VBoxContainer" parent="InfoList/System/Planet/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Terraform" type="Button" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/Actions"]
+visible = false
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme = ExtResource("3_2x56l")
+theme_type_variation = &"Build"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/Actions/Terraform"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -29.5
-offset_bottom = 29.5
+offset_top = -10.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.995349, 1)
-mouse_filter = 2
+size_flags_vertical = 4
 theme = ExtResource("7_swumr")
-theme_override_font_sizes/normal_font_size = 48
-theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
-text = "[center][b]$$[/b][/center]"
+text = "[center]Terraform I [[img=24x24]Assets/UI/Symbols/Pops.png[/img]slot in $t[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
 fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
 
-[node name="Icon" type="TextureRect" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon"]
+[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/Actions/Terraform"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/Actions/Terraform"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Gap_2" type="Control" parent="InfoList/System/Planet/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Gap_2" type="Control" parent="InfoList/System/Planet/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ScrollContainerBg" type="Control" parent="InfoList/System"]
+custom_minimum_size = Vector2(336, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InfoList/System/ScrollContainerBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 726.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Features" type="VBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Feature_0" type="PanelContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("9_s3uik")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ntj2v")
+script = ExtResource("10_y2vg3")
+
+[node name="PanelBg" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0"]
+custom_minimum_size = Vector2(296, 88)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vrf6c")
+
+[node name="SelectedBG" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0"]
+visible = false
+custom_minimum_size = Vector2(296, 88)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3ivy")
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0"]
+custom_minimum_size = Vector2(296, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer"]
+layout_mode = 2
+
+[node name="Gap_0" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonRedBorder"
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0idv6")
+
+[node name="Icon" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_uj63c")
+expand_mode = 1
+
+[node name="Gap" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(164, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[left][b]$name[/b][/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Description" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(164, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[left]$description[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+script = ExtResource("11_4f0od")
+
+[node name="Gap_1" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Actions" type="VBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Investigate" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions/Investigate"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Investigate [$t[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions/Investigate"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions/Investigate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Gap_2" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Gap_2" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(296, 4)
+layout_mode = 2
+size_flags_horizontal = 8
+color = Color(0, 0.647059, 0.0470588, 1)
+
+[node name="Districts" type="VBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="District_0" type="PanelContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("9_s3uik")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ntj2v")
+script = ExtResource("13_siis2")
+
+[node name="PanelBg" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0"]
+custom_minimum_size = Vector2(296, 88)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vrf6c")
+
+[node name="SelectedBG" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0"]
+custom_minimum_size = Vector2(296, 88)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3ivy")
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0"]
+custom_minimum_size = Vector2(296, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer"]
+layout_mode = 2
+
+[node name="Gap_0" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonRedBorder"
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "$name"
+
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0idv6")
+
+[node name="Icon" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("9_kbx8q")
 expand_mode = 1
 
-[node name="TextBox" type="Panel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon"]
-visible = false
-custom_minimum_size = Vector2(0, 22)
+[node name="PopBg" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
-anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 4.0
-offset_right = -4.0
+offset_left = -8.0
+offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wown7")
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonRoundGreen"
 
-[node name="Text" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/TextBox"]
+[node name="TextureRect" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_p5rcl")
+expand_mode = 1
+
+[node name="IconText" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]$$[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="PopSelected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eg7ug")
+
+[node name="NoPopBg" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ibar3")
+
+[node name="IconText" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center]In Queue[/center]"
+text = "[center]?[/center]"
+fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("11_4f0od")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer"]
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Gap_0" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Name" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Effects" type="HBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[left]$name[/left]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
 
-[node name="Description" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-bbcode_enabled = true
-text = "[left]$description[/left]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Turns" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects"]
 visible = false
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 2
+
+[node name="Uncontroled" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control"]
+visible = false
+self_modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("12_punmh")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/Uncontroled"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="PrivateBusiness" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 1)
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("14_g4chn")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/PrivateBusiness"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="StateOwned" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control"]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("15_x4h8h")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/StateOwned"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Production" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-theme_override_font_sizes/normal_font_size = 22
+theme = ExtResource("7_swumr")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[right]$t[img=32x32]Assets/UI/Symbols/Turn.png[/img][/right]"
+text = "[right]$value[/right]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("11_4f0od")
 
-[node name="Queued" type="RichTextLabel" parent="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer"]
+[node name="Construction" type="HBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Control" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Control"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_mb5ek")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pip_1" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nef42")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pip_2" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction"]
+visible = false
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nef42")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pip_3" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction"]
+visible = false
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nef42")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Delay" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2fwci")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Delay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Delay" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Delay"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme = ExtResource("9_s3uik")
-theme_override_font_sizes/normal_font_size = 22
+theme = ExtResource("7_swumr")
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
-text = "[right]$q[/right]"
+text = "[center] $v[img=16x16]Assets/UI/Symbols/Turn.png[/img][/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("11_4f0od")
 
-[node name="PopUp" type="VBoxContainer" parent="."]
+[node name="Unused_1" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction"]
+visible = false
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7n8p4")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Unused_2" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction"]
+visible = false
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7n8p4")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Unused_3" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7n8p4")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Invrest" type="HBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Control" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
+custom_minimum_size = Vector2(32, 15)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Control"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_o4ukp")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pip_1" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_78cgt")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pip_2" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
+visible = false
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_78cgt")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pip_3" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
+visible = false
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_78cgt")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Unused_1" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
+visible = false
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4vkn")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Unused_2" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4vkn")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Unused_3" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4vkn")
+script = ExtResource("12_dj81v")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="PopProgress" type="MarginContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(168, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vit60")
+
+[node name="NextTurn" type="ProgressBar" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_gu4q2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_71450")
+step = 1.0
+value = 55.0
+show_percentage = false
+
+[node name="Progress" type="ProgressBar" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_gu4q2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8pwwq")
+step = 1.0
+value = 45.0
+show_percentage = false
+
+[node name="Turns" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/Panel"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -12.0
+offset_right = 8.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center][b]$t[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress"]
+layout_mode = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Shipbuilding Progress"
+Row_1 = "Progress:"
+Row_1_Right = "$v[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]/$t[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]"
+Row_2 = "Progress per turn:"
+Row_2_Right = "$v[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]"
+Row_3 = "From System Focus
+$p% of Total [img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+From Colonies
+Bonus"
+Row_3_Right = "
+$f[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+$c[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+$b%"
+
+[node name="Gap_1" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Actions" type="VBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RegainControl" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Regain Control [-$v[img=24x24]Assets/UI/Symbols/Influence.png[/img]][3[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Improve" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Improve [[img=24x24]Assets/UI/Symbols/ProdCap.png[/img] in 3[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Invest" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Invest [-$v[img=24x24]Assets/UI/Symbols/BC.png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="IncreaseInvestment" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/IncreaseInvestment"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Increase Investment [-$v[img=24x24]Assets/UI/Symbols/BC.png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/IncreaseInvestment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="DecreaseInvestment" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/DecreaseInvestment"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Decrease Investment [+$v[img=24x24]Assets/UI/Symbols/BC.png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/DecreaseInvestment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="StopInvestment" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/StopInvestment"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Stop Investment [+$v[img=24x24]Assets/UI/Symbols/BC.png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/StopInvestment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Privatize" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Privatize [+$v[img=24x24]Assets/UI/Symbols/BC.png[/img]][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="NationalizeBuy" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Nationalize - Buy [$v[img=24x24]Assets/UI/Symbols/BC.png[/img]][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="NationalizeForced" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Nationalize - Forced [$v[img=24x24]Assets/UI/Symbols/Influence.png[/img]][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="ChangeDistrict" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Change District [3[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="PlanDistrict" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+visible = false
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Plan District[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Gap_2" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Gap_2" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ChooseDistrict" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -879,16 +2145,17 @@ offset_right = -336.0
 offset_bottom = 272.0
 grow_horizontal = 0
 
-[node name="InConstruction" type="VBoxContainer" parent="PopUp"]
+[node name="InConstruction" type="VBoxContainer" parent="ChooseDistrict"]
+visible = false
 layout_mode = 2
 
-[node name="InConstruction" type="Panel" parent="PopUp/InConstruction"]
+[node name="InConstruction" type="Panel" parent="ChooseDistrict/InConstruction"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("9_s3uik")
 theme_type_variation = &"PanelTitle"
 
-[node name="Title" type="RichTextLabel" parent="PopUp/InConstruction/InConstruction"]
+[node name="Title" type="RichTextLabel" parent="ChooseDistrict/InConstruction/InConstruction"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -904,27 +2171,27 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="QueueControl" type="PanelContainer" parent="PopUp/InConstruction"]
+[node name="QueueControl" type="PanelContainer" parent="ChooseDistrict/InConstruction"]
 layout_mode = 2
 theme = ExtResource("9_s3uik")
 
-[node name="Working" type="VBoxContainer" parent="PopUp/InConstruction/QueueControl"]
+[node name="Working" type="VBoxContainer" parent="ChooseDistrict/InConstruction/QueueControl"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Ship" type="HBoxContainer" parent="PopUp/InConstruction/QueueControl/Working"]
+[node name="Ship" type="HBoxContainer" parent="ChooseDistrict/InConstruction/QueueControl/Working"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 alignment = 1
 
-[node name="LeftBg" type="Control" parent="PopUp/InConstruction/QueueControl/Working/Ship"]
+[node name="LeftBg" type="Control" parent="ChooseDistrict/InConstruction/QueueControl/Working/Ship"]
 custom_minimum_size = Vector2(32, 56)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Left" type="Button" parent="PopUp/InConstruction/QueueControl/Working/Ship/LeftBg"]
+[node name="Left" type="Button" parent="ChooseDistrict/InConstruction/QueueControl/Working/Ship/LeftBg"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -942,7 +2209,7 @@ size_flags_vertical = 4
 theme = ExtResource("3_2x56l")
 theme_type_variation = &"Small"
 
-[node name="TextureRect" type="TextureRect" parent="PopUp/InConstruction/QueueControl/Working/Ship/LeftBg/Left"]
+[node name="TextureRect" type="TextureRect" parent="ChooseDistrict/InConstruction/QueueControl/Working/Ship/LeftBg/Left"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 8
@@ -959,7 +2226,7 @@ grow_vertical = 2
 texture = ExtResource("17_00imd")
 expand_mode = 1
 
-[node name="Text" type="RichTextLabel" parent="PopUp/InConstruction/QueueControl/Working/Ship"]
+[node name="Text" type="RichTextLabel" parent="ChooseDistrict/InConstruction/QueueControl/Working/Ship"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -970,13 +2237,13 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="RightBg" type="Control" parent="PopUp/InConstruction/QueueControl/Working/Ship"]
+[node name="RightBg" type="Control" parent="ChooseDistrict/InConstruction/QueueControl/Working/Ship"]
 custom_minimum_size = Vector2(32, 56)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Right" type="Button" parent="PopUp/InConstruction/QueueControl/Working/Ship/RightBg"]
+[node name="Right" type="Button" parent="ChooseDistrict/InConstruction/QueueControl/Working/Ship/RightBg"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -994,7 +2261,7 @@ size_flags_vertical = 4
 theme = ExtResource("3_2x56l")
 theme_type_variation = &"Small"
 
-[node name="TextureRect" type="TextureRect" parent="PopUp/InConstruction/QueueControl/Working/Ship/RightBg/Right"]
+[node name="TextureRect" type="TextureRect" parent="ChooseDistrict/InConstruction/QueueControl/Working/Ship/RightBg/Right"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 8
@@ -1011,17 +2278,17 @@ grow_vertical = 2
 texture = ExtResource("19_4fo3r")
 expand_mode = 1
 
-[node name="Gap" type="Control" parent="PopUp/InConstruction/QueueControl/Working/Ship"]
+[node name="Gap" type="Control" parent="ChooseDistrict/InConstruction/QueueControl/Working/Ship"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Cancel" type="Control" parent="PopUp/InConstruction/QueueControl/Working/Ship"]
+[node name="Cancel" type="Control" parent="ChooseDistrict/InConstruction/QueueControl/Working/Ship"]
 custom_minimum_size = Vector2(32, 56)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Cancel" type="Button" parent="PopUp/InConstruction/QueueControl/Working/Ship/Cancel"]
+[node name="Cancel" type="Button" parent="ChooseDistrict/InConstruction/QueueControl/Working/Ship/Cancel"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -1039,7 +2306,7 @@ size_flags_vertical = 4
 theme = ExtResource("3_2x56l")
 theme_type_variation = &"Small"
 
-[node name="TextureRect" type="TextureRect" parent="PopUp/InConstruction/QueueControl/Working/Ship/Cancel/Cancel"]
+[node name="TextureRect" type="TextureRect" parent="ChooseDistrict/InConstruction/QueueControl/Working/Ship/Cancel/Cancel"]
 self_modulate = Color(1, 0, 0, 1)
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
@@ -1057,97 +2324,84 @@ grow_vertical = 2
 texture = ExtResource("12_punmh")
 expand_mode = 1
 
-[node name="PossibleDistricts" type="VBoxContainer" parent="PopUp"]
+[node name="PossibleDistricts" type="VBoxContainer" parent="ChooseDistrict"]
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
-[node name="TitleBg" type="Panel" parent="PopUp/PossibleDistricts"]
+[node name="TitleBg" type="Panel" parent="ChooseDistrict/PossibleDistricts"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("9_s3uik")
 theme_type_variation = &"PanelTitle"
 
-[node name="Title" type="RichTextLabel" parent="PopUp/PossibleDistricts/TitleBg"]
+[node name="Title" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/TitleBg"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_s3uik")
-theme_override_font_sizes/normal_font_size = 22
-theme_override_font_sizes/bold_font_size = 22
 bbcode_enabled = true
-text = "[center]Choose a Building[/center]"
+text = "[center]Choose another District[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="ScrollContainerBg" type="Control" parent="PopUp/PossibleDistricts"]
-custom_minimum_size = Vector2(320, 90)
-layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg"]
+[node name="CloseButton" type="TextureButton" parent="ChooseDistrict/PossibleDistricts/TitleBg"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -4.0
-offset_right = 4.0
-offset_bottom = 422.0
-grow_horizontal = 2
+offset_right = -4.0
+grow_horizontal = 0
 grow_vertical = 2
-mouse_filter = 0
-mouse_force_pass_scroll_events = false
-horizontal_scroll_mode = 0
+texture_normal = ExtResource("12_punmh")
+texture_pressed = ExtResource("21_xd840")
+texture_hover = ExtResource("21_xd840")
+texture_disabled = ExtResource("12_punmh")
+texture_focused = ExtResource("12_punmh")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer"]
-layout_mode = 2
-
-[node name="District_0" type="PanelContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(320, 32)
+[node name="KeepDistrict" type="MarginContainer" parent="ChooseDistrict/PossibleDistricts"]
+custom_minimum_size = Vector2(296, 40)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="ChooseDistrict/PossibleDistricts/KeepDistrict"]
+layout_mode = 2
 theme = ExtResource("9_s3uik")
-script = ExtResource("4_dsxdt")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
 
-[node name="MarginContainer" type="MarginContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer"]
-layout_mode = 2
-
-[node name="Icon" type="Control" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="Button" type="Button" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-offset_right = 80.0
-offset_bottom = 80.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("3_2x56l")
-theme_type_variation = &"Build"
-
-[node name="Selected" type="Panel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button"]
-visible = false
+[node name="Name" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/KeepDistrict/Button"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0idv6")
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Keep $name[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
 
-[node name="ToolTip" type="Control" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button"]
+[node name="ToolTip" type="Control" parent="ChooseDistrict/PossibleDistricts/KeepDistrict/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1163,27 +2417,87 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="IconText" type="RichTextLabel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon"]
-visible = false
+[node name="ScrollContainerBg" type="Control" parent="ChooseDistrict/PossibleDistricts"]
+custom_minimum_size = Vector2(320, 90)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -29.5
-offset_bottom = 29.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 454.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.995349, 1)
-mouse_filter = 2
-theme = ExtResource("7_swumr")
-theme_override_font_sizes/normal_font_size = 48
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center][b]$$[/b][/center]"
-fit_content = true
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 0
 
-[node name="Icon" type="TextureRect" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="District_0" type="PanelContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(312, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("9_s3uik")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0nrf1")
+script = ExtResource("24_h413d")
+
+[node name="MarginContainer" type="MarginContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0"]
+custom_minimum_size = Vector2(296, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 0
+
+[node name="Button" type="Button" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer"]
+custom_minimum_size = Vector2(296, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+
+[node name="ToolTip" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Gap_0" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1194,11 +2508,142 @@ mouse_filter = 2
 texture = ExtResource("9_kbx8q")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[left]$name[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Description" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[left]$description[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Gap_1" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CostBg" type="Panel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer"]
+custom_minimum_size = Vector2(72, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_se686")
+
+[node name="Cost" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/CostBg"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -12.0
+offset_right = 20.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[right]$v[img=24x24]Assets/UI/Symbols/Influence.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="PopInfo" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 1
+anchors_preset = -1
+offset_left = -336.0
+offset_top = 96.0
+offset_right = -336.0
+offset_bottom = 96.0
+grow_horizontal = 0
+
+[node name="TitleBg" type="Panel" parent="PopInfo"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"PanelTitle"
+
+[node name="Title" type="RichTextLabel" parent="PopInfo/TitleBg"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[center]Population Info[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CloseButton" type="TextureButton" parent="PopInfo/TitleBg"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("12_punmh")
+texture_pressed = ExtResource("21_xd840")
+texture_hover = ExtResource("21_xd840")
+texture_disabled = ExtResource("12_punmh")
+texture_focused = ExtResource("12_punmh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Species" type="PanelContainer" parent="PopInfo"]
+custom_minimum_size = Vector2(296, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PopInfo/Species"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopInfo/Species/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Name" type="RichTextLabel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Species" type="RichTextLabel" parent="PopInfo/Species/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("9_s3uik")
@@ -1207,51 +2652,214 @@ text = "[left]$name[/left]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("11_4f0od")
 
-[node name="Description" type="RichTextLabel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Etchics" type="PanelContainer" parent="PopInfo"]
+custom_minimum_size = Vector2(296, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PopInfo/Etchics"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopInfo/Etchics/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Etchics" type="RichTextLabel" parent="PopInfo/Etchics/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("9_s3uik")
 bbcode_enabled = true
-text = "[left]$description[/left]"
+text = "[left]$name[/left]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("11_4f0od")
 
-[node name="Turns" type="RichTextLabel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
-visible = false
+[node name="Wealth" type="PanelContainer" parent="PopInfo"]
+custom_minimum_size = Vector2(296, 32)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PopInfo/Wealth"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopInfo/Wealth/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="PopInfo/Wealth/MarginContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("9_s3uik")
-theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
-text = "[right]$t[img=32x32]Assets/UI/Symbols/Turn.png[/img][/right]"
+text = "[left]$name[/left]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("11_4f0od")
 
-[node name="Queued" type="RichTextLabel" parent="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="Value" type="RichTextLabel" parent="PopInfo/Wealth/MarginContainer/VBoxContainer/Name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 4
 theme = ExtResource("9_s3uik")
-theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
-text = "[right]$q[/right]"
+text = "[right]$v[img=24x24]Assets/UI/Symbols/Wealth.png[/img][/right]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("11_4f0od")
 
-[connection signal="pressed" from="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button" to="InfoList/System/Planet" method="OnSelect"]
-[connection signal="mouse_entered" from="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Planet/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
-[connection signal="pressed" from="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button" to="InfoList/System/Features/Feature_0" method="OnSelect"]
-[connection signal="mouse_entered" from="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Features/Feature_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
-[connection signal="pressed" from="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button" to="InfoList/System/Districts/District_0" method="OnSelect"]
-[connection signal="mouse_entered" from="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Districts/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
-[connection signal="pressed" from="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button" to="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0" method="OnSelect"]
-[connection signal="mouse_entered" from="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" to="PopUp/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
+[node name="Happiness" type="PanelContainer" parent="PopInfo"]
+custom_minimum_size = Vector2(296, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PopInfo/Happiness"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopInfo/Happiness/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="PopInfo/Happiness/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[left]$name[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Value" type="RichTextLabel" parent="PopInfo/Happiness/MarginContainer/VBoxContainer/Name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+bbcode_enabled = true
+text = "[right]$v[img=24x24]Assets/UI/Symbols/Happiness.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[connection signal="pressed" from="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button" to="InfoList/System/Planet" method="OnSelect"]
+[connection signal="mouse_entered" from="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/Planet/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/Planet/MarginContainer/VBoxContainer/Actions/Terraform/ToolTip" to="InfoList/System/Planet/MarginContainer/VBoxContainer/Actions/Terraform/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/Planet/MarginContainer/VBoxContainer/Actions/Terraform/ToolTip" to="InfoList/System/Planet/MarginContainer/VBoxContainer/Actions/Terraform/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0" method="OnSelect"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions/Investigate/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions/Investigate/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions/Investigate/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions/Investigate/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnSelect"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnSelectPop"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/Uncontroled/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/Uncontroled/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/Uncontroled/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/Uncontroled/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/PrivateBusiness/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/PrivateBusiness/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/PrivateBusiness/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/PrivateBusiness/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/StateOwned/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/StateOwned/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/StateOwned/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/StateOwned/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Control/TextureRect/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Control/TextureRect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Control/TextureRect/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Control/TextureRect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_1/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_1/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_1/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_1/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_2/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_2/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_2/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_2/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_3/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_3/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_3/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Pip_3/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Delay/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Delay/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Delay/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Delay/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_1/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_1/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_1/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_1/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_2/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_2/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_2/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_2/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_3/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_3/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_3/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_3/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Control/TextureRect/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Control/TextureRect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Control/TextureRect/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Control/TextureRect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_1/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_1/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_1/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_1/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_2/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_2/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_2/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_2/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_3/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_3/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_3/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_3/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_1/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_1/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_1/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_1/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_2/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_2/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_2/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_2/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_3/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_3/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_3/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_3/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnRegainControl"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnImprove"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnInvest"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/IncreaseInvestment" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnIncreaseInvestment"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/IncreaseInvestment/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/IncreaseInvestment/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/IncreaseInvestment/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/IncreaseInvestment/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/DecreaseInvestment" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnDecreaseInvestment"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/DecreaseInvestment/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/DecreaseInvestment/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/DecreaseInvestment/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/DecreaseInvestment/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/StopInvestment" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnStopInvestment"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/StopInvestment/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/StopInvestment/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/StopInvestment/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/StopInvestment/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnPrivatize"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnNationalizeBuy"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnNationalizeForced"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnChangeDistrict"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="ChooseDistrict/PossibleDistricts/TitleBg/CloseButton" to="." method="CloseChooseDistrictWindow"]
+[connection signal="pressed" from="ChooseDistrict/PossibleDistricts/KeepDistrict/Button" to="." method="CloseChooseDistrictWindow"]
+[connection signal="mouse_entered" from="ChooseDistrict/PossibleDistricts/KeepDistrict/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/KeepDistrict/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="ChooseDistrict/PossibleDistricts/KeepDistrict/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/KeepDistrict/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button" to="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0" method="OnSelect"]
+[connection signal="mouse_entered" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="PopInfo/TitleBg/CloseButton" to="." method="ClosePopInfoWindow"]

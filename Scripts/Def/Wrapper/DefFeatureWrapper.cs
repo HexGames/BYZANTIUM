@@ -7,7 +7,7 @@
 
     public string Name = "";
     public string Icon = "";
-    public ResourcesWrapper Res_PerSession = null;
+    public FeatureEconomyWrapper Economy_PerSession = null;
 
     public DefFeatureWrapper(DataBlock targetData)
     {
@@ -16,12 +16,7 @@
         Name = _Data.ValueS;
         Icon = _Data.GetSubValueS("Icon");
 
-        DataBlock benefitData = _Data.GetSub("Benefit", false);
-
-        if (benefitData != null)
-        {
-            Res_PerSession = new ResourcesWrapper(benefitData, ResourcesWrapper.ParentType.FEATURE);
-            Res_PerSession.Refresh();
-        }
+        Economy_PerSession = new FeatureEconomyWrapper(this);
+        Economy_PerSession.Refresh();
     }
 }

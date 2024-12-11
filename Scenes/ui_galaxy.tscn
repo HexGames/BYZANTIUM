@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b2a0hskimxnut" path="res://Scenes/ui_fleets.tscn" id="12_sv4sa"]
 [ext_resource type="PackedScene" uid="uid://c5x0k0s750tc4" path="res://Scenes/__ui_general.tscn" id="16_3p5nr"]
 
-[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("UI3DManager", "Incoming", "Paths", "General", "Resources", "SystemInfo", "PlanetInfo", "FleetsSelected", "CurrentTurn", "DEBUGText")]
+[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("UI3DManager", "Incoming", "Paths", "General", "Stockpiles", "SystemInfo", "PlanetInfo", "FleetsSelected", "EndTurnBg", "CurrentTurn", "DEBUGText")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,10 +26,11 @@ UI3DManager = NodePath("UI3D")
 Incoming = [NodePath("UI3D/IncomingHUD/Incoming")]
 Paths = [NodePath("UI3D/PathsHUD/Path")]
 General = NodePath("GeneralUI")
-Resources = NodePath("Economy")
+Stockpiles = NodePath("Economy")
 SystemInfo = NodePath("System")
 PlanetInfo = NodePath("Planet")
 FleetsSelected = NodePath("Fleets")
+EndTurnBg = NodePath("EndTurn")
 CurrentTurn = NodePath("Turn")
 DEBUGText = NodePath("DEBUG")
 
@@ -103,7 +104,6 @@ layout_mode = 1
 anchors_preset = -1
 
 [node name="Fleets" parent="." instance=ExtResource("12_sv4sa")]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_left = 16.0

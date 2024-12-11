@@ -20,7 +20,7 @@ public partial class UIGalaxy : Control
     public UIGeneral General = null;
 
     [Export]
-    public UIEconomyBar Resources = null;
+    public UIEconomyBar Stockpiles = null;
     //[Export]
     //public UIGalaxyBarList GalaxyBar = null;
     //[Export]
@@ -32,9 +32,9 @@ public partial class UIGalaxy : Control
     //[Export]
     //public UIPops PopsInfo = null;
     [Export]
-    public UISelectedStar SystemInfo = null;
+    public UIStarInfo SystemInfo = null;
     [Export]
-    public UISelectedPlanet PlanetInfo = null;
+    public UIPlanetInfo PlanetInfo = null;
     //[Export]
     //public UIPlanetInfo PlanetInfo = null;
     //[Export]
@@ -43,6 +43,8 @@ public partial class UIGalaxy : Control
     //public UIPopsFactions FactionsInfo = null;
     [Export]
     public UISelectedFleets FleetsSelected = null;
+    [Export]
+    public Control EndTurnBg = null;
     [Export]
     public Label CurrentTurn = null;
     [Export]
@@ -82,8 +84,8 @@ public partial class UIGalaxy : Control
                 text += "\n" + "SelectedStar:" + Game.self.Input.SelectedStar.StarName;
             if (Game.self.Input.HoverFleets.Count > 0)
                 text += "\n" + "HoveredFleets";
-            if (Game.self.Input.SelectedFleets.Count > 0)
-                text += "\n" + "SelectedFleets";
+            if (Game.self.Input.SelectedFleet != null)
+                text += "\n" + "SelectedFleet";
             if (Game.self.Input.HoverPlanet != null)
                 text += "\n" + "HoveredPlanet:" + Game.self.Input.HoverPlanet.PlanetName;
             if (Game.self.Input.SelectedPlanet != null)
@@ -103,10 +105,10 @@ public partial class UIGalaxy : Control
         SystemInfo.Visible = false;
     }
 
-    public void ShowFleetsInfo(Array<FleetData> selectedFleets)
+    public void ShowFleetsInfo(Array<FleetData> selectedFleetList, FleetData selectedFleet)
     {
         FleetsSelected.Visible = true;
-        FleetsSelected.Refresh(selectedFleets);
+        FleetsSelected.Refresh(selectedFleetList, selectedFleet);
     }
 
     public void HideFleetsInfo()
@@ -143,15 +145,20 @@ public partial class UIGalaxy : Control
         }
     }
 
-   //public void AddIncomingLabel(GFXIncomingsItem incomingGFX)
-   //{
-   //    UIGalaxyPath newIncoming = Incoming[0].Duplicate(7) as UIGalaxyPath;
-   //    Incoming[0].GetParent().AddChild(newIncoming);
-   //    Incoming.Add(newIncoming);
-   //
-   //    newIncoming._IncomingGFX = incomingGFX;
-   //    incomingGFX.HUD = newIncoming;
-   //}
+    public void StartTurn()
+    {
+        Stockpiles.Refresh();
+    }
+
+    //public void AddIncomingLabel(GFXIncomingsItem incomingGFX)
+    //{
+    //    UIGalaxyPath newIncoming = Incoming[0].Duplicate(7) as UIGalaxyPath;
+    //    Incoming[0].GetParent().AddChild(newIncoming);
+    //    Incoming.Add(newIncoming);
+    //
+    //    newIncoming._IncomingGFX = incomingGFX;
+    //    incomingGFX.HUD = newIncoming;
+    //}
 
     //public void Refresh(bool buildingsTab, bool populationTab)
     //{
@@ -431,9 +438,13 @@ public partial class UIGalaxy : Control
     //
     public void OnEndTurn()
     {
-        Game.self.Input.DeselectAll();
-    
-        Game.self.TurnLoop.CurrentPlayerData.TurnFinished = true;
-        Game.self.TurnLoop.WaitingForHuman = false;
+        if (Game.self.TurnLoop.CurrentPlayerData != null)
+        {
+            Game.self.Input.ZoomOut();
+            Game.self.Input.DeselectAll();
+
+            Game.self.TurnLoop.CurrentPlayerData.TurnFinished = true;
+            Game.self.TurnLoop.WaitingForHuman = false;
+        }
     }
 }

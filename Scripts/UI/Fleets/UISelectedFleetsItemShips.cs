@@ -4,16 +4,13 @@ using Godot;
 public partial class UISelectedFleetsItemShips : Control
 {
     // is beeing duplicated
-    private RichTextLabel ShipsNumber = null;
-    private static string ShipsNumber_Original = "";
-    private RichTextLabel ShipsPower = null;
-    private static string ShipsPower_Original = "";
+    private UIText ShipsType = null;
+    private UIText ShipsPower = null;
     private Button AddShip = null;
     private Button RemoveShip = null;
 
-    [ExportCategory("Runtime")]
-    [Export]
-    public DataBlock _Data = null;
+    // runtime
+    public ShipData _Ship = null;
 
     Game Game;
 
@@ -21,18 +18,34 @@ public partial class UISelectedFleetsItemShips : Control
     {
         Game = GetNode<Game>("/root/Main/Game");
 
-        ShipsNumber = GetNode<RichTextLabel>("MarginContainer/Ships");
-        if (ShipsNumber_Original.Length == 0) ShipsNumber_Original = ShipsNumber.Text;
-        ShipsPower = GetNode<RichTextLabel>("MarginContainer/Power");
-        if (ShipsPower_Original.Length == 0) ShipsPower_Original = ShipsPower.Text;
+        ShipsType = GetNode<UIText>("MarginContainer/ShipType");
+        ShipsPower = GetNode<UIText>("MarginContainer/Power");
 
-        AddShip = GetNode<Button>("MarginContainer/Ships/Control/Remove");
-        RemoveShip = GetNode<Button>("MarginContainer/Ships/Control/Remove");
+        AddShip = GetNode<Button>("MarginContainer/ShipType/Control/Add"); 
+        RemoveShip = GetNode<Button>("MarginContainer/ShipType/Control/Remove");
     }
 
-    public void Refresh(DataBlock data)
+    public void Refresh(ShipData ship, bool showPower = true)
     {
-        _Data = data;
+        _Ship = ship;
+
+        int number = 0;
+        string type = ship.Data.GetSubValueS("Design");
+        int power = 10;
+
+        ShipsType.SetTextWithReplace("$value", number.ToString(), "$type", type);
+        if (showPower)
+        {
+            ShipsPower.Visible = true;
+            ShipsPower.SetTextWithReplace("$value", power.ToString());
+        }
+        else
+        {
+            ShipsPower.Visible = false;
+        }
+
+        RemoveShip.Visible = false;
+        AddShip.Visible = false;
     }
 
     public void OnAddShip()

@@ -27,37 +27,54 @@ public partial class UISelectedFleets : Control
 
     [ExportCategory("Runtime")]
     [Export]
-    public Array<FleetData> _Data = null;
+    public Array<FleetData> _FleetList = null;
+    public FleetData _Fleet = null;
 
-    Game Game;
+    public bool ShowDetails = false;
 
-    public override void _Ready()
+    public void Refresh(Array<FleetData> selectedFleetList, FleetData selectedFleet)
     {
-        Game = GetNode<Game>("/root/Main/Game");
-    }
+        if (_Fleet != selectedFleet) ShowDetails = false;
+        _FleetList = selectedFleetList;
+        _Fleet = selectedFleet;
 
-    public void Refresh(Array<FleetData> selectedFleets)
-    {
-        _Data = selectedFleets;
-
-        // grow
-        while (Fleets.Count < selectedFleets.Count)
+        if (_FleetList != null)
         {
-            UISelectedFleetsItem newItem = Fleets[0].Duplicate(7) as UISelectedFleetsItem;
-            Fleets[0].GetParent().AddChild(newItem);
-            Fleets.Add(newItem);
-        }
-
-        for (int idx = 0; idx < Fleets.Count; idx++)
-        {
-            if (idx < selectedFleets.Count)
+            // grow
+            while (Fleets.Count < _FleetList.Count)
             {
-                Fleets[idx].Refresh(selectedFleets[idx]);
-                Fleets[idx].Visible = true;
+                UISelectedFleetsItem newItem = Fleets[0].Duplicate(7) as UISelectedFleetsItem;
+                Fleets[0].GetParent().AddChild(newItem);
+                Fleets.Add(newItem);
             }
-            else
+
+            for (int idx = 0; idx < Fleets.Count; idx++)
             {
-                Fleets[idx].Visible = false;
+                if (idx < _FleetList.Count)
+                {
+                    Fleets[idx].Refresh(_FleetList[idx], false, _FleetList[idx] == _Fleet, false);
+                    Fleets[idx].Visible = true;
+                }
+                else
+                {
+                    Fleets[idx].Visible = false;
+                }
+            }
+        }
+        else
+        {
+
+            for (int idx = 0; idx < Fleets.Count; idx++)
+            {
+                if (idx == 0)
+                {
+                    Fleets[idx].Refresh(_Fleet, true, true, true);
+                    Fleets[idx].Visible = true;
+                }
+                else
+                {
+                    Fleets[idx].Visible = false;
+                }
             }
         }
     }

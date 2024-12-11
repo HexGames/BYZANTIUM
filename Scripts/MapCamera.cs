@@ -20,7 +20,7 @@ public partial class MapCamera : Camera3D
 
     private float RotationAngle = 0.0f;
     private float CurrentRotationY = 0.0f;
-    private float ZoomPos = 0.35f; //value in range (0, 1) used as t in Matf.Lerp
+    private float ZoomPos = 0.2f; //value in range (0, 1) used as t in Matf.Lerp
 
     private float CurrentMoveSpeed;
     private float CurrentHeightDampening;

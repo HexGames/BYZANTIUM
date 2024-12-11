@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://0svrlyhb7gcc"]
+[gd_scene load_steps=6 format=3 uid="uid://0svrlyhb7gcc"]
 
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_itbsh"]
 [ext_resource type="Script" path="res://Scripts/UI/Economy/UIEconomyBar.cs" id="2_svv2k"]
-[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="3_8htuy"]
-[ext_resource type="Script" path="res://Scripts/UI/Base/UIValueInfo.cs" id="3_35dcc"]
+[ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="3_3y8g5"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="4_p10pj"]
+[ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="5_hch7f"]
 
-[node name="Economy" type="Control" node_paths=PackedStringArray("Empire_Container", "Empire_BC", "Empire_Research", "Empire_Culture", "Empire_Influence", "Empire_Authority")]
+[node name="Economy" type="Control" node_paths=PackedStringArray("BC", "Influence", "Research")]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -13,43 +14,33 @@ anchor_right = 0.5
 grow_horizontal = 2
 theme = ExtResource("1_itbsh")
 script = ExtResource("2_svv2k")
-Empire_Container = NodePath("SystemInfo")
-Empire_BC = NodePath("SystemInfo/MarginContainer/HBoxContainer/BC")
-Empire_Research = NodePath("SystemInfo/MarginContainer/HBoxContainer/Research")
-Empire_Culture = NodePath("SystemInfo/MarginContainer/HBoxContainer/Culture")
-Empire_Influence = NodePath("SystemInfo/MarginContainer/HBoxContainer/Influence")
-Empire_Authority = NodePath("SystemInfo/MarginContainer/HBoxContainer/Authority")
+BC = NodePath("MarginContainer/HBoxContainer/BC/Value")
+Influence = NodePath("MarginContainer/HBoxContainer/Influence/Value")
+Research = NodePath("MarginContainer/HBoxContainer/Research/Value")
 
-[node name="SystemInfo" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 8.0
-offset_bottom = 8.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_itbsh")
-
-[node name="MarginContainer" type="MarginContainer" parent="SystemInfo"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+offset_left = -266.0
+offset_top = 9.0
+offset_right = 266.0
+offset_bottom = 57.0
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SystemInfo/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="BC" type="Panel" parent="SystemInfo/MarginContainer/HBoxContainer"]
+[node name="BC" type="Panel" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("3_35dcc")
+theme = ExtResource("3_3y8g5")
 
-[node name="Value" type="RichTextLabel" parent="SystemInfo/MarginContainer/HBoxContainer/BC"]
+[node name="Value" type="RichTextLabel" parent="MarginContainer/HBoxContainer/BC"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -62,7 +53,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
-theme = ExtResource("3_8htuy")
+theme = ExtResource("3_3y8g5")
 theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
@@ -70,15 +61,32 @@ text = "[left][b][img=32x32]Assets/UI/Symbols/BC.png[/img]$val[/b][/left]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("4_p10pj")
 
-[node name="Research" type="Panel" parent="SystemInfo/MarginContainer/HBoxContainer"]
+[node name="ToolTip" type="Control" parent="MarginContainer/HBoxContainer/BC/Value"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_hch7f")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Influence" type="Panel" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("3_35dcc")
+theme = ExtResource("3_3y8g5")
 
-[node name="Value" type="RichTextLabel" parent="SystemInfo/MarginContainer/HBoxContainer/Research"]
+[node name="Value" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Influence"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -91,66 +99,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
-theme = ExtResource("3_8htuy")
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-bbcode_enabled = true
-text = "[left][b][img=32x32]Assets/UI/Symbols/Research.png[/img]$val[/b][/left]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Culture" type="Panel" parent="SystemInfo/MarginContainer/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(128, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("3_35dcc")
-
-[node name="Value" type="RichTextLabel" parent="SystemInfo/MarginContainer/HBoxContainer/Culture"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = -16.0
-offset_right = -8.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("3_8htuy")
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-bbcode_enabled = true
-text = "[left][b][img=32x32]Assets/UI/Symbols/Culture.png[/img]$val[/b][/left]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Influence" type="Panel" parent="SystemInfo/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(128, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("3_35dcc")
-
-[node name="Value" type="RichTextLabel" parent="SystemInfo/MarginContainer/HBoxContainer/Influence"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = -16.0
-offset_right = -8.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("3_8htuy")
+theme = ExtResource("3_3y8g5")
 theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
@@ -158,15 +107,32 @@ text = "[left][b][img=32x32]Assets/UI/Symbols/Influence.png[/img]$val[/b][/left]
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("4_p10pj")
 
-[node name="Authority" type="Panel" parent="SystemInfo/MarginContainer/HBoxContainer"]
+[node name="ToolTip" type="Control" parent="MarginContainer/HBoxContainer/Influence/Value"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_hch7f")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Research" type="Panel" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("3_35dcc")
+theme = ExtResource("3_3y8g5")
 
-[node name="Value" type="RichTextLabel" parent="SystemInfo/MarginContainer/HBoxContainer/Authority"]
+[node name="Value" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Research"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -179,11 +145,35 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
-theme = ExtResource("3_8htuy")
+theme = ExtResource("3_3y8g5")
 theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[left][b][img=32x32]Assets/UI/Symbols/Authority.png[/img]$val[/b][/left]"
+text = "[left][b][img=32x32]Assets/UI/Symbols/Research.png[/img]$val[/b][/left]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("4_p10pj")
+
+[node name="ToolTip" type="Control" parent="MarginContainer/HBoxContainer/Research/Value"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_hch7f")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/BC/Value/ToolTip" to="MarginContainer/HBoxContainer/BC/Value/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/BC/Value/ToolTip" to="MarginContainer/HBoxContainer/BC/Value/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/Influence/Value/ToolTip" to="MarginContainer/HBoxContainer/Influence/Value/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/Influence/Value/ToolTip" to="MarginContainer/HBoxContainer/Influence/Value/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/Research/Value/ToolTip" to="MarginContainer/HBoxContainer/Research/Value/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/Research/Value/ToolTip" to="MarginContainer/HBoxContainer/Research/Value/ToolTip" method="OnHoverExit"]

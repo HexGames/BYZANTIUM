@@ -130,7 +130,7 @@ Empieres
 		StartingTemperature 2
 		Ethic Capitalist
 	}
-	Empire Rouge_AI
+	Empire Rogue_AI
 	{
 		FlagID 11
 		Color #ffffff

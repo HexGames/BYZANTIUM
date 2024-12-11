@@ -1,4 +1,5 @@
 
+using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,13 +60,13 @@ public class Helper
 
     public static string ResValueToString(int value, int precision = 10, bool alwaysShowSign = false)
     {
-        if (value >= 10 * precision)
+        if (Mathf.Abs(value) >= 10 * precision)
         {
             return (alwaysShowSign && value > 0 ? "+" : "") + (value / precision).ToString();
         }
         else
         {
-            return (alwaysShowSign && value > 0 ? "+" : "") + (value / precision).ToString() + ((value * 10 / precision) % 10 != 0 ? "." + ((value * 10 / precision) % 10).ToString() : "");
+            return (alwaysShowSign && value > 0 ? "+" : "") + (value / precision).ToString() + ((value * 10 / precision) % 10 != 0 ? "." + (Mathf.Abs((value * 10 / precision) % 10)).ToString() : "");
         }
     }
 
@@ -89,6 +90,26 @@ public class Helper
     public static string GetColorPrefix_Neutral()
     {
         return "[color=#ffffff]";
+    }
+
+    public static string GetColorPrefix_Action()
+    {
+        return "[color=#ffff00]";
+    }
+
+    public static string GetColorPrefix_FleetMain()
+    {
+        return "[color=#ff0000]";
+    }
+
+    public static string GetColorPrefix_FleetDefence()
+    {
+        return "[color=#0078ff]";
+    }
+
+    public static string GetColorPrefix_FleetColony()
+    {
+        return "[color=#00a50c]";
     }
 
     public static string GetColorSufix()

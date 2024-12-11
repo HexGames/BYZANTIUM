@@ -41,6 +41,19 @@ public partial class UI3DSelectors : Node
         Fleet_Hover.Visible = false;
     }
 
+    public void FleetSelect(FleetData fleet)
+    {
+        if (fleet.StarAt_PerTurn._Node.GFX.ShipFriendly._Fleets.Contains(fleet))
+        {
+            Fleet_Select.Position = fleet.StarAt_PerTurn._Node.GFX.ShipFriendly.GlobalPosition;
+        }
+        else
+        {
+            Fleet_Select.Position = fleet.StarAt_PerTurn._Node.GFX.ShipOther.GlobalPosition;
+        }
+        Fleet_Select.Visible = true;
+    }
+
     public void FleetSelect(Array<FleetData> fleets)
     {
         if (fleets.Count == 0)

@@ -40,7 +40,7 @@ public partial class Game : Node
     [ExportCategory("Runtime")]
     [Export]
     public PlayerData HumanPlayer = null;
-    public RandomNumberGenerator RNG = new RandomNumberGenerator();
+    public static RandomNumberGenerator RNG = new RandomNumberGenerator();
 
     private bool FirstFrame = true;
 
@@ -106,7 +106,7 @@ public partial class Game : Node
         {
             if (HumanPlayer != null)
             {
-                Camera.TargetPosition = HumanPlayer.Systems[0].Star._Node.GFX.GlobalPosition;
+                Camera.TargetPosition = HumanPlayer.Systems[0].Star._Node.GFX.GlobalPosition + new Vector3(2.0f, 0.0f, 30.0f);
             }
 
             FirstFrame = false;

@@ -7,10 +7,10 @@ public class ActionColonize
 {
     static public bool CanColonize(Game game, PlayerData player, StarData star)
     {
-        return GetColonyShip(game, player, star) != null;
+        return GetColonyFleet(game, player, star) != null;
     }
 
-    static public ShipData GetColonyShip(Game game, PlayerData player, StarData star)
+    static public FleetData GetColonyFleet(Game game, PlayerData player, StarData star)
     {
         for (int fleetIdx = 0; fleetIdx < star.Fleets_PerTurn.Count; fleetIdx++)
         {
@@ -18,9 +18,9 @@ public class ActionColonize
             {
                 for (int shipIdx = 0; shipIdx < star.Fleets_PerTurn[fleetIdx].Ships.Count; shipIdx++)
                 {
-                    if (star.Fleets_PerTurn[fleetIdx].Ships[shipIdx].Data.HasSub("CanColonize"))
+                    if (star.Fleets_PerTurn[fleetIdx].Data.GetSubValueS("FleetType") == "Colony")
                     {
-                        return star.Fleets_PerTurn[fleetIdx].Ships[shipIdx];
+                        return star.Fleets_PerTurn[fleetIdx];
                     }
                 }
             }
@@ -30,52 +30,73 @@ public class ActionColonize
 
     static public void Colonize(Game game, PlayerData player, StarData star, PlanetData planet)
     {
-        ShipData colonyShip = GetColonyShip(game, player, star);
+        FleetData fleet = GetColonyFleet(game, player, star);
 
-        DataBlock systemData;
-        DataBlock colonyList;
-        if (star.System == null)
-        {
-            systemData = Data.AddData(player.Data.GetSub("Systems_List"), "System", star.StarName, Game.self.Def);
-            Game.self.MapGen.GenerateNewMapSave_Players_StartingColony_SystemResources(systemData, 0, false);
+        fleet.ActionColonizeData = Data.AddData(fleet.Data, "ActionColonize", game.Def);
+        Data.AddData(fleet.ActionColonizeData, "Planet", planet.PlanetName, game.Def);
 
-            Data.AddData(systemData, "Link:Star", star.StarName, Game.self.Def);
-            Data.AddData(star.Data, "Link:Player:System", player.PlayerName + ":" + star.StarName, Game.self.Def);
+        //Data.AddData(fleet.ActionData, "Progress", 0, game.Def);
+        //Data.AddData(fleet.ActionData, "ProgressMax", fleet.StarAt_PerTurn.DistanceTo(star), game.Def);
 
-            colonyList = Data.AddData(systemData, "Colony_List", Game.self.Def);
-
-            Game.self.Map.Data.GenerateGameFromData_Player_System(systemData, player);
-        }
-        else
-        {
-            systemData = star.System.Data;
-            colonyList = systemData.GetSub("Colony_List");
-        }
-
-        DataBlock colonyData = Game.self.MapGen.GenerateNewMapSave_Players_Colony(star.Data, planet.Data, player.Data, systemData, 0);
-        Game.self.Map.Data.GenerateGameFromData_Player_System_Colony(colonyData, star.System);
-
-        for (int idx = 0; idx < star.Fleets_PerTurn.Count; idx++)
-        {
-            FleetData fleet = star.Fleets_PerTurn[idx];
-            if (star.Fleets_PerTurn[idx] == colonyShip._Fleet)
-            {
-                star.Fleets_PerTurn[idx].Ships.Remove(colonyShip);
-                star.Fleets_PerTurn[idx].Data.Subs.Remove(colonyShip.Data);
-
-                if (star.Fleets_PerTurn[idx].Data.HasSub("Fleet") == false)
-                {
-                    star.Fleets_PerTurn.Remove(fleet);
-                    player.Fleets.Remove(fleet);
-                    player.Data.GetSub("Fleets").Subs.Remove(fleet.Data);
-                }
-                break;
-            }
-        }
-
-        star._Node.GFX.RefreshPlayerColor();
+        Game.self.GalaxyUI.SystemInfo.Refresh(star);
+        //star._Node.GFX.RefreshPlayerColor();
         star._Node.GFX.RefreshShips();
-        planet.GFX.GUI3D.Refresh();
+    }
+
+    static public void Cancel(Game game, PlayerData player, StarData star)
+    {
+        FleetData fleet = GetColonyFleet(game, player, star);
+
+        Data.RemoveData(fleet.Data, "ActionColonize", game.Def);
+        fleet.ActionColonizeData = null;
+
+        Game.self.GalaxyUI.SystemInfo.Refresh(star);
+        //star._Node.GFX.RefreshPlayerColor();
+        star._Node.GFX.RefreshShips();
+    }
+
+    static public void EndTurn(Game game, FleetData fleet)
+    {
+        if (fleet.StarAt_PerTurn.System != null)
+            return;
+
+        PlayerData player = fleet._Player;
+        StarData star = fleet.StarAt_PerTurn;
+
+        FleetData colonyFleet = GetColonyFleet(game, player, star);
+
+        if (colonyFleet != null && colonyFleet.Data.HasSub("ActionColonize"))
+        {
+            PlanetData planet = star.GetPlanet(colonyFleet.Data.GetSubValueS("ActionColonize/Planet"));
+            DataBlock systemData = SystemRaw.CreateNewSystem(player.Data, star.Data, Game.self.Def, false, planet.Data);
+            SystemData system = Game.self.Map.Data.GenerateGameFromData_Player_System(systemData, player);
+
+            system.Init_DistrictData();
+            system.Init_Resources();
+
+            SystemData fromSystem = player.GetSystem(colonyFleet.Data.GetSubValueS("FromSystem"));
+            if (fromSystem != null)
+            {
+                DataBlock tradeIn = Data.AddData(system.Trades, "Trade", Game.self.Def);
+                Data.AddData(tradeIn, "Incoming", Game.self.Def);
+                Data.AddData(tradeIn, "Resource", "Growth", Game.self.Def);
+                Data.AddData(tradeIn, "OtherSystem", fromSystem.SystemName, Game.self.Def);
+
+                DataBlock tradeOut = Data.AddData(fromSystem.Trades, "Trade", Game.self.Def);
+                Data.AddData(tradeOut, "Outgoing", Game.self.Def);
+                Data.AddData(tradeOut, "Resource", "Growth", Game.self.Def);
+                Data.AddData(tradeOut, "OtherSystem", system.SystemName, Game.self.Def);
+            }
+
+            //DataBlock colonyData = Game.self.MapGen.GenerateNewMapSave_Players_Colony(star.Data, planet.Data, player.Data, systemData, 0);
+            //Game.self.Map.Data.GenerateGameFromData_Player_System_Colony(colonyData, star.System);
+
+            FleetRaw.RemoveFleet(player.Data, colonyFleet.Data, Game.self.Def);
+
+            star._Node.GFX.RefreshPlayerColor();
+            star._Node.GFX.RefreshShips();
+            if (planet.GFX.GUI3D != null) planet.GFX.GUI3D.Refresh();
+        }
     }
 
     /*static public void AddColonization(Game game, StarData star, Array<FleetData> selectedFleets)

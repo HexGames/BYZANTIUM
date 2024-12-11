@@ -15,6 +15,7 @@ public partial class MapGenerator : Node
         DataBlock design_1 = Data.AddData(Designs, "Design", "Colony_Ship", DefLibrary);
         {
             Data.AddData(design_1, "ShipType", "Colony_Ship", DefLibrary);
+            Data.AddData(design_1, "Cost", 500, DefLibrary);
             DataBlock modules = Data.AddData(design_1, "Modules", DefLibrary);
             {
                 Data.AddData(modules, "Computer", "No_Computer", DefLibrary);
@@ -31,6 +32,7 @@ public partial class MapGenerator : Node
         DataBlock design_2 = Data.AddData(Designs, "Design", "Babylon", DefLibrary);
         {
             Data.AddData(design_2, "ShipType", "Medium", DefLibrary);
+            Data.AddData(design_2, "Cost", 200, DefLibrary);
             DataBlock modules = Data.AddData(design_2, "Modules", DefLibrary);
             {
                 Data.AddData(modules, "Computer", "No_Computer", DefLibrary);
@@ -51,12 +53,14 @@ public partial class MapGenerator : Node
         }
     }
 
-    private void GenerateNewMapSave_Players_StartingShip(DataBlock player, DataBlock star)
+    private void GenerateNewMapSave_Players_StartingShip(DataBlock player, DataBlock star, DataBlock system)
     {
         DataBlock fleets = Data.AddData(player, "Fleets", DefLibrary);
 
         DataBlock fleet = Data.AddData(fleets, "Fleet", "I", DefLibrary);
         Data.AddData(fleet, "Name", "Babylon's_Fury", DefLibrary);
+        Data.AddData(fleet, "FleetType", "Main", DefLibrary);
+        Data.AddData(fleet, "FromSystem", system.ValueS, DefLibrary);
 
         Data.AddData(fleet, "Link:Star", star.ValueS, DefLibrary); // no StarData yet
         Data.AddData(star, "Link:Player:Fleet", player.ValueS + ":" + fleet.ValueS, DefLibrary); // no StarData yet
@@ -64,22 +68,26 @@ public partial class MapGenerator : Node
         CreateNewShip(fleet, "Babylon_I", "Babylon", DefLibrary);
 
         // second fleet
-        fleet = Data.AddData(fleets, "Fleet", "II", DefLibrary);
-        Data.AddData(fleet, "Name", "Ur's_Hammer", DefLibrary);
-
-        Data.AddData(fleet, "Link:Star", star.ValueS, DefLibrary); // no StarData yet
-        Data.AddData(star, "Link:Player:Fleet", player.ValueS + ":" + fleet.ValueS, DefLibrary); // no StarData yet
-
-        CreateNewShip(fleet, "Babylon_II", "Babylon", DefLibrary);
-
-        // third fleet
-        fleet = Data.AddData(fleets, "Fleet", "S-I", DefLibrary);
-        Data.AddData(fleet, "Name", "Colony_Ship", DefLibrary);
+        fleet = Data.AddData(fleets, "Fleet", "II_CS", DefLibrary);
+        Data.AddData(fleet, "Name", system.ValueS + "_Colony_Ship", DefLibrary);
+        Data.AddData(fleet, "FleetType", "Colony", DefLibrary);
+        Data.AddData(fleet, "FromSystem", system.ValueS, DefLibrary);
 
         Data.AddData(fleet, "Link:Star", star.ValueS, DefLibrary); // no StarData yet
         Data.AddData(star, "Link:Player:Fleet", player.ValueS + ":" + fleet.ValueS, DefLibrary); // no StarData yet
 
         CreateNewShip(fleet, "Colony_I", "Colony_Ship", DefLibrary);
+
+        // third fleet
+        fleet = Data.AddData(fleets, "Fleet", "III_D", DefLibrary);
+        Data.AddData(fleet, "Name", star.ValueS + "_Defence", DefLibrary);
+        Data.AddData(fleet, "FleetType", "Defence", DefLibrary);
+        Data.AddData(fleet, "FromSystem", system.ValueS, DefLibrary);
+
+        Data.AddData(fleet, "Link:Star", star.ValueS, DefLibrary); // no StarData yet
+        Data.AddData(star, "Link:Player:Fleet", player.ValueS + ":" + fleet.ValueS, DefLibrary); // no StarData yet
+
+        CreateNewShip(fleet, "Babylon_II", "Babylon", DefLibrary);
     }
 
     public static DataBlock CreateNewShip(DataBlock fleet, string shipName, string designLink, DefLibrary def)

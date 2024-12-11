@@ -43,7 +43,7 @@ public partial class UI3DPlanet : Control
 
     public void Refresh()
     {
-        if (GFX._Planet.Data.HasSub("Habitable"))
+        if (GFX._Planet.IsHabitable())
         {
             PipIconBg.Visible = false;
             OnlyIconBg.Visible = false;
@@ -78,24 +78,32 @@ public partial class UI3DPlanet : Control
             {
                 PipIconBg.Visible = false;
                 OnlyIconBg.Visible = true;
-                OnlyIcon.Texture = Game.self.Def.AssetLib.GetTexture2D_Symbols(GFX._Planet.Colony.Districts[0].DistrictDef.Icon + ".png");
-                if (GFX._Planet.Colony.Districts[0].Data.HasSub("InQueue"))
-                {
-                    OnlyIconBg.SelfModulate = new Color(0.5f, 0.5f, 0.5f, 1.0f);
-                    OnlyIconQueue.Visible = true;
-                    OnlyIconQueue.Text = (GFX._Planet.Colony.Districts[0].Data.GetSub("InQueue").ValueI + 1).ToString();
-                }
-                else
-                {
-                    OnlyIconBg.SelfModulate = Game.self.UILib.GetPlayerColor(GFX._Planet.Colony._System._Player.PlayerID);
-                    OnlyIconQueue.Visible = false;
-                }
+                OnlyIcon.Texture = Game.self.Def.AssetLib.GetTexture2D_District(GFX._Planet.Colony.Districts[0].DistrictDef.Icon + ".png");
+                OnlyIconBg.SelfModulate = Game.self.UILib.GetPlayerColor(GFX._Planet.Colony._System._Player.PlayerID);
+                //if (GFX._Planet.Colony.Districts[0]._Data.HasSub("InQueue"))
+                //{
+                //    OnlyIconBg.SelfModulate = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+                //    OnlyIconQueue.Visible = true;
+                //    OnlyIconQueue.Text = (GFX._Planet.Colony.Districts[0]._Data.GetSub("InQueue").ValueI + 1).ToString();
+                //}
+                //else
+                //{
+                //    OnlyIconBg.SelfModulate = Game.self.UILib.GetPlayerColor(GFX._Planet.Colony._System._Player.PlayerID);
+                //    OnlyIconQueue.Visible = false;
+                //}
             }
             else
             {
                 PipIconBg.Visible = true;
                 OnlyIconBg.Visible = false;
-                PipIcon.Texture = Game.self.Def.AssetLib.GetTexture2D_Symbols(GFX._Planet.Features[0].FeatureDef.Icon + ".png");
+                if (GFX._Planet.Features.Count > 0)
+                {
+                    PipIcon.Texture = Game.self.Def.AssetLib.GetTexture2D_District(GFX._Planet.Features[0].FeatureDef.Icon + ".png");
+                }
+                else
+                {
+                    PipIcon.Texture = Game.self.Def.AssetLib.GetTexture2D_District("Small.png");
+                }
             }
         }
     }

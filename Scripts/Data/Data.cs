@@ -190,7 +190,11 @@ public partial class Data
     // ----------------------------------------------------------------------------------------------------
     static public DataBlock LoadFile(string fileName, DefLibrary defLib)
     {
-        using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Read);
+        var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Read); 
+        if (file == null)
+        {
+            file = FileAccess.Open(fileName, FileAccess.ModeFlags.Read);
+        }
         string content = file.GetAsText();
 
         char[] delimiters = { '\n', '\r' ,'\t' };
@@ -290,7 +294,11 @@ public partial class Data
             content += Data.SaveData(data, 0, defLib);
 
             string fileName = dirName + "Save.sav";
-            using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Write);
+            var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Write);
+            if (file == null)
+            {
+                file = FileAccess.Open(fileName, FileAccess.ModeFlags.Write);
+            }
             LastSaveName = fileName;
             file.StoreString(content);
             file.Close();
@@ -303,7 +311,11 @@ public partial class Data
             content += Data.SaveData(data, 0, defLib);
 
             string fileName = dirName + "Save_" + SessionSave.ToString() + ".sav";
-            using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Write);
+            var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Write);
+            if (file == null)
+            {
+                file = FileAccess.Open(fileName, FileAccess.ModeFlags.Write);
+            }
             file.StoreString(content);
             file.Close();
 
@@ -318,7 +330,11 @@ public partial class Data
             content += Data.SaveData(newSave, 0, defLib);
 
             string diffFileName = dirName + "Save_" + SessionSave.ToString() + "_diff.sav";
-            using var fileDiff = FileAccess.Open("res:///" + diffFileName, FileAccess.ModeFlags.Write);
+            var fileDiff = FileAccess.Open("res:///" + diffFileName, FileAccess.ModeFlags.Write);
+            if (fileDiff == null)
+            {
+                fileDiff = FileAccess.Open(diffFileName, FileAccess.ModeFlags.Write);
+            }
             fileDiff.StoreString(content);
             fileDiff.Close();
         }
@@ -332,7 +348,16 @@ public partial class Data
         // GameStats
         content += Data.SaveData(data, 0, defLib);
 
-        using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Write);
+        var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Write);
+        if (file == null)
+        {
+            file = FileAccess.Open(fileName, FileAccess.ModeFlags.Write);
+        }
+        if (file == null)
+        {
+            GD.PrintErr("File error: " + fileName);
+            return;
+        }
         file.StoreString(content);
         file.Close();
     }
@@ -376,7 +401,17 @@ public partial class Data
     // ----------------------------------------------------------------------------------------------------
     static public DataBlock LoadCSV(string fileName, DefLibrary defLib)
     {
-        using var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Read);
+        var file = FileAccess.Open("res:///" + fileName, FileAccess.ModeFlags.Read);
+        if (file == null)
+        {
+            file = FileAccess.Open(fileName, FileAccess.ModeFlags.Read);
+        }
+        if (file == null) 
+        {
+            GD.PrintErr("File not found: " + fileName);
+            return null;
+        }
+
         string content = file.GetAsText();
 
         content = content.Replace("\r", "");

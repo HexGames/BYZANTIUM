@@ -315,13 +315,14 @@ public partial class MapData : Node
         }
     }
 
-    public void GenerateGameFromData_Player_System(DataBlock systemDataBlock, PlayerData playerData)
+    public SystemData GenerateGameFromData_Player_System(DataBlock systemDataBlock, PlayerData playerData)
     {
         // Data
         SystemData system = new SystemData();
         system.Name = systemDataBlock.ValueS + "_Data";
         system.Capital = systemDataBlock.HasSub("Capital");
         system.Resources = systemDataBlock.GetSub("Resources");
+        system.Trades = systemDataBlock.GetSub("Trades");
 
         system.Data = systemDataBlock;
 
@@ -341,6 +342,8 @@ public partial class MapData : Node
         {
             GenerateGameFromData_Player_System_Colony(colonies[idx], system);
         }
+
+        return system;
     }
 
     public ColonyData GenerateGameFromData_Player_System_Colony(DataBlock colonyDataBlock, SystemData systemData)
@@ -349,10 +352,11 @@ public partial class MapData : Node
         ColonyData colony = new ColonyData();
         colony.Name = colonyDataBlock.ValueS + "_Data";
         colony.ColonyName = colonyDataBlock.ValueS;
-        colony.Type = colonyDataBlock.GetSub("Type");
-        colony.Pops = colonyDataBlock.GetSub("Pops_List");
-        colony.Buildings = colonyDataBlock.GetSub("Buildings");
-        colony.Resources = colonyDataBlock.GetSub("Resources");
+        //colony.Type = colonyDataBlock.GetSub("Type");
+        //colony.Pops = colonyDataBlock.GetSub("Pops_List");
+        //colony.Buildings = colonyDataBlock.GetSub("Buildings");
+        //colony.Resources = colonyDataBlock.GetSub("Resources");
+        //colony.Trades = colonyDataBlock.GetSub("Trades");
 
         colony.Data = colonyDataBlock;
 

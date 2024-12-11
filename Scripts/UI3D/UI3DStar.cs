@@ -34,7 +34,7 @@ public partial class UI3DStar : Control
 
     public void Refresh()
     {
-        Row_1.Text = GFX._Star.StarName;
+        Row_1.Text = GFX._Star.StarName.Replace("_"," ");
         Row_1_Bg.Visible = true;
 
         if (GFX._Star.System != null)
@@ -43,7 +43,7 @@ public partial class UI3DStar : Control
 
             if (GFX._Star.System.Capital)
             {
-                Row_1.Text = GFX._Star.StarName + "[img=24x24]Assets/UI/Symbols/Capital.png[/img]";
+                Row_1.Text = GFX._Star.StarName.Replace("_", " ") + "[img=24x24]Assets/UI/Symbols/Capital.png[/img]";
             }
             Row_1_Bg.SelfModulate = Game.self.UILib.GetPlayerColor(GFX._Star.System._Player.PlayerID);
             //for (int idx = 0; idx < Icons.Count; idx++)
@@ -81,7 +81,7 @@ public partial class UI3DStar : Control
         }
         for (int planetIdx = 0; planetIdx < GFX._Star.Planets.Count; planetIdx++)
         {
-            if (GFX._Star.Planets[planetIdx].Data.HasSub("Habitable"))
+            if (GFX._Star.Planets[planetIdx].IsHabitable())
             {
                 switch (GFX._Star.Planets[planetIdx].Data.GetSub("Size").ValueI)
                 {

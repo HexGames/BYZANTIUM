@@ -53,7 +53,7 @@ public partial class PlayerData : Node
     public List<DesignData> Designs = new List<DesignData>();
 
     // stockpiles
-    //public ResourcesWrapper Resources_PerTurn = null;
+    public PlayerStockpilesWrapper Stockpiles_PerTurn = null;
 
 
     // --------------------------------------------------------------------------------------------
@@ -94,6 +94,24 @@ public partial class PlayerData : Node
         }
 
         return null;
+    }
+
+    public DesignData GetDesignAtIdx(int designIdx)
+    {
+        return Designs[designIdx % Designs.Count];
+    }
+
+    public int GetDesignIdx(string design)
+    {
+        for (int idx = 0; idx < Designs.Count; idx++)
+        {
+            if (Designs[idx].DesignName == design)
+            {
+                return idx;
+            }
+        }
+
+        return -1;
     }
 
     public bool IsAtWarWith(PlayerData otherPlayer)

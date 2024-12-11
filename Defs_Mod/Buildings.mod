@@ -1,241 +1,372 @@
 Buildings 
 {
+	Building Capital
+	{
+		Type Capital
+		Icon Capital
+		Resource Control
+		Benefit 
+		{
+			Extra 
+			{
+				Construction 20
+			}
+		}
+		Default 
+		{
+			Pop*Bonus 0
+			Factory*Bonus 0
+		}
+		Control 
+		{
+			Cost 0
+			Type Police
+		}
+	}
+	Building Private_Business
+	{
+		Type District
+		Icon BusinessP
+		Resource BC
+		Default 
+		{
+			Pop*Bonus 0
+			Factory*Bonus 0
+		}
+		Control 
+		{
+			Cost 10
+			Type Private
+			Nationalize_to State_Business
+		}
+	}
+	Building State_Business
+	{
+		Type District
+		Icon BusinessS
+		Resource BC
+		Cost 50
+		Default 
+		{
+			Pop*Bonus -10
+			Factory*Bonus -10
+		}
+		Control 
+		{
+			Cost 20
+			Type State_Owned
+			Privatize_to Private_Business
+		}
+	}
+	Building Private_Media
+	{
+		Type District
+		Icon MediaP
+		Resource Influence
+		Default 
+		{
+			Pop*Bonus 10
+			Factory*Bonus -10
+		}
+		Control 
+		{
+			Cost 10
+			Type Private
+			Nationalize_to State_Media
+		}
+	}
+	Building State_Media
+	{
+		Type District
+		Icon MediaS
+		Resource Influence
+		Cost 50
+		Default 
+		{
+			Pop*Bonus 10
+			Factory*Bonus -10
+		}
+		Control 
+		{
+			Cost 20
+			Type State_Owned
+			Privatize_to Private_Media
+		}
+	}
+	Building Private_Shipyard
+	{
+		Type District
+		Icon ShipyardP
+		Resource Shipbuilding
+		Default 
+		{
+			Pop*Bonus -10
+			Factory*Bonus 0
+		}
+		Control 
+		{
+			Cost 10
+			Type Private
+			Nationalize_to State_Shypyard
+		}
+	}
+	Building State_Shipyard
+	{
+		Type District
+		Icon ShipyardS
+		Resource Shipbuilding
+		Cost 50
+		Default 
+		{
+			Pop*Bonus -10
+			Factory*Bonus 0
+		}
+		Control 
+		{
+			Cost 20
+			Type State_Owned
+			Privatize_to Private_Shipyard
+		}
+	}
+	Building Private_Construction
+	{
+		Type District
+		Icon ConstructionP
+		Resource Construction
+		Default 
+		{
+			Pop*Bonus 0
+			Factory*Bonus 0
+		}
+		Control 
+		{
+			Cost 10
+			Type Private
+			Nationalize_to State_Construction
+		}
+	}
+	Building State_Construction
+	{
+		Type District
+		Icon ConstructionS
+		Resource Construction
+		Cost 50
+		Default 
+		{
+			Pop*Bonus 0
+			Factory*Bonus 0
+		}
+		Control 
+		{
+			Cost 20
+			Type State_Owned
+			Privatize_to Private_Construction
+		}
+	}
+	Building Research_Center
+	{
+		Type District
+		Icon Research
+		Resource Research
+		Cost 25
+		Default 
+		{
+			Pop*Bonus -10
+			Factory*Bonus 0
+		}
+		Control 
+		{
+			Cost 20
+			Type State_Owned
+		}
+	}
+	Building Police
+	{
+		Type District
+		Icon Police
+		Resource Control
+		Cost 25
+		Default 
+		{
+			Pop*Bonus 0
+			Factory*Bonus 0
+		}
+		Control 
+		{
+			Cost 0
+			Type Police
+		}
+	}
+	Building Monastery
+	{
+		Type District
+		Icon Religion
+		Resource Control
+		Default 
+		{
+			Pop*Bonus -10
+			Factory*Bonus 0
+		}
+		Control 
+		{
+			Cost 0
+			Type Police
+		}
+	}
 	Building Research_Station
 	{
 		Type Space_Station
-		Cost 10000
-		SuggestedFocus Research
 		Icon Research
+		Resource Research
 		Benefit 
 		{
-			Research*Income 100
+			Income 
+			{
+				Resource 20
+			}
 		}
 	}
 	Building Research_Nexus
 	{
 		Type Space_Station
-		Cost 10000
-		SuggestedFocus Research
-		Icon ResearchPerc
+		Icon Research
+		Resource Research
 		Benefit 
 		{
-			Research*Bonus 25
+			Bonus 
+			{
+				Resource 10
+			}
 		}
 	}
 	Building Orbital_Forum
 	{
 		Type Space_Station
-		Cost 10000
-		SuggestedFocus Influence
-		Icon Influence
+		Icon MediaS
+		Resource Influence
 		Benefit 
 		{
-			Influence*PerPop 10
+			Income 
+			{
+				Resource 20
+			}
 		}
 	}
 	Building Trade_Station
 	{
 		Type Space_Station
-		Cost 10000
-		SuggestedFocus BC
-		Icon BC
+		Icon BusinessS
+		Resource BC
 		Benefit 
 		{
-			BC*PerPop 30
+			Income 
+			{
+				Resource 20
+			}
 		}
 	}
 	Building Asteroid_Shipyard
 	{
 		Type Asteroid_Base
-		Cost 10000
-		SuggestedFocus Shipbuilding
-		Icon Shipbuilding
+		Icon ShipyardS
+		Resource Shipbuilding
 		Benefit 
 		{
-			Shipbuilding*Income 100
+			Income 
+			{
+				Resource 20
+			}
 		}
 	}
 	Building Alloy_Foundry
 	{
 		Type Asteroid_Base
-		Cost 10000
-		SuggestedFocus Shipbuilding
-		Icon ShipbuildingPerc
+		Icon ShipyardS
+		Resource Shipbuilding
 		Benefit 
 		{
-			Shipbuilding*Bonus 25
+			Bonus 
+			{
+				Resource 10
+			}
 		}
 	}
 	Building Asteroid_Forum
 	{
 		Type Asteroid_Base
-		Cost 10000
-		SuggestedFocus Influence
-		Icon Influence
+		Icon MediaS
+		Resource Influence
 		Benefit 
 		{
-			Influence*PerPop 20
+			Income 
+			{
+				Resource 20
+			}
 		}
 	}
 	Building Asteroid_Bazzar
 	{
 		Type Asteroid_Base
-		Cost 10000
-		SuggestedFocus BC
-		Icon BC
+		Icon BusinessS
+		Resource BC
 		Benefit 
 		{
-			BC*PerPop 20
+			Income 
+			{
+				Resource 20
+			}
 		}
 	}
 	Building Ships_Factory
 	{
 		Type Outpost
-		Cost 10000
-		SuggestedFocus Shipbuilding
-		Icon Shipbuilding
+		Icon ShipyardS
+		Resource Shipbuilding
 		Benefit 
 		{
-			Shipbuilding*Income 100
+			Income 
+			{
+				Resource 20
+			}
 		}
 	}
 	Building Research_Labs
 	{
 		Type Outpost
-		Cost 10000
-		SuggestedFocus Research
 		Icon Research
+		Resource Research
 		Benefit 
 		{
-			Research*Income 100
+			Income 
+			{
+				Resource 20
+			}
 		}
 	}
 	Building Trade_Outpost
 	{
 		Type Outpost
-		Cost 10000
-		SuggestedFocus BC
-		Icon BC
+		Icon BusinessS
+		Resource BC
 		Benefit 
 		{
-			BC*PerPop 20
+			Income 
+			{
+				Resource 20
+			}
 		}
 	}
-	Building Hydroponic_Farms
+	Building Waste_Management
 	{
 		Type Outpost
-		Cost 10000
-		SuggestedFocus Growth
-		Icon Growth
+		Icon BusinessS
+		Resource BC
 		Benefit 
 		{
-			Growth 25
-		}
-	}
-	Building Automated_Shipyards
-	{
-		Type District
-		Cost 10000
-		SuggestedFocus Shipbuilding
-		Icon Shipbuilding
-		Benefit 
-		{
-			Shipbuilding*Income 150
-		}
-	}
-	Building Shipbuilding_District
-	{
-		Type District
-		Cost 10000
-		SuggestedFocus Shipbuilding
-		Icon ShipbuildingPerc
-		Benefit 
-		{
-			Shipbuilding*Bonus 50
-			Shipbuilding*Focus 5
-		}
-	}
-	Building Automated_Labs
-	{
-		Type District
-		Cost 10000
-		SuggestedFocus Research
-		Icon Research
-		Benefit 
-		{
-			Research*Income 150
-		}
-	}
-	Building Research_District
-	{
-		Type District
-		Cost 10000
-		SuggestedFocus Research
-		Icon ResearchPerc
-		Benefit 
-		{
-			Research*Bonus 50
-			Research*Focus 5
-		}
-	}
-	Building Culture_District
-	{
-		Type District
-		Cost 10000
-		SuggestedFocus Influence
-		Icon Influence
-		Benefit 
-		{
-			Influence*PerPop 20
-		}
-	}
-	Building Trade_District
-	{
-		Type District
-		Cost 10000
-		SuggestedFocus BC
-		Icon BC
-		Benefit 
-		{
-			BC*PerPop 30
-		}
-	}
-	Building Rural_District
-	{
-		Type District
-		Cost 10000
-		SuggestedFocus Growth
-		Icon Growth
-		Benefit 
-		{
-			Growth 100
-			PopMaxPenalty 50
-		}
-	}
-	Building Dense_Urbanization
-	{
-		Type District
-		Cost 10000
-		SuggestedFocus Pops
-		Icon Pops
-		Benefit 
-		{
-			PopMax 30000
-		}
-	}
-	Building Capital
-	{
-		Type Capital
-		Cost 10000
-		SuggestedFocus none
-		Icon Capital
-		Benefit 
-		{
-			Shipbuilding*Income 50
-			Research*Income 50
-			Influence*PerPop 10
-			BC*PerPop 10
-			PopMax 10000
+			Bonus 
+			{
+				Resource 10
+			}
 		}
 	}
 }

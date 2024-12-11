@@ -18,7 +18,9 @@ public partial class FleetData : Node
     [Export]
     public string FleetName = "";
     [Export]
-    public DataBlock ActionData = null;
+    public DataBlock ActionMoveData = null;
+    [Export]
+    public DataBlock ActionColonizeData = null;
 
     //[Export]
     //public DataBlock ShipsData = null;
@@ -26,7 +28,7 @@ public partial class FleetData : Node
     //[ExportCategory("SystemData-Actions")]
     //[Export]
     //public DataBlock ActionBuild = null;
-    
+
     //[ExportCategory("SystemData-Links")]
     //[Export]
     public List<ShipData> Ships = new List<ShipData>();
@@ -43,28 +45,48 @@ public partial class FleetData : Node
         return Data.GetSub("Name").ValueS.Replace("_", " ");
     }
 
-    public ShipData GetShip(string ship)
-    {
-        for (int idx = 0; idx < Ships.Count; idx++)
-        {
-            if (Ships[idx].ShipName == ship)
-            {
-                return Ships[idx];
-            }
-        }
-
-        return null;
-    }
+    //public ShipData GetShip(string ship)
+    //{
+    //    for (int idx = 0; idx < Ships.Count; idx++)
+    //    {
+    //        if (Ships[idx].ShipName == ship)
+    //        {
+    //            return Ships[idx];
+    //        }
+    //    }
+    //
+    //    return null;
+    //}
 
     public int GetMoveActionTurns()
     {
-        if (ActionData != null)
+        if (ActionMoveData != null)
         {
-            return ActionData.GetSub("ProgressMax").ValueI - ActionData.GetSub("Progress").ValueI + 1;
+            return ActionMoveData.GetSub("ProgressMax").ValueI - ActionMoveData.GetSub("Progress").ValueI + 1;
         }
         else
         {
             return -1;
         }
+    }
+
+    public int GetTotalShips()
+    {
+        int ships = 0;
+        for (int idx = 0; idx < Ships.Count; idx++)
+        {
+            ships += Ships[idx].ShipCount;
+        }
+        return ships;
+    }
+
+    public int GetTotalPower()
+    {
+        int power = 0;
+        for (int idx = 0; idx < Ships.Count; idx++)
+        {
+            power += Ships[idx].ShipCount * Ships[idx].ShipPower;
+        }
+        return power;
     }
 }

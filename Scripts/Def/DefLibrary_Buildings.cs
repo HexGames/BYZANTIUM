@@ -61,6 +61,7 @@ public partial class DefLibrary : Node
         //BuildingsList = Data.LoadFile("Defs_Mod/Buildings.mod", this);
         DistrictsList = Data.LoadCSV("Defs_Mod/Buildings.table", this);
 
+        //Districts = new Array<DataBlock>();
         Districts.Clear();
         Districts = DistrictsList.GetSubs("Building");
     }

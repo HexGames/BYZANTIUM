@@ -5,131 +5,164 @@ using System.ComponentModel.Design;
 
 public class PopsWrapper
 {
-    public class PopsInfo
-    {
-        public List<DataBlock> DataBlocks = new List<DataBlock>();
+    private static int TRADE_CAPACITY = 100;
 
-        public int Pops = 0;
-        public string Specie = "";
-        public string Ethic = "";
-        public string LoyalTo = "";
-    }
-
-    public SystemData _System = null;
-    public ColonyData _Colony = null;
-
-    public List<PopsInfo> Pops = new List<PopsInfo>();
-
+    public int Pops = 0;
     public int PopsMax = 0;
-    public int Growth = 0;
-    public int GrowthBonus = 0;
-    public int GrowthPenalty = 0;
+    
+    public int GrowthFromPops = 0;
+    public int GrowthWaste = 0;
+    public int GrowthOutgoingTrade = 0;
+    public int GrowthOutgoingTradeCount = 0;
+    public int GrowthIncommingTrade = 0;
+    public int GrowthIncommingTradeCount = 0;
+    public int GrowthTotal = 0;
+
+    public int GrowthProgress = 0;
+    public int GrowthProgressNextTurn = 0;
+    public int GrowthProgressMax = 0;
+    public int GrowthTurns = 0;
+    public int PopsUnhappy = 0;
+    public int PopsNeutral = 0;
+    public int PopsHappy = 0;
+
+    public SystemData _System;
 
     public PopsWrapper(SystemData system)
     {
         _System = system;
-        _Colony = null;
-
-        //Refresh();
-    }
-
-    public PopsWrapper(ColonyData colony)
-    {
-        _System = null;
-        _Colony = colony;
-
-        //Refresh();
     }
 
     public void Clear()
     {
-        Pops.Clear();
-
+        Pops = 0;
         PopsMax = 0;
-        Growth = 0;
-        GrowthBonus = 0;
-        GrowthPenalty = 0;
+
+        GrowthFromPops = 0;
+        GrowthWaste = 0;
+        GrowthOutgoingTrade = 0;
+        GrowthOutgoingTradeCount = 0;
+        GrowthIncommingTrade = 0;
+        GrowthIncommingTradeCount = 0;
+
+        GrowthProgress = 0;
+        GrowthProgressNextTurn = 0;
+        GrowthProgressMax = 0;
+        GrowthTurns = 0;
+        PopsUnhappy = 0;
+        PopsNeutral = 0;
+        PopsHappy = 0;
     }
 
-    public void Refresh()
+    public void RefreshBase()
     {
         Clear();
 
-        if (_Colony != null)
+        Pops = _System.GetPopsCurrent();
+        PopsMax = _System.Star.GetPopsMax();
+        GrowthFromPops = 0;
+        GrowthWaste = 0;
+        for (int colonyIdx = 0; colonyIdx < _System.Colonies.Count; colonyIdx++)
         {
-            if (_Colony.Pops != null)
-            {
-                Array<DataBlock> popsDataSubs = _Colony.Pops.GetSubs();
-                for (int idx = 0; idx < popsDataSubs.Count; idx++)
-                {
-                    PopsInfo newPops = new PopsInfo();
-                    newPops.DataBlocks.Add(popsDataSubs[idx]);
-                    newPops.Pops = popsDataSubs[idx].GetSub("Pops").ValueI;
-                    newPops.Specie = popsDataSubs[idx].GetSub("Specie").ValueS;
-                    newPops.Ethic = popsDataSubs[idx].GetSub("Ethic").ValueS;
-                    newPops.LoyalTo = popsDataSubs[idx].GetSub("LoyalTo").ValueS;
-                    Pops.Add(newPops);
-                }
-
-                PopsMax = _Colony.Planet.Data.GetSub("Size").ValueI * 30 * 1000;
-            }
+            int waste = 0;
+            GrowthFromPops += _System.Colonies[colonyIdx].GetGrowth(out waste);
+            GrowthWaste += waste;
         }
-        else if (_System != null) 
-        {
-            for (int colonyIdx = 0; colonyIdx < _System.Colonies.Count; colonyIdx++)
-            {
-                if (_System.Colonies[colonyIdx].Pops != null)
-                {
-                    Array<DataBlock> popsDataSubs = _System.Colonies[colonyIdx].Pops.GetSubs();
-                    for (int subsIdx = 0; subsIdx < popsDataSubs.Count; subsIdx++)
-                    {
-                        int pops = popsDataSubs[subsIdx].GetSub("Pops").ValueI;
-                        string specie = popsDataSubs[subsIdx].GetSub("Specie").ValueS;
-                        string ethic = popsDataSubs[subsIdx].GetSub("Specie").ValueS;
-                        string loyalTo = popsDataSubs[subsIdx].GetSub("LoyalTo").ValueS;
-
-                        bool found = false;
-                        for (int popsIdx = 0; popsIdx < Pops.Count; popsIdx++)
-                        {
-                            if (Pops[popsIdx].Specie == specie && Pops[popsIdx].Ethic == ethic && Pops[popsIdx].LoyalTo == loyalTo)
-                            {
-                                Pops[popsIdx].DataBlocks.Add(popsDataSubs[subsIdx]);
-                                Pops[popsIdx].Pops += pops;
-                                found = true;
-                                break;
-                            }
-                        }
-
-                        if (found == false)
-                        {
-                            PopsInfo newPops = new PopsInfo();
-                            newPops.DataBlocks.Add(popsDataSubs[subsIdx]);
-                            newPops.Pops = pops;
-                            newPops.Specie = specie;
-                            newPops.Ethic = ethic;
-                            newPops.LoyalTo = loyalTo;
-                            Pops.Add(newPops);
-                        }
-                    }
-
-                    PopsMax += _System.Colonies[colonyIdx].Planet.Data.GetSub("Size").ValueI * 30 * 1000;
-                }
-            }
-        }
+        GrowthTotal = GrowthFromPops + GrowthWaste;
     }
 
-    public int GetPops()
+    public void RefreshOutgoingTrade()
     {
-        int pops = 0;
+        GrowthOutgoingTrade = 0;
 
-        for (int idx = 0; idx < Pops.Count; idx++)
+        List<DataBlock> trades = _System.GetTrades(true, "Growth");
+        GrowthOutgoingTradeCount = trades.Count;
+
+        if (trades.Count > 0)
         {
-            pops += Pops[idx].Pops;
+            int maxTradeQ = TRADE_CAPACITY * trades.Count;
+
+            GrowthOutgoingTrade = Mathf.Max(maxTradeQ, GrowthWaste);
+            GrowthWaste -= GrowthOutgoingTrade;
+
+            if (GrowthOutgoingTrade < maxTradeQ)
+            {
+                int remaining = Mathf.Max(maxTradeQ - GrowthOutgoingTrade, GrowthTotal / 2);
+                GrowthOutgoingTrade += remaining;
+                GrowthTotal -= remaining;
+            }
         }
-        
-        return pops;
     }
 
-    public string ToString_Pops() { return Helper.ResValueToString(GetPops(), 1000); }
-    public string ToString_PopsMax() { return Helper.ResValueToString(PopsMax, 1000); }
+    public void RefreshIncomingTrade()
+    {
+        GrowthIncommingTrade = 0;
+
+        List<DataBlock> trades = _System.GetTrades(false, "Growth");
+        GrowthIncommingTradeCount = trades.Count;
+
+        for (int idx = 0; idx < trades.Count; idx++)
+        {
+            SystemData otherSystem = _System._Player.GetSystem(trades[idx].GetSubValueS("OtherSystem"));
+            GrowthIncommingTrade += otherSystem.Pops_PerTurn.GrowthOutgoingTrade / otherSystem.Pops_PerTurn.GrowthOutgoingTradeCount;
+        }
+
+        GrowthTotal += GrowthIncommingTrade;
+    }
+
+    public void Refresh()
+    { 
+        ColonyData colony = _System.GetGrowthColony();
+        if (colony != null)
+        {
+            GrowthProgress = colony.GetGrowthProgress();
+            GrowthProgressMax = 1000;
+            GrowthProgressNextTurn = Mathf.Min(GrowthProgress + GrowthTotal, GrowthProgressMax);
+            if (GrowthTotal > 0) GrowthTurns = ((GrowthProgressMax - GrowthProgress) + (GrowthTotal - 1)) / GrowthTotal;
+            else GrowthTurns = 999;
+        }
+        else
+        {
+            GrowthProgress = 0;
+            GrowthProgressMax = 1000; 
+            GrowthTurns = 999;
+        }
+
+        for (int colonyIdx = 0; colonyIdx < _System.Colonies.Count; colonyIdx++)
+        {
+            colony = _System.Colonies[colonyIdx];
+            for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
+            {
+                DistrictData district = colony.Districts[districtIdx];
+                if (district.HasFullPop())
+                {
+                    int happiness = district.GetPop().Data.GetSubValueI("Happiness");
+                    if (happiness > 70)
+                    {
+                        PopsHappy++;
+                    }
+                    else if (happiness < 30)
+                    {
+                        PopsUnhappy++;
+                    }
+                    else
+                    {
+                        PopsNeutral++;
+                    }
+                }
+            }
+        }
+    }
+
+    public string ToString_Pops() { return Pops.ToString(); }
+    public string ToString_PopsMax() { return PopsMax.ToString(); }
+    public string ToString_GrowthFromPops() { return Helper.ResValueToString(GrowthFromPops, 10, true); }
+    public string ToString_GrowthWaste() { return Helper.ResValueToString(GrowthWaste, 10, true); }
+    public string ToString_GrowthIncommingTrade() { return Helper.ResValueToString(GrowthIncommingTrade, 10, true); }
+    public string ToString_GrowthOutgoingTrade() { return Helper.ResValueToString(GrowthOutgoingTrade, 10, true); }
+    public string ToString_GrowthTotal() { return Helper.ResValueToString(GrowthTotal, 10, true); }
+    public string ToString_GrowthTurns() { return GrowthTurns < 900 ? GrowthTurns.ToString() : "oo"; }
+    public string ToString_Unhappy() { return PopsUnhappy.ToString(); }
+    public string ToString_Neutral() { return PopsNeutral.ToString(); }
+    public string ToString_Happy() { return PopsHappy.ToString(); }
 }

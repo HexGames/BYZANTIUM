@@ -19,7 +19,7 @@ Players
     G Elisi
     H Grano
 
-    I Rouge_AI
+    I Rogue_AI
     J Formics
     K Tentacles
     L Mechano

@@ -9,29 +9,28 @@ using System.Xml;
 // Editor
 public partial class MapGenerator : Node
 {
-
-    private void GenerateNewMapSave_Stars_Planets_Sol(DataBlock planetList)
-    {
-        {
-            DataBlock star = Data.AddData(planetList, "Planet", "Star", DefLibrary);
-            Data.AddData(star, "Star_Type", "Main_Sequence", DefLibrary);
-            Data.AddData(star, "Active_Star", DefLibrary);
-            Data.AddData(star, "Building", "Star_Orbit", DefLibrary);
-
-            //GenerateNewMapSave_Stars_Planets_AddResourcesData(star);
-        }
-
-        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Mercury");
-        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Venus");
-        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Terra");
-        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Moon");
-        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Mars");
-        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Asteroids");
-        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Jupiter");
-        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Ganymede");
-        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Saturn");
-        GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Titan");
-    }
+    //private void GenerateNewMapSave_Stars_Planets_Sol(DataBlock planetList)
+    //{
+    //    {
+    //        DataBlock star = Data.AddData(planetList, "Planet", "Star", DefLibrary);
+    //        Data.AddData(star, "Star_Type", "Main_Sequence", DefLibrary);
+    //        Data.AddData(star, "Active_Star", DefLibrary);
+    //        Data.AddData(star, "Building", "Star_Orbit", DefLibrary);
+    //
+    //        //GenerateNewMapSave_Stars_Planets_AddResourcesData(star);
+    //    }
+    //
+    //    GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Mercury");
+    //    GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Venus");
+    //    GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Terra");
+    //    GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Moon");
+    //    GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Mars");
+    //    GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Asteroids");
+    //    GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Jupiter");
+    //    GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Ganymede");
+    //    GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Saturn");
+    //    GenerateNewMapSave_Stars_Planets_CustomPlanet(planetList, "Titan");
+    //}
 
 
     private List<DataBlock> Planets_VeryHot = null;
@@ -63,9 +62,11 @@ public partial class MapGenerator : Node
         public PlanetType Planet = PlanetType.NONE;
         public int PlanetSize = 0;
         public bool PlanetBonus = false;
+
         public PlanetType Moon_1 = PlanetType.NONE;
         public int Moon_1_Size = 0;
         public bool Moon_1_Bonus = false;
+
         public PlanetType Moon_2 = PlanetType.NONE;
         public int Moon_2_Size = 0;
         public bool Moon_2_Bonus = false;
@@ -74,8 +75,6 @@ public partial class MapGenerator : Node
     };
     private void GenerateNewMapSave_Stars_Planets_Level(string starName, DataBlock planetList, int level, bool capital, string capitalType, int temperature)
     {
-        int levelPoints = 0;
-
         GenerateNewMapSave_Stars_Planets_Random_GenerateWeightedLists();
 
         // Add star
@@ -89,7 +88,7 @@ public partial class MapGenerator : Node
         }
 
         //List<Orbit> orbits = Generate_Orbits_v1(level);
-        List<Orbit> orbits = Generate_Orbits_v2(level);
+        List<Orbit> orbits = Generate_Orbits_v2(level, capital);
 
         // Add the actual planets
         // search for best habitable
@@ -223,342 +222,62 @@ public partial class MapGenerator : Node
         }
     }
 
-    private List<Orbit> Generate_Orbits_v1(int level)
-    {
-        // Calculate planets and orbits
-        List<Orbit> orbits = new List<Orbit>();
-        bool gasFirst = RNG.RandfRange(0, 99) < 25;
-        int targetPoints = level * 30;
-
-        // where s is size  or  size + 3 if bonus
-        // types            0 u         1 uu        2 h         3 hu        4 hh        5 a         6 g         7 gu        8 guu       9 gh        10 ghh
-        // min points       0 10        1 20        2 15        3 40        4 45        5 10        6 10        7 20        8 30        9 25        10 40
-        // max points       0 20        1 40        2 60        3 80        4 100       5 20        6 20        7 40        8 60        9 60        10 100
-
-        int gasGiants = 0;
-        for (int o = 0; o < 7; o++) // the max 7 orbits
-        {
-            if (targetPoints < 0)
-                break;
-
-            int type = -1;
-            if (targetPoints >= 100)
-            {
-                if (RNG.RandiRange(0, 99) < 5 - 2 * gasGiants) type = 10; // 5
-                else if (RNG.RandiRange(0, 99) < 10) type = 4; // 9.5
-                else if (RNG.RandiRange(0, 99) < 10 - 4 * gasGiants) type = 9; // 8.5
-                else if (RNG.RandiRange(0, 99) < 20) type = 2; // 15
-                else type = 3; // 62
-            }
-            else
-            {
-                if (o == 0 || targetPoints >= 80)
-                {
-                    if (RNG.RandiRange(0, 99) < 10 - 4 * gasGiants) type = 9;
-                    else if (RNG.RandiRange(0, 99) < 20) type = 3;
-                    else type = 2;
-                }
-                else
-                {
-                    if (RNG.RandiRange(0, 99) < 5 && targetPoints >= 60 - 25 * gasGiants) type = 8; // 5
-                    else if (RNG.RandiRange(0, 99) < 10) type = 5; // 9.5
-                    else if (RNG.RandiRange(0, 99) < 10) type = 1; // 8.5
-                    else if (RNG.RandiRange(0, 99) < 30 - 12 * gasGiants) type = 7; // 24
-                    else if (RNG.RandiRange(0, 99) < 30 + 30 * gasGiants) type = 0; // 14
-                    else type = 6; // 33
-                }
-            }
-
-            if (type > 5) gasGiants++;
-
-            Orbit orbit = new Orbit();
-            switch (type)
-            {
-                case 0:
-                    {
-                        orbit.Planet = PlanetType.UNINHABITABLE;
-
-                        orbit.PlanetSize = 1;
-                        if (RNG.RandiRange(0, 99) > 50) orbit.PlanetSize = 2;
-                        else if (RNG.RandiRange(0, 99) > 10) orbit.PlanetSize = 3;
-
-                        orbit.PlanetBonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 20;
-
-                        orbit.Points = (orbit.PlanetBonus ? 20 : 10);
-
-                        if (gasFirst) orbits.Add(orbit);
-                        else orbits.Insert(0, orbit);
-                        break;
-                    }
-                case 1:
-                    {
-                        orbit.Planet = PlanetType.UNINHABITABLE;
-                        orbit.Moon_1 = PlanetType.UNINHABITABLE;
-
-                        orbit.PlanetSize = 2;
-                        if (RNG.RandiRange(0, 99) > 40) orbit.PlanetSize = 3;
-                        orbit.Moon_1_Size = 1;
-
-                        orbit.PlanetBonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 30;
-                        orbit.Moon_1_Bonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 20 + (orbit.PlanetBonus ? 20 : 10);
-
-                        orbit.Points = (orbit.PlanetBonus ? 20 : 10) + (orbit.Moon_1_Bonus ? 20 : 10);
-
-                        if (gasFirst) orbits.Add(orbit);
-                        else orbits.Insert(0, orbit);
-                        break;
-                    }
-                case 2:
-                    {
-                        orbit.Planet = PlanetType.HABITABLE;
-
-                        orbit.PlanetSize = 1;
-                        if (RNG.RandiRange(0, 99) > 50 && targetPoints >= 30) orbit.PlanetSize = 2;
-                        else if (RNG.RandiRange(0, 99) > 10 && targetPoints >= 45) orbit.PlanetSize = 3;
-
-                        orbit.PlanetBonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 20 * orbit.PlanetSize;
-
-                        orbit.Points = orbit.PlanetSize * (orbit.PlanetBonus ? 20 : 15);
-
-                        if (gasFirst) orbits.Add(orbit);
-                        else orbits.Insert(0, orbit);
-                        break;
-                    }
-                case 3:
-                    {
-                        orbit.Planet = PlanetType.HABITABLE;
-                        orbit.Moon_1 = PlanetType.UNINHABITABLE;
-
-                        orbit.PlanetSize = 2;
-                        if (RNG.RandiRange(0, 99) > 40 && targetPoints >= 55) orbit.PlanetSize = 3;
-                        orbit.Moon_1_Size = 1;
-
-                        orbit.PlanetBonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 20 * orbit.PlanetSize + 10;
-                        orbit.Moon_1_Bonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= (orbit.PlanetBonus ? 20 : 15) * orbit.PlanetSize + 20;
-
-                        orbit.Points = orbit.PlanetSize * (orbit.PlanetBonus ? 20 : 15) + (orbit.Moon_1_Bonus ? 20 : 10);
-
-                        if (gasFirst) orbits.Add(orbit);
-                        else orbits.Insert(0, orbit);
-                        break;
-                    }
-                case 4:
-                    {
-                        orbit.Planet = PlanetType.HABITABLE;
-                        orbit.Moon_1 = PlanetType.HABITABLE;
-
-                        orbit.PlanetSize = 2;
-                        if (RNG.RandiRange(0, 99) > 40 && targetPoints >= 60) orbit.PlanetSize = 3;
-                        orbit.Moon_1_Size = 1;
-
-                        orbit.PlanetBonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 20 * orbit.PlanetSize + 15;
-                        orbit.Moon_1_Bonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= (orbit.PlanetBonus ? 20 : 15) * orbit.PlanetSize + 20;
-
-                        orbit.Points = orbit.PlanetSize * (orbit.PlanetBonus ? 20 : 15) + orbit.Moon_1_Size * (orbit.Moon_1_Bonus ? 20 : 15);
-
-                        if (gasFirst) orbits.Add(orbit);
-                        else orbits.Insert(0, orbit);
-                        break;
-                    }
-                case 5:
-                    {
-                        orbit.Planet = PlanetType.ASTEROIDS;
-                        orbit.PlanetSize = 1;
-
-                        orbit.PlanetBonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 20;
-
-                        orbit.Points = (orbit.PlanetBonus ? 20 : 10);
-
-                        if (gasFirst)
-                        {
-                            int idx = 0;
-                            while (idx < orbits.Count && orbit.Planet == PlanetType.GAS_GIANT) idx++;
-                            orbits.Insert(idx, orbit);
-                        }
-                        else
-                        {
-                            int idx = 0;
-                            while (idx < orbits.Count && orbit.Planet == PlanetType.GAS_GIANT) idx++;
-                            orbits.Insert(idx, orbit);
-                        }
-                        break;
-                    }
-                case 6:
-                    {
-                        orbit.Planet = PlanetType.GAS_GIANT;
-
-                        orbit.PlanetSize = 4;
-                        if (RNG.RandiRange(0, 99) > 80) orbit.PlanetSize = 5;
-                        else if (RNG.RandiRange(0, 99) > 10) orbit.PlanetSize = 6;
-
-                        orbit.PlanetBonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 20;
-
-                        orbit.Points = (orbit.PlanetBonus ? 20 : 10);
-
-                        if (gasFirst) orbits.Insert(0, orbit);
-                        else orbits.Add(orbit);
-                        break;
-                    }
-                case 7:
-                    {
-                        orbit.Planet = PlanetType.GAS_GIANT;
-                        orbit.Moon_1 = PlanetType.UNINHABITABLE;
-
-                        orbit.PlanetSize = 5;
-                        if (RNG.RandiRange(0, 99) > 20) orbit.PlanetSize = 6;
-
-                        orbit.Moon_1_Size = 1;
-                        if (RNG.RandiRange(0, 99) > 30) orbit.Moon_1_Size = 2;
-
-                        orbit.PlanetBonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 30;
-                        orbit.Moon_1_Bonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 20 + (orbit.PlanetBonus ? 20 : 10);
-
-                        orbit.Points = (orbit.PlanetBonus ? 20 : 10) + (orbit.Moon_1_Bonus ? 20 : 10);
-
-                        if (gasFirst) orbits.Insert(0, orbit);
-                        else orbits.Add(orbit);
-                        break;
-                    }
-                case 8:
-                    {
-                        orbit.Planet = PlanetType.GAS_GIANT;
-                        orbit.Moon_1 = PlanetType.UNINHABITABLE;
-                        orbit.Moon_2 = PlanetType.UNINHABITABLE;
-
-                        orbit.PlanetSize = 5;
-                        if (RNG.RandiRange(0, 99) > 50) orbit.PlanetSize = 6;
-
-                        orbit.Moon_1_Size = 1;
-                        if (RNG.RandiRange(0, 99) > 30) orbit.Moon_1_Size = 2;
-                        orbit.Moon_2_Size = 1;
-                        if (RNG.RandiRange(0, 99) > 30) orbit.Moon_2_Size = 2;
-
-                        orbit.PlanetBonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 40;
-                        orbit.Moon_1_Bonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 30 + (orbit.PlanetBonus ? 20 : 10);
-                        orbit.Moon_2_Bonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 20 + (orbit.PlanetBonus ? 20 : 10) + (orbit.Moon_1_Bonus ? 20 : 10);
-
-                        orbit.Points = (orbit.PlanetBonus ? 20 : 10) + (orbit.Moon_1_Bonus ? 20 : 10) + (orbit.Moon_2_Bonus ? 20 : 10);
-
-                        if (gasFirst) orbits.Insert(0, orbit);
-                        else orbits.Add(orbit);
-                        break;
-                    }
-                case 9:
-                    {
-                        orbit.Planet = PlanetType.GAS_GIANT;
-                        orbit.Moon_1 = PlanetType.HABITABLE;
-
-                        orbit.PlanetSize = 5;
-                        if (RNG.RandiRange(0, 99) > 20) orbit.PlanetSize = 6;
-
-                        orbit.Moon_1_Size = 1;
-                        if (RNG.RandiRange(0, 99) > 30) orbit.Moon_1_Size = 2;
-
-                        orbit.Moon_1_Bonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 10 + 20 * orbit.Moon_1_Size;
-                        orbit.PlanetBonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 20 + (orbit.Moon_1_Bonus ? 20 : 15) * orbit.Moon_1_Size;
-
-                        orbit.Points = (orbit.PlanetBonus ? 20 : 10) + orbit.Moon_1_Size * (orbit.Moon_1_Bonus ? 20 : 15);
-
-                        if (gasFirst) orbits.Insert(0, orbit);
-                        else orbits.Add(orbit);
-                        break;
-                    }
-                case 10:
-                    {
-                        orbit.Planet = PlanetType.GAS_GIANT;
-                        orbit.Moon_1 = PlanetType.HABITABLE;
-                        orbit.Moon_2 = PlanetType.HABITABLE;
-
-                        orbit.PlanetSize = 5;
-                        if (RNG.RandiRange(0, 99) > 50) orbit.PlanetSize = 6;
-
-                        orbit.Moon_1_Size = 1;
-                        if (RNG.RandiRange(0, 99) > 30) orbit.Moon_1_Size = 2;
-                        orbit.Moon_2_Size = 1;
-                        if (RNG.RandiRange(0, 99) > 30) orbit.Moon_2_Size = 2;
-
-                        orbit.Moon_1_Bonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 10 + orbit.Moon_1_Size * 20 + orbit.Moon_2_Size * 15;
-                        orbit.Moon_2_Bonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 10 + orbit.Moon_1_Size * (orbit.Moon_1_Bonus ? 20 : 15) + orbit.Moon_2_Size * 20;
-                        orbit.PlanetBonus = RNG.RandiRange(0, 99) > 40 && targetPoints >= 20 + orbit.Moon_1_Size * (orbit.Moon_1_Bonus ? 20 : 15) + orbit.Moon_2_Size * (orbit.Moon_2_Bonus ? 20 : 15);
-
-                        orbit.Points = (orbit.PlanetBonus ? 20 : 10) + orbit.Moon_1_Size * (orbit.Moon_1_Bonus ? 20 : 15) + orbit.Moon_2_Size * (orbit.Moon_2_Bonus ? 20 : 15);
-
-                        if (gasFirst) orbits.Insert(0, orbit);
-                        else orbits.Add(orbit);
-                        break;
-                    }
-            }
-
-            targetPoints -= orbit.Points;
-        }
-
-        return orbits;
-    }
-
-
-    private List<Orbit> Generate_Orbits_v2(int level)
+    private List<Orbit> Generate_Orbits_v2(int level, bool capital)
     {
         List<Orbit> orbits = new List<Orbit>();
 
-        int x = RNG.RandiRange(0, 2);
-        int habitableSize = level + x; // 1-7
-        int habitablePlanets = RNG.RandiRange(1, level);
-        if (habitableSize >= 4 && habitablePlanets < 2) habitablePlanets = 2;
-        if (habitableSize >= 7 && habitablePlanets < 3) habitablePlanets = 3;
-        if (habitablePlanets > 3) habitablePlanets = 3;
-        if (habitablePlanets > habitableSize) habitablePlanets = habitableSize; // 1-3
-        int otherPlanets = 3 + level + 2 - x; // 4 - 10
-        int gasGiants = RNG.RandiRange(1 + otherPlanets / 5, otherPlanets / 2); // 1-5
-        int asteroids = RNG.RandiRange(1, 1 + level / 3); // 1-2
-        int uninhabitable = otherPlanets - gasGiants - asteroids; // 2 - 8 ?
+        int x = RNG.RandiRange(0, 1);
+        int habitableSize = level + x;
+        int habitablePlanets = (2 + habitableSize) / 3;
+
+        int totalPlanets = 6 + level - (2 * x);
+        int otherPlanets = totalPlanets - habitablePlanets;
+        int asteroids = RNG.RandiRange(1, 1 + (level >= 3 ? 1 : 0)); // 1-2
+        int gasGiants = Mathf.Clamp(RNG.RandiRange(1 + otherPlanets / 5, 1 + otherPlanets / 3), 1, 7 - habitablePlanets - asteroids); // 1-4
+        int uninhabitable = otherPlanets - gasGiants - asteroids; 
         if (uninhabitable < 0)
         {
             gasGiants += uninhabitable;
             uninhabitable = 0;
         }
-        int totalPlanets = gasGiants + habitablePlanets + asteroids + uninhabitable;
+        //int totalPlanets = gasGiants + habitablePlanets + asteroids + uninhabitable;
 
-        int g = gasGiants;
-        while (g > 0)
+        GD.Print("Level " + level.ToString() + " " + habitablePlanets.ToString() + " " + gasGiants.ToString() + " " + asteroids.ToString() + " " + uninhabitable.ToString());
+
+        for  (int g = 0; g < gasGiants; g++)
         {
             Generate_Orbits_v2_AddNewOrbit(orbits, PlanetType.GAS_GIANT);
-            g--;
         }
 
         List<int> habitablePlanetsSize = new List<int>();
-        for (int n = 0; n < habitablePlanets; n++) habitablePlanetsSize.Add(1);
-        int h = habitableSize - habitablePlanets;
-        while (h > 0)
+        for (int h = 0; h < habitablePlanets; h++) habitablePlanetsSize.Add(1);
+        for (int h = 0; h < habitableSize - habitablePlanets; h++)
         {
             int r = RNG.RandiRange(0, habitablePlanetsSize.Count - 1);
+            if (capital) r = 0;
+
             if (habitablePlanetsSize[r] < 3) habitablePlanetsSize[r]++;
             else if (habitablePlanetsSize[(r + 1) % habitablePlanetsSize.Count] < 3) habitablePlanetsSize[(r + 1) % habitablePlanetsSize.Count]++;
             else if (habitablePlanetsSize[(r + 2) % habitablePlanetsSize.Count] < 3) habitablePlanetsSize[(r + 2) % habitablePlanetsSize.Count]++;
-            h--;
         }
 
         bool gasFirst = RNG.RandiRange(0, 3) == 0;
-        if (habitablePlanetsSize.Count > 1)
+        if (asteroids >= 2) Generate_Orbits_v2_AddNewOrbit(orbits, PlanetType.ASTEROIDS, gasFirst, 0);
+        if (asteroids >= 1) Generate_Orbits_v2_AddNewOrbit(orbits, PlanetType.ASTEROIDS, !gasFirst, 0);
+
+
+        for (int h = 0; h < habitablePlanetsSize.Count; h++)
         {
-            if (habitablePlanetsSize[1] <= 2 && orbits.Count > 0)
+            int r = RNG.RandiRange(0, 6);
+            if (habitablePlanetsSize[h] <= 2 && r < orbits.Count && orbits[r].Planet == PlanetType.GAS_GIANT)
             {
-                Generate_Orbits_v2_AddMoon(orbits[orbits.Count - 1], PlanetType.HABITABLE, habitablePlanetsSize[1]);
-                if (asteroids > 0)
-                {
-                    Generate_Orbits_v2_AddNewOrbit(orbits, PlanetType.ASTEROIDS, !gasFirst, habitablePlanetsSize[1]);
-                }
+                Generate_Orbits_v2_AddMoon(orbits[r], PlanetType.HABITABLE, habitablePlanetsSize[h]);
             }
             else
             {
-                Generate_Orbits_v2_AddNewOrbit(orbits, PlanetType.HABITABLE, !gasFirst, habitablePlanetsSize[1]);
-                if (asteroids > 0)
-                {
-                    Generate_Orbits_v2_AddNewOrbit(orbits, PlanetType.ASTEROIDS, !gasFirst, habitablePlanetsSize[1]);
-                }
+                Generate_Orbits_v2_AddNewOrbit(orbits, PlanetType.HABITABLE, !gasFirst, habitablePlanetsSize[h]);
             }
         }
-        if (habitablePlanetsSize.Count > 0) Generate_Orbits_v2_AddNewOrbit(orbits, PlanetType.HABITABLE, !gasFirst, habitablePlanetsSize[0]);
-        if (habitablePlanetsSize.Count > 2) Generate_Orbits_v2_AddNewOrbit(orbits, PlanetType.HABITABLE, !gasFirst, habitablePlanetsSize[2]);
 
         int trys = 100;
         int count = uninhabitable;
@@ -577,23 +296,23 @@ public partial class MapGenerator : Node
             GD.Print("planets not added - system maybe full?");
         }
 
-        if (asteroids > 1)
+        //hab test
         {
-            Generate_Orbits_v2_AddNewOrbit(orbits, PlanetType.ASTEROIDS, !gasFirst);
+            int habTest = 0;
+            for (int idx = 0; idx < orbits.Count; idx++)
+            {
+                if (orbits[idx].Planet == PlanetType.HABITABLE)
+                    habTest += orbits[idx].PlanetSize;
+                if (orbits[idx].Moon_1 == PlanetType.HABITABLE)
+                    habTest += orbits[idx].Moon_1_Size;
+            }
+
+            if (habTest != habitableSize)
+            {
+                GD.Print("Generator habitable planet mismatch!");
+            }
         }
 
-        if (level == 5)
-        {
-            GD.Print("HabSize: " + habitableSize.ToString());
-            string orbitStr = "S";
-            for (int i = 0; i < orbits.Count; i++)
-            {
-                orbitStr += " " + orbits[i].PlanetSize + orbits[i].Planet.ToString().Substring(0, 1);
-                if (orbits[i].Moon_1 != PlanetType.NONE) orbitStr += " " + orbits[i].Moon_1_Size + orbits[i].Moon_1.ToString().Substring(0, 1);
-                if (orbits[i].Moon_2 != PlanetType.NONE) orbitStr += " " + orbits[i].Moon_2_Size + orbits[i].Moon_2.ToString().Substring(0, 1);
-            }
-            GD.Print("::: " + orbitStr);
-        }
 
         return orbits;
     }
@@ -607,7 +326,7 @@ public partial class MapGenerator : Node
         orbit.Planet = type;
         if (size > 0) orbit.PlanetSize = size;
         else orbit.PlanetSize = (type == PlanetType.GAS_GIANT ? 3 : 0) + RNG.RandiRange(1, 3);
-        orbit.PlanetBonus = true;
+        orbit.PlanetBonus = RNG.RandiRange(0, 1) == 0;
 
         if (insert) orbits.Insert(0,orbit);
         else orbits.Add(orbit);
@@ -622,17 +341,17 @@ public partial class MapGenerator : Node
             orbit.Moon_1 = type;
             if (size > 0) orbit.Moon_1_Size = size;
             else orbit.Moon_1_Size = RNG.RandiRange(1, 2);
-            orbit.Moon_1_Bonus = true;
+            orbit.Moon_1_Bonus = RNG.RandiRange(0, 1) == 0;
             return true;
         }
-        else if (orbit.Moon_2 == PlanetType.NONE && orbit.Planet == PlanetType.GAS_GIANT)
-        {
-            orbit.Moon_2 = type;
-            if (size > 0) orbit.Moon_2_Size = size;
-            else orbit.Moon_2_Size = RNG.RandiRange(1, orbit.PlanetSize >= 3 ? 2 : 1);
-            orbit.Moon_2_Bonus = true;
-            return true;
-        }
+        //else if (orbit.Moon_2 == PlanetType.NONE && orbit.Planet == PlanetType.GAS_GIANT)
+        //{
+        //    orbit.Moon_2 = type;
+        //    if (size > 0) orbit.Moon_2_Size = size;
+        //    else orbit.Moon_2_Size = RNG.RandiRange(1, orbit.PlanetSize >= 3 ? 2 : 1);
+        //    orbit.Moon_2_Bonus = RNG.RandiRange(0, 1) == 0;
+        //    return true;
+        //}
 
         return false;
     }
@@ -725,7 +444,7 @@ public partial class MapGenerator : Node
                 && DefLibrary.Planets[idx].GetSub("Temperature:Max", false) != null)
             {
                 if (DefLibrary.Planets[idx].GetSub("Temperature:Min").ValueI <= temp && DefLibrary.Planets[idx].GetSub("Temperature:Max").ValueI >= temp
-                    && ((habitable == true && DefLibrary.Planets[idx].HasSub("Habitable"))||(habitable == false && DefLibrary.Planets[idx].HasSub("Uninhabitable"))))
+                    && ((habitable == true && DefLibrary.Planets[idx].HasSub("Habitable")) || (habitable == false && DefLibrary.Planets[idx].HasSub("Uninhabitable"))))
                 {
                     for (int w = 0; w < DefLibrary.Planets[idx].GetSub("Weight").ValueI; w++)
                     {
@@ -744,7 +463,7 @@ public partial class MapGenerator : Node
         Data.AddData(planet, "Type", planetType, DefLibrary);
         Data.AddData(planet, "Size", size, DefLibrary);
         Data.AddData(planet, "Temperature", temperature, DefLibrary);
-        Data.AddData(planet, "Habitable", DefLibrary);
+        Data.AddData(planet, "PopsMax", (size == 1 ? 3 : (size == 2 ? 4 : 6)), DefLibrary);
         Data.AddData(planet, "SlotType", chosenPlanetData.GetSub("SlotType").ValueS, DefLibrary);
 
         DataBlock planetFeatures = chosenPlanetData.GetSub("Features");
@@ -773,7 +492,7 @@ public partial class MapGenerator : Node
         Data.AddData(planet, "Type", chosenPlanetData.ValueS, DefLibrary);
         Data.AddData(planet, "Size", size, DefLibrary);
         Data.AddData(planet, "Temperature", temperature, DefLibrary);
-        Data.AddData(planet, "Habitable", DefLibrary);
+        Data.AddData(planet, "PopsMax", (size == 1 ? 3 : (size == 2 ? 4 : 6)), DefLibrary);
         Data.AddData(planet, "SlotType", chosenPlanetData.GetSub("SlotType").ValueS, DefLibrary);
 
         DataBlock planetFeatures = chosenPlanetData.GetSub("Features");
@@ -828,6 +547,8 @@ public partial class MapGenerator : Node
             GenerateNewMapSave_Stars_Planets__AddFeatures(planet, features, bonus);
         }
 
+        if (RNG.RandiRange(0,2) == 0) Data.AddData(planet, "Rings", DefLibrary);
+
         return planet;
     }
 
@@ -848,46 +569,46 @@ public partial class MapGenerator : Node
         return planet;
     }
 
-    private void GenerateNewMapSave_Stars_Planets_CustomPlanet(DataBlock planetList, string name)
-    {
-        DataBlock chosenPlanetData = DefLibrary.GetPlanetCustom(name);
-
-        bool custom = chosenPlanetData.GetSub("Custom", false) != null;
-        string type = chosenPlanetData.GetSub("Type").ValueS;
-        bool hasSize = chosenPlanetData.GetSub("Size", false) != null;
-        int size = 0;
-        if (hasSize)
-            size = chosenPlanetData.GetSub("Size").ValueI;
-        bool hasTemperature = chosenPlanetData.GetSub("Temperature", false) != null;
-        int temperature = 0;
-        if (hasTemperature)
-            temperature = chosenPlanetData.GetSub("Temperature").ValueI;
-        bool moon = chosenPlanetData.GetSub("Moon", false) != null;
-
-        DataBlock planet = Data.AddData(planetList, "Planet", name, DefLibrary);
-        if (custom) Data.AddData(planet, "Custom", DefLibrary);
-        Data.AddData(planet, "Type", type, DefLibrary);
-        if (hasSize) Data.AddData(planet, "Size", size, DefLibrary);
-
-        if (hasTemperature) Data.AddData(planet, "Temperature", temperature, DefLibrary);
-        //if (chosenPlanetData.GetSub("ExoticResourceFlag") != null) Data.AddData(planet, "ExoticResourceFlag", DefLibrary);
-
-        if (temperature == 5 && temperature == 1) Data.AddData(planet, "Extreme_Temps", DefLibrary);
-        if (temperature == 5 && RNG.RandiRange(0, 99) < 140 - size * 40) Data.AddData(planet, "High_Radiation", DefLibrary);
-        if (temperature == 4 && RNG.RandiRange(0, 99) < 50 && RNG.RandiRange(0, 99) < 140 - size * 40) Data.AddData(planet, "High_Radiation", DefLibrary);
-        if (size == 1 && RNG.RandiRange(0, 99) < 50) Data.AddData(planet, "Low_Gravity", DefLibrary);
-        if (size == 3 && RNG.RandiRange(0, 99) < 50) Data.AddData(planet, "High_Gravity", DefLibrary);
-
-        DataBlock planetFeatures = chosenPlanetData.GetSub("Features");
-        if (planetFeatures != null)
-        {
-            GenerateNewMapSave_Stars_Planets__AddFeatures(planet, planetFeatures, true);
-        }
-
-        if (moon) Data.AddData(planet, "Moon", DefLibrary);
-
-        //GenerateNewMapSave_Stars_Planets_AddResourcesData(planet);
-    }
+    //private void GenerateNewMapSave_Stars_Planets_CustomPlanet(DataBlock planetList, string name)
+    //{
+    //    DataBlock chosenPlanetData = DefLibrary.GetPlanetCustom(name);
+    //
+    //    bool custom = chosenPlanetData.GetSub("Custom", false) != null;
+    //    string type = chosenPlanetData.GetSub("Type").ValueS;
+    //    bool hasSize = chosenPlanetData.GetSub("Size", false) != null;
+    //    int size = 0;
+    //    if (hasSize)
+    //        size = chosenPlanetData.GetSub("Size").ValueI;
+    //    bool hasTemperature = chosenPlanetData.GetSub("Temperature", false) != null;
+    //    int temperature = 0;
+    //    if (hasTemperature)
+    //        temperature = chosenPlanetData.GetSub("Temperature").ValueI;
+    //    bool moon = chosenPlanetData.GetSub("Moon", false) != null;
+    //
+    //    DataBlock planet = Data.AddData(planetList, "Planet", name, DefLibrary);
+    //    if (custom) Data.AddData(planet, "Custom", DefLibrary);
+    //    Data.AddData(planet, "Type", type, DefLibrary);
+    //    if (hasSize) Data.AddData(planet, "Size", size, DefLibrary);
+    //
+    //    if (hasTemperature) Data.AddData(planet, "Temperature", temperature, DefLibrary);
+    //    //if (chosenPlanetData.GetSub("ExoticResourceFlag") != null) Data.AddData(planet, "ExoticResourceFlag", DefLibrary);
+    //
+    //    if (temperature == 5 && temperature == 1) Data.AddData(planet, "Extreme_Temps", DefLibrary);
+    //    if (temperature == 5 && RNG.RandiRange(0, 99) < 140 - size * 40) Data.AddData(planet, "High_Radiation", DefLibrary);
+    //    if (temperature == 4 && RNG.RandiRange(0, 99) < 50 && RNG.RandiRange(0, 99) < 140 - size * 40) Data.AddData(planet, "High_Radiation", DefLibrary);
+    //    if (size == 1 && RNG.RandiRange(0, 99) < 50) Data.AddData(planet, "Low_Gravity", DefLibrary);
+    //    if (size == 3 && RNG.RandiRange(0, 99) < 50) Data.AddData(planet, "High_Gravity", DefLibrary);
+    //
+    //    DataBlock planetFeatures = chosenPlanetData.GetSub("Features");
+    //    if (planetFeatures != null)
+    //    {
+    //        GenerateNewMapSave_Stars_Planets__AddFeatures(planet, planetFeatures, true);
+    //    }
+    //
+    //    if (moon) Data.AddData(planet, "Moon", DefLibrary);
+    //
+    //    //GenerateNewMapSave_Stars_Planets_AddResourcesData(planet);
+    //}
 
     private void GenerateNewMapSave_Stars_Planets__AddFeatures(DataBlock planet, DataBlock features, bool bonus = false)
     {
@@ -896,7 +617,17 @@ public partial class MapGenerator : Node
         Array<DataBlock> subs = features.GetSubs();
         for (int idx = 0; idx < subs.Count; idx++)
         {
-            if (subs[idx].Name == "PopMaxPerSize")
+            if (subs[idx].Name == "?Size")
+            {
+                int size = planet.GetSubValueI("Size");
+                if (size == 1)
+                {
+                    Data.AddData(featuresData, "Small", subs[idx].ValueI, DefLibrary);
+                }
+                else if (size == 2) Data.AddData(featuresData, "Medium", subs[idx].ValueI, DefLibrary);
+                else if (size == 3) Data.AddData(featuresData, "Large", subs[idx].ValueI, DefLibrary);
+            }
+            else if (subs[idx].Name == "PopMaxPerSize")
             {
                 Data.AddData(featuresData, "PopMaxPerSize", subs[idx].ValueI, DefLibrary);
             }

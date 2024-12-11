@@ -5,120 +5,103 @@ using System.ComponentModel.Design;
 
 public class ControlWrapper
 {
-    public SystemData _System = null;
+    public int ControlTotal = 0;
+    public int ControlDistricts = 0;
+    public int ControlStateUsed = 0;
 
-    public int Economy_Level = 0;
-    public int Economy_LockTimer = 0;
-    public int State_Level = 0;
-    public int State_LockTimer = 0;
-    public int Social_Level = 0;
-    public int Social_LockTimer = 0;
-    public int Migration_Level = 0;
-    public int Migration_LockTimer = 0;
+    public int RebellionLoyal = 0;
+    public int RebellionUnsure = 20;
+    public int RebellionWavering = 40;
+    public int RebellionTurmoil = 60;
+    public int RebellionRebelious = 80;
+    public int RebellionMax = 100;
 
-    public int Control = 0;
-    public int Corruption = 0;
-    public int Happiness = 0;
-    public int Wealth = 0;
-    public int Inequality = 0;
+    public int RebellionChange = 0;
+    public int RebellionCurrent = 0;
+
+    public PlayerData LoyalTo = null;
+
+    public SystemData _System;
 
     public ControlWrapper(SystemData system)
     {
         _System = system;
-
-        //Refresh();
     }
 
     public void Clear()
     {
-        Economy_Level = 0;
-        Economy_LockTimer = 0;
-        State_Level = 0;
-        State_LockTimer = 0;
-        Social_Level = 0;
-        Social_LockTimer = 0;
-        Migration_Level = 0;
-        Migration_LockTimer = 0;
+        ControlTotal = 0;
+        ControlDistricts = 0;
+        ControlStateUsed = 0;
 
-        Control = 0;
-        Corruption = 0;
-        Happiness = 0;
-        Wealth = 0;
-        Inequality = 0;
+        RebellionLoyal = 0;
+        RebellionUnsure = 20;
+        RebellionWavering = 40;
+        RebellionTurmoil = 60;
+        RebellionRebelious = 80;
+        RebellionMax = 100;
+
+        RebellionChange = 0;
+        RebellionCurrent = 0;
+
+        LoyalTo = _System._Player;
     }
 
     public void Refresh()
     {
         Clear();
 
+        int pops = _System.GetPopsCurrent();
         if (_System != null)
         {
-            DataBlock controlData =_System.Data.GetSub("Control");
-            Economy_Level = controlData.GetSub("Economy_Level").ValueI;
-            Economy_LockTimer = controlData.GetSub("Economy_Lock_Timer").ValueI;
-            State_Level = controlData.GetSub("State_Level").ValueI;
-            State_LockTimer = controlData.GetSub("State_Lock_Timer").ValueI;
-            Social_Level = controlData.GetSub("Social_Level").ValueI;
-            Social_LockTimer = controlData.GetSub("Social_Lock_Timer").ValueI;
-            Migration_Level = controlData.GetSub("Migration_Level").ValueI;
-            Migration_LockTimer = controlData.GetSub("Migration_Lock_Timer").ValueI;
+            for (int colonyIdx = 0; colonyIdx < _System.Colonies.Count; colonyIdx++)
+            {
+                ColonyData colony = _System.Colonies[colonyIdx];
+                for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
+                {
+                    DistrictData district = colony.Districts[districtIdx];
+                    string controlType = "";
+                    if (district._Data.HasSub("Pop"))
+                    {
+                        controlType = district.DistrictDef._Data.GetSubValueS("Control/Type");
+                    }
+                    bool stateOwned =  controlType == "State_Owned";
 
-            Control = controlData.GetSub("Control").ValueI;
-            Corruption = controlData.GetSub("Corruption").ValueI;
-            Happiness = controlData.GetSub("Happiness").ValueI;
-            Wealth = controlData.GetSub("Wealth").ValueI;
-            Inequality = controlData.GetSub("Inequality").ValueI;
+                    if (stateOwned) ControlStateUsed -= 10;
+
+                    if (district.Economy_PerTurn.Resource == "Control")
+                    {
+                        ControlDistricts += district.Economy_PerTurn.Production;
+                    }
+                }
+            }
         }
+
+        ControlTotal = ControlDistricts + ControlStateUsed;
+
+        if (ControlTotal >= 0)
+        {
+            int skewRatio = 1000 * pops / (10 * pops + ControlTotal);
+
+            RebellionUnsure = Mathf.Clamp(100 - (80 * skewRatio / 100), 5, 80);
+            RebellionWavering = Mathf.Clamp(100 - (60 * skewRatio / 100), 10, 85);
+            RebellionTurmoil = Mathf.Clamp(100 - (40 * skewRatio / 100), 15, 90);
+            RebellionRebelious = Mathf.Clamp(100 - (20 * skewRatio / 100), 20, 95);
+        }
+        else
+        {
+            int skewRatio = 1000 * pops / (10 * pops - ControlTotal);
+
+            RebellionUnsure = Mathf.Clamp(20 * skewRatio / 100, 5, 80);
+            RebellionWavering = Mathf.Clamp(40 * skewRatio / 100, 10, 85);
+            RebellionTurmoil = Mathf.Clamp(60 * skewRatio / 100, 15, 90);
+            RebellionRebelious = Mathf.Clamp(80 * skewRatio / 100, 20, 95);
+        }
+
+        RebellionChange = 2 * _System.Pops_PerTurn.PopsUnhappy - _System.Pops_PerTurn.PopsHappy - (_System.Pops_PerTurn.PopsNeutral / 2);
+        RebellionCurrent = _System.Data.GetSubValueI("ActionRebellion/Current");
     }
 
-    public DefEffectWrapper GetEconomyEffect()
-    {
-        return Game.self.Def.GetEffectInfo("Economy_" + Economy_Level.ToString());
-    }
-
-    public DefEffectWrapper GetStateEffect()
-    {
-        return Game.self.Def.GetEffectInfo("State_" + State_Level.ToString());
-    }
-
-    public DefEffectWrapper GetSocialEffect()
-    {
-        return Game.self.Def.GetEffectInfo("Social_" + Social_Level.ToString());
-    }
-
-    public DefEffectWrapper GetMigrationEffect()
-    {
-        return Game.self.Def.GetEffectInfo("Migration_" + Migration_Level.ToString());
-    }
-
-    public DefEffectWrapper GetControlEffect()
-    {
-        return Game.self.Def.GetEffectInfo("Control_" + ((Control - 10) / 200).ToString());
-    }
-
-    public DefEffectWrapper GetCorruptionEffect()
-    {
-        return Game.self.Def.GetEffectInfo("Corruption_" + ((Corruption - 10) / 200).ToString());
-    }
-
-    public DefEffectWrapper GetHappinessEffect()
-    {
-        return Game.self.Def.GetEffectInfo("Happiness_" + ((Happiness - 10) / 200).ToString());
-    }
-
-    public DefEffectWrapper GetWealthEffect()
-    {
-        return Game.self.Def.GetEffectInfo("Wealth_" + ((Wealth - 10) / 200).ToString());
-    }
-
-    public DefEffectWrapper GetInequalityEffect()
-    {
-        return Game.self.Def.GetEffectInfo("Inequality_" + ((Inequality - 10) / 200).ToString());
-    }
-
-    public string ToString_Control() { return Helper.ResValueToString(Control); }
-    public string ToString_Corruption() { return Helper.ResValueToString(Corruption); }
-    public string ToString_Happiness() { return Helper.ResValueToString(Happiness); }
-    public string ToString_Wealth() { return Helper.ResValueToString(Wealth); }
-    public string ToString_Inequality() { return Helper.ResValueToString(Inequality); }
+    public string ToString_ControlTotal() { return Helper.ResValueToString(ControlTotal); }
+    public string ToString_LoyaltyChange() { return Helper.ResValueToString(RebellionChange, 1); }
 }

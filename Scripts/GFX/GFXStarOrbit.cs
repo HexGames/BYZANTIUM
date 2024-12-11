@@ -111,6 +111,7 @@ public partial class GFXStarOrbit : Node3D
         _Planet.GFX = this;
 
         Planet.Visible = false;
+        Rings.Visible = false;
         AsteroidField.Visible = true;
         Visible = true;
     }

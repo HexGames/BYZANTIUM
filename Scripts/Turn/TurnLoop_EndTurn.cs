@@ -11,11 +11,14 @@ public partial class TurnLoop : Node
     Array<FleetData> Fleets_Other = new Array<FleetData>();
     private IEnumerator<double> EndTurn()
     {
+        Game.self.GalaxyUI.EndTurnBg.Visible = false;
+
         // increment turn number
         Game.self.Map.Data.Turn = Game.self.Map.Data.Turn + 1;
 
         // update actions
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsBuild()));
+        yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsPops()));
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsShipbuilding()));
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsMove()));
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_Control())); 
@@ -30,7 +33,8 @@ public partial class TurnLoop : Node
         StartTurn_NewActions();
 
         // update UI
-        // Game.GalaxyUI.StartTurn();//TEMP02
+        Game.self.GalaxyUI.StartTurn();
+
         for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
         {
             StarData star = Game.self.Map.Data.Stars[starIdx];
@@ -52,6 +56,9 @@ public partial class TurnLoop : Node
         WaitingForEndTurn = false;
 
         yield return Timing.WaitForOneFrame;
+
+        Game.self.GalaxyUI.EndTurnBg.Visible = true;
+        Game.self.Camera.LOD = 2;
     }
 
     // ----------------------------------------------------------------------------------------------
@@ -64,7 +71,24 @@ public partial class TurnLoop : Node
             {
                 SystemData system = player.Systems[systemIdx];
 
-                ActionBuildDistrict.EndTurn(Game.self, system); // --- !!! ---
+                ActionDistrict.EndTurn(system); // --- !!! ---
+            }
+        }
+
+        yield return Timing.WaitForOneFrame;
+    }
+
+    // ----------------------------------------------------------------------------------------------
+    private IEnumerator<double> EndTurn_ActionsPops()
+    {
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            {
+                SystemData system = player.Systems[systemIdx];
+
+                AutoActionPops.EndTurn(system); // --- !!! ---
             }
         }
 
@@ -97,9 +121,10 @@ public partial class TurnLoop : Node
             for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
             {
                 FleetData fleet = player.Fleets[fleetIdx];
+                ActionColonize.EndTurn(Game.self, fleet);
                 ActionMove.EndTurn(Game.self, fleet);
 
-                if (fleet.ActionData == null)
+                if (fleet.ActionMoveData == null)
                 {
                     Game.self.Paths.ClearPathForFleet(fleet);
                 }
@@ -129,13 +154,13 @@ public partial class TurnLoop : Node
             for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
             {
                 SystemData system = player.Systems[systemIdx];
-                DataBlock controlData = system.Data.GetSub("Control");
+                //DataBlock controlData = system.Data.GetSub("Control");
 
-                controlData.GetSub("Control").SetValueI(Mathf.Clamp(system.Control_PerTurn.Control + system.Resources_PerTurn.SpecialIncome.Control, 10, 1000), Game.self.Def); // --- !!! ---
-                controlData.GetSub("Corruption").SetValueI(Mathf.Clamp(system.Control_PerTurn.Corruption + system.Resources_PerTurn.SpecialIncome.Corruption, 10, 1000), Game.self.Def); // --- !!! ---
-                controlData.GetSub("Happiness").SetValueI(Mathf.Clamp(system.Control_PerTurn.Happiness + system.Resources_PerTurn.SpecialIncome.Happiness, 10, 1000), Game.self.Def); // --- !!! ---
-                controlData.GetSub("Wealth").SetValueI(Mathf.Clamp(system.Control_PerTurn.Wealth + system.Resources_PerTurn.SpecialIncome.Wealth, 10, 1000), Game.self.Def); // --- !!! ---
-                controlData.GetSub("Inequality").SetValueI(Mathf.Clamp(system.Control_PerTurn.Inequality + system.Resources_PerTurn.SpecialIncome.Inequality, 10, 1000), Game.self.Def); // --- !!! ---
+                //controlData.GetSub("Control").SetValueI(Mathf.Clamp(system.Control_PerTurn.Control + system.Resources_PerTurn.SpecialIncome.Control, 10, 1000), Game.self.Def); // --- !!! ---
+                //controlData.GetSub("Corruption").SetValueI(Mathf.Clamp(system.Control_PerTurn.Corruption + system.Resources_PerTurn.SpecialIncome.Corruption, 10, 1000), Game.self.Def); // --- !!! ---
+                //controlData.GetSub("Happiness").SetValueI(Mathf.Clamp(system.Control_PerTurn.Happiness + system.Resources_PerTurn.SpecialIncome.Happiness, 10, 1000), Game.self.Def); // --- !!! ---
+                //controlData.GetSub("Wealth").SetValueI(Mathf.Clamp(system.Control_PerTurn.Wealth + system.Resources_PerTurn.SpecialIncome.Wealth, 10, 1000), Game.self.Def); // --- !!! ---
+                //controlData.GetSub("Inequality").SetValueI(Mathf.Clamp(system.Control_PerTurn.Inequality + system.Resources_PerTurn.SpecialIncome.Inequality, 10, 1000), Game.self.Def); // --- !!! ---
             }
         }
 
@@ -185,133 +210,42 @@ public partial class TurnLoop : Node
         for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.self.Map.Data.Players[playerIdx];
-            //player.Resources_PerTurn.Refresh();
-
-            //for (int sectorIdx = 0; sectorIdx < player.Sectors.Count; sectorIdx++)
-            //{
-            //    SectorData sector = player.Sectors[sectorIdx];
-            //    //sector.BudgetPerTurn.Refresh();
-            //    sector.Resources_PerTurn.Refresh();
-            //
             for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
             {
                 SystemData system = player.Systems[systemIdx];
-                system.Resources_PerTurn.Refresh();
-                system.Pops_PerTurn.Refresh();
-                system.Control_PerTurn.Refresh();
-                system.Buildings_PerTurn.Refresh();
-                system.DistrictsQueue_PerTurn.Refresh();
-                system.Shipbuilding_PerTurn.Refresh();
-
-                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetEconomyEffect().Res_PerSession);
-                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetStateEffect().Res_PerSession);
-                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetSocialEffect().Res_PerSession);
-                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetMigrationEffect().Res_PerSession);
-
-                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetControlEffect().Res_PerSession);
-                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetCorruptionEffect().Res_PerSession);
-                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetHappinessEffect().Res_PerSession);
-                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetWealthEffect().Res_PerSession);
-                system.Resources_PerTurn.AddResources_Effect(system.Control_PerTurn.GetInequalityEffect().Res_PerSession);
 
                 for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
                 {
                     ColonyData colony = system.Colonies[colonyIdx];
-                    colony.Resources_PerTurn.Refresh();
-                    colony.Pops_PerTurn.Refresh();
-                    colony.Buildings_PerTurn.Refresh();
-                    //colony.ActionsConPerTurn.Refresh();
 
-                    // Add Features
-                    PlanetData planet = colony.Planet;
-                    for (int featureIdx = 0; featureIdx < planet.Features.Count; featureIdx++)
-                    {
-                        colony.Resources_PerTurn.AddResources_Features(planet.Features[featureIdx].FeatureDef.Res_PerSession);
-                    }
-
-                    // Add Districts
                     for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
                     {
-                        if (colony.Districts[districtIdx].IsFinishedDistrict())
-                        {
-                            colony.Resources_PerTurn.AddResources_Districts(colony.Districts[districtIdx], colony.Districts[districtIdx].DistrictDef.Res_PerSession);
-                        }
+                        DistrictData district = colony.Districts[districtIdx];
+                        district.Economy_PerTurn.Refresh();
                     }
                 }
 
-                // system income propagation
-                {
-                    // add up system income
-                    for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
-                    {
-                        ColonyData colony = system.Colonies[colonyIdx];
-                        system.Resources_PerTurn.AddSystemIncome(colony.Resources_PerTurn);
-                    }
+                system.Pops_PerTurn.RefreshBase();
+                system.Pops_PerTurn.RefreshOutgoingTrade();
+            }
+        }
 
-                    // add system income to each colony income
-                    for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
-                    {
-                        ColonyData colony = system.Colonies[colonyIdx];
-                        colony.Resources_PerTurn.AddSystemIncomeToColonies(system.Resources_PerTurn);
-                    }
-                }
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            {
+                SystemData system = player.Systems[systemIdx];
 
-                // add colonies to system
-                for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
-                {
-                    ColonyData colony = system.Colonies[colonyIdx];
-                    system.Resources_PerTurn.AddColonyResources(colony);
-                }
-
-                //{
-                //DataBlock pops = colony.Resources.GetSub("Pops*Stockpile");
-                //colony.Resources_PerTurn.AddTotal("BuildingSlots", pops.ValueI / 1000);
-
-                //Array<DataBlock> buildings = colony.Buildings.GetSubs("Building");
-                //int totalBuildings = 0;
-                //for (int buildingIdx = 0; buildingIdx < buildings.Count; buildingIdx++)
-                //{
-                //    DefBuildingWrapper buildingInfo =  Game.Def.GetBuildingInfo(buildings[buildingIdx].ValueS);
-                //    int buildingCount = buildings[buildingIdx].ValueI;
-                //
-                //    if (buildingInfo == null)
-                //    {
-                //        GD.Print("BUILDING NOT FOUND! - " + buildings[buildingIdx].Name);
-                //        continue;
-                //    }
-                //
-                //    if (buildingInfo.Benefit != null) colony.Resources_PerTurn.Add(buildingInfo.Benefit);
-                //    //totalBuildings += buildingCount;
-                //}
-                //colony.Resources_PerTurn.Use("BuildingSlots", totalBuildings);
-
-                //int popsControlled = 0;
-                //if (colony.Resources_PerTurn.GetPops() != null)
-                //{
-                //    popsControlled = colony.Resources_PerTurn.GetPops().GetCPops();
-                //    colony.Resources_PerTurn.ProcessGrowth();
-                //}
-                //
-                //colony.Resources_PerTurn.ProcessIncome(); // --- !!! ---
-                //system.Resources_PerTurn.Add(colony.Resources_PerTurn, true);
-                //}
-                //system.Resources_PerTurn.ProcessIncome(); // --- !!! ---
-                //player.Resources_PerTurn.Add(system.Resources_PerTurn);
+                system.Pops_PerTurn.RefreshIncomingTrade();
+                system.Pops_PerTurn.Refresh();
+                system.Control_PerTurn.Refresh();
+                system.Infrastructure_PerTurn.Refresh();
+                system.Economy_PerTurn.Refresh();
+                system.Shipbuilding_PerTurn.Refresh();
             }
 
-            //DataBlock queue = sector.ActionBuildQueue.GetSub("Queue");
-            //if (queue.Subs.Count == 0)
-            //{
-            //    DataBlock overflow = sector.ActionBuildQueue.GetSub("Overflow");
-            //    int production = sector.Resources_PerTurn.GetIncome("Production").GetIncomeTotal() + overflow.ValueI;
-            //
-            //    sector._Player.Resources_PerTurn.GetIncome("BC").Income += production / 2;
-            //}
-
-            //sector.Resources_PerTurn.ProcessIncome(); // --- !!! ---
-            //player.Resources_PerTurn.Add(System.Resources_PerTurn);
-            //}
-            //player.Resources_PerTurn.ProcessIncome(); // --- !!! ---
+            player.Stockpiles_PerTurn.Refresh();
         }
     }
 
@@ -321,11 +255,11 @@ public partial class TurnLoop : Node
         {
             PlayerData player = Game.self.Map.Data.Players[playerIdx];
 
-            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
-            {
-                SystemData system = player.Systems[systemIdx];
-                ActionBuildDistrict.RefreshAvailableDistricts(system);
-            }
+            //for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            //{
+            //    SystemData system = player.Systems[systemIdx];
+            //    ActionChangeDistrict.RefreshAvailableDistricts(system);
+            //}
 
             for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
             {

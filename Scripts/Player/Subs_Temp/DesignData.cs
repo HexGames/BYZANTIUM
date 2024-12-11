@@ -9,7 +9,7 @@ public partial class DesignData
 
     public string DesignName = "";
     public string ShipType = "";
-    public int Cost = 10000;
+    public int Cost = 100;
 
     //[Export]
     //public DataBlock ShipsData = null;
@@ -28,6 +28,16 @@ public partial class DesignData
 
         DesignName = Data.ValueS;
 
-        ShipType = Data.GetSub("ShipType").ValueS;
+        ShipType = Data.GetSubValueS("ShipType");
+        Cost = Data.GetSubValueI("Cost");
+    }
+
+    public int GetPower()
+    {
+        if (ShipType == "Colony_Ship")
+        {
+            return 5;
+        }
+        return 10;
     }
 }

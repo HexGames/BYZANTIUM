@@ -89,7 +89,7 @@ public partial class GFXStar : Node3D
                 {
                     int size = _Star.Planets[idx + idxOffset].Data.GetSub("Size").ValueI;
                     string type = _Star.Planets[idx + idxOffset].Data.GetSub("Type").ValueS;
-                    if (_Star.Planets[idx + idxOffset - 1].Data.HasSub("Rings") || _Star.Planets[idx + idxOffset - 1].Data.HasSub("Moon"))
+                    if (/*_Star.Planets[idx + idxOffset - 1].Data.HasSub("Rings") ||*/_Star.Planets[idx + idxOffset - 1].Data.HasSub("Moon"))
                     {
                         Orbits[idx - 1].RefreshMoon2(_Star.Planets[idx + idxOffset], size, type);
                     }

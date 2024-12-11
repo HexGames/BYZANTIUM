@@ -3,153 +3,188 @@ Features
 	Feature Rich_Minerals
 	{
 		SuggestedFocus Shipbuilding
-		Icon Shipbuilding
+		Icon Minerals
+		Resource Shipbuilding
 		Benefit 
 		{
-			Shipbuilding*LocalBonus 100
+			LocalBonus 20
 		}
 	}
 	Feature High_Enegy_Particles
 	{
 		SuggestedFocus Research
-		Icon Research
+		Icon HighEnergy
+		Resource Research
 		Benefit 
 		{
-			Research*LocalBonus 100
-		}
-	}
-	Feature Beautiful
-	{
-		SuggestedFocus Influence
-		Icon Influence
-		Benefit 
-		{
-			Influence*LocalBonus 100
+			LocalBonus 20
 		}
 	}
 	Feature Refueling_Gasses
 	{
 		SuggestedFocus BC
-		Icon BC
+		Icon Gasses
+		Resource BC
 		Benefit 
 		{
-			BC*LocalBonus 100
-		}
-	}
-	Feature Rich_Soil
-	{
-		SuggestedFocus Growth
-		Icon Growth
-		Benefit 
-		{
-			GrowthLocalBonus 100
+			LocalBonus 20
 		}
 	}
 	Feature Desert
 	{
 		SuggestedFocus none
+		Icon Desert
+		Resource Growth
 		Benefit 
 		{
-			Growth 25
+			Extra 
+			{
+				Happiness -20
+				PopGrowth 10
+			}
 		}
 	}
 	Feature Arid
 	{
 		SuggestedFocus none
+		Icon Arid
+		Resource Growth
 		Benefit 
 		{
-			Growth 50
+			Extra 
+			{
+				Happiness -10
+				PopGrowth 15
+			}
 		}
 	}
 	Feature Wet
 	{
 		SuggestedFocus none
+		Icon Wet
+		Resource Growth
 		Benefit 
 		{
-			Growth 100
+			Extra 
+			{
+				PopGrowth 20
+			}
 		}
 	}
 	Feature Fertile
 	{
 		SuggestedFocus none
+		Icon Fertile
+		Resource Growth
 		Benefit 
 		{
-			Growth 150
+			Extra 
+			{
+				Happiness 10
+				PopGrowth 25
+			}
 		}
 	}
 	Feature Gaia
 	{
 		SuggestedFocus none
+		Icon Gaia
+		Resource Growth
 		Benefit 
 		{
-			Growth 200
+			Extra 
+			{
+				Happiness 20
+				PopGrowth 30
+			}
 		}
 	}
 	Feature Small
 	{
 		SuggestedFocus none
+		Icon Small
+		Resource Construction
 		Benefit 
 		{
-			FactoryCost -20
-			PopMax 30000
+			LocalBonus 20
+			Extra 
+			{
+				MaxPop 3
+				MaxPopC 4
+			}
 		}
 	}
 	Feature Medium
 	{
 		SuggestedFocus none
+		Icon Medium
+		Resource Construction
 		Benefit 
 		{
-			PopMax 60000
+			Extra 
+			{
+				MaxPop 4
+				MaxPopC 6
+			}
 		}
 	}
 	Feature Large
 	{
 		SuggestedFocus none
+		Icon Large
+		Resource Construction
 		Benefit 
 		{
-			FactoryCost 20
-			PopMax 90000
+			LocalBonus -20
+			Extra 
+			{
+				MaxPop 6
+				MaxPopC 9
+			}
 		}
 	}
 	Feature Tiny_Moon
 	{
 		SuggestedFocus Shipbuilding
+		Icon TinyMoon
+		Resource Shipbuilding
 		Benefit 
 		{
-			Shipbuilding*Bonus 50
+			LocalBonus 20
 		}
 	}
 	Feature Alien_Life
 	{
 		SuggestedFocus Research
+		Icon AlienLife
+		Resource Research
 		Benefit 
 		{
-			Research*Bonus 50
+			LocalBonus 20
 		}
 	}
-	Feature Rings
+	Feature Beautiful
 	{
 		SuggestedFocus Influence
+		Icon Beautiful
+		Resource Influence
 		Benefit 
 		{
-			Influence*PerPop 20
+			LocalBonus 20
 		}
 	}
 	Feature Ocean
 	{
 		SuggestedFocus Growth
+		Icon Ocean
+		Resource Growth
 		Benefit 
 		{
-			PopMaxPenalty 50
-		}
-	}
-	Feature Vulcanic
-	{
-		SuggestedFocus Shipbuilding
-		Benefit 
-		{
-			PopMaxPenalty 50
-			Production*PerPop 10
+			Extra 
+			{
+				MaxPop -1
+				Happiness 10
+			}
 		}
 	}
 }
