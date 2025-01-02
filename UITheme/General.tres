@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=34 format=3 uid="uid://b0fufcgm2rhkc"]
+[gd_resource type="Theme" load_steps=39 format=3 uid="uid://b0fufcgm2rhkc"]
 
 [ext_resource type="FontFile" uid="uid://4fq6gek34dpu" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="1_br14q"]
 [ext_resource type="FontFile" uid="uid://dljqs3c86eqp4" path="res://Fonts/Fredoka/Fredoka-Medium.ttf" id="2_fjopu"]
@@ -22,6 +22,66 @@ border_color = Color(1, 0.501961, 0, 1)
 bg_color = Color(1, 0.768627, 0, 0.501961)
 border_width_bottom = 1
 border_color = Color(1, 0.768627, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkite"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.752941)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amg8c"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.752941)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.286275, 0.00784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tm37m"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 0.752941)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.54902, 0.0313726, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwt4m"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.752941)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.286275, 0.00784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hlbc"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0.752941)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.54902, 0.0313726, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8gni"]
 bg_color = Color(0.501961, 0.501961, 0.501961, 0.25098)
@@ -257,6 +317,12 @@ Button/styles/disabled = SubResource("StyleBoxFlat_5kt4v")
 Button/styles/hover = SubResource("StyleBoxFlat_4n147")
 Button/styles/normal = SubResource("StyleBoxFlat_3wwk1")
 Button/styles/pressed = SubResource("StyleBoxFlat_if0h5")
+ButtonGreenBorder/base_type = &"Button"
+ButtonGreenBorder/styles/disabled = SubResource("StyleBoxFlat_bkite")
+ButtonGreenBorder/styles/focus = SubResource("StyleBoxFlat_amg8c")
+ButtonGreenBorder/styles/hover = SubResource("StyleBoxFlat_tm37m")
+ButtonGreenBorder/styles/normal = SubResource("StyleBoxFlat_cwt4m")
+ButtonGreenBorder/styles/pressed = SubResource("StyleBoxFlat_0hlbc")
 ButtonIcon/base_type = &"Button"
 ButtonIcon/styles/disabled = SubResource("StyleBoxFlat_d8gni")
 ButtonIcon/styles/hover = SubResource("StyleBoxFlat_3exoy")

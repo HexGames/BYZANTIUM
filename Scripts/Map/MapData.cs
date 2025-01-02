@@ -182,6 +182,8 @@ public partial class MapData : Node
             GenerateGameFromData_Star_Planet(planets[idx], starData);
         }
 
+        string starType = starData.Planets[0].Data.GetSubValueS("Star_Type");
+
         // GFX
         Node gfxNode = gfxScene.Instantiate();
         gfxNode.Name = starDataBlock.ValueS + "_GFX";
@@ -191,15 +193,18 @@ public partial class MapData : Node
         gfxNode.GetParent().SetEditableInstance(gfxNode, true);
 
 
-        starNode.GFX = gfxNode as GFXStar; // because of this LocationGFX has to be a Tool
+        starNode.GFX = gfxNode as GFXStar; // because of this 'something' has to be a Tool
         starNode.GFX.Init();
         int angleSeed = starDataBlock.GetSub("GFX_RNG_1").ValueI + starDataBlock.GetSub("GFX_RNG_2").ValueI;
-        starNode.GFX.Refresh(starData, angleSeed); 
         //TEMP01
         //starNode.GFX._Node = starNode;
 
         starNode.GFX.Position = new Vector3(8.6666f * (2.0f * starData.X + starData.Y), 0.0f, starData.Y * 15.0f) - new Vector3(8.6666f * galaxySize, 0.0f, -galaxySize * 15.0f);
         starNode.GFX.Position += (0.035f * starDataBlock.GetSub("GFX_RNG_1").ValueI) * Vector3.Right.Rotated(Vector3.Up, 0.01f * Mathf.Pi * starDataBlock.GetSub("GFX_RNG_2").ValueI);
+
+        starNode.GFX.Refresh(starData, angleSeed);
+        starNode.GFX.RefreshStarModel(starType);
+        starNode.GFX.RefreshPlayerColor();
     }
 
     public void GenerateGameFromData_Star_Planet(DataBlock planetDataBlock, StarData starData)

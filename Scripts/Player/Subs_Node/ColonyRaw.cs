@@ -22,36 +22,12 @@ public static class ColonyRaw
         }
 
         Data.AddData(colony, "District_List", def);
-        CreateNewDistrictAndPop(system, colony, systemCapital, def);
+        DistrictRaw.CreateNewDistrictAndPop(system, colony, systemCapital, def);
 
         Data.AddData(colony, "Link:Star:Planet", star.ValueS + ":" + planet.ValueS, def); // no PlanetData yet
         Data.AddData(planet, "Link:Player:System:Colony", player.ValueS + ":" + system.ValueS + ":" + colony.ValueS, def); // no ColonyData yet
 
         return colony;
-    }
-
-    public static DataBlock CreateNewDistrictAndPop(DataBlock system, DataBlock colony, bool capital, DefLibrary def)
-    {
-        DataBlock districts = colony.GetSub("District_List");
-
-        DataBlock district = Data.AddData(districts, "District", capital ? "Capital" : "Private_Business", def);
-        Data.AddData(district, "Change_Cooldown", 0, def);
-        Data.AddData(district, "Factory", 0, def);
-        Data.AddData(district, "Factory_Cooldown", 0, def);
-        Data.AddData(district, "Investment", 0, def);
-        Data.AddData(district, "Control_Cooldown", 0, def);
-
-        DataBlock pop = Data.AddData(district, "Pop", def);
-        Data.AddData(pop, "GrowthProgress", 0, def);
-        Data.AddData(pop, "Species", "Human", def);
-        Data.AddData(pop, "Ethics", "Communist", def);
-        Data.AddData(pop, "Wealth", 20, def);
-        Data.AddData(pop, "Happiness", 50, def);
-        Data.AddData(pop, "Mood", 0, def);
-
-        system.SetSubValueS("ActionGrowth/FocusColony", colony.ValueS, def);
-
-        return district;
     }
 
     public static void SetPopsFullGrowth(DataBlock system, DataBlock colony, DataBlock planet)
@@ -69,7 +45,7 @@ public static class ColonyRaw
 
         if (districts.Count < planet.GetSubValueI("PopsMax"))
         {
-            CreateNewDistrictAndPop(system, colony, false, def);
+            DistrictRaw.CreateNewDistrictAndPop(system, colony, false, def);
         }
     }
 

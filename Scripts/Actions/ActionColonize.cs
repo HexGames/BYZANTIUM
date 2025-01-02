@@ -67,7 +67,7 @@ public class ActionColonize
 
         if (colonyFleet != null && colonyFleet.Data.HasSub("ActionColonize"))
         {
-            PlanetData planet = star.GetPlanet(colonyFleet.Data.GetSubValueS("ActionColonize/Planet"));
+            PlanetData planet = star.GetPlanet(colonyFleet.Data.GetSubValueS("ActionColonize", "Planet"));
             DataBlock systemData = SystemRaw.CreateNewSystem(player.Data, star.Data, Game.self.Def, false, planet.Data);
             SystemData system = Game.self.Map.Data.GenerateGameFromData_Player_System(systemData, player);
 

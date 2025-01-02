@@ -16,6 +16,9 @@ public partial class TurnLoop : Node
         // increment turn number
         Game.self.Map.Data.Turn = Game.self.Map.Data.Turn + 1;
 
+        // update resources
+        EndTurn_PlayerStockpiles();
+
         // update actions
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsBuild()));
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsPops()));
@@ -59,6 +62,16 @@ public partial class TurnLoop : Node
 
         Game.self.GalaxyUI.EndTurnBg.Visible = true;
         Game.self.Camera.LOD = 2;
+    }
+
+    // ----------------------------------------------------------------------------------------------
+    private void EndTurn_PlayerStockpiles()
+    {
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            player.Stockpiles_PerTurn.EndTurn();
+        }
     }
 
     // ----------------------------------------------------------------------------------------------
@@ -214,19 +227,32 @@ public partial class TurnLoop : Node
             {
                 SystemData system = player.Systems[systemIdx];
 
-                for (int colonyIdx = 0; colonyIdx < system.Colonies.Count; colonyIdx++)
-                {
-                    ColonyData colony = system.Colonies[colonyIdx];
+                system.Economy_PerTurn.Refresh_1();
 
-                    for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
-                    {
-                        DistrictData district = colony.Districts[districtIdx];
-                        district.Economy_PerTurn.Refresh();
-                    }
-                }
+                system.RefreshSystemDistricts_1();
 
-                system.Pops_PerTurn.RefreshBase();
-                system.Pops_PerTurn.RefreshOutgoingTrade();
+                system.Pops_PerTurn.RefreshBase_1();
+            }
+        }
+
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            {
+                SystemData system = player.Systems[systemIdx];
+                system.RefreshInvest_2();
+                system.Pops_PerTurn.RefreshOutgoingTrade_2();
+            }
+        }
+
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            {
+                SystemData system = player.Systems[systemIdx];
+                system.Pops_PerTurn.RefreshIncomingTrade_3();
             }
         }
 
@@ -237,15 +263,14 @@ public partial class TurnLoop : Node
             {
                 SystemData system = player.Systems[systemIdx];
 
-                system.Pops_PerTurn.RefreshIncomingTrade();
-                system.Pops_PerTurn.Refresh();
+                system.Pops_PerTurn.RefreshHappiness_4();
                 system.Control_PerTurn.Refresh();
-                system.Infrastructure_PerTurn.Refresh();
-                system.Economy_PerTurn.Refresh();
+                //system.Infrastructure_PerTurn.Refresh();
+                system.Economy_PerTurn.Refresh_4();
                 system.Shipbuilding_PerTurn.Refresh();
             }
 
-            player.Stockpiles_PerTurn.Refresh();
+            player.Stockpiles_PerTurn.Refresh_5();
         }
     }
 

@@ -9,7 +9,7 @@ public static class PlanetRaw
         for (int idx = 0; idx < features.Count; idx++)
         {
             DataBlock feature = features[idx];
-            int value = def.GetFeature(feature.Name).GetSubValueI("Benefit/Extra/PopGrowth");
+            int value = def.GetFeature(feature.Name).GetSubValueI("Benefit", "Extra", "PopGrowth");
             if (value > 0)
             {
                 popGrowth = value;

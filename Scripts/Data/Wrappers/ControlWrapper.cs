@@ -63,7 +63,7 @@ public class ControlWrapper
                     string controlType = "";
                     if (district._Data.HasSub("Pop"))
                     {
-                        controlType = district.DistrictDef._Data.GetSubValueS("Control/Type");
+                        controlType = district.DistrictDef.Control_Type;
                     }
                     bool stateOwned =  controlType == "State_Owned";
 
@@ -71,7 +71,7 @@ public class ControlWrapper
 
                     if (district.Economy_PerTurn.Resource == "Control")
                     {
-                        ControlDistricts += district.Economy_PerTurn.Production;
+                        ControlDistricts += district.Economy_PerTurn.Production_Final;
                     }
                 }
             }
@@ -79,7 +79,7 @@ public class ControlWrapper
 
         ControlTotal = ControlDistricts + ControlStateUsed;
 
-        if (ControlTotal >= 0)
+        if (ControlTotal > 0)
         {
             int skewRatio = 1000 * pops / (10 * pops + ControlTotal);
 
@@ -88,7 +88,7 @@ public class ControlWrapper
             RebellionTurmoil = Mathf.Clamp(100 - (40 * skewRatio / 100), 15, 90);
             RebellionRebelious = Mathf.Clamp(100 - (20 * skewRatio / 100), 20, 95);
         }
-        else
+        else if (ControlTotal < 0)
         {
             int skewRatio = 1000 * pops / (10 * pops - ControlTotal);
 
@@ -99,7 +99,7 @@ public class ControlWrapper
         }
 
         RebellionChange = 2 * _System.Pops_PerTurn.PopsUnhappy - _System.Pops_PerTurn.PopsHappy - (_System.Pops_PerTurn.PopsNeutral / 2);
-        RebellionCurrent = _System.Data.GetSubValueI("ActionRebellion/Current");
+        RebellionCurrent = _System.Data.GetSubValueI("ActionRebellion", "Current");
     }
 
     public string ToString_ControlTotal() { return Helper.ResValueToString(ControlTotal); }

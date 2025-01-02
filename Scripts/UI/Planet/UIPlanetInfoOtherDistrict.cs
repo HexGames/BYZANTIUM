@@ -13,12 +13,13 @@ public partial class UIPlanetInfoOtherDistrict : Control
     private UIText NameText;
     private UIText DescriptionText;
 
-    private Control InfluenceCostBg;
-    private UIText InfluenceCostText;
+    private Control CostBg;
+    private UIText CostText;
+    private UIText CostTime;
 
     // Runtime
     public DistrictData _ChangingDistrict = null;
-    public DefDistrictWrapper _DistrictDef = null;
+    public DistrictNew _DistrictNew = null;
 
     public override void _Ready()
     {
@@ -30,41 +31,56 @@ public partial class UIPlanetInfoOtherDistrict : Control
         NameText = GetNode<UIText>("MarginContainer/HBoxContainer/VBoxContainer/Name");
         DescriptionText = GetNode<UIText>("MarginContainer/HBoxContainer/VBoxContainer/Description");
 
-        InfluenceCostBg = GetNode<Control>("MarginContainer/CostBg");
-        InfluenceCostText = GetNode<UIText>("MarginContainer/CostBg/Cost");
+        CostBg = GetNode<Control>("MarginContainer/CostBg");
+        CostText = GetNode<UIText>("MarginContainer/CostBg/Cost");
+        CostTime = GetNode<UIText>("MarginContainer/HBoxContainer/Time");
     }
 
-    public void RefreshDistrict(DistrictData changingDistrict, DefDistrictWrapper districtDef)
+    public void RefreshDistrict(DistrictData changingDistrict, DistrictNew districtNew)
     {
         _ChangingDistrict = changingDistrict;
-        _DistrictDef = districtDef;
+        _DistrictNew = districtNew;
 
-        IconTexture.Texture = Game.self.Def.AssetLib.GetTexture2D_District(_DistrictDef.Icon + ".png");
-        NameText.SetTextWithReplace("$name", _DistrictDef.Name);
-        DescriptionText.SetTextWithReplace("$description", _DistrictDef.Economy_PerSession.ToString_Short(28));
+        IconTexture.Texture = Game.self.Def.AssetLib.GetTexture2D_District(_DistrictNew.DistrictDef.Icon + ".png");
+        NameText.SetTextWithReplace("$name", _DistrictNew.DistrictDef.Name);
+        DescriptionText.SetTextWithReplace("$description", _DistrictNew.Economy.ToString_Short(28));
 
-        bool needsCosts = _ChangingDistrict.Pop.GetProgress() < 1000;
+        bool fullPop = _ChangingDistrict.Pop.GetProgress() == 1000;
 
-        if (needsCosts && _DistrictDef.Cost > 0)
+        string cost = "";
+        Btn.Disabled = false;
+        if (_DistrictNew.Cost_BC > 0)
         {
-            if (_DistrictDef.Cost <= Game.self.HumanPlayer.Stockpiles_PerTurn.Influence)
+            if (_DistrictNew.Cost_BC <= Game.self.HumanPlayer.Stockpiles_PerTurn.BC)
             {
-                Btn.Disabled = false;
-                InfluenceCostBg.Visible = true;
-                InfluenceCostText.SetTextWithReplace("$v", _DistrictDef.Cost.ToString());
+                cost = Helper.ResValueToString(_DistrictNew.Cost_BC) + Helper.GetIcon("BC");
             }
             else
             {
                 Btn.Disabled = true;
-                InfluenceCostBg.Visible = true;
-                InfluenceCostText.SetTextWithReplace("$v", Helper.GetColorPrefix_Bad() + _DistrictDef.Cost.ToString() + Helper.GetColorSufix());
+                cost = Helper.GetColorPrefix_Bad() + Helper.ResValueToString(_DistrictNew.Cost_BC) + Helper.GetColorSufix() + Helper.GetIcon("BC");
             }
         }
-        else
+        if (_DistrictNew.Cost_Inf > 0)
         {
-            Btn.Disabled = false;
-            InfluenceCostBg.Visible = false;
+            if (_DistrictNew.Cost_Inf <= Game.self.HumanPlayer.Stockpiles_PerTurn.Influence)
+            {
+                cost = Helper.ResValueToString(_DistrictNew.Cost_Inf) + Helper.GetIcon("Influence");
+            }
+            else
+            {
+                Btn.Disabled = true;
+                cost = Helper.GetColorPrefix_Bad() + Helper.ResValueToString(_DistrictNew.Cost_Inf) + Helper.GetColorSufix() + Helper.GetIcon("Influence");
+            }
         }
+
+        if (cost != "")
+        {
+            CostBg.Visible = true;
+            CostText.SetTextWithReplace("$cost", cost);
+        }
+
+        CostTime.SetTextWithReplace("$t", _DistrictNew.Cost_Time.ToString());
     }
 
     public void OnSelect()

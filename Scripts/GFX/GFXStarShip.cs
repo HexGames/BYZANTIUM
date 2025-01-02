@@ -8,7 +8,7 @@ public partial class GFXStarShip : Node3D
     private MeshInstance3D Ship = null;
     private MeshInstance3D ShipColor = null;
     private Area3D Collision = null;
-    public CollisionShape3D CollisionShape = null;
+    //public CollisionShape3D CollisionShape = null;
 
     private bool Friendly = false;
 
@@ -23,13 +23,14 @@ public partial class GFXStarShip : Node3D
         Ship = GetNode<MeshInstance3D>("Ship");
         ShipColor = GetNode<MeshInstance3D>("Ship/Color");
         Collision = GetNode<Area3D>("Area3D");
-        CollisionShape = GetNode<CollisionShape3D>("Area3D/CollisionShape3D");
+        //CollisionShape = GetNode<CollisionShape3D>("Area3D/CollisionShape3D");
 
-        Collision.InputEvent += SignalInputEvent;
-        Collision.MouseEntered += OnHover;
-        Collision.MouseExited += OnDehover;
+        //Collision.InputEvent += SignalInputEvent;
+        //Collision.MouseEntered += OnHover;
+        //Collision.MouseExited += OnDehover;
 
-        //Visible = false;
+        Visible = false;
+        Collision.CollisionLayer = 0;
     }
 
     public void RefreshShip(Array<FleetData> fleets)
@@ -56,43 +57,44 @@ public partial class GFXStarShip : Node3D
             newMaterial.AlbedoColor = color;
             ShipColor.SetSurfaceOverrideMaterial(0, newMaterial);
 
-            CollisionShape.Disabled = false;
             Visible = true;
+            Collision.CollisionLayer = 1;
         }
         else
         {
-            CollisionShape.Disabled = true;
             Visible = false;
+            Collision.CollisionLayer = 0;
         }
     }
 
-    public void SignalInputEvent(Node camera, InputEvent inputEvent, Vector3 position, Vector3 normal, long shapeIdx)
-    {
-        if (inputEvent is InputEventMouseButton mouseButtonEvent)
-        {
-            if (!mouseButtonEvent.IsPressed())
-            {
-                // on mouse button release
-                if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
-                {
-                    Game.self.Input.OnSelectFleets(_Fleets);
-                }
-                // on mouse button release
-                if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
-                {
-                    Game.self.Input.DeselectOneStep();
-                }
-            }
-        }
-    }
-
-    public void OnHover()
-    {
-        Game.self.Input.OnHoverFleets(_Fleets);
-    }
-
-    public void OnDehover()
-    {
-        Game.self.Input.OnDehoverFleets();
-    }
+    //public void OnHover()
+    //{
+    //    GD.Print("Log_In");
+    //    Game.self.Input.OnHoverFleets(_Fleets);
+    //}
+    //
+    //public void OnDehover()
+    //{
+    //    GD.Print("Log_Out");
+    //    Game.self.Input.OnDehoverFleets();
+    //}
+    //public void SignalInputEvent(Node camera, InputEvent inputEvent, Vector3 position, Vector3 normal, long shapeIdx)
+    //{
+    //    if (inputEvent is InputEventMouseButton mouseButtonEvent)
+    //    {
+    //        if (!mouseButtonEvent.IsPressed())
+    //        {
+    //            // on mouse button release
+    //            if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
+    //            {
+    //                Game.self.Input.OnSelectFleets(_Fleets);
+    //            }
+    //            // on mouse button release
+    //            if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
+    //            {
+    //                Game.self.Input.DeselectOneStep();
+    //            }
+    //        }
+    //    }
+    //}
 }

@@ -54,7 +54,7 @@ public class PopsWrapper
         PopsHappy = 0;
     }
 
-    public void RefreshBase()
+    public void RefreshBase_1()
     {
         Clear();
 
@@ -71,7 +71,7 @@ public class PopsWrapper
         GrowthTotal = GrowthFromPops + GrowthWaste;
     }
 
-    public void RefreshOutgoingTrade()
+    public void RefreshOutgoingTrade_2()
     {
         GrowthOutgoingTrade = 0;
 
@@ -94,7 +94,7 @@ public class PopsWrapper
         }
     }
 
-    public void RefreshIncomingTrade()
+    public void RefreshIncomingTrade_3()
     {
         GrowthIncommingTrade = 0;
 
@@ -110,8 +110,8 @@ public class PopsWrapper
         GrowthTotal += GrowthIncommingTrade;
     }
 
-    public void Refresh()
-    { 
+    public void RefreshGrowth_4()
+    {
         ColonyData colony = _System.GetGrowthColony();
         if (colony != null)
         {
@@ -124,13 +124,15 @@ public class PopsWrapper
         else
         {
             GrowthProgress = 0;
-            GrowthProgressMax = 1000; 
+            GrowthProgressMax = 1000;
             GrowthTurns = 999;
         }
-
+    }
+    public void RefreshHappiness_4()
+    {
         for (int colonyIdx = 0; colonyIdx < _System.Colonies.Count; colonyIdx++)
         {
-            colony = _System.Colonies[colonyIdx];
+            ColonyData colony = _System.Colonies[colonyIdx];
             for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
             {
                 DistrictData district = colony.Districts[districtIdx];

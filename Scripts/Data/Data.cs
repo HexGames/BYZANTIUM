@@ -381,10 +381,10 @@ public partial class Data
         else name = name.Substring(2); // for i_ and s_
         text += Helper.Tabs(currentTabs) + name + " " + dataBlock.ValueToString() + "\n";
 
-        if (text.Contains("ActionColonyBuild"))
-        {
-            GD.Print("HIT");
-        }
+        //if (text.Contains("ActionColonyBuild"))
+        //{
+        //    GD.Print("HIT");
+        //}
 
         if (dataBlock.Subs.Count > 0)
         {

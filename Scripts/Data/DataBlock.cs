@@ -39,11 +39,11 @@ public partial class DataBlock : Resource
         return Subs;
     }
 
-    public bool HasSub(string type)
+    public bool HasSub(string sub_0)
     {
         for (int idx = 0; idx < Subs.Count; idx++)
         {
-            if (Subs[idx].Name == type)
+            if (Subs[idx].Name == sub_0)
             {
                 return true;
             }
@@ -51,41 +51,71 @@ public partial class DataBlock : Resource
         return false;
     }
 
-    public bool HasSub(string path, int value)
+    public bool HasSub(string sub_0, string sub_1)
     {
-        int splitIdx = path.Find("/");
-        if (splitIdx > 0)
-        {
-            DataBlock sub = GetSub(path.Substring(0, splitIdx));
-            if (sub != null)
-            {
-                sub.HasSub(path.Substring(splitIdx + 1), value);
-            }
-        }
-        else
-        {
-            for (int idx = 0; idx < Subs.Count; idx++)
-            {
-                if (Subs[idx].Name == path && Subs[idx].ValueI == value)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return false;
+        
+        return dataSub_0.HasSub(sub_1);
     }
 
-    public bool HasSub(string type, string value)
+    public bool HasSub(string sub_0, string sub_1, string sub_2)
     {
-        for (int idx = 0; idx < Subs.Count; idx++)
-        {
-            if (Subs[idx].Name == type && Subs[idx].ValueS == value)
-            {
-                return true;
-            }
-        }
-        return false;
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return false;
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return false;
+
+        return dataSub_1.HasSub(sub_2);
     }
+
+    public bool HasSub(string sub_0, string sub_1, string sub_2, string sub_3)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return false;
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return false;
+        DataBlock dataSub_2 = dataSub_1.GetSub(sub_2);
+        if (dataSub_2 == null) return false;
+
+        return dataSub_2.HasSub(sub_3);
+    }
+
+    //public bool HasSub(string path, int value)
+    //{
+    //    int splitIdx = path.Find("/");
+    //    if (splitIdx > 0)
+    //    {
+    //        DataBlock sub = GetSub(path.Substring(0, splitIdx));
+    //        if (sub != null)
+    //        {
+    //            sub.HasSub(path.Substring(splitIdx + 1), value);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        for (int idx = 0; idx < Subs.Count; idx++)
+    //        {
+    //            if (Subs[idx].Name == path && Subs[idx].ValueI == value)
+    //            {
+    //                return true;
+    //            }
+    //        }
+    //    }
+    //    return false;
+    //}
+
+    //public bool HasSub(string type, string value)
+    //{
+    //    for (int idx = 0; idx < Subs.Count; idx++)
+    //    {
+    //        if (Subs[idx].Name == type && Subs[idx].ValueS == value)
+    //        {
+    //            return true;
+    //        }
+    //    }
+    //    return false;
+    //}
 
 
     public DataBlock GetSub(int type)
@@ -130,7 +160,51 @@ public partial class DataBlock : Resource
         return null;
     }
 
-    public string GetSubValueS(string path, bool showWarning = false)
+    public string GetSubValueS(string sub_0, bool showWarning = false)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return "";
+
+        return dataSub_0.ValueS;
+    }
+
+    public string GetSubValueS(string sub_0, string sub_1, bool showWarning = false)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return "";
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return "";
+
+        return dataSub_1.ValueS;
+    }
+
+    public string GetSubValueS(string sub_0, string sub_1, string sub_2, bool showWarning = false)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return "";
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return "";
+        DataBlock dataSub_2 = dataSub_1.GetSub(sub_2);
+        if (dataSub_2 == null) return "";
+
+        return dataSub_2.ValueS;
+    }
+
+    public string GetSubValueS(string sub_0, string sub_1, string sub_2, string sub_3, bool showWarning = false)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return "";
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return "";
+        DataBlock dataSub_2 = dataSub_1.GetSub(sub_2);
+        if (dataSub_2 == null) return "";
+        DataBlock dataSub_3 = dataSub_2.GetSub(sub_3);
+        if (dataSub_3 == null) return "";
+
+        return dataSub_3.ValueS;
+    }
+
+    public string GetSubValueS_Path(string path, bool showWarning = false)
     {
         int splitIdx = path.Find("/");
         if (splitIdx > 0)
@@ -138,7 +212,7 @@ public partial class DataBlock : Resource
             DataBlock sub = GetSub(path.Substring(0, splitIdx));
             if (sub != null)
             {
-                return sub.GetSubValueS(path.Substring(splitIdx + 1), showWarning);
+                return sub.GetSubValueS_Path(path.Substring(splitIdx + 1), showWarning);
             }
         }
         else
@@ -158,7 +232,51 @@ public partial class DataBlock : Resource
         return "";
     }
 
-    public int GetSubValueI(string path, bool showWarning = false)
+    public int GetSubValueI(string sub_0, bool showWarning = false)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return 0;
+
+        return dataSub_0.ValueI;
+    }
+
+    public int GetSubValueI(string sub_0, string sub_1, bool showWarning = false)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return 0;
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return 0;
+
+        return dataSub_1.ValueI;
+    }
+
+    public int GetSubValueI(string sub_0, string sub_1, string sub_2, bool showWarning = false)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return 0;
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return 0;
+        DataBlock dataSub_2 = dataSub_1.GetSub(sub_2);
+        if (dataSub_2 == null) return 0;
+
+        return dataSub_2.ValueI;
+    }
+
+    public int GetSubValueI(string sub_0, string sub_1, string sub_2, string sub_3, bool showWarning = false)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return 0;
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return 0;
+        DataBlock dataSub_2 = dataSub_1.GetSub(sub_2);
+        if (dataSub_2 == null) return 0;
+        DataBlock dataSub_3 = dataSub_2.GetSub(sub_3);
+        if (dataSub_3 == null) return 0;
+
+        return dataSub_3.ValueI;
+    }
+
+    public int GetSubValueI_Path(string path, bool showWarning = false)
     {
         int splitIdx = path.Find("/");
         if (splitIdx > 0)
@@ -166,7 +284,7 @@ public partial class DataBlock : Resource
             DataBlock sub = GetSub(path.Substring(0, splitIdx));
             if (sub != null)
             {
-                return sub.GetSubValueI(path.Substring(splitIdx + 1), showWarning);
+                return sub.GetSubValueI_Path(path.Substring(splitIdx + 1), showWarning);
             }
         }
         else
@@ -249,7 +367,51 @@ public partial class DataBlock : Resource
         ValueS = "";
     }
 
-    public void SetSubValueI(string path, int value, DefLibrary def)
+    public void SetSubValueI(string sub_0, int value, DefLibrary def)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return;
+
+        dataSub_0.SetValueI(value, def);
+    }
+
+    public void SetSubValueI(string sub_0, string sub_1, int value, DefLibrary def)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return;
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return;
+
+        dataSub_1.SetValueI(value, def);
+    }
+
+    public void SetSubValueI(string sub_0, string sub_1, string sub_2, int value, DefLibrary def)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return;
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return;
+        DataBlock dataSub_2 = dataSub_1.GetSub(sub_2);
+        if (dataSub_2 == null) return;
+
+        dataSub_2.SetValueI(value, def);
+    }
+
+    public void SetSubValueI(string sub_0, string sub_1, string sub_2, string sub_3, int value, DefLibrary def)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return;
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return;
+        DataBlock dataSub_2 = dataSub_1.GetSub(sub_2);
+        if (dataSub_2 == null) return;
+        DataBlock dataSub_3 = dataSub_2.GetSub(sub_3);
+        if (dataSub_3 == null) return;
+
+        dataSub_3.SetValueI(value, def);
+    }
+
+    public void SetSubValueI_Path(string path, int value, DefLibrary def)
     {
         int splitIdx = path.Find("/");
         if (splitIdx > 0)
@@ -257,7 +419,7 @@ public partial class DataBlock : Resource
             DataBlock sub = GetSub(path.Substring(0, splitIdx));
             if (sub != null)
             {
-                sub.SetSubValueI(path.Substring(splitIdx + 1), value, def);
+                sub.SetSubValueI_Path(path.Substring(splitIdx + 1), value, def);
             }
         }
         else 
@@ -276,7 +438,51 @@ public partial class DataBlock : Resource
         ValueS = value;
     }
 
-    public void SetSubValueS(string path, string value, DefLibrary def)
+    public void SetSubValueS(string sub_0, string value, DefLibrary def)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return;
+
+        dataSub_0.SetValueS(value, def);
+    }
+
+    public void SetSubValueS(string sub_0, string sub_1, string value, DefLibrary def)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return;
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return;
+
+        dataSub_1.SetValueS(value, def);
+    }
+
+    public void SetSubValueS(string sub_0, string sub_1, string sub_2, string value, DefLibrary def)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return;
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return;
+        DataBlock dataSub_2 = dataSub_1.GetSub(sub_2);
+        if (dataSub_2 == null) return;
+
+        dataSub_2.SetValueS(value, def);
+    }
+
+    public void SetSubValueS(string sub_0, string sub_1, string sub_2, string sub_3, string value, DefLibrary def)
+    {
+        DataBlock dataSub_0 = GetSub(sub_0);
+        if (dataSub_0 == null) return;
+        DataBlock dataSub_1 = dataSub_0.GetSub(sub_1);
+        if (dataSub_1 == null) return;
+        DataBlock dataSub_2 = dataSub_1.GetSub(sub_2);
+        if (dataSub_2 == null) return;
+        DataBlock dataSub_3 = dataSub_2.GetSub(sub_3);
+        if (dataSub_3 == null) return;
+
+        dataSub_3.SetValueS(value, def);
+    }
+
+    public void SetSubValueS_Path(string path, string value, DefLibrary def)
     {
         int splitIdx = path.Find("/");
         if (splitIdx > 0)
@@ -284,7 +490,7 @@ public partial class DataBlock : Resource
             DataBlock sub = GetSub(path.Substring(0, splitIdx));
             if (sub != null)
             {
-                sub.SetSubValueS(path.Substring(splitIdx + 1), value, def);
+                sub.SetSubValueS_Path(path.Substring(splitIdx + 1), value, def);
             }
         }
         else

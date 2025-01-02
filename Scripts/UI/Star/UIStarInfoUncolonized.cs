@@ -37,7 +37,7 @@ public partial class UIStarInfoUncolonized : Control
             UncolonizedBg.Visible = false;
             Colonizing.Visible = true;
 
-            ColonizingText.SetTextWithReplace("$name", colonyFleet.Data.GetSubValueS("ActionColonize/Planet"));
+            ColonizingText.SetTextWithReplace("$name", colonyFleet.Data.GetSubValueS("ActionColonize", "Planet"));
         }
         else
         {

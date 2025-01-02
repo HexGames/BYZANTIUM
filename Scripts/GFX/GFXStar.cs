@@ -10,15 +10,21 @@ public partial class GFXStar : Node3D
     public GFXStarShip ShipFriendly = null;
     public GFXStarShip ShipOther = null;
 
-    private Area3D Collision = null;
-    private CollisionShape3D CollisionShape = null;
+    //private Area3D Collision = null;
+    //private CollisionShape3D CollisionShape = null;
     private MeshInstance3D Border = null;
     private MeshInstance3D PlayerColor = null;
+    private MeshInstance3D PlayerUncovered = null;
+    private MeshInstance3D PlayerUnknown = null;
     //private Node3D Hover = null;
     //private Node3D Selected = null;
-    private MeshInstance3D Layer_1 = null;
+    //private MeshInstance3D Layer_1 = null;
     private MeshInstance3D Layer_2 = null;
+    private MeshInstance3D Layer_2_2 = null;
+    private MeshInstance3D Layer_2_3 = null;
     private MeshInstance3D Layer_3 = null;
+    private MeshInstance3D Layer_4 = null;
+    private MeshInstance3D Layer_PlayerGlow = null;
 
     [ExportCategory("Runtime")]
     [Export]
@@ -51,19 +57,25 @@ public partial class GFXStar : Node3D
         ShipFriendly.Init(true);
         ShipOther.Init(false);
 
-        Collision = GetNode<Area3D>("Star/SectorArea3D");
-        CollisionShape = GetNode<CollisionShape3D>("Star/SectorArea3D/CollisionShape3D");
+        //Collision = GetNode<Area3D>("Star/SectorArea3D");
+        //CollisionShape = GetNode<CollisionShape3D>("Star/SectorArea3D/CollisionShape3D");
         Border = GetNode<MeshInstance3D>("Border");
         PlayerColor = GetNode<MeshInstance3D>("PlayerColor");
+        PlayerUncovered = GetNode<MeshInstance3D>("PlayerUncovered");
+        PlayerUnknown = GetNode<MeshInstance3D>("PlayerUnknown");
         //Hover = GetNode<Node3D>("Hover");
         //Selected = GetNode<Node3D>("Selected");
-        Layer_1 = GetNode<MeshInstance3D>("Layer_1_Cloud");
+        //Layer_1 = GetNode<MeshInstance3D>("Layer_1_Cloud");
         Layer_2 = GetNode<MeshInstance3D>("Layer_2_Cloud");
+        Layer_2_2 = GetNode<MeshInstance3D>("Layer_2_Cloud2");
+        Layer_2_3 = GetNode<MeshInstance3D>("Layer_2_Cloud3");
         Layer_3 = GetNode<MeshInstance3D>("Layer_3_Cloud");
+        Layer_4 = GetNode<MeshInstance3D>("Layer_4_Cloud");
+        Layer_PlayerGlow = GetNode<MeshInstance3D>("Layer_PlayerGlow");
 
-        Collision.InputEvent += SignalInputEvent;
-        Collision.MouseEntered += OnHover;
-        Collision.MouseExited += OnDehover;
+        //Collision.InputEvent += SignalInputEvent;
+        //Collision.MouseEntered += OnHover;
+        //Collision.MouseExited += OnDehover;
 
         //Selected.Visible = false;
         //Hover.Visible = false;
@@ -72,6 +84,8 @@ public partial class GFXStar : Node3D
         //Node3D planets = GetNode<Node3D>("System/Planets");
         //MeshInstance3D close = GetNode<MeshInstance3D>("../../../Camera3D/Close");
         //planets.VisibilityParent = close.GetPath();
+
+        LODFar();
     }
 
     public void Refresh(StarData star, int angleSeed)
@@ -126,6 +140,7 @@ public partial class GFXStar : Node3D
             else if (idx < Orbits.Count)
             {
                 Orbits[idx].Visible = false;
+                Orbits[idx].Collision.InputRayPickable = false;
             }
         }
 
@@ -137,9 +152,31 @@ public partial class GFXStar : Node3D
         //ShipFriendly.RefreshShip(_Star.FleetsFriendly_PerTurn);
         //ShipEnemy.RefreshShip(_Star.FleetsOthers_PerTurn);
 
-        Layer_1.RotationDegrees = new Vector3(0, (angleSeed * 7) % 18 * 20, 0);
-        Layer_2.RotationDegrees = new Vector3(0, (angleSeed * 9) % 24 * 15, 0);
+        //Layer_1.RotationDegrees = new Vector3(0, (angleSeed * 7) % 18 * 20, 0);
+        Layer_2.RotationDegrees = new Vector3(0, (angleSeed * 7) % 24 * 15, 0);
+        Layer_2_2.RotationDegrees = new Vector3(0, (angleSeed * 9) % 24 * 15, 0);
+        Layer_2_3.RotationDegrees = new Vector3(0, (angleSeed * 9) % 24 * 15, 0);
         Layer_3.RotationDegrees = new Vector3(0, (angleSeed * 11) % 36 * 10, 0);
+        Layer_4.RotationDegrees = new Vector3(0, (angleSeed * 23) % 36 * 10, 0);
+
+        StandardMaterial3D newMaterial = Layer_4.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
+        newMaterial.AlbedoColor = new Color(0.9f + 0.006f * (-20 + (Layer_3.Rotation.Y * 7) % 40), 0.7f, 0.6f + 0.006f * (-20 + (Layer_3.Rotation.Y * 19) % 40), 0.2f);
+        Layer_4.SetSurfaceOverrideMaterial(0, newMaterial);
+    }
+
+    public void RefreshStarModel(string starType)
+    { 
+        // replace star
+        PackedScene gfxStar = GD.Load<PackedScene>("res://3DPrefabs/Stars/" + starType + ".tscn" );
+        if (gfxStar == null)
+            return;
+
+        Node gfxNode = gfxStar.Instantiate();
+        gfxNode.Name = starType + "_GFX";
+
+        AddChild(gfxNode);//, true, InternalMode.Front);
+        gfxNode.Owner = GetTree().EditedSceneRoot;
+        gfxNode.GetParent().SetEditableInstance(gfxNode, true);
     }
 
     public void RefreshShips()
@@ -156,29 +193,31 @@ public partial class GFXStar : Node3D
         ShipFriendly.RefreshShip(FriendlyFleets);
         ShipOther.RefreshShip(OtherFleets);
     }
-
-    public void SignalInputEvent(Node camera, InputEvent inputEvent, Vector3 position, Vector3 normal, long shapeIdx)
-    {
-        if (inputEvent is InputEventMouseButton mouseButtonEvent)
-        {
-            if (!mouseButtonEvent.IsPressed())
-            {
-                // on mouse button release
-                if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
-                {
-                    Game.self.Input.OnSelectStar(_Star);
-                }
-                // on mouse button release
-                if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
-                {
-                    if (Game.self.Input.TryFleetsMoveToStar(_Star) == false)
-                    {
-                        Game.self.Input.DeselectOneStep();
-                    }
-                }
-            }
-        }
-    }
+    //public void OnHover()
+    //{
+    //    GD.Print("Log_In --");
+    //    Game.self.Input.OnHoverStar(_Star);
+    //}
+    //public void OnDehover()
+    //{
+    //    GD.Print("Log_Out --");
+    //    Game.self.Input.OnDehoverStar(_Star);
+    //}
+    //
+    //public void OnClick(MouseButton click)
+    //{
+    //    if (click == MouseButton.Left)
+    //    {
+    //        Game.self.Input.OnSelectStar(_Star);
+    //    }
+    //    else if (click == MouseButton.Right)
+    //    {
+    //        if (Game.self.Input.TryFleetsMoveToStar(_Star) == false)
+    //        {
+    //            Game.self.Input.DeselectOneStep();
+    //        }
+    //    }
+    //}
 
     public void RefreshPlayerColor()
     {
@@ -193,17 +232,21 @@ public partial class GFXStar : Node3D
             newMaterial.AlbedoColor = new Color(color.R, color.G, color.B, alpha);
             PlayerColor.SetSurfaceOverrideMaterial(0, newMaterial);
             PlayerColor.Visible = true;
+
+
+            StandardMaterial3D glowMaterial = Layer_3.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
+            glowMaterial.AlbedoColor = new Color(color.R, color.G, color.B, 0.3f);
+            Layer_3.SetSurfaceOverrideMaterial(0, glowMaterial);
+        }
+        else
+        {
+            StandardMaterial3D newMaterial = Layer_3.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
+            newMaterial.AlbedoColor = new Color(0.9f + 0.006f * (-20 + (Layer_3.Rotation.Y * 7) % 40), 0.7f, 0.6f + 0.006f * (-20 + (Layer_3.Rotation.Y * 19) % 40), 0.2f);
+            Layer_3.SetSurfaceOverrideMaterial(0, newMaterial);
         }
     }
 
-    public void OnHover()
-    {
-        Game.self.Input.OnHoverStar(_Star);
-    }
-    public void OnDehover()
-    {
-        Game.self.Input.OnDehoverStar(_Star);
-    }
+    //int HitIdx = 0;
 
     bool Hover = false;
     public void GFXHover()
@@ -282,8 +325,8 @@ public partial class GFXStar : Node3D
 
     public void LODAlpha(float alpha)
     {
-        if (alpha > 0.05 && alpha < 0.95)
-            CollisionShape.Disabled = false;
+        //if (alpha > 0.05 && alpha < 0.95)
+        //    CollisionShape.Disabled = false;
 
         //ShipFriendly.Position = new Vector3(1.5f + 4.5f * alpha, 0, -0.75f - 2.25f * alpha);
         //ShipOther.Position = new Vector3(1.5f + 4.5f * alpha, 0, 0.75f + 2.25f * alpha);

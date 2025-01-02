@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cmde3jxsickdj"]
+[gd_scene load_steps=51 format=3 uid="uid://cmde3jxsickdj"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Planet/UIPlanetInfo.cs" id="1_746r7"]
 [ext_resource type="Theme" uid="uid://dwreuirmb8u6m" path="res://UITheme/Button.tres" id="3_2x56l"]
@@ -17,9 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://dv82k18adgft4" path="res://Assets/UI/Symbols/BudgetGrow.png" id="12_o4ukp"]
 [ext_resource type="Texture2D" uid="uid://be6nytexs28ab" path="res://Assets/UI/Symbols/CancelW.png" id="12_punmh"]
 [ext_resource type="Script" path="res://Scripts/UI/Planet/UIPlanetInfoDistrict.cs" id="13_siis2"]
+[ext_resource type="Texture2D" uid="uid://dnn8qjoicu6oc" path="res://Assets/UI/Districts/Private_Business_I.png" id="14_12rtj"]
 [ext_resource type="Texture2D" uid="uid://cf23sk48qgrxg" path="res://Assets/UI/Symbols/FlagW.png" id="14_g4chn"]
 [ext_resource type="Script" path="res://Scripts/UI/__General/UIButton.cs" id="15_kp8cp"]
 [ext_resource type="Texture2D" uid="uid://pqot6fak3hku" path="res://Assets/UI/Symbols/Flag.png" id="15_x4h8h"]
+[ext_resource type="Texture2D" uid="uid://3lsg1sxugjvv" path="res://Assets/UI/Symbols/PrivateUpg.png" id="15_y7gn6"]
 [ext_resource type="Texture2D" uid="uid://qvxxtu5jlkbt" path="res://Assets/UI/left.png" id="17_00imd"]
 [ext_resource type="Texture2D" uid="uid://ceyqr5puhfmn0" path="res://Assets/UI/right.png" id="19_4fo3r"]
 [ext_resource type="Texture2D" uid="uid://bydgao82thbxp" path="res://Assets/UI/Symbols/Cancel.png" id="21_xd840"]
@@ -59,29 +61,17 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eg7ug"]
-bg_color = Color(0, 0, 0, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_himp1"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(1, 0.8, 0, 1)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibar3"]
-bg_color = Color(0.113725, 0.113725, 0.113725, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0.278431, 0.00784314, 1)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
+border_color = Color(0, 0.647059, 0.0470588, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nef42"]
 bg_color = Color(0.686275, 0.431373, 0.156863, 1)
@@ -108,6 +98,20 @@ corner_radius_top_left = 2
 corner_radius_top_right = 8
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2h2h"]
+bg_color = Color(0.231373, 0.203922, 0.00392157, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jib1f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tycr8"]
+bg_color = Color(0.694118, 0.631373, 0.0235294, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df1mo"]
+bg_color = Color(0.984314, 0.898039, 0.176471, 1)
+skew = Vector2(0.32, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78cgt"]
 bg_color = Color(0.984314, 0.898039, 0.176471, 1)
@@ -142,6 +146,25 @@ skew = Vector2(0.32, 0)
 bg_color = Color(0, 0.501961, 0, 1)
 skew = Vector2(0.32, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgch8"]
+bg_color = Color(0.25098, 0.0627451, 0.00392157, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs3ki"]
+bg_color = Color(0.501961, 0.12549, 0.0235294, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lw2u"]
+bg_color = Color(0.752941, 0.188235, 0, 1)
+skew = Vector2(0.32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_se3td"]
+bg_color = Color(1, 0.811765, 0.207843, 0.25098)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0nrf1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_se686"]
@@ -151,10 +174,7 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.501961, 0.12549, 0, 1)
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+expand_margin_left = 3.0
 
 [node name="Planet" type="Control" node_paths=PackedStringArray("TitleLabel", "Planet", "Features", "Districts", "ChooseDistrictWindow", "ChooseDistrictKeepText", "ChooseDistrictItem", "PopInfo")]
 layout_mode = 3
@@ -172,8 +192,8 @@ Planet = NodePath("InfoList/System/Planet")
 Features = [NodePath("InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0")]
 Districts = [NodePath("InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0")]
 ChooseDistrictWindow = NodePath("ChooseDistrict")
-ChooseDistrictKeepText = NodePath("ChooseDistrict/PossibleDistricts/KeepDistrict/Button/Name")
-ChooseDistrictItem = [NodePath("ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0")]
+ChooseDistrictKeepText = NodePath("ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/Margin/KeepDistrict/Button/Name")
+ChooseDistrictItem = [NodePath("ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0")]
 PopInfo = NodePath("PopInfo")
 
 [node name="InfoList" type="VBoxContainer" parent="."]
@@ -742,6 +762,62 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="Pop" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Pop"]
+custom_minimum_size = Vector2(40, 80)
+layout_mode = 2
+offset_right = 40.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonGreenBorder"
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Pop/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "$name"
+
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Pop"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_himp1")
+
+[node name="Icon" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Pop"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_p5rcl")
+expand_mode = 1
+
 [node name="Icon" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -758,6 +834,7 @@ theme = ExtResource("9_s3uik")
 theme_type_variation = &"ButtonRedBorder"
 
 [node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -783,7 +860,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0idv6")
 
 [node name="Icon" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(72, 72)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -793,143 +870,8 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("9_kbx8q")
+texture = ExtResource("14_12rtj")
 expand_mode = 1
-
-[node name="PopBg" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_right = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-theme = ExtResource("9_s3uik")
-theme_type_variation = &"ButtonRoundGreen"
-
-[node name="TextureRect" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg"]
-custom_minimum_size = Vector2(44, 44)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("9_p5rcl")
-expand_mode = 1
-
-[node name="IconText" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-mouse_filter = 2
-theme = ExtResource("7_swumr")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "[center]$$[/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("11_4f0od")
-
-[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("8_oc75w")
-CanBeHovered = false
-Direction = 2
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
-[node name="PopSelected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
-visible = false
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -24.0
-offset_right = 16.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_eg7ug")
-
-[node name="NoPopBg" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -24.0
-offset_right = 16.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ibar3")
-
-[node name="IconText" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -15.0
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-mouse_filter = 2
-theme = ExtResource("7_swumr")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "[center]?[/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("11_4f0od")
-
-[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("8_oc75w")
-CanBeHovered = false
-Direction = 2
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
 
 [node name="Gap_0" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(4, 0)
@@ -937,11 +879,36 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 8
+size_flags_horizontal = 3
 alignment = 1
 
 [node name="Effects" type="HBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+
+[node name="SystemInvestment" type="TextureRect" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("15_y7gn6")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/SystemInvestment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "System Investment"
+Row_1 = "This [b]District[/b] is the target of the [b]System Investment[/b]."
+Row_2 = "This [b]Private District[/b] will upgrade faster."
 
 [node name="Control" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects"]
 visible = false
@@ -1068,6 +1035,7 @@ autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
 [node name="Construction" type="HBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
 
@@ -1287,9 +1255,97 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
+[node name="Progress" type="MarginContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Progress"]
+custom_minimum_size = Vector2(88, 12)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v2h2h")
+
+[node name="NextTurn" type="ProgressBar" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Progress/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_jib1f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tycr8")
+step = 1.0
+value = 55.0
+show_percentage = false
+
+[node name="Progress" type="ProgressBar" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Progress/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_jib1f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_df1mo")
+step = 1.0
+value = 45.0
+show_percentage = false
+
+[node name="Turns" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Progress/Panel"]
+custom_minimum_size = Vector2(40, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -12.0
+offset_right = 44.0
+offset_bottom = 12.0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center][b]$t[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Progress"]
+layout_mode = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Shipbuilding Progress"
+Row_1 = "Progress:"
+Row_1_Right = "$v[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]/$t[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]"
+Row_2 = "Progress per turn:"
+Row_2_Right = "$v[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]"
+Row_3 = "From System Focus
+$p% of Total [img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+From Colonies
+Bonus"
+Row_3_Right = "
+$f[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+$c[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+$b%"
+
 [node name="Invrest" type="HBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
+alignment = 2
 
 [node name="Control" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
 custom_minimum_size = Vector2(32, 15)
@@ -1330,7 +1386,7 @@ Title = "Colonize"
 Row_1 = "$text"
 
 [node name="Pip_1" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
-custom_minimum_size = Vector2(36, 16)
+custom_minimum_size = Vector2(23, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_78cgt")
 script = ExtResource("12_dj81v")
@@ -1353,7 +1409,7 @@ Row_1 = "$text"
 
 [node name="Pip_2" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
 visible = false
-custom_minimum_size = Vector2(36, 16)
+custom_minimum_size = Vector2(23, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_78cgt")
 script = ExtResource("12_dj81v")
@@ -1376,7 +1432,7 @@ Row_1 = "$text"
 
 [node name="Pip_3" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
 visible = false
-custom_minimum_size = Vector2(36, 16)
+custom_minimum_size = Vector2(23, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_78cgt")
 script = ExtResource("12_dj81v")
@@ -1399,7 +1455,7 @@ Row_1 = "$text"
 
 [node name="Unused_1" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
 visible = false
-custom_minimum_size = Vector2(36, 16)
+custom_minimum_size = Vector2(23, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_a4vkn")
 script = ExtResource("12_dj81v")
@@ -1421,7 +1477,7 @@ Title = "Colonize"
 Row_1 = "$text"
 
 [node name="Unused_2" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
-custom_minimum_size = Vector2(36, 16)
+custom_minimum_size = Vector2(23, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_a4vkn")
 script = ExtResource("12_dj81v")
@@ -1443,7 +1499,7 @@ Title = "Colonize"
 Row_1 = "$text"
 
 [node name="Unused_3" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest"]
-custom_minimum_size = Vector2(36, 16)
+custom_minimum_size = Vector2(23, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_a4vkn")
 script = ExtResource("12_dj81v")
@@ -1465,18 +1521,15 @@ Title = "Colonize"
 Row_1 = "$text"
 
 [node name="PopProgress" type="MarginContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(168, 0)
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 4
 
 [node name="Panel" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress"]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(88, 12)
 layout_mode = 2
+size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vit60")
 
@@ -1509,26 +1562,124 @@ value = 45.0
 show_percentage = false
 
 [node name="Turns" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/Panel"]
-custom_minimum_size = Vector2(0, 24)
+custom_minimum_size = Vector2(40, 24)
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = -1
+anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 8.0
+offset_left = 4.0
 offset_top = -12.0
-offset_right = 8.0
+offset_right = 44.0
 offset_bottom = 12.0
-grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
 text = "[center][b]$t[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
 [node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress"]
 layout_mode = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Shipbuilding Progress"
+Row_1 = "Progress:"
+Row_1_Right = "$v[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]/$t[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]"
+Row_2 = "Progress per turn:"
+Row_2_Right = "$v[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]"
+Row_3 = "From System Focus
+$p% of Total [img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+From Colonies
+Bonus"
+Row_3_Right = "
+$f[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+$c[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
+$b%"
+
+[node name="ProgressUpgrade" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 20)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressUpgrade"]
+custom_minimum_size = Vector2(88, 12)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -6.0
+offset_right = 88.0
+offset_bottom = 6.0
+grow_vertical = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tgch8")
+
+[node name="NextTurn" type="ProgressBar" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressUpgrade/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_jib1f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fs3ki")
+step = 1.0
+value = 55.0
+show_percentage = false
+
+[node name="Progress" type="ProgressBar" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressUpgrade/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_jib1f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3lw2u")
+step = 1.0
+value = 45.0
+show_percentage = false
+
+[node name="Turns" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressUpgrade"]
+custom_minimum_size = Vector2(40, 24)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[right][b]$t[img=20x20]Assets/UI/Symbols/Turn.png[/img][/b][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressUpgrade"]
+layout_mode = 2
+anchors_preset = 0
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 16.0
 mouse_filter = 1
 mouse_force_pass_scroll_events = false
 script = ExtResource("8_oc75w")
@@ -1555,6 +1706,60 @@ layout_mode = 2
 [node name="Actions" type="VBoxContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="CancelChange" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/CancelChange"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3td")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/CancelChange"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Cancel District Change[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/CancelChange"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
 [node name="RegainControl" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
 custom_minimum_size = Vector2(256, 36)
 layout_mode = 2
@@ -1562,6 +1767,15 @@ focus_mode = 0
 theme = ExtResource("9_s3uik")
 theme_type_variation = &"ButtonYellowBorder"
 script = ExtResource("15_kp8cp")
+
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3td")
 
 [node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl"]
 layout_mode = 1
@@ -1574,6 +1788,7 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
 text = "[center]Regain Control [-$v[img=24x24]Assets/UI/Symbols/Influence.png[/img]][3[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
@@ -1590,6 +1805,7 @@ anchor_bottom = 0.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
 text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
@@ -1599,6 +1815,7 @@ autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
 [node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1614,7 +1831,7 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="Improve" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+[node name="PlanDistrict" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
 custom_minimum_size = Vector2(256, 36)
 layout_mode = 2
 focus_mode = 0
@@ -1622,7 +1839,16 @@ theme = ExtResource("9_s3uik")
 theme_type_variation = &"ButtonYellowBorder"
 script = ExtResource("15_kp8cp")
 
-[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve"]
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3td")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -1633,15 +1859,70 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
-text = "[center]Improve [[img=24x24]Assets/UI/Symbols/ProdCap.png[/img] in 3[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
+text = "[center]Plan District ($v)[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
-[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve"]
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Upgrade" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(256, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Upgrade"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3td")
+
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Upgrade"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[center]Upgrade ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Upgrade"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -1652,6 +1933,7 @@ offset_bottom = 12.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
 text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
@@ -1660,7 +1942,8 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
-[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve"]
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Upgrade"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1684,6 +1967,15 @@ theme = ExtResource("9_s3uik")
 theme_type_variation = &"ButtonYellowBorder"
 script = ExtResource("15_kp8cp")
 
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3td")
+
 [node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest"]
 layout_mode = 1
 anchors_preset = 14
@@ -1695,6 +1987,7 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
 text = "[center]Invest [-$v[img=24x24]Assets/UI/Symbols/BC.png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
@@ -1704,6 +1997,7 @@ autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
 [node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1727,6 +2021,15 @@ theme = ExtResource("9_s3uik")
 theme_type_variation = &"ButtonYellowBorder"
 script = ExtResource("15_kp8cp")
 
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/IncreaseInvestment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3td")
+
 [node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/IncreaseInvestment"]
 layout_mode = 1
 anchors_preset = 14
@@ -1738,6 +2041,7 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
 text = "[center]Increase Investment [-$v[img=24x24]Assets/UI/Symbols/BC.png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
@@ -1747,6 +2051,7 @@ autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
 [node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/IncreaseInvestment"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1770,6 +2075,15 @@ theme = ExtResource("9_s3uik")
 theme_type_variation = &"ButtonYellowBorder"
 script = ExtResource("15_kp8cp")
 
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/DecreaseInvestment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3td")
+
 [node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/DecreaseInvestment"]
 layout_mode = 1
 anchors_preset = 14
@@ -1781,6 +2095,7 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
 text = "[center]Decrease Investment [+$v[img=24x24]Assets/UI/Symbols/BC.png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
@@ -1790,6 +2105,7 @@ autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
 [node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/DecreaseInvestment"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1813,6 +2129,15 @@ theme = ExtResource("9_s3uik")
 theme_type_variation = &"ButtonYellowBorder"
 script = ExtResource("15_kp8cp")
 
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/StopInvestment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3td")
+
 [node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/StopInvestment"]
 layout_mode = 1
 anchors_preset = 14
@@ -1824,6 +2149,7 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
 text = "[center]Stop Investment [+$v[img=24x24]Assets/UI/Symbols/BC.png[/img]/[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
@@ -1833,6 +2159,7 @@ autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
 [node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/StopInvestment"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1856,6 +2183,15 @@ theme = ExtResource("9_s3uik")
 theme_type_variation = &"ButtonYellowBorder"
 script = ExtResource("15_kp8cp")
 
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3td")
+
 [node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize"]
 layout_mode = 1
 anchors_preset = 14
@@ -1867,9 +2203,10 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
-text = "[center]Privatize [+$v[img=24x24]Assets/UI/Symbols/BC.png[/img]][/center]"
+text = "[center]Privatize ($v)[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -1883,6 +2220,7 @@ anchor_bottom = 0.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
 text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
@@ -1892,6 +2230,7 @@ autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
 [node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1907,7 +2246,7 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="NationalizeBuy" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
+[node name="Nationalize" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
 custom_minimum_size = Vector2(256, 36)
 layout_mode = 2
 focus_mode = 0
@@ -1915,66 +2254,16 @@ theme = ExtResource("9_s3uik")
 theme_type_variation = &"ButtonYellowBorder"
 script = ExtResource("15_kp8cp")
 
-[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("7_swumr")
-bbcode_enabled = true
-text = "[center]Nationalize - Buy [$v[img=24x24]Assets/UI/Symbols/BC.png[/img]][/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("11_4f0od")
-
-[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("7_swumr")
-bbcode_enabled = true
-text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("11_4f0od")
-
-[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy"]
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Nationalize"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("8_oc75w")
-CanBeHovered = false
-Direction = 2
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3td")
 
-[node name="NationalizeForced" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
-custom_minimum_size = Vector2(256, 36)
-layout_mode = 2
-focus_mode = 0
-theme = ExtResource("9_s3uik")
-theme_type_variation = &"ButtonYellowBorder"
-script = ExtResource("15_kp8cp")
-
-[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced"]
+[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Nationalize"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -1985,15 +2274,16 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
-text = "[center]Nationalize - Forced [$v[img=24x24]Assets/UI/Symbols/Influence.png[/img]][/center]"
+text = "[center]Nationalize ($v)[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
-[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced"]
+[node name="Cooldown" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Nationalize"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -2001,6 +2291,7 @@ anchor_bottom = 0.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
 text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
@@ -2009,7 +2300,8 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
-[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced"]
+[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Nationalize"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2033,6 +2325,15 @@ theme = ExtResource("9_s3uik")
 theme_type_variation = &"ButtonYellowBorder"
 script = ExtResource("15_kp8cp")
 
+[node name="Selected" type="Panel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3td")
+
 [node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict"]
 layout_mode = 1
 anchors_preset = 14
@@ -2044,9 +2345,10 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
-text = "[center]Change District [3[img=24x24]Assets/UI/Symbols/Turn.png[/img]][/center]"
+text = "[center]Change District ($v)[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -2060,6 +2362,7 @@ anchor_bottom = 0.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
 text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
@@ -2069,50 +2372,7 @@ autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
 [node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("8_oc75w")
-CanBeHovered = false
-Direction = 2
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
-[node name="PlanDistrict" type="Button" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions"]
 visible = false
-custom_minimum_size = Vector2(256, 36)
-layout_mode = 2
-focus_mode = 0
-theme = ExtResource("9_s3uik")
-theme_type_variation = &"ButtonYellowBorder"
-script = ExtResource("15_kp8cp")
-
-[node name="Text" type="RichTextLabel" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("7_swumr")
-bbcode_enabled = true
-text = "[center]Plan District[/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("11_4f0od")
-
-[node name="ToolTip" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2371,52 +2631,6 @@ texture_focused = ExtResource("12_punmh")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="KeepDistrict" type="MarginContainer" parent="ChooseDistrict/PossibleDistricts"]
-custom_minimum_size = Vector2(296, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Button" type="Button" parent="ChooseDistrict/PossibleDistricts/KeepDistrict"]
-layout_mode = 2
-theme = ExtResource("9_s3uik")
-theme_type_variation = &"ButtonYellowBorder"
-script = ExtResource("15_kp8cp")
-
-[node name="Name" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/KeepDistrict/Button"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("7_swumr")
-bbcode_enabled = true
-text = "[center]Keep $name[/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("11_4f0od")
-
-[node name="ToolTip" type="Control" parent="ChooseDistrict/PossibleDistricts/KeepDistrict/Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("8_oc75w")
-CanBeHovered = false
-Direction = 2
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="ScrollContainerBg" type="Control" parent="ChooseDistrict/PossibleDistricts"]
 custom_minimum_size = Vector2(320, 90)
 layout_mode = 2
@@ -2436,11 +2650,14 @@ mouse_force_pass_scroll_events = false
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="District_0" type="PanelContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer"]
+[node name="District_0" type="PanelContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(312, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -2449,7 +2666,7 @@ theme = ExtResource("9_s3uik")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_0nrf1")
 script = ExtResource("24_h413d")
 
-[node name="MarginContainer" type="MarginContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0"]
+[node name="MarginContainer" type="MarginContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0"]
 custom_minimum_size = Vector2(296, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -2458,7 +2675,7 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 0
 
-[node name="Button" type="Button" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer"]
+[node name="Button" type="Button" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer"]
 custom_minimum_size = Vector2(296, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -2466,7 +2683,8 @@ size_flags_vertical = 4
 theme = ExtResource("9_s3uik")
 theme_type_variation = &"ButtonYellowBorder"
 
-[node name="ToolTip" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button"]
+[node name="ToolTip" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/Button"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2482,22 +2700,22 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Gap_0" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+[node name="Gap_0" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Icon" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+[node name="Icon" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Icon" type="TextureRect" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon"]
+[node name="Icon" type="TextureRect" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/Icon"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2508,25 +2726,26 @@ mouse_filter = 2
 texture = ExtResource("9_kbx8q")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Name" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Name" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme = ExtResource("7_swumr")
 theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[left]$name[/left]"
+text = "[left][b]$name[/b][/left]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
-[node name="Description" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Description" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
@@ -2539,40 +2758,95 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("11_4f0od")
 
-[node name="Gap_1" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+[node name="Gap" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Gap_1" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="CostBg" type="Panel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer"]
-custom_minimum_size = Vector2(72, 24)
+[node name="Time" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("7_swumr")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img] [/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="CostBg" type="PanelContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_se686")
 
-[node name="Cost" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/CostBg"]
-custom_minimum_size = Vector2(64, 0)
+[node name="Cost" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/CostBg"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_swumr")
+bbcode_enabled = true
+text = "[right]$cost[/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_4f0od")
+
+[node name="Margin" type="MarginContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="KeepDistrict" type="MarginContainer" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/Margin"]
+custom_minimum_size = Vector2(296, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/Margin/KeepDistrict"]
+layout_mode = 2
+theme = ExtResource("9_s3uik")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_kp8cp")
+
+[node name="Name" type="RichTextLabel" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/Margin/KeepDistrict/Button"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -20.5
-offset_top = -12.0
-offset_right = 20.5
-offset_bottom = 12.0
+offset_top = -10.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 theme = ExtResource("7_swumr")
 bbcode_enabled = true
-text = "[right]$v[img=24x24]Assets/UI/Symbols/Influence.png[/img][/right]"
+text = "[center]Keep $name[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("11_4f0od")
+
+[node name="ToolTip" type="Control" parent="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/Margin/KeepDistrict/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("8_oc75w")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
 
 [node name="PopInfo" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(320, 0)
@@ -2777,14 +3051,14 @@ script = ExtResource("11_4f0od")
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions/Investigate/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions/Investigate/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions/Investigate/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Features/Feature_0/MarginContainer/VBoxContainer/Actions/Investigate/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Pop/Button" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnSelect"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Pop/Button/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Pop/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Pop/Button/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Pop/Button/ToolTip" method="OnHoverExit"]
 [connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnSelect"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/Button/ToolTip" method="OnHoverExit"]
-[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnSelectPop"]
-[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/PopBg/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/Icon/NoPopBg/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/SystemInvestment/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/SystemInvestment/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/SystemInvestment/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/SystemInvestment/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/Uncontroled/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/Uncontroled/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/Uncontroled/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/Uncontroled/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/PrivateBusiness/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Effects/Control/PrivateBusiness/ToolTip" method="OnHoverEnter"]
@@ -2807,6 +3081,8 @@ script = ExtResource("11_4f0od")
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_2/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_2/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_3/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_3/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_3/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Construction/Unused_3/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Progress/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Progress/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Progress/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Progress/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Control/TextureRect/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Control/TextureRect/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Control/TextureRect/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Control/TextureRect/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_1/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Pip_1/ToolTip" method="OnHoverEnter"]
@@ -2823,12 +3099,20 @@ script = ExtResource("11_4f0od")
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_3/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Invrest/Unused_3/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PopProgress/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressUpgrade/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressUpgrade/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressUpgrade/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressUpgrade/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/CancelChange" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnCancelChange"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/CancelChange/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/CancelChange/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/CancelChange/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/CancelChange/ToolTip" method="OnHoverExit"]
 [connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnRegainControl"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/RegainControl/ToolTip" method="OnHoverExit"]
-[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnImprove"]
-[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Improve/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnPlanDistrct"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Upgrade" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnUpgrade"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Upgrade/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Upgrade/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Upgrade/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Upgrade/ToolTip" method="OnHoverExit"]
 [connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnInvest"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Invest/ToolTip" method="OnHoverExit"]
@@ -2844,22 +3128,17 @@ script = ExtResource("11_4f0od")
 [connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnPrivatize"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Privatize/ToolTip" method="OnHoverExit"]
-[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnNationalizeBuy"]
-[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeBuy/ToolTip" method="OnHoverExit"]
-[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnNationalizeForced"]
-[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/NationalizeForced/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Nationalize" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnNationalize"]
+[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Nationalize/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Nationalize/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Nationalize/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/Nationalize/ToolTip" method="OnHoverExit"]
 [connection signal="pressed" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0" method="OnChangeDistrict"]
 [connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/ChangeDistrict/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" to="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/Actions/PlanDistrict/ToolTip" method="OnHoverExit"]
 [connection signal="pressed" from="ChooseDistrict/PossibleDistricts/TitleBg/CloseButton" to="." method="CloseChooseDistrictWindow"]
-[connection signal="pressed" from="ChooseDistrict/PossibleDistricts/KeepDistrict/Button" to="." method="CloseChooseDistrictWindow"]
-[connection signal="mouse_entered" from="ChooseDistrict/PossibleDistricts/KeepDistrict/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/KeepDistrict/Button/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="ChooseDistrict/PossibleDistricts/KeepDistrict/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/KeepDistrict/Button/ToolTip" method="OnHoverExit"]
-[connection signal="pressed" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button" to="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0" method="OnSelect"]
-[connection signal="mouse_entered" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/Button" to="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0" method="OnSelect"]
+[connection signal="mouse_entered" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/VBoxContainer/District_0/MarginContainer/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/Margin/KeepDistrict/Button" to="." method="CloseChooseDistrictWindow"]
+[connection signal="mouse_entered" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/Margin/KeepDistrict/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/Margin/KeepDistrict/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/Margin/KeepDistrict/Button/ToolTip" to="ChooseDistrict/PossibleDistricts/ScrollContainerBg/ScrollContainer/VBoxContainer/Margin/KeepDistrict/Button/ToolTip" method="OnHoverExit"]
 [connection signal="pressed" from="PopInfo/TitleBg/CloseButton" to="." method="ClosePopInfoWindow"]

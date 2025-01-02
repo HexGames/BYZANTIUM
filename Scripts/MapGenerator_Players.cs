@@ -19,8 +19,8 @@ public partial class MapGenerator : Node
     {
         DataBlock stockpiles = Data.AddData(player, "Stockpiles", DefLibrary);
 
-        Data.AddData(stockpiles, "BC", 200, DefLibrary);
-        Data.AddData(stockpiles, "Influence", 100, DefLibrary);
+        Data.AddData(stockpiles, "BC", 5000, DefLibrary);
+        Data.AddData(stockpiles, "Influence", 2500, DefLibrary);
         Data.AddData(stockpiles, "Research", 0, DefLibrary);
     }
 

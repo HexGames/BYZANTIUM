@@ -7,7 +7,7 @@ public class ActionTax
 {
     static public void SetTax(SystemData system, int tax)
     {
-        system.Data.SetSubValueI("ActionTax/Tax", tax, Game.self.Def);
+        system.Data.SetSubValueI("ActionTax", "Tax", tax, Game.self.Def);
 
         system.Init_DistrictData();
         system.Init_Resources();

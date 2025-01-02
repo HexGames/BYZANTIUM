@@ -58,15 +58,27 @@ public class Helper
     //    return text.Split(separator)[0];
     //}
 
-    public static string ResValueToString(int value, int precision = 10, bool alwaysShowSign = false)
+    public static string ResValueToString(int value, int precision = 10, bool alwaysShowSign = false, bool redNegativeValues = false)
     {
+        string prefix = "";
+        string sufix = "";
+        if (redNegativeValues && value < 0)
+        {
+            prefix += GetColorPrefix_Bad();
+            sufix += GetColorSufix();
+        }
+        if (alwaysShowSign && value > 0)
+        {
+            prefix += "+";
+        }
+
         if (Mathf.Abs(value) >= 10 * precision)
         {
-            return (alwaysShowSign && value > 0 ? "+" : "") + (value / precision).ToString();
+            return prefix + (value / precision).ToString() + sufix;
         }
         else
         {
-            return (alwaysShowSign && value > 0 ? "+" : "") + (value / precision).ToString() + ((value * 10 / precision) % 10 != 0 ? "." + (Mathf.Abs((value * 10 / precision) % 10)).ToString() : "");
+            return prefix + (value / precision).ToString() + ((value * 10 / precision) % 10 != 0 ? "." + (Mathf.Abs((value * 10 / precision) % 10)).ToString() : "") + sufix;
         }
     }
 

@@ -6,9 +6,9 @@ using System.Linq;
 // Editor
 public partial class DefLibrary : Node
 {
-    [ExportCategory("Def Economy")]
-    [Export]
-    public DataBlock EconomyData = null;
+    //[ExportCategory("Def Economy")]
+    //[Export]
+    //public DataBlock EconomyData = null;
 
     //public void _Ready_Economy()
     //{
@@ -25,6 +25,6 @@ public partial class DefLibrary : Node
 
     public void LoadEconomyDefFunc()
     {
-        EconomyData = Data.LoadFile("Defs_Mod/Economy.mod", this);
+        //EconomyData = Data.LoadFile("Defs_Mod/Economy.mod", this);
     }
 }

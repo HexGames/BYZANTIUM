@@ -204,6 +204,9 @@ public partial class DefLibrary : Node
 
     public override void _Ready()
     {
+        if (Engine.IsEditorHint())
+            return;
+
         _Ready_Districts();
         _Ready_Empires();
         _Ready_Features();

@@ -121,27 +121,27 @@ public partial class MapNode : Node
         }
     }
 
-    public void OnBackgoundInputEvent(Node camera, InputEvent inputEvent, Vector3 position, Vector3 normal, int shapeIdx)
-    {
-        if (inputEvent is InputEventMouseButton mouseButtonEvent)
-        {
-            if (!mouseButtonEvent.IsPressed())
-            {
-                // on mouse button release
-                if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
-                {
-                    //GD.Print("You clicked on " + Label.Text);
-                    //Game.Input.DeselectAll();
-                    Game.Input.DeselectOneStep();
-                }
-                if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
-                {
-                    //GD.Print("You clicked on " + Label.Text);
-                    //DeselectAll();
-                    //Game.Input.DeselectOneStep();
-                    Game.Input.DeselectOneStep();
-                }
-            }
-        }
-    }
+    //public void OnBackgoundInputEvent(Node camera, InputEvent inputEvent, Vector3 position, Vector3 normal, int shapeIdx)
+    //{
+    //    if (inputEvent is InputEventMouseButton mouseButtonEvent)
+    //    {
+    //        if (!mouseButtonEvent.IsPressed())
+    //        {
+    //            // on mouse button release
+    //            if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
+    //            {
+    //                //GD.Print("You clicked on " + Label.Text);
+    //                //Game.Input.DeselectAll();
+    //                Game.Input.DeselectOneStep();
+    //            }
+    //            if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
+    //            {
+    //                //GD.Print("You clicked on " + Label.Text);
+    //                //DeselectAll();
+    //                //Game.Input.DeselectOneStep();
+    //                Game.Input.DeselectOneStep();
+    //            }
+    //        }
+    //    }
+    //}
 }

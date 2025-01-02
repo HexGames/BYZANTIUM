@@ -2,31 +2,56 @@
 
 public class DefDistrictWrapper
 {
-    public DataBlock _Data;
+    //public DataBlock _Data;
 
     public string Name = "";
+    public int Level = 0;
+    public string UpgradeOf = "";
     public string Type = "";
     public string Icon = "";
-    //public int Turns = 0;
-    public int Cost = 0;
+    public int Cost_BC = 0;
+    public DefBenefitWrapper Benefit = null;
+    public string Control_Type = "";
+    public string Privatize_to = "";
+    public string Nationalize_to = "";
 
-    public DistrictEconomyWrapper Economy_PerSession = null;
+    //public int Cost_Influence
+    //{
+    //    get { return 2 * Cost_BC / 5; }
+    //}
+    //public int Nationalize_Influence
+    //{
+    //    get { return 5 * Cost_BC / 2; }
+    //}
+    //public int Nationalize_BC
+    //{
+    //    get { return 5 * Cost_BC / 2; }
+    //}
+    //public int Privatize_BC
+    //{
+    //    get { return Cost_BC; }
+    //}
 
     public DefDistrictWrapper(DataBlock targetData)
     {
-        _Data = targetData;
+        //_Data = targetData;
+        DataBlock _Data = targetData;
 
         Name = _Data.ValueS;
+        Level = _Data.GetSubValueI("Level");
+        UpgradeOf = _Data.GetSubValueS("UpgradeOf");
         Type = _Data.GetSubValueS("Type");
         Icon = _Data.GetSubValueS("Icon");
-        Cost = _Data.GetSubValueI("Cost");
-
-        Economy_PerSession = new DistrictEconomyWrapper(this);
+        Cost_BC = _Data.GetSubValueI("Cost", "BC");
+        Benefit = new DefBenefitWrapper(_Data.GetSub("Benefit"));
+        Control_Type = _Data.GetSubValueS("Control", "Type");
+        Privatize_to = _Data.GetSubValueS("Control", "PrivatizeTo");
+        Nationalize_to = _Data.GetSubValueS("Control", "NationalizeTo");
     }
 
     public bool CanInvest()
     { 
-        return Type == "District" && _Data.GetSubValueS("Control/Typ") != "State_Owned";
+        return Type == "District" && Control_Type != "State_Owned";
     }
 
     public bool CanPrivatize()

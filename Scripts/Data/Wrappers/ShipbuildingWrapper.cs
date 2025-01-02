@@ -41,8 +41,8 @@ public class ShipbuildingWrapper
     {
         Clear();
 
-        string currentDesign = _System.Data.GetSubValueS("ActionBuildShip/Design");
-        string lastDesign = _System.Data.GetSubValueS("ActionBuildShip/LastDesign");
+        string currentDesign = _System.Data.GetSubValueS("ActionBuildShip", "Design");
+        string lastDesign = _System.Data.GetSubValueS("ActionBuildShip", "LastDesign");
 
         DesignCurrent = _System._Player.GetDesign(currentDesign);
         DesignLast = _System._Player.GetDesign(lastDesign);
@@ -58,12 +58,12 @@ public class ShipbuildingWrapper
                 DistrictData district = colony.Districts[districtIdx];
                 if (district.Economy_PerTurn.Resource == "Shipbuilding")
                 {
-                    Shipbuilding += district.Economy_PerTurn.Production;
+                    Shipbuilding += district.Economy_PerTurn.Production_Final;
                 }
             }
         }
         ProgressMax = DesignCurrent.Cost;
-        ProgressCurrent = _System.Data.GetSubValueI("ActionBuildShip/Progress");
+        ProgressCurrent = _System.Data.GetSubValueI("ActionBuildShip", "Progress");
         ProgressNextTurn = Mathf.Min(ProgressCurrent + Shipbuilding, ProgressMax); 
         if (Shipbuilding > 0) Turns = ((ProgressMax - ProgressCurrent) + (Shipbuilding - 1)) / Shipbuilding;
         else Turns = 999;

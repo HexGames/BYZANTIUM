@@ -30,6 +30,29 @@ public partial class UIStarInfoSystem : Control
     public UIText PopsHappy;
 
     [Export]
+    public UIText Wealth;
+    [Export]
+    private ProgressBar WealthProgressCurrent = null;
+    [Export]
+    private ProgressBar WealthProgressNextTurn = null;
+    [Export]
+    public UITooltipTrigger WealthTooltip = null;
+    [Export]
+    public UIText WealthInequality;
+    [Export]
+    public UITooltipTrigger WealthInequalityTooltip = null;
+    [Export]
+    public Control WealthInvestBg;
+    [Export]
+    public UIText WealthInvest;
+    [Export]
+    private ProgressBar WealthInvestCurrent = null;
+    [Export]
+    private ProgressBar WealthInvestNextTurn = null;
+    [Export]
+    public UITooltipTrigger WealthInvestTooltip = null;
+
+    [Export]
     public UIText ControlText;
 
     [Export]
@@ -50,6 +73,10 @@ public partial class UIStarInfoSystem : Control
     public ColorRect ControlRebelious;
     [Export]
     public TextureRect ControlCursor;
+    [Export]
+    public UIText ControlCorruption;
+    [Export]
+    public UITooltipTrigger ControlCorruptionTooltip = null;
     [Export]
     public Control ControlAlert;
 
@@ -139,6 +166,36 @@ public partial class UIStarInfoSystem : Control
         PopsNeutral.SetTextWithReplace("$v", _System.Pops_PerTurn.ToString_Neutral());
         PopsHappy.SetTextWithReplace("$v", _System.Pops_PerTurn.ToString_Happy());
 
+        //
+        Wealth.SetTextWithReplace("$val", _System.Economy_PerTurn.WealthLevel.ToString());
+        WealthProgressCurrent.MaxValue = _System.Economy_PerTurn.WealthMax;
+        WealthProgressCurrent.Value = _System.Economy_PerTurn.WealthProgress;
+        WealthProgressNextTurn.MaxValue = _System.Economy_PerTurn.WealthMax;
+        WealthProgressNextTurn.Value = _System.Economy_PerTurn.WealthProgress;
+        WealthTooltip.Title = "Wealth";
+        WealthTooltip.Row_1 = "bah";
+
+        WealthInequality.SetTextWithReplace("$val", _System.Economy_PerTurn.Inequality.ToString());
+        WealthInequalityTooltip.Title = "Inequality";
+        WealthInequalityTooltip.Row_1 = "bah";
+
+        if (_System.DistrictToInvest_PerTurn != null)
+        {
+            WealthInvestBg.Visible = true;
+            WealthInvest.SetTextWithReplace("$t", _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestTurns.ToString());
+            WealthInvestCurrent.MaxValue = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestMax;
+            WealthInvestCurrent.Value = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestProgress;
+            WealthInvestNextTurn.MaxValue = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestMax;
+            WealthInvestNextTurn.Value = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestProgress;
+            WealthInvestTooltip.Title = "Invest";
+            WealthInvestTooltip.Row_1 = "bah";
+        }
+        else
+        {
+            WealthInvestBg.Visible = false;
+        }
+
+        //
         ControlText.SetTextWithReplace("$val", _System.Control_PerTurn.ToString_ControlTotal());//.Replace("$max", _System.Control_PerTurn.ToString_Control());
 
         if (_System.Control_PerTurn.RebellionChange < 0)
@@ -188,20 +245,24 @@ public partial class UIStarInfoSystem : Control
         else if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionMax) ControlCursor.SetPosition(new Vector2(280, 28));
         else ControlCursor.SetPosition(new Vector2(24 + (240 * (_System.Control_PerTurn.RebellionCurrent - _System.Control_PerTurn.RebellionLoyal) / range), 28));
 
+        ControlCorruption.SetTextWithReplace("$val", "??");
+        ControlCorruptionTooltip.Title = "Corruption";
+        ControlCorruptionTooltip.Row_1 = "bah";
+
         ControlAlert.Visible = _System.Control_PerTurn.RebellionChange < 0 && _System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionUnsure;
 
-        Infrastructure.SetTextWithReplace("$val", _System.Infrastructure_PerTurn.ToString_InfrastructureUsed(), "$max", _System.Infrastructure_PerTurn.ToString_Infrastructure());
-        InfrastructureGrowth.SetTextWithReplace("$v", _System.Infrastructure_PerTurn.ToString_Construction());
-        InfrastructureTurns.SetTextWithReplace("$t", _System.Infrastructure_PerTurn.ToString_ConstructionTurns());
-        
-        InfrastructureProgressCurrent.MaxValue = _System.Infrastructure_PerTurn.ConstructionProgressMax;
-        InfrastructureProgressCurrent.Value = _System.Infrastructure_PerTurn.ConstructionProgress;
-        InfrastructureProgressNextTurn.MaxValue = _System.Infrastructure_PerTurn.ConstructionProgressMax;
-        InfrastructureProgressNextTurn.Value = _System.Infrastructure_PerTurn.ConstructionProgressNextTurn;
-        
-        int points = _System.Infrastructure_PerTurn.Infrastructure - _System.Infrastructure_PerTurn.InfrastructureUsed;
-        InfrastructureAlert.Visible = points > 0;
-        InfrastructureAlertPoints.SetTextWithReplace("$v", points.ToString());
+        //Infrastructure.SetTextWithReplace("$val", _System.Infrastructure_PerTurn.ToString_InfrastructureUsed(), "$max", _System.Infrastructure_PerTurn.ToString_Infrastructure());
+        //InfrastructureGrowth.SetTextWithReplace("$v", _System.Infrastructure_PerTurn.ToString_Construction());
+        //InfrastructureTurns.SetTextWithReplace("$t", _System.Infrastructure_PerTurn.ToString_ConstructionTurns());
+        //
+        //InfrastructureProgressCurrent.MaxValue = _System.Infrastructure_PerTurn.ConstructionProgressMax;
+        //InfrastructureProgressCurrent.Value = _System.Infrastructure_PerTurn.ConstructionProgress;
+        //InfrastructureProgressNextTurn.MaxValue = _System.Infrastructure_PerTurn.ConstructionProgressMax;
+        //InfrastructureProgressNextTurn.Value = _System.Infrastructure_PerTurn.ConstructionProgressNextTurn;
+        //
+        //int points = _System.Infrastructure_PerTurn.Infrastructure - _System.Infrastructure_PerTurn.InfrastructureUsed;
+        //InfrastructureAlert.Visible = points > 0;
+        //InfrastructureAlertPoints.SetTextWithReplace("$v", points.ToString());
 
         int taxLevel = _System.Economy_PerTurn.Tax;
         TaxPip_1.Visible = taxLevel == 1;

@@ -19,7 +19,7 @@ public class ActionShipbuilding
         system.Shipbuilding_PerTurn.ProgressCurrent += shipbuilding;
         //if (system.Pops_PerTurn.GrowthProgress >= system.Pops_PerTurn.GrowthProgressMax)
 
-        system.Data.SetSubValueI("ActionBuildShip/Progress", system.Shipbuilding_PerTurn.ProgressCurrent, Game.self.Def);
+        system.Data.SetSubValueI("ActionBuildShip", "Progress", system.Shipbuilding_PerTurn.ProgressCurrent, Game.self.Def);
 
         //DataBlock actionBuildShip = system.Data.GetSub("ActionBuildShip");
         //DesignData design = system._Player.GetDesign(actionBuildShip.GetSub("Design").ValueS);

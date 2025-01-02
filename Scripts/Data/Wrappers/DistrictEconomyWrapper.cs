@@ -7,160 +7,207 @@ using System.ComponentModel.Design;
 public class DistrictEconomyWrapper
 {
     public string Resource;
-    public int Production;
-    public int TaxBC;
-    public int Wealth;
-    public int Reinvest;
 
-    public int ExtraConstruction = 0;
+    public bool Stoped;
+
+    public int Production_Base;
+    public int Production_BonusToSystem;
+    public int Production_BonusFromSystem;
+    public int Production_LocalBonus;
+    public int Production_BeforeTax;
+    public int Production_Final;
+    public int InvestBC_Final;
+    //public int TaxBC_Final;
+    public int Wealth_Final;
+    public int ExtraBC;
+
+    public bool ReinvestActive;
+    public int ReinvestPerTurn;
+    public int ReinvestProgress;
+    public int ReinvestMax;
+    public int ReinvestTurns;
+    public int ReinvestToSystem;
+    public int ReinvestFromSystem;
 
     DistrictData _District;
-    DefDistrictWrapper _DistrictDef;
+    DistrictNew _DistrictNew;
 
     public DistrictEconomyWrapper(DistrictData district)
     {
         _District = district;
-        _DistrictDef = district.DistrictDef;
     }
-    public DistrictEconomyWrapper(DefDistrictWrapper districtDef)
+    public DistrictEconomyWrapper(DistrictNew districtNew)
     {
-        _DistrictDef = districtDef;
+        _DistrictNew = districtNew;
     }
 
-    public void Refresh()
+    public void Clear()
     {
-        int pop = 0;
-        if (_District != null && _District._Data.HasSub("Pop")) pop = 1;
+        Resource = "";
+        Stoped = false;
+        Production_Base = 0;
+        Production_BonusToSystem = 0;
+        Production_BonusFromSystem = 0;
+        Production_LocalBonus = 0;
+        Production_BeforeTax = 0;
+        Production_Final = 0;
+        InvestBC_Final = 0;
+        Wealth_Final = 0;
+        ExtraBC = 0;
+        ReinvestActive = false;
+        ReinvestPerTurn = 0;
+        ReinvestProgress = 0;
+        ReinvestMax = 0;
+        ReinvestTurns = 999;
+        ReinvestToSystem = 0;
+        ReinvestFromSystem = 0;
+    }
 
-        Resource = _DistrictDef._Data.GetSub("Resource").ValueS;
-        if (_DistrictDef._Data.HasSub("Benefit"))
+    public void RefreshBase_1_1()
+    {
+        DefDistrictWrapper districtDef = null;
+        
+        if (_District != null) districtDef = _District.DistrictDef;
+        else if (_DistrictNew != null) districtDef = _DistrictNew.DistrictDef;
+
+        if (districtDef == null)
+            return;
+
+        Stoped = _District != null && _District._Data.GetSubValueI("ActionChange", "StopWorking") == 1;
+        if (Stoped)
         {
-            DataBlock benefit = _DistrictDef._Data.GetSub("Benefit");
-            if (benefit.HasSub("Extra"))
-            {
-                ExtraConstruction = benefit.GetSubValueI("Extra/Construction");
-            }
-        }
-
-        int tax = 1;
-
-        int popBonus = _DistrictDef._Data.GetSubValueI("Default/Pop*Bonus");
-        int factoryBonus = _DistrictDef._Data.GetSubValueI("Default/Factory*Bonus");
-
-        int factory = 0;
-        int investment = 0;
-        string controlType = _DistrictDef._Data.GetSubValueS("Control/Type");
-        if (_District != null && _District._Data.HasSub("Pop")) // _District is not null
-        {
-            controlType = _District.DistrictDef._Data.GetSubValueS("Control/Type");
-            factory = _District._Data.GetSubValueI("Factory");
-            investment = _District._Data.GetSubValueI("Investment");
-        }
-        bool stateOwned =  controlType == "State_Owned";
-        bool isPrivate = controlType == "Private";
-        bool police = controlType == "Police";
-
-        if (stateOwned)
-        {
-            DataBlock ecoData;
-            if (factory > 0) ecoData = Game.self.Def.EconomyData.GetSub("District").GetSub("State_Factory_" + factory.ToString());
-            else ecoData = Game.self.Def.EconomyData.GetSub("District").GetSub("State_Pop");
-
-            DataBlock invData = null;
-            if (investment > 0)
-            {
-                if (factory > 0) invData = Game.self.Def.EconomyData.GetSub("Invest").GetSub("State_Factory_" + factory.ToString(), "Level_" + investment.ToString());
-                else invData = Game.self.Def.EconomyData.GetSub("Invest").GetSub("State_Pop", "Level_" + investment.ToString());
-            }
-
-            int bonus = popBonus + factoryBonus * factory;
-            Production = ecoData.GetSub("Resource").ValueI + bonus;
-
-            TaxBC = 0;
-            Wealth = ecoData.GetSub("Wealth").ValueI;
-            Reinvest = 0;
-
-            if (invData != null)
-            {
-                Production += invData.GetSub("Resource").ValueI;
-                TaxBC -= invData.GetSub("Cost*BC").ValueI;
-                Wealth += invData.GetSubValueI("Wealth");
-                Reinvest += invData.GetSubValueI("Reinvest");
-            }
-        }
-        else if (isPrivate)
-        {
-            DataBlock ecoData;
-            if (factory > 0) ecoData = Game.self.Def.EconomyData.GetSub("District").GetSub("Private_Factory_" + factory.ToString(), "Tax_" + tax.ToString());
-            else ecoData = Game.self.Def.EconomyData.GetSub("District").GetSub("Private_Pop", "Tax_" + tax.ToString());
-
-            DataBlock invData = null;
-            if (investment > 0)
-            {
-                if (factory > 0) invData = Game.self.Def.EconomyData.GetSub("Invest").GetSub("Private_Factory_" + factory.ToString(), "Level_" + investment.ToString());
-                else invData = Game.self.Def.EconomyData.GetSub("Invest").GetSub("Private_Pop", "Level_" + investment.ToString());
-            }
-
-            Production = ecoData.GetSub("Resource").ValueI;
-            int privateBC = ecoData.GetSubValueI("PrivateBC");
-            TaxBC = privateBC * Game.self.Def.EconomyData.GetSub("Tax").GetSub("Tax_" + tax.ToString()).GetSub("Percent").ValueI / 100;
-            Reinvest = (privateBC - TaxBC) * Game.self.Def.EconomyData.GetSub("Reinvest").GetSub("Private_" + (factory > 0 ? "Factory_" + factory.ToString() : "Pop")).GetSub("Percent").ValueI / 100;
-            Wealth = privateBC - TaxBC - Reinvest;
-
-            if (invData != null)
-            {
-                Production += invData.GetSub("Resource").ValueI;
-                TaxBC -= invData.GetSub("Cost*BC").ValueI;
-                Wealth += invData.GetSubValueI("Wealth");
-                Reinvest += invData.GetSubValueI("Reinvest");
-            }
-        }
-        else if (police)
-        {
-            DataBlock ecoData;
-            if (factory > 0) ecoData = Game.self.Def.EconomyData.GetSub("District").GetSub("Police_Factory_" + factory.ToString());
-            else ecoData = Game.self.Def.EconomyData.GetSub("District").GetSub("Police_Pop");
-
-            int bonus = popBonus + factoryBonus * factory;
-            Production = ecoData.GetSub("Resource").ValueI + bonus;
-
-            TaxBC = 0;
-            Wealth = ecoData.GetSub("Wealth").ValueI;
-            Reinvest = 0;
+            Resource = districtDef.Benefit.Resource;
+            Wealth_Final = districtDef.Benefit.Wealth;
         }
         else
         {
-            DataBlock ecoData;
-            if (factory > 0) ecoData = Game.self.Def.EconomyData.GetSub("District").GetSub("State_Factory_" + factory.ToString());
-            else ecoData = Game.self.Def.EconomyData.GetSub("District").GetSub("State_Factory_" + pop.ToString());
+            Resource = districtDef.Benefit.Resource;
+            ExtraBC = districtDef.Benefit.ExtraBC;
 
-            Production = 0;
-            TaxBC = 0;
-            Wealth = ecoData.GetSub("Wealth").ValueI;
-            Reinvest = 0;
+            Production_Base = districtDef.Benefit.Income;
+            Production_BonusToSystem = districtDef.Benefit.Bonus;
+            Production_BonusFromSystem = 0;
+            Production_LocalBonus = 0;
+
+            Wealth_Final = districtDef.Benefit.Wealth;
+
+            if (_District != null && districtDef.Control_Type == "Private")
+            {
+                ReinvestActive = true;
+                ReinvestProgress = _District.GetReinvestProgress();
+                ReinvestMax = 2 * districtDef.Cost_BC;
+            }
         }
+    }
+
+    public void AddBonusFromSystem_1_2(int bonus)
+    {
+        if (Stoped)
+            return;
+
+        Production_BonusFromSystem += bonus;
+    }
+        
+    public void RefreshFinal_1_3()
+    {
+        if (Stoped)
+            return;
+
+        DefDistrictWrapper districtDef = null;
+        bool isPrivate = false;
+        int taxPerc = 50;  
+        int investment = 0;
+        int privateDistricts = 0;
+
+        if (_District != null)
+        {
+            districtDef = _District.DistrictDef;
+            isPrivate = _District.IsPrivate();
+            taxPerc = _District._Colony._System.GetTaxPerc();
+            investment = _District._Data.GetSubValueI("InvestLevel");
+            privateDistricts = _District._Colony._System.GetNumberOfPrivateDistricts();
+        }
+        else if (_DistrictNew != null)
+        {
+            districtDef = _DistrictNew.DistrictDef;
+            isPrivate = _DistrictNew.IsPrivate();
+            taxPerc = _DistrictNew._Colony._System.GetTaxPerc();
+            investment = 0;
+            privateDistricts = 0;
+        }
+
+        if (districtDef == null)
+            return;
+
+        Production_BeforeTax = (Production_Base + Production_BonusFromSystem) * (100 + Production_LocalBonus) / 100;
+
+        if (isPrivate)
+        {
+            int investLocalBonus = 0;
+            if (investment > 0)
+            {
+                int investmentIdx = Mathf.Clamp(investment - 1, 0, districtDef.Benefit.Invest_CostBC.Count);
+                InvestBC_Final = districtDef.Benefit.Invest_CostBC[investment];
+                investLocalBonus = districtDef.Benefit.Invest_ExtraLocalBonus[investment];
+            }
+            else
+            {
+                InvestBC_Final = 0;
+            }
+
+            int productionFromInvestment = Production_BeforeTax * investLocalBonus / 100;
+
+            Production_Final = Production_BeforeTax * taxPerc / 100 + productionFromInvestment;
+
+            if (privateDistricts > 0)
+            {
+                int remaining = Production_BeforeTax - Production_BeforeTax * taxPerc / 100;
+                int toWealth = remaining - remaining * privateDistricts / (privateDistricts + 1);
+                Wealth_Final += toWealth;
+                int toSystem = (remaining - toWealth) * (privateDistricts - 1) / privateDistricts;
+                ReinvestToSystem = toSystem;
+                ReinvestPerTurn = remaining - toWealth - toSystem + InvestBC_Final;
+            }
+        }
+        else
+        {
+            Production_Final = Production_BeforeTax;
+        }
+
+        RecalculateReinvestTurns();
+    }
+
+    public void RecalculateReinvestTurns()
+    {
+        if (ReinvestPerTurn > 0) ReinvestTurns = ((ReinvestMax - ReinvestProgress) + (ReinvestPerTurn - 1)) / ReinvestPerTurn;
     }
 
     public string ToString_Short(int iconSize = 24)
     {
         string income = "";
 
-        if (Resource == "BC")
+        if (Stoped)
         {
-            int value = Production + TaxBC;
-            if (value > 0) income += Helper.ResValueToString(value) + Helper.GetIcon("BC", iconSize);
-            else if (TaxBC < 0) income += Helper.GetColorPrefix_Bad() + Helper.ResValueToString(value) + Helper.GetColorSufix() + Helper.GetIcon("BC", iconSize);
+            income = "Retooling";
+        }
+        else if (Resource == "BC")
+        {
+            int value = Production_Final + ExtraBC - InvestBC_Final;
+            income += Helper.ResValueToString(value, 10, false, true) + Helper.GetIcon(Resource, iconSize);
+            //if (value > 0) income += Helper.ResValueToString(value) + Helper.GetIcon("BC", iconSize);
+            //else if (value < 0) income += Helper.GetColorPrefix_Bad() + Helper.ResValueToString(value) + Helper.GetColorSufix() + Helper.GetIcon("BC", iconSize);
         }
         else
         {
-            if (Production != 0) income += Helper.ResValueToString(Production) + Helper.GetIcon(Resource, iconSize);
-            if (TaxBC > 0) income += (income.Length > 1 ? "  " : "") + Helper.ResValueToString(TaxBC) + Helper.GetIcon("BC", iconSize);
-            else if (TaxBC < 0) income += (income.Length > 1 ? "  " : "") + Helper.GetColorPrefix_Bad() + Helper.ResValueToString(TaxBC) + Helper.GetColorSufix() + Helper.GetIcon("BC", iconSize);
+            int bc = ExtraBC - InvestBC_Final;
+            income += Helper.ResValueToString(Production_Final) + Helper.GetIcon(Resource, iconSize);
+            //if (TaxBC > 0) income += (income.Length > 1 ? "  " : "") + Helper.ResValueToString(TaxBC) + Helper.GetIcon("BC", iconSize);
+            //else if (TaxBC < 0) income += (income.Length > 1 ? "  " : "") + Helper.GetColorPrefix_Bad() + Helper.ResValueToString(TaxBC) + Helper.GetColorSufix() + Helper.GetIcon("BC", iconSize);
+            if (bc != 0) income += (income.Length > 1 ? "  " : "") + Helper.ResValueToString(bc, 10, false, true) + Helper.GetIcon("BC", iconSize);
         }
         //if (Wealth != 0) income += (income.Length > 1 ? "  " : "") + Helper.ResValueToString(Wealth) + Helper.GetIcon("Wealth", iconSize);
         //if (Reinvest != 0) income += (income.Length > 1 ? "  " : "") + Wealth.ToString() + Helper.GetIcon("Invest", iconSize);
 
-        if (ExtraConstruction > 0) income += (income.Length > 1 ? "  " : "") + Helper.ResValueToString(ExtraConstruction) + Helper.GetIcon("Construction", iconSize);
 
         return income;
     }

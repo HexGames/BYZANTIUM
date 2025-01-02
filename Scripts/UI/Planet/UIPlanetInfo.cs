@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System.Collections.Generic;
 
 public partial class UIPlanetInfo : Control
 {
@@ -150,8 +151,15 @@ public partial class UIPlanetInfo : Control
         {
             if (Districts[idx] == district)
             {
-                if (Districts[idx] != null && Districts[idx]._District.Pop.GetProgress() < 1000) OpenChooseDistrictWindow(district);
-                else CloseChooseDistrictWindow();
+                //if (Districts[idx] != null && Districts[idx]._District._Data.GetSubValueI("Change_Cooldown") == 0 && Districts[idx]._District._Data.GetSubValueI("Control_Cooldown") == 0)
+                //{
+                //    if (Districts[idx]._District.Pop.GetProgress() < 1000) OpenChooseDistrictWindow(district, false);
+                //    else OpenChooseDistrictWindow(district, district._District.DistrictDef.Control_Type != "Private");
+                //}
+                //else
+                //{
+                CloseChooseDistrictWindow();
+                //}
                 ClosePopInfoWindow();
                 Districts[idx].OpenActions(true);
 
@@ -186,16 +194,42 @@ public partial class UIPlanetInfo : Control
         }
     }
 
-    public void OpenChooseDistrictWindow(UIPlanetInfoDistrict district)
+    public void OpenChooseDistrictWindowUpgrade(UIPlanetInfoDistrict district)
     {
         ChooseDistrictWindow.Visible = true;
+        ActionDistrict.RefreshUpgradeDistricts(district._District);
 
-        ActionDistrict.RefreshAvailableDistricts(district._District);
+        ChooseDistrictKeepText.SetTextWithReplace("$name", district._District.DistrictDef.Name);
+        // grow
+        GrowChooseDistrictList(district, district._District.ActionsChangeDistricts_OnRefresh);
+
+    }
+    public void OpenChooseDistrictWindowChangeControl(UIPlanetInfoDistrict district)
+    {
+        ChooseDistrictWindow.Visible = true;
+        ActionDistrict.RefreshChangeControlDistricts(district._District);
 
         ChooseDistrictKeepText.SetTextWithReplace("$name", district._District.DistrictDef.Name);
 
         // grow
-        while (ChooseDistrictItem.Count < district._District.ActionsChangeDistrictsPossible_OnRefresh.Count)
+        GrowChooseDistrictList(district, district._District.ActionsChangeDistricts_OnRefresh);
+    }
+
+    public void OpenChooseDistrictWindowChangeType(UIPlanetInfoDistrict district)
+    {
+        ChooseDistrictWindow.Visible = true;
+        ActionDistrict.RefreshChangeTypeDistricts(district._District);
+
+        ChooseDistrictKeepText.SetTextWithReplace("$name", district._District.DistrictDef.Name);
+
+        // grow
+        GrowChooseDistrictList(district, district._District.ActionsChangeDistricts_OnRefresh);
+    }
+
+    private void GrowChooseDistrictList(UIPlanetInfoDistrict district, List<DistrictNew> newDistricts)
+    {
+        // grow
+        while (ChooseDistrictItem.Count < newDistricts.Count)
         {
             UIPlanetInfoOtherDistrict newItem = ChooseDistrictItem[0].Duplicate(7) as UIPlanetInfoOtherDistrict;
             ChooseDistrictItem[0].GetParent().AddChild(newItem);
@@ -204,9 +238,9 @@ public partial class UIPlanetInfo : Control
 
         for (int idx = 0; idx < ChooseDistrictItem.Count; idx++)
         {
-            if (idx < district._District.ActionsChangeDistrictsPossible_OnRefresh.Count)
+            if (idx < newDistricts.Count)
             {
-                ChooseDistrictItem[idx].RefreshDistrict(district._District, district._District.ActionsChangeDistrictsPossible_OnRefresh[idx]);
+                ChooseDistrictItem[idx].RefreshDistrict(district._District, newDistricts[idx]);
                 ChooseDistrictItem[idx].Visible = true;
             }
             else
@@ -216,15 +250,20 @@ public partial class UIPlanetInfo : Control
         }
     }
 
+
     public void CloseChooseDistrictWindow()
     {
         ChooseDistrictWindow.Visible = false;
-        if (SelectedDistrict != null) SelectedDistrict.RefreshDistrict(SelectedDistrict._District);
+        if (SelectedDistrict != null)
+        {
+            SelectedDistrict.RefreshDistrict(SelectedDistrict._District);
+            SelectedDistrict.DeselectBtn();
+        }
     }
 
     public void SelectChosenDistrict(UIPlanetInfoOtherDistrict chosenDistrict)
     {
-        ActionDistrict.ChangeDistrict(SelectedDistrict._District, chosenDistrict._DistrictDef);
+        ActionDistrict.ChangeDistrict(SelectedDistrict._District, chosenDistrict._DistrictNew);
 
         SelectedDistrict.RefreshDistrict(SelectedDistrict._District);
         Game.self.GalaxyUI.Stockpiles.Refresh();

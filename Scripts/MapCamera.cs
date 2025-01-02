@@ -12,7 +12,7 @@ public partial class MapCamera : Camera3D
     // calculated
     [ExportCategory("Runtime")]
     [Export]
-    public int LOD = 2; 
+    public int LOD = 0; 
     [Export]
     public Vector3 TargetPosition; //camera position
     private float TargetHeight;
@@ -73,7 +73,7 @@ public partial class MapCamera : Camera3D
         TargetHeight = ZoomMaxHeight / 2;
         CurrentRotationX = RotationXDefault;
 
-        LOD = 2;
+        LOD = 0;
     }
 
     public override void _Process(double delta)
@@ -85,7 +85,6 @@ public partial class MapCamera : Camera3D
 
         ProcessLOD((float)delta);
     }
-
 
     public Vector3 Input_Keyboard = Vector3.Zero;
     public float Input_Scroll = 0.0f;

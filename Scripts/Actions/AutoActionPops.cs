@@ -64,7 +64,7 @@ public class AutoActionPops
             if (chosenNextColony != null)
             {
                 //GD.Print("123" + system.SystemName);
-                DataBlock districtRaw = ColonyRaw.CreateNewDistrictAndPop(system.Data, chosenNextColony.Data, false, Game.self.Def);
+                DataBlock districtRaw = DistrictRaw.CreateNewDistrictAndPop(system.Data, chosenNextColony.Data, false, Game.self.Def);
                 DistrictData district = new DistrictData(districtRaw, chosenNextColony);
                 district.Economy_PerTurn = new DistrictEconomyWrapper(district);
                 chosenNextColony.Districts.Add(district);

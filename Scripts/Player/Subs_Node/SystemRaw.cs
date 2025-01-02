@@ -18,8 +18,11 @@ public static class SystemRaw
         DataBlock actionBuildDistrict = Data.AddData(system, "ActionGrowth", def);
         Data.AddData(actionBuildDistrict, "FocusColony", "tempColony", def);
 
-        DataBlock actionInfrastructure = Data.AddData(system, "ActionInfrastructure", def);
-        Data.AddData(actionInfrastructure, "Infrastructure", 0, def);
+        //DataBlock actionInvestDistrict = Data.AddData(system, "ActionInvest", def);
+        //Data.AddData(actionInvestDistrict, "FocusDistrict", -1, def);
+
+        //DataBlock actionInfrastructure = Data.AddData(system, "ActionInfrastructure", def);
+        //Data.AddData(actionInfrastructure, "Infrastructure", 0, def);
 
         DataBlock actionBuildShip = Data.AddData(system, "ActionBuildShip", def);
         Data.AddData(actionBuildShip, "Design", "Babylon", def);
@@ -29,6 +32,10 @@ public static class SystemRaw
 
         DataBlock actionRebbelion = Data.AddData(system, "ActionRebellion", def);
         Data.AddData(actionRebbelion, "Current", 0, def);
+
+        DataBlock wealth = Data.AddData(system, "Wealth", def);
+        Data.AddData(wealth, "Current", 0, def);
+        Data.AddData(wealth, "Level", 0, def);
 
         if (chosenPlanet == null)
         {
@@ -46,7 +53,7 @@ public static class SystemRaw
         return system;
     }
 
-    public static void GrowSystem(DataBlock player, DataBlock system, DataBlock star, int popsLevel, int infrastructure, bool empireCapital, DefLibrary def)
+    public static void GrowSystem(DataBlock player, DataBlock system, DataBlock star, int popsLevel, int economyLevel, bool empireCapital, DefLibrary def)
     {
         int maxPops = StarRaw.GetStarPopsMax(star, def);
         int currentPops = GetSystemPopsCurrent(system);
@@ -70,49 +77,52 @@ public static class SystemRaw
         SetPopsHalfGrowth(player, system, star, def);
 
         currentPops = GetSystemPopsCurrent(system); // refresh current pops
-        int cp = 0;
-        switch (infrastructure)
+        int levels = 0;
+        switch (economyLevel)
         {
-            case 1: cp = 1 + habSize / 3; break;
-            case 2: cp = Mathf.Max((currentPops + 1) / 2, 2); break;
-            case 3: cp = Mathf.Max(currentPops, 3); break;
-            case 4: cp = Mathf.Max(2 * currentPops, 4); break;
-            case 5: cp = Mathf.Max(3 * currentPops, 5); break;
+            case 1: levels = 1 + habSize / 3; break;
+            case 2: levels = Mathf.Max((currentPops + 1) / 2, 2); break;
+            case 3: levels = Mathf.Max(currentPops, 3); break;
+            case 4: levels = Mathf.Max(3 * currentPops / 2, 4); break;
+            case 5: levels = Mathf.Max(2 * currentPops, 5); break;
         }
-        if (cp > currentPops * 3) cp = currentPops * 3;
-        system.SetSubValueI("ActionInfrastructure/Infrastructure", cp, def);
 
-        ReassignAllDistricts(system, empireCapital, def);
+        system.SetSubValueI("Wealth", "Current", currentPops * economyLevel * 100, def);
+        system.SetSubValueI("Wealth", "Level", economyLevel, def);
+
+        //if (cp > currentPops * 3) cp = currentPops * 3;
+        //system.SetSubValueI("ActionInfrastructure/Infrastructure", cp, def);
+
+        ReassignAllDistricts(system, empireCapital, levels, def);
     }
 
-    public static void ReassignAllDistricts(DataBlock system, bool empireCapital, DefLibrary def)
+    public static void ReassignAllDistricts(DataBlock system, bool empireCapital, int upgradeLevels, DefLibrary def)
     {
         int pops = GetSystemPopsCurrent(system);
         if (pops <= 0)
             return;
 
-        int conPoints = system.GetSubValueI("ActionInfrastructure/Infrastructure");
-        int baseLevel = conPoints / pops;
+        int baseLevel = Mathf.Min(upgradeLevels / pops, 2);
 
         List<int> infrastructure = new List<int>();
         for (int d = 0; d < pops; d++) infrastructure.Add(baseLevel);
-        conPoints -= (baseLevel) * pops;
+        upgradeLevels -= (baseLevel) * pops;
 
-        if (conPoints > 0 && infrastructure[0] < 3)
+        if (upgradeLevels > 0 && infrastructure[0] < 2)
         {
             infrastructure[0]++;
-            conPoints--;
+            upgradeLevels--;
         }
 
         List<int> idxes = new List<int>();
-        for (int i = 1; i < infrastructure.Count; i++) if (infrastructure[i] < 3) idxes.Add(i);
+        for (int i = 1; i < infrastructure.Count; i++) if (infrastructure[i] < 2) idxes.Add(i);
 
-        while (conPoints > 0 && idxes.Count > 0)
+        while (upgradeLevels > 0 && idxes.Count > 0)
         {
             int rng_1 = Game.RNG.RandiRange(0, idxes.Count - 1);
             infrastructure[idxes[rng_1]]++;
             idxes.RemoveAt(rng_1);
-            conPoints--;
+            upgradeLevels--;
         }
 
         int unalocatedDistricts = pops - 1;
@@ -148,41 +158,40 @@ public static class SystemRaw
             for (int idx = 0; idx < districts.Count; idx++)
             {
                 DataBlock district = districts[idx];
-                if (district.GetSubValueI("Pop/GrowthProgress") == 1000)
+                if (district.GetSubValueI("Pop", "GrowthProgress") == 1000)
                 {
-                    if (district.ValueS != "Capital")
+                    string levelSuffix = Helper.IntToRoman(1 + infrastructure[popIdx]);
+
+                    if (district.ValueS.StartsWith("Capital") == true)
+                    {
+                        district.ValueS = "Capital_" + levelSuffix;
+                    }
+                    else
                     {
                         if (controlDistricts > 0)
                         {
-                            district.SetValueS("Police", def);
+                            district.SetValueS("Police_" + levelSuffix, def);
                             controlDistricts--;
-                        }
-                        else if (constructionDistricts > 0)
-                        {
-                            if (stateConstruction) district.SetValueS("State_Construction", def);
-                            else district.SetValueS("Private_Construction", def);
-                            constructionDistricts--;
                         }
                         else if (researchDistricts > 0)
                         {
-                            district.SetValueS("Research_Center", def);
+                            district.SetValueS("State_Research_" + levelSuffix, def);
                             researchDistricts--;
                         }
                         else if (shipbuildingDistricts > 0)
                         {
-                            if (stateShipbuilding) district.SetValueS("State_Shipyard", def);
-                            else district.SetValueS("Private_Shipyard", def);
+                            if (stateShipbuilding) district.SetValueS("Private_Shipyard_" + levelSuffix, def);
+                            else district.SetValueS("State_Shipyard_" + levelSuffix, def);
                             shipbuildingDistricts--;
                         }
                         else if (infuenceDistricts > 0)
                         {
-                            if (stateInfluence) district.SetValueS("State_Media", def);
-                            else district.SetValueS("Private_Media", def);
+                            if (stateInfluence) district.SetValueS("State_Media_" + levelSuffix, def);
+                            else district.SetValueS("Private_Media_" + levelSuffix, def);
                             infuenceDistricts--;
                         }
                     }
 
-                    district.SetSubValueI("Factory", infrastructure[popIdx], def);
                     popIdx++;
                 }
             }
@@ -328,7 +337,7 @@ public static class SystemRaw
             for (int districtsIdx = 0; districtsIdx < districts.Count; districtsIdx++)
             {
                 DataBlock district = districts[districtsIdx];
-                if (district.GetSubValueI("Pop/GrowthProgress") < 1000)
+                if (district.GetSubValueI("Pop", "GrowthProgress") < 1000)
                 {
                     district.SetValueS(districtName, def);
                 }
@@ -347,7 +356,7 @@ public static class SystemRaw
             for (int idx = 0; idx < districts.Count; idx++)
             {
                 DataBlock district = districts[idx];
-                if (district.GetSubValueI("Pop/GrowthProgress") == 1000)
+                if (district.GetSubValueI("Pop", "GrowthProgress") == 1000)
                 {
                     pops++;
                 }
@@ -431,7 +440,7 @@ public static class SystemRaw
 
         if (chosenNextColony != null)
         {
-            ColonyRaw.CreateNewDistrictAndPop(system, chosenNextColony, false, def);
+            DistrictRaw.CreateNewDistrictAndPop(system, chosenNextColony, false, def);
         }
         else if (chosenNextPlanet != null)
         {

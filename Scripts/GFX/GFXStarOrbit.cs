@@ -8,8 +8,8 @@ public partial class GFXStarOrbit : Node3D
     public MeshInstance3D Planet = null;
     private MeshInstance3D OrbitLine = null;
     private Node3D Offset = null;
-    private Area3D Collision = null;
-    private CollisionShape3D CollisionShape = null;
+    public Area3D Collision = null;
+    //private CollisionShape3D CollisionShape = null;
     // only for planets
     private MeshInstance3D AsteroidField = null;
     private MeshInstance3D Rings = null;
@@ -31,7 +31,7 @@ public partial class GFXStarOrbit : Node3D
         OrbitLine = GetNode<MeshInstance3D>("OrbitLine");
         Offset = GetNode<Node3D>("Offset");
         Collision = GetNode<Area3D>("Offset/Area3D");
-        CollisionShape = GetNode<CollisionShape3D>("Offset/Area3D/CollisionShape3D");
+        //CollisionShape = GetNode<CollisionShape3D>("Offset/Area3D/CollisionShape3D");
         Planet = GetNode<MeshInstance3D>("Offset/Planet");
         if (HasNode("Offset/Moon_1"))
         {
@@ -47,13 +47,14 @@ public partial class GFXStarOrbit : Node3D
             Moon = true;
         }
 
-        Collision.InputEvent += SignalInputEvent;
-        Collision.MouseEntered += OnHover;
-        Collision.MouseExited += OnDehover;
+        //Collision.InputEvent += SignalInputEvent;
+        //Collision.MouseEntered += OnHover;
+        //Collision.MouseExited += OnDehover;
 
-        CollisionShape.Disabled = true;
+        //CollisionShape.Disabled = true;
 
         Visible = false;
+        Collision.CollisionLayer = 0;
     }
     /*public void RefreshLocation(int orbit, int angle)
     {
@@ -77,7 +78,7 @@ public partial class GFXStarOrbit : Node3D
 
         Offset.Position = new Vector3(0.0f, 0.0f, 2.5f + 1.0f * orbit);
     }*/
-    public void RefreshAngle( int angle)
+    public void RefreshAngle(int angle)
     {
         RotationDegrees = new Vector3(0.0f, angle, 0.0f);
     }
@@ -90,6 +91,7 @@ public partial class GFXStarOrbit : Node3D
         Planet.Scale = (0.4f + 0.2f * size) * Vector3.One;
         if (Rings != null) Rings.Visible = rings;
         Visible = true;
+        if (Game.self.Camera.LOD == 0) Collision.CollisionLayer = 1;
 
         Material mat = DefLibrary.self.AssetLib.GetMaterial_Planet("Planet" + type + ".tres");
 
@@ -114,9 +116,10 @@ public partial class GFXStarOrbit : Node3D
         Rings.Visible = false;
         AsteroidField.Visible = true;
         Visible = true;
+        if (Game.self.Camera.LOD == 0) Collision.CollisionLayer = 1;
     }
 
-    public void RefreshMoon1(PlanetData planet,int size, string type)
+    public void RefreshMoon1(PlanetData planet, int size, string type)
     {
         Moon_1.RefreshPlanet(planet, size, false, type);
     }
@@ -135,66 +138,60 @@ public partial class GFXStarOrbit : Node3D
         if (Moon_2.Visible == false) Moon_2.Dispose();
     }
 
-    public void SignalInputEvent(Node camera, InputEvent inputEvent, Vector3 position, Vector3 normal, long shapeIdx)
-    {
-        if (inputEvent is InputEventMouseButton mouseButtonEvent)
-        {
-            if (!mouseButtonEvent.IsPressed())
-            {
-                // on mouse button release
-                if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
-                {
-                    Game.self.Input.OnSelectPlanet(_Planet);
-                }
-                // on mouse button release
-                if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
-                {
-                    Game.self.Input.DeselectOneStep();
-                }
-            }
-        }
-    }
+    //public void OnHover()
+    //{
+    //    //Hover.Visible = true;
+    //    Game.self.Input.OnHoverPlanet(_Planet);
+    //}
+    //public void OnDehover()
+    //{
+    //    Game.self.Input.OnDehoverPlanet(_Planet);
+    //    //Hover.Visible = false;
+    //}
+    //
+    //
+    //public void OnClick(MouseButton click)
+    //{
+    //    if (click == MouseButton.Left)
+    //    {
+    //        Game.self.Input.OnSelectPlanet(_Planet);
+    //    }
+    //    else if (click == MouseButton.Right)
+    //    {
+    //        Game.self.Input.DeselectOneStep();
+    //    }
+    //}
 
-    public void OnHover()
-    {
-        //Hover.Visible = true;
-        Game.self.Input.OnHoverPlanet(_Planet);
-    }
-    public void OnDehover()
-    {
-        Game.self.Input.OnDehoverPlanet(_Planet);
-        //Hover.Visible = false;
-    }
 
     public void LODClose()
     {
-        CollisionShape.Disabled = false;
+        Collision.CollisionLayer = 1;
 
-        if (Moon_1.Planet != null) Moon_1.CollisionShape.Disabled = false;
-        if (Moon_2.Planet != null) Moon_2.CollisionShape.Disabled = false;
+        if (Moon_1._Planet != null) Moon_1.Collision.CollisionLayer = 1;
+        if (Moon_2._Planet != null) Moon_2.Collision.CollisionLayer = 1;
     }
 
     public void LODFar()
     {
-        CollisionShape.Disabled = true;
+        Collision.CollisionLayer = 0;
 
-        if (Moon_1.Planet != null) Moon_1.CollisionShape.Disabled = true;
-        if (Moon_2.Planet != null) Moon_2.CollisionShape.Disabled = true;
+        if (Moon_1._Planet != null) Moon_1.Collision.CollisionLayer = 0;
+        if (Moon_2._Planet != null) Moon_2.Collision.CollisionLayer = 0;
     }
 
     public void ShowGUI3D()
     {
         NeedsGUI3D = true;
 
-        if (Moon_1.Planet != null) Moon_1.NeedsGUI3D = true;
-        if (Moon_2.Planet != null) Moon_2.NeedsGUI3D = true;
+        if (Moon_1._Planet != null) Moon_1.NeedsGUI3D = true;
+        if (Moon_2._Planet != null) Moon_2.NeedsGUI3D = true;
     }
     public void HideGUI3D()
     {
         NeedsGUI3D = false;
 
-        if (Moon_1.Planet != null) Moon_1.NeedsGUI3D = false;
-        if (Moon_2.Planet != null) Moon_2.NeedsGUI3D = false;
+        if (Moon_1._Planet != null) Moon_1.NeedsGUI3D = false;
+        if (Moon_2._Planet != null) Moon_2.NeedsGUI3D = false;
     }
 
     public override void _Process(double delta)

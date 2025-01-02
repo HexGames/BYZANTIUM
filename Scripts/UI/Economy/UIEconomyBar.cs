@@ -33,8 +33,8 @@ public partial class UIEconomyBar : Control
             _Player = Game.self.HumanPlayer;
         }
 
-        BC.SetTextWithReplace("$val", _Player.Stockpiles_PerTurn.BC.ToString());
-        Influence.SetTextWithReplace("$val", _Player.Stockpiles_PerTurn.Influence.ToString());
-        Research.SetTextWithReplace("$val", _Player.Stockpiles_PerTurn.Research.ToString());
+        BC.SetTextWithReplace("$val", Helper.ResValueToString(_Player.Stockpiles_PerTurn.BC) + " (" + Helper.ResValueToString(_Player.Stockpiles_PerTurn.BC_Income, 10, true, true) + ")");
+        Influence.SetTextWithReplace("$val", Helper.ResValueToString(_Player.Stockpiles_PerTurn.Influence) + " (" + Helper.ResValueToString(_Player.Stockpiles_PerTurn.Influence_Income, 10, true, true) + ")");
+        Research.SetTextWithReplace("$val", Helper.ResValueToString(_Player.Stockpiles_PerTurn.Research) + " (" + Helper.ResValueToString(_Player.Stockpiles_PerTurn.Research_Income, 10, true, true) + ")");
     }
 }

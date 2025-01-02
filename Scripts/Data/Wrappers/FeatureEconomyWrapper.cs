@@ -24,12 +24,12 @@ public class FeatureEconomyWrapper
         Resource = _FeatureDef._Data.GetSubValueS("Resource");
         if (_FeatureDef._Data.HasSub("Benefit"))
         {
-            ResourceIncome = _FeatureDef._Data.GetSub("Benefit").GetSubValueI("Income");
-            ResourceLocalBonus = _FeatureDef._Data.GetSub("Benefit").GetSubValueI("LocalBonus");
-            if (_FeatureDef._Data.GetSub("Benefit").HasSub("Extra"))
+            ResourceIncome = _FeatureDef._Data.GetSubValueI("Benefit", "Income");
+            ResourceLocalBonus = _FeatureDef._Data.GetSubValueI("Benefit", "LocalBonus");
+            if (_FeatureDef._Data.HasSub("Benefit", "Extra"))
             {
-                MaxPop = _FeatureDef._Data.GetSub("Benefit").GetSub("Extra").GetSubValueI("MaxPop");
-                Happiness = _FeatureDef._Data.GetSub("Benefit").GetSub("Extra").GetSubValueI("Happiness");
+                MaxPop = _FeatureDef._Data.GetSubValueI("Benefit", "Extra", "MaxPop");
+                Happiness = _FeatureDef._Data.GetSubValueI("Benefit", "Extra", "Happiness");
             }
         }
         else

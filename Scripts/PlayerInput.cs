@@ -55,6 +55,7 @@ public partial class PlayerInput : Node
     public ColonyData SelectedPlanetColony = null;
 
 
+    private bool HandledInput = true;
     public override void _Input(InputEvent inputEvent)
     {
         if (inputEvent is InputEventKey keyButtonEvent) // load save
@@ -77,6 +78,10 @@ public partial class PlayerInput : Node
                 }
             }
         }
+        else
+        {
+            HandledInput = true;
+        }
     }
 
     //public InputState OldState = InputState.FAR_GALAXY;
@@ -89,9 +94,170 @@ public partial class PlayerInput : Node
     //    }
     //}
 
+    public override void _UnhandledInput(InputEvent inputEvent)
+    {
+        if (inputEvent is InputEventMouseButton mouseButtonEvent)
+        {
+            if (!mouseButtonEvent.IsPressed())
+            {
+                Raycast(false);
+
+                // on mouse button release
+                if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
+                {
+                    if (HoverPlanet != null)
+                    {
+                        OnSelectPlanet(HoverPlanet);
+                    }
+                    else if (HoverFleets.Count > 0)
+                    {
+                        OnSelectFleets(HoverFleets);
+                    }
+                    else if (HoverStar != null)
+                    {
+                        OnSelectStar(HoverStar);
+                    }
+                }
+                else if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
+                {
+                    bool moved = false;
+                    if (HoverStar != null)
+                    {
+                        moved = Game.self.Input.TryFleetsMoveToStar(HoverStar);
+                    }
+
+                    if (moved == false)
+                    {
+                        Game.self.Input.DeselectOneStep();
+                    }
+                }
+            }
+        }
+        else
+        {
+            HandledInput = false;
+            Raycast(true);
+        }
+    }
+
+    private float Raycast_cooldown = 0.0f;
+    private Node3D Raycast_hitNode = null;
+    public void Raycast(bool useCooldown)
+    {
+        MapCamera camera =  Game.self.Camera;
+        Vector2 mouse_pos = GetViewport().GetMousePosition();
+        float ray_length = 1000.0f;
+        Vector3 from = camera.ProjectRayOrigin(mouse_pos);
+        Vector3 to = from + camera.ProjectRayNormal(mouse_pos) * ray_length;
+        var space = camera.GetWorld3D().DirectSpaceState;
+        var ray_query = new PhysicsRayQueryParameters3D();
+        ray_query.From = from;
+        ray_query.To = to;
+        ray_query.CollideWithAreas = true;
+        ray_query.CollisionMask = 1;
+
+        var raycast_result = space.IntersectRay(ray_query);
+
+        if (raycast_result.Count > 0)
+        {
+            Node3D hitNode = (Node3D)raycast_result["collider"];
+
+            if (useCooldown)
+            {
+                if (Raycast_hitNode == null || Raycast_hitNode != hitNode)
+                {
+                    Raycast_hitNode = hitNode;
+                    Raycast_cooldown = 0.2f;
+                    //GD.Print("Hit " + Raycast_cooldown + " " + Raycast_hitNode);
+                }
+            }
+            else
+            {
+                ProcessHitNode(hitNode); 
+            }
+        }
+        else
+        {
+            if (useCooldown)
+            {
+                Raycast_hitNode = null;
+            }
+            OnDehoverFleets();
+            OnDehoverPlanet();
+            OnDehoverStar();
+        }
+    }
+
+    public override void _Process(double delta)
+    {
+        if (HandledInput == true)
+        {
+            Raycast_hitNode = null;
+            Raycast_cooldown = 0.2f;
+        }
+        else // last input was unhandled input
+        {
+            if (Raycast_hitNode != null)
+            {
+                Raycast_cooldown -= (float)delta;
+                if (Raycast_cooldown <= 0.0f)
+                {
+                    //GD.Print("Cooldown " + Raycast_cooldown + " " + Raycast_hitNode);
+                    ProcessHitNode(Raycast_hitNode);
+                    Raycast_cooldown = 1.0f;
+                }
+            }
+        }
+    }
+
+    private void ProcessHitNode(Node3D hitNode)
+    {
+        if (hitNode.GetParent().Name.ToString() == "Star")
+        {
+            OnDehoverFleets();
+            OnDehoverPlanet();
+
+            GFXStar star = (GFXStar)hitNode.GetParent().GetParent();
+            OnHoverStar(star._Star);
+
+            //GD.Print(star.Name);
+        }
+        else if (hitNode.GetParent().Name.ToString() == "Offset")
+        {
+            OnDehoverFleets();
+            OnDehoverStar();
+
+            GFXStarOrbit starOrbit = (GFXStarOrbit)hitNode.GetParent().GetParent();
+            OnHoverPlanet(starOrbit._Planet);
+
+            //GD.Print(starOrbit.Name);
+        }
+        else if (hitNode.GetParent().Name.ToString().StartsWith("Ship") == true)
+        {
+            OnDehoverPlanet();
+            OnDehoverStar();
+
+            GFXStarShip starShip = (GFXStarShip)hitNode.GetParent();
+            OnHoverFleets(starShip._Fleets);
+
+            //GD.Print(starShip.Name);
+        }
+        else
+        {
+            //nothing
+            OnDehoverFleets();
+            OnDehoverPlanet();
+            OnDehoverStar();
+        }
+    }
+
     // ---------------------------------------------------------------------------------
     public void OnHoverStar(StarData star)
     {
+        if (star == HoverStar) return;
+
+        if (HoverStar != null) OnDehoverStar();
+
         if (star == SelectedStar) return;
 
         switch (State)
@@ -110,14 +276,16 @@ public partial class PlayerInput : Node
                 CS_Hover_from_CloseFleets_to_CloseFleetsHoverStar(star); break;
         }
     }
-    public void OnDehoverStar(StarData star)
-    {
-        if (star != HoverStar) return;
-
-        OnDehoverStar();
-    }
+    //public void OnDehoverStar(StarData star)
+    //{
+    //    if (star != HoverStar) return;
+    //
+    //    OnDehoverStar();
+    //}
     public void OnDehoverStar()
     {
+        if (HoverStar == null) return;
+
         switch (State)
         {
             case InputState.FAR_GALAXY_H_STAR:
@@ -171,7 +339,11 @@ public partial class PlayerInput : Node
     // -------------------------------------
     public void OnHoverFleets(Array<FleetData> fleets)
     {
-        if (fleets.Count == 0) return;
+        if (fleets.Count == 0 || (fleets.Count > 0 && fleets.Count == HoverFleets.Count && fleets[0] == HoverFleets[0])) return;
+
+        if (HoverFleets.Count > 0) OnDehoverFleets();
+
+        if (fleets.Count == 1 && fleets[0] == SelectedFleet) return;
 
         switch (State)
         {
@@ -191,6 +363,8 @@ public partial class PlayerInput : Node
     }
     public void OnDehoverFleets()
     {
+        if (HoverFleets.Count == 0) return;
+
         switch (State)
         {
             case InputState.FAR_GALAXY_H_FLEETS:
@@ -247,8 +421,6 @@ public partial class PlayerInput : Node
     public void OnDeselectFleets()
     {
         //SelectedFleetList.Clear();
-        SelectedFleet = null;
-
         switch (State)
         {
             case InputState.FAR_FLEETS:
@@ -271,6 +443,10 @@ public partial class PlayerInput : Node
     // -------------------------------------
     public void OnHoverPlanet(PlanetData planet)
     {
+        if (planet == HoverPlanet) return;
+
+        if (HoverPlanet != null) OnDehoverPlanet();
+
         if (planet == SelectedPlanet) return;
 
         switch (State)
@@ -283,14 +459,16 @@ public partial class PlayerInput : Node
                 CS_Hover_from_CloseFleets_to_CloseFleetsHoverPlanet(planet); break;
         }
     }
-    public void OnDehoverPlanet(PlanetData planet)
-    {
-        if (planet != HoverPlanet) return;
-
-        OnDehoverPlanet();
-    }
+    //public void OnDehoverPlanet(PlanetData planet)
+    //{
+    //    if (planet != HoverPlanet) return;
+    //
+    //    OnDehoverPlanet();
+    //}
     public void OnDehoverPlanet()
     {
+        if (HoverPlanet == null) return;
+
         switch (State)
         {
             case InputState.CLOSE_STAR_H_PLANET:
@@ -304,6 +482,8 @@ public partial class PlayerInput : Node
 
     public void OnSelectPlanet(PlanetData planet)
     {
+        if (planet != HoverPlanet) return;
+
         switch (State)
         {
             case InputState.CLOSE_STAR_H_PLANET:
@@ -403,6 +583,7 @@ public partial class PlayerInput : Node
     {
         HoverStar._Node.GFX.GFXDehover();
         Game.self.GalaxyUI.HideStarInfo();
+        Game.self.GalaxyUI.HidePlanetInfo();
 
         HoverStar = null;
         State = InputState.FAR_GALAXY;
@@ -419,6 +600,7 @@ public partial class PlayerInput : Node
     {
         HoverStar._Node.GFX.GFXDehover();
         Game.self.GalaxyUI.HideStarInfo();
+        Game.self.GalaxyUI.HidePlanetInfo();
         Game.self.GalaxyUI.ShowFleetsInfo(null, SelectedFleet);
 
         HoverStar = null;
@@ -447,6 +629,7 @@ public partial class PlayerInput : Node
         HoverStar._Node.GFX.GFXDehover();
         HoverStar._Node.GFX.HidePlanets3DGUI();
         Game.self.GalaxyUI.HideStarInfo();
+        Game.self.GalaxyUI.HidePlanetInfo();
         Game.self.GalaxyUI.ShowFleetsInfo(null, SelectedFleet);
 
         HoverStar = null;
@@ -548,6 +731,7 @@ public partial class PlayerInput : Node
     {
         SelectedStar._Node.GFX.GFXDeselect();
         Game.self.GalaxyUI.HideStarInfo();
+        Game.self.GalaxyUI.HidePlanetInfo();
         SelectedStar = null;
 
         State = InputState.FAR_GALAXY;
@@ -585,6 +769,7 @@ public partial class PlayerInput : Node
         HoverFleets.AddRange(fleets);
         Game.self.SelectorsUI3D.FleetHover(fleets);
         Game.self.GalaxyUI.HideStarInfo();
+        Game.self.GalaxyUI.HidePlanetInfo();
         Game.self.GalaxyUI.ShowFleetsInfo(HoverFleets, SelectedFleet);
 
 
@@ -605,6 +790,7 @@ public partial class PlayerInput : Node
         HoverFleets.AddRange(fleets);
         Game.self.SelectorsUI3D.FleetHover(fleets);
         Game.self.GalaxyUI.HideStarInfo();
+        Game.self.GalaxyUI.HidePlanetInfo();
         Game.self.GalaxyUI.ShowFleetsInfo(HoverFleets, SelectedFleet);
 
         State = InputState.CLOSE_STAR_H_FLEETS;
@@ -615,6 +801,7 @@ public partial class PlayerInput : Node
         HoverFleets.AddRange(fleets);
         Game.self.SelectorsUI3D.FleetHover(fleets);
         Game.self.GalaxyUI.HideStarInfo();
+        Game.self.GalaxyUI.HidePlanetInfo();
         Game.self.GalaxyUI.ShowFleetsInfo(HoverFleets, SelectedFleet);
 
         State = InputState.CLOSE_PLANET_H_FLEETS;
@@ -672,6 +859,7 @@ public partial class PlayerInput : Node
         Game.self.SelectorsUI3D.FleetDehover();
         Game.self.GalaxyUI.HideFleetsInfo();
         Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+        Game.self.GalaxyUI.ShowPlanetInfo(SelectedPlanet);
 
         State = InputState.CLOSE_PLANET;
     }
@@ -700,7 +888,7 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.FAR_FLEETS;
+            State = InputState.FAR_FLEETS_H_FLEETS;
         }
         else
         {
@@ -723,7 +911,7 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.FAR_FLEETS;
+            State = InputState.FAR_FLEETS_H_FLEETS;
         }
         else
         {
@@ -753,7 +941,7 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.FAR_FLEETS;
+            State = InputState.FAR_FLEETS_H_FLEETS;
         }
         else
         {
@@ -776,11 +964,11 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.CLOSE_FLEETS;
+            State = InputState.CLOSE_FLEETS_H_FLEETS;
         }
         else
         {
-            State = InputState.FAR_FLEETS_H_FLEETS;
+            State = InputState.CLOSE_FLEETS_H_FLEETS;
         }
     }
     private void CS_Select_from_ClosePlanetHoverFleets_to_CloseFleets(bool multipleFleets)
@@ -802,11 +990,11 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.CLOSE_FLEETS;
+            State = InputState.CLOSE_FLEETS_H_FLEETS;
         }
         else
         {
-            State = InputState.FAR_FLEETS_H_FLEETS;
+            State = InputState.CLOSE_FLEETS_H_FLEETS;
         }
     }
     private void CS_Select_from_CloseFleetsHoverFleets_to_CloseFleets(bool multipleFleets)
@@ -832,11 +1020,11 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.CLOSE_FLEETS;
+            State = InputState.CLOSE_FLEETS_H_FLEETS;
         }
         else
         {
-            State = InputState.FAR_FLEETS_H_FLEETS;
+            State = InputState.CLOSE_FLEETS_H_FLEETS;
         }
     }
 
@@ -1011,6 +1199,7 @@ public partial class PlayerInput : Node
             HoverStar._Node.GFX.GFXDehover();
             if (HoverStar != SelectedStar) HoverStar._Node.GFX.HidePlanets3DGUI();
             Game.self.GalaxyUI.HideStarInfo();
+            Game.self.GalaxyUI.HidePlanetInfo();
             Game.self.GalaxyUI.ShowFleetsInfo(null, SelectedFleet);
             HoverStar = null;
         }

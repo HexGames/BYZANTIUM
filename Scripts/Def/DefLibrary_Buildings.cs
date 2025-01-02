@@ -38,7 +38,7 @@ public partial class DefLibrary : Node
     {
         for (int idx = 0; idx < DistrictsInfo.Count; idx++)
         {
-            if (DistrictsInfo[idx]._Data.ValueS == name)
+            if (DistrictsInfo[idx].Name == name)
             {
                 return DistrictsInfo[idx];
             }
