@@ -5,5 +5,5 @@
 [resource]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(1, 0.698039, 0.756863, 0.12549)
+albedo_color = Color(1, 0.729412, 0.643137, 0.188235)
 albedo_texture = ExtResource("1_obmny")

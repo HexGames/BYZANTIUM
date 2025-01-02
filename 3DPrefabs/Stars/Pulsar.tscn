@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2lbavcrnb03j"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ycvhu"]
+radius = 0.3
+height = 0.7
+radial_segments = 32
+rings = 16
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdct3"]
+emission_enabled = true
+emission = Color(0.631373, 0.882353, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b3vje"]
+height = 0.1
+radius = 6.0
+
+[node name="Star" type="MeshInstance3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("SphereMesh_ycvhu")
+surface_material_override/0 = SubResource("StandardMaterial3D_vdct3")
+
+[node name="SectorArea3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SectorArea3D"]
+shape = SubResource("CylinderShape3D_b3vje")

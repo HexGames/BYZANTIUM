@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b78sdhjcuas47"]
+[gd_scene load_steps=60 format=3 uid="uid://b78sdhjcuas47"]
 
 [ext_resource type="Script" path="res://Scripts/GFX/GFXStar.cs" id="1_skeqy"]
 [ext_resource type="Script" path="res://Scripts/GFX/GFXStarOrbit.cs" id="2_bb4bp"]
@@ -20,18 +20,20 @@
 [ext_resource type="Material" uid="uid://8dhftha4hj4a" path="res://Assets/3D/Materials/SystemBorder.tres" id="15_tk2sv"]
 [ext_resource type="Material" uid="uid://bb5q22xkv21g4" path="res://Assets/3D/Materials/PPL_1.tres" id="16_eqwvq"]
 [ext_resource type="Material" uid="uid://bfj2l28q34lpg" path="res://Assets/3D/Materials/PPL_BG.tres" id="17_a33dl"]
+[ext_resource type="Texture2D" uid="uid://cybfsk1d7toah" path="res://Assets/Galaxy/SystemUnknown.png" id="18_ysbu8"]
+[ext_resource type="Texture2D" uid="uid://bubkhl3g34g6u" path="res://Assets/Galaxy/SystemUncovered.png" id="19_8bory"]
 [ext_resource type="Texture2D" uid="uid://d0wljmi063s34" path="res://Assets/Galaxy/StarGas.png" id="19_s3wqc"]
 [ext_resource type="Texture2D" uid="uid://8uopb46ug55p" path="res://Assets/Background/PPL1.png" id="20_sob6c"]
 [ext_resource type="Texture2D" uid="uid://b0m5fp44otc08" path="res://Assets/Galaxy/BeltGas.png" id="21_qvw38"]
+[ext_resource type="Texture2D" uid="uid://dv6tgbpy88liq" path="res://Assets/Background/PlayerGlow.png" id="23_0gkdt"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_57fiv"]
+[sub_resource type="SphereMesh" id="SphereMesh_fnj7s"]
+radius = 0.1
+height = 0.2
 radial_segments = 32
 rings = 16
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyqpj"]
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 16.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_poqyt"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b3vje"]
 height = 0.1
@@ -128,9 +130,30 @@ transparency = 1
 shading_mode = 0
 albedo_color = Color(0.423529, 0.67451, 0.878431, 1)
 
+[sub_resource type="QuadMesh" id="QuadMesh_d2qf7"]
+size = Vector2(7.8, 7.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8lk6"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.211765, 0.258824, 0.686275, 1)
+albedo_texture = ExtResource("18_ysbu8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60mt6"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.211765, 0.258824, 0.686275, 1)
+albedo_texture = ExtResource("19_8bory")
+
 [sub_resource type="QuadMesh" id="QuadMesh_5w7qy"]
 size = Vector2(30, 30)
 orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pangn"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.627451, 0.698039, 0.756863, 0.25098)
+albedo_texture = ExtResource("20_sob6c")
 
 [sub_resource type="QuadMesh" id="QuadMesh_dpph1"]
 size = Vector2(15, 15)
@@ -139,18 +162,8 @@ orientation = 1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3i3d"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(1, 0.729412, 0.486275, 0.337255)
+albedo_color = Color(0.976471, 0.729412, 0.556863, 0.313726)
 albedo_texture = ExtResource("19_s3wqc")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pangn"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0.627451, 0.698039, 0.756863, 0.184314)
-albedo_texture = ExtResource("20_sob6c")
-
-[sub_resource type="QuadMesh" id="QuadMesh_0ummg"]
-size = Vector2(90, 90)
-orientation = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_c3lpw"]
 size = Vector2(22, 22)
@@ -159,8 +172,24 @@ orientation = 1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8t6co"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.839216, 0.737255, 0.811765, 0.537255)
+albedo_color = Color(0.839216, 0.737255, 0.811765, 0.376471)
 albedo_texture = ExtResource("21_qvw38")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0ummg"]
+size = Vector2(90, 90)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etwdd"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.729412, 0.643137, 0.188235)
+albedo_texture = ExtResource("20_sob6c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ows5"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0)
+albedo_texture = ExtResource("23_0gkdt")
 
 [node name="Star" type="Node3D"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
@@ -176,10 +205,12 @@ omni_attenuation = 0.101533
 
 [node name="Star" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("SphereMesh_57fiv")
-surface_material_override/0 = SubResource("StandardMaterial3D_pyqpj")
+mesh = SubResource("SphereMesh_fnj7s")
+surface_material_override/0 = SubResource("ShaderMaterial_poqyt")
 
 [node name="SectorArea3D" type="Area3D" parent="Star"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Star/SectorArea3D"]
 shape = SubResource("CylinderShape3D_b3vje")
@@ -202,6 +233,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_1/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_1/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -264,6 +297,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_1/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_1/Offset/Moon_1/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -288,6 +323,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_1/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_1/Offset/Moon_2/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -314,6 +351,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_2/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_2/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -376,6 +415,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_2/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_2/Offset/Moon_1/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -400,6 +441,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_2/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_2/Offset/Moon_2/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -426,6 +469,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_3/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_3/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -488,6 +533,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_3/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_3/Offset/Moon_1/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -512,6 +559,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_3/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_3/Offset/Moon_2/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -538,6 +587,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_4/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_4/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -600,6 +651,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_4/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_4/Offset/Moon_1/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -624,6 +677,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_4/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_4/Offset/Moon_2/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -650,6 +705,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_5/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_5/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -712,6 +769,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_5/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_5/Offset/Moon_1/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -736,6 +795,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_5/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_5/Offset/Moon_2/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -762,6 +823,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_6/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_6/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -824,6 +887,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_6/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_6/Offset/Moon_1/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -848,6 +913,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_6/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_6/Offset/Moon_2/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -874,6 +941,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_7/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_7/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -936,6 +1005,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_7/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_7/Offset/Moon_1/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -960,6 +1031,8 @@ surface_material_override/0 = ExtResource("3_ga5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
 
 [node name="Area3D" type="Area3D" parent="System/Planets/Orbit_7/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_7/Offset/Moon_2/Offset/Area3D"]
 shape = ExtResource("4_aha0a")
@@ -992,6 +1065,8 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("15_ovjyl")
 
 [node name="Area3D" type="Area3D" parent="Ship_Friendly"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship_Friendly/Area3D"]
 shape = ExtResource("14_1eyyr")
@@ -1010,6 +1085,8 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("15_ovjyl")
 
 [node name="Area3D" type="Area3D" parent="Ship_Other"]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship_Other/Area3D"]
 shape = ExtResource("14_1eyyr")
@@ -1019,9 +1096,23 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 mesh = ExtResource("14_swax3")
 surface_material_override/0 = ExtResource("15_tk2sv")
 
+[node name="PlayerUnknown" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_d2qf7")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_u8lk6")
+
+[node name="PlayerUncovered" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_d2qf7")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_60mt6")
+
 [node name="PlayerColor" type="MeshInstance3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-mesh = ExtResource("14_swax3")
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0, 0)
+mesh = SubResource("QuadMesh_d2qf7")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("10_jyy6x")
 
@@ -1031,26 +1122,37 @@ visible = false
 mesh = SubResource("QuadMesh_5w7qy")
 surface_material_override/0 = ExtResource("16_eqwvq")
 
-[node name="Layer_2_Cloud2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.2, 0, -1.04907e-07, 0, 1.2, 0, 1.04907e-07, 0, -1.2, 0, -1, 0)
-mesh = SubResource("QuadMesh_dpph1")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_p3i3d")
-
 [node name="Layer_2_Cloud" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -3, 0)
 mesh = SubResource("QuadMesh_5w7qy")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_pangn")
 
+[node name="Layer_2_Cloud2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.2, 0, -1.81195e-07, 0, 1.2, 0, 1.81195e-07, 0, -1.2, 0, -1, 0)
+mesh = SubResource("QuadMesh_dpph1")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_p3i3d")
+
+[node name="Layer_2_Cloud3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.2, 0, -1.81195e-07, 0, 1.2, 0, 1.81195e-07, 0, -1.2, 0, -2, 0)
+mesh = SubResource("QuadMesh_c3lpw")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8t6co")
+
 [node name="Layer_3_Cloud" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0648014, 1.32322e-05, 1.4986, 0, 1.5, -1.32446e-05, -1.4986, 5.72177e-07, 0.0648014, 0, -15, 0)
+transform = Transform3D(0.0324007, 6.6161e-06, 0.7493, 0, 0.75, -6.62228e-06, -0.7493, 2.86089e-07, 0.0324007, 0, -3, 0)
 mesh = SubResource("QuadMesh_0ummg")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("17_a33dl")
 
-[node name="Layer_2_Cloud3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.2, 0, -1.04907e-07, 0, 1.2, 0, 1.04907e-07, 0, -1.2, 0, -2, 0)
-mesh = SubResource("QuadMesh_c3lpw")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_8t6co")
+[node name="Layer_4_Cloud" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0734416, 1.49965e-05, 1.69841, 0, 1.7, -1.50105e-05, -1.69841, 6.48468e-07, 0.0734416, 0, -10, 0)
+mesh = SubResource("QuadMesh_0ummg")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_etwdd")
+
+[node name="Layer_PlayerGlow" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.996267, 9.58365e-06, 0.0863212, 8.82145e-06, 1, -9.21116e-06, -0.0863212, -8.4153e-06, -0.996267, 0, -2, 0)
+mesh = SubResource("QuadMesh_0ummg")
+surface_material_override/0 = SubResource("StandardMaterial3D_5ows5")
