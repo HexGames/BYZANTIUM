@@ -24,13 +24,15 @@ public partial class GFXStar : Node3D
     private MeshInstance3D Layer_2_3 = null;
     private MeshInstance3D Layer_3 = null;
     private MeshInstance3D Layer_4 = null;
-    private MeshInstance3D Layer_PlayerGlow = null;
+    //private MeshInstance3D Layer_PlayerGlow = null;
 
     [ExportCategory("Runtime")]
     [Export]
     public StarData _Star = null;
     [Export]
     public UI3DStar GUI3D = null;
+    [Export]
+    public bool IsKnown = false;
 
     private Array<FleetData> FriendlyFleets = new Array<FleetData>();
     private Array<FleetData> OtherFleets = new Array<FleetData>();
@@ -71,7 +73,7 @@ public partial class GFXStar : Node3D
         Layer_2_3 = GetNode<MeshInstance3D>("Layer_2_Cloud3");
         Layer_3 = GetNode<MeshInstance3D>("Layer_3_Cloud");
         Layer_4 = GetNode<MeshInstance3D>("Layer_4_Cloud");
-        Layer_PlayerGlow = GetNode<MeshInstance3D>("Layer_PlayerGlow");
+        //Layer_PlayerGlow = GetNode<MeshInstance3D>("Layer_PlayerGlow");
 
         //Collision.InputEvent += SignalInputEvent;
         //Collision.MouseEntered += OnHover;
@@ -218,31 +220,72 @@ public partial class GFXStar : Node3D
     //        }
     //    }
     //}
-
     public void RefreshPlayerColor()
     {
         float alpha = 0.35f;
         if (Selected) alpha = 1.0f;
         else if (Hover) alpha = 0.7f;
 
+        IsKnown = false;
+        bool neutralSystem = true;
+        Color systemColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
         if (_Star.System != null)
         {
+            neutralSystem = false;
+            systemColor = Game.self.UILib.GetPlayerColor(_Star.System._Player.PlayerID);
+        }
+
+        if (_Star.Visibility_PerTurn.IsVisibleBy(Game.self.HumanPlayer))
+        {
             StandardMaterial3D newMaterial = PlayerColor.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
-            Color color = Game.self.UILib.GetPlayerColor(_Star.System._Player.PlayerID);
-            newMaterial.AlbedoColor = new Color(color.R, color.G, color.B, alpha);
+            newMaterial.AlbedoColor = new Color(systemColor.R, systemColor.G, systemColor.B, alpha);
             PlayerColor.SetSurfaceOverrideMaterial(0, newMaterial);
             PlayerColor.Visible = true;
 
+            PlayerUncovered.Visible = false;
+            PlayerUnknown.Visible = false;
 
+            IsKnown = true;
+        }
+        else if (_Star.Visibility_PerTurn.IsUncoveredBy(Game.self.HumanPlayer))
+        {
+            StandardMaterial3D newMaterial = PlayerUncovered.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
+            newMaterial.AlbedoColor = new Color(systemColor.R, systemColor.G, systemColor.B, alpha);
+            PlayerUncovered.SetSurfaceOverrideMaterial(0, newMaterial);
+            PlayerUncovered.Visible = true;
+
+            PlayerColor.Visible = false;
+            PlayerUnknown.Visible = false;
+
+            IsKnown = true;
+        }
+        else
+        {
+            StandardMaterial3D newMaterial = PlayerUnknown.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
+            newMaterial.AlbedoColor = new Color(0.5f, 0.5f, 0.5f, alpha);
+            PlayerUnknown.SetSurfaceOverrideMaterial(0, newMaterial);
+            PlayerUnknown.Visible = true;
+
+            PlayerColor.Visible = false;
+            PlayerUncovered.Visible = false;
+        }
+
+        if (neutralSystem == false && IsKnown)
+        {
             StandardMaterial3D glowMaterial = Layer_3.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
-            glowMaterial.AlbedoColor = new Color(color.R, color.G, color.B, 0.3f);
+            glowMaterial.AlbedoColor = new Color(systemColor.R, systemColor.G, systemColor.B, 0.3f);
             Layer_3.SetSurfaceOverrideMaterial(0, glowMaterial);
         }
         else
         {
-            StandardMaterial3D newMaterial = Layer_3.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
-            newMaterial.AlbedoColor = new Color(0.9f + 0.006f * (-20 + (Layer_3.Rotation.Y * 7) % 40), 0.7f, 0.6f + 0.006f * (-20 + (Layer_3.Rotation.Y * 19) % 40), 0.2f);
-            Layer_3.SetSurfaceOverrideMaterial(0, newMaterial);
+            StandardMaterial3D glowMaterial = Layer_3.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
+            glowMaterial.AlbedoColor = new Color(0.9f + 0.006f * (-20 + (Layer_3.Rotation.Y * 7) % 40), 0.7f, 0.6f + 0.006f * (-20 + (Layer_3.Rotation.Y * 19) % 40), 0.2f);
+            Layer_3.SetSurfaceOverrideMaterial(0, glowMaterial);
+        }
+
+        for (int idx = 0; idx < Orbits.Count; idx++)
+        {
+            Orbits[idx].RefreshVisibility(IsKnown);
         }
     }
 
@@ -301,6 +344,8 @@ public partial class GFXStar : Node3D
 
     public void LODClose()
     {
+        if (IsKnown == false)
+            return;
         //CollisionShape.Disabled = false;
         for (int idx = 0; idx < Orbits.Count; idx++)
         {
@@ -323,8 +368,8 @@ public partial class GFXStar : Node3D
         }
     }
 
-    public void LODAlpha(float alpha)
-    {
+    //public void LODAlpha(float alpha)
+    //{
         //if (alpha > 0.05 && alpha < 0.95)
         //    CollisionShape.Disabled = false;
 
@@ -344,7 +389,7 @@ public partial class GFXStar : Node3D
         //    ShipFriendly.CollisionShape.Disabled = false;
         //    ShipOther.CollisionShape.Disabled = false;
         //}
-    }
+    //}
 
     public override void _Process(double delta)
     {

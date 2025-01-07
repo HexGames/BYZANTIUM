@@ -90,7 +90,7 @@ public partial class UIGalaxy : Control
                 text += "\n" + "HoveredPlanet:" + Game.self.Input.HoverPlanet.PlanetName;
             if (Game.self.Input.SelectedPlanet != null)
                 text += "\n" + "SelectedPlanet:" + Game.self.Input.SelectedPlanet.PlanetName;
-            DEBUGText.Text = text;
+            //DEBUGText.Text = text;
         }
     }
 

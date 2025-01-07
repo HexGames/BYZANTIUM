@@ -13,8 +13,8 @@ public partial class GFXStarOrbit : Node3D
     // only for planets
     private MeshInstance3D AsteroidField = null;
     private MeshInstance3D Rings = null;
-    private GFXStarOrbit Moon_1 = null;
-    private GFXStarOrbit Moon_2 = null;
+    public GFXStarOrbit Moon_1 = null;
+    public GFXStarOrbit Moon_2 = null;
 
     private bool Moon = false;
 
@@ -129,6 +129,13 @@ public partial class GFXStarOrbit : Node3D
         Moon_2.RefreshPlanet(planet, size, false, type);
     }
 
+    public void RefreshVisibility(bool isKnown)
+    {
+        Visible = isKnown && _Planet != null;
+        Moon_1.Visible = isKnown && Moon_1._Planet != null;
+        Moon_2.Visible = isKnown && Moon_2._Planet != null;
+    }
+
     public void Optimize()
     {
         if (Planet.Visible == false) Planet.Dispose();
@@ -197,6 +204,9 @@ public partial class GFXStarOrbit : Node3D
     public override void _Process(double delta)
     {
         if (Engine.IsEditorHint())
+            return;
+
+        if (Visible == false)
             return;
 
         if (NeedsGUI3D && Game.self.Camera.LOD < 2)

@@ -31,9 +31,17 @@ public partial class StarData : Node
     public DataBlock ActionData = null;
 
     [ExportCategory("Runtime")]
-    [Export]
-    public Array<FleetData> Fleets_PerTurn = new Array<FleetData>();
+    //[Export]
+    public SystemVisibilityWrapper Visibility_PerTurn = null;
+    //[Export]
+    public List<FleetData> Fleets_PerTurn = new List<FleetData>();
 
+
+    // --------------------------------------------------------------------------------------------
+    public void Init()
+    {
+        Visibility_PerTurn = new SystemVisibilityWrapper(this);
+    }
 
     // --------------------------------------------------------------------------------------------
     public PlanetData GetPlanet(string planet)

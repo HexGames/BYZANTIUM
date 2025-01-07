@@ -114,13 +114,14 @@ skew = Vector2(0.32, 0)
 bg_color = Color(0.913725, 0, 0, 1)
 skew = Vector2(0.32, 0)
 
-[node name="System" type="Control" node_paths=PackedStringArray("StarName", "Uncolonized", "System")]
+[node name="System" type="Control" node_paths=PackedStringArray("StarName", "Unexplored", "Uncolonized", "System")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 16.0
 offset_top = 16.0
 script = ExtResource("1_bp5dm")
 StarName = NodePath("VBoxContainer/TitleBg/Title")
+Unexplored = NodePath("VBoxContainer/UnknownStar")
 Uncolonized = NodePath("VBoxContainer/UncolonizedStar")
 System = NodePath("VBoxContainer/System")
 
@@ -350,6 +351,39 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("18_ercnh")
+
+[node name="UnknownStar" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="UnknownStar" type="PanelContainer" parent="VBoxContainer/UnknownStar"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("9_n4gub")
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/UnknownStar/UnknownStar"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_n4gub")
+bbcode_enabled = true
+text = "[center]Unknown Star[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="UnknownStar2" type="PanelContainer" parent="VBoxContainer/UnknownStar"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme = ExtResource("9_n4gub")
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/UnknownStar/UnknownStar2"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_n4gub")
+bbcode_enabled = true
+text = "[center]Send a Fleet to explore this star system
+or gain a Star Chart of this star system using  Diplomacy[/center]"
+fit_content = true
+scroll_active = false
 
 [node name="UncolonizedStar" type="VBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("UncolonizedBg", "ColonizePlanet", "Disabled_NoColonyShip", "Colonizing", "ColonizingText", "ColonizingColor", "_FriendlyFleets")]
 visible = false
@@ -651,6 +685,7 @@ Title = "Colonize"
 Row_1 = "$text"
 
 [node name="System" type="VBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("OwnerName", "OwnerColor", "Pops", "PopsGrowth", "PopsTurns", "PopsProgressCurrent", "PopsProgressNextTurn", "PopsGrowthTooltip", "PopsUnhappy", "PopsNeutral", "PopsHappy", "Wealth", "WealthProgressCurrent", "WealthProgressNextTurn", "WealthTooltip", "WealthInequality", "WealthInequalityTooltip", "WealthInvestBg", "WealthInvest", "WealthInvestCurrent", "WealthInvestNextTurn", "WealthInvestTooltip", "ControlText", "ControlChangeText", "ControlChangeDecrease", "ControlChangeIncrease", "ControlLoyal", "ControlUnsure", "ControlWavering", "ControlTurmoil", "ControlRebelious", "ControlCursor", "ControlCorruption", "ControlCorruptionTooltip", "ControlAlert", "Infrastructure", "InfrastructureGrowth", "InfrastructureTurns", "InfrastructureProgressCurrent", "InfrastructureProgressNextTurn", "InfrastructureAlert", "InfrastructureAlertPoints", "TaxPip_1", "TaxPip_2", "TaxPip_3", "IncomeBC", "IncomeInf", "IncomeRes", "NoShipbuilding", "Shipbuilding", "ShipbuildingLeft", "ShipbuildingRight", "ShipbuildingIcon", "ShipbuildingName", "ShipbuildingIncome", "ShipbuildingProgressTurns", "ShipbuildingProgressCurrent", "ShipbuildingProgressNextTurn")]
+visible = false
 layout_mode = 2
 script = ExtResource("12_xp3cq")
 OwnerName = NodePath("OwnerBg/Owner")

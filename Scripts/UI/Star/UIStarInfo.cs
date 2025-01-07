@@ -8,6 +8,8 @@ public partial class UIStarInfo : Control
     [Export]
     public UIText StarName;
     [Export]
+    public Control Unexplored;
+    [Export]
     public UIStarInfoUncolonized Uncolonized;
     [Export]
     public UIStarInfoSystem System;
@@ -26,21 +28,32 @@ public partial class UIStarInfo : Control
         StarName.SetTextWithReplace("$name", _Star.StarName);
 
         //GD.Print("---" + _System);
-        if (_System != null)
+        if (_Star.Visibility_PerTurn.IsUncoveredBy(Game.self.HumanPlayer))
         {
-            Uncolonized.Visible = false;
-            System.Visible = true;
+            if (_System != null)
+            {
+                Unexplored.Visible = false;
+                Uncolonized.Visible = false;
+                System.Visible = true;
 
-            //GD.Print("-- xxx ---");
-            System.Refresh(_System);
+                //GD.Print("-- xxx ---");
+                System.Refresh(_System);
+            }
+            else
+            {
+                Unexplored.Visible = false;
+                Uncolonized.Visible = true;
+                System.Visible = false;
+
+                //GD.Print("-- OOO ---");
+                Uncolonized.Refresh(_Star);
+            }
         }
         else
         {
-            Uncolonized.Visible = true;
+            Unexplored.Visible = true;
+            Uncolonized.Visible = false;
             System.Visible = false;
-
-            //GD.Print("-- OOO ---");
-            Uncolonized.Refresh(_Star);
         }
     }
 

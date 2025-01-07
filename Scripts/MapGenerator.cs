@@ -83,8 +83,8 @@ public partial class MapGenerator : Node
         {
             Camera = GetNode<MapCamera>("/root/Main/Camera3D");
         }
-        Camera.MoveLimitX = 8.6666f * 3.8f * FromFile_Size;
-        Camera.MoveLimitY = 15.0f * 2.2f * FromFile_Size;
+        //Camera.MoveLimitX = 8.6666f * 3.8f * FromFile_Size;
+        //Camera.MoveLimitY = 15.0f * 2.2f * FromFile_Size;
     }
 
     // --------------------------------------------------------------------------------------------------
@@ -315,6 +315,8 @@ public partial class MapGenerator : Node
                 Data.AddData(starData, "Y", y, DefLibrary);
 
                 GenerateNewMapSave_Star_Planets_A(starData);
+
+                Data.AddData(starData, "Visibility", DefLibrary);
             }
         }
     }
@@ -398,8 +400,9 @@ public partial class MapGenerator : Node
                     }
                 }
 
-
                 GenerateNewMapSave_Star_Planets_B(starData, level, capital, capitalType, temperature, empireLetter);
+
+                Data.AddData(starData, "Visibility", DefLibrary);
             }
         }
     }

@@ -54,8 +54,7 @@ public partial class PlayerInput : Node
     [Export]
     public ColonyData SelectedPlanetColony = null;
 
-
-    private bool HandledInput = true;
+    private bool UnhandledInput = false;
     public override void _Input(InputEvent inputEvent)
     {
         if (inputEvent is InputEventKey keyButtonEvent) // load save
@@ -78,10 +77,8 @@ public partial class PlayerInput : Node
                 }
             }
         }
-        else
-        {
-            HandledInput = true;
-        }
+
+        UnhandledInput = false;
     }
 
     //public InputState OldState = InputState.FAR_GALAXY;
@@ -100,7 +97,7 @@ public partial class PlayerInput : Node
         {
             if (!mouseButtonEvent.IsPressed())
             {
-                Raycast(false);
+                Raycast();
 
                 // on mouse button release
                 if (mouseButtonEvent.ButtonIndex == MouseButton.Left)
@@ -135,14 +132,27 @@ public partial class PlayerInput : Node
         }
         else
         {
-            HandledInput = false;
-            Raycast(true);
+            UnhandledInput = true;
         }
+        //else if (inputEvent is InputEventMouseMotion mouseMotionEvent)
+        //{
+        //    if (mouseMotionEvent.Velocity.LengthSquared() < 10000)
+        //    {
+        //        Game.self.GalaxyUI.DEBUGText.Text = "cast";
+        //        HandledInput = false;
+        //        Raycast();
+        //    }
+        //    else
+        //    {
+        //        Game.self.GalaxyUI.DEBUGText.Text = "too fast------------ too fast";
+        //    }
+        //}
     }
 
-    private float Raycast_cooldown = 0.0f;
+    //private float Raycast_cooldown = 0.0f;
+    private Vector2 Raycast_lastMousePos = Vector2.Zero;
     private Node3D Raycast_hitNode = null;
-    public void Raycast(bool useCooldown)
+    public void Raycast()
     {
         MapCamera camera =  Game.self.Camera;
         Vector2 mouse_pos = GetViewport().GetMousePosition();
@@ -162,55 +172,89 @@ public partial class PlayerInput : Node
         {
             Node3D hitNode = (Node3D)raycast_result["collider"];
 
-            if (useCooldown)
-            {
-                if (Raycast_hitNode == null || Raycast_hitNode != hitNode)
-                {
-                    Raycast_hitNode = hitNode;
-                    Raycast_cooldown = 0.2f;
-                    //GD.Print("Hit " + Raycast_cooldown + " " + Raycast_hitNode);
-                }
-            }
-            else
-            {
+            //if (useCooldown)
+            //{
+            //    if (Raycast_hitNode == null || Raycast_hitNode != hitNode)
+            //    {
+            //        Raycast_hitNode = hitNode;
+            //        //Raycast_cooldown = 0.1f;
+            //        //GD.Print("Hit " + Raycast_cooldown + " " + Raycast_hitNode);
+            //    }
+            //}
+            //else
+            //{
                 ProcessHitNode(hitNode); 
-            }
+            //}
         }
         else
         {
-            if (useCooldown)
-            {
-                Raycast_hitNode = null;
-            }
+            //if (useCooldown)
+            //{
+            //    Raycast_hitNode = null;
+            //}
+
+            GD.Print("Nothing");
+
             OnDehoverFleets();
             OnDehoverPlanet();
             OnDehoverStar();
         }
     }
 
+    private Vector2 LastMousePosition = Vector2.Zero;
     public override void _Process(double delta)
     {
-        if (HandledInput == true)
+        Vector2 mousePos = GetViewport().GetMousePosition();
+        if (UnhandledInput)
         {
-            Raycast_hitNode = null;
-            Raycast_cooldown = 0.2f;
-        }
-        else // last input was unhandled input
-        {
-            if (Raycast_hitNode != null)
+            if ((LastMousePosition - mousePos).LengthSquared() < delta * 1000.0)
             {
-                Raycast_cooldown -= (float)delta;
-                if (Raycast_cooldown <= 0.0f)
-                {
-                    //GD.Print("Cooldown " + Raycast_cooldown + " " + Raycast_hitNode);
-                    ProcessHitNode(Raycast_hitNode);
-                    Raycast_cooldown = 1.0f;
-                }
+                Game.self.GalaxyUI.DEBUGText.Text = "cast";
+                Raycast();
+            }
+            else
+            {
+                Game.self.GalaxyUI.DEBUGText.Text = "too fast------------ too fast";
             }
         }
-    }
+        else
+        {
+            Game.self.GalaxyUI.DEBUGText.Text = "-- Handled Input --";
+        }
+        LastMousePosition = mousePos;
+                //if (HandledInput == true)
+                //{
+                //    Raycast_hitNode = null;
+                //    Raycast_cooldown = 0.1f;
+                //}
+                //else // last input was unhandled input
+                //{
+                //    if (Raycast_hitNode != null)
+                //    {
+                //        Raycast_cooldown -= (float)delta;
+                //
+                //        Vector2 newMousePos = GetViewport().GetMousePosition();
+                //        if (Raycast_lastMousePos == newMousePos)
+                //        {
+                //            Raycast_cooldown -= 1.0f;
+                //        }
+                //        else
+                //        {
+                //            Raycast_lastMousePos = newMousePos;
+                //        }
+                //        if (Raycast_cooldown <= 0.0f)
+                //        {
+                //            //GD.Print("Cooldown " + Raycast_cooldown + " " + Raycast_hitNode);
+                //            ProcessHitNode(Raycast_hitNode);
+                //            Raycast_cooldown = 1.0f;
+                //        }
+                //    }
+                //}
 
-    private void ProcessHitNode(Node3D hitNode)
+
+            }
+
+            private void ProcessHitNode(Node3D hitNode)
     {
         if (hitNode.GetParent().Name.ToString() == "Star")
         {
@@ -220,7 +264,7 @@ public partial class PlayerInput : Node
             GFXStar star = (GFXStar)hitNode.GetParent().GetParent();
             OnHoverStar(star._Star);
 
-            //GD.Print(star.Name);
+            GD.Print(star.Name);
         }
         else if (hitNode.GetParent().Name.ToString() == "Offset")
         {
@@ -230,7 +274,7 @@ public partial class PlayerInput : Node
             GFXStarOrbit starOrbit = (GFXStarOrbit)hitNode.GetParent().GetParent();
             OnHoverPlanet(starOrbit._Planet);
 
-            //GD.Print(starOrbit.Name);
+            GD.Print(starOrbit.Name);
         }
         else if (hitNode.GetParent().Name.ToString().StartsWith("Ship") == true)
         {
@@ -240,7 +284,7 @@ public partial class PlayerInput : Node
             GFXStarShip starShip = (GFXStarShip)hitNode.GetParent();
             OnHoverFleets(starShip._Fleets);
 
-            //GD.Print(starShip.Name);
+            GD.Print(starShip.Name);
         }
         else
         {
@@ -248,6 +292,8 @@ public partial class PlayerInput : Node
             OnDehoverFleets();
             OnDehoverPlanet();
             OnDehoverStar();
+
+            // GD.Print("Never");
         }
     }
 
@@ -888,7 +934,7 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.FAR_FLEETS_H_FLEETS;
+            State = InputState.FAR_FLEETS;
         }
         else
         {
@@ -911,7 +957,7 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.FAR_FLEETS_H_FLEETS;
+            State = InputState.FAR_FLEETS;
         }
         else
         {
@@ -941,7 +987,7 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.FAR_FLEETS_H_FLEETS;
+            State = InputState.FAR_FLEETS;
         }
         else
         {
@@ -964,7 +1010,7 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.CLOSE_FLEETS_H_FLEETS;
+            State = InputState.CLOSE_FLEETS;
         }
         else
         {
@@ -990,7 +1036,7 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.CLOSE_FLEETS_H_FLEETS;
+            State = InputState.CLOSE_FLEETS;
         }
         else
         {
@@ -1020,7 +1066,7 @@ public partial class PlayerInput : Node
             HoverFleets.Clear();
             Game.self.SelectorsUI3D.FleetDehover();
 
-            State = InputState.CLOSE_FLEETS_H_FLEETS;
+            State = InputState.CLOSE_FLEETS;
         }
         else
         {
@@ -1329,7 +1375,8 @@ public partial class PlayerInput : Node
     {
         for (int idx = 0; idx < Game.self.Map.Data.Stars.Count; idx++)
         {
-            Game.self.Map.Data.Stars[idx]._Node.GFX.LODClose();
+            StarData star = Game.self.Map.Data.Stars[idx];
+            star._Node.GFX.LODClose();
         }
 
         SelectedStar._Node.GFX.ShowPlanets3DGUI();
@@ -1377,7 +1424,7 @@ public partial class PlayerInput : Node
 
     // ---------------------------------------------------------------------------------
 
-    Plane XOYPlane = new Plane(Vector3.Up);
+    Plane XOZPlane = new Plane(Vector3.Up);
     public void ZoomIn()
     {
         if ((int)State >= (int)InputState.CLOSE_STAR)
@@ -1413,7 +1460,7 @@ public partial class PlayerInput : Node
                 }
                 else
                 {
-                    Vector3 cameraMiddlePoint = XOYPlane.IntersectsRay(Game.self.Camera.Position, Game.self.Camera.ProjectPosition(GetViewport().GetVisibleRect().Size / 2, 1.0f) - Game.self.Camera.Position).Value;
+                    Vector3 cameraMiddlePoint = XOZPlane.IntersectsRay(Game.self.Camera.Position, Game.self.Camera.ProjectPosition(GetViewport().GetVisibleRect().Size / 2, 1.0f) - Game.self.Camera.Position).Value;
                     // get closest star
                     float minDist = float.MaxValue;
                     StarData star = Game.self.Map.Data.Stars[0];

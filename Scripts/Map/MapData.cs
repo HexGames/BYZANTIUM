@@ -204,7 +204,7 @@ public partial class MapData : Node
 
         starNode.GFX.Refresh(starData, angleSeed);
         starNode.GFX.RefreshStarModel(starType);
-        starNode.GFX.RefreshPlayerColor();
+        //starNode.GFX.RefreshPlayerColor();
     }
 
     public void GenerateGameFromData_Star_Planet(DataBlock planetDataBlock, StarData starData)

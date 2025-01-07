@@ -74,10 +74,10 @@ public partial class MapCamera : Camera3D
 
         Game.self.Assets.LODPlanetsAlpha(1.0f - alpha);
 
-        for (int idx = 0; idx < Game.self.Map.Data.Stars.Count; idx++)
-        {
-            Game.self.Map.Data.Stars[idx]._Node.GFX.LODAlpha(alpha);
-        }
+        //for (int idx = 0; idx < Game.self.Map.Data.Stars.Count; idx++)
+        //{
+        //    Game.self.Map.Data.Stars[idx]._Node.GFX.LODAlpha(alpha);
+        //}
 
         Game.self.GalaxyUI.UI3DManager.LODAlpha(alpha);
 

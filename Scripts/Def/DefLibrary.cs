@@ -250,7 +250,7 @@ public partial class DefLibrary : Node
 
             DB_Types_S.Add(newType, name);
             DB_Types_I.Add(name, newType);
-            GD.Print("Def new Data Block Type: " + name + " - " + newType);
+            //GD.Print("Def new Data Block Type: " + name + " - " + newType);
 
             return newType;
         }

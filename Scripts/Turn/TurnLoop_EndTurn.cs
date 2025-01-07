@@ -29,6 +29,9 @@ public partial class TurnLoop : Node
         // update fleets
         StartTurn_Fleets();
 
+        // update visibility
+        StartTurn_Visibility();
+
         // update resources
         StartTurn_Resources();
 
@@ -213,6 +216,51 @@ public partial class TurnLoop : Node
             {
                 FleetData fleet = player.Fleets[fleetIdx];
                 fleet.Stats_PerTurn.Refresh();
+            }
+        }
+    }
+
+    // ----------------------------------------------------------------------------------------------
+    private void StartTurn_Visibility()
+    {
+        for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
+        {
+            StarData star = Game.self.Map.Data.Stars[starIdx];
+            star.Visibility_PerTurn.Refresh();
+        }
+
+        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+        {
+            PlayerData player = Game.self.Map.Data.Players[playerIdx];
+            for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
+            {
+                for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
+                {
+                    StarData star = Game.self.Map.Data.Stars[starIdx];
+                    if (star == player.Fleets[fleetIdx].StarAt_PerTurn)
+                    {
+                        star.Visibility_PerTurn.SetAsVisibleForThisTurn(player);
+                    }
+                    else if (star.DistanceTo(player.Fleets[fleetIdx].StarAt_PerTurn) <= 1)
+                    {
+                        star.Visibility_PerTurn.SetAsUncovered(player);
+                    }
+                }
+            }
+            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            {
+                for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
+                {
+                    StarData star = Game.self.Map.Data.Stars[starIdx];
+                    if (star == player.Systems[systemIdx].Star)
+                    {
+                        star.Visibility_PerTurn.SetAsVisibleForThisTurn(player);
+                    }
+                    else if (star.DistanceTo(player.Systems[systemIdx].Star) <= 1)
+                    {
+                        star.Visibility_PerTurn.SetAsUncovered(player);
+                    }
+                }
             }
         }
     }

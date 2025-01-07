@@ -46,6 +46,7 @@ public partial class TurnLoop : Node
     {
         // session
         Init_PlayerData();
+        Init_StarData();
         Init_FeatureData();
         Init_DistrictData();
         Init_DesignData();
@@ -55,8 +56,11 @@ public partial class TurnLoop : Node
         Init_Resources();
         Init_Fleets();
         StartTurn_Fleets();
+        StartTurn_Visibility();
         StartTurn_Resources();
         StartTurn_NewActions();
+
+        Game.self.Camera.Init(Game.self.Map.Data);
 
         // update UI
         Game.self.GalaxyUI.StartTurn();
@@ -79,6 +83,15 @@ public partial class TurnLoop : Node
         {
             PlayerData player = Game.self.Map.Data.Players[playerIdx];
             player.Stockpiles_PerTurn = new PlayerStockpilesWrapper(player);
+        }
+    }
+
+    public void Init_StarData()
+    {
+        for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
+        {
+            StarData star = Game.self.Map.Data.Stars[starIdx];
+            star.Init();
         }
     }
 
