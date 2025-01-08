@@ -16,7 +16,6 @@ public partial class MapCamera : Camera3D
     public int LOD = 0; 
     [Export]
     public Vector3 TargetPosition; //camera position
-    //public Vector3 RestrictedPosition; //camera position
     private float TargetHeight;
     private float CurrentRotationX;
 
@@ -49,21 +48,14 @@ public partial class MapCamera : Camera3D
     private bool ZoomAndScroll = true;
     private bool Panning = false;
 
-    //private Vector3 GoToTarget; //target to go to
-    //private bool GoToTargetReached = true;
+    //public List<Vector3> PointsOfIntrest = new List<Vector3>();
+    //public Vector3 ChosenPointOfIntrest = Vector3.Zero;
 
-    //private bool LockedNew = false; //lock height
 
-    //private float LockedHeight = 28f; //lock height
-    //private float LockedRotationX = 45f; //lock rotation
-
-    //private float LockedHeight_new = 10f; //lock height
-    //private float LockedRotationX_new = 10f; //lock rotation
-
-    //private float LockedOffsetFromInputX = 0f;
-
-    public List<Vector3> PointsOfIntrest = new List<Vector3>();
-    public Vector3 ChosenPointOfIntrest = Vector3.Zero;
+    [Export]
+    public Vector3 MouseXOZ = Vector3.Zero; //camera position
+    [Export]
+    public Vector3 CenterCameraXOZ = Vector3.Zero; //camera position
 
     [Export]
     public float ScreenEdgeBorder = 25f;
@@ -91,6 +83,12 @@ public partial class MapCamera : Camera3D
         CameraUpdate((float) delta);
 
         ProcessLOD((float)delta);
+
+        Vector3 mouseProjectedPosition = ProjectPosition(GetViewport().GetMousePosition(), 1.0f);
+        MouseXOZ = (Vector3)XOZPlane.IntersectsRay(Position, mouseProjectedPosition - Position);
+
+        Vector3 centerProjectedPosition = ProjectPosition(GetViewport().GetVisibleRect().Size / 2, 1.0f);
+        CenterCameraXOZ = (Vector3)XOZPlane.IntersectsRay(Position, centerProjectedPosition - Position);
     }
 
     public void Init(MapData map)
@@ -100,7 +98,7 @@ public partial class MapCamera : Camera3D
         for (int starIdx = 0; starIdx < map.Stars.Count; starIdx++ )
         {
             Vector3 pos = map.Stars[starIdx]._Node.GFX.GlobalPosition + Vector3.Left * 1.0f;
-            PointsOfIntrest.Add(pos);
+            //PointsOfIntrest.Add(pos);
             maxX = Mathf.Max(maxX, Mathf.Abs(pos.X));
             maxY = Mathf.Max(maxY, Mathf.Abs(pos.Z));
         }
@@ -136,10 +134,6 @@ public partial class MapCamera : Camera3D
             {
                 Panning = false;
             }
-
-            //else if (Input.IsActionJustPressed("Camera_Scroll_Up")) Input_Scroll += 0.1f * mouseButtonEvent.Factor; // Input.GetActionStrength("Camera_Scroll_Up");
-            //if (Input.IsActionPressed("Camera_Scroll_Down")) Input_Scroll -= 0.01f * mouseButtonEvent.Factor; // Input.GetActionStrength("Camera_Scroll_Down");
-            //else if (Input.IsActionJustPressed("Camera_Scroll_Down")) Input_Scroll -= 0.1f * mouseButtonEvent.Factor; // Input.GetActionStrength("Camera_Scroll_Down");
         }
 
         if (Panning)
@@ -170,19 +164,13 @@ public partial class MapCamera : Camera3D
         return UILockSystem;
     }
 
+    // --------------------------------------------------------------------------------------------
     // Camera methods
     private void CameraUpdate(float deltaTime)
     {
-        ChoosePointOfIntrest();
+        //ChoosePointOfIntrest();
 
-        //f (GoToTargetReached == false)
-        //
-        //   MoveToTarget(deltaTime);
-        //
-        //lse
-        //
-            Move(deltaTime);
-        //}
+        Move(deltaTime);
 
         HeightCalculation(deltaTime);
 
@@ -190,34 +178,30 @@ public partial class MapCamera : Camera3D
 
         LimitPosition(deltaTime);
 
-        //MouseOffset();
-
         TransformNode.Rotation = new Vector3(-Mathf.DegToRad(CurrentRotationX), Mathf.DegToRad(CurrentRotationY), 0.0f);
-        //Quaternion q = Quaternion.FromEuler(TransformNode.Rotation);
-        //TransformNode.Position = TargetPosition + Vector3.Right * LockedOffsetFromInputX + q * Vector3.Back * TargetDistance;
-        //TransformNode.Position = TargetPosition + Vector3.Right * LockedOffsetFromInputX + Vector3.Up * TargetHeight;
         TransformNode.Position = TargetPosition + Vector3.Right + Vector3.Up * TargetHeight;
-        //TransformNode.Position = RestrictedPosition + Vector3.Right + Vector3.Up * TargetHeight;
     }
 
-    private void ChoosePointOfIntrest()
-    {
-        Vector3 mouseProjectedPosition = ProjectPosition(GetViewport().GetMousePosition(), 1.0f);
-        Vector3 intersect = (Vector3)XOZPlane.IntersectsRay(Position, mouseProjectedPosition - Position);
+    // --------------------------------------------------------------------------------------------
+    //private void ChoosePointOfIntrest()
+    //{
+    //    Vector3 mouseProjectedPosition = ProjectPosition(GetViewport().GetMousePosition(), 1.0f);
+    //    Vector3 intersect = (Vector3)XOZPlane.IntersectsRay(Position, mouseProjectedPosition - Position);
+    //
+    //    float distMin = float.MaxValue;
+    //    for (int idx = 0; idx < PointsOfIntrest.Count; idx++)
+    //    {
+    //        float dist = PointsOfIntrest[idx].DistanceSquaredTo(intersect);
+    //
+    //        if (dist < distMin)
+    //        {
+    //            ChosenPointOfIntrest = PointsOfIntrest[idx];
+    //            distMin = dist;
+    //        }
+    //    }
+    //}
 
-        float distMin = float.MaxValue;
-        for (int idx = 0; idx < PointsOfIntrest.Count; idx++)
-        {
-            float dist = PointsOfIntrest[idx].DistanceSquaredTo(intersect);
-
-            if (dist < distMin)
-            {
-                ChosenPointOfIntrest = PointsOfIntrest[idx];
-                distMin = dist;
-            }
-        }
-    }
-
+    // --------------------------------------------------------------------------------------------
     private void Move(float deltaTime)
     {
         if (Locked == false && !IsPointerOverGUI() && ZoomAndScroll)
@@ -233,10 +217,11 @@ public partial class MapCamera : Camera3D
             Vector3 borderInput = Vector3.Zero;
             if (Input_Panning == Vector3.Zero)
             {
-                if (GetViewport().GetMousePosition().Y < ScreenEdgeBorder) borderInput += Vector3.Forward;
-                if (GetViewport().GetMousePosition().Y > GetViewport().GetVisibleRect().Size.Y - ScreenEdgeBorder) borderInput += Vector3.Back;
-                if (GetViewport().GetMousePosition().X > GetViewport().GetVisibleRect().Size.X - ScreenEdgeBorder) borderInput += Vector3.Right;
-                if (GetViewport().GetMousePosition().X < ScreenEdgeBorder) borderInput += Vector3.Left;
+                Vector2 mousePos = GetViewport().GetMousePosition();
+                if (mousePos.Y < ScreenEdgeBorder) borderInput += Vector3.Forward;
+                if (mousePos.Y > GetViewport().GetVisibleRect().Size.Y - ScreenEdgeBorder) borderInput += Vector3.Back;
+                if (mousePos.X > GetViewport().GetVisibleRect().Size.X - ScreenEdgeBorder) borderInput += Vector3.Right;
+                if (mousePos.X < ScreenEdgeBorder) borderInput += Vector3.Left;
             }
 
             Vector3 movement = keyboardInput + borderInput;
@@ -253,6 +238,8 @@ public partial class MapCamera : Camera3D
         Input_Panning = Vector3.Zero;
     }
 
+
+    // --------------------------------------------------------------------------------------------
     Plane XOZPlane = new Plane(Vector3.Up);
     private void HeightCalculation(float deltaTime)
     {
@@ -261,7 +248,6 @@ public partial class MapCamera : Camera3D
         ZoomPos = Mathf.Clamp(ZoomPos, 0.0f, 1.0f);
 
         float targetHeight = Mathf.Lerp(ZoomMinHeight, ZoomMaxHeight, ZoomPos);
-        //if (Locked) targetHeight = LockedNew ? LockedHeight_new : LockedHeight;
 
         float difference = 0;
         if (TargetHeight != targetHeight) difference = targetHeight - TargetHeight;
@@ -269,15 +255,8 @@ public partial class MapCamera : Camera3D
         CurrentHeightDampening = Mathf.Max(0.03f, deltaTime * ZoomHeightDampening);
         float lerpedDifference = Mathf.Lerp(0, difference, CurrentHeightDampening);
 
-        //float oldDistance = TargetHeight;
         TargetHeight = Mathf.Clamp(TargetHeight + lerpedDifference, ZoomMinHeight, ZoomMaxHeight);
 
-        //Game.self.GalaxyUI.DEBUGText.Text = ChosenPointOfIntrest.ToString();
-        //if (Engine.GetFramesDrawn() % 100 == 0)
-        //Game.self.GalaxyUI.DEBUGText.Text = difference.ToString() + "\n" + CurrentHeightDampening.ToString() + "\n" + lerpedDifference.ToString();
-
-        //Plane plane = new Plane(Vector3.Up, TargetHeight);
-        //Vector3? intersect = plane.IntersectsRay(Position, ProjectPosition(GetViewport().GetMousePosition(), 1.0f) - Position);
         if (lerpedDifference > 0)
         {
             Plane plane = new Plane(Vector3.Up, TargetHeight);
@@ -300,19 +279,11 @@ public partial class MapCamera : Camera3D
                 TargetPosition += moveVector;
             }
         }
-        //else
-        //{
-        //    Vector3 moveVector = Position - ChosenPointOfIntrest;
-        //    moveVector /= 0.01f * TargetHeight;
-        //    moveVector.X *= 0.01f;
-        //    moveVector.Y = 0;
-        //    moveVector.Z *= 0.01f;
-        //    TargetPosition += moveVector * lerpedDifference;
-        //}
 
         Input_Scroll = 0.0f;
     }
 
+    // --------------------------------------------------------------------------------------------
     private void RotationCalculation(float deltaTime)
     {
         float targetRotationX = RotationXDefault;
@@ -328,122 +299,16 @@ public partial class MapCamera : Camera3D
         CurrentRotationY = Mathf.LerpAngle(CurrentRotationY, CurrentRotationY + difference, CurrentRotationDampening);
     }
 
-    //private void MoveToTarget(float deltaTime)
-    //{
-    //    //TargetPosition = Vector3.MoveTowards( TargetPosition, GoToTarget, Time.deltaTime * MoveSpeedFollowingSpeed );
-    //    //CurrentMoveSpeed = Mathf.Clamp( Time.deltaTime * MoveSpeedDampening * ( GoToTarget - TargetPosition ).magnitude, Time.deltaTime * MoveSpeedMin, Time.deltaTime * MoveSpeedMax );
-    //    CurrentMoveSpeed = Mathf.Max(0.05f, deltaTime * ZoomHeightDampening) * (GoToTarget - TargetPosition).Length();
-    //    TargetPosition += GoToTarget.Normalized() * CurrentMoveSpeed;
-    //    GoToTargetReached = (GoToTarget - TargetPosition).LengthSquared() < 1.0f;
-    //}
-
-    //private void MoveToHeight()
-    //{
-    //	targetDistance = Mathf.Lerp( targetDistance, GoToHeight, Time.deltaTime * heightDampening );
-    //	zoomPos = ( GoToHeight - minHeight) / (maxHeight - minHeight); 
-    //
-    //	GoToHeightReached = ( GoToHeight - targetDistance ) < 1.0f;
-    //
-    //	float targetHeight = Mathf.Lerp(minHeight, maxHeight, zoomPos);
-    //}
-
+    // --------------------------------------------------------------------------------------------
     private Vector3 lockedToPoint = Vector3.Zero;
     private void LimitPosition(float deltaTime)
     {
         TargetPosition = new Vector3(Mathf.Clamp(TargetPosition.X, -0.5f * MoveLimitX, 0.5f * MoveLimitX),
             TargetPosition.Y,
             Mathf.Clamp(TargetPosition.Z, -0.5f * MoveLimitY + 0.5f * TargetHeight, 0.5f * MoveLimitY + 0.5f * TargetHeight));
-
-        //RestrictedPosition = TargetPosition;
-
-        //
-        //int chosenIdx = 0;
-        //float distMin = float.MaxValue;
-        //// get closest point of interest
-        //Vector3 estimatedLookAt = TargetPosition + Vector3.Forward * 0.82f * TargetHeight;
-        //for (int idx = 0; idx < PointsOfIntrest.Count; idx++)
-        //{
-        //    float dist = PointsOfIntrest[idx].DistanceSquaredTo(estimatedLookAt);
-        //
-        //    if (dist < distMin)
-        //    {
-        //        chosenIdx = idx;
-        //        distMin = dist;
-        //    }
-        //}
-        //
-        ////Game.self.GalaxyUI.DEBUGText.Text = chosenIdx.ToString() + "\n" + PointsOfIntrest[chosenIdx].ToString() + "\n" + lockedToPoint.ToString();
-        //if ((PointsOfIntrest[chosenIdx] - lockedToPoint).LengthSquared() > 0.1f)
-        //{
-        //    lockedToPoint = lockedToPoint.Slerp(PointsOfIntrest[chosenIdx], 20.0f * deltaTime);
-        //}
-        //else
-        //{
-        //    lockedToPoint = PointsOfIntrest[chosenIdx];
-        //}
-
-        //if (TargetHeight < 30.0f)
-        //{
-        //    float w = 1.0f - Mathf.Clamp((TargetHeight - 10.0f) / 20.0f, 0.0f, 1.0f);
-        //    Vector3 withOffset = lockedToPoint + Vector3.Back * 0.82f * TargetHeight;
-        //    RestrictedPosition = RestrictedPosition.Slerp(withOffset, w);
-        //}
     }
 
-    //private void MouseOffset()
-    //{
-    //    if (Locked && LockedNew)
-    //    {
-    //        LockedOffsetFromInputX = 4.0f * ((GetViewport().GetMousePosition().X / GetViewport().GetVisibleRect().Size.X) * 2.0f - 1.0f);
-    //    }
-    //    else
-    //    {
-    //        LockedOffsetFromInputX = 0.0f;
-    //    }
-    //}
-
-    //public void SetTarget(Vector3 target, float angle = 0.0f, float zoom = 0.0f, bool lockCamera = true)
-    //{
-    //    if (LockedNew)
-    //    {
-    //        GoToTarget = new Vector3(target.X, 0.0f + 2.0f, target.Z - 9.0f);
-    //    }
-    //    else
-    //    {
-    //        GoToTarget = new Vector3(target.X, 0.0f, target.Z);
-    //    }
-    //
-    //    GoToTargetReached = false;
-    //
-    //    RotationAngle = angle;
-    //
-    //    ZoomPos = zoom;
-    //
-    //    Locked = lockCamera;
-    //}
-
-    //public void SetTargetNoLock(Vector3 target)
-    //{
-    //    GoToTarget = new Vector3(target.X, 0.0f, target.Z);
-    //    GoToTargetReached = false;
-    //}
-
-    //public void SetTargetNoLockWithHeight(Vector3 target)
-    //{
-    //    GoToTarget = target;
-    //    GoToTargetReached = false;
-    //}
-
-    //public void SetTargetArea( Vector3 minXZ, Vector3 maxXZ, bool lockCamera = false )
-    //{
-    //    Vector3 average = new Vector3( ( minXZ.x + maxXZ.x )* 0.5f, 0.0f, ( minXZ.z + maxXZ.z ) * 0.5f );
-    //    float maxDistance = Mathf.Max( maxXZ.x - minXZ.x, maxXZ.x - minXZ.x );
-    //
-    //    float zoom = 0.5f * ( Mathf.Clamp( maxDistance, 200.0f, 400.0f ) / 200.0f );
-    //
-    //    SetTarget( average, zoom, lockCamera );
-    //}
-
+    // --------------------------------------------------------------------------------------------
     public void Unlock()
     {
         Locked = false;
@@ -459,15 +324,4 @@ public partial class MapCamera : Camera3D
     {
         get { return ZoomPos > 0.5f; }
     }
-
-    // unused for the moment
-    //private float DistanceToGround()
-    //{
-    //    Ray ray = new Ray(CameraTransform.position, Vector3.down);
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(ray, out hit))
-    //        return (hit.point - CameraTransform.position).magnitude;
-    //
-    //    return 0f;
-    //}
 }
