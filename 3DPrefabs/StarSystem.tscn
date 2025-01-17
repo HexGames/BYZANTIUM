@@ -135,7 +135,7 @@ size = Vector2(7.8, 7.8)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8lk6"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+albedo_color = Color(0.501961, 0.501961, 0.501961, 0.25098)
 albedo_texture = ExtResource("18_ysbu8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60mt6"]

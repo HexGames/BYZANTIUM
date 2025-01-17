@@ -1,0 +1,180 @@
+[gd_scene load_steps=9 format=3 uid="uid://tlc7q8l1u3c"]
+
+[ext_resource type="Texture2D" uid="uid://bry18m4qt40bf" path="res://Assets/Flags/Drakk_Bazzar.png" id="1_4g7fm"]
+[ext_resource type="Script" path="res://Scripts/UI/HUD/UIDiplomacyBar.cs" id="1_jvmr8"]
+[ext_resource type="Script" path="res://Scripts/UI/HUD/UIDiplomacyBarItem.cs" id="2_c5lvp"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="2_u2b8x"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="3_k3mjf"]
+[ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="4_30txx"]
+[ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="5_husl3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwd8l"]
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[node name="DiplomacyBar" type="Control" node_paths=PackedStringArray("Empires")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+script = ExtResource("1_jvmr8")
+Empires = [NodePath("HBoxContainer/Faction_1")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(640, 192)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="Faction_1" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+script = ExtResource("2_c5lvp")
+
+[node name="Panel" type="Panel" parent="HBoxContainer/Faction_1"]
+custom_minimum_size = Vector2(72, 184)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Faction_1/Panel"]
+layout_mode = 2
+offset_right = 72.0
+offset_bottom = 184.0
+theme_override_constants/separation = 0
+
+[node name="Gap_1" type="Control" parent="HBoxContainer/Faction_1/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="IconBg" type="Panel" parent="HBoxContainer/Faction_1/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwd8l")
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Faction_1/Panel/VBoxContainer/IconBg"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4g7fm")
+expand_mode = 1
+
+[node name="Gap_2" type="Control" parent="HBoxContainer/Faction_1/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Pops" type="RichTextLabel" parent="HBoxContainer/Faction_1/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_u2b8x")
+bbcode_enabled = true
+text = "[center][img=24x24]Assets/UI/Symbols/Pops.png[/img]$v[/center]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_k3mjf")
+
+[node name="Systems" type="RichTextLabel" parent="HBoxContainer/Faction_1/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_u2b8x")
+bbcode_enabled = true
+text = "[center][img=24x24]Assets/UI/Symbols/FlagW.png[/img]$v[/center]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_k3mjf")
+
+[node name="Economy" type="RichTextLabel" parent="HBoxContainer/Faction_1/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_u2b8x")
+bbcode_enabled = true
+text = "[center][img=24x24]Assets/UI/Symbols/ProdCap.png[/img]$v[/center]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_k3mjf")
+
+[node name="Ships" type="RichTextLabel" parent="HBoxContainer/Faction_1/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_u2b8x")
+bbcode_enabled = true
+text = "[center][img=24x24]Assets/UI/Symbols/Power.png[/img]$v[/center]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_k3mjf")
+
+[node name="Button" type="Button" parent="HBoxContainer/Faction_1/Panel"]
+custom_minimum_size = Vector2(80, 192)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -96.0
+offset_right = 40.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_30txx")
+theme_type_variation = &"ButtonInvisibleSmallBorder"
+
+[node name="ToolTip" type="Control" parent="HBoxContainer/Faction_1/Panel/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_husl3")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Open Diplomacy"
+Row_1 = "Open the Diplomacy Window for this player."
+
+[connection signal="pressed" from="HBoxContainer/Faction_1/Panel/Button" to="HBoxContainer/Faction_1" method="OnSelect"]
+[connection signal="mouse_entered" from="HBoxContainer/Faction_1/Panel/Button/ToolTip" to="HBoxContainer/Faction_1/Panel/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/Faction_1/Panel/Button/ToolTip" to="HBoxContainer/Faction_1/Panel/Button/ToolTip" method="OnHoverExit"]

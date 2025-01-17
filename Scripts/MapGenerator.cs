@@ -99,6 +99,8 @@ public partial class MapGenerator : Node
 
         GenerateNewMapSave_Players(mapData);
 
+        GenerateNewMapSave_Relations(mapData);
+
         return mapData;
     }
 
@@ -465,6 +467,12 @@ public partial class MapGenerator : Node
         {
             GenerateNewMapSave_Players_B(map, playerList);
         }
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    public void GenerateNewMapSave_Relations(DataBlock map)
+    {
+        DataBlock playerList = Data.AddData(map, "Relations", DefLibrary);
     }
 
     //private void GenerateNewMapSave_Players_A(DataBlock map, DataBlock playerList)

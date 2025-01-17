@@ -222,47 +222,47 @@ public partial class GFXStar : Node3D
     //}
     public void RefreshPlayerColor()
     {
-        float alpha = 0.35f;
-        if (Selected) alpha = 1.0f;
-        else if (Hover) alpha = 0.7f;
-
-        IsKnown = false;
+        IsKnown = _Star.Visibility_PerTurn.IsUncoveredBy(Game.self.HumanPlayer);
         bool neutralSystem = true;
-        Color systemColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
-        if (_Star.System != null)
+        Color systemColor = new Color(0.5f, 0.5f, 0.5f, 0.05f);
+        if (_Star.System != null && IsKnown)
         {
             neutralSystem = false;
             systemColor = Game.self.UILib.GetPlayerColor(_Star.System._Player.PlayerID);
+            systemColor.A = 0.35f;
+            if (Selected) systemColor.A = 1.0f;
+            else if (Hover) systemColor.A = 0.7f;
         }
+        //else
+        //{
+        //    if (Selected) systemColor.A = 0.3f;
+        //    else if (Hover) systemColor.A = 0.2f;
+        //}
 
         if (_Star.Visibility_PerTurn.IsVisibleBy(Game.self.HumanPlayer))
         {
             StandardMaterial3D newMaterial = PlayerColor.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
-            newMaterial.AlbedoColor = new Color(systemColor.R, systemColor.G, systemColor.B, alpha);
+            newMaterial.AlbedoColor = systemColor;
             PlayerColor.SetSurfaceOverrideMaterial(0, newMaterial);
             PlayerColor.Visible = true;
 
             PlayerUncovered.Visible = false;
             PlayerUnknown.Visible = false;
-
-            IsKnown = true;
         }
-        else if (_Star.Visibility_PerTurn.IsUncoveredBy(Game.self.HumanPlayer))
+        else if (IsKnown)
         {
             StandardMaterial3D newMaterial = PlayerUncovered.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
-            newMaterial.AlbedoColor = new Color(systemColor.R, systemColor.G, systemColor.B, alpha);
+            newMaterial.AlbedoColor = systemColor;
             PlayerUncovered.SetSurfaceOverrideMaterial(0, newMaterial);
             PlayerUncovered.Visible = true;
 
             PlayerColor.Visible = false;
             PlayerUnknown.Visible = false;
-
-            IsKnown = true;
         }
         else
         {
             StandardMaterial3D newMaterial = PlayerUnknown.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
-            newMaterial.AlbedoColor = new Color(0.5f, 0.5f, 0.5f, alpha);
+            newMaterial.AlbedoColor = systemColor;
             PlayerUnknown.SetSurfaceOverrideMaterial(0, newMaterial);
             PlayerUnknown.Visible = true;
 
@@ -270,18 +270,30 @@ public partial class GFXStar : Node3D
             PlayerUncovered.Visible = false;
         }
 
+        Color dustColorSystem = new Color();
+        Color dustColor = new Color();
+        dustColor = new Color(0.9f + 0.006f * (-20 + (Layer_3.Rotation.Y * 7) % 40), 0.7f, 0.6f + 0.006f * (-20 + (Layer_3.Rotation.Y * 19) % 40), IsKnown ? 0.2f : 0.05f);
+
         if (neutralSystem == false && IsKnown)
         {
-            StandardMaterial3D glowMaterial = Layer_3.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
-            glowMaterial.AlbedoColor = new Color(systemColor.R, systemColor.G, systemColor.B, 0.3f);
-            Layer_3.SetSurfaceOverrideMaterial(0, glowMaterial);
+            dustColorSystem = new Color(systemColor.R, systemColor.G, systemColor.B, 0.3f);
         }
         else
         {
-            StandardMaterial3D glowMaterial = Layer_3.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
-            glowMaterial.AlbedoColor = new Color(0.9f + 0.006f * (-20 + (Layer_3.Rotation.Y * 7) % 40), 0.7f, 0.6f + 0.006f * (-20 + (Layer_3.Rotation.Y * 19) % 40), 0.2f);
-            Layer_3.SetSurfaceOverrideMaterial(0, glowMaterial);
+            dustColorSystem = dustColor;
         }
+
+        Layer_2.Visible = IsKnown;
+        Layer_2_2.Visible = IsKnown;
+        Layer_2_3.Visible = IsKnown;
+
+        StandardMaterial3D material = Layer_3.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
+        material.AlbedoColor = dustColorSystem;
+        Layer_3.SetSurfaceOverrideMaterial(0, material);
+
+        material = Layer_3.GetSurfaceOverrideMaterial(0).Duplicate() as StandardMaterial3D;
+        material.AlbedoColor = dustColor;
+        Layer_4.SetSurfaceOverrideMaterial(0, material);
 
         for (int idx = 0; idx < Orbits.Count; idx++)
         {

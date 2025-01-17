@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bukr82o6e8rl3"]
+[gd_scene load_steps=16 format=3 uid="uid://bukr82o6e8rl3"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
 [ext_resource type="PackedScene" uid="uid://dkomfigvec4wg" path="res://Scenes/ui_3d_star.tscn" id="2_iewv2"]
@@ -8,12 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://0svrlyhb7gcc" path="res://Scenes/ui_economy_bar.tscn" id="4_y8k0i"]
 [ext_resource type="PackedScene" uid="uid://vh0pcrygv61d" path="res://Scenes/ui_system.tscn" id="7_y5oqc"]
 [ext_resource type="PackedScene" uid="uid://cmde3jxsickdj" path="res://Scenes/ui_planet.tscn" id="8_67ifr"]
+[ext_resource type="PackedScene" uid="uid://tlc7q8l1u3c" path="res://Scenes/ui_diplomacy_bar.tscn" id="10_nl6ke"]
 [ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="11_72k2f"]
+[ext_resource type="PackedScene" uid="uid://distno8k4r26b" path="res://Scenes/ui_diplomacy_window.tscn" id="11_qh3nu"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="12_70fqi"]
 [ext_resource type="PackedScene" uid="uid://b2a0hskimxnut" path="res://Scenes/ui_fleets.tscn" id="12_sv4sa"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="13_lewsr"]
 [ext_resource type="PackedScene" uid="uid://c5x0k0s750tc4" path="res://Scenes/__ui_general.tscn" id="16_3p5nr"]
 
-[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("UI3DManager", "Incoming", "Paths", "General", "Stockpiles", "SystemInfo", "PlanetInfo", "FleetsSelected", "EndTurnBg", "CurrentTurn", "DEBUGText")]
+[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("UI3DManager", "Incoming", "Paths", "General", "Stockpiles", "DiplomacyBar", "Diplomacy", "SystemInfo", "PlanetInfo", "FleetsSelected", "EndTurnBg", "CurrentTurn", "DEBUGText")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +30,8 @@ Incoming = [NodePath("UI3D/IncomingHUD/Incoming")]
 Paths = [NodePath("UI3D/PathsHUD/Path")]
 General = NodePath("GeneralUI")
 Stockpiles = NodePath("Economy")
+DiplomacyBar = NodePath("DiplomacyBar")
+Diplomacy = NodePath("DiplomacyWindow")
 SystemInfo = NodePath("System")
 PlanetInfo = NodePath("Planet")
 FleetsSelected = NodePath("Fleets")
@@ -100,6 +105,7 @@ layout_mode = 1
 anchors_preset = -1
 
 [node name="Planet" parent="." instance=ExtResource("8_67ifr")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 
@@ -108,6 +114,119 @@ layout_mode = 1
 anchors_preset = -1
 offset_left = 16.0
 offset_right = 16.0
+
+[node name="DiplomacyBar" parent="." instance=ExtResource("10_nl6ke")]
+layout_mode = 1
+
+[node name="DiplomacyWindow" parent="." instance=ExtResource("11_qh3nu")]
+visible = false
+layout_mode = 1
+
+[node name="EventChoose5" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EventChoose5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Panel" type="Panel" parent="EventChoose5/VBoxContainer"]
+custom_minimum_size = Vector2(1024, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TitleBg" type="Panel" parent="EventChoose5/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_72k2f")
+theme_type_variation = &"PanelTitle"
+
+[node name="Title" type="RichTextLabel" parent="EventChoose5/VBoxContainer/Panel/TitleBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_72k2f")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+bbcode_enabled = true
+text = "[center]$name[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("13_lewsr")
+
+[node name="Text" type="RichTextLabel" parent="EventChoose5/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("12_70fqi")
+bbcode_enabled = true
+text = "[center]Description is a long text that explains stuff, but hopefully not to long, becoause if it is too long people like me will not read it.
+But It still should have at least 2 or 3 rows.
+Like this. So choose a thing from under this text.[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+script = ExtResource("13_lewsr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EventChoose5/VBoxContainer"]
+custom_minimum_size = Vector2(0, 512)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Panel" type="Panel" parent="EventChoose5/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="EventChoose5/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="EventChoose5/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="Panel4" type="Panel" parent="EventChoose5/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="Panel5" type="Panel" parent="EventChoose5/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
 
 [node name="EndTurn" type="Control" parent="."]
 layout_mode = 1

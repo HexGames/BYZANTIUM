@@ -36,15 +36,15 @@ public partial class MapCamera : Camera3D
     private float MoveSpeedDampening = 7.5f;
 
     private float ZoomMaxHeight = 160f; //maximal height
-    private float ZoomMinHeight = 8f; //minimnal height
+    private float ZoomMinHeight = 7f; //minimnal height
     private float ZoomHeightDampening = 15.0f;
     private float ZoomRotationDampening = 7.5f;
     private float ZoomKeyboardSensitivity = -15f;
-    private float ZoomScrollWheelZSensitivity = -200f;
+    private float ZoomScrollWheelZSensitivity = -180f;
 
     private float RotationXDefault = 55;
 
-    private bool Locked = false;
+    private int Locked = 0;
     private bool ZoomAndScroll = true;
     private bool Panning = false;
 
@@ -60,7 +60,7 @@ public partial class MapCamera : Camera3D
     [Export]
     public float ScreenEdgeBorder = 25f;
     [Export]
-    public bool UILockSystem = false;
+    public bool UILock = false;
 
     // Godot specific
     public override void _Ready()
@@ -159,9 +159,9 @@ public partial class MapCamera : Camera3D
         }
     }
 
-    public bool IsPointerOverGUI()
+    public bool IsLockedByUI()
     {
-        return UILockSystem;
+        return UILock;
     }
 
     // --------------------------------------------------------------------------------------------
@@ -204,7 +204,7 @@ public partial class MapCamera : Camera3D
     // --------------------------------------------------------------------------------------------
     private void Move(float deltaTime)
     {
-        if (Locked == false && !IsPointerOverGUI() && ZoomAndScroll)
+        if (Locked == 0 && !IsLockedByUI() && ZoomAndScroll)
         {
             Vector3 keyboardInput = Vector3.Zero;
             // Keyboard Input
@@ -243,7 +243,7 @@ public partial class MapCamera : Camera3D
     Plane XOZPlane = new Plane(Vector3.Up);
     private void HeightCalculation(float deltaTime)
     {
-        if (Locked == false && !IsPointerOverGUI() && ZoomAndScroll) ZoomPos += Input_Scroll * deltaTime * ZoomScrollWheelZSensitivity * (0.25f + 0.75f * ZoomPos); 
+        if (Locked == 0 && !IsLockedByUI() && ZoomAndScroll) ZoomPos += Input_Scroll * deltaTime * ZoomScrollWheelZSensitivity * (0.2f + 0.8f * ZoomPos); 
         
         ZoomPos = Mathf.Clamp(ZoomPos, 0.0f, 1.0f);
 
@@ -287,7 +287,7 @@ public partial class MapCamera : Camera3D
     private void RotationCalculation(float deltaTime)
     {
         float targetRotationX = RotationXDefault;
-        //if (Locked) targetRotationX = LockedNew ? LockedRotationX_new : LockedRotationX;
+        //if (Locked == 0) targetRotationX = LockedNew ? LockedRotationX_new : LockedRotationX;
 
         CurrentRotationDampening = Mathf.Max(0.05f, deltaTime * ZoomHeightDampening);
 
@@ -309,10 +309,14 @@ public partial class MapCamera : Camera3D
     }
 
     // --------------------------------------------------------------------------------------------
+    public void Lock()
+    {
+        Locked++;
+    }
+
     public void Unlock()
     {
-        Locked = false;
-        RotationAngle = 0.0f;
+        Locked--;
     }
 
     public void SetZoomAndScroll(bool b)

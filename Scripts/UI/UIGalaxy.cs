@@ -32,6 +32,10 @@ public partial class UIGalaxy : Control
     //[Export]
     //public UIPops PopsInfo = null;
     [Export]
+    public UIDiplomacyBar DiplomacyBar = null;
+    [Export]
+    public UIDiplomacyWindow Diplomacy = null;
+    [Export]
     public UIStarInfo SystemInfo = null;
     [Export]
     public UIPlanetInfo PlanetInfo = null;
@@ -64,6 +68,9 @@ public partial class UIGalaxy : Control
         //SectorConstruction.Visible = false;
         //SectorShipbuilding.Visible = false;
         //PopsInfo.Visible = false;
+        Stockpiles.Visible = false;
+        DiplomacyBar.Visible = false;
+        Diplomacy.Visible = false;
         SystemInfo.Visible = false;
         PlanetInfo.Visible = false;
 
@@ -71,27 +78,6 @@ public partial class UIGalaxy : Control
         //FactionsInfo.Visible = false;
 
         FleetsSelected.Visible = false;
-    }
-
-    public override void _Process(double delta)
-    {
-        if (Game.self != null)
-        {
-            string text = Game.self.Input.State.ToString();
-            if (Game.self.Input.HoverStar != null)
-                text += "\n" + "HoveredStar:" + Game.self.Input.HoverStar.StarName;
-            if (Game.self.Input.SelectedStar != null)
-                text += "\n" + "SelectedStar:" + Game.self.Input.SelectedStar.StarName;
-            if (Game.self.Input.HoverFleets.Count > 0)
-                text += "\n" + "HoveredFleets";
-            if (Game.self.Input.SelectedFleet != null)
-                text += "\n" + "SelectedFleet";
-            if (Game.self.Input.HoverPlanet != null)
-                text += "\n" + "HoveredPlanet:" + Game.self.Input.HoverPlanet.PlanetName;
-            if (Game.self.Input.SelectedPlanet != null)
-                text += "\n" + "SelectedPlanet:" + Game.self.Input.SelectedPlanet.PlanetName;
-            //DEBUGText.Text = text;
-        }
     }
 
     public void ShowStarInfo(StarData selectedStar)
@@ -120,11 +106,13 @@ public partial class UIGalaxy : Control
     {
         PlanetInfo.Visible = true;
         PlanetInfo.Refresh(selectedPlanet);
+        DiplomacyBar.Visible = false;
     }
 
     public void HidePlanetInfo()
     {
         PlanetInfo.Visible = false;
+        DiplomacyBar.Visible = true;
     }
 
     public void AddPathLabel(GFXPathsItem pathGFX)
@@ -147,7 +135,11 @@ public partial class UIGalaxy : Control
 
     public void StartTurn()
     {
+        Stockpiles.Visible = true;
+        DiplomacyBar.Visible = true;
+
         Stockpiles.Refresh();
+        DiplomacyBar.Refresh();
     }
 
     //public void AddIncomingLabel(GFXIncomingsItem incomingGFX)

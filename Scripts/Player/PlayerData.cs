@@ -45,15 +45,21 @@ public partial class PlayerData : Node
     [Export]
     public Array<FleetData> Fleets = new Array<FleetData>();
 
+    // shortlist from Game.self.Map.Data.Relations
+    public List<RelationData> Relations = new List<RelationData>();
+
     [ExportCategory("PlayerData-Runtime")]
     [Export]
     public bool TurnFinished = false;
 
-    // designs
-    public List<DesignData> Designs = new List<DesignData>();
+    // stockpiles
+    public PlayerStatsWrapper Stats_PerTurn = null;
 
     // stockpiles
     public PlayerStockpilesWrapper Stockpiles_PerTurn = null;
+
+    // designs
+    public List<DesignData> Designs = new List<DesignData>();
 
 
     // --------------------------------------------------------------------------------------------
@@ -69,6 +75,7 @@ public partial class PlayerData : Node
 
         return null;
     }
+    // --------------------------------------------------------------------------------------------
     public FleetData GetFleet(string fleet)
     {
         for (int idx = 0; idx < Fleets.Count; idx++)
@@ -114,6 +121,7 @@ public partial class PlayerData : Node
         return -1;
     }
 
+    // --------------------------------------------------------------------------------------------
     public bool IsAtWarWith(PlayerData otherPlayer)
     {
         return false;

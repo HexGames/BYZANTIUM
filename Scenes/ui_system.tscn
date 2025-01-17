@@ -353,6 +353,7 @@ autowrap_mode = 0
 script = ExtResource("18_ercnh")
 
 [node name="UnknownStar" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="UnknownStar" type="PanelContainer" parent="VBoxContainer/UnknownStar"]
@@ -685,7 +686,6 @@ Title = "Colonize"
 Row_1 = "$text"
 
 [node name="System" type="VBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("OwnerName", "OwnerColor", "Pops", "PopsGrowth", "PopsTurns", "PopsProgressCurrent", "PopsProgressNextTurn", "PopsGrowthTooltip", "PopsUnhappy", "PopsNeutral", "PopsHappy", "Wealth", "WealthProgressCurrent", "WealthProgressNextTurn", "WealthTooltip", "WealthInequality", "WealthInequalityTooltip", "WealthInvestBg", "WealthInvest", "WealthInvestCurrent", "WealthInvestNextTurn", "WealthInvestTooltip", "ControlText", "ControlChangeText", "ControlChangeDecrease", "ControlChangeIncrease", "ControlLoyal", "ControlUnsure", "ControlWavering", "ControlTurmoil", "ControlRebelious", "ControlCursor", "ControlCorruption", "ControlCorruptionTooltip", "ControlAlert", "Infrastructure", "InfrastructureGrowth", "InfrastructureTurns", "InfrastructureProgressCurrent", "InfrastructureProgressNextTurn", "InfrastructureAlert", "InfrastructureAlertPoints", "TaxPip_1", "TaxPip_2", "TaxPip_3", "IncomeBC", "IncomeInf", "IncomeRes", "NoShipbuilding", "Shipbuilding", "ShipbuildingLeft", "ShipbuildingRight", "ShipbuildingIcon", "ShipbuildingName", "ShipbuildingIncome", "ShipbuildingProgressTurns", "ShipbuildingProgressCurrent", "ShipbuildingProgressNextTurn")]
-visible = false
 layout_mode = 2
 script = ExtResource("12_xp3cq")
 OwnerName = NodePath("OwnerBg/Owner")

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://h0pqg2crxlit"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://h0pqg2crxlit"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whma6"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 1)
@@ -29,6 +29,21 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.87451, 0.25098, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0f5j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfni3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6fsi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wsli"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcnxc"]
+
 [resource]
 Button/constants/h_separation = 0
 Button/styles/disabled = SubResource("StyleBoxFlat_whma6")
@@ -36,3 +51,9 @@ Button/styles/focus = SubResource("StyleBoxFlat_kyy6d")
 Button/styles/hover = SubResource("StyleBoxFlat_rqh1g")
 Button/styles/normal = SubResource("StyleBoxFlat_jawlx")
 Button/styles/pressed = SubResource("StyleBoxFlat_uaxgc")
+ButtonInvisibleSmallBorder/base_type = &"Button"
+ButtonInvisibleSmallBorder/styles/disabled = SubResource("StyleBoxFlat_q0f5j")
+ButtonInvisibleSmallBorder/styles/focus = SubResource("StyleBoxFlat_xfni3")
+ButtonInvisibleSmallBorder/styles/hover = SubResource("StyleBoxFlat_u6fsi")
+ButtonInvisibleSmallBorder/styles/normal = SubResource("StyleBoxFlat_6wsli")
+ButtonInvisibleSmallBorder/styles/pressed = SubResource("StyleBoxFlat_tcnxc")

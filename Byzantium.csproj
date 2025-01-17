@@ -11,6 +11,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\UI\Build\" />
+    <Folder Include="Scripts\UI\HUD\" />
     <Folder Include="Scripts\__Trash\" />
   </ItemGroup>
 </Project>

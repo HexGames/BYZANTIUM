@@ -1,0 +1,2731 @@
+[gd_scene load_steps=24 format=3 uid="uid://distno8k4r26b"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Diplomacy/UIDiplomacyWindow.cs" id="1_jtl26"]
+[ext_resource type="Texture2D" uid="uid://bry18m4qt40bf" path="res://Assets/Flags/Drakk_Bazzar.png" id="1_qjnaf"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_bcuq5"]
+[ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="2_pghf0"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="3_shjh3"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="4_i5mrr"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIButton.cs" id="5_t00wt"]
+[ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="6_b7lgr"]
+[ext_resource type="Texture2D" uid="uid://6txwm0lad0jq" path="res://Assets/UI/Symbols/LayGreen.png" id="7_fn6cv"]
+[ext_resource type="Texture2D" uid="uid://bh4b8jfxacxdt" path="res://Assets/UI/Symbols/Rebel.png" id="8_yrfii"]
+[ext_resource type="Texture2D" uid="uid://dqhju10mfykde" path="res://Assets/UI/arrow.png" id="9_57rqt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0o84"]
+shader = ExtResource("2_bcuq5")
+shader_parameter/amount = null
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p06b6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2clly"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8g1kw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hj8gj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oe5wl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwd8l"]
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ur18"]
+bg_color = Color(1, 0.811765, 0.207843, 0.25098)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhmkl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krk67"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 0.752941)
+border_color = Color(0.752941, 0.188235, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3jay"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.372549, 0.290196, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pexj"]
+bg_color = Color(1, 0.811765, 0.207843, 0.25098)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[node name="DiplomacyWindow" type="Control" node_paths=PackedStringArray("TitleLabel", "IconBg", "Icon", "PopsValue", "SystemsValue", "EconomyValue", "ShipsValue", "Treaties", "NoTreaties")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jtl26")
+TitleLabel = NodePath("Main/Name/HBoxContainer/Center/Title")
+IconBg = NodePath("Main/Name/HBoxContainer/Left/Panel")
+Icon = NodePath("Main/Name/HBoxContainer/Left/Panel/TextureRect")
+PopsValue = NodePath("Main/HBoxContainer/Info/BasicInfo/VBoxContainer/Pops/PopsValue")
+SystemsValue = NodePath("Main/HBoxContainer/Info/BasicInfo/VBoxContainer/Systems/SystemsValue")
+EconomyValue = NodePath("Main/HBoxContainer/Info/BasicInfo/VBoxContainer/Economy/EconomyValue")
+ShipsValue = NodePath("Main/HBoxContainer/Info/BasicInfo/VBoxContainer/Ships/ShipsValue")
+Treaties = NodePath("Main/HBoxContainer/Treaties")
+NoTreaties = NodePath("Main/HBoxContainer/EmptyPanel")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_m0o84")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p06b6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2clly")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8g1kw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hj8gj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oe5wl")
+
+[node name="Main" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1024, 640)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -320.0
+offset_right = 512.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Panel" parent="Main"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Control" parent="Main/Name/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Main/Name/HBoxContainer/Left"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwd8l")
+
+[node name="TextureRect" type="TextureRect" parent="Main/Name/HBoxContainer/Left/Panel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qjnaf")
+expand_mode = 1
+
+[node name="Center" type="Control" parent="Main/Name/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="RichTextLabel" parent="Main/Name/HBoxContainer/Center"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pghf0")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+bbcode_enabled = true
+text = "[center]$name[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Right" type="Control" parent="Main/Name/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Main/Name/HBoxContainer/Right"]
+visible = false
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwd8l")
+
+[node name="TextureRect" type="TextureRect" parent="Main/Name/HBoxContainer/Right/Panel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qjnaf")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main"]
+layout_mode = 2
+
+[node name="Info" type="VBoxContainer" parent="Main/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="BasicInfo" type="Panel" parent="Main/HBoxContainer/Info"]
+custom_minimum_size = Vector2(72, 256)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HBoxContainer/Info/BasicInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Pops" type="RichTextLabel" parent="Main/HBoxContainer/Info/BasicInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[left]Population[/left]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="PopsValue" type="RichTextLabel" parent="Main/HBoxContainer/Info/BasicInfo/VBoxContainer/Pops"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[right]$v[img=24x24]Assets/UI/Symbols/Pops.png[/img][/right]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Systems" type="RichTextLabel" parent="Main/HBoxContainer/Info/BasicInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[left]Owned Systems[/left]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="SystemsValue" type="RichTextLabel" parent="Main/HBoxContainer/Info/BasicInfo/VBoxContainer/Systems"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[right]$v[img=24x24]Assets/UI/Districts/Planet_2.png[/img][/right]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Economy" type="RichTextLabel" parent="Main/HBoxContainer/Info/BasicInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[left]District Levels[/left]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="EconomyValue" type="RichTextLabel" parent="Main/HBoxContainer/Info/BasicInfo/VBoxContainer/Economy"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[right]$v[img=24x24]Assets/UI/Symbols/ProdCap.png[/img][/right]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Ships" type="RichTextLabel" parent="Main/HBoxContainer/Info/BasicInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[left]Fleet Power[/left]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ShipsValue" type="RichTextLabel" parent="Main/HBoxContainer/Info/BasicInfo/VBoxContainer/Ships"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[right]$v[img=24x24]Assets/UI/Symbols/Power.png[/img][/right]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Balance" type="HBoxContainer" parent="Main/HBoxContainer/Info"]
+layout_mode = 2
+
+[node name="Column_1" type="VBoxContainer" parent="Main/HBoxContainer/Info/Balance"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Empty" type="Control" parent="Main/HBoxContainer/Info/Balance/Column_1"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+
+[node name="Panel6" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_1"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_1/Panel6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[left]Embassy:[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel2" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_1"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_1/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[left]Trade:[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel3" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_1"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_1/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[left]Research:[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel4" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_1"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_1/Panel4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[left]Influence:[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel5" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_1"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_1/Panel5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[left]Migration:[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Column_2" type="VBoxContainer" parent="Main/HBoxContainer/Info/Balance"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Empty" type="Control" parent="Main/HBoxContainer/Info/Balance/Column_2"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_2/Empty"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwd8l")
+
+[node name="TextureRect" type="TextureRect" parent="Main/HBoxContainer/Info/Balance/Column_2/Empty/Panel"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qjnaf")
+expand_mode = 1
+
+[node name="Panel2" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_2"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_2/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel3" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_2"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_2/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel4" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_2"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_2/Panel4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel5" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_2"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_2/Panel5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel6" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_2"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_2/Panel6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Column_3" type="VBoxContainer" parent="Main/HBoxContainer/Info/Balance"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Empty" type="Control" parent="Main/HBoxContainer/Info/Balance/Column_3"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_3/Empty"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwd8l")
+
+[node name="TextureRect" type="TextureRect" parent="Main/HBoxContainer/Info/Balance/Column_3/Empty/Panel"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qjnaf")
+expand_mode = 1
+
+[node name="Panel2" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_3"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_3/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel3" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_3"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_3/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel4" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_3"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_3/Panel4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel5" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_3"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_3/Panel5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel6" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_3"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_3/Panel6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Column_4" type="VBoxContainer" parent="Main/HBoxContainer/Info/Balance"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Research" type="Button" parent="Main/HBoxContainer/Info/Balance/Column_4"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_4/Research"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_4/Research"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Research Agreement ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Info/Balance/Column_4/Research"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="ResearchAid" type="Button" parent="Main/HBoxContainer/Info/Balance/Column_4"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_4/ResearchAid"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_4/ResearchAid"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Send Research Aid ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Info/Balance/Column_4/ResearchAid"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Mightation" type="Button" parent="Main/HBoxContainer/Info/Balance/Column_4"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Info/Balance/Column_4/Mightation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Balance/Column_4/Mightation"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Migration Treaty ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Info/Balance/Column_4/Mightation"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Millitary" type="HBoxContainer" parent="Main/HBoxContainer/Info"]
+layout_mode = 2
+
+[node name="Panel8" type="Panel" parent="Main/HBoxContainer/Info/Millitary"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Millitary/Panel8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[left]Millitary:[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Panel7" type="Panel" parent="Main/HBoxContainer/Info/Millitary"]
+custom_minimum_size = Vector2(132, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Info/Millitary/Panel7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="AdvancedInfo" type="Panel" parent="Main/HBoxContainer/Info"]
+visible = false
+custom_minimum_size = Vector2(72, 256)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HBoxContainer/Info/AdvancedInfo"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Temp" type="RichTextLabel" parent="Main/HBoxContainer/Info/AdvancedInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]...[/center]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Treaties" type="VBoxContainer" parent="Main/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HBoxContainer/Treaties"]
+layout_mode = 2
+
+[node name="Disposition" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Current Relationship: $r ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Control" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Lawful" type="TextureRect" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("7_fn6cv")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition/Control/HBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="Rebelious" type="ColorRect" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition/Control/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(1, 0.4, 0, 1)
+
+[node name="Turmoil" type="ColorRect" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition/Control/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(1, 0.580392, 0, 1)
+
+[node name="Wavering" type="ColorRect" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition/Control/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(1, 0.870588, 0, 1)
+
+[node name="Unsure" type="ColorRect" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition/Control/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.501961, 1, 0, 1)
+
+[node name="Loyalty" type="ColorRect" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition/Control/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0, 0.501961, 0, 1)
+
+[node name="Rebelion" type="TextureRect" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("8_yrfii")
+expand_mode = 1
+
+[node name="Cursor" type="TextureRect" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition/Control"]
+self_modulate = Color(0, 0.501961, 0, 1)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 28.0
+offset_right = 40.0
+offset_bottom = 44.0
+texture = ExtResource("9_57rqt")
+expand_mode = 1
+
+[node name="Cursor" type="TextureRect" parent="Main/HBoxContainer/Treaties/VBoxContainer/Disposition/Control/Cursor"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_57rqt")
+expand_mode = 1
+
+[node name="Trade" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer"]
+custom_minimum_size = Vector2(72, 128)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Container" type="HBoxContainer" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Column_1" type="VBoxContainer" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Trade_Cancel" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1"]
+visible = false
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Cancel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Cancel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Trade Agreement ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Cancel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Trade_Start" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Start"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Trade Agreement ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Start"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="BCAid" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/BCAid"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/BCAid"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Send Economic Aid ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/BCAid"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="CulturalExchange" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/CulturalExchange"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/CulturalExchange"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Cultural Exchange ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/CulturalExchange"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Column_2" type="VBoxContainer" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Research" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Research"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Research"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Research Agreement ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Research"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="ResearchAid" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/ResearchAid"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/ResearchAid"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Send Research Aid ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/ResearchAid"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Mightation" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Mightation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Mightation"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Migration Treaty ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Mightation"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Advanced" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer"]
+custom_minimum_size = Vector2(72, 128)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Container" type="HBoxContainer" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gap_1" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Column_1" type="VBoxContainer" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PledgeToDefend" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/PledgeToDefend"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/PledgeToDefend"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Plege to Defend ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/PledgeToDefend"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="DefensivePact" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/DefensivePact"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/DefensivePact"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Defensive Pact ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/DefensivePact"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Alliance" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/Alliance"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/Alliance"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Create Alliance ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/Alliance"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Column_2" type="VBoxContainer" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Gap_2" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Basic" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer"]
+custom_minimum_size = Vector2(72, 128)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Container" type="HBoxContainer" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Column_1" type="VBoxContainer" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="OpenEmbassy" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenEmbassy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenEmbassy"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Open Embassy ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenEmbassy"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="OpenBorders" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenBorders"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenBorders"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Open Borders ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenBorders"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="ImproveRelations" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/ImproveRelations"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/ImproveRelations"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Improve Relations ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/ImproveRelations"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Column_2" type="VBoxContainer" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Denounce" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Denounce"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Denounce"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Denounce ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Denounce"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Hostilities" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Hostilities"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Hostilities"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Declare Hostillities ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Hostilities"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="EndHostilities" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2"]
+visible = false
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndHostilities"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndHostilities"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]End Hostilities ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndHostilities"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="War" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/War"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/War"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Declare Wars ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/War"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="EndWar" type="Button" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2"]
+visible = false
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndWar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ur18")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndWar"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Sue for Peace ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndWar"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Bottom" type="VBoxContainer" parent="Main/HBoxContainer/Treaties"]
+layout_mode = 2
+
+[node name="EmptyPanel" type="VBoxContainer" parent="Main/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Basic" type="Panel" parent="Main/HBoxContainer/EmptyPanel"]
+custom_minimum_size = Vector2(72, 128)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Temp" type="RichTextLabel" parent="Main/HBoxContainer/EmptyPanel/Basic"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Select another Empire to see diplomatic treaties[/center]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Relations" type="VBoxContainer" parent="Main/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="BasicInfo" type="Panel" parent="Main/HBoxContainer/Relations"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Relations/BasicInfo"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Relations with other empires:[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="RelationsScrollContainer" type="ScrollContainer" parent="Main/HBoxContainer/Relations"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HBoxContainer/Relations/RelationsScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Unknown" type="VBoxContainer" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="Relation_0" type="PanelContainer" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_pghf0")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jhmkl")
+
+[node name="PanelBg" type="Panel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0"]
+custom_minimum_size = Vector2(232, 88)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_krk67")
+
+[node name="SelectedBG" type="Panel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0"]
+custom_minimum_size = Vector2(232, 88)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x3jay")
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0"]
+custom_minimum_size = Vector2(232, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer"]
+layout_mode = 2
+
+[node name="Gap_0" type="Control" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwd8l")
+
+[node name="TextureRect" type="TextureRect" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/HBoxContainer/Panel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qjnaf")
+expand_mode = 1
+
+[node name="Title" type="RichTextLabel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("2_pghf0")
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "[left]$name[/left]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Gap_1" type="Control" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Actions" type="VBoxContainer" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GainComms" type="Button" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(192, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8pexj")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Gain Communications[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="SourRelations" type="Button" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(192, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8pexj")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Sour Relations[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Cooldown" type="RichTextLabel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="ImproveRelationss" type="Button" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(192, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("5_t00wt")
+
+[node name="Selected" type="Panel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8pexj")
+
+[node name="Text" type="RichTextLabel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]Improve Relations[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="Cooldown" type="RichTextLabel" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_shjh3")
+
+[node name="ToolTip" type="Control" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_b7lgr")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Gap_2" type="Control" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Gap_2" type="Control" parent="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Main"]
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("2_pghf0")
+
+[node name="Text" type="RichTextLabel" parent="Main/Button"]
+self_modulate = Color(1, 0.501961, 0, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_i5mrr")
+bbcode_enabled = true
+text = "[center]CLOSE[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[connection signal="pressed" from="Button" to="." method="OnCloseWindow"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Info/Balance/Column_4/Research/ToolTip" to="Main/HBoxContainer/Info/Balance/Column_4/Research/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Info/Balance/Column_4/Research/ToolTip" to="Main/HBoxContainer/Info/Balance/Column_4/Research/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Info/Balance/Column_4/ResearchAid/ToolTip" to="Main/HBoxContainer/Info/Balance/Column_4/ResearchAid/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Info/Balance/Column_4/ResearchAid/ToolTip" to="Main/HBoxContainer/Info/Balance/Column_4/ResearchAid/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Info/Balance/Column_4/Mightation/ToolTip" to="Main/HBoxContainer/Info/Balance/Column_4/Mightation/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Info/Balance/Column_4/Mightation/ToolTip" to="Main/HBoxContainer/Info/Balance/Column_4/Mightation/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Cancel/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Cancel/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Cancel/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Cancel/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Start/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Start/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Start/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/Trade_Start/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/BCAid/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/BCAid/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/BCAid/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/BCAid/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/CulturalExchange/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/CulturalExchange/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/CulturalExchange/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_1/CulturalExchange/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Research/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Research/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Research/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Research/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/ResearchAid/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/ResearchAid/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/ResearchAid/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/ResearchAid/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Mightation/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Mightation/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Mightation/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Trade/Container/Column_2/Mightation/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/PledgeToDefend/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/PledgeToDefend/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/PledgeToDefend/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/PledgeToDefend/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/DefensivePact/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/DefensivePact/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/DefensivePact/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/DefensivePact/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/Alliance/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/Alliance/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/Alliance/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Advanced/Container/Column_1/Alliance/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenEmbassy/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenEmbassy/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenEmbassy/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenEmbassy/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenBorders/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenBorders/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenBorders/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/OpenBorders/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/ImproveRelations/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/ImproveRelations/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/ImproveRelations/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_1/ImproveRelations/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Denounce/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Denounce/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Denounce/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Denounce/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Hostilities/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Hostilities/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Hostilities/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/Hostilities/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndHostilities/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndHostilities/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndHostilities/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndHostilities/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/War/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/War/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/War/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/War/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndWar/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndWar/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndWar/ToolTip" to="Main/HBoxContainer/Treaties/VBoxContainer/Basic/Container/Column_2/EndWar/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms/ToolTip" to="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms/ToolTip" to="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations/ToolTip" to="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations/ToolTip" to="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss/ToolTip" to="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss/ToolTip" to="Main/HBoxContainer/Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="Main/Button" to="." method="OnCloseWindow"]

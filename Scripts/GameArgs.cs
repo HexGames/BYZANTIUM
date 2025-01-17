@@ -48,33 +48,36 @@ public partial class GameArgs : Node
     {
         if (GameStartup_DetDefsFromDownloads)
         {
-            string[] allFiles = Directory.GetFiles("C:\\Users\\Vlad\\Downloads");
-
-            List<string> csvFiles = new List<string>();
-            for (int idx = 0; idx < allFiles.Length; idx++)
+            if (Directory.Exists("C:\\Users\\Vlad\\Downloads"))
             {
-                if (allFiles[idx].EndsWith(".csv"))
+                string[] allFiles = Directory.GetFiles("C:\\Users\\Vlad\\Downloads");
+
+                List<string> csvFiles = new List<string>();
+                for (int idx = 0; idx < allFiles.Length; idx++)
                 {
-                    csvFiles.Add(allFiles[idx]);
+                    if (allFiles[idx].EndsWith(".csv"))
+                    {
+                        csvFiles.Add(allFiles[idx]);
+                    }
                 }
+
+                string path = "D:\\_OtherProjects\\_Byzantium\\Byzantium_Godot\\Defs_Mod\\";
+
+                // buildings table
+                MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "Building"), path + "Buildings.table");
+
+                // effects table
+                MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "Effects"), path + "Effects.table");
+
+                // factions table
+                MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "Factions"), path + "Factions.table");
+
+                // features table
+                MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "Features"), path + "Features.table");
+
+                // shipparts table
+                MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "ShipParts"), path + "ShipParts.table");
             }
-
-            string path = "D:\\_OtherProjects\\_Byzantium\\Byzantium_Godot\\Defs_Mod\\";
-
-            // buildings table
-            MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "Building"), path + "Buildings.table");
-
-            // effects table
-            MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "Effects"), path + "Effects.table");
-
-            // factions table
-            MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "Factions"), path + "Factions.table");
-
-            // features table
-            MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "Features"), path + "Features.table");
-
-            // shipparts table
-            MoveAndRenameFile(SearchForMostRecentFile(csvFiles, "ShipParts"), path + "ShipParts.table");
         }
 
         if (GameStartup_ReimportDefs)

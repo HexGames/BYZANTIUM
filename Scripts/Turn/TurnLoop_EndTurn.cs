@@ -24,7 +24,8 @@ public partial class TurnLoop : Node
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsPops()));
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsShipbuilding()));
         yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_ActionsMove()));
-        yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_Control())); 
+        //yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_Control()));
+        //yield return Timing.WaitUntilDone(Timing.RunCoroutine(EndTurn_Visibility()));
 
         // update fleets
         StartTurn_Fleets();
@@ -45,6 +46,10 @@ public partial class TurnLoop : Node
         {
             StarData star = Game.self.Map.Data.Stars[starIdx];
             star._Node.GFX.RefreshPlayerColor();
+            if (star._Node.GFX.GUI3D != null)
+            {
+                star._Node.GFX.GUI3D.Refresh();
+            }
         }
 
         for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
@@ -162,28 +167,28 @@ public partial class TurnLoop : Node
     }
 
 
-    private IEnumerator<double> EndTurn_Control()
-    {
-        for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
-        {
-            PlayerData player = Game.self.Map.Data.Players[playerIdx];
-            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
-            {
-                SystemData system = player.Systems[systemIdx];
-                //DataBlock controlData = system.Data.GetSub("Control");
-
-                //controlData.GetSub("Control").SetValueI(Mathf.Clamp(system.Control_PerTurn.Control + system.Resources_PerTurn.SpecialIncome.Control, 10, 1000), Game.self.Def); // --- !!! ---
-                //controlData.GetSub("Corruption").SetValueI(Mathf.Clamp(system.Control_PerTurn.Corruption + system.Resources_PerTurn.SpecialIncome.Corruption, 10, 1000), Game.self.Def); // --- !!! ---
-                //controlData.GetSub("Happiness").SetValueI(Mathf.Clamp(system.Control_PerTurn.Happiness + system.Resources_PerTurn.SpecialIncome.Happiness, 10, 1000), Game.self.Def); // --- !!! ---
-                //controlData.GetSub("Wealth").SetValueI(Mathf.Clamp(system.Control_PerTurn.Wealth + system.Resources_PerTurn.SpecialIncome.Wealth, 10, 1000), Game.self.Def); // --- !!! ---
-                //controlData.GetSub("Inequality").SetValueI(Mathf.Clamp(system.Control_PerTurn.Inequality + system.Resources_PerTurn.SpecialIncome.Inequality, 10, 1000), Game.self.Def); // --- !!! ---
-            }
-        }
-
-        Game.self.GalaxyUI.RefreshAllPathsLabels();
-
-        yield return Timing.WaitForOneFrame;
-    }
+    //private IEnumerator<double> EndTurn_Control()
+    //{
+    //    for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
+    //    {
+    //        PlayerData player = Game.self.Map.Data.Players[playerIdx];
+    //        for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+    //        {
+    //            SystemData system = player.Systems[systemIdx];
+    //            //DataBlock controlData = system.Data.GetSub("Control");
+    //
+    //            //controlData.GetSub("Control").SetValueI(Mathf.Clamp(system.Control_PerTurn.Control + system.Resources_PerTurn.SpecialIncome.Control, 10, 1000), Game.self.Def); // --- !!! ---
+    //            //controlData.GetSub("Corruption").SetValueI(Mathf.Clamp(system.Control_PerTurn.Corruption + system.Resources_PerTurn.SpecialIncome.Corruption, 10, 1000), Game.self.Def); // --- !!! ---
+    //            //controlData.GetSub("Happiness").SetValueI(Mathf.Clamp(system.Control_PerTurn.Happiness + system.Resources_PerTurn.SpecialIncome.Happiness, 10, 1000), Game.self.Def); // --- !!! ---
+    //            //controlData.GetSub("Wealth").SetValueI(Mathf.Clamp(system.Control_PerTurn.Wealth + system.Resources_PerTurn.SpecialIncome.Wealth, 10, 1000), Game.self.Def); // --- !!! ---
+    //            //controlData.GetSub("Inequality").SetValueI(Mathf.Clamp(system.Control_PerTurn.Inequality + system.Resources_PerTurn.SpecialIncome.Inequality, 10, 1000), Game.self.Def); // --- !!! ---
+    //        }
+    //    }
+    //
+    //    Game.self.GalaxyUI.RefreshAllPathsLabels();
+    //
+    //    yield return Timing.WaitForOneFrame;
+    //}
 
     // ----------------------------------------------------------------------------------------------
     private void StartTurn_Fleets()
@@ -228,7 +233,7 @@ public partial class TurnLoop : Node
             StarData star = Game.self.Map.Data.Stars[starIdx];
             star.Visibility_PerTurn.Refresh();
         }
-
+    
         for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.self.Map.Data.Players[playerIdx];
@@ -240,6 +245,7 @@ public partial class TurnLoop : Node
                     if (star == player.Fleets[fleetIdx].StarAt_PerTurn)
                     {
                         star.Visibility_PerTurn.SetAsVisibleForThisTurn(player);
+                        StartTurn_Visibility_CheckPlayerMeet(player, star);
                     }
                     else if (star.DistanceTo(player.Fleets[fleetIdx].StarAt_PerTurn) <= 1)
                     {
@@ -255,6 +261,7 @@ public partial class TurnLoop : Node
                     if (star == player.Systems[systemIdx].Star)
                     {
                         star.Visibility_PerTurn.SetAsVisibleForThisTurn(player);
+                        StartTurn_Visibility_CheckPlayerMeet(player, star);
                     }
                     else if (star.DistanceTo(player.Systems[systemIdx].Star) <= 1)
                     {
@@ -262,6 +269,26 @@ public partial class TurnLoop : Node
                     }
                 }
             }
+        }
+
+    }
+
+    private void StartTurn_Visibility_CheckPlayerMeet(PlayerData player, StarData withAllAtStar)
+    {
+        if (withAllAtStar.System != null && withAllAtStar.System._Player != player)
+        {
+            StartTurn_Visibility_CheckPlayerMeet(player, withAllAtStar.System._Player);
+        }
+    }
+
+    private void StartTurn_Visibility_CheckPlayerMeet(PlayerData player_1, PlayerData player_2)
+    {
+        RelationData relation = Game.self.Map.Data.GetRelation(player_1, player_2);
+
+        if (relation == null)
+        {
+            // player meets player
+            EventMeet.PlayerMeetPlayer(player_1, player_2);
         }
     }
 
@@ -319,6 +346,7 @@ public partial class TurnLoop : Node
             }
 
             player.Stockpiles_PerTurn.Refresh_5();
+            player.Stats_PerTurn.Refresh_6();
         }
     }
 

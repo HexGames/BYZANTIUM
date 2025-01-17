@@ -55,6 +55,7 @@ public partial class TurnLoop : Node
         CurrentHumanPlayerData = GetHumanPlayer();
         Init_Resources();
         Init_Fleets();
+        Init_RelationData();
         StartTurn_Fleets();
         StartTurn_Visibility();
         StartTurn_Resources();
@@ -83,6 +84,7 @@ public partial class TurnLoop : Node
         {
             PlayerData player = Game.self.Map.Data.Players[playerIdx];
             player.Stockpiles_PerTurn = new PlayerStockpilesWrapper(player);
+            player.Stats_PerTurn = new PlayerStatsWrapper(player);
         }
     }
 
@@ -192,6 +194,19 @@ public partial class TurnLoop : Node
                 FleetData fleet = player.Fleets[fleetIdx];
                 fleet.Stats_PerTurn = new FleetStatsWrapper(fleet);
             }
+        }
+    }
+
+    public void Init_RelationData()
+    {
+        Game.self.Map.Data.Relations.Clear(); 
+        Array<DataBlock> relations = Game.self.Map.Data._Data.GetSub("Relations").GetSubs("Relation");
+        for (int relationIdx = 0; relationIdx < relations.Count; relationIdx++)
+        {
+            RelationData relation = new RelationData(relations[relationIdx]);
+            Game.self.Map.Data.Relations.Add(relation);
+            relation._Player_1.Relations.Add(relation);
+            relation._Player_2.Relations.Add(relation);
         }
     }
 

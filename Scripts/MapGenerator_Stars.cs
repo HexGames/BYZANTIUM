@@ -242,7 +242,7 @@ public partial class MapGenerator : Node
         }
         //int totalPlanets = gasGiants + habitablePlanets + asteroids + uninhabitable;
 
-        GD.Print("Level " + level.ToString() + " " + habitablePlanets.ToString() + " " + gasGiants.ToString() + " " + asteroids.ToString() + " " + uninhabitable.ToString());
+        //GD.Print("Level " + level.ToString() + " " + habitablePlanets.ToString() + " " + gasGiants.ToString() + " " + asteroids.ToString() + " " + uninhabitable.ToString());
 
         for  (int g = 0; g < gasGiants; g++)
         {

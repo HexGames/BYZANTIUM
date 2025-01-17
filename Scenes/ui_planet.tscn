@@ -1521,6 +1521,7 @@ Title = "Colonize"
 Row_1 = "$text"
 
 [node name="PopProgress" type="MarginContainer" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 4
@@ -1606,6 +1607,7 @@ $c[img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img]
 $b%"
 
 [node name="ProgressUpgrade" type="Control" parent="InfoList/System/ScrollContainerBg/ScrollContainer/VBoxContainer/Districts/District_0/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(128, 20)
 layout_mode = 2
 mouse_filter = 2
