@@ -530,11 +530,11 @@ public partial class UIPlanetInfoDistrict : Control
 
     public void OnSelect()
     {
-        Game.self.GalaxyUI.PlanetInfo.SelectDistrict(this);
+        //Game.self.GalaxyUI.PlanetInfo.SelectDistrict(this);
     }
     public void OnSelectPop()
     {
-        Game.self.GalaxyUI.PlanetInfo.SelectPop(this);
+        //Game.self.GalaxyUI.PlanetInfo.SelectPop(this);
     }
 
     public void OnCancelChange()
@@ -544,7 +544,7 @@ public partial class UIPlanetInfoDistrict : Control
         ActionDistrict.CancelChange(_District);
 
         Game.self.GalaxyUI.SystemInfo.Refresh(_District._Colony._System.Star);
-        Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
+        //Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
     }
 
     public void OnRegainControl()
@@ -555,40 +555,40 @@ public partial class UIPlanetInfoDistrict : Control
     public void OnUpgrade()
     {
         SelectBtn(UpgradeBtn);
-        Game.self.GalaxyUI.PlanetInfo.OpenChooseDistrictWindowUpgrade(this);
+        //Game.self.GalaxyUI.PlanetInfo.OpenChooseDistrictWindowUpgrade(this);
     }
     public void OnInvest()
     {
         DeselectBtn();
         ActionDistrict.Invest(_District);
         Game.self.GalaxyUI.SystemInfo.Refresh(_District._Colony._System.Star);
-        Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
+       //Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
     }
     public void OnIncreaseInvestment()
     {
         DeselectBtn();
         ActionDistrict.Invest(_District);
         Game.self.GalaxyUI.SystemInfo.Refresh(_District._Colony._System.Star);
-        Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
+        //Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
     }
     public void OnDecreaseInvestment()
     {
         DeselectBtn();
         ActionDistrict.Devest(_District);
         Game.self.GalaxyUI.SystemInfo.Refresh(_District._Colony._System.Star);
-        Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
+        //Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
     }
     public void OnStopInvestment()
     {
         DeselectBtn();
         ActionDistrict.Devest(_District);
         Game.self.GalaxyUI.SystemInfo.Refresh(_District._Colony._System.Star);
-        Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
+        //Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
     }
     public void OnPrivatize()
     {
         SelectBtn(PrivatizeBtn);
-        Game.self.GalaxyUI.PlanetInfo.OpenChooseDistrictWindowChangeControl(this);
+        //Game.self.GalaxyUI.PlanetInfo.OpenChooseDistrictWindowChangeControl(this);
         //ActionDistrict.Privatize(_District);
         //Game.self.GalaxyUI.SystemInfo.Refresh(_District._Colony._System.Star);
         //Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
@@ -596,7 +596,7 @@ public partial class UIPlanetInfoDistrict : Control
     public void OnNationalize()
     {
         SelectBtn(NationalizeBtn);
-        Game.self.GalaxyUI.PlanetInfo.OpenChooseDistrictWindowChangeControl(this);
+        //Game.self.GalaxyUI.PlanetInfo.OpenChooseDistrictWindowChangeControl(this);
         //ActionDistrict.Nationalize(_District, true);
         //Game.self.GalaxyUI.SystemInfo.Refresh(_District._Colony._System.Star);
         //Game.self.GalaxyUI.PlanetInfo.Refresh(_District._Colony.Planet);
@@ -605,14 +605,14 @@ public partial class UIPlanetInfoDistrict : Control
     public void OnChangeDistrict()
     {
         SelectBtn(ChangeDistrictBtn);
-        Game.self.GalaxyUI.PlanetInfo.OpenChooseDistrictWindowChangeType(this);
+        //Game.self.GalaxyUI.PlanetInfo.OpenChooseDistrictWindowChangeType(this);
         //ChangeDistrictBtn.Visible = false;
     }
 
     public void OnPlanDistrct()
     {
         SelectBtn(PlanDistrictBtn);
-        Game.self.GalaxyUI.PlanetInfo.OpenChooseDistrictWindowChangeType(this);
+        //Game.self.GalaxyUI.PlanetInfo.OpenChooseDistrictWindowChangeType(this);
         //ChangeDistrictBtn.Visible = false;
     }
 

@@ -1291,7 +1291,7 @@ public partial class PlayerInput : Node
 
         SelectedPlanet = HoverPlanet;
         Game.self.SelectorsUI3D.PlanetSelect(SelectedPlanet);
-        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
+        //Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
 
         Game.self.SelectorsUI3D.PlanetDehover();
         HoverPlanet = null;
@@ -1316,7 +1316,7 @@ public partial class PlayerInput : Node
 
         SelectedPlanet = HoverPlanet;
         Game.self.SelectorsUI3D.PlanetSelect(SelectedPlanet);
-        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
+        //Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
 
         Game.self.SelectorsUI3D.PlanetDehover();
         HoverPlanet = null;
@@ -1342,7 +1342,7 @@ public partial class PlayerInput : Node
 
         SelectedPlanet = HoverPlanet;
         Game.self.SelectorsUI3D.PlanetSelect(SelectedPlanet);
-        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
+        //Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
 
         Game.self.SelectorsUI3D.PlanetDehover();
         HoverPlanet = null;
@@ -1357,6 +1357,7 @@ public partial class PlayerInput : Node
         SelectedPlanet = null;
 
         Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
+        Game.self.GalaxyUI.DistrictsInfo.RefreshAll(SelectedStar);
 
         State = InputState.CLOSE_STAR;
     }
@@ -1365,7 +1366,7 @@ public partial class PlayerInput : Node
         Game.self.SelectorsUI3D.PlanetDeselect();
         SelectedPlanet = null;
 
-        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
+        //Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
 
         State = InputState.CLOSE_STAR_H_PLANET;
     }
@@ -1383,7 +1384,7 @@ public partial class PlayerInput : Node
         Game.self.SelectorsUI3D.PlanetDeselect();
         SelectedPlanet = null;
 
-        Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
+        //Game.self.GalaxyUI.SystemInfo.Refresh(SelectedStar);
 
         State = InputState.CLOSE_STAR_H_FLEETS;
     }
@@ -1620,8 +1621,8 @@ public partial class PlayerInput : Node
 
         DeselectAll(true);
 
-        Game.self.GalaxyUI.Diplomacy.Visible = true;
-        Game.self.GalaxyUI.Diplomacy.Refresh(player);
+        //Game.self.GalaxyUI.Diplomacy.Visible = true;
+        //Game.self.GalaxyUI.Diplomacy.Refresh(player);
 
         State = InputState.LOCKED_DIPLOMACY;
 
@@ -1630,7 +1631,7 @@ public partial class PlayerInput : Node
 
     public void OnCloseDiplomacy()
     {
-        Game.self.GalaxyUI.Diplomacy.Visible = false;
+        //Game.self.GalaxyUI.Diplomacy.Visible = false;
 
         State = InputState.FAR_GALAXY;
         if (Game.self.Camera.LOD == 0)

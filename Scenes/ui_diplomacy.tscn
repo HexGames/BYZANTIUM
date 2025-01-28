@@ -1,0 +1,1692 @@
+[gd_scene load_steps=28 format=3 uid="uid://d0nxagsi625t2"]
+
+[ext_resource type="Texture2D" uid="uid://bry18m4qt40bf" path="res://Assets/Flags/Drakk_Bazzar.png" id="1_2iuk8"]
+[ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="2_ffmyc"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="3_ymtdg"]
+[ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="4_7u4dr"]
+[ext_resource type="Texture2D" uid="uid://6txwm0lad0jq" path="res://Assets/UI/Symbols/LayGreen.png" id="5_nfsox"]
+[ext_resource type="Texture2D" uid="uid://bh4b8jfxacxdt" path="res://Assets/UI/Symbols/Rebel.png" id="6_18pbv"]
+[ext_resource type="Texture2D" uid="uid://dqhju10mfykde" path="res://Assets/UI/arrow.png" id="7_dhkfi"]
+[ext_resource type="Texture2D" uid="uid://cy8jdg47q12jm" path="res://Assets/Buttons/AD_Trade.png" id="8_q7ovf"]
+[ext_resource type="Texture2D" uid="uid://brhjmvjquckl6" path="res://Assets/Buttons/AE_Project_P.png" id="9_ps6l6"]
+[ext_resource type="Texture2D" uid="uid://cygho86bre2p8" path="res://Assets/Buttons/AE_Project_H.png" id="10_l57kf"]
+[ext_resource type="Texture2D" uid="uid://c4rgg21mkw8d3" path="res://Assets/Buttons/AE_Project_D.png" id="11_keo7h"]
+[ext_resource type="Texture2D" uid="uid://b1hnbejl4ksdb" path="res://Assets/Buttons/AE_Project.png" id="12_y8tpp"]
+[ext_resource type="BitMap" uid="uid://ca2jb7pgll370" path="res://Assets/Buttons/AMask.png" id="13_mlicg"]
+[ext_resource type="Texture2D" uid="uid://1q4asulpevh1" path="res://Assets/Buttons/AD_Trade_Icon.png" id="14_kauys"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIButton.cs" id="15_gxxb1"]
+[ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="16_xe57f"]
+[ext_resource type="Texture2D" uid="uid://cx3vcncpmjm0s" path="res://Assets/Buttons/AD__Description.png" id="17_rkr0y"]
+[ext_resource type="Texture2D" uid="uid://d1o0wpcpwu4aj" path="res://Assets/Buttons/AD__DescriptionBad.png" id="18_gdb5g"]
+[ext_resource type="Texture2D" uid="uid://c3g3mtu0o8gxh" path="res://Assets/Buttons/AD_War.png" id="19_0ttos"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwrcc"]
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqjmm"]
+bg_color = Color(1, 0.811765, 0.207843, 0.25098)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rv02d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8a4n"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 0.752941)
+border_color = Color(0.752941, 0.188235, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsbf5"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.372549, 0.290196, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auk8g"]
+bg_color = Color(1, 0.811765, 0.207843, 0.25098)
+corner_radius_top_left = 2
+corner_radius_top_right = 8
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yjb5h"]
+texture = ExtResource("17_rkr0y")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i5jj8"]
+texture = ExtResource("18_gdb5g")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[node name="Diplomacy" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Info" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 336.0
+offset_bottom = 656.0
+
+[node name="Name" type="Panel" parent="Info"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info/Name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Info/Name/VBoxContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_mwrcc")
+
+[node name="TextureRect" type="TextureRect" parent="Info/Name/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2iuk8")
+expand_mode = 1
+
+[node name="Title" type="RichTextLabel" parent="Info/Name/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ffmyc")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+bbcode_enabled = true
+text = "[center]$name[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="BasicInfo" type="Panel" parent="Info"]
+custom_minimum_size = Vector2(72, 128)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info/BasicInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Pops" type="RichTextLabel" parent="Info/BasicInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[left]Population[/left]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="PopsValue" type="RichTextLabel" parent="Info/BasicInfo/VBoxContainer/Pops"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[right]$v[img=24x24]Assets/UI/Symbols/Pops.png[/img][/right]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Systems" type="RichTextLabel" parent="Info/BasicInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[left]Owned Systems[/left]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="SystemsValue" type="RichTextLabel" parent="Info/BasicInfo/VBoxContainer/Systems"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[right]$v[img=24x24]Assets/UI/Districts/Planet_2.png[/img][/right]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Economy" type="RichTextLabel" parent="Info/BasicInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[left]District Levels[/left]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="EconomyValue" type="RichTextLabel" parent="Info/BasicInfo/VBoxContainer/Economy"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[right]$v[img=24x24]Assets/UI/Symbols/ProdCap.png[/img][/right]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Ships" type="RichTextLabel" parent="Info/BasicInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[left]Fleet Power[/left]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="ShipsValue" type="RichTextLabel" parent="Info/BasicInfo/VBoxContainer/Ships"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[right]$v[img=24x24]Assets/UI/Symbols/Power.png[/img][/right]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Disposition" type="Panel" parent="Info"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Info/Disposition"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Current Relationship: $r ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Control" type="Control" parent="Info/Disposition"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/Disposition/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Lawful" type="TextureRect" parent="Info/Disposition/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("5_nfsox")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/Disposition/Control/HBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="Rebelious" type="ColorRect" parent="Info/Disposition/Control/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 8)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(1, 0.4, 0, 1)
+
+[node name="Turmoil" type="ColorRect" parent="Info/Disposition/Control/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 8)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(1, 0.580392, 0, 1)
+
+[node name="Wavering" type="ColorRect" parent="Info/Disposition/Control/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 8)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(1, 0.870588, 0, 1)
+
+[node name="Unsure" type="ColorRect" parent="Info/Disposition/Control/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 8)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.501961, 1, 0, 1)
+
+[node name="Loyalty" type="ColorRect" parent="Info/Disposition/Control/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 8)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0, 0.501961, 0, 1)
+
+[node name="Rebelion" type="TextureRect" parent="Info/Disposition/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("6_18pbv")
+expand_mode = 1
+
+[node name="Cursor" type="TextureRect" parent="Info/Disposition/Control"]
+self_modulate = Color(0, 0.501961, 0, 1)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 28.0
+offset_right = 40.0
+offset_bottom = 44.0
+texture = ExtResource("7_dhkfi")
+expand_mode = 1
+
+[node name="Cursor" type="TextureRect" parent="Info/Disposition/Control/Cursor"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_dhkfi")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Info"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+
+[node name="Button_2" type="TextureButton" parent="Info/Panel"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -40.0
+offset_right = 80.0
+offset_bottom = 40.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("8_q7ovf")
+texture_pressed = ExtResource("9_ps6l6")
+texture_hover = ExtResource("10_l57kf")
+texture_disabled = ExtResource("11_keo7h")
+texture_focused = ExtResource("12_y8tpp")
+texture_click_mask = ExtResource("13_mlicg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect5" type="TextureRect" parent="Info/Panel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 64.0001
+offset_bottom = 32.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_kauys")
+expand_mode = 1
+
+[node name="Text" type="RichTextLabel" parent="Info/Panel"]
+custom_minimum_size = Vector2(264, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Galactic Tempest
+(Allied)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Panel10" type="Panel" parent="Info"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+
+[node name="Button_2" type="TextureButton" parent="Info/Panel10"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -40.0
+offset_right = 80.0
+offset_bottom = 40.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("8_q7ovf")
+texture_pressed = ExtResource("9_ps6l6")
+texture_hover = ExtResource("10_l57kf")
+texture_disabled = ExtResource("11_keo7h")
+texture_focused = ExtResource("12_y8tpp")
+texture_click_mask = ExtResource("13_mlicg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/Panel10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Info/Panel10/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_kauys")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/Panel10/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Info/Panel10/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_kauys")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Info/Panel10/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_kauys")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Info/Panel10/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_kauys")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="Info/Panel10/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_kauys")
+expand_mode = 1
+
+[node name="Balance" type="HBoxContainer" parent="Info"]
+layout_mode = 2
+
+[node name="Column_1" type="VBoxContainer" parent="Info/Balance"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Empty" type="Control" parent="Info/Balance/Column_1"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Info/Balance/Column_1"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_1/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[left]Trade:[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Panel3" type="Panel" parent="Info/Balance/Column_1"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_1/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[left]Research:[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Panel4" type="Panel" parent="Info/Balance/Column_1"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_1/Panel4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[left]Influence:[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Column_2" type="VBoxContainer" parent="Info/Balance"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Empty" type="Control" parent="Info/Balance/Column_2"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Info/Balance/Column_2/Empty"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_mwrcc")
+
+[node name="TextureRect" type="TextureRect" parent="Info/Balance/Column_2/Empty/Panel"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2iuk8")
+expand_mode = 1
+
+[node name="Panel3" type="Panel" parent="Info/Balance/Column_2"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_2/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Panel4" type="Panel" parent="Info/Balance/Column_2"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_2/Panel4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Panel5" type="Panel" parent="Info/Balance/Column_2"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_2/Panel5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Column_3" type="VBoxContainer" parent="Info/Balance"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Empty" type="Control" parent="Info/Balance/Column_3"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Info/Balance/Column_3/Empty"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_mwrcc")
+
+[node name="TextureRect" type="TextureRect" parent="Info/Balance/Column_3/Empty/Panel"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2iuk8")
+expand_mode = 1
+
+[node name="Panel2" type="Panel" parent="Info/Balance/Column_3"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_3/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Panel3" type="Panel" parent="Info/Balance/Column_3"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_3/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Panel4" type="Panel" parent="Info/Balance/Column_3"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_3/Panel4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Column_4" type="VBoxContainer" parent="Info/Balance"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Research" type="Button" parent="Info/Balance/Column_4"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_ffmyc")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_gxxb1")
+
+[node name="Selected" type="Panel" parent="Info/Balance/Column_4/Research"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqjmm")
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_4/Research"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Research Agreement ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="ToolTip" type="Control" parent="Info/Balance/Column_4/Research"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("16_xe57f")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="ResearchAid" type="Button" parent="Info/Balance/Column_4"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_ffmyc")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_gxxb1")
+
+[node name="Selected" type="Panel" parent="Info/Balance/Column_4/ResearchAid"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqjmm")
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_4/ResearchAid"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Send Research Aid ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="ToolTip" type="Control" parent="Info/Balance/Column_4/ResearchAid"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("16_xe57f")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Mightation" type="Button" parent="Info/Balance/Column_4"]
+custom_minimum_size = Vector2(128, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_ffmyc")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_gxxb1")
+
+[node name="Selected" type="Panel" parent="Info/Balance/Column_4/Mightation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqjmm")
+
+[node name="Text" type="RichTextLabel" parent="Info/Balance/Column_4/Mightation"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Migration Treaty ($v)[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="ToolTip" type="Control" parent="Info/Balance/Column_4/Mightation"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("16_xe57f")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Millitary" type="HBoxContainer" parent="Info"]
+visible = false
+layout_mode = 2
+
+[node name="Panel8" type="Panel" parent="Info/Millitary"]
+custom_minimum_size = Vector2(96, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Text" type="RichTextLabel" parent="Info/Millitary/Panel8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[left]Millitary:[/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Panel7" type="Panel" parent="Info/Millitary"]
+custom_minimum_size = Vector2(132, 36)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Info/Millitary/Panel7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]-[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="AdvancedInfo" type="Panel" parent="Info"]
+visible = false
+custom_minimum_size = Vector2(72, 256)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info/AdvancedInfo"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Temp" type="RichTextLabel" parent="Info/AdvancedInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]...[/center]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Relations" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(256, 576)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_right = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="BasicInfo" type="Panel" parent="Relations"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Relations/BasicInfo"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Relations with other empires:[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="RelationsScrollContainer" type="ScrollContainer" parent="Relations"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Relations/RelationsScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Unknown" type="VBoxContainer" parent="Relations/RelationsScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="Relation_0" type="PanelContainer" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_ffmyc")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rv02d")
+
+[node name="PanelBg" type="Panel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0"]
+custom_minimum_size = Vector2(244, 88)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a8a4n")
+
+[node name="SelectedBG" type="Panel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0"]
+custom_minimum_size = Vector2(244, 88)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fsbf5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0"]
+custom_minimum_size = Vector2(244, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer"]
+layout_mode = 2
+
+[node name="Gap_0" type="Control" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_mwrcc")
+
+[node name="TextureRect" type="TextureRect" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/HBoxContainer/Panel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2iuk8")
+expand_mode = 1
+
+[node name="Title" type="RichTextLabel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("2_ffmyc")
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "[left]$name[/left]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Gap_1" type="Control" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Actions" type="VBoxContainer" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="GainComms" type="Button" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(192, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_ffmyc")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_gxxb1")
+
+[node name="Selected" type="Panel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_auk8g")
+
+[node name="Text" type="RichTextLabel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Gain Communications[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="ToolTip" type="Control" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("16_xe57f")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="SourRelations" type="Button" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(192, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_ffmyc")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_gxxb1")
+
+[node name="Selected" type="Panel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_auk8g")
+
+[node name="Text" type="RichTextLabel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Sour Relations[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Cooldown" type="RichTextLabel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="ToolTip" type="Control" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("16_xe57f")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="ImproveRelationss" type="Button" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(192, 36)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_ffmyc")
+theme_type_variation = &"ButtonYellowBorder"
+script = ExtResource("15_gxxb1")
+
+[node name="Selected" type="Panel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_auk8g")
+
+[node name="Text" type="RichTextLabel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Improve Relations[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Cooldown" type="RichTextLabel" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[right]$t[img=24x24]Assets/UI/Symbols/Turn.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="ToolTip" type="Control" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("16_xe57f")
+CanBeHovered = false
+Direction = 2
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Gap_2" type="Control" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button_2" type="TextureButton" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("8_q7ovf")
+texture_pressed = ExtResource("9_ps6l6")
+texture_hover = ExtResource("10_l57kf")
+texture_disabled = ExtResource("11_keo7h")
+texture_focused = ExtResource("12_y8tpp")
+texture_click_mask = ExtResource("13_mlicg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_3" type="TextureButton" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("8_q7ovf")
+texture_pressed = ExtResource("9_ps6l6")
+texture_hover = ExtResource("10_l57kf")
+texture_disabled = ExtResource("11_keo7h")
+texture_focused = ExtResource("12_y8tpp")
+texture_click_mask = ExtResource("13_mlicg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_4" type="TextureButton" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("8_q7ovf")
+texture_pressed = ExtResource("9_ps6l6")
+texture_hover = ExtResource("10_l57kf")
+texture_disabled = ExtResource("11_keo7h")
+texture_focused = ExtResource("12_y8tpp")
+texture_click_mask = ExtResource("13_mlicg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Gap_2" type="Control" parent="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel4" type="Control" parent="Relations"]
+visible = false
+custom_minimum_size = Vector2(280, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Relations/Panel4"]
+custom_minimum_size = Vector2(256, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yjb5h")
+
+[node name="Text" type="RichTextLabel" parent="Relations/Panel4/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Gain Communications[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Button_2" type="TextureButton" parent="Relations/Panel4"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = 24.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("8_q7ovf")
+texture_pressed = ExtResource("9_ps6l6")
+texture_hover = ExtResource("10_l57kf")
+texture_disabled = ExtResource("11_keo7h")
+texture_focused = ExtResource("12_y8tpp")
+texture_click_mask = ExtResource("13_mlicg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel5" type="Control" parent="Relations"]
+visible = false
+custom_minimum_size = Vector2(280, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Relations/Panel5"]
+custom_minimum_size = Vector2(256, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yjb5h")
+
+[node name="Text" type="RichTextLabel" parent="Relations/Panel5/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Improve Relations[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Button_2" type="TextureButton" parent="Relations/Panel5"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = 24.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("8_q7ovf")
+texture_pressed = ExtResource("9_ps6l6")
+texture_hover = ExtResource("10_l57kf")
+texture_disabled = ExtResource("11_keo7h")
+texture_focused = ExtResource("12_y8tpp")
+texture_click_mask = ExtResource("13_mlicg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel8" type="Control" parent="Relations"]
+visible = false
+custom_minimum_size = Vector2(280, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Relations/Panel8"]
+custom_minimum_size = Vector2(256, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = -24.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_i5jj8")
+
+[node name="Text" type="RichTextLabel" parent="Relations/Panel8/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_7u4dr")
+bbcode_enabled = true
+text = "[center]Harm Relations[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_ymtdg")
+
+[node name="Button_2" type="TextureButton" parent="Relations/Panel8"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("19_0ttos")
+texture_pressed = ExtResource("9_ps6l6")
+texture_hover = ExtResource("10_l57kf")
+texture_disabled = ExtResource("11_keo7h")
+texture_focused = ExtResource("12_y8tpp")
+texture_click_mask = ExtResource("13_mlicg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="mouse_entered" from="Info/Balance/Column_4/Research/ToolTip" to="Info/Balance/Column_4/Research/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Info/Balance/Column_4/Research/ToolTip" to="Info/Balance/Column_4/Research/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Info/Balance/Column_4/ResearchAid/ToolTip" to="Info/Balance/Column_4/ResearchAid/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Info/Balance/Column_4/ResearchAid/ToolTip" to="Info/Balance/Column_4/ResearchAid/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Info/Balance/Column_4/Mightation/ToolTip" to="Info/Balance/Column_4/Mightation/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Info/Balance/Column_4/Mightation/ToolTip" to="Info/Balance/Column_4/Mightation/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms/ToolTip" to="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms/ToolTip" to="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/GainComms/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations/ToolTip" to="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations/ToolTip" to="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/SourRelations/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss/ToolTip" to="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss/ToolTip" to="Relations/RelationsScrollContainer/VBoxContainer/Unknown/Relation_0/MarginContainer/VBoxContainer/Actions/ImproveRelationss/ToolTip" method="OnHoverExit"]

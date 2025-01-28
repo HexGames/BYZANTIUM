@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://ca2jb7pgll370"
+path="res://.godot/imported/AMask.png-66d323ae7d875f7069b6195b16259efd.res"
+
+[deps]
+
+source_file="res://Assets/Buttons/AMask.png"
+dest_files=["res://.godot/imported/AMask.png-66d323ae7d875f7069b6195b16259efd.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

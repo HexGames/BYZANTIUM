@@ -77,6 +77,6 @@ public partial class UIPlanetInfoFeature : Control
 
     public void OnSelect()
     {
-        Game.self.GalaxyUI.PlanetInfo.OnSelectFeature(this);
+        //Game.self.GalaxyUI.PlanetInfo.OnSelectFeature(this);
     }
 }

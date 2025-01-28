@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System.IO;
+using System.Transactions;
 
 public partial class UIGalaxy : Control
 {
@@ -37,8 +38,10 @@ public partial class UIGalaxy : Control
     public UIDiplomacyWindow Diplomacy = null;
     [Export]
     public UIStarInfo SystemInfo = null;
+    //[Export]
+    //public UIPlanetInfo PlanetInfo = null;
     [Export]
-    public UIPlanetInfo PlanetInfo = null;
+    public UISystemDistricts DistrictsInfo = null;
     //[Export]
     //public UIPlanetInfo PlanetInfo = null;
     //[Export]
@@ -70,9 +73,10 @@ public partial class UIGalaxy : Control
         //PopsInfo.Visible = false;
         Stockpiles.Visible = false;
         DiplomacyBar.Visible = false;
-        Diplomacy.Visible = false;
+        //Diplomacy.Visible = false;
         SystemInfo.Visible = false;
-        PlanetInfo.Visible = false;
+        //PlanetInfo.Visible = false;
+        DistrictsInfo.Visible = false;
 
         //ControlInfo.Visible = false;
         //FactionsInfo.Visible = false;
@@ -84,11 +88,19 @@ public partial class UIGalaxy : Control
     {
         SystemInfo.Visible = true;
         SystemInfo.Refresh(selectedStar);
+
+        DistrictsInfo.Visible = true;
+        DistrictsInfo.RefreshAll(selectedStar);
+
+        DiplomacyBar.Visible = false;
     }
 
     public void HideStarInfo()
     {
         SystemInfo.Visible = false;
+        DistrictsInfo.Visible = false;
+
+        DiplomacyBar.Visible = true;
     }
 
     public void ShowFleetsInfo(Array<FleetData> selectedFleetList, FleetData selectedFleet)
@@ -104,15 +116,16 @@ public partial class UIGalaxy : Control
 
     public void ShowPlanetInfo(PlanetData selectedPlanet)
     {
-        PlanetInfo.Visible = true;
-        PlanetInfo.Refresh(selectedPlanet);
-        DiplomacyBar.Visible = false;
+        //PlanetInfo.Visible = true;
+        DistrictsInfo.RefreshSelected(selectedPlanet);
+        //DiplomacyBar.Visible = false;
     }
 
     public void HidePlanetInfo()
     {
-        PlanetInfo.Visible = false;
-        DiplomacyBar.Visible = true;
+        DistrictsInfo.RefreshAll();
+        //PlanetInfo.Visible = false;
+        //DiplomacyBar.Visible = true;
     }
 
     public void AddPathLabel(GFXPathsItem pathGFX)

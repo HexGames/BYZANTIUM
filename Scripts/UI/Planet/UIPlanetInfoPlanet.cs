@@ -99,6 +99,6 @@ public partial class UIPlanetInfoPlanet : Control
 
     public void OnSelect()
     {
-        Game.self.GalaxyUI.PlanetInfo.OnSelectPlanet();
+        //Game.self.GalaxyUI.PlanetInfo.OnSelectPlanet();
     }
 }

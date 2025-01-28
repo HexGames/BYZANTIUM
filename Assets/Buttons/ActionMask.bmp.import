@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://clfg0bgmcifi5"
+path="res://.godot/imported/ActionMask.bmp-7000dc7196f99694e4dc8c5c941f419d.res"
+
+[deps]
+
+source_file="res://Assets/Buttons/ActionMask.bmp"
+dest_files=["res://.godot/imported/ActionMask.bmp-7000dc7196f99694e4dc8c5c941f419d.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

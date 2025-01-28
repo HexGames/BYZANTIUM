@@ -4,9 +4,7 @@ using System.ComponentModel;
 
 public partial class UIText : RichTextLabel
 {
-    [Export]
     public string Original = "";
-    [Export]
     public UITooltipTrigger ToolTip = null;
 
     public override void _Ready()

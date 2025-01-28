@@ -40,4 +40,10 @@ public partial class PlanetData : Node
     {
         return Data.GetSubValueI("PopsMax") > 0;
     }
+
+    // --------------------------------------------------------------------------------------------
+    public bool IsNotStar()
+    {
+        return Data.HasSub("Star_Type");
+    }
 }

@@ -9,98 +9,64 @@ public partial class UIStarInfoSystem : Control
     public UIText OwnerName;
     [Export]
     public TextureRect OwnerColor;
+    [Export]
+    public TextureRect OwnerIcon;
 
     [Export]
-    public UIText Pops;
+    public UIText ProjectName;
     [Export]
-    public UIText PopsGrowth;
+    public UIText ProjectTime;
     [Export]
-    public UIText PopsTurns;
+    public UIProgress ProjectProgress;
     [Export]
-    private ProgressBar PopsProgressCurrent = null;
-    [Export]
-    private ProgressBar PopsProgressNextTurn = null;
-    [Export]
-    public UITooltipTrigger PopsGrowthTooltip = null;
-    [Export]
-    public UIText PopsUnhappy;
-    [Export]
-    public UIText PopsNeutral;
-    [Export]
-    public UIText PopsHappy;
+    public UIPips ProjectBudgetLevel;
 
     [Export]
-    public UIText Wealth;
+    public UIText PrivateProjectName;
     [Export]
-    private ProgressBar WealthProgressCurrent = null;
+    public UIText PrivateProjectTime;
     [Export]
-    private ProgressBar WealthProgressNextTurn = null;
-    [Export]
-    public UITooltipTrigger WealthTooltip = null;
-    [Export]
-    public UIText WealthInequality;
-    [Export]
-    public UITooltipTrigger WealthInequalityTooltip = null;
-    [Export]
-    public Control WealthInvestBg;
-    [Export]
-    public UIText WealthInvest;
-    [Export]
-    private ProgressBar WealthInvestCurrent = null;
-    [Export]
-    private ProgressBar WealthInvestNextTurn = null;
-    [Export]
-    public UITooltipTrigger WealthInvestTooltip = null;
+    public UIProgress PrivateProjectProgress;
 
     [Export]
-    public UIText ControlText;
+    public UIText PopsGrowthTime;
+    [Export]
+    public UIProgress PopsGrowthProgress;
 
     [Export]
-    public UIText ControlChangeText;
+    public UIText PopsValue;
     [Export]
-    public Control ControlChangeDecrease;
+    public UIText PopsHappyValue;
     [Export]
-    public Control ControlChangeIncrease;
+    public UIText PopsNeutralValue;
     [Export]
-    public ColorRect ControlLoyal;
+    public UIText PopsUnhappyValue;
     [Export]
-    public ColorRect ControlUnsure;
+    public UIIconValue PopsWealth;
     [Export]
-    public ColorRect ControlWavering;
+    public UIIconValue PopsInequality;
     [Export]
-    public ColorRect ControlTurmoil;
+    public UIIconValue PopsCorruption;
     [Export]
-    public ColorRect ControlRebelious;
-    [Export]
-    public TextureRect ControlCursor;
-    [Export]
-    public UIText ControlCorruption;
-    [Export]
-    public UITooltipTrigger ControlCorruptionTooltip = null;
-    [Export]
-    public Control ControlAlert;
+    public UIIconValue PopsSocialUnrest;
 
     [Export]
-    public UIText Infrastructure;
+    public UIText StabilityChangeText;
     [Export]
-    public UIText InfrastructureGrowth;
+    public Control StabilityChangeDecrease;
     [Export]
-    public UIText InfrastructureTurns;
+    public Control StabilityChangeIncrease;
     [Export]
-    private ProgressBar InfrastructureProgressCurrent = null;
+    public TextureRect StabilityCursor;
     [Export]
-    private ProgressBar InfrastructureProgressNextTurn = null;
+    public UIPips StabilityControlLevel;
     [Export]
-    public Control InfrastructureAlert;
-    [Export]
-    public UIText InfrastructureAlertPoints;
+    public Control StabilityAlert;
 
     [Export]
-    public Control TaxPip_1;
+    public UIPips TaxLevel;
     [Export]
-    public Control TaxPip_2;
-    [Export]
-    public Control TaxPip_3;
+    public UIPips WelfareLevel;
 
     [Export]
     public UIText IncomeBC;
@@ -110,25 +76,15 @@ public partial class UIStarInfoSystem : Control
     public UIText IncomeRes;
 
     [Export]
-    public Control NoShipbuilding;
-    [Export]
-    public Control Shipbuilding;
-    [Export]
-    public Button ShipbuildingLeft;
-    [Export]
-    public Button ShipbuildingRight;
+    public UIText ShipbuildingIncome;
     [Export]
     public TextureRect ShipbuildingIcon;
     [Export]
     public UIText ShipbuildingName;
     [Export]
-    public UIText ShipbuildingIncome;
+    public UIText ShipbuildingTurns;
     [Export]
-    public UIText ShipbuildingProgressTurns;
-    [Export]
-    public ProgressBar ShipbuildingProgressCurrent;
-    [Export]
-    public ProgressBar ShipbuildingProgressNextTurn;
+    public UIProgress ShipbuildingProgress;
 
 
     [ExportCategory("Runtime")]
@@ -143,113 +99,114 @@ public partial class UIStarInfoSystem : Control
 
         OwnerName.SetTextWithReplace("$name", _System._Player.PlayerName);
         OwnerColor.SelfModulate = Game.self.UILib.GetPlayerColor(_System._Player.PlayerID);
+        //OwnerIcon.Texture = Game.self.Assets.GetTexture2D_Flag(_System._Player.PlayerName + ".png");
 
-        Pops.SetTextWithReplace("$val", _System.Pops_PerTurn.ToString_Pops(), "$max", _System.Pops_PerTurn.ToString_PopsMax());
-        PopsGrowth.SetTextWithReplace("$v", _System.Pops_PerTurn.ToString_GrowthTotal());
-        PopsTurns.SetTextWithReplace("$t", _System.Pops_PerTurn.ToString_GrowthTurns());
-
-        PopsProgressCurrent.MaxValue = _System.Pops_PerTurn.GrowthProgressMax;
-        PopsProgressCurrent.Value = _System.Pops_PerTurn.GrowthProgress;
-        PopsProgressNextTurn.MaxValue = _System.Pops_PerTurn.GrowthProgressMax;
-        PopsProgressNextTurn.Value = _System.Pops_PerTurn.GrowthProgressNextTurn;
-
-        PopsGrowthTooltip.Row_1_Right = PopsGrowthTooltip.Row_1_Right_Original
-            .Replace("$v1", _System.Pops_PerTurn.ToString_GrowthFromPops())
-            .Replace("$v2", _System.Pops_PerTurn.ToString_GrowthIncommingTrade());
-        int outTrade = _System.Pops_PerTurn.GrowthOutgoingTrade;
-        int waste = _System.Pops_PerTurn.GrowthWaste;
-        PopsGrowthTooltip.Row_2_Right = PopsGrowthTooltip.Row_2_Right_Original
-            .Replace("$v1", (outTrade < 0 ? Helper.GetColorPrefix_Bad() : "") + _System.Pops_PerTurn.ToString_GrowthOutgoingTrade() + (outTrade < 0 ? Helper.GetColorSufix() : ""))
-            .Replace("$v2", (waste < 0 ? Helper.GetColorPrefix_Bad() : "") + _System.Pops_PerTurn.ToString_GrowthWaste() + (waste < 0 ? Helper.GetColorSufix() : ""));
-
-        PopsUnhappy.SetTextWithReplace("$v", _System.Pops_PerTurn.ToString_Unhappy());
-        PopsNeutral.SetTextWithReplace("$v", _System.Pops_PerTurn.ToString_Neutral());
-        PopsHappy.SetTextWithReplace("$v", _System.Pops_PerTurn.ToString_Happy());
-
+        //Pops.SetTextWithReplace("$val", _System.Pops_PerTurn.ToString_Pops(), "$max", _System.Pops_PerTurn.ToString_PopsMax());
+        //PopsGrowth.SetTextWithReplace("$v", _System.Pops_PerTurn.ToString_GrowthTotal());
+        //PopsTurns.SetTextWithReplace("$t", _System.Pops_PerTurn.ToString_GrowthTurns());
         //
-        Wealth.SetTextWithReplace("$val", _System.Economy_PerTurn.WealthLevel.ToString());
-        WealthProgressCurrent.MaxValue = _System.Economy_PerTurn.WealthMax;
-        WealthProgressCurrent.Value = _System.Economy_PerTurn.WealthProgress;
-        WealthProgressNextTurn.MaxValue = _System.Economy_PerTurn.WealthMax;
-        WealthProgressNextTurn.Value = _System.Economy_PerTurn.WealthProgress;
-        WealthTooltip.Title = "Wealth";
-        WealthTooltip.Row_1 = "bah";
-
-        WealthInequality.SetTextWithReplace("$val", _System.Economy_PerTurn.Inequality.ToString());
-        WealthInequalityTooltip.Title = "Inequality";
-        WealthInequalityTooltip.Row_1 = "bah";
-
-        if (_System.DistrictToInvest_PerTurn != null)
-        {
-            WealthInvestBg.Visible = true;
-            WealthInvest.SetTextWithReplace("$t", _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestTurns.ToString());
-            WealthInvestCurrent.MaxValue = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestMax;
-            WealthInvestCurrent.Value = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestProgress;
-            WealthInvestNextTurn.MaxValue = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestMax;
-            WealthInvestNextTurn.Value = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestProgress;
-            WealthInvestTooltip.Title = "Invest";
-            WealthInvestTooltip.Row_1 = "bah";
-        }
-        else
-        {
-            WealthInvestBg.Visible = false;
-        }
-
+        //PopsProgressCurrent.MaxValue = _System.Pops_PerTurn.GrowthProgressMax;
+        //PopsProgressCurrent.Value = _System.Pops_PerTurn.GrowthProgress;
+        //PopsProgressNextTurn.MaxValue = _System.Pops_PerTurn.GrowthProgressMax;
+        //PopsProgressNextTurn.Value = _System.Pops_PerTurn.GrowthProgressNextTurn;
         //
-        ControlText.SetTextWithReplace("$val", _System.Control_PerTurn.ToString_ControlTotal());//.Replace("$max", _System.Control_PerTurn.ToString_Control());
-
-        if (_System.Control_PerTurn.RebellionChange < 0)
-        {
-            ControlChangeText.Visible = true;
-            ControlChangeText.SetTextWithReplace("$v", Helper.GetColorPrefix_Good() + (-_System.Control_PerTurn.RebellionChange).ToString() + Helper.GetColorSufix());
-            ControlChangeDecrease.Visible = true;
-            ControlChangeIncrease.Visible = false;
-        }
-        else if (_System.Control_PerTurn.RebellionChange < 0)
-        {
-            ControlChangeText.Visible = true;
-            ControlChangeText.SetTextWithReplace("$v", Helper.GetColorPrefix_Bad() + _System.Control_PerTurn.RebellionChange.ToString() + Helper.GetColorSufix());
-            ControlChangeDecrease.Visible = false;
-            ControlChangeIncrease.Visible = true;
-        }
-        else
-        {
-            ControlChangeText.Visible = false;
-            ControlChangeDecrease.Visible = false;
-            ControlChangeIncrease.Visible = false;
-        }
-
-        int range = (_System.Control_PerTurn.RebellionMax - _System.Control_PerTurn.RebellionLoyal);
-        int remaining = 240;
-        int size = (_System.Control_PerTurn.RebellionMax - _System.Control_PerTurn.RebellionRebelious) * 240 / range;
-        remaining -= size;
-        ControlRebelious.CustomMinimumSize = new Vector2(size, 16);
-        size = (_System.Control_PerTurn.RebellionRebelious - _System.Control_PerTurn.RebellionTurmoil) * 240 / range;
-        remaining -= size;
-        ControlTurmoil.CustomMinimumSize = new Vector2(size, 16);
-        size = (_System.Control_PerTurn.RebellionTurmoil - _System.Control_PerTurn.RebellionWavering) * 240 / range;
-        remaining -= size;
-        ControlWavering.CustomMinimumSize = new Vector2(size, 16);
-        size = (_System.Control_PerTurn.RebellionWavering - _System.Control_PerTurn.RebellionUnsure) * 240 / range;
-        remaining -= size;
-        ControlUnsure.CustomMinimumSize = new Vector2(size, 16);
-        ControlLoyal.CustomMinimumSize = new Vector2(remaining, 16);
-        
-        if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionRebelious) ControlCursor.SelfModulate = ControlRebelious.Color;
-        else if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionTurmoil) ControlCursor.SelfModulate = ControlTurmoil.Color;
-        else if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionWavering) ControlCursor.SelfModulate = ControlWavering.Color;
-        else if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionUnsure) ControlCursor.SelfModulate = ControlUnsure.Color;
-        else ControlCursor.SelfModulate = ControlLoyal.Color;
-
-        if (_System.Control_PerTurn.RebellionCurrent <= _System.Control_PerTurn.RebellionLoyal) ControlCursor.SetPosition(new Vector2(8, 28));
-        else if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionMax) ControlCursor.SetPosition(new Vector2(280, 28));
-        else ControlCursor.SetPosition(new Vector2(24 + (240 * (_System.Control_PerTurn.RebellionCurrent - _System.Control_PerTurn.RebellionLoyal) / range), 28));
-
-        ControlCorruption.SetTextWithReplace("$val", "??");
-        ControlCorruptionTooltip.Title = "Corruption";
-        ControlCorruptionTooltip.Row_1 = "bah";
-
-        ControlAlert.Visible = _System.Control_PerTurn.RebellionChange < 0 && _System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionUnsure;
+        //PopsGrowthTooltip.Row_1_Right = PopsGrowthTooltip.Row_1_Right_Original
+        //    .Replace("$v1", _System.Pops_PerTurn.ToString_GrowthFromPops())
+        //    .Replace("$v2", _System.Pops_PerTurn.ToString_GrowthIncommingTrade());
+        //int outTrade = _System.Pops_PerTurn.GrowthOutgoingTrade;
+        //int waste = _System.Pops_PerTurn.GrowthWaste;
+        //PopsGrowthTooltip.Row_2_Right = PopsGrowthTooltip.Row_2_Right_Original
+        //    .Replace("$v1", (outTrade < 0 ? Helper.GetColorPrefix_Bad() : "") + _System.Pops_PerTurn.ToString_GrowthOutgoingTrade() + (outTrade < 0 ? Helper.GetColorSufix() : ""))
+        //    .Replace("$v2", (waste < 0 ? Helper.GetColorPrefix_Bad() : "") + _System.Pops_PerTurn.ToString_GrowthWaste() + (waste < 0 ? Helper.GetColorSufix() : ""));
+        //
+        //PopsUnhappy.SetTextWithReplace("$v", _System.Pops_PerTurn.ToString_Unhappy());
+        //PopsNeutral.SetTextWithReplace("$v", _System.Pops_PerTurn.ToString_Neutral());
+        //PopsHappy.SetTextWithReplace("$v", _System.Pops_PerTurn.ToString_Happy());
+        //
+        ////
+        //Wealth.SetTextWithReplace("$val", _System.Economy_PerTurn.WealthLevel.ToString());
+        //WealthProgressCurrent.MaxValue = _System.Economy_PerTurn.WealthMax;
+        //WealthProgressCurrent.Value = _System.Economy_PerTurn.WealthProgress;
+        //WealthProgressNextTurn.MaxValue = _System.Economy_PerTurn.WealthMax;
+        //WealthProgressNextTurn.Value = _System.Economy_PerTurn.WealthProgress;
+        //WealthTooltip.Title = "Wealth";
+        //WealthTooltip.Row_1 = "bah";
+        //
+        //WealthInequality.SetTextWithReplace("$val", _System.Economy_PerTurn.Inequality.ToString());
+        //WealthInequalityTooltip.Title = "Inequality";
+        //WealthInequalityTooltip.Row_1 = "bah";
+        //
+        //if (_System.DistrictToInvest_PerTurn != null)
+        //{
+        //    WealthInvestBg.Visible = true;
+        //    WealthInvest.SetTextWithReplace("$t", _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestTurns.ToString());
+        //    WealthInvestCurrent.MaxValue = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestMax;
+        //    WealthInvestCurrent.Value = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestProgress;
+        //    WealthInvestNextTurn.MaxValue = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestMax;
+        //    WealthInvestNextTurn.Value = _System.DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestProgress;
+        //    WealthInvestTooltip.Title = "Invest";
+        //    WealthInvestTooltip.Row_1 = "bah";
+        //}
+        //else
+        //{
+        //    WealthInvestBg.Visible = false;
+        //}
+        //
+        ////
+        //ControlText.SetTextWithReplace("$val", _System.Control_PerTurn.ToString_ControlTotal());//.Replace("$max", _System.Control_PerTurn.ToString_Control());
+        //
+        //if (_System.Control_PerTurn.RebellionChange < 0)
+        //{
+        //    ControlChangeText.Visible = true;
+        //    ControlChangeText.SetTextWithReplace("$v", Helper.GetColorPrefix_Good() + (-_System.Control_PerTurn.RebellionChange).ToString() + Helper.GetColorSufix());
+        //    ControlChangeDecrease.Visible = true;
+        //    ControlChangeIncrease.Visible = false;
+        //}
+        //else if (_System.Control_PerTurn.RebellionChange < 0)
+        //{
+        //    ControlChangeText.Visible = true;
+        //    ControlChangeText.SetTextWithReplace("$v", Helper.GetColorPrefix_Bad() + _System.Control_PerTurn.RebellionChange.ToString() + Helper.GetColorSufix());
+        //    ControlChangeDecrease.Visible = false;
+        //    ControlChangeIncrease.Visible = true;
+        //}
+        //else
+        //{
+        //    ControlChangeText.Visible = false;
+        //    ControlChangeDecrease.Visible = false;
+        //    ControlChangeIncrease.Visible = false;
+        //}
+        //
+        //int range = (_System.Control_PerTurn.RebellionMax - _System.Control_PerTurn.RebellionLoyal);
+        //int remaining = 240;
+        //int size = (_System.Control_PerTurn.RebellionMax - _System.Control_PerTurn.RebellionRebelious) * 240 / range;
+        //remaining -= size;
+        //ControlRebelious.CustomMinimumSize = new Vector2(size, 16);
+        //size = (_System.Control_PerTurn.RebellionRebelious - _System.Control_PerTurn.RebellionTurmoil) * 240 / range;
+        //remaining -= size;
+        //ControlTurmoil.CustomMinimumSize = new Vector2(size, 16);
+        //size = (_System.Control_PerTurn.RebellionTurmoil - _System.Control_PerTurn.RebellionWavering) * 240 / range;
+        //remaining -= size;
+        //ControlWavering.CustomMinimumSize = new Vector2(size, 16);
+        //size = (_System.Control_PerTurn.RebellionWavering - _System.Control_PerTurn.RebellionUnsure) * 240 / range;
+        //remaining -= size;
+        //ControlUnsure.CustomMinimumSize = new Vector2(size, 16);
+        //ControlLoyal.CustomMinimumSize = new Vector2(remaining, 16);
+        //
+        //if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionRebelious) ControlCursor.SelfModulate = ControlRebelious.Color;
+        //else if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionTurmoil) ControlCursor.SelfModulate = ControlTurmoil.Color;
+        //else if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionWavering) ControlCursor.SelfModulate = ControlWavering.Color;
+        //else if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionUnsure) ControlCursor.SelfModulate = ControlUnsure.Color;
+        //else ControlCursor.SelfModulate = ControlLoyal.Color;
+        //
+        //if (_System.Control_PerTurn.RebellionCurrent <= _System.Control_PerTurn.RebellionLoyal) ControlCursor.SetPosition(new Vector2(8, 28));
+        //else if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionMax) ControlCursor.SetPosition(new Vector2(280, 28));
+        //else ControlCursor.SetPosition(new Vector2(24 + (240 * (_System.Control_PerTurn.RebellionCurrent - _System.Control_PerTurn.RebellionLoyal) / range), 28));
+        //
+        //ControlCorruption.SetTextWithReplace("$val", "??");
+        //ControlCorruptionTooltip.Title = "Corruption";
+        //ControlCorruptionTooltip.Row_1 = "bah";
+        //
+        //ControlAlert.Visible = _System.Control_PerTurn.RebellionChange < 0 && _System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionUnsure;
 
         //Infrastructure.SetTextWithReplace("$val", _System.Infrastructure_PerTurn.ToString_InfrastructureUsed(), "$max", _System.Infrastructure_PerTurn.ToString_Infrastructure());
         //InfrastructureGrowth.SetTextWithReplace("$v", _System.Infrastructure_PerTurn.ToString_Construction());
@@ -264,79 +221,79 @@ public partial class UIStarInfoSystem : Control
         //InfrastructureAlert.Visible = points > 0;
         //InfrastructureAlertPoints.SetTextWithReplace("$v", points.ToString());
 
-        int taxLevel = _System.Economy_PerTurn.Tax;
-        TaxPip_1.Visible = taxLevel == 1;
-        TaxPip_2.Visible = taxLevel == 2;
-        TaxPip_3.Visible = taxLevel == 3;
-
-        IncomeBC.SetTextWithReplace("$val", _System.Economy_PerTurn.ToString_BC());
-        IncomeInf.SetTextWithReplace("$val", _System.Economy_PerTurn.ToString_Influence());
-        IncomeRes.SetTextWithReplace("$val", _System.Economy_PerTurn.ToString_Research());
-
-        if (_System.Shipbuilding_PerTurn.Shipbuilding > 0)
-        {
-            Shipbuilding.Visible = true;
-            NoShipbuilding.Visible = false;
-
-            ShipbuildingLeft.Visible = _System.Shipbuilding_PerTurn.DesignIdx > 0;
-            ShipbuildingRight.Visible = _System.Shipbuilding_PerTurn.DesignIdx < _System.Shipbuilding_PerTurn.DesignIdxMax - 1;
-            //ShipbuildingIcon = _System.Shipbuilding_PerTurn.DesignCurrent.
-            ShipbuildingName.SetTextWithReplace("$name", _System.Shipbuilding_PerTurn.DesignCurrent.DesignName);
-            ShipbuildingIncome.SetTextWithReplace("$v", _System.Shipbuilding_PerTurn.ToString_Shipbuilding());
-            ShipbuildingProgressTurns.SetTextWithReplace("$t", _System.Shipbuilding_PerTurn.ToString_Turns());
-            ShipbuildingProgressCurrent.MaxValue = _System.Shipbuilding_PerTurn.ProgressMax;
-            ShipbuildingProgressCurrent.Value = _System.Shipbuilding_PerTurn.ProgressCurrent;
-            ShipbuildingProgressNextTurn.MaxValue = _System.Shipbuilding_PerTurn.ProgressMax;
-            ShipbuildingProgressNextTurn.Value = _System.Shipbuilding_PerTurn.ProgressNextTurn;
-        }
-        else
-        {
-            Shipbuilding.Visible = false;
-            NoShipbuilding.Visible = true;
-        }
+        //int taxLevel = _System.Economy_PerTurn.Tax;
+        //TaxPip_1.Visible = taxLevel == 1;
+        //TaxPip_2.Visible = taxLevel == 2;
+        //TaxPip_3.Visible = taxLevel == 3;
+        //
+        //IncomeBC.SetTextWithReplace("$val", _System.Economy_PerTurn.ToString_BC());
+        //IncomeInf.SetTextWithReplace("$val", _System.Economy_PerTurn.ToString_Influence());
+        //IncomeRes.SetTextWithReplace("$val", _System.Economy_PerTurn.ToString_Research());
+        //
+        //if (_System.Shipbuilding_PerTurn.Shipbuilding > 0)
+        //{
+        //    Shipbuilding.Visible = true;
+        //    NoShipbuilding.Visible = false;
+        //
+        //    ShipbuildingLeft.Visible = _System.Shipbuilding_PerTurn.DesignIdx > 0;
+        //    ShipbuildingRight.Visible = _System.Shipbuilding_PerTurn.DesignIdx < _System.Shipbuilding_PerTurn.DesignIdxMax - 1;
+        //    //ShipbuildingIcon = _System.Shipbuilding_PerTurn.DesignCurrent.
+        //    ShipbuildingName.SetTextWithReplace("$name", _System.Shipbuilding_PerTurn.DesignCurrent.DesignName);
+        //    ShipbuildingIncome.SetTextWithReplace("$v", _System.Shipbuilding_PerTurn.ToString_Shipbuilding());
+        //    ShipbuildingProgressTurns.SetTextWithReplace("$t", _System.Shipbuilding_PerTurn.ToString_Turns());
+        //    ShipbuildingProgressCurrent.MaxValue = _System.Shipbuilding_PerTurn.ProgressMax;
+        //    ShipbuildingProgressCurrent.Value = _System.Shipbuilding_PerTurn.ProgressCurrent;
+        //    ShipbuildingProgressNextTurn.MaxValue = _System.Shipbuilding_PerTurn.ProgressMax;
+        //    ShipbuildingProgressNextTurn.Value = _System.Shipbuilding_PerTurn.ProgressNextTurn;
+        //}
+        //else
+        //{
+        //    Shipbuilding.Visible = false;
+        //    NoShipbuilding.Visible = true;
+        //}
     }
 
-    public void OnTax_0()
-    {
-        ActionTax.SetTax(_System, 0);
-        Game.self.GalaxyUI.SystemInfo.Refresh(_System.Star);
-        if (Game.self.Input.SelectedPlanet != null)
-        {
-            Game.self.GalaxyUI.PlanetInfo.Refresh(Game.self.Input.SelectedPlanet);
-        }
-    }
+    //public void OnTax_0()
+    //{
+    //    ActionTax.SetTax(_System, 0);
+    //    Game.self.GalaxyUI.SystemInfo.Refresh(_System.Star);
+    //    if (Game.self.Input.SelectedPlanet != null)
+    //    {
+    //        Game.self.GalaxyUI.PlanetInfo.Refresh(Game.self.Input.SelectedPlanet);
+    //    }
+    //}
+    //
+    //public void OnTax_1()
+    //{
+    //    ActionTax.SetTax(_System, 1);
+    //    Game.self.GalaxyUI.SystemInfo.Refresh(_System.Star);
+    //    if (Game.self.Input.SelectedPlanet != null)
+    //    {
+    //        Game.self.GalaxyUI.PlanetInfo.Refresh(Game.self.Input.SelectedPlanet);
+    //    }
+    //}
+    //
+    //public void OnTax_2()
+    //{
+    //    ActionTax.SetTax(_System, 2);
+    //    Game.self.GalaxyUI.SystemInfo.Refresh(_System.Star);
+    //    if (Game.self.Input.SelectedPlanet != null)
+    //    {
+    //        Game.self.GalaxyUI.PlanetInfo.Refresh(Game.self.Input.SelectedPlanet);
+    //    }
+    //}
 
-    public void OnTax_1()
-    {
-        ActionTax.SetTax(_System, 1);
-        Game.self.GalaxyUI.SystemInfo.Refresh(_System.Star);
-        if (Game.self.Input.SelectedPlanet != null)
-        {
-            Game.self.GalaxyUI.PlanetInfo.Refresh(Game.self.Input.SelectedPlanet);
-        }
-    }
+    //public void OnShipPrevious()
+    //{
+    //    DesignData design = _System._Player.GetDesignAtIdx(_System.Shipbuilding_PerTurn.DesignIdx - 1);
+    //    ActionShipbuilding.ChangeShipTo(_System, design);
+    //    Game.self.GalaxyUI.SystemInfo.Refresh(_System.Star);
+    //}
 
-    public void OnTax_2()
-    {
-        ActionTax.SetTax(_System, 2);
-        Game.self.GalaxyUI.SystemInfo.Refresh(_System.Star);
-        if (Game.self.Input.SelectedPlanet != null)
-        {
-            Game.self.GalaxyUI.PlanetInfo.Refresh(Game.self.Input.SelectedPlanet);
-        }
-    }
-
-    public void OnShipPrevious()
-    {
-        DesignData design = _System._Player.GetDesignAtIdx(_System.Shipbuilding_PerTurn.DesignIdx - 1);
-        ActionShipbuilding.ChangeShipTo(_System, design);
-        Game.self.GalaxyUI.SystemInfo.Refresh(_System.Star);
-    }
-
-    public void OnShipNext()
-    {
-        DesignData design = _System._Player.GetDesignAtIdx(_System.Shipbuilding_PerTurn.DesignIdx + 1);
-        ActionShipbuilding.ChangeShipTo(_System, design);
-        Game.self.GalaxyUI.SystemInfo.Refresh(_System.Star);
-    }
+    //public void OnShipNext()
+    //{
+    //    DesignData design = _System._Player.GetDesignAtIdx(_System.Shipbuilding_PerTurn.DesignIdx + 1);
+    //    ActionShipbuilding.ChangeShipTo(_System, design);
+    //    Game.self.GalaxyUI.SystemInfo.Refresh(_System.Star);
+    //}
 }

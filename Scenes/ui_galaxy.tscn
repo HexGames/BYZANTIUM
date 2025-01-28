@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bukr82o6e8rl3"]
+[gd_scene load_steps=31 format=3 uid="uid://bukr82o6e8rl3"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
 [ext_resource type="PackedScene" uid="uid://dkomfigvec4wg" path="res://Scenes/ui_3d_star.tscn" id="2_iewv2"]
@@ -6,17 +6,32 @@
 [ext_resource type="PackedScene" uid="uid://bkso2epk2tw8u" path="res://Scenes/ui_3d_path_label.tscn" id="3_vn2yg"]
 [ext_resource type="PackedScene" uid="uid://4kwmb20dx12x" path="res://Scenes/ui_3d_planet.tscn" id="4_3psny"]
 [ext_resource type="PackedScene" uid="uid://0svrlyhb7gcc" path="res://Scenes/ui_economy_bar.tscn" id="4_y8k0i"]
+[ext_resource type="PackedScene" uid="uid://d0nxagsi625t2" path="res://Scenes/ui_diplomacy.tscn" id="7_wysrc"]
 [ext_resource type="PackedScene" uid="uid://vh0pcrygv61d" path="res://Scenes/ui_system.tscn" id="7_y5oqc"]
 [ext_resource type="PackedScene" uid="uid://cmde3jxsickdj" path="res://Scenes/ui_planet.tscn" id="8_67ifr"]
 [ext_resource type="PackedScene" uid="uid://tlc7q8l1u3c" path="res://Scenes/ui_diplomacy_bar.tscn" id="10_nl6ke"]
 [ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="11_72k2f"]
-[ext_resource type="PackedScene" uid="uid://distno8k4r26b" path="res://Scenes/ui_diplomacy_window.tscn" id="11_qh3nu"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="12_70fqi"]
 [ext_resource type="PackedScene" uid="uid://b2a0hskimxnut" path="res://Scenes/ui_fleets.tscn" id="12_sv4sa"]
 [ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="13_lewsr"]
+[ext_resource type="Texture2D" uid="uid://cy8jdg47q12jm" path="res://Assets/Buttons/AD_Trade.png" id="14_xth03"]
 [ext_resource type="PackedScene" uid="uid://c5x0k0s750tc4" path="res://Scenes/__ui_general.tscn" id="16_3p5nr"]
+[ext_resource type="Texture2D" uid="uid://vv0idycjyxp0" path="res://Assets/Buttons/AE_Pop.png" id="20_1y74w"]
+[ext_resource type="Texture2D" uid="uid://rfta17sdmdn2" path="res://Assets/Buttons/AE_Pop_P.png" id="21_rn31v"]
+[ext_resource type="Texture2D" uid="uid://8n4k3s8my4ty" path="res://Assets/Buttons/AE_Pop_H.png" id="22_06r43"]
+[ext_resource type="Texture2D" uid="uid://b1hnbejl4ksdb" path="res://Assets/Buttons/AE_Project.png" id="22_mvfsc"]
+[ext_resource type="Texture2D" uid="uid://brhjmvjquckl6" path="res://Assets/Buttons/AE_Project_P.png" id="23_0bnjr"]
+[ext_resource type="Texture2D" uid="uid://cay5cioj1k4du" path="res://Assets/Buttons/AE_Pop_D.png" id="23_80xy8"]
+[ext_resource type="Texture2D" uid="uid://bexxwdsyu3b27" path="res://Assets/Buttons/AE_Tax.png" id="24_g0jq8"]
+[ext_resource type="Texture2D" uid="uid://cygho86bre2p8" path="res://Assets/Buttons/AE_Project_H.png" id="24_or56h"]
+[ext_resource type="Texture2D" uid="uid://c3g3mtu0o8gxh" path="res://Assets/Buttons/AD_War.png" id="25_8h50l"]
+[ext_resource type="Texture2D" uid="uid://3ndnqsq82q6h" path="res://Assets/Buttons/AE_Budget.png" id="25_lsdqk"]
+[ext_resource type="Texture2D" uid="uid://c4rgg21mkw8d3" path="res://Assets/Buttons/AE_Project_D.png" id="25_rvatl"]
+[ext_resource type="Texture2D" uid="uid://virwpva0gl1" path="res://Assets/Buttons/A_S_Deselect.png" id="26_1rje3"]
+[ext_resource type="BitMap" uid="uid://ca2jb7pgll370" path="res://Assets/Buttons/AMask.png" id="26_woauy"]
+[ext_resource type="PackedScene" uid="uid://dffvv6bxptssj" path="res://Scenes/ui_system_districts.tscn" id="31_mytwp"]
 
-[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("UI3DManager", "Incoming", "Paths", "General", "Stockpiles", "DiplomacyBar", "Diplomacy", "SystemInfo", "PlanetInfo", "FleetsSelected", "EndTurnBg", "CurrentTurn", "DEBUGText")]
+[node name="UIGalaxy" type="Control" node_paths=PackedStringArray("UI3DManager", "Incoming", "Paths", "General", "Stockpiles", "DiplomacyBar", "SystemInfo", "DistrictsInfo", "FleetsSelected", "EndTurnBg", "CurrentTurn", "DEBUGText")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,9 +46,8 @@ Paths = [NodePath("UI3D/PathsHUD/Path")]
 General = NodePath("GeneralUI")
 Stockpiles = NodePath("Economy")
 DiplomacyBar = NodePath("DiplomacyBar")
-Diplomacy = NodePath("DiplomacyWindow")
 SystemInfo = NodePath("System")
-PlanetInfo = NodePath("Planet")
+DistrictsInfo = NodePath("SystemDistricts")
 FleetsSelected = NodePath("Fleets")
 EndTurnBg = NodePath("EndTurn")
 CurrentTurn = NodePath("Turn")
@@ -100,7 +114,11 @@ visible = false
 layout_mode = 1
 anchors_preset = -1
 
+[node name="Diplomacy" parent="." instance=ExtResource("7_wysrc")]
+layout_mode = 1
+
 [node name="System" parent="." instance=ExtResource("7_y5oqc")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 
@@ -118,7 +136,7 @@ offset_right = 16.0
 [node name="DiplomacyBar" parent="." instance=ExtResource("10_nl6ke")]
 layout_mode = 1
 
-[node name="DiplomacyWindow" parent="." instance=ExtResource("11_qh3nu")]
+[node name="SystemDistricts" parent="." instance=ExtResource("31_mytwp")]
 visible = false
 layout_mode = 1
 
@@ -227,6 +245,298 @@ layout_mode = 2
 [node name="Panel5" type="Panel" parent="EventChoose5/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
+
+[node name="ActionEconomy" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ActionEconomy"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Gap" type="Control" parent="ActionEconomy/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Button_1" type="TextureButton" parent="ActionEconomy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("20_1y74w")
+texture_pressed = ExtResource("21_rn31v")
+texture_hover = ExtResource("22_06r43")
+texture_disabled = ExtResource("23_80xy8")
+texture_focused = ExtResource("20_1y74w")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_2" type="TextureButton" parent="ActionEconomy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("22_mvfsc")
+texture_pressed = ExtResource("23_0bnjr")
+texture_hover = ExtResource("24_or56h")
+texture_disabled = ExtResource("25_rvatl")
+texture_focused = ExtResource("22_mvfsc")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_3" type="TextureButton" parent="ActionEconomy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("25_lsdqk")
+texture_pressed = ExtResource("23_0bnjr")
+texture_hover = ExtResource("24_or56h")
+texture_disabled = ExtResource("25_rvatl")
+texture_focused = ExtResource("22_mvfsc")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_4" type="TextureButton" parent="ActionEconomy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("24_g0jq8")
+texture_pressed = ExtResource("23_0bnjr")
+texture_hover = ExtResource("24_or56h")
+texture_disabled = ExtResource("25_rvatl")
+texture_focused = ExtResource("22_mvfsc")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_11" type="TextureButton" parent="ActionEconomy/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+focus_mode = 0
+texture_normal = ExtResource("26_1rje3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ActionDiplomacy" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ActionDiplomacy"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Gap" type="Control" parent="ActionDiplomacy/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Button_8" type="TextureButton" parent="ActionDiplomacy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("25_8h50l")
+texture_pressed = ExtResource("23_0bnjr")
+texture_hover = ExtResource("24_or56h")
+texture_disabled = ExtResource("25_rvatl")
+texture_focused = ExtResource("22_mvfsc")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_9" type="TextureButton" parent="ActionDiplomacy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("25_8h50l")
+texture_pressed = ExtResource("23_0bnjr")
+texture_hover = ExtResource("24_or56h")
+texture_disabled = ExtResource("25_rvatl")
+texture_focused = ExtResource("22_mvfsc")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_1" type="TextureButton" parent="ActionDiplomacy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("14_xth03")
+texture_pressed = ExtResource("21_rn31v")
+texture_hover = ExtResource("22_06r43")
+texture_disabled = ExtResource("23_80xy8")
+texture_focused = ExtResource("20_1y74w")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_2" type="TextureButton" parent="ActionDiplomacy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("14_xth03")
+texture_pressed = ExtResource("23_0bnjr")
+texture_hover = ExtResource("24_or56h")
+texture_disabled = ExtResource("25_rvatl")
+texture_focused = ExtResource("22_mvfsc")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_3" type="TextureButton" parent="ActionDiplomacy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("14_xth03")
+texture_pressed = ExtResource("23_0bnjr")
+texture_hover = ExtResource("24_or56h")
+texture_disabled = ExtResource("25_rvatl")
+texture_focused = ExtResource("22_mvfsc")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_4" type="TextureButton" parent="ActionDiplomacy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("14_xth03")
+texture_pressed = ExtResource("23_0bnjr")
+texture_hover = ExtResource("24_or56h")
+texture_disabled = ExtResource("25_rvatl")
+texture_focused = ExtResource("22_mvfsc")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_5" type="TextureButton" parent="ActionDiplomacy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("14_xth03")
+texture_pressed = ExtResource("21_rn31v")
+texture_hover = ExtResource("22_06r43")
+texture_disabled = ExtResource("23_80xy8")
+texture_focused = ExtResource("20_1y74w")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_6" type="TextureButton" parent="ActionDiplomacy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("14_xth03")
+texture_pressed = ExtResource("23_0bnjr")
+texture_hover = ExtResource("24_or56h")
+texture_disabled = ExtResource("25_rvatl")
+texture_focused = ExtResource("22_mvfsc")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_7" type="TextureButton" parent="ActionDiplomacy/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("14_xth03")
+texture_pressed = ExtResource("23_0bnjr")
+texture_hover = ExtResource("24_or56h")
+texture_disabled = ExtResource("25_rvatl")
+texture_focused = ExtResource("22_mvfsc")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_10" type="TextureButton" parent="ActionDiplomacy/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("20_1y74w")
+texture_pressed = ExtResource("21_rn31v")
+texture_hover = ExtResource("22_06r43")
+texture_disabled = ExtResource("23_80xy8")
+texture_focused = ExtResource("20_1y74w")
+texture_click_mask = ExtResource("26_woauy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button_11" type="TextureButton" parent="ActionDiplomacy/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+focus_mode = 0
+texture_normal = ExtResource("26_1rje3")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="EndTurn" type="Control" parent="."]
 layout_mode = 1

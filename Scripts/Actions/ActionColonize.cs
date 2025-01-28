@@ -39,6 +39,7 @@ public class ActionColonize
         //Data.AddData(fleet.ActionData, "ProgressMax", fleet.StarAt_PerTurn.DistanceTo(star), game.Def);
 
         Game.self.GalaxyUI.SystemInfo.Refresh(star);
+        Game.self.GalaxyUI.DistrictsInfo.RefreshAll(star);
         //star._Node.GFX.RefreshPlayerColor();
         star._Node.GFX.RefreshShips();
     }
@@ -51,6 +52,7 @@ public class ActionColonize
         fleet.ActionColonizeData = null;
 
         Game.self.GalaxyUI.SystemInfo.Refresh(star);
+        Game.self.GalaxyUI.DistrictsInfo.RefreshAll(star);
         //star._Node.GFX.RefreshPlayerColor();
         star._Node.GFX.RefreshShips();
     }

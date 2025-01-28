@@ -85,6 +85,6 @@ public partial class UIPlanetInfoOtherDistrict : Control
 
     public void OnSelect()
     {
-        Game.self.GalaxyUI.PlanetInfo.SelectChosenDistrict(this);
+        //Game.self.GalaxyUI.PlanetInfo.SelectChosenDistrict(this);
     }
 }

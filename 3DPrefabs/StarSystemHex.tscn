@@ -1,0 +1,1189 @@
+[gd_scene load_steps=66 format=3 uid="uid://chroloul6ehfj"]
+
+[ext_resource type="Script" path="res://Scripts/GFX/GFXStar.cs" id="1_pxbba"]
+[ext_resource type="Script" path="res://Scripts/GFX/GFXStarOrbit.cs" id="2_xemi2"]
+[ext_resource type="Material" uid="uid://5htilat6hnl" path="res://Assets/3D/MaterialsPlanetsAlpha/Orbits.tres" id="3_5uwe3"]
+[ext_resource type="Shape3D" uid="uid://cm5sgu45kxr1b" path="res://Assets/3D/Colision/Sphere1.tres" id="4_rcf3w"]
+[ext_resource type="SphereMesh" uid="uid://cw678rsdp6acn" path="res://Assets/3D/Basic/Planet.tres" id="5_ir075"]
+[ext_resource type="Material" uid="uid://0co4p34uqqkf" path="res://Assets/3D/MaterialsPlanets/PlanetBarren.tres" id="6_1bjfw"]
+[ext_resource type="Material" uid="uid://dogyxf1ak1kun" path="res://Assets/3D/MaterialsPlanetsAlpha/Rings.tres" id="7_kgljy"]
+[ext_resource type="SphereMesh" uid="uid://bx2vwp0rxhf5y" path="res://Assets/3D/Basic/Moon.tres" id="8_vfpyu"]
+[ext_resource type="Material" uid="uid://p7rxulo1gk1x" path="res://Assets/3D/MaterialsPlanets/PlanetTerra.tres" id="9_d35vd"]
+[ext_resource type="Texture2D" uid="uid://62d2qqnd8g8a" path="res://Assets/UI/Symbols/ProdO.png" id="10_52fay"]
+[ext_resource type="Script" path="res://Scripts/GFX/GFXStarShip.cs" id="11_0v82p"]
+[ext_resource type="ArrayMesh" uid="uid://c8hwqrpdgjj50" path="res://Assets/3D/Ship.res" id="12_qxcoy"]
+[ext_resource type="ArrayMesh" uid="uid://dy1glxon77wgm" path="res://Assets/3D/ShipColor.res" id="13_d2wu8"]
+[ext_resource type="Material" uid="uid://drfchir7ubw6w" path="res://Assets/3D/Materials/ShipColor.tres" id="14_gnsxm"]
+[ext_resource type="Shape3D" uid="uid://bombnkrh3v8x2" path="res://Assets/3D/Colision/Sphere2.tres" id="15_nmage"]
+[ext_resource type="ArrayMesh" uid="uid://bdr31cb82a87g" path="res://Assets/3D/TubeQuad.res" id="16_vxwt3"]
+[ext_resource type="Material" uid="uid://8dhftha4hj4a" path="res://Assets/3D/Materials/SystemBorder.tres" id="17_7rgi6"]
+[ext_resource type="Texture2D" uid="uid://cybfsk1d7toah" path="res://Assets/Galaxy/SystemUnknown.png" id="18_1y34g"]
+[ext_resource type="Texture2D" uid="uid://bubkhl3g34g6u" path="res://Assets/Galaxy/SystemUncovered.png" id="19_84ufd"]
+[ext_resource type="Material" uid="uid://cdrsm3ea7khgu" path="res://Assets/3D/Materials/PlayerBlue.tres" id="20_ubq3r"]
+[ext_resource type="Material" uid="uid://bb5q22xkv21g4" path="res://Assets/3D/Materials/PPL_1.tres" id="21_cvpl0"]
+[ext_resource type="Texture2D" uid="uid://8uopb46ug55p" path="res://Assets/Background/PPL1.png" id="22_hqk40"]
+[ext_resource type="Texture2D" uid="uid://d0wljmi063s34" path="res://Assets/Galaxy/StarGas.png" id="23_8k8gi"]
+[ext_resource type="Texture2D" uid="uid://b0m5fp44otc08" path="res://Assets/Galaxy/BeltGas.png" id="24_61upp"]
+[ext_resource type="Material" uid="uid://bfj2l28q34lpg" path="res://Assets/3D/Materials/PPL_BG.tres" id="25_jft03"]
+[ext_resource type="Texture2D" uid="uid://cx0rum6164g00" path="res://Assets/3D/SystemHexOverlay2.png" id="26_hmnpt"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_fnj7s"]
+radius = 0.1
+height = 0.2
+radial_segments = 32
+rings = 16
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_poqyt"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b3vje"]
+height = 0.1
+radius = 6.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_jjlya"]
+inner_radius = 2.64
+outer_radius = 2.66
+ring_segments = 3
+
+[sub_resource type="SphereMesh" id="SphereMesh_aau03"]
+radius = 0.1
+height = 0.2
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_tolps"]
+radius = 0.06
+height = 0.11
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_advii"]
+radius = 0.04
+height = 0.09
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_121g8"]
+radius = 0.06
+height = 0.15
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_e6mn4"]
+radius = 0.05
+height = 0.1
+radial_segments = 16
+rings = 8
+
+[sub_resource type="QuadMesh" id="QuadMesh_u1x2a"]
+size = Vector2(2.25, 2.25)
+
+[sub_resource type="TorusMesh" id="TorusMesh_kr8rg"]
+inner_radius = 1.25
+outer_radius = 1.26
+ring_segments = 3
+
+[sub_resource type="TorusMesh" id="TorusMesh_0qoux"]
+inner_radius = 1.75
+outer_radius = 1.76
+ring_segments = 3
+
+[sub_resource type="TorusMesh" id="TorusMesh_wsn11"]
+inner_radius = 4.19
+outer_radius = 4.21
+ring_segments = 3
+
+[sub_resource type="TorusMesh" id="TorusMesh_yp3r6"]
+inner_radius = 1.75
+outer_radius = 1.76
+ring_segments = 3
+
+[sub_resource type="TorusMesh" id="TorusMesh_enq6k"]
+inner_radius = 5.69
+outer_radius = 5.71
+ring_segments = 3
+
+[sub_resource type="TorusMesh" id="TorusMesh_qpbty"]
+inner_radius = 6.89
+outer_radius = 6.91
+ring_segments = 3
+
+[sub_resource type="Gradient" id="Gradient_n5eni"]
+offsets = PackedFloat32Array(0.896552, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ojuc"]
+gradient = SubResource("Gradient_n5eni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_va1y8"]
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture1D_8ojuc")
+
+[sub_resource type="TorusMesh" id="TorusMesh_typ6w"]
+inner_radius = 8.29
+outer_radius = 8.31
+ring_segments = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3p5nb"]
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture1D_8ojuc")
+
+[sub_resource type="TorusMesh" id="TorusMesh_bplwl"]
+inner_radius = 8.89
+outer_radius = 8.91
+ring_segments = 3
+
+[sub_resource type="TorusMesh" id="TorusMesh_06lm1"]
+inner_radius = 9.89
+outer_radius = 9.91
+ring_segments = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3e12j"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("10_52fay")
+
+[sub_resource type="QuadMesh" id="QuadMesh_r5csi"]
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdw30"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.423529, 0.67451, 0.878431, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_d2qf7"]
+size = Vector2(7.8, 7.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8lk6"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+albedo_texture = ExtResource("18_1y34g")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60mt6"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.211765, 0.258824, 0.686275, 1)
+albedo_texture = ExtResource("19_84ufd")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5w7qy"]
+size = Vector2(30, 30)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pangn"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.627451, 0.698039, 0.756863, 0.25098)
+albedo_texture = ExtResource("22_hqk40")
+
+[sub_resource type="QuadMesh" id="QuadMesh_dpph1"]
+size = Vector2(15, 15)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3i3d"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.976471, 0.729412, 0.556863, 0.313726)
+albedo_texture = ExtResource("23_8k8gi")
+
+[sub_resource type="QuadMesh" id="QuadMesh_c3lpw"]
+size = Vector2(22, 22)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8t6co"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.839216, 0.737255, 0.811765, 0.376471)
+albedo_texture = ExtResource("24_61upp")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0ummg"]
+size = Vector2(90, 90)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etwdd"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.729412, 0.643137, 0.188235)
+albedo_texture = ExtResource("22_hqk40")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mfn0j"]
+size = Vector2(19.5, 19.5)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ku6tc"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("26_hmnpt")
+
+[node name="Star" type="Node3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_pxbba")
+
+[node name="Light" type="OmniLight3D" parent="."]
+light_energy = 2.0
+light_bake_mode = 1
+distance_fade_begin = 10.0
+distance_fade_length = 40.0
+omni_range = 7.0
+omni_attenuation = 0.101533
+
+[node name="Star" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("SphereMesh_fnj7s")
+surface_material_override/0 = SubResource("ShaderMaterial_poqyt")
+
+[node name="SectorArea3D" type="Area3D" parent="Star"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Star/SectorArea3D"]
+shape = SubResource("CylinderShape3D_b3vje")
+
+[node name="System" type="Node3D" parent="."]
+
+[node name="Planets" type="Node3D" parent="System"]
+
+[node name="Orbit_1" type="Node3D" parent="System/Planets"]
+transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_1"]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_jjlya")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.65)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_1/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_1/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_1/Offset"]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+mesh = ExtResource("5_ir075")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="AsteroidField" type="MeshInstance3D" parent="System/Planets/Orbit_1/Offset"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_aau03")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid1" type="MeshInstance3D" parent="System/Planets/Orbit_1/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199215, 0, -0.0508889)
+mesh = SubResource("SphereMesh_tolps")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid2" type="MeshInstance3D" parent="System/Planets/Orbit_1/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.344286, 0, 0.108881)
+mesh = SubResource("SphereMesh_advii")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid3" type="MeshInstance3D" parent="System/Planets/Orbit_1/Offset/AsteroidField"]
+transform = Transform3D(-0.413515, -0.725924, -0.549582, 0.410857, 0.389888, -0.824126, 0.812528, -0.566588, 0.137026, -0.340289, 0, -0.113419)
+mesh = SubResource("SphereMesh_121g8")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid4" type="MeshInstance3D" parent="System/Planets/Orbit_1/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424259, 0, 0.0450968)
+mesh = SubResource("SphereMesh_e6mn4")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Rings" type="MeshInstance3D" parent="System/Planets/Orbit_1/Offset"]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_u1x2a")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("7_kgljy")
+
+[node name="Moon_1" type="Node3D" parent="System/Planets/Orbit_1/Offset"]
+transform = Transform3D(0.0871558, 0, 0.996194, 0, 1, 0, -0.996194, 0, 0.0871558, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_1/Offset/Moon_1"]
+transform = Transform3D(-1, 3.3413e-21, -1.50996e-07, 0, 1, 2.21285e-14, 1.50996e-07, 2.21285e-14, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_kr8rg")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_1/Offset/Moon_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_1/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_1/Offset/Moon_1/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_1/Offset/Moon_1/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Moon_2" type="Node3D" parent="System/Planets/Orbit_1/Offset"]
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_1/Offset/Moon_2"]
+transform = Transform3D(-1, 3.3413e-21, -1.50996e-07, 0, 1, 2.21285e-14, 1.50996e-07, 2.21285e-14, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_0qoux")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_1/Offset/Moon_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_1/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_1/Offset/Moon_2/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_1/Offset/Moon_2/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Orbit_2" type="Node3D" parent="System/Planets"]
+transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_2"]
+transform = Transform3D(-1, 0, 8.74227e-08, 0, 1, 0, -8.74227e-08, 0, -1, 0, 0, 0)
+visibility_range_end_margin = 5.0
+visibility_range_fade_mode = 1
+mesh = SubResource("TorusMesh_wsn11")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.2)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_2/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_2/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_2/Offset"]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+mesh = ExtResource("5_ir075")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="AsteroidField" type="MeshInstance3D" parent="System/Planets/Orbit_2/Offset"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_aau03")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid1" type="MeshInstance3D" parent="System/Planets/Orbit_2/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199215, 0, -0.0508889)
+mesh = SubResource("SphereMesh_tolps")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid2" type="MeshInstance3D" parent="System/Planets/Orbit_2/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.344286, 0, 0.108881)
+mesh = SubResource("SphereMesh_advii")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid3" type="MeshInstance3D" parent="System/Planets/Orbit_2/Offset/AsteroidField"]
+transform = Transform3D(-0.413515, -0.725924, -0.549582, 0.410857, 0.389888, -0.824126, 0.812528, -0.566588, 0.137026, -0.340289, 0, -0.113419)
+mesh = SubResource("SphereMesh_121g8")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid4" type="MeshInstance3D" parent="System/Planets/Orbit_2/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424259, 0, 0.0450968)
+mesh = SubResource("SphereMesh_e6mn4")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Rings" type="MeshInstance3D" parent="System/Planets/Orbit_2/Offset"]
+transform = Transform3D(-1, -8.9407e-08, -3.55271e-15, 0, -4.37114e-08, 1, -8.9407e-08, 1, 4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_u1x2a")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("7_kgljy")
+
+[node name="Moon_1" type="Node3D" parent="System/Planets/Orbit_2/Offset"]
+transform = Transform3D(0.173648, 0, 0.984807, 0, 1, 0, -0.984807, 0, 0.173648, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_2/Offset/Moon_1"]
+transform = Transform3D(-1, -3.92059e-20, 1.50996e-07, 0, 1, 2.59649e-13, -1.50996e-07, 2.59649e-13, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_kr8rg")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_2/Offset/Moon_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_2/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_2/Offset/Moon_1/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_2/Offset/Moon_1/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Moon_2" type="Node3D" parent="System/Planets/Orbit_2/Offset"]
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_2/Offset/Moon_2"]
+transform = Transform3D(-1, -3.92059e-20, 1.50996e-07, 0, 1, 2.59649e-13, -1.50996e-07, 2.59649e-13, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_yp3r6")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_2/Offset/Moon_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_2/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_2/Offset/Moon_2/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_2/Offset/Moon_2/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Orbit_3" type="Node3D" parent="System/Planets"]
+transform = Transform3D(-0.0871558, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871558, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_3"]
+transform = Transform3D(-1, 0, 8.74227e-08, 0, 1, 0, -8.74227e-08, 0, -1, 0, 0, 0)
+visibility_range_end_margin = 5.0
+visibility_range_fade_mode = 1
+mesh = SubResource("TorusMesh_enq6k")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.7)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_3/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_3/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_3/Offset"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("5_ir075")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="AsteroidField" type="MeshInstance3D" parent="System/Planets/Orbit_3/Offset"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_aau03")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid1" type="MeshInstance3D" parent="System/Planets/Orbit_3/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199215, 0, -0.0508889)
+mesh = SubResource("SphereMesh_tolps")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid2" type="MeshInstance3D" parent="System/Planets/Orbit_3/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.344286, 0, 0.108881)
+mesh = SubResource("SphereMesh_advii")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid3" type="MeshInstance3D" parent="System/Planets/Orbit_3/Offset/AsteroidField"]
+transform = Transform3D(-0.413515, -0.725924, -0.549582, 0.410857, 0.389888, -0.824126, 0.812528, -0.566588, 0.137026, -0.340289, 0, -0.113419)
+mesh = SubResource("SphereMesh_121g8")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid4" type="MeshInstance3D" parent="System/Planets/Orbit_3/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424259, 0, 0.0450968)
+mesh = SubResource("SphereMesh_e6mn4")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Rings" type="MeshInstance3D" parent="System/Planets/Orbit_3/Offset"]
+transform = Transform3D(-1, -5.96046e-08, -1.77636e-15, 0, -4.37114e-08, 1, -5.96046e-08, 1, 4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_u1x2a")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("7_kgljy")
+
+[node name="Moon_1" type="Node3D" parent="System/Planets/Orbit_3/Offset"]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_3/Offset/Moon_1"]
+transform = Transform3D(-1, -3.92059e-20, 1.50996e-07, 0, 1, 2.59649e-13, -1.50996e-07, 2.59649e-13, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_kr8rg")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_3/Offset/Moon_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_3/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_3/Offset/Moon_1/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_3/Offset/Moon_1/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Moon_2" type="Node3D" parent="System/Planets/Orbit_3/Offset"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_3/Offset/Moon_2"]
+transform = Transform3D(-1, -3.92059e-20, 1.50996e-07, 0, 1, 2.59649e-13, -1.50996e-07, 2.59649e-13, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_yp3r6")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_3/Offset/Moon_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_3/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_3/Offset/Moon_2/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_3/Offset/Moon_2/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Orbit_4" type="Node3D" parent="System/Planets"]
+transform = Transform3D(-0.829037, 0, 0.559193, 0, 1, 0, -0.559193, 0, -0.829037, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_4"]
+transform = Transform3D(-1, 0, 8.74227e-08, 0, 1, 0, -8.74227e-08, 0, -1, 0, 0, 0)
+visibility_range_end_margin = 5.0
+visibility_range_fade_mode = 1
+mesh = SubResource("TorusMesh_qpbty")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_va1y8")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.9)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_4/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_4/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_4/Offset"]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+mesh = ExtResource("5_ir075")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="AsteroidField" type="MeshInstance3D" parent="System/Planets/Orbit_4/Offset"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_aau03")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid1" type="MeshInstance3D" parent="System/Planets/Orbit_4/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199215, 0, -0.0508889)
+mesh = SubResource("SphereMesh_tolps")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid2" type="MeshInstance3D" parent="System/Planets/Orbit_4/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.344286, 0, 0.108881)
+mesh = SubResource("SphereMesh_advii")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid3" type="MeshInstance3D" parent="System/Planets/Orbit_4/Offset/AsteroidField"]
+transform = Transform3D(-0.413515, -0.725924, -0.549582, 0.410857, 0.389888, -0.824126, 0.812528, -0.566588, 0.137026, -0.340289, 0, -0.113419)
+mesh = SubResource("SphereMesh_121g8")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid4" type="MeshInstance3D" parent="System/Planets/Orbit_4/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424259, 0, 0.0450968)
+mesh = SubResource("SphereMesh_e6mn4")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Rings" type="MeshInstance3D" parent="System/Planets/Orbit_4/Offset"]
+transform = Transform3D(-1, -5.58794e-08, -1.55431e-15, 0, -4.37114e-08, 1, -5.58794e-08, 1, 4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_u1x2a")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("7_kgljy")
+
+[node name="Moon_1" type="Node3D" parent="System/Planets/Orbit_4/Offset"]
+transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_4/Offset/Moon_1"]
+transform = Transform3D(-1, -3.92059e-20, 1.50996e-07, 0, 1, 2.59649e-13, -1.50996e-07, 2.59649e-13, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_kr8rg")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_4/Offset/Moon_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_4/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_4/Offset/Moon_1/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_4/Offset/Moon_1/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Moon_2" type="Node3D" parent="System/Planets/Orbit_4/Offset"]
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_4/Offset/Moon_2"]
+transform = Transform3D(-1, -3.92059e-20, 1.50996e-07, 0, 1, 2.59649e-13, -1.50996e-07, 2.59649e-13, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_yp3r6")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_4/Offset/Moon_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_4/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_4/Offset/Moon_2/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_4/Offset/Moon_2/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Orbit_5" type="Node3D" parent="System/Planets"]
+transform = Transform3D(-0.173648, 0, -0.984807, 0, 1, 0, 0.984807, 0, -0.173648, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_5"]
+transform = Transform3D(-1, 0, 8.74227e-08, 0, 1, 0, -8.74227e-08, 0, -1, 0, 0, 0)
+visibility_range_end_margin = 5.0
+visibility_range_fade_mode = 1
+mesh = SubResource("TorusMesh_typ6w")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p5nb")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.3)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_5/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_5/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_5/Offset"]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+mesh = ExtResource("5_ir075")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="AsteroidField" type="MeshInstance3D" parent="System/Planets/Orbit_5/Offset"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_aau03")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid1" type="MeshInstance3D" parent="System/Planets/Orbit_5/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199215, 0, -0.0508889)
+mesh = SubResource("SphereMesh_tolps")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid2" type="MeshInstance3D" parent="System/Planets/Orbit_5/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.344286, 0, 0.108881)
+mesh = SubResource("SphereMesh_advii")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid3" type="MeshInstance3D" parent="System/Planets/Orbit_5/Offset/AsteroidField"]
+transform = Transform3D(-0.413515, -0.725924, -0.549582, 0.410857, 0.389888, -0.824126, 0.812528, -0.566588, 0.137026, -0.340289, 0, -0.113419)
+mesh = SubResource("SphereMesh_121g8")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid4" type="MeshInstance3D" parent="System/Planets/Orbit_5/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424259, 0, 0.0450968)
+mesh = SubResource("SphereMesh_e6mn4")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Rings" type="MeshInstance3D" parent="System/Planets/Orbit_5/Offset"]
+transform = Transform3D(-1, -2.98023e-08, -1.77636e-15, 0, -4.37114e-08, 1, -2.98023e-08, 1, 4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_u1x2a")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("7_kgljy")
+
+[node name="Moon_1" type="Node3D" parent="System/Planets/Orbit_5/Offset"]
+transform = Transform3D(0.866024, 0, 0.499999, 0, 1, 0, -0.499999, 0, 0.866024, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_5/Offset/Moon_1"]
+transform = Transform3D(-1, -3.92059e-20, 1.50996e-07, 0, 1, 2.59649e-13, -1.50996e-07, 2.59649e-13, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_kr8rg")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_5/Offset/Moon_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_5/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_5/Offset/Moon_1/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_5/Offset/Moon_1/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Moon_2" type="Node3D" parent="System/Planets/Orbit_5/Offset"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_5/Offset/Moon_2"]
+transform = Transform3D(-1, -3.92059e-20, 1.50996e-07, 0, 1, 2.59649e-13, -1.50996e-07, 2.59649e-13, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_yp3r6")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_5/Offset/Moon_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_5/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_5/Offset/Moon_2/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_5/Offset/Moon_2/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Orbit_6" type="Node3D" parent="System/Planets"]
+transform = Transform3D(0.760405, 0, 0.649447, 0, 1, 0, -0.649447, 0, 0.760405, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_6"]
+transform = Transform3D(-1, 0, 8.74227e-08, 0, 1, 0, -8.74227e-08, 0, -1, 0, 0, 0)
+visibility_range_end_margin = 5.0
+visibility_range_fade_mode = 1
+mesh = SubResource("TorusMesh_bplwl")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_va1y8")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.9)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_6/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_6/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_6/Offset"]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+mesh = ExtResource("5_ir075")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="AsteroidField" type="MeshInstance3D" parent="System/Planets/Orbit_6/Offset"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_aau03")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid1" type="MeshInstance3D" parent="System/Planets/Orbit_6/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199215, 0, -0.0508889)
+mesh = SubResource("SphereMesh_tolps")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid2" type="MeshInstance3D" parent="System/Planets/Orbit_6/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.344286, 0, 0.108881)
+mesh = SubResource("SphereMesh_advii")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid3" type="MeshInstance3D" parent="System/Planets/Orbit_6/Offset/AsteroidField"]
+transform = Transform3D(-0.413515, -0.725924, -0.549582, 0.410857, 0.389888, -0.824126, 0.812528, -0.566588, 0.137026, -0.340289, 0, -0.113419)
+mesh = SubResource("SphereMesh_121g8")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid4" type="MeshInstance3D" parent="System/Planets/Orbit_6/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424259, 0, 0.0450968)
+mesh = SubResource("SphereMesh_e6mn4")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Rings" type="MeshInstance3D" parent="System/Planets/Orbit_6/Offset"]
+transform = Transform3D(-1, -6.70552e-08, -1.77636e-15, 0, -4.37114e-08, 1, -6.70552e-08, 1, 4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_u1x2a")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("7_kgljy")
+
+[node name="Moon_1" type="Node3D" parent="System/Planets/Orbit_6/Offset"]
+transform = Transform3D(-0.987687, 0, -0.156434, 0, 1, 0, 0.156434, 0, -0.987687, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_6/Offset/Moon_1"]
+transform = Transform3D(-1, -3.92059e-20, 1.50996e-07, 0, 1, 2.59649e-13, -1.50996e-07, 2.59649e-13, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_kr8rg")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_6/Offset/Moon_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_6/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_6/Offset/Moon_1/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_6/Offset/Moon_1/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Moon_2" type="Node3D" parent="System/Planets/Orbit_6/Offset"]
+transform = Transform3D(-0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, -0.422618, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_6/Offset/Moon_2"]
+transform = Transform3D(-1, -3.92059e-20, 1.50996e-07, 0, 1, 2.59649e-13, -1.50996e-07, 2.59649e-13, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_yp3r6")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_6/Offset/Moon_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_6/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_6/Offset/Moon_2/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_6/Offset/Moon_2/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Orbit_7" type="Node3D" parent="System/Planets"]
+transform = Transform3D(-0.052336, 0, 0.99863, 0, 1, 0, -0.99863, 0, -0.052336, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_7"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
+visibility_range_end_margin = 5.0
+visibility_range_fade_mode = 1
+mesh = SubResource("TorusMesh_06lm1")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_va1y8")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.9)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_7/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_7/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_7/Offset"]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+mesh = ExtResource("5_ir075")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="AsteroidField" type="MeshInstance3D" parent="System/Planets/Orbit_7/Offset"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_aau03")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid1" type="MeshInstance3D" parent="System/Planets/Orbit_7/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199215, 0, -0.0508889)
+mesh = SubResource("SphereMesh_tolps")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid2" type="MeshInstance3D" parent="System/Planets/Orbit_7/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.344286, 0, 0.108881)
+mesh = SubResource("SphereMesh_advii")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid3" type="MeshInstance3D" parent="System/Planets/Orbit_7/Offset/AsteroidField"]
+transform = Transform3D(-0.413515, -0.725924, -0.549582, 0.410857, 0.389888, -0.824126, 0.812528, -0.566588, 0.137026, -0.340289, 0, -0.113419)
+mesh = SubResource("SphereMesh_121g8")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Asteroid4" type="MeshInstance3D" parent="System/Planets/Orbit_7/Offset/AsteroidField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424259, 0, 0.0450968)
+mesh = SubResource("SphereMesh_e6mn4")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("6_1bjfw")
+
+[node name="Rings" type="MeshInstance3D" parent="System/Planets/Orbit_7/Offset"]
+transform = Transform3D(-1, -5.96046e-08, -5.32907e-15, 0, -4.37114e-08, 1, -5.96046e-08, 1, 4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_u1x2a")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("7_kgljy")
+
+[node name="Moon_1" type="Node3D" parent="System/Planets/Orbit_7/Offset"]
+transform = Transform3D(-0.766044, 0, 0.642787, 0, 1, 0, -0.642787, 0, -0.766044, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_7/Offset/Moon_1"]
+transform = Transform3D(-1, -3.92059e-20, 1.50996e-07, 0, 1, 2.59649e-13, -1.50996e-07, 2.59649e-13, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_kr8rg")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_7/Offset/Moon_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_7/Offset/Moon_1/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_7/Offset/Moon_1/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_7/Offset/Moon_1/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="Moon_2" type="Node3D" parent="System/Planets/Orbit_7/Offset"]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, 0, 0)
+script = ExtResource("2_xemi2")
+
+[node name="OrbitLine" type="MeshInstance3D" parent="System/Planets/Orbit_7/Offset/Moon_2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("TorusMesh_yp3r6")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = ExtResource("3_5uwe3")
+
+[node name="Offset" type="Node3D" parent="System/Planets/Orbit_7/Offset/Moon_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+
+[node name="Area3D" type="Area3D" parent="System/Planets/Orbit_7/Offset/Moon_2/Offset"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/Planets/Orbit_7/Offset/Moon_2/Offset/Area3D"]
+shape = ExtResource("4_rcf3w")
+
+[node name="Planet" type="MeshInstance3D" parent="System/Planets/Orbit_7/Offset/Moon_2/Offset"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_vfpyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_d35vd")
+
+[node name="TMP_Location_1" type="MeshInstance3D" parent="System"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+visible = false
+material_override = SubResource("StandardMaterial3D_3e12j")
+mesh = SubResource("QuadMesh_r5csi")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_gdw30")
+
+[node name="Hexes" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8, 0, 0)
+
+[node name="Ship_Friendly" type="Node3D" parent="."]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 14, 0, 5)
+script = ExtResource("11_0v82p")
+
+[node name="Ship" type="MeshInstance3D" parent="Ship_Friendly"]
+mesh = ExtResource("12_qxcoy")
+skeleton = NodePath("")
+
+[node name="Color" type="MeshInstance3D" parent="Ship_Friendly/Ship"]
+mesh = ExtResource("13_d2wu8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_gnsxm")
+
+[node name="Area3D" type="Area3D" parent="Ship_Friendly"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship_Friendly/Area3D"]
+shape = ExtResource("15_nmage")
+
+[node name="Ship_Other" type="Node3D" parent="."]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 14, 0, -5)
+script = ExtResource("11_0v82p")
+
+[node name="Ship" type="MeshInstance3D" parent="Ship_Other"]
+mesh = ExtResource("12_qxcoy")
+skeleton = NodePath("")
+
+[node name="Color" type="MeshInstance3D" parent="Ship_Other/Ship"]
+mesh = ExtResource("13_d2wu8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_gnsxm")
+
+[node name="Area3D" type="Area3D" parent="Ship_Other"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship_Other/Area3D"]
+shape = ExtResource("15_nmage")
+
+[node name="Border" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = ExtResource("16_vxwt3")
+surface_material_override/0 = ExtResource("17_7rgi6")
+
+[node name="PlayerUnknown" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0, 0)
+mesh = SubResource("QuadMesh_d2qf7")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_u8lk6")
+
+[node name="PlayerUncovered" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_d2qf7")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_60mt6")
+
+[node name="PlayerColor" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_d2qf7")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("20_ubq3r")
+
+[node name="Layer_1_Cloud" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.604363, 0.0700747, 0.793621, 8.82146e-08, 0.996124, -0.0879553, -0.796709, 0.053157, 0.602021, 0, 5.05, 0)
+visible = false
+mesh = SubResource("QuadMesh_5w7qy")
+surface_material_override/0 = ExtResource("21_cvpl0")
+
+[node name="Layer_2_Cloud" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -3, 0)
+mesh = SubResource("QuadMesh_5w7qy")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pangn")
+
+[node name="Layer_2_Cloud2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.2, 0, -1.81195e-07, 0, 1.2, 0, 1.81195e-07, 0, -1.2, 0, -1, 0)
+mesh = SubResource("QuadMesh_dpph1")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_p3i3d")
+
+[node name="Layer_2_Cloud3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.2, 0, -1.81195e-07, 0, 1.2, 0, 1.81195e-07, 0, -1.2, 0, -2, 0)
+mesh = SubResource("QuadMesh_c3lpw")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8t6co")
+
+[node name="Layer_3_Cloud" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0324007, 6.6161e-06, 0.7493, 0, 0.75, -6.62228e-06, -0.7493, 2.86089e-07, 0.0324007, 0, -3, 0)
+mesh = SubResource("QuadMesh_0ummg")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("25_jft03")
+
+[node name="Layer_4_Cloud" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0734416, 1.49965e-05, 1.69841, 0, 1.7, -1.50105e-05, -1.69841, 6.48468e-07, 0.0734416, 0, -10, 0)
+mesh = SubResource("QuadMesh_0ummg")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_etwdd")
+
+[node name="HedOverlay" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+mesh = SubResource("QuadMesh_mfn0j")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ku6tc")
