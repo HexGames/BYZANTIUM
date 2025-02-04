@@ -2,17 +2,14 @@ using Godot;
 using Godot.Collections;
 using System.Collections.Generic;
 
-public partial class UISystemDistrictsPlanetDistrictPopsItem : Control
+public partial class UIDistrictsPlanetDistrictPopsItem : Control
 {
     // is beeing duplicated
     public TextureRect Pop;
     public UITooltipTrigger Tooltip;
 
-    [ExportCategory("Runtime")]
-    [Export]
-    public StarData _Star = null;
-    [Export]
-    public SystemData _System = null;
+    // runtime
+    public PopData _Pop = null;
 
     public override void _Ready()
     {
@@ -20,9 +17,8 @@ public partial class UISystemDistrictsPlanetDistrictPopsItem : Control
         Tooltip = GetNode<UITooltipTrigger>("TextureRect/ToolTip");
     }
 
-    public void Refresh(StarData star)
+    public void Refresh(PopData pop)
     {
-        _Star = star;
-        _System = _Star.System;
+        _Pop = pop;
     }
 }

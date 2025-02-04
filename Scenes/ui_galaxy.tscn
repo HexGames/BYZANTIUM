@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bukr82o6e8rl3"]
+[gd_scene load_steps=30 format=3 uid="uid://bukr82o6e8rl3"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIGalaxy.cs" id="1_ieb0k"]
 [ext_resource type="PackedScene" uid="uid://dkomfigvec4wg" path="res://Scenes/ui_3d_star.tscn" id="2_iewv2"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://0svrlyhb7gcc" path="res://Scenes/ui_economy_bar.tscn" id="4_y8k0i"]
 [ext_resource type="PackedScene" uid="uid://d0nxagsi625t2" path="res://Scenes/ui_diplomacy.tscn" id="7_wysrc"]
 [ext_resource type="PackedScene" uid="uid://vh0pcrygv61d" path="res://Scenes/ui_system.tscn" id="7_y5oqc"]
-[ext_resource type="PackedScene" uid="uid://cmde3jxsickdj" path="res://Scenes/ui_planet.tscn" id="8_67ifr"]
 [ext_resource type="PackedScene" uid="uid://tlc7q8l1u3c" path="res://Scenes/ui_diplomacy_bar.tscn" id="10_nl6ke"]
 [ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="11_72k2f"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="12_70fqi"]
@@ -47,7 +46,7 @@ General = NodePath("GeneralUI")
 Stockpiles = NodePath("Economy")
 DiplomacyBar = NodePath("DiplomacyBar")
 SystemInfo = NodePath("System")
-DistrictsInfo = NodePath("SystemDistricts")
+DistrictsInfo = NodePath("Districts")
 FleetsSelected = NodePath("Fleets")
 EndTurnBg = NodePath("EndTurn")
 CurrentTurn = NodePath("Turn")
@@ -122,11 +121,6 @@ visible = false
 layout_mode = 1
 anchors_preset = -1
 
-[node name="Planet" parent="." instance=ExtResource("8_67ifr")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-
 [node name="Fleets" parent="." instance=ExtResource("12_sv4sa")]
 layout_mode = 1
 anchors_preset = -1
@@ -136,7 +130,7 @@ offset_right = 16.0
 [node name="DiplomacyBar" parent="." instance=ExtResource("10_nl6ke")]
 layout_mode = 1
 
-[node name="SystemDistricts" parent="." instance=ExtResource("31_mytwp")]
+[node name="Districts" parent="." instance=ExtResource("31_mytwp")]
 visible = false
 layout_mode = 1
 

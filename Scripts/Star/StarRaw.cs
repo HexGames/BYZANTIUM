@@ -11,7 +11,7 @@ public static class StarRaw
         int maxHabitability = 0;
         for (int idx = 0; idx < planetList.Count; idx++)
         {
-            if (planetList[idx].GetSubValueI("PopsMax") > 0)
+            if (PlanetRaw.GetBaseMaxPops(planetList[idx], Game.self.Def) > 0)
             {
                 int factor = GetHabitalibityFactor(planetList[idx]);
                 if (planet == null || maxHabitability < factor)
@@ -28,7 +28,7 @@ public static class StarRaw
     {
         int factor = 0;
 
-        if (planet.GetSubValueI("PopsMax") > 0)
+        if (PlanetRaw.GetBaseMaxPops(planet, Game.self.Def) > 0)
         {
             int maxSize = planet.GetSubValueI("Size");
             if (planet.GetSub("Features").HasSub("Desert")) factor = 10 + maxSize;
@@ -41,32 +41,32 @@ public static class StarRaw
         return factor;
     }
 
-    public static int GetHabitalibitySize(DataBlock star)
-    {
-        int size = 0;
+    //public static int GetHabitalibitySize(DataBlock star)
+    //{
+    //    int size = 0;
+    //
+    //    Array<DataBlock> planetList = star.GetSub("Planet_List").GetSubs(); 
+    //    for (int idx = 0; idx < planetList.Count; idx++)
+    //    {
+    //        if (planetList[idx].GetSubValueI("PopsMax") > 0)
+    //        {
+    //            size += planetList[idx].GetSubValueI("Size");
+    //        }
+    //    }
+    //
+    //    return size;
+    //}
 
-        Array<DataBlock> planetList = star.GetSub("Planet_List").GetSubs(); 
-        for (int idx = 0; idx < planetList.Count; idx++)
-        {
-            if (planetList[idx].GetSubValueI("PopsMax") > 0)
-            {
-                size += planetList[idx].GetSubValueI("Size");
-            }
-        }
-
-        return size;
-    }
-
-    public static int GetStarPopsMax(DataBlock star, DefLibrary def)
-    {
-        int pops = 0;
-        Array<DataBlock> planets = star.GetSub("Planet_List").GetSubs();
-        for (int planetIdx = 0; planetIdx < planets.Count; planetIdx++)
-        {
-            DataBlock planet = planets[planetIdx];
-            pops += planet.GetSubValueI("PopsMax");
-        }
-
-        return pops;
-    }
+    //public static int GetStarPopsMax(DataBlock star, DefLibrary def)
+    //{
+    //    int pops = 0;
+    //    Array<DataBlock> planets = star.GetSub("Planet_List").GetSubs();
+    //    for (int planetIdx = 0; planetIdx < planets.Count; planetIdx++)
+    //    {
+    //        DataBlock planet = planets[planetIdx];
+    //        pops += planet.GetSubValueI("PopsMax");
+    //    }
+    //
+    //    return pops;
+    //}
 }

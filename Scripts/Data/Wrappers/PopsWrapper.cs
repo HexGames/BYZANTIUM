@@ -115,7 +115,7 @@ public class PopsWrapper
         ColonyData colony = _System.GetGrowthColony();
         if (colony != null)
         {
-            GrowthProgress = colony.GetGrowthProgress();
+            //GrowthProgress = colony.GetGrowthProgress();
             GrowthProgressMax = 1000;
             GrowthProgressNextTurn = Mathf.Min(GrowthProgress + GrowthTotal, GrowthProgressMax);
             if (GrowthTotal > 0) GrowthTurns = ((GrowthProgressMax - GrowthProgress) + (GrowthTotal - 1)) / GrowthTotal;
@@ -136,22 +136,22 @@ public class PopsWrapper
             for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
             {
                 DistrictData district = colony.Districts[districtIdx];
-                if (district.HasFullPop())
-                {
-                    int happiness = district.GetPop().Data.GetSubValueI("Happiness");
-                    if (happiness > 70)
-                    {
-                        PopsHappy++;
-                    }
-                    else if (happiness < 30)
-                    {
-                        PopsUnhappy++;
-                    }
-                    else
-                    {
-                        PopsNeutral++;
-                    }
-                }
+                //if (district.HasFullPop())
+                //{
+                //    int happiness = district.GetPop().Data.GetSubValueI("Happiness");
+                //    if (happiness > 70)
+                //    {
+                //        PopsHappy++;
+                //    }
+                //    else if (happiness < 30)
+                //    {
+                //        PopsUnhappy++;
+                //    }
+                //    else
+                //    {
+                //        PopsNeutral++;
+                //    }
+                //}
             }
         }
     }

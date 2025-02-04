@@ -56,6 +56,11 @@ public partial class SystemData : Node
         {
             ColonyData colony = Colonies[colonyIdx];
             colony.Init_DistrictData();
+            for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
+            {
+                DistrictData district = colony.Districts[districtIdx];
+                district.Init_PopsData();
+            }
         }
     }
 
@@ -84,10 +89,10 @@ public partial class SystemData : Node
             {
                 DistrictData district = colony.Districts[districtIdx];
                 district.Economy_PerTurn.RefreshBase_1_1();
-                if (district.IsPrivate() && (DistrictToInvest_PerTurn == null || DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestProgress < district.Economy_PerTurn.ReinvestProgress))
-                {
-                    DistrictToInvest_PerTurn = district;
-                }
+                //if (district.IsPrivate() && (DistrictToInvest_PerTurn == null || DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestProgress < district.Economy_PerTurn.ReinvestProgress))
+                //{
+                //    DistrictToInvest_PerTurn = district;
+                //}
             }
         }
 
@@ -106,10 +111,10 @@ public partial class SystemData : Node
                     for (int otherDistrictIdx = 0; otherDistrictIdx < otherColony.Districts.Count; otherDistrictIdx++)
                     {
                         DistrictData otherDistrict = otherColony.Districts[otherDistrictIdx];
-                        if (otherDistrict.Economy_PerTurn.Resource == district.Economy_PerTurn.Resource)
-                        {
-                            district.Economy_PerTurn.AddBonusFromSystem_1_2(otherDistrict.Economy_PerTurn.Production_BonusToSystem);
-                        }
+                        //if (otherDistrict.Economy_PerTurn.Resource == district.Economy_PerTurn.Resource)
+                        //{
+                        //    district.Economy_PerTurn.AddBonusFromSystem_1_2(otherDistrict.Economy_PerTurn.Production_BonusToSystem);
+                        //}
                     }
                 }
             }
@@ -140,29 +145,29 @@ public partial class SystemData : Node
             for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
             {
                 DistrictData district = colony.Districts[districtIdx];
-                reinvest += district.Economy_PerTurn.ReinvestToSystem;
+                //reinvest += district.Economy_PerTurn.ReinvestToSystem;
             }
         }
 
-        DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestFromSystem = reinvest;
-        DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestPerTurn += reinvest;
-        DistrictToInvest_PerTurn.Economy_PerTurn.RecalculateReinvestTurns();
+        //DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestFromSystem = reinvest;
+        //DistrictToInvest_PerTurn.Economy_PerTurn.ReinvestPerTurn += reinvest;
+        //DistrictToInvest_PerTurn.Economy_PerTurn.RecalculateReinvestTurns();
     }
 
     // --------------------------------------------------------------------------------------------
     public int GetPopsCurrent()
     {
         int pops = 0;
-        for (int colonyIdx = 0; colonyIdx < Colonies.Count; colonyIdx++)
-        {
-            for (int districtIdx = 0; districtIdx < Colonies[colonyIdx].Districts.Count; districtIdx++)
-            {
-                if (Colonies[colonyIdx].Districts[districtIdx].Pop.Data.GetSubValueI("Pop", "GrowthProgress") == 1000)
-                {
-                    pops++;
-                }
-            }
-        }
+        //for (int colonyIdx = 0; colonyIdx < Colonies.Count; colonyIdx++)
+        //{
+        //    for (int districtIdx = 0; districtIdx < Colonies[colonyIdx].Districts.Count; districtIdx++)
+        //    {
+        //        if (Colonies[colonyIdx].Districts[districtIdx].Pop.Data.GetSubValueI("Pop", "GrowthProgress") == 1000)
+        //        {
+        //            pops++;
+        //        }
+        //    }
+        //}
         return pops;
     }
     // --------------------------------------------------------------------------------------------
@@ -216,7 +221,7 @@ public partial class SystemData : Node
         {
             for (int districtIdx = 0; districtIdx < Colonies[colonyIdx].Districts.Count; districtIdx++)
             {
-                if (Colonies[colonyIdx].Districts[districtIdx].DistrictDef.Control_Type == "Private")
+                if (Colonies[colonyIdx].Districts[districtIdx].IsPrivate())
                 {
                     privateDistricts++;
                 }

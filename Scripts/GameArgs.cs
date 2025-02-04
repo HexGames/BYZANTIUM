@@ -97,6 +97,10 @@ public partial class GameArgs : Node
             Def.SaveFactionsDef();
             Def.SaveFeaturesDef();
             Def.SaveShipPartsDef();
+
+            Def._Ready_Districts();
+            Def._Ready_Empires();
+            Def._Ready_Features();
         }
     }
     private void Step_2_RegenerateMap()

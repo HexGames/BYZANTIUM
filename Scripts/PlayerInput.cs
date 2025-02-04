@@ -77,6 +77,12 @@ public partial class PlayerInput : Node
                 {
                     Game.self.GalaxyUI.DEBUGText.Visible = !Game.self.GalaxyUI.DEBUGText.Visible;
                 }
+                if (keyButtonEvent.Keycode == Key.V)
+                {
+                    Game.self.HumanPlayer.DEBUG = !Game.self.HumanPlayer.DEBUG;
+                    Game.self.TurnLoop.StartTurn_Visibility();
+                    Game.self.TurnLoop.StartTurn_RefreshGUI3D();
+                }
             }
         }
 

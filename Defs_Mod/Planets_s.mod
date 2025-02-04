@@ -1,3 +1,4 @@
+// 2025-02-04T17:53:17
 Def_Planets 
 {
 	Planet:Star Red_Dwarf
@@ -112,6 +113,7 @@ Def_Planets
 		SlotType District
 		Features 
 		{
+			?Size 
 			Desert 
 			Bonus Tiny_Moon
 			Bonus Alien_Life
@@ -127,6 +129,7 @@ Def_Planets
 		SlotType District
 		Features 
 		{
+			?Size 
 			Arid 
 			Bonus Tiny_Moon
 			Bonus Alien_Life
@@ -142,6 +145,7 @@ Def_Planets
 		SlotType District
 		Features 
 		{
+			?Size 
 			OR 
 			{
 				Wet:Weight 9
@@ -162,6 +166,7 @@ Def_Planets
 		SlotType District
 		Features 
 		{
+			?Size 
 			Fertile 
 			Ocean 
 			Bonus Tiny_Moon
@@ -178,6 +183,7 @@ Def_Planets
 		SlotType District
 		Features 
 		{
+			?Size 
 			OR 
 			{
 				Wet:Weight 1
@@ -197,6 +203,7 @@ Def_Planets
 		SlotType District
 		Features 
 		{
+			?Size 
 			OR 
 			{
 				Arid:Weight 1
@@ -214,6 +221,7 @@ Def_Planets
 	SlotType District
 	Features 
 	{
+		?Size 
 		Vulcanic 
 		Arid 
 		Bonus Tiny_Moon
@@ -261,6 +269,7 @@ Def_Planets
 		Temperature 3
 		Features 
 		{
+			?Size 
 			Rocky 
 			Oceans 
 			Complex_Life 

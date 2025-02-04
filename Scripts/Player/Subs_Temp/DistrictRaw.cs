@@ -2,19 +2,47 @@ using Godot.Collections;
 
 public static class DistrictRaw
 {
-    public static DataBlock CreateNewDistrictAndPop(DataBlock system, DataBlock colony, bool capital, DefLibrary def)
+    public static DataBlock CreateNewDistrict(DataBlock system, DataBlock colony, DefDistrictWrapper districtDef, int pops, DefLibrary def)
     {
         DataBlock districts = colony.GetSub("District_List");
 
-        DataBlock district = Data.AddData(districts, "District", capital ? "Capital_I" : "Private_Business_I", def);
+        DataBlock district = Data.AddData(districts, "District", districtDef.Name, def);
         //Data.AddData(district, "Change_Cooldown", 0, def);
         //Data.AddData(district, "Control_Cooldown", 0, def);
-        Data.AddData(district, "InvestLevel", 0, def);
-        Data.AddData(district, "Investment", 0, def);
-        //Data.AddData(district, "Factory", 0, def);
+        //Data.AddData(district, "InvestLevel", 0, def);
+        //Data.AddData(district, "Investment", 0, def);
         //Data.AddData(district, "Factory_Cooldown", 0, def);
 
-        DataBlock pop = Data.AddData(district, "Pop", def);
+        Data.AddData(district, "Level", 0, def);
+
+        DataBlock popsList = Data.AddData(district, "Pops_List", def);
+        for (int i = 0; i < pops; i++)
+        {
+            DataBlock pop = Data.AddData(popsList, "Pop", def);
+            Data.AddData(pop, "GrowthProgress", 0, def);
+            Data.AddData(pop, "Species", "Human", def);
+            Data.AddData(pop, "Ethics", "Communist", def);
+            Data.AddData(pop, "Wealth", 20, def);
+            Data.AddData(pop, "Happiness", 50, def);
+            Data.AddData(pop, "Mood", 0, def);
+        }
+
+        //system.SetSubValueS("ActionGrowth", "FocusColony", colony.ValueS, def);
+
+        return district;
+    }
+
+    public static DataBlock CreateNewPop(DataBlock district, DefLibrary def)
+    {
+        //Array<DataBlock> popsList = district.GetSub("Pops_List").GetSubs();
+        //for (int popIdx = 0; popIdx < popsList.Count; popIdx++)
+        //{
+        //
+        //}
+
+        DataBlock popsList = district.GetSub("Pops_List");
+        
+        DataBlock pop = Data.AddData(popsList, "Pop", def);
         Data.AddData(pop, "GrowthProgress", 0, def);
         Data.AddData(pop, "Species", "Human", def);
         Data.AddData(pop, "Ethics", "Communist", def);
@@ -22,9 +50,11 @@ public static class DistrictRaw
         Data.AddData(pop, "Happiness", 50, def);
         Data.AddData(pop, "Mood", 0, def);
 
-        system.SetSubValueS("ActionGrowth", "FocusColony", colony.ValueS, def);
-
-        return district;
+        return pop;
+    }
+    public static void LevelUp(DataBlock district, DefLibrary def)
+    {
+        district.SetSubValueI("Level", district.GetSubValueI("Level") + 1, def);
     }
 
     public static int GetGrowth(DataBlock colony, DataBlock district)

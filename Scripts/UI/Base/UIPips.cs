@@ -5,10 +5,22 @@ using System.Linq;
 // Editor
 public partial class UIPips : Control
 {
-    [Export]
-    public Array<Control> Pips = null;
+    private Array<Control> Pips = new Array<Control>();
 
-    public void Set(int level)
+    public override void _Ready()
+    {
+        Pips.Clear();
+        for (int idx = 0; idx < GetChildCount(); idx++)
+        {
+            Node node = GetChild(idx);
+            if (node is Control)
+            {
+                Pips.Add(node as Control);
+            }
+        }
+    }
+
+    public void SetPips(int level)
     {
         for (int idx = 0; idx < Pips.Count; idx++)
         {

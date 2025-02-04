@@ -10,6 +10,7 @@ public class SystemEconomyWrapper
     public int BC;
     public int Influence;
     public int Research;
+    public int Shipbuilding;
     public int Construction;
     public int ConstructionPenalty;
 
@@ -32,6 +33,7 @@ public class SystemEconomyWrapper
         BC = 0;
         Influence = 0;
         Research = 0;
+        Shipbuilding = 0;
         Construction = 0;
         ConstructionPenalty = 0;
 
@@ -66,56 +68,50 @@ public class SystemEconomyWrapper
             for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
             {
                 DistrictData district = colony.Districts[districtIdx];
-                if (district.Economy_PerTurn.Resource == "BC")
-                {
-                    BC += district.Economy_PerTurn.Production_Final;
-                }
-                else if (district.Economy_PerTurn.Resource == "Influence")
-                {
-                    Influence += district.Economy_PerTurn.Production_Final;
-                }
-                else if (district.Economy_PerTurn.Resource == "Research")
-                {
-                    Research += district.Economy_PerTurn.Production_Final;
-                }
-                Construction += district.DistrictDef.Benefit.Construction;
+                BC += district.Economy_PerTurn.BC.Production_TotalAll;
+                Influence += district.Economy_PerTurn.Influence.Production_TotalAll;
+                Research += district.Economy_PerTurn.Research.Production_TotalAll;
+                Shipbuilding += district.Economy_PerTurn.Research.Production_TotalAll;
+                //Construction += district.DistrictDef.Benefit.Construction;
             }
         }
     }
 
     private int CalculateInequality()
     {
-        List<int> popsWealth = new List<int>(); 
-        for (int colonyIdx = 0; colonyIdx < _System.Colonies.Count; colonyIdx++)
-        {
-            for (int districtIdx = 0; districtIdx < _System.Colonies[colonyIdx].Districts.Count; districtIdx++)
-            {
-                if (_System.Colonies[colonyIdx].Districts[districtIdx].Pop.Data.GetSubValueI("Pop", "GrowthProgress") == 1000)
-                {
-                    popsWealth.Add(_System.Colonies[colonyIdx].Districts[districtIdx].Pop.Data.GetSubValueI("Wealth"));
-                }
-            }
-        }
-
-        if (popsWealth.Count <= 1)
-            return 0;
-
-        popsWealth.Sort((a, b) => (b - a));
-
-        int wSum = 0;
-        int sum = 0;
-        for (int idx = 0; idx < popsWealth.Count; idx++)
-        {
-            wSum += (idx + 1) * popsWealth[idx];
-            sum += popsWealth[idx];
-        }
-
-        int gini = 1000 - 2 * (1000 * popsWealth.Count - 1000 * wSum / sum) / (popsWealth.Count - 1);
-
-        return (gini + 5) / 10;
+        return 50;
+        //List<int> popsWealth = new List<int>(); 
+        //for (int colonyIdx = 0; colonyIdx < _System.Colonies.Count; colonyIdx++)
+        //{
+        //    for (int districtIdx = 0; districtIdx < _System.Colonies[colonyIdx].Districts.Count; districtIdx++)
+        //    {
+        //        if (_System.Colonies[colonyIdx].Districts[districtIdx].Pop.Data.GetSubValueI("Pop", "GrowthProgress") == 1000)
+        //        {
+        //            popsWealth.Add(_System.Colonies[colonyIdx].Districts[districtIdx].Pop.Data.GetSubValueI("Wealth"));
+        //        }
+        //    }
+        //}
+        //
+        //if (popsWealth.Count <= 1)
+        //    return 0;
+        //
+        //popsWealth.Sort((a, b) => (b - a));
+        //
+        //int wSum = 0;
+        //int sum = 0;
+        //for (int idx = 0; idx < popsWealth.Count; idx++)
+        //{
+        //    wSum += (idx + 1) * popsWealth[idx];
+        //    sum += popsWealth[idx];
+        //}
+        //
+        //int gini = 1000 - 2 * (1000 * popsWealth.Count - 1000 * wSum / sum) / (popsWealth.Count - 1);
+        //
+        //return (gini + 5) / 10;
     }
 
     public string ToString_BC() { return Helper.ResValueToString(BC); }
     public string ToString_Influence() { return Helper.ResValueToString(Influence); }
     public string ToString_Research() { return Helper.ResValueToString(Research); }
+    public string ToString_Shipbuilding() { return Helper.ResValueToString(Shipbuilding); }
 }

@@ -5,26 +5,24 @@ using System.Linq;
 // Editor
 public partial class UIIconValue : Control
 {
-    [Export]
-    public TextureRect Icon;
-    [Export]
     public UIText Value;
-    [Export]
-    public Color None;
-    [Export]
-    public Color Low;
-    [Export]
-    public Color Medium;
-    [Export]
-    public Color High;
+    private static Color None = new Color("303030");
+    private static Color Low = new Color("fbe52d");
+    private static Color Medium = new Color("ff6600");
+    private static Color High = new Color("ff2c2c");
 
-    public void Set(int value, int level = 0)
+    public override void _Ready()
+    {
+        Value = GetNode<UIText>("Value");
+    }
+
+    public void SetValue(int value, int level = 0)
     {
         Value.SetTextWithReplace("$v", Value.ToString());
 
-        if (level == 1) Icon.SelfModulate = Low;
-        else if (level == 2) Icon.SelfModulate = Medium;
-        else if (level == 3) Icon.SelfModulate = High;
-        else Icon.SelfModulate = None;
+        if (level == 1) SelfModulate = Low;
+        else if (level == 2) SelfModulate = Medium;
+        else if (level == 3) SelfModulate = High;
+        else SelfModulate = None;
     }
 }

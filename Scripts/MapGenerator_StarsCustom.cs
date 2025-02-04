@@ -40,22 +40,32 @@ public partial class MapGenerator : Node
         Data.AddData(planet, "Type", "Continents", DefLibrary);
         Data.AddData(planet, "Size", 3, DefLibrary);
         Data.AddData(planet, "Temperature", 3, DefLibrary);
-        Data.AddData(planet, "PopsMax", 6, DefLibrary);
         Data.AddData(planet, "SlotType", "District", DefLibrary);
 
         featuresData = Data.AddData(planet, "Features", DefLibrary);
+        Data.AddData(featuresData, "Medium", DefLibrary);
         if (RNG.RandiRange(0, 1) == 0) Data.AddData(featuresData, "Wet", DefLibrary);
         else Data.AddData(featuresData, "Fertile", DefLibrary);
+
+        // ---
+        planet = Data.AddData(planetList, "Planet", "Moon", DefLibrary);
+        Data.AddData(planet, "Type", "Barren", DefLibrary);
+        Data.AddData(planet, "Size", 1, DefLibrary);
+        Data.AddData(planet, "Temperature", 3, DefLibrary);
+        Data.AddData(planet, "SlotType", "Outpost", DefLibrary);
+
+        Data.AddData(planet, "Features", DefLibrary);
+        Data.AddData(planet, "Moon", DefLibrary);
 
         // ---
         planet = Data.AddData(planetList, "Planet", "Mars", DefLibrary);
         Data.AddData(planet, "Type", "Desert", DefLibrary);
         Data.AddData(planet, "Size", 1, DefLibrary);
         Data.AddData(planet, "Temperature", 3, DefLibrary);
-        Data.AddData(planet, "PopsMax", 3, DefLibrary);
         Data.AddData(planet, "SlotType", "District", DefLibrary);
 
         featuresData = Data.AddData(planet, "Features", DefLibrary);
+        Data.AddData(featuresData, "Small", DefLibrary);
         Data.AddData(featuresData, "Desert", DefLibrary);
 
         // ---

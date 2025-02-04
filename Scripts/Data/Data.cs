@@ -291,6 +291,9 @@ public partial class Data
         if (SessionSave == 0)
         {
             string content = "";
+
+            content += "// " + Time.GetDatetimeStringFromSystem() + "\n";
+
             content += Data.SaveData(data, 0, defLib);
 
             string fileName = dirName + "Save.sav";
@@ -344,6 +347,8 @@ public partial class Data
     static public void SaveToFile(DataBlock data, string fileName, DefLibrary defLib)
     {
         string content = "";
+
+        content += "// " + Time.GetDatetimeStringFromSystem() + "\n";
 
         // GameStats
         content += Data.SaveData(data, 0, defLib);

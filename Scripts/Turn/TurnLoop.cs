@@ -200,6 +200,7 @@ public partial class TurnLoop : Node
     public void Init_RelationData()
     {
         Game.self.Map.Data.Relations.Clear(); 
+        // if you have an error here enable the breakpoint in GameArgs - there is something wrong there
         Array<DataBlock> relations = Game.self.Map.Data._Data.GetSub("Relations").GetSubs("Relation");
         for (int relationIdx = 0; relationIdx < relations.Count; relationIdx++)
         {

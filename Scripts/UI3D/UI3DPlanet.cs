@@ -78,7 +78,7 @@ public partial class UI3DPlanet : Control
             {
                 PipIconBg.Visible = false;
                 OnlyIconBg.Visible = true;
-                OnlyIcon.Texture = Game.self.Def.AssetLib.GetTexture2D_District(GFX._Planet.Colony.Districts[0].DistrictDef.Icon + ".png");
+                //OnlyIcon.Texture = Game.self.Def.AssetLib.GetTexture2D_District(GFX._Planet.Colony.Districts[0].DistrictDef.Icon + ".png");
                 OnlyIconBg.SelfModulate = Game.self.UILib.GetPlayerColor(GFX._Planet.Colony._System._Player.PlayerID);
                 //if (GFX._Planet.Colony.Districts[0]._Data.HasSub("InQueue"))
                 //{
@@ -98,7 +98,7 @@ public partial class UI3DPlanet : Control
                 OnlyIconBg.Visible = false;
                 if (GFX._Planet.Features.Count > 0)
                 {
-                    PipIcon.Texture = Game.self.Def.AssetLib.GetTexture2D_District(GFX._Planet.Features[0].FeatureDef.Icon + ".png");
+                    //PipIcon.Texture = Game.self.Def.AssetLib.GetTexture2D_District(GFX._Planet.Features[0].FeatureDef.Icon + ".png");
                 }
                 else
                 {

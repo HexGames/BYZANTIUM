@@ -41,7 +41,7 @@ public partial class UIGalaxy : Control
     //[Export]
     //public UIPlanetInfo PlanetInfo = null;
     [Export]
-    public UISystemDistricts DistrictsInfo = null;
+    public UIDistricts DistrictsInfo = null;
     //[Export]
     //public UIPlanetInfo PlanetInfo = null;
     //[Export]

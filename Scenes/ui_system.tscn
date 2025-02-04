@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://vh0pcrygv61d"]
+[gd_scene load_steps=50 format=3 uid="uid://vh0pcrygv61d"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Star/UIStarInfo.cs" id="1_bp5dm"]
 [ext_resource type="Theme" uid="uid://dwsejpps13na3" path="res://UITheme/Panels.tres" id="1_da3wx"]
@@ -15,10 +15,12 @@
 [ext_resource type="Script" path="res://Scripts/UI/Star/UIStarInfoSystem.cs" id="12_xp3cq"]
 [ext_resource type="Texture2D" uid="uid://6txwm0lad0jq" path="res://Assets/UI/Symbols/LayGreen.png" id="16_o3yav"]
 [ext_resource type="Texture2D" uid="uid://bry18m4qt40bf" path="res://Assets/Flags/Drakk_Bazzar.png" id="16_u7q1k"]
+[ext_resource type="Script" path="res://Scripts/UI/Base/UIProgress.cs" id="17_6kgt1"]
 [ext_resource type="Texture2D" uid="uid://0unvfpvipr3x" path="res://Assets/UI/Symbols/Wealth.png" id="17_d5gb6"]
 [ext_resource type="Texture2D" uid="uid://bh4b8jfxacxdt" path="res://Assets/UI/Symbols/Rebel.png" id="17_d834f"]
 [ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="17_f6tdb"]
 [ext_resource type="Texture2D" uid="uid://d3ox4qo5b5ylv" path="res://Assets/UI/alert.png" id="17_fbxmw"]
+[ext_resource type="Script" path="res://Scripts/UI/Base/UIPips.cs" id="18_ejcwi"]
 [ext_resource type="Texture2D" uid="uid://dqhju10mfykde" path="res://Assets/UI/arrow.png" id="18_elkoe"]
 [ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="18_ercnh"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UIPulse.cs" id="18_p871y"]
@@ -26,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://o4gbwjv05f1c" path="res://Assets/UI/arrowL.png" id="19_8xjgi"]
 [ext_resource type="Texture2D" uid="uid://c8jmed7dyxlwg" path="res://Assets/UI/Symbols/Corruption.png" id="19_df0ae"]
 [ext_resource type="Texture2D" uid="uid://u06aop6n783b" path="res://Assets/UI/Symbols/Ship.png" id="20_3jfqf"]
+[ext_resource type="Script" path="res://Scripts/UI/Base/UIIconValue.cs" id="20_4eils"]
 [ext_resource type="Texture2D" uid="uid://dmpcb1y0ngbdk" path="res://Assets/UI/Symbols/CorruptionHigh.png" id="20_005ag"]
 [ext_resource type="Texture2D" uid="uid://deu7iemom4icn" path="res://Assets/UI/arrowR.png" id="20_fsix5"]
 
@@ -678,15 +681,44 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="System" type="VBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("OwnerName", "OwnerColor", "IncomeBC", "IncomeInf", "IncomeRes", "ShipbuildingIcon")]
+[node name="System" type="VBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("OwnerName", "OwnerColor", "OwnerIcon", "ProjectName", "ProjectTime", "ProjectProgress", "ProjectBudgetLevel", "PrivateProjectTime", "PrivateProjectProgress", "PopsGrowthTime", "PopsGrowthProgress", "PopsValue", "PopsHappyValue", "PopsNeutralValue", "PopsUnhappyValue", "PopsWealth", "PopsInequality", "PopsCorruption", "PopsSocialUnrest", "StabilityChangeText", "StabilityChangeDecrease", "StabilityChangeIncrease", "StabilityCursor", "StabilityControlLevel", "StabilityAlert", "TaxLevel", "WelfareLevel", "IncomeBC", "IncomeInf", "IncomeRes", "ShipbuildingIncome", "ShipbuildingIcon", "ShipbuildingName", "ShipbuildingTurns", "ShipbuildingProgress")]
 layout_mode = 2
 script = ExtResource("12_xp3cq")
 OwnerName = NodePath("OwnerBg/Owner")
 OwnerColor = NodePath("OwnerBg/TextureRect")
+OwnerIcon = NodePath("OwnerBg/Panel/TextureRect")
+ProjectName = NodePath("Construction/MarginContainer/VBoxContainer/Project/ProjectName")
+ProjectTime = NodePath("Construction/MarginContainer/VBoxContainer/Project/Turns")
+ProjectProgress = NodePath("Construction/MarginContainer/VBoxContainer/Progress")
+ProjectBudgetLevel = NodePath("Construction/MarginContainer/VBoxContainer/BudgetPips/Levels")
+PrivateProjectTime = NodePath("PrivateInvestment/MarginContainer/VBoxContainer/Project/Turns")
+PrivateProjectProgress = NodePath("PrivateInvestment/MarginContainer/VBoxContainer/Progress")
+PopsGrowthTime = NodePath("Growth/MarginContainer/VBoxContainer/Growth2/Turns")
+PopsGrowthProgress = NodePath("Growth/MarginContainer/VBoxContainer/Progress")
+PopsValue = NodePath("Population/MarginContainer/VBoxContainer/HBoxContainer/Population")
+PopsHappyValue = NodePath("Population/MarginContainer/VBoxContainer/Happiness/Result3")
+PopsNeutralValue = NodePath("Population/MarginContainer/VBoxContainer/Happiness/Result2")
+PopsUnhappyValue = NodePath("Population/MarginContainer/VBoxContainer/Happiness/Result1")
+PopsWealth = NodePath("Population/MarginContainer/VBoxContainer/Status/Wealth")
+PopsInequality = NodePath("Population/MarginContainer/VBoxContainer/Status/Inegality")
+PopsCorruption = NodePath("Population/MarginContainer/VBoxContainer/Status/Corruption")
+PopsSocialUnrest = NodePath("Population/MarginContainer/VBoxContainer/Status/SocialInjustice")
+StabilityChangeText = NodePath("Stability/MarginContainer/VBoxContainer/Control/Control/RebelProgress")
+StabilityChangeDecrease = NodePath("Stability/MarginContainer/VBoxContainer/Control/Control/Good")
+StabilityChangeIncrease = NodePath("Stability/MarginContainer/VBoxContainer/Control/Control/Bad")
+StabilityCursor = NodePath("Stability/MarginContainer/VBoxContainer/Control/Cursor/Cursor")
+StabilityControlLevel = NodePath("Stability/MarginContainer/VBoxContainer/Control2/Levels")
+StabilityAlert = NodePath("Stability/MarginContainer/Alert")
+TaxLevel = NodePath("Tax/MarginContainer/VBoxContainer/HBoxContainer/Levels")
+WelfareLevel = NodePath("Welfare/MarginContainer/VBoxContainer/HBoxContainer/Levels")
 IncomeBC = NodePath("Income/BC/Value")
 IncomeInf = NodePath("Income/Influence/Value")
 IncomeRes = NodePath("Income/Research/Value")
+ShipbuildingIncome = NodePath("Shipbuilding/MarginContainer/VBoxContainer/ShipbuildingText/Shipbuilding")
 ShipbuildingIcon = NodePath("Shipbuilding/MarginContainer/VBoxContainer/HBoxContainer/Icon")
+ShipbuildingName = NodePath("Shipbuilding/MarginContainer/VBoxContainer/HBoxContainer/ShipTypeBg/ShipType")
+ShipbuildingTurns = NodePath("Shipbuilding/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Turns")
+ShipbuildingProgress = NodePath("Shipbuilding/MarginContainer/VBoxContainer/Shipbuilding/Progress")
 
 [node name="OwnerBg" type="Panel" parent="VBoxContainer/System"]
 custom_minimum_size = Vector2(0, 40)
@@ -808,6 +840,7 @@ text = "[left]$name[/left]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("18_ercnh")
 
 [node name="Turns" type="RichTextLabel" parent="VBoxContainer/System/Construction/MarginContainer/VBoxContainer/Project"]
 layout_mode = 1
@@ -843,6 +876,7 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 4
+script = ExtResource("17_6kgt1")
 
 [node name="Panel" type="Panel" parent="VBoxContainer/System/Construction/MarginContainer/VBoxContainer/Progress"]
 custom_minimum_size = Vector2(224, 12)
@@ -905,6 +939,7 @@ custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16
+script = ExtResource("18_ejcwi")
 
 [node name="Level_1" type="ColorRect" parent="VBoxContainer/System/Construction/MarginContainer/VBoxContainer/BudgetPips/Levels"]
 custom_minimum_size = Vector2(32, 0)
@@ -1128,7 +1163,7 @@ grow_vertical = 2
 size_flags_vertical = 4
 theme = ExtResource("9_n4gub")
 bbcode_enabled = true
-text = "[left]$name[/left]"
+text = "[left]Private Investment[/left]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -1159,6 +1194,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_bottom = 4
+script = ExtResource("17_6kgt1")
 
 [node name="Panel" type="Panel" parent="VBoxContainer/System/PrivateInvestment/MarginContainer/VBoxContainer/Progress"]
 custom_minimum_size = Vector2(224, 12)
@@ -1299,6 +1335,7 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 4
+script = ExtResource("17_6kgt1")
 
 [node name="Panel" type="Panel" parent="VBoxContainer/System/Growth/MarginContainer/VBoxContainer/Progress"]
 custom_minimum_size = Vector2(224, 12)
@@ -1432,6 +1469,7 @@ text = "[right][b]$val[img=32x32]Assets/UI/Symbols/Pops.png[/img][/b][/right]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+script = ExtResource("18_ercnh")
 
 [node name="Gap_4" type="Control" parent="VBoxContainer/System/Population/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 4)
@@ -1496,14 +1534,16 @@ theme_override_constants/separation = 8
 alignment = 1
 
 [node name="Wealth" type="TextureRect" parent="VBoxContainer/System/Population/MarginContainer/VBoxContainer/Status"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 1)
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("17_d5gb6")
 expand_mode = 1
+script = ExtResource("20_4eils")
 
-[node name="Result1" type="RichTextLabel" parent="VBoxContainer/System/Population/MarginContainer/VBoxContainer/Status/Wealth"]
+[node name="Value" type="RichTextLabel" parent="VBoxContainer/System/Population/MarginContainer/VBoxContainer/Status/Wealth"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -1529,8 +1569,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("18_qpat2")
 expand_mode = 1
+script = ExtResource("20_4eils")
 
-[node name="Result1" type="RichTextLabel" parent="VBoxContainer/System/Population/MarginContainer/VBoxContainer/Status/Inegality"]
+[node name="Value" type="RichTextLabel" parent="VBoxContainer/System/Population/MarginContainer/VBoxContainer/Status/Inegality"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -1556,8 +1597,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("19_df0ae")
 expand_mode = 1
+script = ExtResource("20_4eils")
 
-[node name="Result1" type="RichTextLabel" parent="VBoxContainer/System/Population/MarginContainer/VBoxContainer/Status/Corruption"]
+[node name="Value" type="RichTextLabel" parent="VBoxContainer/System/Population/MarginContainer/VBoxContainer/Status/Corruption"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -1583,8 +1625,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("20_005ag")
 expand_mode = 1
+script = ExtResource("20_4eils")
 
-[node name="Result1" type="RichTextLabel" parent="VBoxContainer/System/Population/MarginContainer/VBoxContainer/Status/SocialInjustice"]
+[node name="Value" type="RichTextLabel" parent="VBoxContainer/System/Population/MarginContainer/VBoxContainer/Status/SocialInjustice"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -1801,6 +1844,7 @@ custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16
+script = ExtResource("18_ejcwi")
 
 [node name="Level_1" type="ColorRect" parent="VBoxContainer/System/Stability/MarginContainer/VBoxContainer/Control2/Levels"]
 custom_minimum_size = Vector2(32, 0)
@@ -1932,6 +1976,7 @@ custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16
+script = ExtResource("18_ejcwi")
 
 [node name="Level_1" type="ColorRect" parent="VBoxContainer/System/Tax/MarginContainer/VBoxContainer/HBoxContainer/Levels"]
 custom_minimum_size = Vector2(32, 0)
@@ -2029,6 +2074,7 @@ custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16
+script = ExtResource("18_ejcwi")
 
 [node name="Level_1" type="ColorRect" parent="VBoxContainer/System/Welfare/MarginContainer/VBoxContainer/HBoxContainer/Levels"]
 custom_minimum_size = Vector2(32, 0)
@@ -2294,14 +2340,14 @@ layout_mode = 2
 texture = ExtResource("20_3jfqf")
 expand_mode = 1
 
-[node name="ShipbuildingText2" type="Control" parent="VBoxContainer/System/Shipbuilding/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ShipTypeBg" type="Control" parent="VBoxContainer/System/Shipbuilding/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme = ExtResource("9_n4gub")
 
-[node name="ShipbuildingText2" type="RichTextLabel" parent="VBoxContainer/System/Shipbuilding/MarginContainer/VBoxContainer/HBoxContainer/ShipbuildingText2"]
+[node name="ShipType" type="RichTextLabel" parent="VBoxContainer/System/Shipbuilding/MarginContainer/VBoxContainer/HBoxContainer/ShipTypeBg"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -2349,6 +2395,7 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 4
+script = ExtResource("17_6kgt1")
 
 [node name="Panel" type="Panel" parent="VBoxContainer/System/Shipbuilding/MarginContainer/VBoxContainer/Shipbuilding/Progress"]
 custom_minimum_size = Vector2(224, 12)

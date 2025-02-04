@@ -463,7 +463,6 @@ public partial class MapGenerator : Node
         Data.AddData(planet, "Type", planetType, DefLibrary);
         Data.AddData(planet, "Size", size, DefLibrary);
         Data.AddData(planet, "Temperature", temperature, DefLibrary);
-        Data.AddData(planet, "PopsMax", (size == 1 ? 3 : (size == 2 ? 4 : 6)), DefLibrary);
         Data.AddData(planet, "SlotType", chosenPlanetData.GetSub("SlotType").ValueS, DefLibrary);
 
         DataBlock planetFeatures = chosenPlanetData.GetSub("Features");
@@ -492,7 +491,6 @@ public partial class MapGenerator : Node
         Data.AddData(planet, "Type", chosenPlanetData.ValueS, DefLibrary);
         Data.AddData(planet, "Size", size, DefLibrary);
         Data.AddData(planet, "Temperature", temperature, DefLibrary);
-        Data.AddData(planet, "PopsMax", (size == 1 ? 3 : (size == 2 ? 4 : 6)), DefLibrary);
         Data.AddData(planet, "SlotType", chosenPlanetData.GetSub("SlotType").ValueS, DefLibrary);
 
         DataBlock planetFeatures = chosenPlanetData.GetSub("Features");

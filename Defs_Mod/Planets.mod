@@ -161,7 +161,7 @@ Def_Planets
 		SlotType District
 		Features
 		{
-			//?Size
+			?Size
 			Desert
 			Bonus Tiny_Moon
 			Bonus Alien_Life
@@ -178,7 +178,7 @@ Def_Planets
 		SlotType District
 		Features
 		{
-			//?Size
+			?Size
 			Arid
 			Bonus Tiny_Moon
 			Bonus Alien_Life
@@ -195,7 +195,7 @@ Def_Planets
 		SlotType District
 		Features
 		{
-			//?Size
+			?Size
 			OR
 			{
 				Wet:Weight 9
@@ -217,7 +217,7 @@ Def_Planets
 		SlotType District
 		Features
 		{
-			//?Size
+			?Size
 			Fertile
 			Ocean
 			Bonus Tiny_Moon
@@ -235,7 +235,7 @@ Def_Planets
 		SlotType District
 		Features
 		{
-			//?Size
+			?Size
 			OR
 			{
 				Wet:Weight 1
@@ -256,7 +256,7 @@ Def_Planets
 		SlotType District
 		Features
 		{
-			//?Size
+			?Size
 			OR
 			{
 				Arid:Weight 1
@@ -277,7 +277,7 @@ Def_Planets
 	//	SlotType District
 	//	Features
 	//	{
-			//?Size
+	//		?Size
 	//		Vulcanic
 	//		Arid
 	//		Bonus Tiny_Moon
@@ -328,6 +328,7 @@ Def_Planets
 		Temperature 3
 		Features
 		{
+			?Size
 			Rocky
 			Oceans
 			Complex_Life

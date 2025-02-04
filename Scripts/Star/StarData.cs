@@ -140,7 +140,14 @@ public partial class StarData : Node
         int pops = 0;
         for (int planetIdx = 0; planetIdx < Planets.Count; planetIdx++)
         {
-            pops += Planets[planetIdx].Data.GetSubValueI("PopsMax");
+            if (Planets[planetIdx].Colony != null)
+            {
+                pops += Planets[planetIdx].Colony.Data.GetSubValueI("PopsMax");
+            }
+            else
+            {
+                pops += PlanetRaw.GetBaseMaxPops(Planets[planetIdx].Data, Game.self.Def);
+            }
         }
 
         return pops;

@@ -8,7 +8,7 @@ public partial class DistrictNew
     public ColonyData _Colony = null;
 
     public DefDistrictWrapper DistrictDef = null;
-    public PopData Pop = null;
+    //public PopData Pop = null;
 
     public DistrictEconomyWrapper Economy = null;
 
@@ -18,28 +18,28 @@ public partial class DistrictNew
     public int Cost_Time = 0;
     public bool StopWorking = false; 
 
-    public DistrictNew(DefDistrictWrapper districtDef, PopData pop, ColonyData colony)
+    public DistrictNew(DefDistrictWrapper districtDef/*, PopData pop*/, ColonyData colony)
     {
         DistrictDef = districtDef;
-        Pop = pop;
+        //Pop = pop;
         _Colony = colony;
 
         Economy = new DistrictEconomyWrapper(this);
 
         Economy.RefreshBase_1_1();
-        for (int otherColonyIdx = 0; otherColonyIdx < _Colony._System.Colonies.Count; otherColonyIdx++)
-        {
-            ColonyData otherColony = _Colony._System.Colonies[otherColonyIdx];
-
-            for (int otherDistrictIdx = 0; otherDistrictIdx < otherColony.Districts.Count; otherDistrictIdx++)
-            {
-                DistrictData otherDistrict = otherColony.Districts[otherDistrictIdx];
-                if (otherDistrict.Economy_PerTurn.Resource == Economy.Resource)
-                {
-                    Economy.AddBonusFromSystem_1_2(otherDistrict.Economy_PerTurn.Production_BonusToSystem);
-                }
-            }
-        }
+        //for (int otherColonyIdx = 0; otherColonyIdx < _Colony._System.Colonies.Count; otherColonyIdx++)
+        //{
+        //    ColonyData otherColony = _Colony._System.Colonies[otherColonyIdx];
+        //
+        //    for (int otherDistrictIdx = 0; otherDistrictIdx < otherColony.Districts.Count; otherDistrictIdx++)
+        //    {
+        //        DistrictData otherDistrict = otherColony.Districts[otherDistrictIdx];
+        //        if (otherDistrict.Economy_PerTurn.Resource == Economy.Resource)
+        //        {
+        //            Economy.AddBonusFromSystem_1_2(otherDistrict.Economy_PerTurn.Production_BonusToSystem);
+        //        }
+        //    }
+        //}
         Economy.RefreshFinal_1_3();
     }
 
@@ -48,7 +48,7 @@ public partial class DistrictNew
         Cost_BC = DistrictDef.Cost_BC;
         Cost_Inf = 0;
         Cost_Happiness = 0;
-        Cost_Time = Mathf.Max(1, 2 * DistrictDef.Level + 2);
+        Cost_Time = 1;
         StopWorking = false;
     }
 
@@ -86,14 +86,14 @@ public partial class DistrictNew
         Cost_Happiness = 0;
         Cost_Time = 0;
         StopWorking = true;
-        if (oldDistrict.Control_Type == "State_Owned")
-        {
-            Cost_Inf = -3 * DistrictDef.Cost_BC / 5;
-        }
-        if (DistrictDef.Control_Type == "State_Owned")
-        {
-            Cost_Inf = 3 * DistrictDef.Cost_BC / 5;
-        }
+        //if (oldDistrict.Control_Type == "State_Owned")
+        //{
+        //    Cost_Inf = -3 * DistrictDef.Cost_BC / 5;
+        //}
+        //if (DistrictDef.Control_Type == "State_Owned")
+        //{
+        //    Cost_Inf = 3 * DistrictDef.Cost_BC / 5;
+        //}
     }
 
     public void SetAsChangeDistrict()
@@ -101,27 +101,27 @@ public partial class DistrictNew
         Cost_BC = DistrictDef.Cost_BC;
         Cost_Inf = 0;
         Cost_Happiness = 0;
-        Cost_Time = Mathf.Max(1, 1 * DistrictDef.Level + 1);
+        Cost_Time = Mathf.Max(1, 1);
         StopWorking = true;
     }
 
-    public bool IsStateOwned()
-    {
-        return DistrictDef.Control_Type == "State_Owned";
-    }
+    //public bool IsStateOwned()
+    //{
+    //    return DistrictDef.Control_Type == "State_Owned";
+    //}
+    //
+    //public bool IsPrivate()
+    //{
+    //    return DistrictDef.Control_Type == "Private";
+    //}
 
-    public bool IsPrivate()
-    {
-        return DistrictDef.Control_Type == "Private";
-    }
-
-    public PopData GetPop()
-    {
-        return Pop;
-    }
-
-    public bool HasFullPop()
-    {
-        return Pop != null && Pop.GetProgress() == 1000;
-    }
+    //public PopData GetPop()
+    //{
+    //    return Pop;
+    //}
+    //
+    //public bool HasFullPop()
+    //{
+    //    return Pop != null && Pop.GetProgress() == 1000;
+    //}
 }

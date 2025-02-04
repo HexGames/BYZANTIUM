@@ -21,8 +21,8 @@ public partial class UIStarInfoSystem : Control
     [Export]
     public UIPips ProjectBudgetLevel;
 
-    [Export]
-    public UIText PrivateProjectName;
+    //[Export]
+    //public UIText PrivateProjectName;
     [Export]
     public UIText PrivateProjectTime;
     [Export]
@@ -100,6 +100,56 @@ public partial class UIStarInfoSystem : Control
         OwnerName.SetTextWithReplace("$name", _System._Player.PlayerName);
         OwnerColor.SelfModulate = Game.self.UILib.GetPlayerColor(_System._Player.PlayerID);
         //OwnerIcon.Texture = Game.self.Assets.GetTexture2D_Flag(_System._Player.PlayerName + ".png");
+
+        // --- projects
+        //ProjectName.SetTextWithReplace("$name", "???");
+        ProjectTime.SetTextWithReplace("$t", "oo");
+        ProjectProgress.SetProgress(0, 0, 100);
+        ProjectBudgetLevel.SetPips(0);
+
+        //PrivateProjectName.;
+        PrivateProjectTime.SetTextWithReplace("$t", "oo");
+        PrivateProjectProgress.SetProgress(0, 0, 100);
+
+        // --- pops
+        PopsGrowthTime.SetTextWithReplace("$t", "oo");
+        PopsGrowthProgress.SetProgress(0, 0, 100);
+        PopsValue.SetTextWithReplace("$val", _System.GetPopsCurrent().ToString());
+
+        PopsHappyValue.SetTextWithReplace("$v", "?");
+        PopsNeutralValue.SetTextWithReplace("$v", "?");
+        PopsUnhappyValue.SetTextWithReplace("$v", "?");
+
+        PopsWealth.SetValue(0);
+        PopsInequality.SetValue(0);
+        PopsCorruption.SetValue(0);
+        PopsSocialUnrest.SetValue(0);
+
+        // stability
+        StabilityChangeText.SetTextWithReplace("$v", "0");
+        StabilityChangeDecrease.Visible = false;
+        StabilityChangeIncrease.Visible = false;
+        if (_System.Control_PerTurn.RebellionCurrent <= _System.Control_PerTurn.RebellionLoyal) StabilityCursor.SetPosition(new Vector2(8, 28));
+        else if (_System.Control_PerTurn.RebellionCurrent >= _System.Control_PerTurn.RebellionMax) StabilityCursor.SetPosition(new Vector2(280, 28));
+        else StabilityCursor.SetPosition(new Vector2(24 + (240 * (_System.Control_PerTurn.RebellionCurrent - _System.Control_PerTurn.RebellionLoyal) / (_System.Control_PerTurn.RebellionMax - _System.Control_PerTurn.RebellionLoyal)), 28));
+        StabilityControlLevel.SetPips(0);
+        StabilityAlert.Visible = false;
+
+        // tax and Wealfare
+        TaxLevel.SetPips(0);
+        WelfareLevel.SetPips(0);
+
+        // income
+        IncomeBC.SetTextWithReplace("$val", _System.Economy_PerTurn.ToString_BC());
+        IncomeInf.SetTextWithReplace("$val", _System.Economy_PerTurn.ToString_Influence());
+        IncomeRes.SetTextWithReplace("$val", _System.Economy_PerTurn.ToString_Research());
+
+        // shipbuilding
+        ShipbuildingIncome.SetTextWithReplace("$val", _System.Economy_PerTurn.ToString_Shipbuilding());
+        //ShipbuildingIcon.Texture = 
+        ShipbuildingName.SetTextWithReplace("$name", "Space Ship");
+        ShipbuildingTurns.SetTextWithReplace("$t", "oo");
+        ShipbuildingProgress.SetProgress(0, 0, 100);
 
         //Pops.SetTextWithReplace("$val", _System.Pops_PerTurn.ToString_Pops(), "$max", _System.Pops_PerTurn.ToString_PopsMax());
         //PopsGrowth.SetTextWithReplace("$v", _System.Pops_PerTurn.ToString_GrowthTotal());

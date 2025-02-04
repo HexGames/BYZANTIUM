@@ -61,6 +61,8 @@ public partial class PlayerData : Node
     // designs
     public List<DesignData> Designs = new List<DesignData>();
 
+    public bool DEBUG = false;
+
 
     // --------------------------------------------------------------------------------------------
     public SystemData GetSystem(string system)

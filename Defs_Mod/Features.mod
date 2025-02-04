@@ -1,189 +1,231 @@
+// 2025-02-04T17:53:17
 Features 
 {
 	Feature Rich_Minerals
 	{
-		SuggestedFocus Shipbuilding
-		Icon Minerals
-		Resource Shipbuilding
+		Type Base
+		Color c_e90000
 		Benefit 
 		{
-			LocalBonus 20
+			Shipbuilding 
+			{
+				ExtraPerPopBonus 100
+			}
+		}
+	}
+	Feature Precious_Crystals
+	{
+		Type Base
+		Color c_fbe52d
+		Benefit 
+		{
+			BC 
+			{
+				LocalBonus 100
+			}
 		}
 	}
 	Feature High_Enegy_Particles
 	{
-		SuggestedFocus Research
-		Icon HighEnergy
-		Resource Research
+		Type Station
+		Color c_00c6b6
 		Benefit 
 		{
-			LocalBonus 20
+			Research 
+			{
+				LocalBonus 100
+			}
+		}
+	}
+	Feature Incredible_Vistas
+	{
+		Type Station
+		Color c_ff0084
+		Benefit 
+		{
+			Influence 
+			{
+				ExtraPerPopBonus 100
+			}
 		}
 	}
 	Feature Refueling_Gasses
 	{
-		SuggestedFocus BC
-		Icon Gasses
-		Resource BC
+		Type Outpost
+		Color c_fbe52d
 		Benefit 
 		{
-			LocalBonus 20
+			BC 
+			{
+				ExtraPerPopBonus 100
+			}
+		}
+	}
+	Feature Rich_Soil
+	{
+		Type Outpost
+		Color c_00a50c
+		Benefit 
+		{
+			Growth 
+			{
+				LocalBonus 100
+			}
 		}
 	}
 	Feature Desert
 	{
-		SuggestedFocus none
-		Icon Desert
-		Resource Growth
+		Type PlanetBase
 		Benefit 
 		{
 			Extra 
 			{
-				Happiness -20
-				PopGrowth 10
+				TerraformCost 14000
+			}
+			Growth 
+			{
+				LocalPerPopBonus -80
 			}
 		}
 	}
 	Feature Arid
 	{
-		SuggestedFocus none
-		Icon Arid
-		Resource Growth
+		Type PlanetBase
 		Benefit 
 		{
 			Extra 
 			{
-				Happiness -10
-				PopGrowth 15
+				TerraformCost 10000
+			}
+			Growth 
+			{
+				LocalPerPopBonus -50
 			}
 		}
 	}
 	Feature Wet
 	{
-		SuggestedFocus none
-		Icon Wet
-		Resource Growth
+		Type PlanetBase
 		Benefit 
 		{
 			Extra 
 			{
-				PopGrowth 20
+				TerraformCost 7000
 			}
 		}
 	}
 	Feature Fertile
 	{
-		SuggestedFocus none
-		Icon Fertile
-		Resource Growth
+		Type PlanetBase
 		Benefit 
 		{
 			Extra 
 			{
-				Happiness 10
-				PopGrowth 25
+				TerraformCost 5000
+			}
+			Growth 
+			{
+				LocalPerPopBonus 20
 			}
 		}
 	}
 	Feature Gaia
 	{
-		SuggestedFocus none
-		Icon Gaia
-		Resource Growth
+		Type PlanetBase
 		Benefit 
 		{
 			Extra 
 			{
-				Happiness 20
-				PopGrowth 30
+				TerraformCost 4000
+			}
+			Growth 
+			{
+				LocalPerPopBonus 40
 			}
 		}
 	}
 	Feature Small
 	{
-		SuggestedFocus none
-		Icon Small
-		Resource Construction
+		Type PlanetBase
 		Benefit 
 		{
-			LocalBonus 20
 			Extra 
 			{
-				MaxPop 3
-				MaxPopC 4
+				MaxPop 10
 			}
 		}
 	}
 	Feature Medium
 	{
-		SuggestedFocus none
-		Icon Medium
-		Resource Construction
+		Type PlanetBase
 		Benefit 
 		{
 			Extra 
 			{
-				MaxPop 4
-				MaxPopC 6
+				MaxPop 15
 			}
 		}
 	}
 	Feature Large
 	{
-		SuggestedFocus none
-		Icon Large
-		Resource Construction
+		Type PlanetBase
 		Benefit 
 		{
-			LocalBonus -20
 			Extra 
 			{
-				MaxPop 6
-				MaxPopC 9
+				MaxPop 20
 			}
 		}
 	}
 	Feature Tiny_Moon
 	{
-		SuggestedFocus Shipbuilding
-		Icon TinyMoon
-		Resource Shipbuilding
+		Type PlanetFeature
+		Color c_e90000
 		Benefit 
 		{
-			LocalBonus 20
+			Shipbuilding 
+			{
+				LocalPerPopBonus 50
+			}
 		}
 	}
 	Feature Alien_Life
 	{
-		SuggestedFocus Research
-		Icon AlienLife
-		Resource Research
+		Type PlanetFeature
+		Color c_00c6b6
 		Benefit 
 		{
-			LocalBonus 20
+			Research 
+			{
+				LocalPerPopBonus 50
+			}
 		}
 	}
 	Feature Beautiful
 	{
-		SuggestedFocus Influence
-		Icon Beautiful
-		Resource Influence
+		Type PlanetFeature
+		Color c_ff0084
 		Benefit 
 		{
-			LocalBonus 20
+			Influence 
+			{
+				LocalPerPopBonus 50
+			}
 		}
 	}
 	Feature Ocean
 	{
-		SuggestedFocus Growth
-		Icon Ocean
-		Resource Growth
+		Type PlanetFeature
+		Color c_00c6b6
 		Benefit 
 		{
 			Extra 
 			{
-				MaxPop -1
-				Happiness 10
+				MapPopBonus -50
+			}
+			Growth 
+			{
+				LocalPerPopBonus 100
 			}
 		}
 	}

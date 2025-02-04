@@ -12,7 +12,7 @@ public partial class UIText : RichTextLabel
         if (Original == "") Original = Text;
 
         if (HasNode("ToolTip")) ToolTip = GetNode<UITooltipTrigger>("ToolTip");
-        if (ToolTip == null && HasNode("../ToolTip"))  ToolTip = GetNode<UITooltipTrigger>("../ToolTip");
+        if (ToolTip == null && HasNode("../ToolTip")) ToolTip = GetNode<UITooltipTrigger>("../ToolTip");
     }
 
     public void SetTextWithReplace(string old_1, string new_1)

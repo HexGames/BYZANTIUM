@@ -50,8 +50,8 @@ public class SystemVisibilityWrapper
         if (VisibleBy.Contains(player) == false)
         {
             VisibleBy.Add(player);
-            SetAsUncovered(player);
         }
+        SetAsUncovered(player);
     }
 
     public bool IsVisibleBy(PlayerData player)

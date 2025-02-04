@@ -1,32 +1,31 @@
 
 using Godot;
+using Godot.Collections;
 using System.Collections.Generic;
 
 // Per Session
 public partial class DistrictData
 {
-    public DataBlock _Data = null;
+    public DataBlock Data = null;
 
     public ColonyData _Colony = null;
 
     public DefDistrictWrapper DistrictDef = null;
-    public PopData Pop = null;
+    public List<PopData> Pops = new List<PopData>();
 
     public DistrictEconomyWrapper Economy_PerTurn = null;
     public List<DistrictNew> ActionsChangeDistricts_OnRefresh = new List<DistrictNew>();
-    //public List<DistrictNew> ActionsChangeControlDistricts_OnRefresh = new List<DistrictNew>();
-    //public List<DistrictNew> ActionsUpgradeDistricts_OnRefresh = new List<DistrictNew>();
 
     public DistrictData(DataBlock districtData, ColonyData colony)
     {
         _Colony = colony;
 
-        _Data = districtData;
+        Data = districtData;
 
-        if (districtData.HasSub("Pop"))
-        {
-            Pop = new PopData(this);
-        }
+        //if (districtData.HasSub("Pop"))
+        //{
+        //    Pop = new PopData(this);
+        //}
 
         if (districtData.ValueS != "")
         {
@@ -34,28 +33,48 @@ public partial class DistrictData
         }
     }
 
+    // --------------------------------------------------------------------------------------------
+    public void Init_PopsData()
+    {
+        Pops.Clear();
+        if (Data.HasSub("Pops_List"))
+        {
+            Array<DataBlock> pops = Data.GetSub("Pops_List").GetSubs("Pop");
+            for (int popsIdx = 0; popsIdx < pops.Count; popsIdx++)
+            {
+                Pops.Add(new PopData(pops[popsIdx], this));
+            }
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------
     public bool IsStateOwned()
     {
-        return DistrictDef.Control_Type == "State_Owned";
+        return Data.GetSubValueS("Control") == "State_Owned";
     }
 
     public bool IsPrivate()
     {
-        return DistrictDef.Control_Type == "Private";
+        return Data.GetSubValueS("Control") == "Private";
     }
 
-    public PopData GetPop()
-    {
-        return Pop;
-    }
-
-    public bool HasFullPop()
-    {
-        return Pop != null && Pop.GetProgress() == 1000;
-    }
+    //public PopData GetPop()
+    //{
+    //    return Pop;
+    //}
+    //
+    //public bool HasFullPop()
+    //{
+    //    return Pop != null && Pop.GetProgress() == 1000;
+    //}
 
     public int GetReinvestProgress()
     {
-        return _Data.GetSubValueI("Investment");
+        return Data.GetSubValueI("Investment");
+    }
+
+    public int GetLevel()
+    {
+        return Data.GetSubValueI("Level");
     }
 }

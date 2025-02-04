@@ -38,7 +38,7 @@ public partial class PlanetData : Node
 
     public bool IsHabitable()
     {
-        return Data.GetSubValueI("PopsMax") > 0;
+        return PlanetRaw.GetBaseMaxPops(Data, Game.self.Def) > 0;
     }
 
     // --------------------------------------------------------------------------------------------

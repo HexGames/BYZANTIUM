@@ -33,19 +33,19 @@ public class PlayerStatsWrapper
                 ColonyData colony = system.Colonies[coloniyIdx];
                 for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
                 {
-                    string name = colony.Districts[districtIdx].DistrictDef.Name;
-                    if (name.EndsWith("_III"))
-                    {
-                        DistrictLevels += 3;
-                    }
-                    else if (name.EndsWith("_II"))
-                    {
-                        DistrictLevels += 2;
-                    }
-                    else
-                    {
-                        DistrictLevels += 1;
-                    }
+                    //string name = colony.Districts[districtIdx].DistrictDef.Name;
+                    //if (name.EndsWith("_III"))
+                    //{
+                    //    DistrictLevels += 3;
+                    //}
+                    //else if (name.EndsWith("_II"))
+                    //{
+                    //    DistrictLevels += 2;
+                    //}
+                    //else
+                    //{
+                    //    DistrictLevels += 1;
+                    //}
                 }
             }
         }

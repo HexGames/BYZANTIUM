@@ -8,14 +8,9 @@ public partial class PopData
 
     public DataBlock Data = null;
 
-    public PopData(DistrictData district)
+    public PopData(DataBlock data, DistrictData parent)
     {
-        _District = district;
-        Data = _District._Data.GetSub("Pop");
-    }
-
-    public int GetProgress()
-    {
-        return Data.GetSubValueI("GrowthProgress");
+        Data = data;
+        _District = parent;
     }
 }

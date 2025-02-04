@@ -49,7 +49,7 @@ public partial class UIStarInfoUncolonized : Control
                 if (idx < habitables.Count)
                 {
                     ColonizePlanet[idx].Visible = true;
-                    ColonizePlanet[idx].BtnText.SetTextWithReplace("$name", habitables[idx].PlanetName, "$v", Helper.ResValueToString(PlanetRaw.GetPopGrowth(habitables[idx].Data, Game.self.Def), 10, true));
+                    ColonizePlanet[idx].BtnText.SetTextWithReplace("$name", habitables[idx].PlanetName, "$v", "???");
                     ColonizePlanet[idx].Disabled = colonyFleet == null;
                 }
                 else

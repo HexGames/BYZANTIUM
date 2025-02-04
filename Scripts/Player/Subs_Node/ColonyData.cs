@@ -61,13 +61,25 @@ public partial class ColonyData : Node
     }
 
     // --------------------------------------------------------------------------------------------
+
+    public int GetPopsCurrent()
+    {
+        return ColonyRaw.GetPopsTotal(Data);
+    }
+
+    public int GetPopsMax()
+    {
+        return Data.GetSubValueI("PopsMax");
+    }
+
+    // --------------------------------------------------------------------------------------------
     private static List<int> GrowthValues = new List<int>(12);
     public int GetGrowth(out int waste/*, bool includeNextPop = false*/)
     {
         GrowthValues.Clear();
         for (int idx = 0; idx < Districts.Count; idx++)
         { 
-            GrowthValues.Add(DistrictRaw.GetGrowth(Data, Districts[idx]._Data));
+            GrowthValues.Add(DistrictRaw.GetGrowth(Data, Districts[idx].Data));
         }
         //if (includeNextPop)
         //{
@@ -76,31 +88,33 @@ public partial class ColonyData : Node
 
         GrowthValues.Sort((a, b) => (b - a));
 
-        int popsMax = Planet.Data.GetSubValueI("PopsMax");
-        int growth = 0;
+        //int popsMax = Planet.Data.GetSubValueI("PopsMax");
+        //int growth = 0;
+        //waste = 0;
+        //for (int idx = 0; idx < GrowthValues.Count; idx++)
+        //{
+        //    growth += GrowthValues[idx];
+        //    if (idx >= popsMax - GrowthValues.Count)
+        //    {
+        //        waste -= GrowthValues[idx];
+        //    }
+        //}
+
         waste = 0;
-        for (int idx = 0; idx < GrowthValues.Count; idx++)
-        {
-            growth += GrowthValues[idx];
-            if (idx >= popsMax - GrowthValues.Count)
-            {
-                waste -= GrowthValues[idx];
-            }
-        }
 
-        return growth;
-    }
-
-    public int GetGrowthProgress()
-    {
-        for (int idx = 0; idx < Districts.Count; idx++)
-        {
-            int progress = Districts[idx].Pop.Data.GetSubValueI("GrowthProgress");
-            if (progress < 1000)
-            {
-                return progress;
-            }
-        }
         return 0;
     }
+
+    //public int GetGrowthProgress()
+    //{
+    //    //for (int idx = 0; idx < Districts.Count; idx++)
+    //    //{
+    //    //    int progress = Districts[idx].Pop.Data.GetSubValueI("GrowthProgress");
+    //    //    if (progress < 1000)
+    //    //    {
+    //    //        return progress;
+    //    //    }
+    //    //}
+    //    return 0;
+    //}
 }

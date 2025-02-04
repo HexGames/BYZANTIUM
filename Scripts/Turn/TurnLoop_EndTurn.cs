@@ -42,21 +42,7 @@ public partial class TurnLoop : Node
         // update UI
         Game.self.GalaxyUI.StartTurn();
 
-        for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
-        {
-            StarData star = Game.self.Map.Data.Stars[starIdx];
-            star._Node.GFX.RefreshPlayerColor();
-            if (star._Node.GFX.GUI3D != null)
-            {
-                star._Node.GFX.GUI3D.Refresh();
-            }
-        }
-
-        for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
-        {
-            StarData star = Game.self.Map.Data.Stars[starIdx];
-            star._Node.GFX.RefreshShips();
-        }
+        StartTurn_RefreshGUI3D();
 
         // reset players states
         for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
@@ -226,17 +212,29 @@ public partial class TurnLoop : Node
     }
 
     // ----------------------------------------------------------------------------------------------
-    private void StartTurn_Visibility()
+    public void StartTurn_Visibility()
     {
         for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
         {
             StarData star = Game.self.Map.Data.Stars[starIdx];
             star.Visibility_PerTurn.Refresh();
         }
-    
+
         for (int playerIdx = 0; playerIdx < Game.self.Map.Data.Players.Count; playerIdx++)
         {
             PlayerData player = Game.self.Map.Data.Players[playerIdx];
+
+            // DEBUG
+            if (player.DEBUG)
+            {
+                for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
+                {
+                    StarData star = Game.self.Map.Data.Stars[starIdx];
+                    star.Visibility_PerTurn.UncoveredBy.Add(player);
+                    star.Visibility_PerTurn.VisibleBy.Add(player);
+                }
+            }
+
             for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
             {
                 for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
@@ -270,7 +268,6 @@ public partial class TurnLoop : Node
                 }
             }
         }
-
     }
 
     private void StartTurn_Visibility_CheckPlayerMeet(PlayerData player, StarData withAllAtStar)
@@ -368,6 +365,25 @@ public partial class TurnLoop : Node
 
                 ActionMove.RefreshAvailableMoves(Game.self, fleet);
             }
+        }
+    }
+
+    public void StartTurn_RefreshGUI3D()
+    {
+        for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
+        {
+            StarData star = Game.self.Map.Data.Stars[starIdx];
+            star._Node.GFX.RefreshPlayerColor();
+            if (star._Node.GFX.GUI3D != null)
+            {
+                star._Node.GFX.GUI3D.Refresh();
+            }
+        }
+
+        for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
+        {
+            StarData star = Game.self.Map.Data.Stars[starIdx];
+            star._Node.GFX.RefreshShips();
         }
     }
 }

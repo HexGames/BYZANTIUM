@@ -56,10 +56,10 @@ public class ShipbuildingWrapper
             for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
             {
                 DistrictData district = colony.Districts[districtIdx];
-                if (district.Economy_PerTurn.Resource == "Shipbuilding")
-                {
-                    Shipbuilding += district.Economy_PerTurn.Production_Final;
-                }
+                //if (district.Economy_PerTurn.Resource == "Shipbuilding")
+                //{
+                //    Shipbuilding += district.Economy_PerTurn.Production_Final;
+                //}
             }
         }
         ProgressMax = DesignCurrent.Cost;

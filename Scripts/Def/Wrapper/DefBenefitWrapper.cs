@@ -1,45 +1,56 @@
-﻿using System.Collections.Generic;
+﻿using Godot;
+using System.Collections.Generic;
 using System.Reflection.Metadata;
 
 public class DefBenefitWrapper
 {
+    public class Resource
+    {
+        public int Base = 0;
+        public int PerPop = 0;
+        public int SystemPerPopMultiplier = 0;
+        public int SystemPerPop = 0;
+        public int SystemPerPopBonuis = 0;
+        public int LocalBonus = 0;
+        public int LocalPerPopBonus = 0;
+
+        public void Load(DataBlock fromData)
+        {
+            if (fromData == null) return;
+            Base = fromData.GetSubValueI("Base");
+            PerPop = fromData.GetSubValueI("PerPop");
+            SystemPerPopMultiplier = fromData.GetSubValueI("SystemPerPopMultiplier");
+            SystemPerPop = fromData.GetSubValueI("SystemPerPop");
+            SystemPerPopBonuis = fromData.GetSubValueI("SystemPerPopBonuis");
+            LocalBonus = fromData.GetSubValueI("LocalBonus");
+            LocalPerPopBonus = fromData.GetSubValueI("LocalPerPopBonus");
+        }
+    };
     //public DataBlock _Data;
 
-    public string Resource = "";
-    public int Income = 0;
-    public int Wealth = 0;
-    public int Bonus = 0;
-    public int ExtraBC = 0;
-    public int LocalBonus = 0;
+    public Resource BC = new Resource();
+    public Resource Research = new Resource();
+    public Resource Influence = new Resource();
+    public Resource Shipbuilding = new Resource();
+    public Resource Growth = new Resource();
 
-    public List<int> Invest_CostBC = new List<int>();
-    public List<int> Invest_ExtraLocalBonus = new List<int>();
-
-    public int Construction = 0;
+    public int MaxPop = 0;
+    public int MapPopBonus = 0;
+    public int TerraformCost = 0;
 
     public DefBenefitWrapper(DataBlock targetData)
     {
         //_Data = targetData;
         DataBlock _Data = targetData;
 
-        Resource = _Data.GetSubValueS("Resource");
-        Income = _Data.GetSubValueI("Income");
-        Wealth = _Data.GetSubValueI("Wealth");
-        Bonus = _Data.GetSubValueI("Bonus");
-        ExtraBC = _Data.GetSubValueI("ExtraBC");
-        LocalBonus = _Data.GetSubValueI("LocalBonus");
+        BC.Load(_Data.GetSub("BC"));
+        Research.Load(_Data.GetSub("Research"));
+        Influence.Load(_Data.GetSub("Influence"));
+        Shipbuilding.Load(_Data.GetSub("Shipbuilding"));
+        Growth.Load(_Data.GetSub("Growth"));
 
-        Invest_CostBC.Clear();
-        Invest_ExtraLocalBonus.Clear();
-        Invest_CostBC.Add(_Data.GetSubValueI("Invest_1", "CostBC"));
-        Invest_ExtraLocalBonus.Add(_Data.GetSubValueI("Invest_1", "ExtraLocalBonus"));
-        Invest_CostBC.Add(_Data.GetSubValueI("Invest_2", "CostBC"));
-        Invest_ExtraLocalBonus.Add(_Data.GetSubValueI("Invest_2", "ExtraLocalBonus"));
-        Invest_CostBC.Add(_Data.GetSubValueI("Invest_3", "CostBC"));
-        Invest_ExtraLocalBonus.Add(_Data.GetSubValueI("Invest_3", "ExtraLocalBonus"));
-
-        LocalBonus = _Data.GetSubValueI("LocalBonus");
-        Construction = _Data.GetSubValueI("Construction");
-
+        MaxPop = _Data.GetSubValueI("Extra", "MaxPop");
+        MapPopBonus = _Data.GetSubValueI("Extra", "MapPopBonus");
+        TerraformCost = _Data.GetSubValueI("Extra", "TerraformCost");
     }
 }
