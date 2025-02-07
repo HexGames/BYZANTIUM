@@ -1,47 +1,62 @@
-// 2025-02-04T17:53:17
+// 2025-02-07T18:26:59
 Buildings 
 {
-	Building Agriculture_District
+	Building Rural_District
 	{
-		Type Rural_District
-		Color c_00a50c
-		Cost 
-		{
-			BC 2500
-		}
-		Benefit 
-		{
-			Extra 
-			{
-				MaxPop 2
-			}
-			Growth 
-			{
-				PerPop 40
-			}
-		}
-		Control State_or_Private
-	}
-	Building Urban_District
-	{
-		Type Urban_District
-		ChangeTo Business_District
-		ChangeTo Media_District
-		Color c_9090ff
+		Type Private_District
+		DistrictIdx 0
+		NationalizeTo Farm_District
+		Color a2bf00
 		Cost 
 		{
 			BC 5000
 		}
 		Benefit 
 		{
+			Extra 
+			{
+				Tax_1_PerPop 0
+				Tax_2_PerPop 10
+				Tax_3_PerPop 20
+			}
 			BC 
 			{
 				PerPop 20
+			}
+			Growth 
+			{
+				PerPop 20
+			}
+		}
+	}
+	Building Urban_District
+	{
+		Type Private_District
+		DistrictIdx 1
+		NationalizeTo Bank_District
+		NationalizeTo Culture_District
+		Color f0d67c
+		Icon Dis_Urban
+		Cost 
+		{
+			BC 10000
+		}
+		Benefit 
+		{
+			Extra 
+			{
+				Tax_1_PerPop 0
+				Tax_2_PerPop 10
+				Tax_3_PerPop 20
+			}
+			BC 
+			{
+				PerPop 30
 				SystemPerPopMultiplier 100
 			}
 			Influence 
 			{
-				PerPop 20
+				PerPop 10
 				SystemPerPopMultiplier 100
 			}
 		}
@@ -49,35 +64,68 @@ Buildings
 	}
 	Building Industrial_District
 	{
-		Type Industrial_District
-		ChangeTo Shipyard_District
-		ChangeTo Research_District
-		Color c_ff8c00
+		Type Private_District
+		DistrictIdx 2
+		NationalizeTo Tech_District
+		NationalizeTo Shipyard_District
+		Color bf7e00
+		Icon Dis_Industrial
+		Cost 
+		{
+			BC 10000
+		}
+		Benefit 
+		{
+			Extra 
+			{
+				Tax_1_PerPop 0
+				Tax_2_PerPop 10
+				Tax_3_PerPop 20
+			}
+			BC 
+			{
+				PerPop 20
+				SystemPerPopMultiplier 100
+			}
+			Research 
+			{
+				PerPop 10
+				SystemPerPopMultiplier 100
+			}
+			Shipbuilding 
+			{
+				PerPop 10
+				SystemPerPopMultiplier 100
+			}
+		}
+		Control State_or_Private
+	}
+	Building Farm_District
+	{
+		Type State_District
+		DistrictIdx 3
+		PrivatizeTo Rural_District
+		Color c_00a50c
 		Cost 
 		{
 			BC 5000
 		}
 		Benefit 
 		{
-			Research 
+			Growth 
 			{
-				PerPop 20
-				SystemPerPopMultiplier 100
-			}
-			Shipbuilding 
-			{
-				PerPop 20
-				SystemPerPopMultiplier 100
+				PerPop 40
 			}
 		}
 		Control State_or_Private
 	}
-	Building Business_District
+	Building Bank_District
 	{
-		Type Urban_District
-		ChangeTo Media_District
-		ChangeTo Urban_District
+		Type State_District
+		DistrictIdx 4
+		PrivatizeTo Urban_District
 		Color c_fbe52d
+		Icon Dis_Business
 		Cost 
 		{
 			BC 10000
@@ -86,46 +134,40 @@ Buildings
 		{
 			BC 
 			{
-				PerPop 30
+				PerPop 40
 				SystemPerPopMultiplier 200
-			}
-			Influence 
-			{
-				PerPop 10
 			}
 		}
 		Control State_or_Private
 	}
-	Building Media_District
+	Building Culture_District
 	{
-		Type Urban_District
-		ChangeTo Business_District
-		ChangeTo Urban_District
+		Type State_District
+		DistrictIdx 5
+		PrivatizeTo Urban_District
 		Color c_ff0084
+		Icon Dis_Cultural
 		Cost 
 		{
 			BC 10000
 		}
 		Benefit 
 		{
-			BC 
-			{
-				PerPop 10
-			}
 			Influence 
 			{
-				PerPop 30
+				PerPop 40
 				SystemPerPopMultiplier 200
 			}
 		}
 		Control State_or_Private
 	}
-	Building Research_District
+	Building Tech_District
 	{
-		Type Industrial_District
-		ChangeTo Shipyard_District
-		ChangeTo Industrial_District
+		Type State_District
+		DistrictIdx 6
+		PrivatizeTo Industrial_District
 		Color c_00c6b6
+		Icon Dis_Technological
 		Cost 
 		{
 			BC 10000
@@ -134,35 +176,28 @@ Buildings
 		{
 			Research 
 			{
-				PerPop 30
+				PerPop 40
 				SystemPerPopMultiplier 200
-			}
-			Shipbuilding 
-			{
-				PerPop 10
 			}
 		}
 		Control State_or_Private
 	}
 	Building Shipyard_District
 	{
-		Type Industrial_District
-		ChangeTo Research_District
-		ChangeTo Industrial_District
+		Type State_District
+		DistrictIdx 7
+		PrivatizeTo Industrial_District
 		Color c_e90000
+		Icon Dis_Manufacturing
 		Cost 
 		{
 			BC 10000
 		}
 		Benefit 
 		{
-			Research 
-			{
-				PerPop 10
-			}
 			Shipbuilding 
 			{
-				PerPop 30
+				PerPop 40
 				SystemPerPopMultiplier 200
 			}
 		}
@@ -171,8 +206,7 @@ Buildings
 	Building Orbital_Forum
 	{
 		Type Station
-		ChangeTo Research_Station
-		ChangeTo Orbital_Shipyard
+		PrivatizeTo Private_Orbital_Forum
 		Color c_ff0084
 		Cost 
 		{
@@ -182,7 +216,7 @@ Buildings
 		{
 			Influence 
 			{
-				Base 20
+				PerLevel 20
 				SystemPerPop 10
 			}
 		}
@@ -191,8 +225,7 @@ Buildings
 	Building Research_Station
 	{
 		Type Station
-		ChangeTo Orbital_Forum
-		ChangeTo Orbital_Shipyard
+		PrivatizeTo Private_Research_Station
 		Color c_00c6b6
 		Cost 
 		{
@@ -202,7 +235,7 @@ Buildings
 		{
 			Research 
 			{
-				Base 20
+				PerLevel 20
 				SystemPerPop 10
 			}
 		}
@@ -211,8 +244,7 @@ Buildings
 	Building Orbital_Shipyard
 	{
 		Type Station
-		ChangeTo Orbital_Forum
-		ChangeTo Research_Station
+		PrivatizeTo Private_Orbital_Shipyard
 		Color c_e90000
 		Cost 
 		{
@@ -222,7 +254,7 @@ Buildings
 		{
 			Shipbuilding 
 			{
-				Base 20
+				PerLevel 20
 				SystemPerPop 10
 			}
 		}
@@ -231,8 +263,7 @@ Buildings
 	Building Asteroid_Market
 	{
 		Type Base
-		ChangeTo Asteroid_Labs
-		ChangeTo Asteroid_Shipyard
+		PrivatizeTo Private_Asteroid_Market
 		Color c_fbe52d
 		Cost 
 		{
@@ -242,7 +273,7 @@ Buildings
 		{
 			BC 
 			{
-				Base 20
+				PerLevel 20
 				SystemPerPop 10
 			}
 		}
@@ -251,8 +282,7 @@ Buildings
 	Building Asteroid_Labs
 	{
 		Type Base
-		ChangeTo Asteroid_Market
-		ChangeTo Asteroid_Shipyard
+		PrivatizeTo Private_Asteroid_Labs
 		Color c_00c6b6
 		Cost 
 		{
@@ -262,7 +292,7 @@ Buildings
 		{
 			Research 
 			{
-				Base 20
+				PerLevel 20
 				SystemPerPop 10
 			}
 		}
@@ -271,8 +301,7 @@ Buildings
 	Building Asteroid_Shipyard
 	{
 		Type Base
-		ChangeTo Asteroid_Market
-		ChangeTo Asteroid_Labs
+		PrivatizeTo Private_Asteroid_Shipyard
 		Color c_e90000
 		Cost 
 		{
@@ -282,7 +311,7 @@ Buildings
 		{
 			Shipbuilding 
 			{
-				Base 20
+				PerLevel 20
 				SystemPerPop 10
 			}
 		}
@@ -291,8 +320,7 @@ Buildings
 	Building Trade_Outpost
 	{
 		Type Outpost
-		ChangeTo Turism_Outpost
-		ChangeTo Farming_Outpost
+		PrivatizeTo Private_Trade_Outpost
 		Color fc_be52d
 		Cost 
 		{
@@ -302,7 +330,7 @@ Buildings
 		{
 			BC 
 			{
-				Base 20
+				PerLevel 20
 				SystemPerPop 10
 			}
 		}
@@ -311,8 +339,7 @@ Buildings
 	Building Turism_Outpost
 	{
 		Type Outpost
-		ChangeTo Trade_Outpost
-		ChangeTo Farming_Outpost
+		PrivatizeTo Private_Turism_Outpost
 		Color c_ff0084
 		Cost 
 		{
@@ -322,7 +349,7 @@ Buildings
 		{
 			Influence 
 			{
-				Base 20
+				PerLevel 20
 				SystemPerPop 10
 			}
 		}
@@ -331,8 +358,7 @@ Buildings
 	Building Farming_Outpost
 	{
 		Type Outpost
-		ChangeTo Trade_Outpost
-		ChangeTo Turism_Outpost
+		PrivatizeTo Private_Farming_Outpost
 		Color c_00a50c
 		Cost 
 		{
@@ -342,7 +368,261 @@ Buildings
 		{
 			Growth 
 			{
-				Base 40
+				Base 20
+				PerLevel 20
+			}
+		}
+		Control State_or_Private
+	}
+	Building Private_Orbital_Forum
+	{
+		Type Station
+		NationalizeTo Orbital_Forum
+		Color c_ff0084
+		Cost 
+		{
+			BC 15000
+		}
+		Benefit 
+		{
+			Extra 
+			{
+				Tax_1_PerLevel 0
+				Tax_2_PerLevel 5
+				Tax_3_PerLevel 10
+			}
+			BC 
+			{
+				PerLevel 10
+			}
+			Influence 
+			{
+				PerLevel 10
+				SystemPerPop 10
+			}
+		}
+		Control State_or_Private
+	}
+	Building Private_Research_Station
+	{
+		Type Station
+		NationalizeTo Research_Station
+		Color c_00c6b6
+		Cost 
+		{
+			BC 15000
+		}
+		Benefit 
+		{
+			Extra 
+			{
+				Tax_1_PerLevel 0
+				Tax_2_PerLevel 5
+				Tax_3_PerLevel 10
+			}
+			BC 
+			{
+				PerLevel 10
+			}
+			Research 
+			{
+				PerLevel 10
+				SystemPerPop 10
+			}
+		}
+		Control State_or_Private
+	}
+	Building Private_Orbital_Shipyard
+	{
+		Type Station
+		NationalizeTo Orbital_Shipyard
+		Color c_e90000
+		Cost 
+		{
+			BC 15000
+		}
+		Benefit 
+		{
+			Extra 
+			{
+				Tax_1_PerLevel 0
+				Tax_2_PerLevel 5
+				Tax_3_PerLevel 10
+			}
+			BC 
+			{
+				PerLevel 10
+			}
+			Shipbuilding 
+			{
+				PerLevel 10
+				SystemPerPop 10
+			}
+		}
+		Control State_or_Private
+	}
+	Building Private_Asteroid_Market
+	{
+		Type Base
+		NationalizeTo Asteroid_Market
+		Color c_fbe52d
+		Cost 
+		{
+			BC 10000
+		}
+		Benefit 
+		{
+			Extra 
+			{
+				Tax_1_PerLevel 0
+				Tax_2_PerLevel 5
+				Tax_3_PerLevel 10
+			}
+			BC 
+			{
+				PerLevel 20
+				SystemPerPop 10
+			}
+		}
+		Control State_or_Private
+	}
+	Building Private_Asteroid_Labs
+	{
+		Type Base
+		NationalizeTo Asteroid_Labs
+		Color c_00c6b6
+		Cost 
+		{
+			BC 10000
+		}
+		Benefit 
+		{
+			Extra 
+			{
+				Tax_1_PerLevel 0
+				Tax_2_PerLevel 5
+				Tax_3_PerLevel 10
+			}
+			BC 
+			{
+				PerLevel 10
+			}
+			Research 
+			{
+				PerLevel 10
+				SystemPerPop 10
+			}
+		}
+		Control State_or_Private
+	}
+	Building Private_Asteroid_Shipyard
+	{
+		Type Base
+		NationalizeTo Asteroid_Shipyard
+		Color c_e90000
+		Cost 
+		{
+			BC 10000
+		}
+		Benefit 
+		{
+			Extra 
+			{
+				Tax_1_PerLevel 0
+				Tax_2_PerLevel 5
+				Tax_3_PerLevel 10
+			}
+			BC 
+			{
+				PerLevel 10
+			}
+			Shipbuilding 
+			{
+				PerLevel 10
+				SystemPerPop 10
+			}
+		}
+		Control State_or_Private
+	}
+	Building Private_Trade_Outpost
+	{
+		Type Outpost
+		NationalizeTo Trade_Outpost
+		Color fc_be52d
+		Cost 
+		{
+			BC 5000
+		}
+		Benefit 
+		{
+			Extra 
+			{
+				Tax_1_PerLevel 0
+				Tax_2_PerLevel 5
+				Tax_3_PerLevel 10
+			}
+			BC 
+			{
+				PerLevel 20
+				SystemPerPop 10
+			}
+		}
+		Control State_or_Private
+	}
+	Building Private_Turism_Outpost
+	{
+		Type Outpost
+		NationalizeTo Turism_Outpost
+		Color c_ff0084
+		Cost 
+		{
+			BC 5000
+		}
+		Benefit 
+		{
+			Extra 
+			{
+				Tax_1_PerLevel 0
+				Tax_2_PerLevel 5
+				Tax_3_PerLevel 10
+			}
+			BC 
+			{
+				PerLevel 10
+			}
+			Influence 
+			{
+				PerLevel 10
+				SystemPerPop 10
+			}
+		}
+		Control State_or_Private
+	}
+	Building Private_Farming_Outpost
+	{
+		Type Outpost
+		NationalizeTo Farming_Outpost
+		Color c_00a50c
+		Cost 
+		{
+			BC 5000
+		}
+		Benefit 
+		{
+			Extra 
+			{
+				Tax_1_PerLevel 0
+				Tax_2_PerLevel 5
+				Tax_3_PerLevel 10
+			}
+			BC 
+			{
+				PerLevel 10
+			}
+			Growth 
+			{
+				Base 10
+				PerLevel 10
 			}
 		}
 		Control State_or_Private

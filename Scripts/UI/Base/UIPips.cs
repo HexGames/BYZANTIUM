@@ -10,12 +10,13 @@ public partial class UIPips : Control
     public override void _Ready()
     {
         Pips.Clear();
+        int i = 0;
         for (int idx = 0; idx < GetChildCount(); idx++)
         {
             Node node = GetChild(idx);
             if (node is Control)
             {
-                Pips.Add(node as Control);
+                Pips.Add(node.GetNode<Control>("On"));
             }
         }
     }

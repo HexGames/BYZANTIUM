@@ -1,24 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://dffvv6bxptssj"]
+[gd_scene load_steps=23 format=3 uid="uid://dffvv6bxptssj"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistricts.cs" id="1_jswm3"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="2_cxagv"]
 [ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="3_pndkb"]
 [ext_resource type="Texture2D" uid="uid://bbagni3jxhnj7" path="res://Assets/UI/Round.png" id="4_skl03"]
 [ext_resource type="Texture2D" uid="uid://virwpva0gl1" path="res://Assets/Buttons/A_S_Deselect.png" id="6_wmpsw"]
-[ext_resource type="Texture2D" uid="uid://do4kxdmqjroy5" path="res://Assets/UI/HexTopL.png" id="11_r1mph"]
-[ext_resource type="Texture2D" uid="uid://cgxn711xah0pl" path="res://Assets/UI/HexTopR.png" id="12_owhpe"]
+[ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistrictsGroupPlanet.cs" id="8_4v411"]
+[ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistrictsGroupPlanetItem.cs" id="9_0ap12"]
 [ext_resource type="Texture2D" uid="uid://70jr8aqayaxd" path="res://Assets/UI/Symbols/SinglePop.png" id="13_4us68"]
 [ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="14_4lnxk"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UIActionButton.cs" id="15_d3gtx"]
-[ext_resource type="Texture2D" uid="uid://cej1hchxlgepy" path="res://Assets/UI/hex.png" id="16_evjk5"]
-[ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistrictsPlanetDistrictPopsItem.cs" id="16_tcd5a"]
 [ext_resource type="Texture2D" uid="uid://bkwxg68uku243" path="res://Assets/Planets/UI/Terra.png" id="17_p3a3x"]
-[ext_resource type="Texture2D" uid="uid://clbkwdhivfjdb" path="res://Assets/UI/HexTop.png" id="17_u2u64"]
-[ext_resource type="Texture2D" uid="uid://d3osvybsyndgl" path="res://Assets/UI/HexLeft.png" id="18_2suhn"]
-[ext_resource type="Texture2D" uid="uid://dx4mpa2n8l38v" path="res://Assets/UI/HexRight.png" id="19_8l0ps"]
+[ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistrictsGroupPlanetPopsItem.cs" id="17_s2425"]
+[ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistrictsGroupPlanetPops.cs" id="19_31cew"]
 [ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistrictsGroup.cs" id="21_g34pf"]
-[ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistrictsGroupDistrict.cs" id="22_lkuj4"]
-[ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistrictsPlanetDistrictPops.cs" id="23_qvhwg"]
+[ext_resource type="Theme" uid="uid://c7c0v052shvh4" path="res://UITheme/PanelButtonTextured.tres" id="22_be2cl"]
+[ext_resource type="Texture2D" uid="uid://bmfwe36vo3gbn" path="res://Assets/Panels/OverlayTop.png" id="23_rb5yq"]
+[ext_resource type="Texture2D" uid="uid://t0pfbwka66tm" path="res://Assets/Panels/OverlayTopLeft.png" id="24_h67hu"]
+[ext_resource type="Texture2D" uid="uid://cmw748nutq2ga" path="res://Assets/Panels/OverlayBotomRight.png" id="25_fbht8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctg52"]
 bg_color = Color(0.686275, 0.431373, 0.156863, 1)
@@ -27,8 +26,29 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0sskc"]
-bg_color = Color(0.188235, 0.188235, 0.188235, 0.752941)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ihhv2"]
+texture = ExtResource("23_rb5yq")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(4, 4, 120, 120)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b0sgh"]
+texture = ExtResource("25_fbht8")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(4, 4, 120, 120)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_11gdw"]
+texture = ExtResource("24_h67hu")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(4, 4, 120, 120)
 
 [node name="SystemDistricts" type="Control" node_paths=PackedStringArray("Selected", "SelectedPlanet", "All", "AllPlanets")]
 layout_mode = 3
@@ -40,35 +60,40 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_jswm3")
 Selected = NodePath("Selected")
-SelectedPlanet = NodePath("Selected")
-All = NodePath("All")
-AllPlanets = [NodePath("All/DistrictGroup_0")]
+SelectedPlanet = NodePath("Selected/Planet")
+All = NodePath("System")
+AllPlanets = [NodePath("System/VBoxContainer/Orbit_0")]
 
-[node name="All" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(480, 0)
+[node name="System" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -480.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/separation = 104
+mouse_filter = 0
+theme_override_constants/separation = 48
 alignment = 1
 
-[node name="DistrictGroup_0" type="HBoxContainer" parent="All"]
+[node name="VBoxContainer" type="VBoxContainer" parent="System"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Orbit_0" type="HBoxContainer" parent="System/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 0
 alignment = 2
 script = ExtResource("21_g34pf")
 
-[node name="BuildBg" type="Control" parent="All/DistrictGroup_0"]
+[node name="BuildBg" type="Control" parent="System/VBoxContainer/Orbit_0"]
+visible = false
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Build" type="TextureButton" parent="All/DistrictGroup_0/BuildBg"]
+[node name="Build" type="TextureButton" parent="System/VBoxContainer/Orbit_0/BuildBg"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 8
@@ -90,7 +115,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("15_d3gtx")
 
-[node name="Card" type="Panel" parent="All/DistrictGroup_0/BuildBg/Build"]
+[node name="Card" type="Panel" parent="System/VBoxContainer/Orbit_0/BuildBg/Build"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 1
 anchors_preset = -1
@@ -107,7 +132,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ctg52")
 
-[node name="ID" type="RichTextLabel" parent="All/DistrictGroup_0/BuildBg/Build/Card"]
+[node name="ID" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/BuildBg/Build/Card"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -127,7 +152,7 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="Cost" type="RichTextLabel" parent="All/DistrictGroup_0/BuildBg/Build"]
+[node name="Cost" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/BuildBg/Build"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -145,7 +170,7 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="All/DistrictGroup_0/BuildBg/Build"]
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/BuildBg/Build"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,23 +186,1029 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="Gap_Button" type="Control" parent="All/DistrictGroup_0"]
+[node name="Gap_Button" type="Control" parent="System/VBoxContainer/Orbit_0"]
+visible = false
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
+mouse_filter = 2
 
-[node name="DistrictList" type="HBoxContainer" parent="All/DistrictGroup_0"]
+[node name="PlanetList" type="HBoxContainer" parent="System/VBoxContainer/Orbit_0"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 120
+mouse_filter = 2
+theme_override_constants/separation = 16
 alignment = 2
 
-[node name="District_0" type="Control" parent="All/DistrictGroup_0/DistrictList"]
+[node name="Planet_0" type="HBoxContainer" parent="System/VBoxContainer/Orbit_0/PlanetList"]
 layout_mode = 2
-script = ExtResource("22_lkuj4")
+mouse_filter = 2
+theme_override_constants/separation = -4
+script = ExtResource("8_4v411")
 
-[node name="Bg" type="TextureRect" parent="All/DistrictGroup_0/DistrictList/District_0"]
-self_modulate = Color(0.0941176, 0.0941176, 0.0941176, 0.752941)
-custom_minimum_size = Vector2(128, 128)
+[node name="Shipyard" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard"]
+custom_minimum_size = Vector2(24, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Bottom"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][img=32x32]Assets/UI/Symbols/Shipbuilding.png[/img][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard"]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Research" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research"]
+custom_minimum_size = Vector2(24, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Bottom"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][img=32x32]Assets/UI/Symbols/Research.png[/img][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research"]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Bank" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank"]
+custom_minimum_size = Vector2(24, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Bottom"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][img=32x32]Assets/UI/Symbols/BC.png[/img][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank"]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Culture" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture"]
+custom_minimum_size = Vector2(24, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Bottom"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][img=32x32]Assets/UI/Symbols/Influence.png[/img][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture"]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Farm" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm"]
+custom_minimum_size = Vector2(24, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Bottom"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][img=32x32]Assets/UI/Symbols/Growth.png[/img][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm"]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Industrial" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Panel"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Panel"]
+visible = false
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial"]
+custom_minimum_size = Vector2(24, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Bottom"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -12.5
+offset_right = -2.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[left][img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img][/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Bottom2" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Bottom"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -12.5
+offset_right = -2.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[right][img=24x24]Assets/UI/Symbols/Research.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial"]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Urban" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Panel"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Panel"]
+visible = false
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban"]
+custom_minimum_size = Vector2(24, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Bottom"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -12.5
+offset_right = -2.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[left][img=24x24]Assets/UI/Symbols/BC.png[/img][/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Bottom2" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Bottom"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -12.5
+offset_right = -2.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[right][img=24x24]Assets/UI/Symbols/Influence.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban"]
+custom_minimum_size = Vector2(24, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Planet" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+clip_children = 1
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
+visible = false
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="PopMax" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
+self_modulate = Color(0, 1, 0, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_b0sgh")
+
+[node name="Rural" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_11gdw")
+
+[node name="Round" type="TextureRect" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
+self_modulate = Color(0.12549, 0.12549, 0.12549, 1)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -190,153 +1221,50 @@ offset_right = 40.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("16_evjk5")
-expand_mode = 1
-
-[node name="Top" type="TextureRect" parent="All/DistrictGroup_0/DistrictList/District_0/Bg"]
-self_modulate = Color(0.984314, 0.898039, 0.176471, 1)
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("17_u2u64")
-expand_mode = 1
-
-[node name="Left" type="TextureRect" parent="All/DistrictGroup_0/DistrictList/District_0/Bg/Top"]
-visible = false
-self_modulate = Color(0.415686, 1, 0.890196, 1)
-custom_minimum_size = Vector2(112, 112)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_r1mph")
-expand_mode = 1
-
-[node name="Right" type="TextureRect" parent="All/DistrictGroup_0/DistrictList/District_0/Bg/Top"]
-visible = false
-self_modulate = Color(0.415686, 1, 0.890196, 1)
-custom_minimum_size = Vector2(112, 112)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_owhpe")
-expand_mode = 1
-
-[node name="Left" type="TextureRect" parent="All/DistrictGroup_0/DistrictList/District_0/Bg"]
-self_modulate = Color(0, 0.647059, 0.0470588, 1)
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("18_2suhn")
-expand_mode = 1
-
-[node name="Right" type="TextureRect" parent="All/DistrictGroup_0/DistrictList/District_0/Bg"]
-self_modulate = Color(1, 0.501961, 0, 1)
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("19_8l0ps")
-expand_mode = 1
-
-[node name="Round" type="TextureRect" parent="All/DistrictGroup_0/DistrictList/District_0/Bg"]
-self_modulate = Color(0.12549, 0.12549, 0.12549, 1)
-custom_minimum_size = Vector2(72, 72)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -36.0
-offset_right = 36.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_skl03")
 expand_mode = 1
 
-[node name="BoxContainer" type="BoxContainer" parent="All/DistrictGroup_0/DistrictList/District_0/Bg/Round"]
+[node name="BoxContainer" type="BoxContainer" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel/Round"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
-[node name="Planet" type="TextureRect" parent="All/DistrictGroup_0/DistrictList/District_0/Bg/Round/BoxContainer"]
+[node name="Planet" type="TextureRect" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel/Round/BoxContainer"]
 self_modulate = Color(1, 1, 1, 0.752941)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("17_p3a3x")
 expand_mode = 1
 
-[node name="Info" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0"]
-custom_minimum_size = Vector2(128, 128)
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Feature" type="TextureRect" parent="All/DistrictGroup_0/DistrictList/District_0/Info"]
-visible = false
-modulate = Color(0.12549, 0.12549, 0.12549, 1)
+[node name="Feature" type="TextureRect" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+self_modulate = Color(0.25098, 0.25098, 0.25098, 1)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -32.0
-offset_right = 16.0
+offset_top = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
@@ -344,7 +1272,7 @@ mouse_filter = 2
 texture = ExtResource("4_skl03")
 expand_mode = 1
 
-[node name="ToolTip" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info/Feature"]
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Feature"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -360,42 +1288,42 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="ProductionBg" type="Panel" parent="All/DistrictGroup_0/DistrictList/District_0/Info"]
-custom_minimum_size = Vector2(108, 24)
+[node name="Resource" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+custom_minimum_size = Vector2(32, 40)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0sskc")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 32.0
+grow_vertical = 0
+mouse_filter = 2
 
-[node name="Production" type="RichTextLabel" parent="All/DistrictGroup_0/DistrictList/District_0/Info"]
+[node name="Resource" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Resource"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -16.0
-offset_bottom = -16.0
+offset_top = -12.5
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
 size_flags_vertical = 4
 mouse_filter = 2
 theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[center]$value[/center]"
+text = "[center]$r[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info/Production"]
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Resource"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -411,22 +1339,168 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="Pops" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info"]
-custom_minimum_size = Vector2(24, 40)
+[node name="Pops" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+custom_minimum_size = Vector2(32, 40)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Pops" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops"]
+layout_mode = 1
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = 24.0
-offset_right = -44.0
-offset_bottom = 24.0
+offset_top = -12.5
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
 
-[node name="Pops" type="RichTextLabel" parent="All/DistrictGroup_0/DistrictList/District_0/Info/Pops"]
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Rural" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+
+[node name="Rural" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Rural"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Rural"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Level" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+
+[node name="Level" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Level"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Level"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="LevelTime" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="LevelTime" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/LevelTime"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -442,13 +1516,13 @@ theme = ExtResource("2_cxagv")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 bbcode_enabled = true
-text = "[center][b]$[/b][/center]"
+text = "[center][b]$[/b][img=20x20]Assets/UI/Symbols/TurnO.png[/img][/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info/Pops"]
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/LevelTime"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -464,22 +1538,18 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="Level" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info"]
-custom_minimum_size = Vector2(24, 40)
+[node name="PopsTime" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 44.0
-offset_top = 24.0
-offset_right = 44.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_filter = 2
 
-[node name="Level" type="RichTextLabel" parent="All/DistrictGroup_0/DistrictList/District_0/Info/Level"]
+[node name="PopsTime" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsTime"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -495,13 +1565,13 @@ theme = ExtResource("2_cxagv")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 bbcode_enabled = true
-text = "[center][b]$[/b][/center]"
+text = "[center][b]$[/b][img=20x20]Assets/UI/Symbols/TurnO.png[/img][/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info/Level"]
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsTime"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -517,59 +1587,7 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="Private" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info"]
-custom_minimum_size = Vector2(40, 24)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -46.0
-offset_bottom = -46.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Private" type="RichTextLabel" parent="All/DistrictGroup_0/DistrictList/District_0/Info/Private"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-mouse_filter = 2
-theme = ExtResource("2_cxagv")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-bbcode_enabled = true
-text = "[center][b]$[/b][/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("3_pndkb")
-
-[node name="ToolTip" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info/Private"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
-[node name="ExtraPops" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info"]
-custom_minimum_size = Vector2(40, 24)
+[node name="PlanetTooltipBg" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -577,35 +1595,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -58.0
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = -34.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ExtraPops" type="RichTextLabel" parent="All/DistrictGroup_0/DistrictList/District_0/Info/ExtraPops"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-mouse_filter = 2
-theme = ExtResource("2_cxagv")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-bbcode_enabled = true
-text = "[center][b]$[/b][/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("3_pndkb")
-
-[node name="ToolTip" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info/ExtraPops"]
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PlanetTooltipBg"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -621,68 +1617,13 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="MaxPops" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info"]
-custom_minimum_size = Vector2(24, 40)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 44.0
-offset_top = 24.0
-offset_right = 44.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MaxPops" type="RichTextLabel" parent="All/DistrictGroup_0/DistrictList/District_0/Info/MaxPops"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
+[node name="Gap" type="Control" parent="System/VBoxContainer/Orbit_0"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("2_cxagv")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-bbcode_enabled = true
-text = "[center][b]$[/b][/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("3_pndkb")
-
-[node name="ToolTip" type="Control" parent="All/DistrictGroup_0/DistrictList/District_0/Info/MaxPops"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
-[node name="Gap_Odd" type="Control" parent="All/DistrictGroup_0"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-
-[node name="Gap_Even" type="Control" parent="All/DistrictGroup_0"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
 
 [node name="Selected" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -694,81 +1635,134 @@ offset_right = -16.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 0
-script = ExtResource("21_g34pf")
 
-[node name="BuildBg" type="HBoxContainer" parent="Selected"]
-custom_minimum_size = Vector2(256, 48)
+[node name="Planet" type="VBoxContainer" parent="Selected"]
 layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+theme_override_constants/separation = -4
+script = ExtResource("8_4v411")
 
-[node name="Build" type="TextureButton" parent="Selected/BuildBg"]
-custom_minimum_size = Vector2(48, 48)
+[node name="Shipyard" type="Control" parent="Selected/Planet"]
+custom_minimum_size = Vector2(96, 48)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-focus_mode = 0
-texture_normal = ExtResource("6_wmpsw")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("15_d3gtx")
+script = ExtResource("9_0ap12")
 
-[node name="Card" type="Panel" parent="Selected/BuildBg/Build"]
-custom_minimum_size = Vector2(24, 24)
+[node name="Panel" type="Panel" parent="Selected/Planet/Shipyard"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -4.0
-offset_right = -4.0
-offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ctg52")
+theme = ExtResource("22_be2cl")
 
-[node name="ID" type="RichTextLabel" parent="Selected/BuildBg/Build/Card"]
+[node name="Private" type="Panel" parent="Selected/Planet/Shipyard/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="Selected/Planet/Shipyard/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="Selected/Planet/Shipyard/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="Selected/Planet/Shipyard"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="Selected/Planet/Shipyard/Bottom"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 10.0
+offset_top = -12.5
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[center]$v[/center]"
+text = "[center][img=32x32]Assets/UI/Symbols/Shipbuilding.png[/img][/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="Cost" type="RichTextLabel" parent="Selected/BuildBg/Build"]
-custom_minimum_size = Vector2(32, 0)
+[node name="Top" type="Control" parent="Selected/Planet/Shipyard"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-grow_horizontal = 0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="Selected/Planet/Shipyard/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[right]$v[img=24x24]Assets/UI/Symbols/Influence.png[/img][/right]"
+text = "[center][b]$[/b][/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/BuildBg/Build"]
+[node name="ToolTip" type="Control" parent="Selected/Planet/Shipyard"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -784,41 +1778,26 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="Gap_Even" type="Control" parent="Selected/BuildBg"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
+[node name="Pops" type="HBoxContainer" parent="Selected/Planet/Shipyard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_31cew")
 
-[node name="Gap_Odd" type="Control" parent="Selected/BuildBg"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-
-[node name="Gap2" type="Control" parent="Selected"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-
-[node name="DistrictList" type="VBoxContainer" parent="Selected"]
-layout_mode = 2
-theme_override_constants/separation = 72
-
-[node name="District_0" type="HBoxContainer" parent="Selected/DistrictList"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_constants/separation = 0
-alignment = 2
-script = ExtResource("22_lkuj4")
-
-[node name="Pops" type="HBoxContainer" parent="Selected/DistrictList/District_0"]
-layout_mode = 2
-script = ExtResource("23_qvhwg")
-
-[node name="Pop_0" type="Control" parent="Selected/DistrictList/District_0/Pops"]
+[node name="Pop_0" type="Control" parent="Selected/Planet/Shipyard/Pops"]
 custom_minimum_size = Vector2(16, 32)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
-script = ExtResource("16_tcd5a")
+script = ExtResource("17_s2425")
 
-[node name="TextureRect" type="TextureRect" parent="Selected/DistrictList/District_0/Pops/Pop_0"]
+[node name="TextureRect" type="TextureRect" parent="Selected/Planet/Shipyard/Pops/Pop_0"]
 custom_minimum_size = Vector2(16, 40)
 layout_mode = 1
 anchors_preset = 8
@@ -836,7 +1815,7 @@ mouse_filter = 2
 texture = ExtResource("13_4us68")
 expand_mode = 1
 
-[node name="ToolTip" type="Control" parent="Selected/DistrictList/District_0/Pops/Pop_0/TextureRect"]
+[node name="ToolTip" type="Control" parent="Selected/Planet/Shipyard/Pops/Pop_0/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -852,16 +1831,1249 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="Gap" type="Control" parent="Selected/DistrictList/District_0"]
-custom_minimum_size = Vector2(64, 0)
+[node name="Research" type="Control" parent="Selected/Planet"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="Selected/Planet/Research"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="Selected/Planet/Research/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="Selected/Planet/Research/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="Selected/Planet/Research/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="Selected/Planet/Research"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="Selected/Planet/Research/Bottom"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][img=32x32]Assets/UI/Symbols/Research.png[/img][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="Selected/Planet/Research"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="Selected/Planet/Research/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Research"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pops" type="HBoxContainer" parent="Selected/Planet/Research"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_31cew")
+
+[node name="Pop_0" type="Control" parent="Selected/Planet/Research/Pops"]
+custom_minimum_size = Vector2(16, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("17_s2425")
+
+[node name="TextureRect" type="TextureRect" parent="Selected/Planet/Research/Pops/Pop_0"]
+custom_minimum_size = Vector2(16, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_4us68")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Research/Pops/Pop_0/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Bank" type="Control" parent="Selected/Planet"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="Selected/Planet/Bank"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="Selected/Planet/Bank/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="Selected/Planet/Bank/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="Selected/Planet/Bank/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="Selected/Planet/Bank"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="Selected/Planet/Bank/Bottom"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][img=32x32]Assets/UI/Symbols/BC.png[/img][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="Selected/Planet/Bank"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="Selected/Planet/Bank/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Bank"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pops" type="HBoxContainer" parent="Selected/Planet/Bank"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_31cew")
+
+[node name="Pop_0" type="Control" parent="Selected/Planet/Bank/Pops"]
+custom_minimum_size = Vector2(16, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("17_s2425")
+
+[node name="TextureRect" type="TextureRect" parent="Selected/Planet/Bank/Pops/Pop_0"]
+custom_minimum_size = Vector2(16, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_4us68")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Bank/Pops/Pop_0/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Culture" type="Control" parent="Selected/Planet"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="Selected/Planet/Culture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="Selected/Planet/Culture/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="Selected/Planet/Culture/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="Selected/Planet/Culture/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="Selected/Planet/Culture"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="Selected/Planet/Culture/Bottom"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][img=32x32]Assets/UI/Symbols/Influence.png[/img][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="Selected/Planet/Culture"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="Selected/Planet/Culture/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Culture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pops" type="HBoxContainer" parent="Selected/Planet/Culture"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_31cew")
+
+[node name="Pop_0" type="Control" parent="Selected/Planet/Culture/Pops"]
+custom_minimum_size = Vector2(16, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("17_s2425")
+
+[node name="TextureRect" type="TextureRect" parent="Selected/Planet/Culture/Pops/Pop_0"]
+custom_minimum_size = Vector2(16, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_4us68")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Culture/Pops/Pop_0/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Farm" type="Control" parent="Selected/Planet"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="Selected/Planet/Farm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="Selected/Planet/Farm/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="Selected/Planet/Farm/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="Selected/Planet/Farm/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="Selected/Planet/Farm"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="Selected/Planet/Farm/Bottom"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][img=32x32]Assets/UI/Symbols/Growth.png[/img][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="Selected/Planet/Farm"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="Selected/Planet/Farm/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Farm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pops" type="HBoxContainer" parent="Selected/Planet/Farm"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_31cew")
+
+[node name="Pop_0" type="Control" parent="Selected/Planet/Farm/Pops"]
+custom_minimum_size = Vector2(16, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("17_s2425")
+
+[node name="TextureRect" type="TextureRect" parent="Selected/Planet/Farm/Pops/Pop_0"]
+custom_minimum_size = Vector2(16, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_4us68")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Farm/Pops/Pop_0/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Industrial" type="Control" parent="Selected/Planet"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="Selected/Planet/Industrial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="Selected/Planet/Industrial/Panel"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="Selected/Planet/Industrial/Panel"]
+visible = false
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="Selected/Planet/Industrial/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="Selected/Planet/Industrial"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="Selected/Planet/Industrial/Bottom"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -12.5
+offset_right = -2.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[left][img=24x24]Assets/UI/Symbols/Shipbuilding.png[/img][/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Bottom2" type="RichTextLabel" parent="Selected/Planet/Industrial/Bottom"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -12.5
+offset_right = -2.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[right][img=24x24]Assets/UI/Symbols/Research.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="Selected/Planet/Industrial"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="Selected/Planet/Industrial/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Industrial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pops" type="HBoxContainer" parent="Selected/Planet/Industrial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_31cew")
+
+[node name="Pop_0" type="Control" parent="Selected/Planet/Industrial/Pops"]
+custom_minimum_size = Vector2(16, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("17_s2425")
+
+[node name="TextureRect" type="TextureRect" parent="Selected/Planet/Industrial/Pops/Pop_0"]
+custom_minimum_size = Vector2(16, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_4us68")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Industrial/Pops/Pop_0/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Urban" type="Control" parent="Selected/Planet"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="Selected/Planet/Urban"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="Selected/Planet/Urban/Panel"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="Selected/Planet/Urban/Panel"]
+visible = false
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="Selected/Planet/Urban/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="Selected/Planet/Urban"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bottom" type="RichTextLabel" parent="Selected/Planet/Urban/Bottom"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -12.5
+offset_right = -2.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[left][img=24x24]Assets/UI/Symbols/BC.png[/img][/left]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Bottom2" type="RichTextLabel" parent="Selected/Planet/Urban/Bottom"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -12.5
+offset_right = -2.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[right][img=24x24]Assets/UI/Symbols/Influence.png[/img][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="Top" type="Control" parent="Selected/Planet/Urban"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Top" type="RichTextLabel" parent="Selected/Planet/Urban/Top"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Urban"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Pops" type="HBoxContainer" parent="Selected/Planet/Urban"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_31cew")
+
+[node name="Pop_0" type="Control" parent="Selected/Planet/Urban/Pops"]
+custom_minimum_size = Vector2(16, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("17_s2425")
+
+[node name="TextureRect" type="TextureRect" parent="Selected/Planet/Urban/Pops/Pop_0"]
+custom_minimum_size = Vector2(16, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_4us68")
+expand_mode = 1
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Urban/Pops/Pop_0/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Planet" type="Control" parent="Selected/Planet"]
+clip_children = 1
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 
-[node name="District" type="Control" parent="Selected/DistrictList/District_0"]
-layout_mode = 2
+[node name="Panel" type="Panel" parent="Selected/Planet/Planet"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
 
-[node name="Bg" type="TextureRect" parent="Selected/DistrictList/District_0/District"]
-self_modulate = Color(0.0941176, 0.0941176, 0.0941176, 0.752941)
-custom_minimum_size = Vector2(128, 128)
+[node name="Private" type="Panel" parent="Selected/Planet/Planet/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="Selected/Planet/Planet/Panel"]
+visible = false
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="PopMax" type="Panel" parent="Selected/Planet/Planet/Panel"]
+self_modulate = Color(0, 1, 0, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_b0sgh")
+
+[node name="Rural" type="Panel" parent="Selected/Planet/Planet/Panel"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_11gdw")
+
+[node name="Round" type="TextureRect" parent="Selected/Planet/Planet/Panel"]
+self_modulate = Color(0.12549, 0.12549, 0.12549, 1)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -874,153 +3086,50 @@ offset_right = 40.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("16_evjk5")
-expand_mode = 1
-
-[node name="Top" type="TextureRect" parent="Selected/DistrictList/District_0/District/Bg"]
-self_modulate = Color(0.984314, 0.898039, 0.176471, 1)
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("17_u2u64")
-expand_mode = 1
-
-[node name="Left" type="TextureRect" parent="Selected/DistrictList/District_0/District/Bg/Top"]
-visible = false
-self_modulate = Color(0.415686, 1, 0.890196, 1)
-custom_minimum_size = Vector2(112, 112)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_r1mph")
-expand_mode = 1
-
-[node name="Right" type="TextureRect" parent="Selected/DistrictList/District_0/District/Bg/Top"]
-visible = false
-self_modulate = Color(0.415686, 1, 0.890196, 1)
-custom_minimum_size = Vector2(112, 112)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_owhpe")
-expand_mode = 1
-
-[node name="Left" type="TextureRect" parent="Selected/DistrictList/District_0/District/Bg"]
-self_modulate = Color(0, 0.647059, 0.0470588, 1)
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("18_2suhn")
-expand_mode = 1
-
-[node name="Right" type="TextureRect" parent="Selected/DistrictList/District_0/District/Bg"]
-self_modulate = Color(1, 0.501961, 0, 1)
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("19_8l0ps")
-expand_mode = 1
-
-[node name="Round" type="TextureRect" parent="Selected/DistrictList/District_0/District/Bg"]
-self_modulate = Color(0.12549, 0.12549, 0.12549, 1)
-custom_minimum_size = Vector2(72, 72)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -36.0
-offset_right = 36.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_skl03")
 expand_mode = 1
 
-[node name="BoxContainer" type="BoxContainer" parent="Selected/DistrictList/District_0/District/Bg/Round"]
+[node name="BoxContainer" type="BoxContainer" parent="Selected/Planet/Planet/Panel/Round"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
-[node name="Planet" type="TextureRect" parent="Selected/DistrictList/District_0/District/Bg/Round/BoxContainer"]
+[node name="Planet" type="TextureRect" parent="Selected/Planet/Planet/Panel/Round/BoxContainer"]
 self_modulate = Color(1, 1, 1, 0.752941)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("17_p3a3x")
 expand_mode = 1
 
-[node name="Info" type="Control" parent="Selected/DistrictList/District_0/District"]
-custom_minimum_size = Vector2(128, 128)
+[node name="Button" type="Button" parent="Selected/Planet/Planet/Panel"]
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Feature" type="TextureRect" parent="Selected/DistrictList/District_0/District/Info"]
-visible = false
-modulate = Color(0.12549, 0.12549, 0.12549, 1)
+[node name="Feature" type="TextureRect" parent="Selected/Planet/Planet"]
+self_modulate = Color(0.25098, 0.25098, 0.25098, 1)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -32.0
-offset_right = 16.0
+offset_top = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
@@ -1028,7 +3137,7 @@ mouse_filter = 2
 texture = ExtResource("4_skl03")
 expand_mode = 1
 
-[node name="ToolTip" type="Control" parent="Selected/DistrictList/District_0/District/Info/Feature"]
+[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/Feature"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1044,42 +3153,42 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="ProductionBg" type="Panel" parent="Selected/DistrictList/District_0/District/Info"]
-custom_minimum_size = Vector2(108, 24)
+[node name="Resource" type="Control" parent="Selected/Planet/Planet"]
+custom_minimum_size = Vector2(32, 40)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0sskc")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 32.0
+grow_vertical = 0
+mouse_filter = 2
 
-[node name="Production" type="RichTextLabel" parent="Selected/DistrictList/District_0/District/Info"]
+[node name="Resource" type="RichTextLabel" parent="Selected/Planet/Planet/Resource"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -16.0
-offset_bottom = -16.0
+offset_top = -12.5
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
 size_flags_vertical = 4
 mouse_filter = 2
 theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[center]$value[/center]"
+text = "[center]$r[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/DistrictList/District_0/District/Info/Production"]
+[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/Resource"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1095,22 +3204,168 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="Pops" type="Control" parent="Selected/DistrictList/District_0/District/Info"]
-custom_minimum_size = Vector2(24, 40)
+[node name="Pops" type="Control" parent="Selected/Planet/Planet"]
+custom_minimum_size = Vector2(32, 40)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Pops" type="RichTextLabel" parent="Selected/Planet/Planet/Pops"]
+layout_mode = 1
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = 24.0
-offset_right = -44.0
-offset_bottom = 24.0
+offset_top = -12.5
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
 
-[node name="Pops" type="RichTextLabel" parent="Selected/DistrictList/District_0/District/Info/Pops"]
+[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/Pops"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Rural" type="Control" parent="Selected/Planet/Planet"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+
+[node name="Rural" type="RichTextLabel" parent="Selected/Planet/Planet/Rural"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/Rural"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Level" type="Control" parent="Selected/Planet/Planet"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+
+[node name="Level" type="RichTextLabel" parent="Selected/Planet/Planet/Level"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_cxagv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]$[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_pndkb")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/Level"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="LevelTime" type="Control" parent="Selected/Planet/Planet"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="LevelTime" type="RichTextLabel" parent="Selected/Planet/Planet/LevelTime"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -1126,13 +3381,13 @@ theme = ExtResource("2_cxagv")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 bbcode_enabled = true
-text = "[center][b]$[/b][/center]"
+text = "[center][b]$[/b][img=20x20]Assets/UI/Symbols/TurnO.png[/img][/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/DistrictList/District_0/District/Info/Pops"]
+[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/LevelTime"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1148,22 +3403,18 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="Level" type="Control" parent="Selected/DistrictList/District_0/District/Info"]
-custom_minimum_size = Vector2(24, 40)
+[node name="PopsTime" type="Control" parent="Selected/Planet/Planet"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 44.0
-offset_top = 24.0
-offset_right = 44.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_filter = 2
 
-[node name="Level" type="RichTextLabel" parent="Selected/DistrictList/District_0/District/Info/Level"]
+[node name="PopsTime" type="RichTextLabel" parent="Selected/Planet/Planet/PopsTime"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -1179,13 +3430,13 @@ theme = ExtResource("2_cxagv")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 bbcode_enabled = true
-text = "[center][b]$[/b][/center]"
+text = "[center][b]$[/b][img=20x20]Assets/UI/Symbols/TurnO.png[/img][/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/DistrictList/District_0/District/Info/Level"]
+[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/PopsTime"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1201,59 +3452,7 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="Private" type="Control" parent="Selected/DistrictList/District_0/District/Info"]
-custom_minimum_size = Vector2(40, 24)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -46.0
-offset_bottom = -46.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Private" type="RichTextLabel" parent="Selected/DistrictList/District_0/District/Info/Private"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-mouse_filter = 2
-theme = ExtResource("2_cxagv")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-bbcode_enabled = true
-text = "[center][b]$[/b][/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("3_pndkb")
-
-[node name="ToolTip" type="Control" parent="Selected/DistrictList/District_0/District/Info/Private"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
-[node name="ExtraPops" type="Control" parent="Selected/DistrictList/District_0/District/Info"]
-custom_minimum_size = Vector2(40, 24)
+[node name="PlanetTooltipBg" type="Control" parent="Selected/Planet/Planet"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1261,35 +3460,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -58.0
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = -34.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ExtraPops" type="RichTextLabel" parent="Selected/DistrictList/District_0/District/Info/ExtraPops"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-mouse_filter = 2
-theme = ExtResource("2_cxagv")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-bbcode_enabled = true
-text = "[center][b]$[/b][/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("3_pndkb")
-
-[node name="ToolTip" type="Control" parent="Selected/DistrictList/District_0/District/Info/ExtraPops"]
+[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/PlanetTooltipBg"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1305,44 +3482,44 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="MaxPops" type="Control" parent="Selected/DistrictList/District_0/District/Info"]
-custom_minimum_size = Vector2(24, 40)
+[node name="PopsList" type="HBoxContainer" parent="Selected/Planet/Planet"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -4.0
+offset_top = 24.0
+offset_right = -4.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_31cew")
+
+[node name="Pop_0" type="Control" parent="Selected/Planet/Planet/PopsList"]
+custom_minimum_size = Vector2(16, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("17_s2425")
+
+[node name="TextureRect" type="TextureRect" parent="Selected/Planet/Planet/PopsList/Pop_0"]
+custom_minimum_size = Vector2(16, 40)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 44.0
-offset_top = 24.0
-offset_right = 44.0
-offset_bottom = 24.0
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MaxPops" type="RichTextLabel" parent="Selected/DistrictList/District_0/District/Info/MaxPops"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
 mouse_filter = 2
-theme = ExtResource("2_cxagv")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-bbcode_enabled = true
-text = "[center][b]$[/b][/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("3_pndkb")
+texture = ExtResource("13_4us68")
+expand_mode = 1
 
-[node name="ToolTip" type="Control" parent="Selected/DistrictList/District_0/District/Info/MaxPops"]
+[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/PopsList/Pop_0/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1358,21 +3535,8 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="Gap_Odd" type="Control" parent="Selected/DistrictList/District_0"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-
-[node name="Gap_Even" type="Control" parent="Selected/DistrictList/District_0"]
-visible = false
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-
-[node name="Gap" type="Control" parent="Selected"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-
 [node name="DeselectBg" type="HBoxContainer" parent="Selected"]
-custom_minimum_size = Vector2(256, 48)
+custom_minimum_size = Vector2(128, 48)
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 2
@@ -1388,44 +3552,90 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Gap_Even" type="Control" parent="Selected/DeselectBg"]
+visible = false
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
 [node name="Gap_Odd" type="Control" parent="Selected/DeselectBg"]
+visible = false
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[connection signal="mouse_entered" from="All/DistrictGroup_0/BuildBg/Build/ToolTip" to="All/DistrictGroup_0/BuildBg/Build/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="All/DistrictGroup_0/BuildBg/Build/ToolTip" to="All/DistrictGroup_0/BuildBg/Build/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="All/DistrictGroup_0/DistrictList/District_0/Info/Feature/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/Feature/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="All/DistrictGroup_0/DistrictList/District_0/Info/Feature/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/Feature/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="All/DistrictGroup_0/DistrictList/District_0/Info/Production/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/Production/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="All/DistrictGroup_0/DistrictList/District_0/Info/Production/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/Production/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="All/DistrictGroup_0/DistrictList/District_0/Info/Pops/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/Pops/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="All/DistrictGroup_0/DistrictList/District_0/Info/Pops/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/Pops/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="All/DistrictGroup_0/DistrictList/District_0/Info/Level/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/Level/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="All/DistrictGroup_0/DistrictList/District_0/Info/Level/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/Level/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="All/DistrictGroup_0/DistrictList/District_0/Info/Private/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/Private/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="All/DistrictGroup_0/DistrictList/District_0/Info/Private/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/Private/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="All/DistrictGroup_0/DistrictList/District_0/Info/ExtraPops/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/ExtraPops/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="All/DistrictGroup_0/DistrictList/District_0/Info/ExtraPops/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/ExtraPops/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="All/DistrictGroup_0/DistrictList/District_0/Info/MaxPops/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/MaxPops/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="All/DistrictGroup_0/DistrictList/District_0/Info/MaxPops/ToolTip" to="All/DistrictGroup_0/DistrictList/District_0/Info/MaxPops/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/BuildBg/Build/ToolTip" to="Selected/BuildBg/Build/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/BuildBg/Build/ToolTip" to="Selected/BuildBg/Build/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/DistrictList/District_0/Pops/Pop_0/TextureRect/ToolTip" to="Selected/DistrictList/District_0/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/DistrictList/District_0/Pops/Pop_0/TextureRect/ToolTip" to="Selected/DistrictList/District_0/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/DistrictList/District_0/District/Info/Feature/ToolTip" to="Selected/DistrictList/District_0/District/Info/Feature/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/DistrictList/District_0/District/Info/Feature/ToolTip" to="Selected/DistrictList/District_0/District/Info/Feature/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/DistrictList/District_0/District/Info/Production/ToolTip" to="Selected/DistrictList/District_0/District/Info/Production/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/DistrictList/District_0/District/Info/Production/ToolTip" to="Selected/DistrictList/District_0/District/Info/Production/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/DistrictList/District_0/District/Info/Pops/ToolTip" to="Selected/DistrictList/District_0/District/Info/Pops/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/DistrictList/District_0/District/Info/Pops/ToolTip" to="Selected/DistrictList/District_0/District/Info/Pops/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/DistrictList/District_0/District/Info/Level/ToolTip" to="Selected/DistrictList/District_0/District/Info/Level/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/DistrictList/District_0/District/Info/Level/ToolTip" to="Selected/DistrictList/District_0/District/Info/Level/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/DistrictList/District_0/District/Info/Private/ToolTip" to="Selected/DistrictList/District_0/District/Info/Private/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/DistrictList/District_0/District/Info/Private/ToolTip" to="Selected/DistrictList/District_0/District/Info/Private/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/DistrictList/District_0/District/Info/ExtraPops/ToolTip" to="Selected/DistrictList/District_0/District/Info/ExtraPops/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/DistrictList/District_0/District/Info/ExtraPops/ToolTip" to="Selected/DistrictList/District_0/District/Info/ExtraPops/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/DistrictList/District_0/District/Info/MaxPops/ToolTip" to="Selected/DistrictList/District_0/District/Info/MaxPops/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/DistrictList/District_0/District/Info/MaxPops/ToolTip" to="Selected/DistrictList/District_0/District/Info/MaxPops/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/BuildBg/Build/ToolTip" to="System/VBoxContainer/Orbit_0/BuildBg/Build/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/BuildBg/Build/ToolTip" to="System/VBoxContainer/Orbit_0/BuildBg/Build/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Feature/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Feature/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Feature/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Feature/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Resource/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Resource/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Resource/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Resource/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Rural/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Rural/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Rural/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Rural/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Level/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Level/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Level/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Level/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/LevelTime/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/LevelTime/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/LevelTime/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/LevelTime/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsTime/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsTime/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsTime/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsTime/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PlanetTooltipBg/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PlanetTooltipBg/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PlanetTooltipBg/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PlanetTooltipBg/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Shipyard/ToolTip" to="Selected/Planet/Shipyard/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Shipyard/ToolTip" to="Selected/Planet/Shipyard/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Shipyard/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Shipyard/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Shipyard/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Shipyard/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Research/ToolTip" to="Selected/Planet/Research/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Research/ToolTip" to="Selected/Planet/Research/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Research/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Research/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Research/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Research/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Bank/ToolTip" to="Selected/Planet/Bank/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Bank/ToolTip" to="Selected/Planet/Bank/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Bank/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Bank/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Bank/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Bank/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Culture/ToolTip" to="Selected/Planet/Culture/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Culture/ToolTip" to="Selected/Planet/Culture/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Culture/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Culture/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Culture/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Culture/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Farm/ToolTip" to="Selected/Planet/Farm/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Farm/ToolTip" to="Selected/Planet/Farm/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Farm/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Farm/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Farm/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Farm/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Industrial/ToolTip" to="Selected/Planet/Industrial/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Industrial/ToolTip" to="Selected/Planet/Industrial/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Industrial/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Industrial/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Industrial/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Industrial/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Urban/ToolTip" to="Selected/Planet/Urban/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Urban/ToolTip" to="Selected/Planet/Urban/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Urban/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Urban/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Urban/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Urban/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Feature/ToolTip" to="Selected/Planet/Planet/Feature/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Feature/ToolTip" to="Selected/Planet/Planet/Feature/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Resource/ToolTip" to="Selected/Planet/Planet/Resource/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Resource/ToolTip" to="Selected/Planet/Planet/Resource/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Pops/ToolTip" to="Selected/Planet/Planet/Pops/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Pops/ToolTip" to="Selected/Planet/Planet/Pops/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Rural/ToolTip" to="Selected/Planet/Planet/Rural/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Rural/ToolTip" to="Selected/Planet/Planet/Rural/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Level/ToolTip" to="Selected/Planet/Planet/Level/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Level/ToolTip" to="Selected/Planet/Planet/Level/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/LevelTime/ToolTip" to="Selected/Planet/Planet/LevelTime/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/LevelTime/ToolTip" to="Selected/Planet/Planet/LevelTime/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/PopsTime/ToolTip" to="Selected/Planet/Planet/PopsTime/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/PopsTime/ToolTip" to="Selected/Planet/Planet/PopsTime/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/PlanetTooltipBg/ToolTip" to="Selected/Planet/Planet/PlanetTooltipBg/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/PlanetTooltipBg/ToolTip" to="Selected/Planet/Planet/PlanetTooltipBg/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/PopsList/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Planet/PopsList/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/PopsList/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Planet/PopsList/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]

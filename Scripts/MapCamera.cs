@@ -57,8 +57,7 @@ public partial class MapCamera : Camera3D
     [Export]
     public Vector3 CenterCameraXOZ = Vector3.Zero; //camera position
 
-    [Export]
-    public float ScreenEdgeBorder = 25f;
+    private float ScreenEdgeBorder = 12.0f;
     [Export]
     public bool UILock = false;
 

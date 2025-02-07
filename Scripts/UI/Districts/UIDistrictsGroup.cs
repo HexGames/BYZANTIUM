@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public partial class UIDistrictsGroup : Control
 {
-    public UIActionButton Build;
-    public Array<UIDistrictsGroupDistrict> Districts = new Array<UIDistrictsGroupDistrict>();
+    //public UIActionButton Build;
+    public Array<UIDistrictsGroupPlanet> Planets = new Array<UIDistrictsGroupPlanet>();
     public Control Deselect;
     public Control DeselectOdd;
     public Control EvenGap;
@@ -14,18 +14,18 @@ public partial class UIDistrictsGroup : Control
     public List<ColonyData> _Colonies = new List<ColonyData>();
     public override void _Ready()
     {
-        Node districtList = GetNode("DistrictList");
-        Districts.Clear();
-        for (int idx = 0; idx < districtList.GetChildCount(); idx++)
+        Node planetList = GetNode("PlanetList");
+        Planets.Clear();
+        for (int idx = 0; idx < planetList.GetChildCount(); idx++)
         {
-            Node node = districtList.GetChild(idx);
-            if (node is UIDistrictsGroupDistrict)
+            Node node = planetList.GetChild(idx);
+            if (node is UIDistrictsGroupPlanet)
             {
-                Districts.Add(node as UIDistrictsGroupDistrict);
+                Planets.Add(node as UIDistrictsGroupPlanet);
             }
         }
 
-        Build = GetNode<UIActionButton>("BuildBg/Build");
+        //Build = GetNode<UIActionButton>("BuildBg/Build");
         if (HasNode("DeselectBg"))
         {
             Deselect = GetNode<Control>("DeselectBg/Deselect");
@@ -47,81 +47,54 @@ public partial class UIDistrictsGroup : Control
         }
     }
 
-    public void RefreshGroup(List<PlanetData> planets, bool showButtons)
+    public void RefreshGroup(List<PlanetData> planets)
     { 
         _Planets.Clear();
         _Planets.AddRange(planets);
 
-        for (int idx = 0; idx < Districts.Count; idx++)
+        for (int idx = 0; idx < Planets.Count; idx++)
         {
-            Districts[idx].Visible = false;
+            Planets[idx].Visible = false;
         }
 
-        while (Districts.Count < 7)
+        while (Planets.Count < 2)
         {
-            UIDistrictsGroupDistrict newItem = Districts[0].Duplicate(7) as UIDistrictsGroupDistrict;
-            Districts[0].GetParent().AddChild(newItem);
-            Districts.Add(newItem);
+            UIDistrictsGroupPlanet newItem = Planets[0].Duplicate(7) as UIDistrictsGroupPlanet;
+            Planets[0].GetParent().AddChild(newItem);
+            Planets.Add(newItem);
         }
 
         int districtIdx = 0;
         for (int planetIdx = 0; planetIdx < _Planets.Count; planetIdx++)
         {
             ColonyData colony = _Planets[planetIdx].Colony;
-            if (colony != null)
-            {
-                for (int idx = colony.Districts.Count - 1; idx >= 0; idx--)
-                {
-                    Districts[districtIdx].Visible = true;
-                    Districts[districtIdx].Refresh(colony.Districts[idx], false);
-                    districtIdx++;
-                }
-            }
-            else if (_Planets[planetIdx].IsHabitable())
-            {
-                Districts[districtIdx].Visible = true;
-                Districts[districtIdx].Refresh(_Planets[planetIdx]);
-                districtIdx++;
-            }
-            else
-            {
-                Districts[districtIdx].Visible = true;
-                Districts[districtIdx].Refresh(_Planets[planetIdx]);
-                districtIdx++;
-            }
-        }
-
-        while (districtIdx < Districts.Count)
-        {
-            Districts[districtIdx].Visible = false;
+            Planets[districtIdx].Visible = true;
+            Planets[districtIdx].Refresh(_Planets[planetIdx]);
             districtIdx++;
         }
 
-        if (showButtons)
+        while (districtIdx < Planets.Count)
         {
-            Build.Visible = true;
-        }
-        else
-        {
-            Build.Visible = false;
+            Planets[districtIdx].Visible = false;
+            districtIdx++;
         }
     }
 
-    public void RefreshPlanet(PlanetData planet)
+    /*public void RefreshPlanet(PlanetData planet)
     {
         _Planets.Clear();
         _Planets.Add(planet);
 
-        for (int idx = 0; idx < Districts.Count; idx++)
+        for (int idx = 0; idx < Planets.Count; idx++)
         {
-            Districts[idx].Visible = false;
+            Planets[idx].Visible = false;
         }
 
-        while (Districts.Count < 7)
+        while (Planets.Count < 7)
         {
-            UIDistrictsGroupDistrict newItem = Districts[0].Duplicate(7) as UIDistrictsGroupDistrict;
-            Districts[0].GetParent().AddChild(newItem);
-            Districts.Add(newItem);
+            UIDistrictsGroupPlanet newItem = Planets[0].Duplicate(7) as UIDistrictsGroupPlanet;
+            Planets[0].GetParent().AddChild(newItem);
+            Planets.Add(newItem);
         }
 
         int districtIdx = 0;
@@ -130,33 +103,35 @@ public partial class UIDistrictsGroup : Control
             ColonyData colony = _Planets[planetIdx].Colony;
             if (colony != null)
             {
-                for (int idx = 0; idx < colony.Districts.Count; idx++)
-                {
-                    Districts[districtIdx].Visible = true;
-                    Districts[districtIdx].Refresh(colony.Districts[idx], true);
-                    Districts[districtIdx].RefreshPops(districtIdx % 2 == 1);
-                    districtIdx++;
-                }
+                Planets[districtIdx].Visible = true;
+                Planets[districtIdx].Refresh(colony.Districts[7], colony.Districts[6], colony.Districts[2]);
+                districtIdx++;
+                Planets[districtIdx].Visible = true;
+                Planets[districtIdx].Refresh(colony.Districts[5], colony.Districts[4], colony.Districts[1]);
+                districtIdx++;
+                Planets[districtIdx].Visible = true;
+                Planets[districtIdx].Refresh(colony.Districts[3], null, colony.Districts[0]);
+                districtIdx++;
             }
             else if (_Planets[planetIdx].IsHabitable())
             {
-                Districts[districtIdx].Visible = true;
-                Districts[districtIdx].Refresh(_Planets[planetIdx]);
-                Districts[districtIdx].RefreshPops(districtIdx % 2 == 1);
+                Planets[districtIdx].Visible = true;
+                Planets[districtIdx].Refresh(_Planets[planetIdx]);
+                Planets[districtIdx].RefreshPops(districtIdx % 2 == 1);
                 districtIdx++;
             }
             else
             {
-                Districts[districtIdx].Visible = true;
-                Districts[districtIdx].Refresh(_Planets[planetIdx]);
-                Districts[districtIdx].RefreshPops(districtIdx % 2 == 1);
+                Planets[districtIdx].Visible = true;
+                Planets[districtIdx].Refresh(_Planets[planetIdx]);
+                Planets[districtIdx].RefreshPops(districtIdx % 2 == 1);
                 districtIdx++;
             }
         }
 
-        while (districtIdx < Districts.Count)
+        while (districtIdx < Planets.Count)
         {
-            Districts[districtIdx].Visible = false;
+            Planets[districtIdx].Visible = false;
             districtIdx++;
         }
 
@@ -166,8 +141,8 @@ public partial class UIDistrictsGroup : Control
             DeselectOdd.Visible = districtIdx % 2 == 1;
         }
 
-        Build.Visible = false;
-    }
+        //Build.Visible = false;
+    }*/
 
     public void SetAsOddRow(bool odd)
     {

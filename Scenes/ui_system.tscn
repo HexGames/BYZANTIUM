@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://6txwm0lad0jq" path="res://Assets/UI/Symbols/LayGreen.png" id="16_o3yav"]
 [ext_resource type="Texture2D" uid="uid://bry18m4qt40bf" path="res://Assets/Flags/Drakk_Bazzar.png" id="16_u7q1k"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UIProgress.cs" id="17_6kgt1"]
-[ext_resource type="Texture2D" uid="uid://0unvfpvipr3x" path="res://Assets/UI/Symbols/Wealth.png" id="17_d5gb6"]
 [ext_resource type="Texture2D" uid="uid://bh4b8jfxacxdt" path="res://Assets/UI/Symbols/Rebel.png" id="17_d834f"]
 [ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="17_f6tdb"]
 [ext_resource type="Texture2D" uid="uid://d3ox4qo5b5ylv" path="res://Assets/UI/alert.png" id="17_fbxmw"]
@@ -24,13 +23,14 @@
 [ext_resource type="Texture2D" uid="uid://dqhju10mfykde" path="res://Assets/UI/arrow.png" id="18_elkoe"]
 [ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="18_ercnh"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UIPulse.cs" id="18_p871y"]
-[ext_resource type="Texture2D" uid="uid://crqj3w57xya1u" path="res://Assets/UI/Symbols/InequalityMed.png" id="18_qpat2"]
 [ext_resource type="Texture2D" uid="uid://o4gbwjv05f1c" path="res://Assets/UI/arrowL.png" id="19_8xjgi"]
-[ext_resource type="Texture2D" uid="uid://c8jmed7dyxlwg" path="res://Assets/UI/Symbols/Corruption.png" id="19_df0ae"]
+[ext_resource type="Texture2D" uid="uid://bcn8wmfha8i40" path="res://Assets/UI/Symbols/WealthW.png" id="19_mhhrq"]
 [ext_resource type="Texture2D" uid="uid://u06aop6n783b" path="res://Assets/UI/Symbols/Ship.png" id="20_3jfqf"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UIIconValue.cs" id="20_4eils"]
-[ext_resource type="Texture2D" uid="uid://dmpcb1y0ngbdk" path="res://Assets/UI/Symbols/CorruptionHigh.png" id="20_005ag"]
 [ext_resource type="Texture2D" uid="uid://deu7iemom4icn" path="res://Assets/UI/arrowR.png" id="20_fsix5"]
+[ext_resource type="Texture2D" uid="uid://bbu53ch52s6nb" path="res://Assets/UI/Symbols/InequalityW.png" id="21_iitak"]
+[ext_resource type="Texture2D" uid="uid://b7ixo0mdnf8to" path="res://Assets/UI/Symbols/CorruptionW.png" id="22_turno"]
+[ext_resource type="Texture2D" uid="uid://piqp7h85575a" path="res://Assets/UI/Symbols/SocialStrifeW.png" id="23_58n5x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecgwq"]
 bg_color = Color(0.231373, 0.203922, 0.00392157, 1)
@@ -1132,6 +1132,7 @@ Title = "System Owner"
 Row_1 = "This Empire controls this System."
 
 [node name="PrivateInvestment" type="PanelContainer" parent="VBoxContainer/System"]
+visible = false
 layout_mode = 2
 theme = ExtResource("9_n4gub")
 
@@ -1270,6 +1271,7 @@ Title = "System Owner"
 Row_1 = "This Empire controls this System."
 
 [node name="Growth" type="PanelContainer" parent="VBoxContainer/System"]
+visible = false
 layout_mode = 2
 theme = ExtResource("9_n4gub")
 
@@ -1534,12 +1536,11 @@ theme_override_constants/separation = 8
 alignment = 1
 
 [node name="Wealth" type="TextureRect" parent="VBoxContainer/System/Population/MarginContainer/VBoxContainer/Status"]
-self_modulate = Color(0.984314, 0.898039, 0.176471, 1)
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("17_d5gb6")
+texture = ExtResource("19_mhhrq")
 expand_mode = 1
 script = ExtResource("20_4eils")
 
@@ -1567,7 +1568,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("18_qpat2")
+texture = ExtResource("21_iitak")
 expand_mode = 1
 script = ExtResource("20_4eils")
 
@@ -1595,7 +1596,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("19_df0ae")
+texture = ExtResource("22_turno")
 expand_mode = 1
 script = ExtResource("20_4eils")
 
@@ -1623,7 +1624,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("20_005ag")
+texture = ExtResource("23_58n5x")
 expand_mode = 1
 script = ExtResource("20_4eils")
 

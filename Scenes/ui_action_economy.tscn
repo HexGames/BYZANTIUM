@@ -1,0 +1,495 @@
+[gd_scene load_steps=45 format=3 uid="uid://cgdmn1h7s7s66"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Actions/UIActionsEconomy.cs" id="1_7l4ou"]
+[ext_resource type="Texture2D" uid="uid://b5yj0ki746om6" path="res://Assets/Buttons/AE_Colonization.png" id="1_fgo4k"]
+[ext_resource type="Texture2D" uid="uid://drf681o74iugw" path="res://Assets/Buttons/AE_Colonization_P.png" id="2_luyga"]
+[ext_resource type="Texture2D" uid="uid://bti14i44rhc82" path="res://Assets/Buttons/AE_Colonization_H.png" id="3_halr2"]
+[ext_resource type="Texture2D" uid="uid://bjs5l64bwckm8" path="res://Assets/Buttons/AE_Colonization_D.png" id="4_hv2br"]
+[ext_resource type="Script" path="res://Scripts/UI/Tooltip/UITooltipTrigger.cs" id="5_aw453"]
+[ext_resource type="Texture2D" uid="uid://lfog7w6xatnl" path="res://Assets/Buttons/AE_Build.png" id="5_t1orb"]
+[ext_resource type="Texture2D" uid="uid://cv2xv748ubuoy" path="res://Assets/Buttons/AE_Build_P.png" id="6_2710c"]
+[ext_resource type="Texture2D" uid="uid://bgkp3srsariqd" path="res://Assets/Buttons/AE_Build_H.png" id="7_2pifv"]
+[ext_resource type="Texture2D" uid="uid://0336mgi4win0" path="res://Assets/Buttons/AE_Build_D.png" id="8_p2lh5"]
+[ext_resource type="Texture2D" uid="uid://bbrthwfkqv0gj" path="res://Assets/Buttons/AE_Change.png" id="9_crdux"]
+[ext_resource type="Texture2D" uid="uid://cwx83un06alxs" path="res://Assets/Buttons/AE_Change_P.png" id="10_ut6om"]
+[ext_resource type="Texture2D" uid="uid://dy6nydsapdw51" path="res://Assets/Buttons/AE_Change_H.png" id="11_notic"]
+[ext_resource type="Texture2D" uid="uid://b0avtjkwsa4qd" path="res://Assets/Buttons/AE_Change_D.png" id="12_iihnu"]
+[ext_resource type="Texture2D" uid="uid://dvie4alvjmah2" path="res://Assets/Buttons/AE_Nationalize.png" id="13_q0i38"]
+[ext_resource type="Texture2D" uid="uid://h2vc7ay06vwj" path="res://Assets/Buttons/AE_Nationalize_P.png" id="14_1kjc4"]
+[ext_resource type="Texture2D" uid="uid://0mgwey2sefew" path="res://Assets/Buttons/AE_Nationalize_H.png" id="15_dqr0l"]
+[ext_resource type="Texture2D" uid="uid://bly3wklikm11" path="res://Assets/Buttons/AE_Nationalize_D.png" id="16_l88mm"]
+[ext_resource type="Texture2D" uid="uid://qruwlpofj13j" path="res://Assets/Buttons/AE_Privatize.png" id="17_btag8"]
+[ext_resource type="Texture2D" uid="uid://bovdbd47d1yj3" path="res://Assets/Buttons/AE_Privatize_P.png" id="18_0idqo"]
+[ext_resource type="Texture2D" uid="uid://bkpuva4a6vel6" path="res://Assets/Buttons/AE_Privatize_H.png" id="19_0gkfi"]
+[ext_resource type="Texture2D" uid="uid://do5s801misrhb" path="res://Assets/Buttons/AE_Privatize_D.png" id="20_lwviu"]
+[ext_resource type="Texture2D" uid="uid://3ndnqsq82q6h" path="res://Assets/Buttons/AE_Budget.png" id="21_gbe1n"]
+[ext_resource type="Texture2D" uid="uid://24ynyyhpoyy2" path="res://Assets/Buttons/AE_Budget_P.png" id="22_2s7v2"]
+[ext_resource type="Texture2D" uid="uid://dw8uhr20l0bgq" path="res://Assets/Buttons/AE_Budget_H.png" id="23_w2qov"]
+[ext_resource type="Texture2D" uid="uid://c2qutvqn0yg2k" path="res://Assets/Buttons/AE_Budget_D.png" id="24_pclh5"]
+[ext_resource type="Texture2D" uid="uid://bexxwdsyu3b27" path="res://Assets/Buttons/AE_Tax.png" id="25_yup5w"]
+[ext_resource type="Texture2D" uid="uid://wm0odt7t1seq" path="res://Assets/Buttons/AE_Tax_P.png" id="26_np6mh"]
+[ext_resource type="Texture2D" uid="uid://djdldcfxc8muu" path="res://Assets/Buttons/AE_Tax_H.png" id="27_6i16u"]
+[ext_resource type="Texture2D" uid="uid://dy0prcwwe7egg" path="res://Assets/Buttons/AE_Tax_D.png" id="28_xu27v"]
+[ext_resource type="Texture2D" uid="uid://drlj0hkk2oipw" path="res://Assets/Buttons/AE_Welfare.png" id="29_1uns7"]
+[ext_resource type="Texture2D" uid="uid://bk6y8eqwo3m6l" path="res://Assets/Buttons/AE_Welfare_P.png" id="30_xqwhs"]
+[ext_resource type="Texture2D" uid="uid://j736jhw65js" path="res://Assets/Buttons/AE_Welfare_H.png" id="31_tyg2g"]
+[ext_resource type="Texture2D" uid="uid://522ny01dhe1p" path="res://Assets/Buttons/AE_Welfare_D.png" id="32_skuwd"]
+[ext_resource type="Texture2D" uid="uid://pm2nbmibe332" path="res://Assets/Buttons/AE_Control.png" id="33_yvwdt"]
+[ext_resource type="Texture2D" uid="uid://d3st7ig4ikmk0" path="res://Assets/Buttons/AE_Control_P.png" id="34_2su8w"]
+[ext_resource type="Texture2D" uid="uid://b7drnuvdwemtx" path="res://Assets/Buttons/AE_Control_H.png" id="35_u6lbv"]
+[ext_resource type="Texture2D" uid="uid://b2igfrnx1ptwj" path="res://Assets/Buttons/AE_Control_D.png" id="36_ilfbs"]
+[ext_resource type="Texture2D" uid="uid://virwpva0gl1" path="res://Assets/Buttons/A_S_Deselect.png" id="37_yhpd6"]
+[ext_resource type="Texture2D" uid="uid://8lt5beea3kye" path="res://Assets/Buttons/A_S_Deselect_P.png" id="38_fdr2p"]
+[ext_resource type="Texture2D" uid="uid://d2eaayk0ckc70" path="res://Assets/Buttons/A_S_Deselect_H.png" id="39_t06yk"]
+[ext_resource type="Texture2D" uid="uid://dth8q7ibxrvqg" path="res://Assets/Buttons/A_S_Deselect_D.png" id="40_c1ni5"]
+[ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="41_bucen"]
+[ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="42_2k86y"]
+
+[node name="ActionEconomy" type="Control" node_paths=PackedStringArray("Buttons", "Colonize", "ColonizeToolTip", "Build", "BuildToolTip", "Change", "ChangeToolTip", "Nationalize", "NationalizeToolTip", "Privatize", "PrivatizeToolTip", "ChangeBuget", "ChangeBugetToolTip", "ChangeTax", "ChangeTaxToolTip", "ChangeWelfare", "ChangeWelfareToolTip", "ChangeControl", "ChangeControlToolTip", "Deselect", "SelectText", "SelectedName")]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_7l4ou")
+Buttons = NodePath("VBoxContainer/Selected")
+Colonize = NodePath("VBoxContainer/Selected/Colonize")
+ColonizeToolTip = NodePath("VBoxContainer/Selected/Colonize/ToolTip")
+Build = NodePath("VBoxContainer/Selected/Build")
+BuildToolTip = NodePath("VBoxContainer/Selected/Build/ToolTip")
+Change = NodePath("VBoxContainer/Selected/Change")
+ChangeToolTip = NodePath("VBoxContainer/Selected/Change/ToolTip")
+Nationalize = NodePath("VBoxContainer/Selected/Nationalize")
+NationalizeToolTip = NodePath("VBoxContainer/Selected/Nationalize/ToolTip")
+Privatize = NodePath("VBoxContainer/Selected/Privatize")
+PrivatizeToolTip = NodePath("VBoxContainer/Selected/Privatize/ToolTip")
+ChangeBuget = NodePath("VBoxContainer/Selected/ChangeBuget")
+ChangeBugetToolTip = NodePath("VBoxContainer/Selected/ChangeBuget/ToolTip")
+ChangeTax = NodePath("VBoxContainer/Selected/ChangeTax")
+ChangeTaxToolTip = NodePath("VBoxContainer/Selected/ChangeTax/ToolTip")
+ChangeWelfare = NodePath("VBoxContainer/Selected/ChangeWelfare")
+ChangeWelfareToolTip = NodePath("VBoxContainer/Selected/ChangeWelfare/ToolTip")
+ChangeControl = NodePath("VBoxContainer/Selected/ChangeControl")
+ChangeControlToolTip = NodePath("VBoxContainer/Selected/ChangeControl/ToolTip")
+Deselect = NodePath("VBoxContainer/Selected/Control/Deselect")
+SelectText = NodePath("VBoxContainer/Select")
+SelectedName = NodePath("VBoxContainer/TitleBg/Title")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Selected" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Gap" type="Control" parent="VBoxContainer/Selected"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Colonize" type="TextureButton" parent="VBoxContainer/Selected"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("1_fgo4k")
+texture_pressed = ExtResource("2_luyga")
+texture_hover = ExtResource("3_halr2")
+texture_disabled = ExtResource("4_hv2br")
+texture_focused = ExtResource("1_fgo4k")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Colonize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_aw453")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Colonize"
+
+[node name="Build" type="TextureButton" parent="VBoxContainer/Selected"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("5_t1orb")
+texture_pressed = ExtResource("6_2710c")
+texture_hover = ExtResource("7_2pifv")
+texture_disabled = ExtResource("8_p2lh5")
+texture_focused = ExtResource("5_t1orb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Build"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_aw453")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Construct or Upgrade"
+
+[node name="Change" type="TextureButton" parent="VBoxContainer/Selected"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("9_crdux")
+texture_pressed = ExtResource("10_ut6om")
+texture_hover = ExtResource("11_notic")
+texture_disabled = ExtResource("12_iihnu")
+texture_focused = ExtResource("9_crdux")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Change"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_aw453")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Change"
+
+[node name="Nationalize" type="TextureButton" parent="VBoxContainer/Selected"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("13_q0i38")
+texture_pressed = ExtResource("14_1kjc4")
+texture_hover = ExtResource("15_dqr0l")
+texture_disabled = ExtResource("16_l88mm")
+texture_focused = ExtResource("13_q0i38")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Nationalize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_aw453")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Nationalize"
+
+[node name="Privatize" type="TextureButton" parent="VBoxContainer/Selected"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("17_btag8")
+texture_pressed = ExtResource("18_0idqo")
+texture_hover = ExtResource("19_0gkfi")
+texture_disabled = ExtResource("20_lwviu")
+texture_focused = ExtResource("17_btag8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Privatize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_aw453")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Privatize"
+
+[node name="ChangeBuget" type="TextureButton" parent="VBoxContainer/Selected"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("21_gbe1n")
+texture_pressed = ExtResource("22_2s7v2")
+texture_hover = ExtResource("23_w2qov")
+texture_disabled = ExtResource("24_pclh5")
+texture_focused = ExtResource("21_gbe1n")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/ChangeBuget"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_aw453")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Change Budget"
+
+[node name="ChangeTax" type="TextureButton" parent="VBoxContainer/Selected"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("25_yup5w")
+texture_pressed = ExtResource("26_np6mh")
+texture_hover = ExtResource("27_6i16u")
+texture_disabled = ExtResource("28_xu27v")
+texture_focused = ExtResource("25_yup5w")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/ChangeTax"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_aw453")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Change Tax"
+
+[node name="ChangeWelfare" type="TextureButton" parent="VBoxContainer/Selected"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("29_1uns7")
+texture_pressed = ExtResource("30_xqwhs")
+texture_hover = ExtResource("31_tyg2g")
+texture_disabled = ExtResource("32_skuwd")
+texture_focused = ExtResource("29_1uns7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/ChangeWelfare"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_aw453")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Change Welfare"
+
+[node name="ChangeControl" type="TextureButton" parent="VBoxContainer/Selected"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("33_yvwdt")
+texture_pressed = ExtResource("34_2su8w")
+texture_hover = ExtResource("35_u6lbv")
+texture_disabled = ExtResource("36_ilfbs")
+texture_focused = ExtResource("33_yvwdt")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/ChangeControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_aw453")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Change Control"
+
+[node name="Control" type="Control" parent="VBoxContainer/Selected"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Deselect" type="TextureButton" parent="VBoxContainer/Selected/Control"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+focus_mode = 0
+texture_normal = ExtResource("37_yhpd6")
+texture_pressed = ExtResource("38_fdr2p")
+texture_hover = ExtResource("39_t06yk")
+texture_disabled = ExtResource("40_c1ni5")
+texture_focused = ExtResource("37_yhpd6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Control/Deselect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_aw453")
+CanBeHovered = false
+Direction = 1
+Width = 320
+Title = "Shipbuilding Progress"
+
+[node name="Select" type="Panel" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/Select"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("41_bucen")
+bbcode_enabled = true
+text = "[center]Select this star system to see available actions[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("42_2k86y")
+
+[node name="TitleBg" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(512, 32)
+layout_mode = 2
+theme = ExtResource("41_bucen")
+theme_type_variation = &"PanelTitle"
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer/TitleBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("41_bucen")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+bbcode_enabled = true
+text = "[center]$name[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("42_2k86y")
+
+[node name="ToolTip" type="Control" parent="VBoxContainer/TitleBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("5_aw453")
+CanBeHovered = false
+Direction = 6
+Width = 320
+Title = "Selected Star System"
+
+[connection signal="mouse_entered" from="VBoxContainer/Selected/Colonize/ToolTip" to="VBoxContainer/Selected/Colonize/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Selected/Colonize/ToolTip" to="VBoxContainer/Selected/Colonize/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Selected/Build/ToolTip" to="VBoxContainer/Selected/Build/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Selected/Build/ToolTip" to="VBoxContainer/Selected/Build/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Selected/Change/ToolTip" to="VBoxContainer/Selected/Change/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Selected/Change/ToolTip" to="VBoxContainer/Selected/Change/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Selected/Nationalize/ToolTip" to="VBoxContainer/Selected/Nationalize/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Selected/Nationalize/ToolTip" to="VBoxContainer/Selected/Nationalize/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Selected/Privatize/ToolTip" to="VBoxContainer/Selected/Privatize/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Selected/Privatize/ToolTip" to="VBoxContainer/Selected/Privatize/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Selected/ChangeBuget/ToolTip" to="VBoxContainer/Selected/ChangeBuget/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Selected/ChangeBuget/ToolTip" to="VBoxContainer/Selected/ChangeBuget/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Selected/ChangeTax/ToolTip" to="VBoxContainer/Selected/ChangeTax/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Selected/ChangeTax/ToolTip" to="VBoxContainer/Selected/ChangeTax/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Selected/ChangeWelfare/ToolTip" to="VBoxContainer/Selected/ChangeWelfare/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Selected/ChangeWelfare/ToolTip" to="VBoxContainer/Selected/ChangeWelfare/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Selected/ChangeControl/ToolTip" to="VBoxContainer/Selected/ChangeControl/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Selected/ChangeControl/ToolTip" to="VBoxContainer/Selected/ChangeControl/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/Selected/Control/Deselect/ToolTip" to="VBoxContainer/Selected/Control/Deselect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/Selected/Control/Deselect/ToolTip" to="VBoxContainer/Selected/Control/Deselect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="VBoxContainer/TitleBg/ToolTip" to="VBoxContainer/TitleBg/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="VBoxContainer/TitleBg/ToolTip" to="VBoxContainer/TitleBg/ToolTip" method="OnHoverExit"]

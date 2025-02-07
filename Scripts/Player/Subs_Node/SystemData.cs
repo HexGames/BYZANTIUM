@@ -154,6 +154,13 @@ public partial class SystemData : Node
         //DistrictToInvest_PerTurn.Economy_PerTurn.RecalculateReinvestTurns();
     }
 
+
+    // --------------------------------------------------------------------------------------------
+    public bool IsConstructionQueueBusy()
+    {
+        return true;
+    }
+
     // --------------------------------------------------------------------------------------------
     public int GetPopsCurrent()
     {

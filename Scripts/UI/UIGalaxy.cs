@@ -50,6 +50,10 @@ public partial class UIGalaxy : Control
     //public UIPopsFactions FactionsInfo = null;
     [Export]
     public UISelectedFleets FleetsSelected = null;
+
+    [Export]
+    public UIActionsEconomy ActionsEconomy = null;
+
     [Export]
     public Control EndTurnBg = null;
     [Export]
@@ -77,30 +81,35 @@ public partial class UIGalaxy : Control
         SystemInfo.Visible = false;
         //PlanetInfo.Visible = false;
         DistrictsInfo.Visible = false;
-
         //ControlInfo.Visible = false;
         //FactionsInfo.Visible = false;
-
         FleetsSelected.Visible = false;
+
+        ActionsEconomy.Visible = false;
     }
 
-    public void ShowStarInfo(StarData selectedStar)
+    public void ShowStarInfo(StarData selectedStar, StarData hoveredStar)
     {
         SystemInfo.Visible = true;
-        SystemInfo.Refresh(selectedStar);
-
+        SystemInfo.Refresh(hoveredStar != null ? hoveredStar : selectedStar);
+        
         DistrictsInfo.Visible = true;
-        DistrictsInfo.RefreshAll(selectedStar);
-
+        DistrictsInfo.RefreshAll(hoveredStar != null ? hoveredStar : selectedStar);
+        
         DiplomacyBar.Visible = false;
+
+        ActionsEconomy.Visible = true;
+        ActionsEconomy.Refresh(selectedStar, hoveredStar);
     }
 
     public void HideStarInfo()
     {
         SystemInfo.Visible = false;
         DistrictsInfo.Visible = false;
-
+    
         DiplomacyBar.Visible = true;
+
+        ActionsEconomy.Visible = false;
     }
 
     public void ShowFleetsInfo(Array<FleetData> selectedFleetList, FleetData selectedFleet)

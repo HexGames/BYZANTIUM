@@ -583,7 +583,7 @@ public partial class PlayerInput : Node
     {
         HoverStar = star;
         HoverStar._Node.GFX.GFXHover();
-        Game.self.GalaxyUI.ShowStarInfo(HoverStar);
+        Game.self.GalaxyUI.ShowStarInfo(null, HoverStar);
 
         State = InputState.FAR_GALAXY_H_STAR;
     }
@@ -591,7 +591,7 @@ public partial class PlayerInput : Node
     {
         HoverStar = star;
         HoverStar._Node.GFX.GFXHover();
-        Game.self.GalaxyUI.ShowStarInfo(HoverStar);
+        Game.self.GalaxyUI.ShowStarInfo(SelectedStar, HoverStar);
 
         State = InputState.FAR_STAR_H_STAR;
     }
@@ -600,7 +600,7 @@ public partial class PlayerInput : Node
         HoverStar = star;
         HoverStar._Node.GFX.GFXHover();
         Game.self.GalaxyUI.HideFleetsInfo();
-        Game.self.GalaxyUI.ShowStarInfo(HoverStar);
+        Game.self.GalaxyUI.ShowStarInfo(null, HoverStar);
 
         State = InputState.FAR_FLEETS_H_STAR;
     }
@@ -628,7 +628,7 @@ public partial class PlayerInput : Node
         HoverStar._Node.GFX.GFXHover();
         HoverStar._Node.GFX.ShowPlanets3DGUI();
         Game.self.GalaxyUI.HideFleetsInfo();
-        Game.self.GalaxyUI.ShowStarInfo(HoverStar);
+        Game.self.GalaxyUI.ShowStarInfo(null, HoverStar);
     
         State = InputState.CLOSE_FLEETS_H_STAR;
     }
@@ -646,7 +646,7 @@ public partial class PlayerInput : Node
     private void CS_Dehover_from_FarStarHoverStar_to_FarStar()
     {
         HoverStar._Node.GFX.GFXDehover();
-        Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+        Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
 
         HoverStar = null;
         State = InputState.FAR_STAR;
@@ -696,7 +696,7 @@ public partial class PlayerInput : Node
     {
         SelectedStar = HoverStar;
         SelectedStar._Node.GFX.GFXSelect();
-        //Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+        Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
 
         HoverStar._Node.GFX.GFXDehover();
         HoverStar = null;
@@ -709,7 +709,7 @@ public partial class PlayerInput : Node
 
         SelectedStar = HoverStar;
         SelectedStar._Node.GFX.GFXSelect();
-        //Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+        Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
 
         HoverStar._Node.GFX.GFXDehover();
         HoverStar = null;
@@ -724,7 +724,7 @@ public partial class PlayerInput : Node
 
         SelectedStar = HoverStar;
         SelectedStar._Node.GFX.GFXSelect();
-        //Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+        Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
 
         HoverStar._Node.GFX.GFXDehover();
         HoverStar = null;
@@ -773,7 +773,7 @@ public partial class PlayerInput : Node
     
         SelectedStar = HoverStar;
         SelectedStar._Node.GFX.GFXSelect();
-        //Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+        Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
     
         HoverStar._Node.GFX.GFXDehover();
         HoverStar = null;
@@ -896,7 +896,7 @@ public partial class PlayerInput : Node
         HoverFleets.Clear();
         Game.self.SelectorsUI3D.FleetDehover();
         Game.self.GalaxyUI.HideFleetsInfo();
-        Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+        Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
 
        State = InputState.FAR_STAR;
     }
@@ -915,7 +915,7 @@ public partial class PlayerInput : Node
         HoverFleets.Clear();
         Game.self.SelectorsUI3D.FleetDehover();
         Game.self.GalaxyUI.HideFleetsInfo();
-        Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+        Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
 
         State = InputState.CLOSE_STAR;
     }
@@ -924,7 +924,7 @@ public partial class PlayerInput : Node
         HoverFleets.Clear();
         Game.self.SelectorsUI3D.FleetDehover();
         Game.self.GalaxyUI.HideFleetsInfo();
-        Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+        Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
         Game.self.GalaxyUI.ShowPlanetInfo(SelectedPlanet);
 
         State = InputState.CLOSE_PLANET;
@@ -1127,7 +1127,7 @@ public partial class PlayerInput : Node
         SelectedStar._Node.GFX.GFXSelect();
         SelectedStar._Node.GFX.ShowPlanets3DGUI();
         Game.self.GalaxyUI.HideFleetsInfo();
-        Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+        Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
 
         //SelectedFleetList.Clear();
         SelectedFleet = null;
@@ -1190,7 +1190,7 @@ public partial class PlayerInput : Node
 
             HoverStar._Node.GFX.GFXHover();
             HoverStar._Node.GFX.ShowPlanets3DGUI();
-            Game.self.GalaxyUI.ShowStarInfo(HoverStar);
+            Game.self.GalaxyUI.ShowStarInfo(SelectedStar, HoverStar);
         }
 
         State = InputState.CLOSE_STAR_H_PLANET;
@@ -1207,7 +1207,7 @@ public partial class PlayerInput : Node
 
             HoverStar._Node.GFX.GFXHover();
             HoverStar._Node.GFX.ShowPlanets3DGUI();
-            Game.self.GalaxyUI.ShowStarInfo(HoverStar);
+            Game.self.GalaxyUI.ShowStarInfo(SelectedStar, HoverStar);
         }
 
         State = InputState.CLOSE_PLANET_H_PLANET;
@@ -1218,13 +1218,13 @@ public partial class PlayerInput : Node
         Game.self.SelectorsUI3D.PlanetHover(HoverPlanet);
         Game.self.GalaxyUI.ShowPlanetInfo(HoverPlanet);
 
-        if (planet._Star != SelectedStar)
+        //if (planet._Star != SelectedStar) // selectedStar should be null and the planet has a star
         {
             HoverStar = planet._Star;
 
             HoverStar._Node.GFX.GFXHover();
             HoverStar._Node.GFX.ShowPlanets3DGUI();
-            Game.self.GalaxyUI.ShowStarInfo(HoverStar);
+            Game.self.GalaxyUI.ShowStarInfo(null, HoverStar);
         }
 
         State = InputState.CLOSE_FLEETS_H_PLANET;
@@ -1236,7 +1236,7 @@ public partial class PlayerInput : Node
         {
             HoverStar._Node.GFX.GFXDehover();
             if (HoverStar != SelectedStar) HoverStar._Node.GFX.HidePlanets3DGUI();
-            if (HoverStar != SelectedStar) Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+            if (HoverStar != SelectedStar) Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
             HoverStar = null;
         }
 
@@ -1252,7 +1252,7 @@ public partial class PlayerInput : Node
         {
             HoverStar._Node.GFX.GFXDehover();
             if (HoverStar != SelectedStar) HoverStar._Node.GFX.HidePlanets3DGUI();
-            if (HoverStar != SelectedStar) Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+            if (HoverStar != SelectedStar) Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
             HoverStar = null;
         }
 
@@ -1532,7 +1532,7 @@ public partial class PlayerInput : Node
                 SelectedStar = star;
                 SelectedStar._Node.GFX.ShowPlanets3DGUI();
                 SelectedStar._Node.GFX.GFXSelect();
-                Game.self.GalaxyUI.ShowStarInfo(SelectedStar);
+                Game.self.GalaxyUI.ShowStarInfo(SelectedStar, null);
                 if (fromZoom && (State == InputState.FAR_GALAXY || State == InputState.FAR_STAR))
                 {
                     State = InputState.FAR_STAR;

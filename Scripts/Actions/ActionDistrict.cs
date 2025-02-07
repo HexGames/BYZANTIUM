@@ -5,6 +5,34 @@ using System.Collections.Generic;
 
 public class ActionDistrict
 {
+    static public bool CanColonize(SystemData system)
+    {
+        if (system.IsConstructionQueueBusy()) return false;
+
+        for (int idx = 0; idx < system.Star.Planets.Count; idx++)
+        {
+            if (system.Star.Planets[idx].Colony == null)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    static public bool CanColonize(PlanetData planet)
+    {
+        SystemData system = planet._Star.System;
+        if (system == null) return false;
+        if (system.IsConstructionQueueBusy()) return false;
+
+        if (planet.Colony == null) return true;
+
+        return false;
+    }
+
+    //static public void CalculateAll
+
     static public void RefreshAllBuildActions(DistrictData district)
     {
         district.ActionsChangeDistricts_OnRefresh.Clear();

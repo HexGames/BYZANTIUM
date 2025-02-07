@@ -20,9 +20,14 @@ public static class ColonyRaw
         if (empireCapital) Data.AddData(colony, "Capital", def);
 
         Data.AddData(colony, "District_List", def);
-        DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Agriculture_District"), 1, def);
+        DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Rural_District"), 1, def);
         DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Urban_District"), 0, def);
         DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Industrial_District"), 0, def);
+        DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Farm_District"), 0, def);
+        DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Bank_District"), 0, def);
+        DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Culture_District"), 0, def);
+        DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Tech_District"), 0, def);
+        DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Shipyard_District"), 0, def);
 
         Data.AddData(colony, "Link:Star:Planet", star.ValueS + ":" + planet.ValueS, def); // no PlanetData yet
         Data.AddData(planet, "Link:Player:System:Colony", player.ValueS + ":" + system.ValueS + ":" + colony.ValueS, def); // no ColonyData yet
@@ -30,7 +35,7 @@ public static class ColonyRaw
         return colony;
     }
 
-    public static DataBlock GetFirstDistrictOfType(DataBlock colony, string type, DefLibrary def)
+    public static DataBlock GetFirstDistrictOfType(DataBlock colony, string name, DefLibrary def)
     {
         // without district info
         //for (int defIdx = 0; defIdx < def.Districts.Count; defIdx++)
@@ -52,7 +57,7 @@ public static class ColonyRaw
         Array<DataBlock> districts = colony.GetSub("District_List").GetSubs();
         for (int districtIdx = 0; districtIdx < districts.Count; districtIdx++)
         {
-            if (def.GetDistrictInfo(districts[districtIdx].ValueS).Type == type)
+            if (def.GetDistrictInfo(districts[districtIdx].ValueS).Name == name)
             {
                 return districts[districtIdx];
             }
