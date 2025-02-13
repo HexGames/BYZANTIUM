@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public static class ColonyRaw
 {
-    public static DataBlock CreateNewColony_Habitable(DataBlock player, DataBlock star, DataBlock planet, DataBlock system, bool systemCapital, bool empireCapital, DefLibrary def)
+    public static DataBlock CreateNewColony_Habitable(DataBlock star, DataBlock planet, DataBlock player, DataBlock system, bool systemCapital, bool empireCapital, DefLibrary def)
     {
         if (PlanetRaw.GetBaseMaxPops(planet, def) <= 0) return null;
 
@@ -28,6 +28,25 @@ public static class ColonyRaw
         DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Culture_District"), 0, def);
         DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Tech_District"), 0, def);
         DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo("Shipyard_District"), 0, def);
+
+        Data.AddData(colony, "Link:Star:Planet", star.ValueS + ":" + planet.ValueS, def); // no PlanetData yet
+        Data.AddData(planet, "Link:Player:System:Colony", player.ValueS + ":" + system.ValueS + ":" + colony.ValueS, def); // no ColonyData yet
+
+        return colony;
+    }
+
+    public static DataBlock CreateNewColony_Unhabitable(DataBlock star, DataBlock planet, DataBlock player, DataBlock system, string districtName, DefLibrary def)
+    {
+        if (PlanetRaw.GetBaseMaxPops(planet, def) > 0) return null;
+
+        DataBlock empireData = def.GetEmpire(player.ValueS);
+
+        DataBlock colonyList = system.GetSub("Colony_List");
+
+        DataBlock colony = Data.AddData(colonyList, "Colony", planet.ValueS, def);
+
+        Data.AddData(colony, "District_List", def);
+        DistrictRaw.CreateNewDistrict(system, colony, def.GetDistrictInfo(districtName), def);
 
         Data.AddData(colony, "Link:Star:Planet", star.ValueS + ":" + planet.ValueS, def); // no PlanetData yet
         Data.AddData(planet, "Link:Player:System:Colony", player.ValueS + ":" + system.ValueS + ":" + colony.ValueS, def); // no ColonyData yet

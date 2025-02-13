@@ -16,6 +16,7 @@ public partial class DefLibrary : Node
 
     public void _Ready_Districts()
     {
+        DistrictsInfo.Clear();
         for (int idx = 0; idx < Districts.Count; idx++)
         {
             DistrictsInfo.Add(new DefDistrictWrapper(Districts[idx]));

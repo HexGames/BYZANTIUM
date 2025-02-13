@@ -1,8 +1,12 @@
 using Godot;
+using System.Collections.Generic;
 using System.Transactions;
 
 public partial class UIDistrictsGroupPlanet : Control
 {
+    [Export]
+    public bool SelectedPlanet = false; // for duplicated false is fine
+
     // is beeing duplicated
     private UIDistrictsGroupPlanetItem Shipyard;
     private UIDistrictsGroupPlanetItem Research;
@@ -22,11 +26,10 @@ public partial class UIDistrictsGroupPlanet : Control
 
     private Control PlanetResourceBg;
     private UIText PlanetResourceText;
-    private UITooltipTrigger PlanetResourceTooltip;
 
-    private Control PlanetPopsBg;
-    private UIText PlanetPopsText;
-    private UITooltipTrigger PlanetPopsTooltip;
+    private Control PlanetPopsMaxBg;
+    private UIText PlanetPopsMaxText;
+    private UITooltipTrigger PlanetPopsMaxTooltip;
 
     private Control PlanetPopsTimeBg;
     private UIText PlanetPopsTimeText;
@@ -45,6 +48,7 @@ public partial class UIDistrictsGroupPlanet : Control
     private UITooltipTrigger PlanetRuralTooltip;
 
     private Button PlanetButton;
+    private UIPulse PlanetButtonHighlight;
     private UIDistrictsGroupPlanetPops PlanetPopsList = null;
 
     // runtime
@@ -66,36 +70,42 @@ public partial class UIDistrictsGroupPlanet : Control
         PlanetPopMax = GetNode<Control>("Planet/Panel/PopMax");
         PlanetIcon = GetNode<TextureRect>("Planet/Panel/Round/BoxContainer/Planet");
         PlanetFeature = GetNode<TextureRect>("Planet/Feature");
-        PlanetFeatureTooltip = GetNode<UITooltipTrigger>("Planet/Feature/ToolTip");
+        //PlanetFeatureTooltip = GetNode<UITooltipTrigger>("Planet/Feature/ToolTip");
+        PlanetFeatureTooltip = GetNode<UITooltipTrigger>("Planet/Button/FeatureToolTip");
 
         PlanetResourceBg = GetNode<Control>("Planet/Resource");
         PlanetResourceText = GetNode<UIText>("Planet/Resource/Resource");
-        PlanetResourceTooltip = GetNode<UITooltipTrigger>("Planet/Resource/ToolTip");
 
-        PlanetPopsBg = GetNode<Control>("Planet/Pops");
-        PlanetPopsText = GetNode<UIText>("Planet/Pops/Pops");
-        PlanetPopsTooltip = GetNode<UITooltipTrigger>("Planet/Pops/ToolTip");
+        PlanetPopsMaxBg = GetNode<Control>("Planet/PopsMax");
+        PlanetPopsMaxText = GetNode<UIText>("Planet/PopsMax/Pops");
+        //PlanetPopsMaxTooltip = GetNode<UITooltipTrigger>("Planet/PopsMax/ToolTip");
+        PlanetPopsMaxTooltip = GetNode<UITooltipTrigger>("Planet/Button/PlanetToolTip");
 
         PlanetPopsTimeBg = GetNode<Control>("Planet/PopsTime");
         PlanetPopsTimeText = GetNode<UIText>("Planet/PopsTime/PopsTime");
-        PlanetPopsTimeTooltip = GetNode<UITooltipTrigger>("Planet/PopsTime/ToolTip");
+        //PlanetPopsTimeTooltip = GetNode<UITooltipTrigger>("Planet/PopsTime/ToolTip");
+        PlanetPopsTimeTooltip = GetNode<UITooltipTrigger>("Planet/Button/PopsTimeToolTip");
 
         PlanetLevelBg = GetNode<Control>("Planet/Level");
         PlanetLevelText = GetNode<UIText>("Planet/Level/Level");
-        PlanetLevelTooltip = GetNode<UITooltipTrigger>("Planet/Level/ToolTip");
+        //PlanetLevelTooltip = GetNode<UITooltipTrigger>("Planet/LevelToolTip");
+        PlanetLevelTooltip = GetNode<UITooltipTrigger>("Planet/Button/LevelToolTip");
 
         PlanetLevelTimeBg = GetNode<Control>("Planet/LevelTime");
         PlanetLevelTimeText = GetNode<UIText>("Planet/LevelTime/LevelTime");
-        PlanetLevelTimeTooltip = GetNode<UITooltipTrigger>("Planet/LevelTime/ToolTip");
+        //PlanetLevelTimeTooltip = GetNode<UITooltipTrigger>("Planet/LevelTime/ToolTip");
+        PlanetLevelTimeTooltip = GetNode<UITooltipTrigger>("Planet/Button/LevelTimeToolTip");
 
         PlanetRuralBg = GetNode<Control>("Planet/Rural");
         PlanetRuralText = GetNode<UIText>("Planet/Rural/Rural");
-        PlanetRuralTooltip = GetNode<UITooltipTrigger>("Planet/Rural/ToolTip");
+        //PlanetRuralTooltip = GetNode<UITooltipTrigger>("Planet/RuralToolTip");
+        PlanetRuralTooltip = GetNode<UITooltipTrigger>("Planet/Button/RuralToolTip");
 
-        PlanetButton = GetNode<Button>("Planet/Panel/Button");
-        if (HasNode("Planet/PopsList"))
+        PlanetButton = GetNode<Button>("Planet/Button");
+        PlanetButtonHighlight = GetNode<UIPulse>("Planet/Button/Highlight");
+        if (HasNode("Planet/Pops"))
         {
-            PlanetPopsList = GetNode<UIDistrictsGroupPlanetPops>("Planet/PopsList");
+            PlanetPopsList = GetNode<UIDistrictsGroupPlanetPops>("Planet/Pops");
         }
     }
 
@@ -121,12 +131,19 @@ public partial class UIDistrictsGroupPlanet : Control
             {
                 // habitable planet
                 Shipyard.Visible = true;
+                Shipyard.Refresh(_Planet.Colony.GetDistrictByName("Shipyard_District"));
                 Research.Visible = true;
+                Research.Refresh(_Planet.Colony.GetDistrictByName("Tech_District"));
                 Bank.Visible = true;
+                Bank.Refresh(_Planet.Colony.GetDistrictByName("Bank_District"));
                 Culture.Visible = true;
+                Culture.Refresh(_Planet.Colony.GetDistrictByName("Culture_District"));
                 Farm.Visible = true;
+                Farm.Refresh(_Planet.Colony.GetDistrictByName("Farm_District"));
                 Industrial.Visible = true;
+                Industrial.Refresh(_Planet.Colony.GetDistrictByName("Industrial_District"));
                 Urban.Visible = true;
+                Urban.Refresh(_Planet.Colony.GetDistrictByName("Urban_District"));
 
                 PlanetPrivate.Visible = false;
                 PlanetState.Visible = false;
@@ -136,18 +153,27 @@ public partial class UIDistrictsGroupPlanet : Control
                 PlanetResourceBg.Visible = true;
                 PlanetResourceText.SetTextWithReplace("$r", Helper.GetIcon("Growth"));
 
-                PlanetPopsBg.Visible = true;
-                PlanetPopsText.SetTextWithReplace("$", _Planet.Colony.GetPopsMax().ToString());
+                PlanetPopsMaxBg.Visible = true;
+                PlanetPopsMaxText.SetTextWithReplace("$", _Planet.Colony.GetPopsMax().ToString());
 
                 PlanetPopsTimeBg.Visible = true;
                 PlanetPopsTimeText.SetTextWithReplace("$", "oo");
 
                 PlanetLevelBg.Visible = false;
+                PlanetLevelTooltip.Visible = false;
 
                 PlanetLevelTimeBg.Visible = false;
 
+                DistrictData rural = _Planet.Colony.GetDistrictByName("Rural_District");
                 PlanetRuralBg.Visible = true;
-                PlanetRuralText.SetTextWithReplace("$", _Planet.Colony.Districts[0].Pops.Count.ToString());
+                PlanetRuralText.SetTextWithReplace("$", rural.Pops.Count.ToString());
+                PlanetRuralTooltip.Visible = true;
+
+                if (PlanetPopsList != null)
+                {
+                    PlanetPopsList.Visible = true;
+                    PlanetPopsList.Refresh(rural);
+                }
             }
             else
             {
@@ -168,17 +194,24 @@ public partial class UIDistrictsGroupPlanet : Control
                 PlanetResourceBg.Visible = true;
                 PlanetResourceText.SetTextWithReplace("$r", Helper.GetIcon("BC"));
 
-                PlanetPopsBg.Visible = false;
+                PlanetPopsMaxBg.Visible = false;
 
                 PlanetPopsTimeBg.Visible = false;
 
                 PlanetLevelBg.Visible = true;
                 PlanetLevelText.SetTextWithReplace("$", _Planet.Colony.Districts[0].GetLevel().ToString());
+                PlanetLevelTooltip.Visible = true;
 
                 PlanetLevelTimeBg.Visible = true;
                 PlanetLevelTimeText.SetTextWithReplace("$", "oo");
 
                 PlanetRuralBg.Visible = false;
+                PlanetRuralTooltip.Visible = false;
+
+                if (PlanetPopsList != null)
+                {
+                    PlanetPopsList.Visible = false;
+                }
             }
         }
         else
@@ -200,22 +233,82 @@ public partial class UIDistrictsGroupPlanet : Control
             if (_Planet.IsHabitable())
             {
                 PlanetPopMax.Visible = true;
-                PlanetPopsBg.Visible = true;
-                PlanetPopsText.SetTextWithReplace("$", PlanetRaw.GetBaseMaxPops(_Planet.Data, Game.self.Def).ToString());
+                PlanetPopsMaxBg.Visible = true;
+                PlanetPopsMaxText.SetTextWithReplace("$", PlanetRaw.GetBaseMaxPops(_Planet.Data, Game.self.Def).ToString());
             }
             else
             {
                 PlanetPopMax.Visible = false;
-                PlanetPopsBg.Visible = false;
+                PlanetPopsMaxBg.Visible = false;
             }
 
             PlanetPopsTimeBg.Visible = false;
 
             PlanetLevelBg.Visible = false;
+            PlanetLevelTooltip.Visible = false;
 
             PlanetLevelTimeBg.Visible = false;
 
             PlanetRuralBg.Visible = false;
+            PlanetRuralTooltip.Visible = false;
+
+            if (PlanetPopsList != null)
+            {
+                PlanetPopsList.Visible = false;
+            }
+        }
+
+        PlanetButton.Disabled = SelectedPlanet;
+        PlanetButtonHighlight.Visible = false;
+    }
+
+    public List<ActionBase> PossibleActions = new List<ActionBase>();
+    public void SetPossibleActions<T>(List<T> allPossibleActions) where T : ActionBase
+    {
+        if (allPossibleActions.Count == 0) return;
+
+        PossibleActions.Clear();
+        for (int idx = 0; idx < allPossibleActions.Count; idx++)
+        {
+            if (allPossibleActions[idx] is ActionEconomyColonize)
+            {
+                ActionEconomyColonize action = allPossibleActions[idx] as ActionEconomyColonize;
+                if (action.Planet == _Planet)
+                {
+                    PossibleActions.Add(allPossibleActions[idx]);
+                }
+            }
+        }
+
+        if (PossibleActions.Count > 0)
+        {
+            PlanetButton.Disabled = false;
+            PlanetButtonHighlight.Visible = true;
+        }
+        else
+        {
+            PlanetButton.Disabled = true;
+            PlanetButtonHighlight.Visible = false;
+        }
+    }
+
+    public void ClearPossibleActions()
+    {
+        PossibleActions.Clear();
+        PlanetButton.Disabled = SelectedPlanet;
+        PlanetButtonHighlight.Visible = false;
+    }
+
+    public void OnButton()
+    {
+        if (PossibleActions.Count > 0)
+        {
+            Game.self.Input.OnAction_Economy_SelectPlanet(PossibleActions);
+        }
+        else
+        {
+            Game.self.Input.OnHoverPlanet(_Planet);
+            Game.self.Input.OnSelectPlanet(_Planet);
         }
     }
 }

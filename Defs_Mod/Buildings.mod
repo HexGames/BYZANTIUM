@@ -1,4 +1,4 @@
-// 2025-02-07T18:26:59
+// 2025-02-13T09:58:29
 Buildings 
 {
 	Building Rural_District
@@ -28,6 +28,7 @@ Buildings
 				PerPop 20
 			}
 		}
+		Control Private
 	}
 	Building Urban_District
 	{
@@ -60,7 +61,7 @@ Buildings
 				SystemPerPopMultiplier 100
 			}
 		}
-		Control State_or_Private
+		Control Private
 	}
 	Building Industrial_District
 	{
@@ -98,7 +99,7 @@ Buildings
 				SystemPerPopMultiplier 100
 			}
 		}
-		Control State_or_Private
+		Control Private
 	}
 	Building Farm_District
 	{
@@ -117,7 +118,7 @@ Buildings
 				PerPop 40
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Bank_District
 	{
@@ -138,7 +139,7 @@ Buildings
 				SystemPerPopMultiplier 200
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Culture_District
 	{
@@ -159,7 +160,7 @@ Buildings
 				SystemPerPopMultiplier 200
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Tech_District
 	{
@@ -180,7 +181,7 @@ Buildings
 				SystemPerPopMultiplier 200
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Shipyard_District
 	{
@@ -201,11 +202,11 @@ Buildings
 				SystemPerPopMultiplier 200
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Orbital_Forum
 	{
-		Type Station
+		Type Space_Station
 		PrivatizeTo Private_Orbital_Forum
 		Color c_ff0084
 		Cost 
@@ -220,11 +221,11 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Research_Station
 	{
-		Type Station
+		Type Space_Station
 		PrivatizeTo Private_Research_Station
 		Color c_00c6b6
 		Cost 
@@ -239,11 +240,11 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Orbital_Shipyard
 	{
-		Type Station
+		Type Space_Station
 		PrivatizeTo Private_Orbital_Shipyard
 		Color c_e90000
 		Cost 
@@ -258,11 +259,11 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Asteroid_Market
 	{
-		Type Base
+		Type Asteroid_Base
 		PrivatizeTo Private_Asteroid_Market
 		Color c_fbe52d
 		Cost 
@@ -277,11 +278,11 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Asteroid_Labs
 	{
-		Type Base
+		Type Asteroid_Base
 		PrivatizeTo Private_Asteroid_Labs
 		Color c_00c6b6
 		Cost 
@@ -296,11 +297,11 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Asteroid_Shipyard
 	{
-		Type Base
+		Type Asteroid_Base
 		PrivatizeTo Private_Asteroid_Shipyard
 		Color c_e90000
 		Cost 
@@ -315,7 +316,7 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Trade_Outpost
 	{
@@ -334,7 +335,7 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Turism_Outpost
 	{
@@ -353,7 +354,7 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Farming_Outpost
 	{
@@ -372,11 +373,11 @@ Buildings
 				PerLevel 20
 			}
 		}
-		Control State_or_Private
+		Control State
 	}
 	Building Private_Orbital_Forum
 	{
-		Type Station
+		Type Space_Station
 		NationalizeTo Orbital_Forum
 		Color c_ff0084
 		Cost 
@@ -401,11 +402,11 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control Private
 	}
 	Building Private_Research_Station
 	{
-		Type Station
+		Type Space_Station
 		NationalizeTo Research_Station
 		Color c_00c6b6
 		Cost 
@@ -430,11 +431,11 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control Private
 	}
 	Building Private_Orbital_Shipyard
 	{
-		Type Station
+		Type Space_Station
 		NationalizeTo Orbital_Shipyard
 		Color c_e90000
 		Cost 
@@ -459,11 +460,11 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control Private
 	}
 	Building Private_Asteroid_Market
 	{
-		Type Base
+		Type Asteroid_Base
 		NationalizeTo Asteroid_Market
 		Color c_fbe52d
 		Cost 
@@ -484,11 +485,11 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control Private
 	}
 	Building Private_Asteroid_Labs
 	{
-		Type Base
+		Type Asteroid_Base
 		NationalizeTo Asteroid_Labs
 		Color c_00c6b6
 		Cost 
@@ -513,11 +514,11 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control Private
 	}
 	Building Private_Asteroid_Shipyard
 	{
-		Type Base
+		Type Asteroid_Base
 		NationalizeTo Asteroid_Shipyard
 		Color c_e90000
 		Cost 
@@ -542,7 +543,7 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control Private
 	}
 	Building Private_Trade_Outpost
 	{
@@ -567,7 +568,7 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control Private
 	}
 	Building Private_Turism_Outpost
 	{
@@ -596,7 +597,7 @@ Buildings
 				SystemPerPop 10
 			}
 		}
-		Control State_or_Private
+		Control Private
 	}
 	Building Private_Farming_Outpost
 	{
@@ -625,6 +626,6 @@ Buildings
 				PerLevel 10
 			}
 		}
-		Control State_or_Private
+		Control Private
 	}
 }

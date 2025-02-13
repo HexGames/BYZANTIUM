@@ -34,7 +34,7 @@ public static class SystemRaw
             chosenPlanet = StarRaw.GetBestHabitablePlanet(star);
         }
         Data.AddData(system, "Colony_List", def);
-        DataBlock colony = ColonyRaw.CreateNewColony_Habitable(player, star, chosenPlanet, system, true, empireCapital, def);
+        DataBlock colony = ColonyRaw.CreateNewColony_Habitable(star, chosenPlanet, player, system, true, empireCapital, def);
 
         Data.AddData(system, "Trades", def);
 
@@ -55,7 +55,7 @@ public static class SystemRaw
                 int planetMaxPops = PlanetRaw.GetBaseMaxPops(planet, Game.self.Def);
                 if (planet.HasSub("Link:Player:System:Colony") == false && planetMaxPops > 0)
                 {
-                    DataBlock colony = ColonyRaw.CreateNewColony_Habitable(player, star, planet, system, false, false, def);
+                    //DataBlock colony = ColonyRaw.CreateNewColony_Habitable(star, planet, player, system, false, false, def);
                 }
             }
         }

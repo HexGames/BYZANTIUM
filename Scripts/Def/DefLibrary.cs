@@ -207,9 +207,9 @@ public partial class DefLibrary : Node
         if (Engine.IsEditorHint())
             return;
 
-        _Ready_Districts();
-        _Ready_Empires();
-        _Ready_Features();
+        //_Ready_Districts();
+        //_Ready_Empires();
+        //_Ready_Features();
     }
     //    DirAccess folder = null;
     //    string[] files = null;

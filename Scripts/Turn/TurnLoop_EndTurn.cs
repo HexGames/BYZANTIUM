@@ -77,8 +77,8 @@ public partial class TurnLoop : Node
             for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
             {
                 SystemData system = player.Systems[systemIdx];
-
-                ActionDistrict.EndTurn(system); // --- !!! ---
+                ActionEconomyColonize.EndTurn(system); // --- !!! ---
+                //ActionDistrict.EndTurn(system); 
             }
         }
 
@@ -128,7 +128,7 @@ public partial class TurnLoop : Node
             for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
             {
                 FleetData fleet = player.Fleets[fleetIdx];
-                ActionColonize.EndTurn(Game.self, fleet);
+                //ActionColonize.EndTurn(Game.self, fleet);
                 ActionMove.EndTurn(Game.self, fleet);
 
                 if (fleet.ActionMoveData == null)
@@ -353,11 +353,11 @@ public partial class TurnLoop : Node
         {
             PlayerData player = Game.self.Map.Data.Players[playerIdx];
 
-            //for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
-            //{
-            //    SystemData system = player.Systems[systemIdx];
-            //    ActionChangeDistrict.RefreshAvailableDistricts(system);
-            //}
+            for (int systemIdx = 0; systemIdx < player.Systems.Count; systemIdx++)
+            {
+                SystemData system = player.Systems[systemIdx];
+                ActionEconomyColonize.RefreshActions(system);
+            }
 
             for (int fleetIdx = 0; fleetIdx < player.Fleets.Count; fleetIdx++)
             {

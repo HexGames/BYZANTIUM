@@ -28,12 +28,17 @@ public partial class PlayerInput : Node
         CLOSE_FLEETS_H_FLEETS,
         CLOSE_FLEETS_H_PLANET,
         CLOSE_FLEETS_H_STAR,
+        AE_SELECT_PLANET,
+        AE_SELECT_DISTRICT,
+        AE_SELECT_CHOICE,
         LOCKED_DIPLOMACY = 999,
     };
 
     [ExportCategory("Runtime")]
     [Export]
     public InputState State = InputState.FAR_GALAXY;
+    [Export]
+    public bool LockedInput = false;
 
     [Export]
     public StarData HoverStar = null;
@@ -55,6 +60,9 @@ public partial class PlayerInput : Node
     public SystemData SelectedStarSystem = null;
     [Export]
     public ColonyData SelectedPlanetColony = null;
+
+
+
 
     private bool UnhandledInput = false;
     public override void _Input(InputEvent inputEvent)
@@ -82,6 +90,21 @@ public partial class PlayerInput : Node
                     Game.self.HumanPlayer.DEBUG = !Game.self.HumanPlayer.DEBUG;
                     Game.self.TurnLoop.StartTurn_Visibility();
                     Game.self.TurnLoop.StartTurn_RefreshGUI3D();
+                }
+            }
+        }
+
+        if (inputEvent is InputEventMouseButton mouseButtonEvent)
+        {
+            if (!mouseButtonEvent.IsPressed())
+            {
+                // on mouse button release
+                if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
+                {
+                    if (HoverStar == null || SelectedFleet == null)
+                    {
+                        Game.self.Input.DeselectOneStep();
+                    }
                 }
             }
         }
@@ -126,15 +149,15 @@ public partial class PlayerInput : Node
                 else if (mouseButtonEvent.ButtonIndex == MouseButton.Right)
                 {
                     bool moved = false;
-                    if (HoverStar != null)
+                    if (HoverStar != null && SelectedFleet != null)
                     {
                         moved = Game.self.Input.TryFleetsMoveToStar(HoverStar);
                     }
-
-                    if (moved == false)
-                    {
-                        Game.self.Input.DeselectOneStep();
-                    }
+                    //
+                    //if (moved == false)
+                    //{
+                    //    Game.self.Input.DeselectOneStep();
+                    //}
                 }
             }
         }
@@ -305,6 +328,8 @@ public partial class PlayerInput : Node
     // ---------------------------------------------------------------------------------
     public void OnHoverStar(StarData star)
     {
+        if (LockedInput) return;
+
         if (star == HoverStar) return;
 
         if (HoverStar != null) OnDehoverStar();
@@ -335,6 +360,8 @@ public partial class PlayerInput : Node
     //}
     public void OnDehoverStar()
     {
+        if (LockedInput) return;
+
         if (HoverStar == null) return;
 
         switch (State)
@@ -356,6 +383,8 @@ public partial class PlayerInput : Node
 
     public void OnSelectStar(StarData star)
     {
+        if (LockedInput) return;
+
         if (star != HoverStar) return;
         if (HoverStar.Visibility_PerTurn.IsUncoveredBy(Game.self.HumanPlayer) == false) return;
 
@@ -377,6 +406,8 @@ public partial class PlayerInput : Node
     }
     public void OnDeselectStar(bool forced = false)
     {
+        if (LockedInput) return;
+
         switch (State)
         {
             case InputState.FAR_STAR:
@@ -393,6 +424,8 @@ public partial class PlayerInput : Node
     // -------------------------------------
     public void OnHoverFleets(Array<FleetData> fleets)
     {
+        if (LockedInput) return;
+
         if (fleets.Count == 0 || (fleets.Count > 0 && fleets.Count == HoverFleets.Count && fleets[0] == HoverFleets[0])) return;
 
         if (HoverFleets.Count > 0) OnDehoverFleets();
@@ -417,6 +450,8 @@ public partial class PlayerInput : Node
     }
     public void OnDehoverFleets()
     {
+        if (LockedInput) return;
+
         if (HoverFleets.Count == 0) return;
 
         switch (State)
@@ -438,6 +473,8 @@ public partial class PlayerInput : Node
 
     public void OnSelectFleets(Array<FleetData> fleets)
     {
+        if (LockedInput) return;
+
         switch (State)
         {
             case InputState.FAR_GALAXY_H_FLEETS:
@@ -474,6 +511,7 @@ public partial class PlayerInput : Node
 
     public void OnDeselectFleets()
     {
+        if (LockedInput) return;
         //SelectedFleetList.Clear();
         switch (State)
         {
@@ -497,6 +535,8 @@ public partial class PlayerInput : Node
     // -------------------------------------
     public void OnHoverPlanet(PlanetData planet)
     {
+        if (LockedInput) return;
+
         if (planet == HoverPlanet) return;
 
         if (HoverPlanet != null) OnDehoverPlanet();
@@ -521,6 +561,8 @@ public partial class PlayerInput : Node
     //}
     public void OnDehoverPlanet()
     {
+        if (LockedInput) return;
+
         if (HoverPlanet == null) return;
 
         switch (State)
@@ -536,6 +578,8 @@ public partial class PlayerInput : Node
 
     public void OnSelectPlanet(PlanetData planet)
     {
+        if (LockedInput) return;
+
         if (planet != HoverPlanet) return;
 
         switch (State)
@@ -550,6 +594,8 @@ public partial class PlayerInput : Node
     }
     public void OnDeselectPlanet()
     {
+        if (LockedInput) return;
+
         switch (State)
         {
             case InputState.CLOSE_PLANET:
@@ -567,6 +613,7 @@ public partial class PlayerInput : Node
     public void DeselectOneStep(bool forced = false)
     {
         if (State == InputState.LOCKED_DIPLOMACY) OnCloseDiplomacy();
+        else if (State == InputState.AE_SELECT_PLANET || State == InputState.AE_SELECT_CHOICE) OnCancelAction();
         else if (SelectedPlanet != null) OnDeselectPlanet();
         else if (SelectedFleet != null) OnDeselectFleets();
         else if (SelectedStar != null) OnDeselectStar(forced);

@@ -31,6 +31,15 @@ public static class DistrictRaw
 
         return district;
     }
+    public static DataBlock CreateNewDistrict(DataBlock system, DataBlock colony, DefDistrictWrapper districtDef, DefLibrary def)
+    {
+        DataBlock districts = colony.GetSub("District_List");
+
+        DataBlock district = Data.AddData(districts, "District", districtDef.Name, def);
+        Data.AddData(district, "Level", 1, def);
+
+        return district;
+    }
 
     public static DataBlock CreateNewPop(DataBlock district, DefLibrary def)
     {

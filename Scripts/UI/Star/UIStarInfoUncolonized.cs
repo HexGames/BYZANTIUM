@@ -29,55 +29,55 @@ public partial class UIStarInfoUncolonized : Control
     {
         _Star = star;
 
-        FleetData colonyFleet = ActionColonize.GetColonyFleet(Game.self, Game.self.HumanPlayer, _Star);
-        List<PlanetData> habitables = _Star.GetHabitablePlanets();
-
-        if (colonyFleet != null && colonyFleet.Data.HasSub("ActionColonize"))
-        {
-            UncolonizedBg.Visible = false;
-            Colonizing.Visible = true;
-
-            ColonizingText.SetTextWithReplace("$name", colonyFleet.Data.GetSubValueS("ActionColonize", "Planet"));
-        }
-        else
-        {
-            UncolonizedBg.Visible = true;
-            Colonizing.Visible = false;
-
-            for (int idx = 0; idx < ColonizePlanet.Count; idx++)
-            {
-                if (idx < habitables.Count)
-                {
-                    ColonizePlanet[idx].Visible = true;
-                    ColonizePlanet[idx].BtnText.SetTextWithReplace("$name", habitables[idx].PlanetName, "$v", "???");
-                    ColonizePlanet[idx].Disabled = colonyFleet == null;
-                }
-                else
-                {
-                    ColonizePlanet[idx].Visible = false;
-                }
-            }
-            Disabled_NoColonyShip.Visible = colonyFleet == null;
-        }
+        //FleetData colonyFleet = ActionColonize.GetColonyFleet(Game.self, Game.self.HumanPlayer, _Star);
+        //List<PlanetData> habitables = _Star.GetHabitablePlanets();
+        //
+        //if (colonyFleet != null && colonyFleet.Data.HasSub("ActionColonize"))
+        //{
+        //    UncolonizedBg.Visible = false;
+        //    Colonizing.Visible = true;
+        //
+        //    ColonizingText.SetTextWithReplace("$name", colonyFleet.Data.GetSubValueS("ActionColonize", "Planet"));
+        //}
+        //else
+        //{
+        //    UncolonizedBg.Visible = true;
+        //    Colonizing.Visible = false;
+        //
+        //    for (int idx = 0; idx < ColonizePlanet.Count; idx++)
+        //    {
+        //        if (idx < habitables.Count)
+        //        {
+        //            ColonizePlanet[idx].Visible = true;
+        //            ColonizePlanet[idx].BtnText.SetTextWithReplace("$name", habitables[idx].PlanetName, "$v", "???");
+        //            ColonizePlanet[idx].Disabled = colonyFleet == null;
+        //        }
+        //        else
+        //        {
+        //            ColonizePlanet[idx].Visible = false;
+        //        }
+        //    }
+        //    Disabled_NoColonyShip.Visible = colonyFleet == null;
+        //}
     }
 
-    public void OnColonize_1()
-    {
-        List<PlanetData> habitables = _Star.GetHabitablePlanets();
-        ActionColonize.Colonize(Game.self, Game.self.HumanPlayer, _Star, habitables[0]);
-    }
-    public void OnColonize_2()
-    {
-        List<PlanetData> habitables = _Star.GetHabitablePlanets();
-        ActionColonize.Colonize(Game.self, Game.self.HumanPlayer, _Star, habitables[1]);
-    }
-    public void OnColonize_3()
-    {
-        List<PlanetData> habitables = _Star.GetHabitablePlanets();
-        ActionColonize.Colonize(Game.self, Game.self.HumanPlayer, _Star, habitables[2]);
-    }
-    public void OnCancel()
-    {
-        ActionColonize.Cancel(Game.self, Game.self.HumanPlayer, _Star);
-    }
+    //public void OnColonize_1()
+    //{
+    //    List<PlanetData> habitables = _Star.GetHabitablePlanets();
+    //    ActionColonize.Colonize(Game.self, Game.self.HumanPlayer, _Star, habitables[0]);
+    //}
+    //public void OnColonize_2()
+    //{
+    //    List<PlanetData> habitables = _Star.GetHabitablePlanets();
+    //    ActionColonize.Colonize(Game.self, Game.self.HumanPlayer, _Star, habitables[1]);
+    //}
+    //public void OnColonize_3()
+    //{
+    //    List<PlanetData> habitables = _Star.GetHabitablePlanets();
+    //    ActionColonize.Colonize(Game.self, Game.self.HumanPlayer, _Star, habitables[2]);
+    //}
+    //public void OnCancel()
+    //{
+    //    ActionColonize.Cancel(Game.self, Game.self.HumanPlayer, _Star);
+    //}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dffvv6bxptssj"]
+[gd_scene load_steps=26 format=3 uid="uid://dffvv6bxptssj"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistricts.cs" id="1_jswm3"]
 [ext_resource type="Theme" uid="uid://dpkvs0dtidjf4" path="res://UITheme/Text.tres" id="2_cxagv"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bkwxg68uku243" path="res://Assets/Planets/UI/Terra.png" id="17_p3a3x"]
 [ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistrictsGroupPlanetPopsItem.cs" id="17_s2425"]
 [ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistrictsGroupPlanetPops.cs" id="19_31cew"]
+[ext_resource type="Texture2D" uid="uid://col2kywjnonpx" path="res://Assets/Panels/OverlayButtonHighlight.png" id="19_it7uu"]
+[ext_resource type="Script" path="res://Scripts/UI/Base/UIPulse.cs" id="20_pia37"]
 [ext_resource type="Script" path="res://Scripts/UI/Districts/UIDistrictsGroup.cs" id="21_g34pf"]
 [ext_resource type="Theme" uid="uid://c7c0v052shvh4" path="res://UITheme/PanelButtonTextured.tres" id="22_be2cl"]
 [ext_resource type="Texture2D" uid="uid://bmfwe36vo3gbn" path="res://Assets/Panels/OverlayTop.png" id="23_rb5yq"]
@@ -44,6 +46,14 @@ region_rect = Rect2(4, 4, 120, 120)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_11gdw"]
 texture = ExtResource("24_h67hu")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(4, 4, 120, 120)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5bu4q"]
+texture = ExtResource("19_it7uu")
 texture_margin_left = 14.0
 texture_margin_top = 14.0
 texture_margin_right = 14.0
@@ -217,6 +227,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("22_be2cl")
 
 [node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Panel"]
@@ -228,6 +239,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Panel"]
@@ -238,16 +250,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
-[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Panel"]
-visible = false
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
 
 [node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard"]
 custom_minimum_size = Vector2(24, 40)
@@ -316,7 +345,54 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard"]
+[node name="Research" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -331,50 +407,6 @@ Direction = 3
 Width = 320
 Title = "Colonize"
 Row_1 = "$text"
-
-[node name="Research" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
-custom_minimum_size = Vector2(48, 96)
-layout_mode = 2
-script = ExtResource("9_0ap12")
-
-[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("22_be2cl")
-
-[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Panel"]
-visible = false
-self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Panel"]
-self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research"]
 custom_minimum_size = Vector2(24, 40)
@@ -443,7 +475,54 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research"]
+[node name="Bank" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -458,50 +537,6 @@ Direction = 3
 Width = 320
 Title = "Colonize"
 Row_1 = "$text"
-
-[node name="Bank" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
-custom_minimum_size = Vector2(48, 96)
-layout_mode = 2
-script = ExtResource("9_0ap12")
-
-[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("22_be2cl")
-
-[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Panel"]
-visible = false
-self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Panel"]
-self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank"]
 custom_minimum_size = Vector2(24, 40)
@@ -570,7 +605,54 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank"]
+[node name="Culture" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -585,50 +667,6 @@ Direction = 3
 Width = 320
 Title = "Colonize"
 Row_1 = "$text"
-
-[node name="Culture" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
-custom_minimum_size = Vector2(48, 96)
-layout_mode = 2
-script = ExtResource("9_0ap12")
-
-[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("22_be2cl")
-
-[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Panel"]
-visible = false
-self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Panel"]
-self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture"]
 custom_minimum_size = Vector2(24, 40)
@@ -697,7 +735,54 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture"]
+[node name="Farm" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Panel"]
+visible = false
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Panel"]
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -712,50 +797,6 @@ Direction = 3
 Width = 320
 Title = "Colonize"
 Row_1 = "$text"
-
-[node name="Farm" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
-custom_minimum_size = Vector2(48, 96)
-layout_mode = 2
-script = ExtResource("9_0ap12")
-
-[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("22_be2cl")
-
-[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Panel"]
-visible = false
-self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Panel"]
-self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm"]
 custom_minimum_size = Vector2(24, 40)
@@ -824,7 +865,54 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm"]
+[node name="Industrial" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Panel"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Panel"]
+visible = false
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -839,50 +927,6 @@ Direction = 3
 Width = 320
 Title = "Colonize"
 Row_1 = "$text"
-
-[node name="Industrial" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
-custom_minimum_size = Vector2(48, 96)
-layout_mode = 2
-script = ExtResource("9_0ap12")
-
-[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("22_be2cl")
-
-[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Panel"]
-self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Panel"]
-visible = false
-self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial"]
 custom_minimum_size = Vector2(24, 40)
@@ -979,7 +1023,54 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial"]
+[node name="Urban" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
+custom_minimum_size = Vector2(48, 96)
+layout_mode = 2
+script = ExtResource("9_0ap12")
+
+[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("22_be2cl")
+
+[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Panel"]
+self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Panel"]
+visible = false
+self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
+
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -994,50 +1085,6 @@ Direction = 3
 Width = 320
 Title = "Colonize"
 Row_1 = "$text"
-
-[node name="Urban" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
-custom_minimum_size = Vector2(48, 96)
-layout_mode = 2
-script = ExtResource("9_0ap12")
-
-[node name="Panel" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("22_be2cl")
-
-[node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Panel"]
-self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Panel"]
-visible = false
-self_modulate = Color(0.411765, 0.596078, 1, 0.376471)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
-
-[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Bottom" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban"]
 custom_minimum_size = Vector2(24, 40)
@@ -1134,22 +1181,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="Planet" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0"]
 clip_children = 1
 custom_minimum_size = Vector2(96, 96)
@@ -1162,10 +1193,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("22_be2cl")
 
 [node name="Private" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
-visible = false
 self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
 layout_mode = 1
 anchors_preset = 15
@@ -1173,6 +1204,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="State" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
@@ -1184,6 +1216,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="PopMax" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
@@ -1194,9 +1227,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_b0sgh")
 
 [node name="Rural" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
+visible = false
 self_modulate = Color(0.984314, 0.898039, 0.176471, 0.376471)
 layout_mode = 1
 anchors_preset = 15
@@ -1204,6 +1239,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_11gdw")
 
 [node name="Round" type="TextureRect" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
@@ -1245,7 +1281,17 @@ mouse_filter = 2
 texture = ExtResource("17_p3a3x")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Panel"]
+[node name="Button" type="Button" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("22_be2cl")
+
+[node name="Highlight" type="Panel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1253,30 +1299,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Feature" type="TextureRect" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
-self_modulate = Color(0.25098, 0.25098, 0.25098, 1)
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_top = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 4
 mouse_filter = 2
-texture = ExtResource("4_skl03")
-expand_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_5bu4q")
+script = ExtResource("20_pia37")
+Frequency = 1.0
+On = true
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Feature"]
+[node name="PlanetToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -1288,7 +1328,137 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
+[node name="FeatureToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button"]
+custom_minimum_size = Vector2(32, 28)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -28.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="RuralToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button"]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="LevelToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button"]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="PopsTimeToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="LevelTimeToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button"]
+custom_minimum_size = Vector2(32, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="PopMaxToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button"]
+custom_minimum_size = Vector2(32, 40)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="Feature" type="TextureRect" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+self_modulate = Color(0.25098, 0.25098, 0.25098, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -28.0
+offset_right = 17.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("4_skl03")
+expand_mode = 1
+
 [node name="Resource" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+visible = false
 custom_minimum_size = Vector2(32, 40)
 layout_mode = 1
 anchors_preset = 2
@@ -1323,23 +1493,7 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Resource"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
-[node name="Pops" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
+[node name="PopsMax" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
 custom_minimum_size = Vector2(32, 40)
 layout_mode = 1
 anchors_preset = 3
@@ -1353,7 +1507,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Pops" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops"]
+[node name="Pops" type="RichTextLabel" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsMax"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -1376,22 +1530,6 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
-
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
 
 [node name="Rural" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
 custom_minimum_size = Vector2(32, 32)
@@ -1425,22 +1563,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Rural"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="Level" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
@@ -1472,22 +1594,6 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
-
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Level"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
 
 [node name="LevelTime" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
 custom_minimum_size = Vector2(32, 32)
@@ -1522,29 +1628,14 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/LevelTime"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="PopsTime" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -32.0
+offset_left = -33.0
+offset_right = -1.0
 offset_bottom = 32.0
 grow_horizontal = 0
 mouse_filter = 2
@@ -1571,52 +1662,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsTime"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
-[node name="PlanetTooltipBg" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ToolTip" type="Control" parent="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PlanetTooltipBg"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="Gap" type="Control" parent="System/VBoxContainer/Orbit_0"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
@@ -1642,6 +1687,7 @@ size_flags_horizontal = 8
 mouse_filter = 2
 theme_override_constants/separation = -4
 script = ExtResource("8_4v411")
+SelectedPlanet = true
 
 [node name="Shipyard" type="Control" parent="Selected/Planet"]
 custom_minimum_size = Vector2(96, 48)
@@ -1655,6 +1701,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("22_be2cl")
 
 [node name="Private" type="Panel" parent="Selected/Planet/Shipyard/Panel"]
@@ -1666,6 +1713,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="State" type="Panel" parent="Selected/Planet/Shipyard/Panel"]
@@ -1676,16 +1724,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
-[node name="Button" type="Button" parent="Selected/Planet/Shipyard/Panel"]
-visible = false
+[node name="Button" type="Button" parent="Selected/Planet/Shipyard"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Shipyard/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
 
 [node name="Bottom" type="Control" parent="Selected/Planet/Shipyard"]
 custom_minimum_size = Vector2(40, 40)
@@ -1762,22 +1827,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/Planet/Shipyard"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="Pops" type="HBoxContainer" parent="Selected/Planet/Shipyard"]
 layout_mode = 1
 anchors_preset = -1
@@ -1843,6 +1892,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("22_be2cl")
 
 [node name="Private" type="Panel" parent="Selected/Planet/Research/Panel"]
@@ -1854,6 +1904,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="State" type="Panel" parent="Selected/Planet/Research/Panel"]
@@ -1864,16 +1915,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
-[node name="Button" type="Button" parent="Selected/Planet/Research/Panel"]
-visible = false
+[node name="Button" type="Button" parent="Selected/Planet/Research"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Research/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
 
 [node name="Bottom" type="Control" parent="Selected/Planet/Research"]
 custom_minimum_size = Vector2(40, 40)
@@ -1950,22 +2018,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/Planet/Research"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="Pops" type="HBoxContainer" parent="Selected/Planet/Research"]
 layout_mode = 1
 anchors_preset = -1
@@ -2031,6 +2083,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("22_be2cl")
 
 [node name="Private" type="Panel" parent="Selected/Planet/Bank/Panel"]
@@ -2042,6 +2095,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="State" type="Panel" parent="Selected/Planet/Bank/Panel"]
@@ -2052,16 +2106,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
-[node name="Button" type="Button" parent="Selected/Planet/Bank/Panel"]
-visible = false
+[node name="Button" type="Button" parent="Selected/Planet/Bank"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Bank/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
 
 [node name="Bottom" type="Control" parent="Selected/Planet/Bank"]
 custom_minimum_size = Vector2(40, 40)
@@ -2138,22 +2209,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/Planet/Bank"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="Pops" type="HBoxContainer" parent="Selected/Planet/Bank"]
 layout_mode = 1
 anchors_preset = -1
@@ -2219,6 +2274,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("22_be2cl")
 
 [node name="Private" type="Panel" parent="Selected/Planet/Culture/Panel"]
@@ -2230,6 +2286,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="State" type="Panel" parent="Selected/Planet/Culture/Panel"]
@@ -2240,16 +2297,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
-[node name="Button" type="Button" parent="Selected/Planet/Culture/Panel"]
-visible = false
+[node name="Button" type="Button" parent="Selected/Planet/Culture"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Culture/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
 
 [node name="Bottom" type="Control" parent="Selected/Planet/Culture"]
 custom_minimum_size = Vector2(40, 40)
@@ -2326,22 +2400,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/Planet/Culture"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="Pops" type="HBoxContainer" parent="Selected/Planet/Culture"]
 layout_mode = 1
 anchors_preset = -1
@@ -2407,6 +2465,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("22_be2cl")
 
 [node name="Private" type="Panel" parent="Selected/Planet/Farm/Panel"]
@@ -2418,6 +2477,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="State" type="Panel" parent="Selected/Planet/Farm/Panel"]
@@ -2428,16 +2488,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
-[node name="Button" type="Button" parent="Selected/Planet/Farm/Panel"]
-visible = false
+[node name="Button" type="Button" parent="Selected/Planet/Farm"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Farm/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
 
 [node name="Bottom" type="Control" parent="Selected/Planet/Farm"]
 custom_minimum_size = Vector2(40, 40)
@@ -2514,22 +2591,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/Planet/Farm"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="Pops" type="HBoxContainer" parent="Selected/Planet/Farm"]
 layout_mode = 1
 anchors_preset = -1
@@ -2595,6 +2656,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("22_be2cl")
 
 [node name="Private" type="Panel" parent="Selected/Planet/Industrial/Panel"]
@@ -2605,6 +2667,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="State" type="Panel" parent="Selected/Planet/Industrial/Panel"]
@@ -2616,16 +2679,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
-[node name="Button" type="Button" parent="Selected/Planet/Industrial/Panel"]
-visible = false
+[node name="Button" type="Button" parent="Selected/Planet/Industrial"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Industrial/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
 
 [node name="Bottom" type="Control" parent="Selected/Planet/Industrial"]
 custom_minimum_size = Vector2(40, 40)
@@ -2730,22 +2810,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/Planet/Industrial"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="Pops" type="HBoxContainer" parent="Selected/Planet/Industrial"]
 layout_mode = 1
 anchors_preset = -1
@@ -2811,6 +2875,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("22_be2cl")
 
 [node name="Private" type="Panel" parent="Selected/Planet/Urban/Panel"]
@@ -2821,6 +2886,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="State" type="Panel" parent="Selected/Planet/Urban/Panel"]
@@ -2832,16 +2898,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
-[node name="Button" type="Button" parent="Selected/Planet/Urban/Panel"]
-visible = false
+[node name="Button" type="Button" parent="Selected/Planet/Urban"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("22_be2cl")
+
+[node name="ToolTip" type="Control" parent="Selected/Planet/Urban/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
 
 [node name="Bottom" type="Control" parent="Selected/Planet/Urban"]
 custom_minimum_size = Vector2(40, 40)
@@ -2946,22 +3029,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/Planet/Urban"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="Pops" type="HBoxContainer" parent="Selected/Planet/Urban"]
 layout_mode = 1
 anchors_preset = -1
@@ -3027,6 +3094,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("22_be2cl")
 
 [node name="Private" type="Panel" parent="Selected/Planet/Planet/Panel"]
@@ -3038,6 +3106,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="State" type="Panel" parent="Selected/Planet/Planet/Panel"]
@@ -3049,6 +3118,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihhv2")
 
 [node name="PopMax" type="Panel" parent="Selected/Planet/Planet/Panel"]
@@ -3059,6 +3129,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_b0sgh")
 
 [node name="Rural" type="Panel" parent="Selected/Planet/Planet/Panel"]
@@ -3069,6 +3140,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_11gdw")
 
 [node name="Round" type="TextureRect" parent="Selected/Planet/Planet/Panel"]
@@ -3110,7 +3182,17 @@ mouse_filter = 2
 texture = ExtResource("17_p3a3x")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="Selected/Planet/Planet/Panel"]
+[node name="Button" type="Button" parent="Selected/Planet/Planet"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("22_be2cl")
+
+[node name="Highlight" type="Panel" parent="Selected/Planet/Planet/Button"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -3118,6 +3200,139 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5bu4q")
+script = ExtResource("20_pia37")
+Frequency = 1.0
+On = true
+
+[node name="RuralToolTip" type="Control" parent="Selected/Planet/Planet/Button"]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="LevelToolTip" type="Control" parent="Selected/Planet/Planet/Button"]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="PlanetToolTip" type="Control" parent="Selected/Planet/Planet/Button"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="PopsTimeToolTip" type="Control" parent="Selected/Planet/Planet/Button"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="LevelTimeToolTip" type="Control" parent="Selected/Planet/Planet/Button"]
+custom_minimum_size = Vector2(32, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="PopMaxToolTip" type="Control" parent="Selected/Planet/Planet/Button"]
+custom_minimum_size = Vector2(32, 40)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
+
+[node name="FeatureToolTip" type="Control" parent="Selected/Planet/Planet/Button"]
+custom_minimum_size = Vector2(32, 28)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -28.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("14_4lnxk")
+CanBeHovered = false
+Direction = 3
+Width = 320
+Title = "Colonize"
+Row_1 = "$text"
 
 [node name="Feature" type="TextureRect" parent="Selected/Planet/Planet"]
 self_modulate = Color(0.25098, 0.25098, 0.25098, 1)
@@ -3136,22 +3351,6 @@ size_flags_vertical = 4
 mouse_filter = 2
 texture = ExtResource("4_skl03")
 expand_mode = 1
-
-[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/Feature"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
 
 [node name="Resource" type="Control" parent="Selected/Planet/Planet"]
 custom_minimum_size = Vector2(32, 40)
@@ -3188,23 +3387,7 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/Resource"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
-[node name="Pops" type="Control" parent="Selected/Planet/Planet"]
+[node name="PopsMax" type="Control" parent="Selected/Planet/Planet"]
 custom_minimum_size = Vector2(32, 40)
 layout_mode = 1
 anchors_preset = 3
@@ -3218,7 +3401,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Pops" type="RichTextLabel" parent="Selected/Planet/Planet/Pops"]
+[node name="Pops" type="RichTextLabel" parent="Selected/Planet/Planet/PopsMax"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -3241,22 +3424,6 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
-
-[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/Pops"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
 
 [node name="Rural" type="Control" parent="Selected/Planet/Planet"]
 custom_minimum_size = Vector2(32, 32)
@@ -3289,22 +3456,6 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
-
-[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/Rural"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
 
 [node name="Level" type="Control" parent="Selected/Planet/Planet"]
 custom_minimum_size = Vector2(32, 32)
@@ -3387,22 +3538,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_pndkb")
 
-[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/LevelTime"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
 [node name="PopsTime" type="Control" parent="Selected/Planet/Planet"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -3452,56 +3587,26 @@ Width = 320
 Title = "Colonize"
 Row_1 = "$text"
 
-[node name="PlanetTooltipBg" type="Control" parent="Selected/Planet/Planet"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/PlanetTooltipBg"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
-script = ExtResource("14_4lnxk")
-CanBeHovered = false
-Direction = 3
-Width = 320
-Title = "Colonize"
-Row_1 = "$text"
-
-[node name="PopsList" type="HBoxContainer" parent="Selected/Planet/Planet"]
+[node name="Pops" type="HBoxContainer" parent="Selected/Planet/Planet"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = -4.0
-offset_top = 24.0
+offset_left = -20.0
+offset_top = 8.0
 offset_right = -4.0
-offset_bottom = 24.0
+offset_bottom = 40.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("19_31cew")
 
-[node name="Pop_0" type="Control" parent="Selected/Planet/Planet/PopsList"]
+[node name="Pop_0" type="Control" parent="Selected/Planet/Planet/Pops"]
 custom_minimum_size = Vector2(16, 32)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("17_s2425")
 
-[node name="TextureRect" type="TextureRect" parent="Selected/Planet/Planet/PopsList/Pop_0"]
+[node name="TextureRect" type="TextureRect" parent="Selected/Planet/Planet/Pops/Pop_0"]
 custom_minimum_size = Vector2(16, 40)
 layout_mode = 1
 anchors_preset = 8
@@ -3519,7 +3624,7 @@ mouse_filter = 2
 texture = ExtResource("13_4us68")
 expand_mode = 1
 
-[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/PopsList/Pop_0/TextureRect"]
+[node name="ToolTip" type="Control" parent="Selected/Planet/Planet/Pops/Pop_0/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3563,79 +3668,81 @@ layout_mode = 2
 
 [connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/BuildBg/Build/ToolTip" to="System/VBoxContainer/Orbit_0/BuildBg/Build/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/BuildBg/Build/ToolTip" to="System/VBoxContainer/Orbit_0/BuildBg/Build/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Feature/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Feature/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Feature/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Feature/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Resource/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Resource/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Resource/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Resource/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Pops/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Rural/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Rural/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Rural/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Rural/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Level/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Level/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Level/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Level/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/LevelTime/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/LevelTime/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/LevelTime/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/LevelTime/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsTime/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsTime/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsTime/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PopsTime/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PlanetTooltipBg/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PlanetTooltipBg/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PlanetTooltipBg/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/PlanetTooltipBg/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Shipyard/ToolTip" to="Selected/Planet/Shipyard/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Shipyard/ToolTip" to="Selected/Planet/Shipyard/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Shipyard/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Research/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Bank/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Culture/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Farm/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Industrial/Button/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Button/ToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Urban/Button/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0" method="OnButton"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PlanetToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PlanetToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PlanetToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PlanetToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/FeatureToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/FeatureToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/FeatureToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/FeatureToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/RuralToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/RuralToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/RuralToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/RuralToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/LevelToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/LevelToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/LevelToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/LevelToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PopsTimeToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PopsTimeToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PopsTimeToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PopsTimeToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/LevelTimeToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/LevelTimeToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/LevelTimeToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/LevelTimeToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PopMaxToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PopMaxToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PopMaxToolTip" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0/Planet/Button/PopMaxToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Shipyard/Button/ToolTip" to="Selected/Planet/Shipyard/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Shipyard/Button/ToolTip" to="Selected/Planet/Shipyard/Button/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="Selected/Planet/Shipyard/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Shipyard/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="Selected/Planet/Shipyard/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Shipyard/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Research/ToolTip" to="Selected/Planet/Research/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Research/ToolTip" to="Selected/Planet/Research/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Research/Button/ToolTip" to="Selected/Planet/Research/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Research/Button/ToolTip" to="Selected/Planet/Research/Button/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="Selected/Planet/Research/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Research/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="Selected/Planet/Research/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Research/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Bank/ToolTip" to="Selected/Planet/Bank/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Bank/ToolTip" to="Selected/Planet/Bank/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Bank/Button/ToolTip" to="Selected/Planet/Bank/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Bank/Button/ToolTip" to="Selected/Planet/Bank/Button/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="Selected/Planet/Bank/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Bank/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="Selected/Planet/Bank/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Bank/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Culture/ToolTip" to="Selected/Planet/Culture/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Culture/ToolTip" to="Selected/Planet/Culture/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Culture/Button/ToolTip" to="Selected/Planet/Culture/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Culture/Button/ToolTip" to="Selected/Planet/Culture/Button/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="Selected/Planet/Culture/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Culture/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="Selected/Planet/Culture/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Culture/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Farm/ToolTip" to="Selected/Planet/Farm/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Farm/ToolTip" to="Selected/Planet/Farm/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Farm/Button/ToolTip" to="Selected/Planet/Farm/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Farm/Button/ToolTip" to="Selected/Planet/Farm/Button/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="Selected/Planet/Farm/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Farm/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="Selected/Planet/Farm/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Farm/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Industrial/ToolTip" to="Selected/Planet/Industrial/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Industrial/ToolTip" to="Selected/Planet/Industrial/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Industrial/Button/ToolTip" to="Selected/Planet/Industrial/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Industrial/Button/ToolTip" to="Selected/Planet/Industrial/Button/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="Selected/Planet/Industrial/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Industrial/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="Selected/Planet/Industrial/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Industrial/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Urban/ToolTip" to="Selected/Planet/Urban/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Urban/ToolTip" to="Selected/Planet/Urban/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Urban/Button/ToolTip" to="Selected/Planet/Urban/Button/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Urban/Button/ToolTip" to="Selected/Planet/Urban/Button/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="Selected/Planet/Urban/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Urban/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="Selected/Planet/Urban/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Urban/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Planet/Feature/ToolTip" to="Selected/Planet/Planet/Feature/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Planet/Feature/ToolTip" to="Selected/Planet/Planet/Feature/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Planet/Resource/ToolTip" to="Selected/Planet/Planet/Resource/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Planet/Resource/ToolTip" to="Selected/Planet/Planet/Resource/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Planet/Pops/ToolTip" to="Selected/Planet/Planet/Pops/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Planet/Pops/ToolTip" to="Selected/Planet/Planet/Pops/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Planet/Rural/ToolTip" to="Selected/Planet/Planet/Rural/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Planet/Rural/ToolTip" to="Selected/Planet/Planet/Rural/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="Selected/Planet/Planet/Button" to="System/VBoxContainer/Orbit_0/PlanetList/Planet_0" method="OnButton"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Button/RuralToolTip" to="Selected/Planet/Planet/Button/RuralToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Button/RuralToolTip" to="Selected/Planet/Planet/Button/RuralToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Button/LevelToolTip" to="Selected/Planet/Planet/Button/LevelToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Button/LevelToolTip" to="Selected/Planet/Planet/Button/LevelToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Button/PlanetToolTip" to="Selected/Planet/Planet/Button/PlanetToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Button/PlanetToolTip" to="Selected/Planet/Planet/Button/PlanetToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Button/PopsTimeToolTip" to="Selected/Planet/Planet/Button/PopsTimeToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Button/PopsTimeToolTip" to="Selected/Planet/Planet/Button/PopsTimeToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Button/LevelTimeToolTip" to="Selected/Planet/Planet/Button/LevelTimeToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Button/LevelTimeToolTip" to="Selected/Planet/Planet/Button/LevelTimeToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Button/PopMaxToolTip" to="Selected/Planet/Planet/Button/PopMaxToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Button/PopMaxToolTip" to="Selected/Planet/Planet/Button/PopMaxToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Button/FeatureToolTip" to="Selected/Planet/Planet/Button/FeatureToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Button/FeatureToolTip" to="Selected/Planet/Planet/Button/FeatureToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="Selected/Planet/Planet/Level/ToolTip" to="Selected/Planet/Planet/Level/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="Selected/Planet/Planet/Level/ToolTip" to="Selected/Planet/Planet/Level/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Planet/LevelTime/ToolTip" to="Selected/Planet/Planet/LevelTime/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Planet/LevelTime/ToolTip" to="Selected/Planet/Planet/LevelTime/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="Selected/Planet/Planet/PopsTime/ToolTip" to="Selected/Planet/Planet/PopsTime/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="Selected/Planet/Planet/PopsTime/ToolTip" to="Selected/Planet/Planet/PopsTime/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Planet/PlanetTooltipBg/ToolTip" to="Selected/Planet/Planet/PlanetTooltipBg/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Planet/PlanetTooltipBg/ToolTip" to="Selected/Planet/Planet/PlanetTooltipBg/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="Selected/Planet/Planet/PopsList/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Planet/PopsList/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="Selected/Planet/Planet/PopsList/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Planet/PopsList/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="Selected/Planet/Planet/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Planet/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="Selected/Planet/Planet/Pops/Pop_0/TextureRect/ToolTip" to="Selected/Planet/Planet/Pops/Pop_0/TextureRect/ToolTip" method="OnHoverExit"]

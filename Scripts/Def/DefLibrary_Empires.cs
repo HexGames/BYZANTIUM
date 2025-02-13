@@ -16,6 +16,7 @@ public partial class DefLibrary : Node
 
     public void _Ready_Empires()
     {
+        EmpiresInfo.Clear();
         for (int idx = 0; idx < Empires.Count; idx++)
         {
             EmpiresInfo.Add(new DefEmpireWrapper(Empires[idx]));

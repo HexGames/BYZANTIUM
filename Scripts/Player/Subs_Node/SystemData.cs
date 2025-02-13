@@ -49,6 +49,9 @@ public partial class SystemData : Node
     // invest
     public DistrictData DistrictToInvest_PerTurn = null;
 
+    // actions
+    public List<ActionEconomyColonize> ActionEconomyColonize_PerTurn = new List<ActionEconomyColonize>();
+
     // --------------------------------------------------------------------------------------------
     public void Init_DistrictData()
     {
@@ -56,11 +59,6 @@ public partial class SystemData : Node
         {
             ColonyData colony = Colonies[colonyIdx];
             colony.Init_DistrictData();
-            for (int districtIdx = 0; districtIdx < colony.Districts.Count; districtIdx++)
-            {
-                DistrictData district = colony.Districts[districtIdx];
-                district.Init_PopsData();
-            }
         }
     }
 

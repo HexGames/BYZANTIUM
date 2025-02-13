@@ -45,7 +45,7 @@
 [ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="41_bucen"]
 [ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="42_2k86y"]
 
-[node name="ActionEconomy" type="Control" node_paths=PackedStringArray("Buttons", "Colonize", "ColonizeToolTip", "Build", "BuildToolTip", "Change", "ChangeToolTip", "Nationalize", "NationalizeToolTip", "Privatize", "PrivatizeToolTip", "ChangeBuget", "ChangeBugetToolTip", "ChangeTax", "ChangeTaxToolTip", "ChangeWelfare", "ChangeWelfareToolTip", "ChangeControl", "ChangeControlToolTip", "Deselect", "SelectText", "SelectedName")]
+[node name="ActionEconomy" type="Control" node_paths=PackedStringArray("Buttons", "Colonize", "ColonizeToolTip", "Build", "BuildToolTip", "Change", "ChangeToolTip", "Nationalize", "NationalizeToolTip", "Privatize", "PrivatizeToolTip", "ChangeBuget", "ChangeBugetToolTip", "ChangeTax", "ChangeTaxToolTip", "ChangeWelfare", "ChangeWelfareToolTip", "ChangeControl", "ChangeControlToolTip", "ColonizeText", "Deselect", "SelectText", "SelectedName")]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -74,6 +74,7 @@ ChangeWelfare = NodePath("VBoxContainer/Selected/ChangeWelfare")
 ChangeWelfareToolTip = NodePath("VBoxContainer/Selected/ChangeWelfare/ToolTip")
 ChangeControl = NodePath("VBoxContainer/Selected/ChangeControl")
 ChangeControlToolTip = NodePath("VBoxContainer/Selected/ChangeControl/ToolTip")
+ColonizeText = NodePath("VBoxContainer/Selected/ColonizeText")
 Deselect = NodePath("VBoxContainer/Selected/Control/Deselect")
 SelectText = NodePath("VBoxContainer/Select")
 SelectedName = NodePath("VBoxContainer/TitleBg/Title")
@@ -102,6 +103,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Colonize" type="TextureButton" parent="VBoxContainer/Selected"]
+visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -131,6 +133,7 @@ Width = 320
 Title = "Colonize"
 
 [node name="Build" type="TextureButton" parent="VBoxContainer/Selected"]
+visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -160,6 +163,7 @@ Width = 320
 Title = "Construct or Upgrade"
 
 [node name="Change" type="TextureButton" parent="VBoxContainer/Selected"]
+visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -189,6 +193,7 @@ Width = 320
 Title = "Change"
 
 [node name="Nationalize" type="TextureButton" parent="VBoxContainer/Selected"]
+visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -367,6 +372,28 @@ Direction = 1
 Width = 320
 Title = "Change Control"
 
+[node name="ColonizeText" type="Panel" parent="VBoxContainer/Selected"]
+custom_minimum_size = Vector2(800, 32)
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/Selected/ColonizeText"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("41_bucen")
+bbcode_enabled = true
+text = "[center]Select a Planet to Colonize[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("42_2k86y")
+
 [node name="Control" type="Control" parent="VBoxContainer/Selected"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -471,6 +498,7 @@ Direction = 6
 Width = 320
 Title = "Selected Star System"
 
+[connection signal="pressed" from="VBoxContainer/Selected/Colonize" to="." method="OnColonization"]
 [connection signal="mouse_entered" from="VBoxContainer/Selected/Colonize/ToolTip" to="VBoxContainer/Selected/Colonize/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="VBoxContainer/Selected/Colonize/ToolTip" to="VBoxContainer/Selected/Colonize/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="VBoxContainer/Selected/Build/ToolTip" to="VBoxContainer/Selected/Build/ToolTip" method="OnHoverEnter"]
@@ -489,6 +517,7 @@ Title = "Selected Star System"
 [connection signal="mouse_exited" from="VBoxContainer/Selected/ChangeWelfare/ToolTip" to="VBoxContainer/Selected/ChangeWelfare/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="VBoxContainer/Selected/ChangeControl/ToolTip" to="VBoxContainer/Selected/ChangeControl/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="VBoxContainer/Selected/ChangeControl/ToolTip" to="VBoxContainer/Selected/ChangeControl/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="VBoxContainer/Selected/Control/Deselect" to="." method="OnCancel"]
 [connection signal="mouse_entered" from="VBoxContainer/Selected/Control/Deselect/ToolTip" to="VBoxContainer/Selected/Control/Deselect/ToolTip" method="OnHoverEnter"]
 [connection signal="mouse_exited" from="VBoxContainer/Selected/Control/Deselect/ToolTip" to="VBoxContainer/Selected/Control/Deselect/ToolTip" method="OnHoverExit"]
 [connection signal="mouse_entered" from="VBoxContainer/TitleBg/ToolTip" to="VBoxContainer/TitleBg/ToolTip" method="OnHoverEnter"]

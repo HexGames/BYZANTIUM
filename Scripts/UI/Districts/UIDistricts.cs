@@ -85,6 +85,34 @@ public partial class UIDistricts : Control
         }
     }
 
+    public void RefreshButtons<T>(List<T> possibleActions) where T : ActionBase
+    {
+        for (int groupIdx = 0; groupIdx < AllPlanets.Count; groupIdx++)
+        {
+            if (AllPlanets[groupIdx].Visible)
+            {
+                for (int planetIdx = 0; planetIdx < AllPlanets[groupIdx].Planets.Count; planetIdx++)
+                {
+                    AllPlanets[groupIdx].Planets[planetIdx].SetPossibleActions(possibleActions);
+                }
+            }
+        }
+    }
+
+    public void HideButtons()
+    {
+        for (int groupIdx = 0; groupIdx < AllPlanets.Count; groupIdx++)
+        {
+            if (AllPlanets[groupIdx].Visible)
+            {
+                for (int planetIdx = 0; planetIdx < AllPlanets[groupIdx].Planets.Count; planetIdx++)
+                {
+                    AllPlanets[groupIdx].Planets[planetIdx].ClearPossibleActions();
+                }
+            }
+        }
+    }
+
     public void RefreshSelected(PlanetData selectedPlanet)
     {
         All.Visible = false;
@@ -93,6 +121,6 @@ public partial class UIDistricts : Control
         _SelectedPlanet = selectedPlanet;
         _SelectedColony = selectedPlanet.Colony;
 
-        //SelectedPlanet.RefreshPlanet(_SelectedPlanet);
+        SelectedPlanet.Refresh(_SelectedPlanet);
     }
 }

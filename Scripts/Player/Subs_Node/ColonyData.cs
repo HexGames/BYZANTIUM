@@ -49,6 +49,13 @@ public partial class ColonyData : Node
                 Districts.Add(new DistrictData(districts[districtIdx], this));
             }
         }
+
+        // ---
+        for (int districtIdx = 0; districtIdx < Districts.Count; districtIdx++)
+        {
+            DistrictData district = Districts[districtIdx];
+            district.Init_PopsData();
+        }
     }
 
     public void Init_Resources()
@@ -70,6 +77,19 @@ public partial class ColonyData : Node
     public int GetPopsMax()
     {
         return Data.GetSubValueI("PopsMax");
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public DistrictData GetDistrictByName(string name)
+    {
+        for (int idx = 0; idx < Districts.Count; idx++)
+        {
+            if (Districts[idx].DistrictDef.Name == name)
+            {
+                return Districts[idx];
+            }
+        }
+        return null;
     }
 
     // --------------------------------------------------------------------------------------------

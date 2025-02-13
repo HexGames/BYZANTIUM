@@ -28,7 +28,7 @@ public partial class UIDistrictsGroupPlanetPops : Control
     {
         _District = district;
 
-        while (Pops.Count < 1)
+        while (Pops.Count < _District.Pops.Count)
         {
             UIDistrictsGroupPlanetPopsItem newItem = Pops[0].Duplicate(7) as UIDistrictsGroupPlanetPopsItem;
             Pops[0].GetParent().AddChild(newItem);
@@ -37,10 +37,10 @@ public partial class UIDistrictsGroupPlanetPops : Control
 
         for (int idx = 0; idx < Pops.Count; idx++)
         {
-            if (idx < 1)
+            if (idx < _District.Pops.Count)
             {
                 Pops[idx].Visible = true;
-                //Pops[idx].Refresh(_District.Pop);
+                Pops[idx].Refresh(_District.Pops[idx]);
             }
             else
             {

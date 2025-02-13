@@ -16,6 +16,7 @@ public partial class DefLibrary : Node
 
     public void _Ready_Features()
     {
+        FeaturesInfo.Clear();
         for (int idx = 0; idx < Features.Count; idx++)
         {
             FeaturesInfo.Add(new DefFeatureWrapper(Features[idx]));

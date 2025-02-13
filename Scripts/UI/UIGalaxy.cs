@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Transactions;
 
@@ -55,6 +56,9 @@ public partial class UIGalaxy : Control
     public UIActionsEconomy ActionsEconomy = null;
 
     [Export]
+    public UIActionsChoice ActionsChoice = null;
+
+    [Export]
     public Control EndTurnBg = null;
     [Export]
     public Label CurrentTurn = null;
@@ -100,6 +104,42 @@ public partial class UIGalaxy : Control
 
         ActionsEconomy.Visible = true;
         ActionsEconomy.Refresh(selectedStar, hoveredStar);
+
+        ActionsChoice.Visible = false;
+    }
+
+    public void ShowStarInfo_ActionSelectPlanet<T>(StarData selectedStar, List<T> possibleActions) where T : ActionBase
+    {
+        SystemInfo.Visible = false;
+
+        Game.self.GalaxyUI.DistrictsInfo.RefreshButtons(possibleActions);
+
+        Game.self.GalaxyUI.ActionsEconomy.RefreshSelectPlanet();
+    }
+
+    public void ShowStarInfo_ShowMakeChoice<T>(StarData selectedStar, List<T> possibleActions) where T : ActionBase
+    {
+        Game.self.GalaxyUI.DistrictsInfo.Visible = false;
+        Game.self.GalaxyUI.ActionsEconomy.Visible = false;
+
+        ActionsChoice.Visible = true;
+        ActionsChoice.Refresh(possibleActions);
+    }
+
+    public void ShowStarInfo_CancelMakeChoice()
+    {
+        ActionsChoice.Visible = false;
+        Game.self.GalaxyUI.DistrictsInfo.Visible = true;
+        Game.self.GalaxyUI.ActionsEconomy.Visible = true;
+    }
+
+    public void ShowStarInfo_CancelAction(StarData selectedStar)
+    {
+        SystemInfo.Visible = true;
+
+        Game.self.GalaxyUI.DistrictsInfo.HideButtons();
+
+        Game.self.GalaxyUI.ActionsEconomy.Refresh(selectedStar, null);
     }
 
     public void HideStarInfo()
