@@ -10,7 +10,7 @@
     <EmbeddedResource Remove="Scripts\___Trash\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scripts\Input\States\" />
+    <Folder Include="Scripts\UIStateMAchine\States\" />
     <Folder Include="Scripts\UI\HUD\" />
     <Folder Include="Scripts\UI\Actions\" />
     <Folder Include="Scripts\__Trash\" />
