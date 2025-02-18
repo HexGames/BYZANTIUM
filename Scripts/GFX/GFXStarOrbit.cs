@@ -223,7 +223,7 @@ public partial class GFXStarOrbit : Node3D
                 {
                     if (GUI3D == null)
                     {
-                        GUI3D = Game.self.GalaxyUI.UI3DManager.Get_UI3DPlanet();
+                        GUI3D = Game.self.UIGalaxy.UI3DManager.Get_UI3DPlanet();
                         GUI3D.GFX = this;
                         GUI3D.Refresh();
                         GUI3D.Visible = true;

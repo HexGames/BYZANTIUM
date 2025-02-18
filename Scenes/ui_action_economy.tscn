@@ -45,7 +45,7 @@
 [ext_resource type="Theme" uid="uid://b0fufcgm2rhkc" path="res://UITheme/General.tres" id="41_bucen"]
 [ext_resource type="Script" path="res://Scripts/UI/__General/UIText.cs" id="42_2k86y"]
 
-[node name="ActionEconomy" type="Control" node_paths=PackedStringArray("Buttons", "Colonize", "ColonizeToolTip", "Build", "BuildToolTip", "Change", "ChangeToolTip", "Nationalize", "NationalizeToolTip", "Privatize", "PrivatizeToolTip", "ChangeBuget", "ChangeBugetToolTip", "ChangeTax", "ChangeTaxToolTip", "ChangeWelfare", "ChangeWelfareToolTip", "ChangeControl", "ChangeControlToolTip", "ColonizeText", "Deselect", "SelectText", "SelectedName")]
+[node name="ActionEconomy" type="Control" node_paths=PackedStringArray("Buttons", "PlanetButtons", "Colonize", "ColonizeToolTip", "Build", "BuildToolTip", "Change", "ChangeToolTip", "Nationalize", "NationalizeToolTip", "Privatize", "PrivatizeToolTip", "SystemButtons", "ChangeBuget", "ChangeBugetToolTip", "ChangeTax", "ChangeTaxToolTip", "ChangeWelfare", "ChangeWelfareToolTip", "ChangeControl", "ChangeControlToolTip", "ColonizeText", "Deselect", "SelectText", "SelectedName")]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -55,31 +55,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_7l4ou")
-Buttons = NodePath("VBoxContainer/Selected")
-Colonize = NodePath("VBoxContainer/Selected/Colonize")
-ColonizeToolTip = NodePath("VBoxContainer/Selected/Colonize/ToolTip")
-Build = NodePath("VBoxContainer/Selected/Build")
-BuildToolTip = NodePath("VBoxContainer/Selected/Build/ToolTip")
-Change = NodePath("VBoxContainer/Selected/Change")
-ChangeToolTip = NodePath("VBoxContainer/Selected/Change/ToolTip")
-Nationalize = NodePath("VBoxContainer/Selected/Nationalize")
-NationalizeToolTip = NodePath("VBoxContainer/Selected/Nationalize/ToolTip")
-Privatize = NodePath("VBoxContainer/Selected/Privatize")
-PrivatizeToolTip = NodePath("VBoxContainer/Selected/Privatize/ToolTip")
-ChangeBuget = NodePath("VBoxContainer/Selected/ChangeBuget")
-ChangeBugetToolTip = NodePath("VBoxContainer/Selected/ChangeBuget/ToolTip")
-ChangeTax = NodePath("VBoxContainer/Selected/ChangeTax")
-ChangeTaxToolTip = NodePath("VBoxContainer/Selected/ChangeTax/ToolTip")
-ChangeWelfare = NodePath("VBoxContainer/Selected/ChangeWelfare")
-ChangeWelfareToolTip = NodePath("VBoxContainer/Selected/ChangeWelfare/ToolTip")
-ChangeControl = NodePath("VBoxContainer/Selected/ChangeControl")
-ChangeControlToolTip = NodePath("VBoxContainer/Selected/ChangeControl/ToolTip")
-ColonizeText = NodePath("VBoxContainer/Selected/ColonizeText")
-Deselect = NodePath("VBoxContainer/Selected/Control/Deselect")
-SelectText = NodePath("VBoxContainer/Select")
-SelectedName = NodePath("VBoxContainer/TitleBg/Title")
+Buttons = NodePath("HBoxContainer/Selected")
+PlanetButtons = NodePath("HBoxContainer/Selected/Planet")
+Colonize = NodePath("HBoxContainer/Selected/Planet/Colonize")
+ColonizeToolTip = NodePath("HBoxContainer/Selected/Planet/Colonize/ToolTip")
+Build = NodePath("HBoxContainer/Selected/Planet/Build")
+BuildToolTip = NodePath("HBoxContainer/Selected/Planet/Build/ToolTip")
+Change = NodePath("HBoxContainer/Selected/Planet/Change")
+ChangeToolTip = NodePath("HBoxContainer/Selected/Planet/Change/ToolTip")
+Nationalize = NodePath("HBoxContainer/Selected/Planet/Nationalize")
+NationalizeToolTip = NodePath("HBoxContainer/Selected/Planet/Nationalize/ToolTip")
+Privatize = NodePath("HBoxContainer/Selected/Planet/Privatize")
+PrivatizeToolTip = NodePath("HBoxContainer/Selected/Planet/Privatize/ToolTip")
+SystemButtons = NodePath("HBoxContainer/Selected/System")
+ChangeBuget = NodePath("HBoxContainer/Selected/System/ChangeBuget")
+ChangeBugetToolTip = NodePath("HBoxContainer/Selected/System/ChangeBuget/ToolTip")
+ChangeTax = NodePath("HBoxContainer/Selected/System/ChangeTax")
+ChangeTaxToolTip = NodePath("HBoxContainer/Selected/System/ChangeTax/ToolTip")
+ChangeWelfare = NodePath("HBoxContainer/Selected/System/ChangeWelfare")
+ChangeWelfareToolTip = NodePath("HBoxContainer/Selected/System/ChangeWelfare/ToolTip")
+ChangeControl = NodePath("HBoxContainer/Selected/System/ChangeControl")
+ChangeControlToolTip = NodePath("HBoxContainer/Selected/System/ChangeControl/ToolTip")
+ColonizeText = NodePath("HBoxContainer/Selected/ColonizeText")
+Deselect = NodePath("HBoxContainer/Selected/Control/Deselect")
+SelectText = NodePath("HBoxContainer/Select")
+SelectedName = NodePath("HBoxContainer/TitleBg/Title")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -91,18 +93,23 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 8
+alignment = 2
 
-[node name="Selected" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Selected" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Gap" type="Control" parent="VBoxContainer/Selected"]
+[node name="Gap" type="Control" parent="HBoxContainer/Selected"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Colonize" type="TextureButton" parent="VBoxContainer/Selected"]
+[node name="Planet" type="HBoxContainer" parent="HBoxContainer/Selected"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Colonize" type="TextureButton" parent="HBoxContainer/Selected/Planet"]
 visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -117,7 +124,7 @@ texture_focused = ExtResource("1_fgo4k")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Colonize"]
+[node name="ToolTip" type="Control" parent="HBoxContainer/Selected/Planet/Colonize"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,7 +139,7 @@ Direction = 1
 Width = 320
 Title = "Colonize"
 
-[node name="Build" type="TextureButton" parent="VBoxContainer/Selected"]
+[node name="Build" type="TextureButton" parent="HBoxContainer/Selected/Planet"]
 visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -147,7 +154,7 @@ texture_focused = ExtResource("5_t1orb")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Build"]
+[node name="ToolTip" type="Control" parent="HBoxContainer/Selected/Planet/Build"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,7 +169,7 @@ Direction = 1
 Width = 320
 Title = "Construct or Upgrade"
 
-[node name="Change" type="TextureButton" parent="VBoxContainer/Selected"]
+[node name="Change" type="TextureButton" parent="HBoxContainer/Selected/Planet"]
 visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -177,7 +184,7 @@ texture_focused = ExtResource("9_crdux")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Change"]
+[node name="ToolTip" type="Control" parent="HBoxContainer/Selected/Planet/Change"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,7 +199,7 @@ Direction = 1
 Width = 320
 Title = "Change"
 
-[node name="Nationalize" type="TextureButton" parent="VBoxContainer/Selected"]
+[node name="Nationalize" type="TextureButton" parent="HBoxContainer/Selected/Planet"]
 visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -207,7 +214,7 @@ texture_focused = ExtResource("13_q0i38")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Nationalize"]
+[node name="ToolTip" type="Control" parent="HBoxContainer/Selected/Planet/Nationalize"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -222,7 +229,7 @@ Direction = 1
 Width = 320
 Title = "Nationalize"
 
-[node name="Privatize" type="TextureButton" parent="VBoxContainer/Selected"]
+[node name="Privatize" type="TextureButton" parent="HBoxContainer/Selected/Planet"]
 visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -237,7 +244,7 @@ texture_focused = ExtResource("17_btag8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Privatize"]
+[node name="ToolTip" type="Control" parent="HBoxContainer/Selected/Planet/Privatize"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -252,7 +259,11 @@ Direction = 1
 Width = 320
 Title = "Privatize"
 
-[node name="ChangeBuget" type="TextureButton" parent="VBoxContainer/Selected"]
+[node name="System" type="HBoxContainer" parent="HBoxContainer/Selected"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ChangeBuget" type="TextureButton" parent="HBoxContainer/Selected/System"]
 visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -267,7 +278,7 @@ texture_focused = ExtResource("21_gbe1n")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/ChangeBuget"]
+[node name="ToolTip" type="Control" parent="HBoxContainer/Selected/System/ChangeBuget"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -282,7 +293,7 @@ Direction = 1
 Width = 320
 Title = "Change Budget"
 
-[node name="ChangeTax" type="TextureButton" parent="VBoxContainer/Selected"]
+[node name="ChangeTax" type="TextureButton" parent="HBoxContainer/Selected/System"]
 visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -297,7 +308,7 @@ texture_focused = ExtResource("25_yup5w")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/ChangeTax"]
+[node name="ToolTip" type="Control" parent="HBoxContainer/Selected/System/ChangeTax"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -312,7 +323,7 @@ Direction = 1
 Width = 320
 Title = "Change Tax"
 
-[node name="ChangeWelfare" type="TextureButton" parent="VBoxContainer/Selected"]
+[node name="ChangeWelfare" type="TextureButton" parent="HBoxContainer/Selected/System"]
 visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -327,7 +338,7 @@ texture_focused = ExtResource("29_1uns7")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/ChangeWelfare"]
+[node name="ToolTip" type="Control" parent="HBoxContainer/Selected/System/ChangeWelfare"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -342,7 +353,7 @@ Direction = 1
 Width = 320
 Title = "Change Welfare"
 
-[node name="ChangeControl" type="TextureButton" parent="VBoxContainer/Selected"]
+[node name="ChangeControl" type="TextureButton" parent="HBoxContainer/Selected/System"]
 visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -357,7 +368,7 @@ texture_focused = ExtResource("33_yvwdt")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/ChangeControl"]
+[node name="ToolTip" type="Control" parent="HBoxContainer/Selected/System/ChangeControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -372,11 +383,11 @@ Direction = 1
 Width = 320
 Title = "Change Control"
 
-[node name="ColonizeText" type="Panel" parent="VBoxContainer/Selected"]
+[node name="ColonizeText" type="Panel" parent="HBoxContainer/Selected"]
 custom_minimum_size = Vector2(800, 32)
 layout_mode = 2
 
-[node name="Text" type="RichTextLabel" parent="VBoxContainer/Selected/ColonizeText"]
+[node name="Text" type="RichTextLabel" parent="HBoxContainer/Selected/ColonizeText"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -394,12 +405,12 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("42_2k86y")
 
-[node name="Control" type="Control" parent="VBoxContainer/Selected"]
+[node name="Control" type="Control" parent="HBoxContainer/Selected"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Deselect" type="TextureButton" parent="VBoxContainer/Selected/Control"]
+[node name="Deselect" type="TextureButton" parent="HBoxContainer/Selected/Control"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 3
@@ -422,7 +433,7 @@ texture_focused = ExtResource("37_yhpd6")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/Selected/Control/Deselect"]
+[node name="ToolTip" type="Control" parent="HBoxContainer/Selected/Control/Deselect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -437,12 +448,12 @@ Direction = 1
 Width = 320
 Title = "Shipbuilding Progress"
 
-[node name="Select" type="Panel" parent="VBoxContainer"]
+[node name="Select" type="Panel" parent="HBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="Text" type="RichTextLabel" parent="VBoxContainer/Select"]
+[node name="Text" type="RichTextLabel" parent="HBoxContainer/Select"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -454,19 +465,19 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("41_bucen")
 bbcode_enabled = true
-text = "[center]Select this star system to see available actions[/center]"
+text = "[center]Select star system or planet to see available actions[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("42_2k86y")
 
-[node name="TitleBg" type="Panel" parent="VBoxContainer"]
+[node name="TitleBg" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(512, 32)
 layout_mode = 2
 theme = ExtResource("41_bucen")
 theme_type_variation = &"PanelTitle"
 
-[node name="Title" type="RichTextLabel" parent="VBoxContainer/TitleBg"]
+[node name="Title" type="RichTextLabel" parent="HBoxContainer/TitleBg"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -483,7 +494,7 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("42_2k86y")
 
-[node name="ToolTip" type="Control" parent="VBoxContainer/TitleBg"]
+[node name="ToolTip" type="Control" parent="HBoxContainer/TitleBg"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -498,27 +509,27 @@ Direction = 6
 Width = 320
 Title = "Selected Star System"
 
-[connection signal="pressed" from="VBoxContainer/Selected/Colonize" to="." method="OnColonization"]
-[connection signal="mouse_entered" from="VBoxContainer/Selected/Colonize/ToolTip" to="VBoxContainer/Selected/Colonize/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/Selected/Colonize/ToolTip" to="VBoxContainer/Selected/Colonize/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="VBoxContainer/Selected/Build/ToolTip" to="VBoxContainer/Selected/Build/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/Selected/Build/ToolTip" to="VBoxContainer/Selected/Build/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="VBoxContainer/Selected/Change/ToolTip" to="VBoxContainer/Selected/Change/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/Selected/Change/ToolTip" to="VBoxContainer/Selected/Change/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="VBoxContainer/Selected/Nationalize/ToolTip" to="VBoxContainer/Selected/Nationalize/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/Selected/Nationalize/ToolTip" to="VBoxContainer/Selected/Nationalize/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="VBoxContainer/Selected/Privatize/ToolTip" to="VBoxContainer/Selected/Privatize/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/Selected/Privatize/ToolTip" to="VBoxContainer/Selected/Privatize/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="VBoxContainer/Selected/ChangeBuget/ToolTip" to="VBoxContainer/Selected/ChangeBuget/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/Selected/ChangeBuget/ToolTip" to="VBoxContainer/Selected/ChangeBuget/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="VBoxContainer/Selected/ChangeTax/ToolTip" to="VBoxContainer/Selected/ChangeTax/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/Selected/ChangeTax/ToolTip" to="VBoxContainer/Selected/ChangeTax/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="VBoxContainer/Selected/ChangeWelfare/ToolTip" to="VBoxContainer/Selected/ChangeWelfare/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/Selected/ChangeWelfare/ToolTip" to="VBoxContainer/Selected/ChangeWelfare/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="VBoxContainer/Selected/ChangeControl/ToolTip" to="VBoxContainer/Selected/ChangeControl/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/Selected/ChangeControl/ToolTip" to="VBoxContainer/Selected/ChangeControl/ToolTip" method="OnHoverExit"]
-[connection signal="pressed" from="VBoxContainer/Selected/Control/Deselect" to="." method="OnCancel"]
-[connection signal="mouse_entered" from="VBoxContainer/Selected/Control/Deselect/ToolTip" to="VBoxContainer/Selected/Control/Deselect/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/Selected/Control/Deselect/ToolTip" to="VBoxContainer/Selected/Control/Deselect/ToolTip" method="OnHoverExit"]
-[connection signal="mouse_entered" from="VBoxContainer/TitleBg/ToolTip" to="VBoxContainer/TitleBg/ToolTip" method="OnHoverEnter"]
-[connection signal="mouse_exited" from="VBoxContainer/TitleBg/ToolTip" to="VBoxContainer/TitleBg/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="HBoxContainer/Selected/Planet/Colonize" to="." method="OnColonization"]
+[connection signal="mouse_entered" from="HBoxContainer/Selected/Planet/Colonize/ToolTip" to="HBoxContainer/Selected/Planet/Colonize/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/Selected/Planet/Colonize/ToolTip" to="HBoxContainer/Selected/Planet/Colonize/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="HBoxContainer/Selected/Planet/Build/ToolTip" to="HBoxContainer/Selected/Planet/Build/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/Selected/Planet/Build/ToolTip" to="HBoxContainer/Selected/Planet/Build/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="HBoxContainer/Selected/Planet/Change/ToolTip" to="HBoxContainer/Selected/Planet/Change/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/Selected/Planet/Change/ToolTip" to="HBoxContainer/Selected/Planet/Change/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="HBoxContainer/Selected/Planet/Nationalize/ToolTip" to="HBoxContainer/Selected/Planet/Nationalize/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/Selected/Planet/Nationalize/ToolTip" to="HBoxContainer/Selected/Planet/Nationalize/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="HBoxContainer/Selected/Planet/Privatize/ToolTip" to="HBoxContainer/Selected/Planet/Privatize/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/Selected/Planet/Privatize/ToolTip" to="HBoxContainer/Selected/Planet/Privatize/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="HBoxContainer/Selected/System/ChangeBuget/ToolTip" to="HBoxContainer/Selected/System/ChangeBuget/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/Selected/System/ChangeBuget/ToolTip" to="HBoxContainer/Selected/System/ChangeBuget/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="HBoxContainer/Selected/System/ChangeTax/ToolTip" to="HBoxContainer/Selected/System/ChangeTax/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/Selected/System/ChangeTax/ToolTip" to="HBoxContainer/Selected/System/ChangeTax/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="HBoxContainer/Selected/System/ChangeWelfare/ToolTip" to="HBoxContainer/Selected/System/ChangeWelfare/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/Selected/System/ChangeWelfare/ToolTip" to="HBoxContainer/Selected/System/ChangeWelfare/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="HBoxContainer/Selected/System/ChangeControl/ToolTip" to="HBoxContainer/Selected/System/ChangeControl/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/Selected/System/ChangeControl/ToolTip" to="HBoxContainer/Selected/System/ChangeControl/ToolTip" method="OnHoverExit"]
+[connection signal="pressed" from="HBoxContainer/Selected/Control/Deselect" to="." method="OnCancel"]
+[connection signal="mouse_entered" from="HBoxContainer/Selected/Control/Deselect/ToolTip" to="HBoxContainer/Selected/Control/Deselect/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/Selected/Control/Deselect/ToolTip" to="HBoxContainer/Selected/Control/Deselect/ToolTip" method="OnHoverExit"]
+[connection signal="mouse_entered" from="HBoxContainer/TitleBg/ToolTip" to="HBoxContainer/TitleBg/ToolTip" method="OnHoverEnter"]
+[connection signal="mouse_exited" from="HBoxContainer/TitleBg/ToolTip" to="HBoxContainer/TitleBg/ToolTip" method="OnHoverExit"]

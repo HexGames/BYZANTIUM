@@ -27,6 +27,7 @@ offset_right = 41.5
 offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
@@ -34,6 +35,8 @@ theme_override_constants/margin_bottom = 0
 
 [node name="VBox" type="VBoxContainer" parent="Container"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 2
 alignment = 1
 

@@ -28,6 +28,14 @@ public partial class AssetLibrary : Node
     public Material StarHover;
     [Export]
     public Material StarSelected;
+    [Export]
+    public Material MoveTargetNormal;
+    [Export]
+    public Material MoveTargetHover;
+    [Export]
+    public Material AttackTargetNormal;
+    [Export]
+    public Material AttackTargetHover;
 
     [ExportCategory("Loader")]
     [Export]

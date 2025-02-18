@@ -19,11 +19,25 @@ public partial class UIStarInfo : Control
     public StarData _Star = null;
     [Export]
     public SystemData _System = null;
+    // ---
+
+    private bool Refreshed = false;
+    public void NeedsRefresh()
+    {
+        Refreshed = false;
+        if (Visible) Refresh(_Star);
+    }
 
     public void Refresh(StarData star)
     {
+        if (star == null) return;
+        Visible = true;
+        if (_Star == star && Refreshed) return;
+
         _Star = star;
         _System = _Star.System;
+        Refreshed = true;
+
 
         StarName.SetTextWithReplace("$name", _Star.StarName);
 

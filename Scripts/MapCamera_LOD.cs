@@ -79,7 +79,7 @@ public partial class MapCamera : Camera3D
         //    Game.self.Map.Data.Stars[idx]._Node.GFX.LODAlpha(alpha);
         //}
 
-        Game.self.GalaxyUI.UI3DManager.LODAlpha(alpha);
+        Game.self.UIGalaxy.UI3DManager.LODAlpha(alpha);
 
         //GD.Print("LOD ALPHA: " + alpha.ToString());
     }

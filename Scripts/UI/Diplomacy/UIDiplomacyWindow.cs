@@ -60,6 +60,6 @@ public partial class UIDiplomacyWindow : Control
 
     public void OnCloseWindow()
     {
-        Game.self.Input.OnCloseDiplomacy();
+        //Game.self.Input.OnCloseDiplomacy();
     }
 }

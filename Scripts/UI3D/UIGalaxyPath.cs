@@ -49,6 +49,11 @@ public partial class UIGalaxyPath : Control
         if (PathValue_3_Original.Length == 0) PathValue_3_Original = PathValue_3.Text;
         PathValue_More = GetNode<RichTextLabel>("Container/VBox/Container_4/Fleet");
         //Tooltip = GetNode<PanelContainer>("PanelContainer");
+
+        PathValue_1.Visible = false;
+        PathValue_2.Visible = false;
+        PathValue_3.Visible = false;
+        PathValue_More.Visible = false;
     }
 
     public void Refresh()

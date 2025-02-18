@@ -91,19 +91,19 @@ public partial class UIGalaxy : Control
 
         ActionsEconomy.Visible = false;
     }
-
+    /*
     public void ShowStarInfo(StarData selectedStar, StarData hoveredStar)
     {
         SystemInfo.Visible = true;
         SystemInfo.Refresh(hoveredStar != null ? hoveredStar : selectedStar);
         
         DistrictsInfo.Visible = true;
-        DistrictsInfo.RefreshAll(hoveredStar != null ? hoveredStar : selectedStar);
+        DistrictsInfo.RefreshStar(hoveredStar != null ? hoveredStar : selectedStar);
         
         DiplomacyBar.Visible = false;
 
         ActionsEconomy.Visible = true;
-        ActionsEconomy.Refresh(selectedStar, hoveredStar);
+        //ActionsEconomy.Refresh(selectedStar, hoveredStar);
 
         ActionsChoice.Visible = false;
     }
@@ -112,15 +112,15 @@ public partial class UIGalaxy : Control
     {
         SystemInfo.Visible = false;
 
-        Game.self.GalaxyUI.DistrictsInfo.RefreshButtons(possibleActions);
+        Game.self.UIGalaxy.DistrictsInfo.RefreshButtons(possibleActions);
 
-        Game.self.GalaxyUI.ActionsEconomy.RefreshSelectPlanet();
+        //Game.self.UIGalaxy.ActionsEconomy.RefreshSelectPlanet();
     }
 
     public void ShowStarInfo_ShowMakeChoice<T>(StarData selectedStar, List<T> possibleActions) where T : ActionBase
     {
-        Game.self.GalaxyUI.DistrictsInfo.Visible = false;
-        Game.self.GalaxyUI.ActionsEconomy.Visible = false;
+        Game.self.UIGalaxy.DistrictsInfo.Visible = false;
+        Game.self.UIGalaxy.ActionsEconomy.Visible = false;
 
         ActionsChoice.Visible = true;
         ActionsChoice.Refresh(possibleActions);
@@ -129,19 +129,18 @@ public partial class UIGalaxy : Control
     public void ShowStarInfo_CancelMakeChoice()
     {
         ActionsChoice.Visible = false;
-        Game.self.GalaxyUI.DistrictsInfo.Visible = true;
-        Game.self.GalaxyUI.ActionsEconomy.Visible = true;
+        Game.self.UIGalaxy.DistrictsInfo.Visible = true;
+        Game.self.UIGalaxy.ActionsEconomy.Visible = true;
     }
 
     public void ShowStarInfo_CancelAction(StarData selectedStar)
     {
         SystemInfo.Visible = true;
 
-        Game.self.GalaxyUI.DistrictsInfo.HideButtons();
+        Game.self.UIGalaxy.DistrictsInfo.HideButtons();
 
-        Game.self.GalaxyUI.ActionsEconomy.Refresh(selectedStar, null);
+        //Game.self.UIGalaxy.ActionsEconomy.Refresh(selectedStar, null);
     }
-
     public void HideStarInfo()
     {
         SystemInfo.Visible = false;
@@ -151,7 +150,9 @@ public partial class UIGalaxy : Control
 
         ActionsEconomy.Visible = false;
     }
-
+    
+    */
+    /*
     public void ShowFleetsInfo(Array<FleetData> selectedFleetList, FleetData selectedFleet)
     {
         FleetsSelected.Visible = true;
@@ -166,16 +167,16 @@ public partial class UIGalaxy : Control
     public void ShowPlanetInfo(PlanetData selectedPlanet)
     {
         //PlanetInfo.Visible = true;
-        DistrictsInfo.RefreshSelected(selectedPlanet);
+        DistrictsInfo.RefreshPlanet(selectedPlanet);
         //DiplomacyBar.Visible = false;
     }
 
     public void HidePlanetInfo()
     {
-        DistrictsInfo.RefreshAll();
+        //DistrictsInfo.RefreshAll();
         //PlanetInfo.Visible = false;
         //DiplomacyBar.Visible = true;
-    }
+    }*/
 
     public void AddPathLabel(GFXPathsItem pathGFX)
     {
@@ -494,8 +495,8 @@ public partial class UIGalaxy : Control
     {
         if (Game.self.TurnLoop.CurrentPlayerData != null)
         {
-            Game.self.Input.ZoomOut();
-            Game.self.Input.DeselectAll();
+            //Game.self.Input.ZoomOut();
+            Game.self.UI.DeselectAll();
 
             Game.self.TurnLoop.CurrentPlayerData.TurnFinished = true;
             Game.self.TurnLoop.WaitingForHuman = false;

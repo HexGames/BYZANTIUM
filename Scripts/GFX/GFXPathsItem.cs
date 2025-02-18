@@ -54,7 +54,7 @@ public partial class GFXPathsItem : Node3D
 
         if (HUD == null)
         {
-            Game.self.GalaxyUI.AddPathLabel(this);
+            Game.self.UIGalaxy.AddPathLabel(this);
         }
 
         HUD.Refresh();

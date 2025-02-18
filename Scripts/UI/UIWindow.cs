@@ -302,11 +302,11 @@ public partial class UIWindow : Control
         //ActionBuild.ReorderInQueue(Selected._Building, int.MinValue, Game);
 
         //Game.SystemUI.Refresh(Selected._Building._Planet._Star);
-        Game.WindowsUI.HideAll();
+        //Game.UIWindows.HideAll();
     }
 
     public void OnCancel()
     {
-        Game.WindowsUI.HideAll();
+        //Game.UIWindows.HideAll();
     }
 }

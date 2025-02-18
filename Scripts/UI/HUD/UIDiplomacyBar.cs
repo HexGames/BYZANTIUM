@@ -6,7 +6,7 @@ public partial class UIDiplomacyBar : Control
 {
     [ExportCategory("Links")]
     [Export]
-    private Array<UIDiplomacyBarItem> Empires = new Array<UIDiplomacyBarItem>();
+    public Array<UIDiplomacyBarItem> Empires = new Array<UIDiplomacyBarItem>();
 
     public void Refresh()
     {

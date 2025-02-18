@@ -221,50 +221,50 @@ public partial class UISelectedFleetsItem : Control
     public void OnDeselect()
     {
         //Game.self.Input.OnDeselectFleet(_Fleet);
-        Game.self.Input.OnDeselectFleets();
+        Game.self.UI.Deselect();
     }
 
     public void OnShowDetails()
     {
-        if (Game.self.GalaxyUI.FleetsSelected.ShowDetails == false)
+        if (Game.self.UIGalaxy.FleetsSelected.ShowDetails == false)
         {
-            Game.self.GalaxyUI.FleetsSelected.ShowDetails = true;
+            Game.self.UIGalaxy.FleetsSelected.ShowDetails = true;
         }
         else
         {
-            Game.self.GalaxyUI.FleetsSelected.ShowDetails = false;
+            Game.self.UIGalaxy.FleetsSelected.ShowDetails = false;
         }
         Refresh(_Fleet, true, true, true);
     }
 
-    public void OnNextFleet()
-    {
-        StarData star = _Fleet.StarAt_PerTurn;
-        var fleetGroup = _Fleet.StarAt_PerTurn.GetFriendlyFleets(Game.self.HumanPlayer);
-        if (fleetGroup.Contains(_Fleet) == false) fleetGroup = _Fleet.StarAt_PerTurn.GetNeutralFleets(Game.self.HumanPlayer);
-        if (fleetGroup.Contains(_Fleet) == false) fleetGroup = _Fleet.StarAt_PerTurn.GetEnemyFleets(Game.self.HumanPlayer);
-
-        if (fleetGroup.Contains(_Fleet))
-        {
-            int idx = fleetGroup.IndexOf(_Fleet);
-            idx++;
-            Game.self.Input.SelectedFleet = fleetGroup[idx];
-            Game.self.GalaxyUI.FleetsSelected.Refresh(null, fleetGroup[idx]);
-        }
-    }
-    public void OnPreviousFleet()
-    {
-        StarData star = _Fleet.StarAt_PerTurn;
-        var fleetGroup = _Fleet.StarAt_PerTurn.GetFriendlyFleets(Game.self.HumanPlayer);
-        if (fleetGroup.Contains(_Fleet) == false) fleetGroup = _Fleet.StarAt_PerTurn.GetNeutralFleets(Game.self.HumanPlayer);
-        if (fleetGroup.Contains(_Fleet) == false) fleetGroup = _Fleet.StarAt_PerTurn.GetEnemyFleets(Game.self.HumanPlayer);
-
-        if (fleetGroup.Contains(_Fleet))
-        {
-            int idx = fleetGroup.IndexOf(_Fleet);
-            idx--;
-            Game.self.Input.SelectedFleet = fleetGroup[idx];
-            Game.self.GalaxyUI.FleetsSelected.Refresh(null, fleetGroup[idx]);
-        }
-    }
+    //public void OnNextFleet()
+    //{
+    //    StarData star = _Fleet.StarAt_PerTurn;
+    //    var fleetGroup = _Fleet.StarAt_PerTurn.GetFriendlyFleets(Game.self.HumanPlayer);
+    //    if (fleetGroup.Contains(_Fleet) == false) fleetGroup = _Fleet.StarAt_PerTurn.GetNeutralFleets(Game.self.HumanPlayer);
+    //    if (fleetGroup.Contains(_Fleet) == false) fleetGroup = _Fleet.StarAt_PerTurn.GetEnemyFleets(Game.self.HumanPlayer);
+    //
+    //    if (fleetGroup.Contains(_Fleet))
+    //    {
+    //        int idx = fleetGroup.IndexOf(_Fleet);
+    //        idx++;
+    //        Game.self.UI.Select(fleetGroup[idx]);
+    //        Game.self.UIGalaxy.FleetsSelected.Refresh(null, fleetGroup[idx]);
+    //    }
+    //}
+    //public void OnPreviousFleet()
+    //{
+    //    StarData star = _Fleet.StarAt_PerTurn;
+    //    var fleetGroup = _Fleet.StarAt_PerTurn.GetFriendlyFleets(Game.self.HumanPlayer);
+    //    if (fleetGroup.Contains(_Fleet) == false) fleetGroup = _Fleet.StarAt_PerTurn.GetNeutralFleets(Game.self.HumanPlayer);
+    //    if (fleetGroup.Contains(_Fleet) == false) fleetGroup = _Fleet.StarAt_PerTurn.GetEnemyFleets(Game.self.HumanPlayer);
+    //
+    //    if (fleetGroup.Contains(_Fleet))
+    //    {
+    //        int idx = fleetGroup.IndexOf(_Fleet);
+    //        idx--;
+    //        Game.self.UI.Select(fleetGroup[idx]);
+    //        Game.self.UIGalaxy.FleetsSelected.Refresh(null, fleetGroup[idx]);
+    //    }
+    //}
 }

@@ -64,7 +64,7 @@ public partial class TurnLoop : Node
         Game.self.Camera.Init(Game.self.Map.Data);
 
         // update UI
-        Game.self.GalaxyUI.StartTurn();
+        Game.self.UIGalaxy.StartTurn();
 
         for (int starIdx = 0; starIdx < Game.self.Map.Data.Stars.Count; starIdx++)
         {

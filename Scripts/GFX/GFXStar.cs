@@ -25,6 +25,7 @@ public partial class GFXStar : Node3D
     private MeshInstance3D Layer_3 = null;
     private MeshInstance3D Layer_4 = null;
     //private MeshInstance3D Layer_PlayerGlow = null;
+    private MeshInstance3D Target = null;
 
     [ExportCategory("Runtime")]
     [Export]
@@ -33,6 +34,10 @@ public partial class GFXStar : Node3D
     public UI3DStar GUI3D = null;
     [Export]
     public bool IsKnown = false;
+    [Export]
+    public bool IsMoveTarget = false;
+    [Export]
+    public bool IsAttackTarget = false;
 
     private Array<FleetData> FriendlyFleets = new Array<FleetData>();
     private Array<FleetData> OtherFleets = new Array<FleetData>();
@@ -74,6 +79,8 @@ public partial class GFXStar : Node3D
         Layer_3 = GetNode<MeshInstance3D>("Layer_3_Cloud");
         Layer_4 = GetNode<MeshInstance3D>("Layer_4_Cloud");
         //Layer_PlayerGlow = GetNode<MeshInstance3D>("Layer_PlayerGlow");
+
+        Target = GetNode<MeshInstance3D>("Target");
 
         //Collision.InputEvent += SignalInputEvent;
         //Collision.MouseEntered += OnHover;
@@ -301,12 +308,42 @@ public partial class GFXStar : Node3D
         }
     }
 
+    public void SetAsMoveTarget()
+    {
+        IsMoveTarget = true;
+        IsAttackTarget = false;
+
+        Target.Visible = true;
+        if (Hover) Target.SetSurfaceOverrideMaterial(0, Game.self.Assets.MoveTargetHover);
+        else Target.SetSurfaceOverrideMaterial(0, Game.self.Assets.MoveTargetNormal);
+    }
+    public void SetAsAttackTarget()
+    {
+        IsMoveTarget = false;
+        IsAttackTarget = true;
+
+        Target.Visible = true;
+        if (Hover) Target.SetSurfaceOverrideMaterial(0, Game.self.Assets.AttackTargetHover);
+        else Target.SetSurfaceOverrideMaterial(0, Game.self.Assets.AttackTargetNormal);
+    }
+    public void ClearTarget()
+    {
+        IsMoveTarget = false;
+        IsAttackTarget = false;
+
+        Target.Visible = false;
+    }
     //int HitIdx = 0;
 
     bool Hover = false;
     public void GFXHover()
     {
-        Border.SetSurfaceOverrideMaterial(0, Game.self.Assets.StarHover);
+        if (Selected == false)
+        {
+            Border.SetSurfaceOverrideMaterial(0, Game.self.Assets.StarHover);
+            if (IsMoveTarget) Target.SetSurfaceOverrideMaterial(0, Game.self.Assets.MoveTargetHover);
+            else if (IsAttackTarget) Target.SetSurfaceOverrideMaterial(0, Game.self.Assets.AttackTargetHover);
+        }
         Hover = true;
 
         RefreshPlayerColor();
@@ -316,6 +353,8 @@ public partial class GFXStar : Node3D
         if (Selected == false)
         {
             Border.SetSurfaceOverrideMaterial(0, Game.self.Assets.StarNormal);
+            if (IsMoveTarget) Target.SetSurfaceOverrideMaterial(0, Game.self.Assets.MoveTargetNormal);
+            else if (IsAttackTarget) Target.SetSurfaceOverrideMaterial(0, Game.self.Assets.AttackTargetNormal);
         }
         Hover = false;
 
@@ -333,6 +372,7 @@ public partial class GFXStar : Node3D
     public void GFXDeselect()
     {
         if (Hover == false) Border.SetSurfaceOverrideMaterial(0, Game.self.Assets.StarNormal);
+        else Border.SetSurfaceOverrideMaterial(0, Game.self.Assets.StarHover);
         Selected = false;
 
         RefreshPlayerColor();
@@ -420,7 +460,7 @@ public partial class GFXStar : Node3D
             {
                 if (GUI3D == null)
                 {
-                    GUI3D = Game.self.GalaxyUI.UI3DManager.Get_UI3DStar();
+                    GUI3D = Game.self.UIGalaxy.UI3DManager.Get_UI3DStar();
                     GUI3D.GFX = this;
                     GUI3D.Refresh();
                     GUI3D.Visible = true;

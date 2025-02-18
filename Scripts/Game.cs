@@ -3,6 +3,9 @@ using System;
 
 public partial class Game : Node
 {
+    // not a node
+    public UIStateMachine UI;
+
     [ExportCategory("Links")]
     [Export]
     public AssetLibrary Assets;
@@ -23,9 +26,9 @@ public partial class Game : Node
     [Export]
     public UITooltipManager Tooltips;
     [Export]
-    public UIGalaxy GalaxyUI;
-    [Export]
-    public UIWindows WindowsUI;
+    public UIGalaxy UIGalaxy;
+    //[Export]
+    //public UIWindows UIWindows;
     [Export]
     public UI3DSelectors SelectorsUI3D;
     //[Export]
@@ -98,6 +101,9 @@ public partial class Game : Node
                 break;
             }
         }
+
+        UI = new UIStateMachine();
+        UI.Init();
     }
 
     public override void _Process(double delta)
@@ -111,5 +117,7 @@ public partial class Game : Node
 
             FirstFrame = false;
         }
+
+        UI.Update(delta);
     }
 }

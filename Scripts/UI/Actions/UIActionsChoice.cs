@@ -13,6 +13,9 @@ public partial class UIActionsChoice : Control
 
     public void Refresh<T>(List<T> possibleActions) where T : ActionBase
     {
+        Visible = true;
+        // no Refreshed status for this - just refresh it all the time it is called
+
         while (Choices.Count < possibleActions.Count)
         {
             UIActionsChoiceItem newItem = Choices[0].Duplicate(7) as UIActionsChoiceItem;
@@ -38,6 +41,6 @@ public partial class UIActionsChoice : Control
 
     public void OnCancel()
     {
-        Game.self.Input.OnCancelAction();
+        Game.self.UI.Deselect();
     }
 }

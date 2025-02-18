@@ -3,9 +3,17 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
-public abstract class ActionBase
+public class ActionBase
 {
-    public abstract void ExecuteOrder();
+    public enum ID
+    {
+        DUMMY = -1,
+        ECONOMY_COLONIZE
+    }
 
-    public abstract string ToUI_Title(int ID = 0);
+    public ID ActionID = ID.DUMMY;
+
+    public virtual void ExecuteOrder() { }
+
+    public virtual string ToUI_Title(int ID = 0) {  return ""; }
 }

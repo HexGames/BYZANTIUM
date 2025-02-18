@@ -303,12 +303,11 @@ public partial class UIDistrictsGroupPlanet : Control
     {
         if (PossibleActions.Count > 0)
         {
-            Game.self.Input.OnAction_Economy_SelectPlanet(PossibleActions);
+            Game.self.UI.Action_SelectPlanet(_Planet);
         }
         else
         {
-            Game.self.Input.OnHoverPlanet(_Planet);
-            Game.self.Input.OnSelectPlanet(_Planet);
+            Game.self.UI.Select(_Planet);
         }
     }
 }

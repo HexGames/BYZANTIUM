@@ -89,7 +89,7 @@ public partial class UIGeneralItem : Control
 
         for (int idx = 0; idx < _Data.Subs.Count; idx++)
         {
-            UIGeneralItem newItem = Game.GalaxyUI.General.Original.Duplicate(7) as UIGeneralItem;
+            UIGeneralItem newItem = Game.UIGalaxy.General.Original.Duplicate(7) as UIGeneralItem;
             SubItems.AddChild(newItem);
             SubItemsArray.Add(newItem);
 

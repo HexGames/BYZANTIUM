@@ -3,8 +3,51 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
-public class ActionEconomyColonize : ActionBase
+public class ActionEconomyColonize : ActionPlanet
 {
+    // ----------------------------------------------------------------------------------------- Object
+    public DefDistrictWrapper DistrictDef = null;
+    public int Cost_BC = 0;
+    public int Time = 0;
+
+    public ActionEconomyColonize(SystemData system, PlanetData planet, DefDistrictWrapper district)
+    {
+        ActionID = ID.ECONOMY_COLONIZE;
+
+        System = system;
+        Planet = planet;
+        DistrictDef = district;
+
+        if (district != null)
+        {
+            Cost_BC = district.Cost_BC;
+        }
+        else
+        {
+            Cost_BC = 20000;
+        }
+
+        Time = 10;
+    }
+
+    public override void ExecuteOrder()
+    {
+        DataBlock actionData = Data.AddData(System.Data, "ActionBuild", Game.self.Def);
+        Data.AddData(actionData, "Colonize", Game.self.Def);
+        Data.AddData(actionData, "Planet", Planet.PlanetName, Game.self.Def);
+        if (DistrictDef != null) Data.AddData(actionData, "DistrictDef", DistrictDef.Name, Game.self.Def);
+        int overflow = System.Data.GetSubValueI("ActionBuildOverflow");
+        Data.DeleteDataSub(System.Data, "ActionBuildOverflow");
+        Data.AddData(actionData, "Progress", overflow, Game.self.Def);
+        Data.AddData(actionData, "ProgressMax", Cost_BC, Game.self.Def);
+    }
+
+    public override string ToUI_Title(int ID = 0)
+    {
+        return Planet.PlanetName;
+    }
+
+
     // ----------------------------------------------------------------------------------------- Static
     public static void RefreshActions(SystemData system)
     {
@@ -16,7 +59,9 @@ public class ActionEconomyColonize : ActionBase
             {
                 if (planet.IsHabitable())
                 {
-                    system.ActionEconomyColonize_PerTurn.Add(new ActionEconomyColonize(system, planet, null));
+                    var action = new ActionEconomyColonize(system, planet, null);
+                    system.ActionEconomyColonize_PerTurn.Add(action);
+
                 }
                 else
                 {
@@ -25,7 +70,8 @@ public class ActionEconomyColonize : ActionBase
                         DefDistrictWrapper districtDef = Game.self.Def.DistrictsInfo[defIdx];
                         if (districtDef.Type == planet.Data.GetSubValueS("SlotType") && districtDef.Control == "State")
                         {
-                            system.ActionEconomyColonize_PerTurn.Add(new ActionEconomyColonize(system, planet, districtDef));
+                            var action = new ActionEconomyColonize(system, planet, districtDef);
+                            system.ActionEconomyColonize_PerTurn.Add(action);
                         }
                     }
                 }
@@ -57,7 +103,7 @@ public class ActionEconomyColonize : ActionBase
                 system.Data.SetSubValueI("ActionBuild", "Progress", progress, Game.self.Def);
             }
             else // progress >= progressMax
-            { 
+            {
                 string planetName = system.Data.GetSubValueS("ActionBuild", "Planet");
                 PlanetData planet = null;
                 for (int planetIdx = 0; planetIdx < system.Star.Planets.Count; planetIdx++)
@@ -99,47 +145,5 @@ public class ActionEconomyColonize : ActionBase
                 Data.AddData(system.Data, "ActionBuildOverflow", progress, Game.self.Def);
             }
         }
-    }
-
-    // ----------------------------------------------------------------------------------------- Object
-    public SystemData System = null;
-    public PlanetData Planet = null;
-    public DefDistrictWrapper DistrictDef = null;
-    public int Cost_BC = 0;
-    public int Time = 0;
-
-    public ActionEconomyColonize(SystemData system, PlanetData planet, DefDistrictWrapper district)
-    {
-        System = system;
-        Planet = planet;
-        DistrictDef = district;
-
-        if (district != null)
-        {
-            Cost_BC = district.Cost_BC;
-        }
-        else
-        {
-            Cost_BC = 20000;
-        }
-
-        Time = 10;
-    }
-
-    public override void ExecuteOrder()
-    {
-        DataBlock actionData = Data.AddData(System.Data, "ActionBuild", Game.self.Def);
-        Data.AddData(actionData, "Colonize", Game.self.Def);
-        Data.AddData(actionData, "Planet", Planet.PlanetName, Game.self.Def);
-        if (DistrictDef != null) Data.AddData(actionData, "DistrictDef", DistrictDef.Name, Game.self.Def);
-        int overflow = System.Data.GetSubValueI("ActionBuildOverflow");
-        Data.DeleteDataSub(System.Data, "ActionBuildOverflow");
-        Data.AddData(actionData, "Progress", overflow, Game.self.Def);
-        Data.AddData(actionData, "ProgressMax", Cost_BC, Game.self.Def);
-    }
-
-    public override string ToUI_Title(int ID = 0)
-    {
-        return Planet.PlanetName;
     }
 }

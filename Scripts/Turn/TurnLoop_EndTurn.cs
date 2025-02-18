@@ -11,7 +11,7 @@ public partial class TurnLoop : Node
     Array<FleetData> Fleets_Other = new Array<FleetData>();
     private IEnumerator<double> EndTurn()
     {
-        Game.self.GalaxyUI.EndTurnBg.Visible = false;
+        Game.self.UIGalaxy.EndTurnBg.Visible = false;
 
         // increment turn number
         Game.self.Map.Data.Turn = Game.self.Map.Data.Turn + 1;
@@ -40,7 +40,7 @@ public partial class TurnLoop : Node
         StartTurn_NewActions();
 
         // update UI
-        Game.self.GalaxyUI.StartTurn();
+        Game.self.UIGalaxy.StartTurn();
 
         StartTurn_RefreshGUI3D();
 
@@ -54,7 +54,7 @@ public partial class TurnLoop : Node
 
         yield return Timing.WaitForOneFrame;
 
-        Game.self.GalaxyUI.EndTurnBg.Visible = true;
+        Game.self.UIGalaxy.EndTurnBg.Visible = true;
         Game.self.Camera.LOD = 2;
     }
 
@@ -147,7 +147,7 @@ public partial class TurnLoop : Node
             }
         }
 
-        Game.self.GalaxyUI.RefreshAllPathsLabels();
+        Game.self.UIGalaxy.RefreshAllPathsLabels();
 
         yield return Timing.WaitForOneFrame;
     }

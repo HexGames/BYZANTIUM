@@ -16,6 +16,7 @@ public partial class UIDiplomacyBarItem : Control
     [ExportCategory("Runtime")]
     [Export]
     public PlayerData _Player = null;
+
     public override void _Ready()
     {
         IconBg = GetNode<Panel>("Panel/VBoxContainer/IconBg");
@@ -26,9 +27,21 @@ public partial class UIDiplomacyBarItem : Control
         Ships = GetNode<UIText>("Panel/VBoxContainer/Ships");
     }
 
+    private bool Refreshed = false;
+    public void NeedsRefresh()
+    {
+        Refreshed = false;
+        if (Visible) Refresh(_Player);
+    }
+
     public void Refresh(PlayerData player)
     {
+        if (player == null) return;
+        Visible = true;
+        if (_Player == player && Refreshed) return;
+
         _Player = player;
+        Refreshed = true;
 
         IconBg.SelfModulate = Game.self.UILib.GetPlayerColor(player.PlayerID);
         Icon.Texture = Game.self.Assets.GetTexture2D_Flag(player.PlayerName + ".png");
@@ -41,6 +54,6 @@ public partial class UIDiplomacyBarItem : Control
 
     public void OnSelect()
     {
-        Game.self.Input.OnOpenDiplomacy(_Player);
+        //Game.self.Input.OnOpenDiplomacy(_Player);
     }
 }

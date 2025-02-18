@@ -45,5 +45,5 @@ public partial class PlanetData : Node
     public bool IsNotStar()
     {
         return Data.HasSub("Star_Type");
-    }
+    }    
 }

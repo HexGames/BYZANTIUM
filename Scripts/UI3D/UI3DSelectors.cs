@@ -11,6 +11,8 @@ public partial class UI3DSelectors : Node
     private Node3D Planet_Hover = null;
     [Export]
     private Node3D Planet_Select = null;
+    //[Export]
+    //private Node3D Fleet_Move_Target = null;
 
     public override void _Ready()
     {
@@ -112,4 +114,15 @@ public partial class UI3DSelectors : Node
     {
         Planet_Select.Visible = false;
     }
+
+    //public void FleetMoveTargetSet(StarData star)
+    //{
+    //    Fleet_Move_Target.Position = star._Node.GFX.GlobalPosition;
+    //    Fleet_Move_Target.Visible = true;
+    //}
+    //
+    //public void FleetMoveTargetClear()
+    //{
+    //    Fleet_Move_Target.Visible = false;
+    //}
 }

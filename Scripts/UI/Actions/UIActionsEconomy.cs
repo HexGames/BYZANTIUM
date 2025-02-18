@@ -7,6 +7,8 @@ public partial class UIActionsEconomy : Control
     [Export]
     private Control Buttons;
     [Export]
+    private Control PlanetButtons;
+    [Export]
     private TextureButton Colonize;
     [Export]
     private UITooltipTrigger ColonizeToolTip;
@@ -26,6 +28,8 @@ public partial class UIActionsEconomy : Control
     private TextureButton Privatize;
     [Export]
     private UITooltipTrigger PrivatizeToolTip;
+    [Export]
+    private Control SystemButtons;
     [Export]
     private TextureButton ChangeBuget;
     [Export]
@@ -56,81 +60,77 @@ public partial class UIActionsEconomy : Control
     private UIText SelectedName;
 
     //
-    private StarData _SelectedStar = null;
-    private SystemData _SelectedSystem = null;
-    private StarData _HoveredStar = null;
-    private SystemData _HoveredSystem = null;
+    public SystemData _System = null;
+    public PlanetData _Planet = null;
+    public StarData _TextStar = null;
 
-
-    public void Refresh(StarData selectedStar, StarData hoveredStar)
+    private bool Refreshed = false;
+    public void NeedsRefresh()
     {
-        _HoveredStar = hoveredStar;
-        _HoveredSystem = _HoveredStar?.System;
+        Refreshed = false;
+        if (Visible && SystemButtons.Visible) RefreshSystem(_System);
+        else if (Visible && PlanetButtons.Visible) RefreshPlanet(_Planet);
+        else if (Visible && SelectText.Visible) RefreshText(_TextStar);
+    }
 
-        _SelectedStar = selectedStar;
-        _SelectedSystem = _SelectedStar?.System;
+    public void RefreshText(StarData star)
+    {
+        if (star == null) return;
+        Visible = true;
+        Buttons.Visible = false;
+        SelectText.Visible = true;
+        if (_TextStar == star && Refreshed) return;
 
-        SelectedName.SetTextWithReplace("$name", hoveredStar != null ? hoveredStar.StarName : selectedStar.StarName);
+        _System = null;
+        _Planet = null;
+        _TextStar = star;
+        Refreshed = true;
 
-        if (_HoveredStar != null && _HoveredStar != _SelectedStar)
+        SelectedName.SetTextWithReplace("$name", _TextStar.StarName);
+    }
+
+    public void RefreshSystem(SystemData system)
+    {
+        if (system == null) return;
+        Visible = true;
+        Buttons.Visible = true;
+        SystemButtons.Visible = true;
+        PlanetButtons.Visible = true;
+        ColonizeText.Visible = false;
+        SelectText.Visible = false;
+        if (_System == system && Refreshed) return;
+
+        _System = system;
+        _Planet = null;
+        _TextStar = null;
+        Refreshed = true;
+
+        SelectedName.SetTextWithReplace("$name", _System.Star.StarName);
+
+        if (_System._Player == Game.self.HumanPlayer)
         {
-            Buttons.Visible = false;
-            SelectText.Visible = true;
-        }
-        else if(_SelectedSystem != null)
-        {
-            if (_SelectedSystem._Player == Game.self.HumanPlayer)
-            {
-                Buttons.Visible = true;
-                SelectText.Visible = false;
-
-                Colonize.Visible = true;
-                Colonize.Disabled = _SelectedSystem.ActionEconomyColonize_PerTurn.Count == 0;
-                Build.Visible = true;
-                Build.Disabled = false;
-                Change.Visible = true;
-                Change.Disabled = false;
-                Nationalize.Visible = true;
-                Nationalize.Disabled = false;
-                Privatize.Visible = true;
-                Privatize.Disabled = false;
-                ChangeBuget.Visible = true;
-                ChangeBuget.Disabled = false;
-                ChangeTax.Visible = true;
-                ChangeTax.Disabled = false;
-                ChangeWelfare.Visible = true;
-                ChangeWelfare.Disabled = false;
-                ChangeControl.Visible = true;
-                ChangeControl.Disabled = false;
-
-                ColonizeText.Visible = false;
-            }
-            else
-            {
-                Buttons.Visible = true;
-                SelectText.Visible = false;
-
-                Colonize.Visible = false;
-                Build.Visible = false;
-                Change.Visible = false;
-                Nationalize.Visible = false;
-                Privatize.Visible = false;
-                ChangeBuget.Visible = false;
-                ChangeTax.Visible = false;
-                ChangeWelfare.Visible = false;
-                ChangeControl.Visible = false;
-
-                ColonizeText.Visible = false;
-            }
+            Colonize.Visible = true;
+            Colonize.Disabled = _System.ActionEconomyColonize_PerTurn.Count == 0;
+            Build.Visible = true;
+            Build.Disabled = false;
+            Change.Visible = true;
+            Change.Disabled = false;
+            Nationalize.Visible = true;
+            Nationalize.Disabled = false;
+            Privatize.Visible = true;
+            Privatize.Disabled = false;
+            ChangeBuget.Visible = true;
+            ChangeBuget.Disabled = false;
+            ChangeTax.Visible = true;
+            ChangeTax.Disabled = false;
+            ChangeWelfare.Visible = true;
+            ChangeWelfare.Disabled = false;
+            ChangeControl.Visible = true;
+            ChangeControl.Disabled = false;
         }
         else
         {
-            Buttons.Visible = true;
-            SelectText.Visible = false;
-
-            Colonize.Visible = true;
-            Colonize.Disabled = false;
-
+            Colonize.Visible = false;
             Build.Visible = false;
             Change.Visible = false;
             Nationalize.Visible = false;
@@ -139,36 +139,69 @@ public partial class UIActionsEconomy : Control
             ChangeTax.Visible = false;
             ChangeWelfare.Visible = false;
             ChangeControl.Visible = false;
+        }
+    }
 
-            ColonizeText.Visible = false;
+    public void RefreshPlanet(PlanetData planet)
+    {
+        if (planet == null) return;
+        if (planet._Star.System == null) return;
+        Visible = true;
+        Buttons.Visible = true;
+        SystemButtons.Visible = false;
+        PlanetButtons.Visible = true;
+        ColonizeText.Visible = false;
+        SelectText.Visible = false;
+        if (_Planet == planet && Refreshed) return;
+
+        _System = null;
+        _Planet = planet;
+        _TextStar = null;
+        Refreshed = true; 
+
+        SelectedName.SetTextWithReplace("$name", _Planet.PlanetName);
+
+        if (_Planet._Star.System._Player == Game.self.HumanPlayer)
+        {
+            Colonize.Visible = true;
+            Colonize.Disabled = ActionPlanet.HasActionForPlanet(_Planet._Star.System.ActionEconomyColonize_PerTurn, _Planet);
+            Build.Visible = true;
+            Build.Disabled = false;
+            Change.Visible = true;
+            Change.Disabled = false;
+            Nationalize.Visible = true;
+            Nationalize.Disabled = false;
+            Privatize.Visible = true;
+            Privatize.Disabled = false;
+        }
+        else
+        {
+            Colonize.Visible = false;
+            Build.Visible = false;
+            Change.Visible = false;
+            Nationalize.Visible = false;
+            Privatize.Visible = false;
         }
     }
 
     public void OnColonization()
     {
-        Game.self.Input.OnAction_Economy_Colonize();
+        Game.self.UI.Action(ActionBase.ID.ECONOMY_COLONIZE);
     }
 
-    public void RefreshSelectPlanet()
+    public void Refresh_Colonize()
     {
+        Visible = true;
         Buttons.Visible = true;
+        SystemButtons.Visible = false;
+        PlanetButtons.Visible = false;
         SelectText.Visible = false;
-
-        Colonize.Visible = false;
-        Build.Visible = false;
-        Change.Visible = false;
-        Nationalize.Visible = false;
-        Privatize.Visible = false;
-        ChangeBuget.Visible = false;
-        ChangeTax.Visible = false;
-        ChangeWelfare.Visible = false;
-        ChangeControl.Visible = false;
 
         ColonizeText.Visible = true;
     }
 
     public void OnCancel()
     {
-        Game.self.Input.DeselectOneStep();
+        Game.self.UI.Deselect();
     }
 }

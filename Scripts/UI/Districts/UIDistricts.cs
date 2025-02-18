@@ -20,12 +20,21 @@ public partial class UIDistricts : Control
     [Export]
     public SystemData _System = null;
     [Export]
-    public PlanetData _SelectedPlanet = null;
+    public PlanetData _Planet = null;
     [Export]
-    public ColonyData _SelectedColony = null;
+    public ColonyData _Colony = null;
 
     // planets in groups
     public List<List<PlanetData>> _Planets = new List<List<PlanetData>>();
+
+
+    private bool Refreshed = false;
+    public void NeedsRefresh()
+    {
+        Refreshed = false;
+        if (Visible && All.Visible) RefreshStar(_Star);
+        else if (Visible && Selected.Visible) RefreshPlanet(_Planet);
+    }
 
     public override void _Ready()
     {
@@ -36,18 +45,22 @@ public partial class UIDistricts : Control
         }
     }
 
-    public void RefreshAll()
-    {
-        RefreshAll(_Star);
-    }
+    //public void RefreshAll()
+    //{
+    //    RefreshStar(_Star);
+    //}
 
-    public void RefreshAll(StarData star)
+    public void RefreshStar(StarData star)
     {
+        if (star == null) return;
+        Visible = true;
         All.Visible = true;
         Selected.Visible = false;
+        if (_Star == star && Refreshed) return;
 
         _Star = star;
         _System = star.System;
+        Refreshed = true;
 
         for (int idx = 0; idx < _Planets.Count; idx++)
         {
@@ -83,6 +96,8 @@ public partial class UIDistricts : Control
                 AllPlanets[idx].Visible = false;
             }
         }
+
+        HideButtons();
     }
 
     public void RefreshButtons<T>(List<T> possibleActions) where T : ActionBase
@@ -113,14 +128,18 @@ public partial class UIDistricts : Control
         }
     }
 
-    public void RefreshSelected(PlanetData selectedPlanet)
+    public void RefreshPlanet(PlanetData planet)
     {
+        if (planet == null) return;
+        Visible = true;
         All.Visible = false;
         Selected.Visible = true;
+        if (_Planet == planet && Refreshed) return;
 
-        _SelectedPlanet = selectedPlanet;
-        _SelectedColony = selectedPlanet.Colony;
+        _Planet = planet;
+        _Colony = _Planet.Colony;
+        Refreshed = true;
 
-        SelectedPlanet.Refresh(_SelectedPlanet);
+        SelectedPlanet.Refresh(_Planet);
     }
 }

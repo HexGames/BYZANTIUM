@@ -34,8 +34,7 @@ public partial class StarData : Node
     //[Export]
     public SystemVisibilityWrapper Visibility_PerTurn = null;
     //[Export]
-    public List<FleetData> Fleets_PerTurn = new List<FleetData>();
-
+    public Array<FleetData> Fleets_PerTurn = new Array<FleetData>();
 
     // --------------------------------------------------------------------------------------------
     public void Init()
@@ -225,5 +224,5 @@ public partial class StarData : Node
     //        }
     //    }
     //    return players;
-    //}    
+    //}
 }

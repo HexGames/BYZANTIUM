@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b78sdhjcuas47"]
+[gd_scene load_steps=60 format=3 uid="uid://b78sdhjcuas47"]
 
 [ext_resource type="Script" path="res://Scripts/GFX/GFXStar.cs" id="1_skeqy"]
 [ext_resource type="Script" path="res://Scripts/GFX/GFXStarOrbit.cs" id="2_bb4bp"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://d0wljmi063s34" path="res://Assets/Galaxy/StarGas.png" id="19_s3wqc"]
 [ext_resource type="Texture2D" uid="uid://8uopb46ug55p" path="res://Assets/Background/PPL1.png" id="20_sob6c"]
 [ext_resource type="Texture2D" uid="uid://b0m5fp44otc08" path="res://Assets/Galaxy/BeltGas.png" id="21_qvw38"]
+[ext_resource type="ArrayMesh" uid="uid://bqjuara7wdimv" path="res://Assets/3D/SelectedThin.res" id="26_aas4q"]
+[ext_resource type="Material" uid="uid://dsxp052nnhxcc" path="res://Assets/3D/Materials/TargetPossibleMove.tres" id="27_br8ww"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_fnj7s"]
 radius = 0.1
@@ -1144,3 +1146,10 @@ transform = Transform3D(0.0734416, 1.49965e-05, 1.69841, 0, 1.7, -1.50105e-05, -
 mesh = SubResource("QuadMesh_0ummg")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_etwdd")
+
+[node name="Target" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
+mesh = ExtResource("26_aas4q")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("27_br8ww")

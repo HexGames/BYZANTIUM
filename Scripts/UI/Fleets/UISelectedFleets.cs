@@ -32,11 +32,55 @@ public partial class UISelectedFleets : Control
 
     public bool ShowDetails = false;
 
-    public void Refresh(Array<FleetData> selectedFleetList, FleetData selectedFleet)
+    private bool Refreshed = false;
+    public void NeedsRefresh()
     {
+        Refreshed = false;
+        if (Visible) Refresh(_FleetList, _Fleet);
+    }
+
+    //public void Refresh(StarData star)
+    //{
+    //    if (star == null) return;
+    //    Visible = true;
+    //    if (_Star == star && Refreshed) return;
+    //
+    //    _Star = star;
+    //    _System = _Star.System;
+    //    Refreshed = true;
+
+    public void RefreshFleet(FleetData fleet)
+    {
+        if (fleet.StarAt_PerTurn._Node.GFX.ShipFriendly._Fleets.Contains(fleet))
+        {
+            Refresh(fleet.StarAt_PerTurn._Node.GFX.ShipFriendly._Fleets, fleet);
+        }
+        else
+        {
+            Refresh(fleet.StarAt_PerTurn._Node.GFX.ShipOther._Fleets, fleet);
+        }
+    }
+
+    public void RefreshFleets(Array<FleetData> fleetList)
+    {
+        Refresh(fleetList, null);
+    }
+
+    //public void RefreshConflict(Array<FleetData> fleetList)
+    //{
+
+    //}
+
+    private void Refresh(Array<FleetData> selectedFleetList, FleetData selectedFleet)
+    {
+        if (selectedFleetList != null && selectedFleetList.Count == 0) return;
+        Visible = true;
+        //if (_Fleet == selectedFleet && Refreshed) return;
+
         if (_Fleet != selectedFleet) ShowDetails = false;
         _FleetList = selectedFleetList;
-        _Fleet = selectedFleet;
+        _Fleet = selectedFleet; 
+        Refreshed = true;
 
         if (_FleetList != null)
         {
